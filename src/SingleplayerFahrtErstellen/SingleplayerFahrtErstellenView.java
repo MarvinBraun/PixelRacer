@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import MusicHandler.MusicPlayer;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -25,6 +28,7 @@ public class SingleplayerFahrtErstellenView {
 				try {
 					SingleplayerFahrtErstellenView window = new SingleplayerFahrtErstellenView();
 					window.frame.setVisible(true);
+					MusicPlayer.audio();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
