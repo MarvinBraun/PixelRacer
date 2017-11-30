@@ -1,7 +1,10 @@
 package Fahrt;
 
-public class SingleplayerFahrt {
-	
+import Computergegner.Bot;
+
+public class SingleplayerFahrt extends Fahrt {
+Bot bot;
+
 	
 
 }

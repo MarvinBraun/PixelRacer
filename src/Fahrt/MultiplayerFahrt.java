@@ -1,5 +1,8 @@
 package Fahrt;
 
-public class MultiplayerFahrt {
+public class MultiplayerFahrt extends Fahrt {
+int multiplayerID;
+
+	
 
 }
