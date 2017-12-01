@@ -27,4 +27,3 @@ public class Nutzerverwaltung {
 		return mitarbeiterliste;
 	}
 }
-
