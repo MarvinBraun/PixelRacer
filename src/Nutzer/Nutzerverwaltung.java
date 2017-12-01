@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.util.LinkedList;
 
 import Datenbankverwaltung.DBAbfrage;
+import Datenbankverwaltung.Datenbankschnittstelle;
 
 public class Nutzerverwaltung {
 	LinkedList<Kunde> kundenliste;
@@ -13,7 +14,7 @@ public class Nutzerverwaltung {
 		
 		String abfrage = ("select * from kunde");
 		
-		kundenliste = DBAbfrage.abfrage(abfrage);
+		kundenliste = Datenbankschnittstelle.abfrage(abfrage);
 		
 		return kundenliste;
 	}
