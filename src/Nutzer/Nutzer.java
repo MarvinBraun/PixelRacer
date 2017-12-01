@@ -8,3 +8,4 @@ public abstract class Nutzer {
  String email;
  String gebdat;
 }
+
