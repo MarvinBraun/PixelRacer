@@ -4,4 +4,3 @@ public class Kunde extends Nutzer {
 	boolean premium;
 	int punkte;
 }
-
