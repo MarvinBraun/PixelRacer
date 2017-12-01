@@ -1,5 +1,6 @@
 package Nutzer;
 
-public class Mitarbeiter {
-
+public class Mitarbeiter extends Nutzer {
+	int mitarbeiterid;
+	String jobtitel;
 }

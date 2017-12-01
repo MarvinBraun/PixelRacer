@@ -1,5 +1,5 @@
 package Nutzer;
 
-public class Spieler {
+public class test {
 
 }

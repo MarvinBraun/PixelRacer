@@ -10,7 +10,7 @@ import javax.sound.sampled.Clip;
 
 public class MusicPlayer {
 
-	public static void audio(){
+	public static void audioBackground(){
 		
 		try {
 
