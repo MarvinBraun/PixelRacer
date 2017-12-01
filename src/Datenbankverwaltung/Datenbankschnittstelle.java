@@ -81,7 +81,7 @@ public class Datenbankschnittstelle {
 		try {
 		con = getConnection();
 		Statement stmt = con.createStatement();
-		
+		adawdawda
 		for(String query : queries)
 		{
 			stmt.addBatch(query);
