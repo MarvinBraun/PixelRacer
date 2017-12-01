@@ -28,7 +28,7 @@ public class SingleplayerFahrtErstellenView {
 				try {
 					SingleplayerFahrtErstellenView window = new SingleplayerFahrtErstellenView();
 					window.frame.setVisible(true);
-					MusicPlayer.audio();
+					MusicPlayer.audioBackground();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
