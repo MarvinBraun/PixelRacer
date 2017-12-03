@@ -1,6 +1,6 @@
 package Strecke;
 
-public class Streckenverwaltung {
+public class AnzeigenStreckenStrg {
 
 	public static void main(String[] args) {
 		
