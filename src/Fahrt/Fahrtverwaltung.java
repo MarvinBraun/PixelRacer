@@ -18,7 +18,7 @@ public class Fahrtverwaltung {
 	
 	public HashSet gibSingleplayerFahrten()
 	{
-		ResultSet rs = Datenbankschnittstelle.abfrage("select * from Singleplayerfahrt");
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayerfahrt");
 		try {
 			while(rs.next())
 			{
@@ -34,7 +34,7 @@ public class Fahrtverwaltung {
 	
 	public HashSet gibMultiplayerFahrten()
 	{
-		ResultSet rs = Datenbankschnittstelle.abfrage("select * from Multiplayerfahrt");
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Multiplayerfahrt");
 		try {
 			while(rs.next())
 			{
