@@ -51,7 +51,7 @@ public class PremiumStreckeView {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
-		JLabel Frage = new JLabel("  M\u00F6chten Sie die Strecke wirklich f\u00FCr 4,99\u20AC erwerben?");
+		JLabel Frage = new JLabel("  Möchten Sie die Strecke wirklich für 4,99€ erwerben?");
 		GridBagConstraints gbc_Frage = new GridBagConstraints();
 		gbc_Frage.anchor = GridBagConstraints.NORTH;
 		gbc_Frage.insets = new Insets(0, 0, 5, 0);
@@ -61,7 +61,7 @@ public class PremiumStreckeView {
 		frame.getContentPane().add(Frage, gbc_Frage);
 		Frage.setFont(new Font("Calibri", Font.PLAIN, 18));
 		
-		JButton bestätigen = new JButton("Best\u00E4tigen");
+		JButton bestätigen = new JButton("Bestätigen");
 		GridBagConstraints gbc_bestätigen = new GridBagConstraints();
 		gbc_bestätigen.anchor = GridBagConstraints.NORTHEAST;
 		gbc_bestätigen.insets = new Insets(0, 0, 5, 5);

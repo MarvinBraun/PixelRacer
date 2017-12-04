@@ -54,7 +54,7 @@ public class PremiumAccountView {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
-		JLabel Frage = new JLabel("M\u00F6chten Sie wirklich f\u00FCr 9,99\u20AC auf Premium upgraden?");
+		JLabel Frage = new JLabel("Möchten Sie wirklich für 9,99€ auf Premium upgraden?");
 		GridBagConstraints gbc_Frage = new GridBagConstraints();
 		gbc_Frage.anchor = GridBagConstraints.NORTH;
 		gbc_Frage.insets = new Insets(0, 0, 5, 0);
@@ -64,7 +64,7 @@ public class PremiumAccountView {
 		frame.getContentPane().add(Frage, gbc_Frage);
 		Frage.setFont(new Font("Calibri", Font.PLAIN, 18));
 		
-		JButton bestätigen = new JButton("Best\u00E4tigen");
+		JButton bestätigen = new JButton("Bestätigen");
 		GridBagConstraints gbc_bestätigen = new GridBagConstraints();
 		gbc_bestätigen.anchor = GridBagConstraints.NORTHEAST;
 		gbc_bestätigen.insets = new Insets(0, 0, 5, 5);
