@@ -47,7 +47,7 @@ public class Fahrtverwaltung {
 					MultiplayerFahrt fahrt = new MultiplayerFahrt();
 					fahrt.setSitzungsID(rs.getInt("SitzungsID"));
 					fahrt.setRang(rs.getInt("Rang"));
-					fahrt.setMultiplayerID(rs.getInt("MultiplayerID"))
+					fahrt.setMultiplayerID(rs.getInt("MultiplayerID"));
 					fahrt.setZeit(rs.getFloat("Zeit"));
 					fahrt.setStreckenName(rs.getString("Streckenname"));
 					fahrt.setKartName(rs.getString("Kartname"));
@@ -62,4 +62,6 @@ public class Fahrtverwaltung {
 			return multiplayerFahrten;
 	
 	
+}
+	}
 }
