@@ -24,7 +24,7 @@ public class Kartverwaltung {
 			rs.close();
 
 		} catch (SQLException sql) {
-			System.out.println("Fehler beim auslesend er Karts" + sql.getMessage());
+			System.out.println("Fehler beim auslesen der Karts" + sql.getMessage());
 		}
 		return ll;
 	}
