@@ -4,8 +4,9 @@ public abstract class Fahrt {
 	private int sitzungsID;
 	private int rang;
 	private float zeit;
-	private String Strecke;
-	private String kart;
+	private String streckenName;
+	private String kartName;
+	private String benutzername;
 	
 	public int getSitzungsID() {
 		return sitzungsID;
@@ -25,18 +26,25 @@ public abstract class Fahrt {
 	public void setZeit(float zeit) {
 		this.zeit = zeit;
 	}
-	public String getStrecke() {
-		return Strecke;
+	public String getStreckenName() {
+		return streckenName;
 	}
-	public void setStrecke(String strecke) {
-		Strecke = strecke;
+	public void setStreckenName(String streckenName) {
+		this.streckenName = streckenName;
 	}
-	public String getKart() {
-		return kart;
+	public String getKartName() {
+		return kartName;
 	}
-	public void setKart(String kart) {
-		this.kart = kart;
+	public void setKartName(String kartName) {
+		this.kartName = kartName;
 	}
+	public String getBenutzername() {
+		return benutzername;
+	}
+	public void setBenutzername(String benutzername) {
+		this.benutzername = benutzername;
+	}
+	
 	
 	
 	
