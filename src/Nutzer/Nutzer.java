@@ -1,6 +1,6 @@
 package Nutzer;
 
-public abstract class Nutzer {
+public abstract class Nutzer extends Nutzerverwaltung {
  String vorname;
  String nachname;
  String nutzername;
