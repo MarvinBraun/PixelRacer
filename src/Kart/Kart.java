@@ -3,7 +3,7 @@ package Kart;
 public class Kart {
 	public String kartname;
 	public int beschleunigung;
-	public int geschwindigkeit;
+	public int maxkmh;
 
 	public void setKartname(String kartname) {
 		this.kartname = kartname;
@@ -13,8 +13,8 @@ public class Kart {
 		this.beschleunigung = beschleunigung;
 	}
 
-	public void setGeschwindigkeit(int geschwindigkeit) {
-		this.geschwindigkeit = geschwindigkeit;
+	public void setMaxkmh(int maxkmh) {
+		this.maxkmh = maxkmh;
 	}
 
 	public String getKartname() {
@@ -25,8 +25,8 @@ public class Kart {
 		return beschleunigung;
 	}
 
-	public int getGeschwindigkeit() {
-		return geschwindigkeit;
+	public int getMaxkmh() {
+		return maxkmh;
 	}
 
 }
