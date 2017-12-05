@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import BackgroundAnimation.LabelBackgroundX;
+import BackgroundAnimation.Movement;
 import MusicHandler.MusicPlayer;
 
 import javax.swing.JLabel;
@@ -17,7 +19,7 @@ import java.awt.event.ActionEvent;
 public class SingleplayerFahrtErstellenView {
 
 	JFrame frame;
-	private final JLabel lblNewLabel_1 = new JLabel("");
+	private JLabel background;
 
 	/**
 	 * Launch the application.
@@ -35,6 +37,8 @@ public class SingleplayerFahrtErstellenView {
 			}
 		});
 	}
+	
+	
 
 	/**
 	 * Create the application.
@@ -121,10 +125,12 @@ public class SingleplayerFahrtErstellenView {
 		strecke.setBounds(175, 327, 449, 77);
 		frame.getContentPane().add(strecke);
 		
-		lblNewLabel_1.setOpaque(false);
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\SingleplayerFahrtErstellenGif.gif"));
-		lblNewLabel_1.setBounds(0, 0, 794, 571);
-		frame.getContentPane().add(lblNewLabel_1);
+		LabelBackgroundX.setBufferedImage("src/Resources/b1.png.png");
+		background =  new LabelBackgroundX();
+		Movement m = new Movement(3);
+		background.setOpaque(false);
+		background.setBounds(0, 0, 800, 600);
+		frame.getContentPane().add(background);
 		
 	
 	}
