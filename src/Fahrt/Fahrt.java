@@ -23,7 +23,7 @@ public abstract class Fahrt {
 	public String getZeit() {
 		return zeit;
 	}
-	public void setZeit(float zeit) {
+	public void setZeit(String zeit) {
 		this.zeit = zeit;
 	}
 	public String getStreckenName() {

@@ -23,7 +23,7 @@ public class Fahrtverwaltung {
 				SingleplayerFahrt fahrt = new SingleplayerFahrt();
 				fahrt.setSitzungsID(rs.getInt("SitzungsID"));
 				fahrt.setRang(rs.getInt("Rang"));
-				fahrt.setZeit(rs.getFloat("Zeit"));
+				fahrt.setZeit(rs.getString("Zeit"));
 				fahrt.setStreckenName(rs.getString("Streckenname"));
 				fahrt.setKartName(rs.getString("Kartname"));
 				fahrt.setBenutzername(rs.getString("Benutzername"));
@@ -48,7 +48,7 @@ public class Fahrtverwaltung {
 					fahrt.setSitzungsID(rs.getInt("SitzungsID"));
 					fahrt.setRang(rs.getInt("Rang"));
 					fahrt.setMultiplayerID(rs.getInt("MultiplayerID"));
-					fahrt.setZeit(rs.getFloat("Zeit"));
+					fahrt.setZeit(rs.getString("Zeit"));
 					fahrt.setStreckenName(rs.getString("Streckenname"));
 					fahrt.setKartName(rs.getString("Kartname"));
 					fahrt.setBenutzername(rs.getString("Benutzername"));
