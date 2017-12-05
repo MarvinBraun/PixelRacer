@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class SingleplayerFahrtAuswertung {
 
@@ -50,7 +51,7 @@ public class SingleplayerFahrtAuswertung {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(291, 466, 192, 67);
+		btnNewButton.setBounds(291, 483, 192, 67);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblDeinPlatz = new JLabel("Dein Platz:");
@@ -64,6 +65,11 @@ public class SingleplayerFahrtAuswertung {
 		JLabel lblGewonnenPunkte = new JLabel("Gewonnen Punkte:");
 		lblGewonnenPunkte.setBounds(291, 108, 142, 41);
 		frame.getContentPane().add(lblGewonnenPunkte);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\podest.png"));
+		lblNewLabel.setBounds(193, 266, 404, 200);
+		frame.getContentPane().add(lblNewLabel);
 	}
 
 }
