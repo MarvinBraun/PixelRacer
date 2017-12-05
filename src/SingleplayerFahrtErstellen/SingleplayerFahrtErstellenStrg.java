@@ -10,6 +10,7 @@ public class SingleplayerFahrtErstellenStrg {
 	public SingleplayerFahrtErstellenStrg() {
 		fahrt = new SingleplayerFahrt();
 		view = new SingleplayerFahrtErstellenView();
+		view.frame.setVisible(true);
 	
 	}
 	
