@@ -11,7 +11,6 @@ public class SingleplayerFahrtErstellenStrg {
 		fahrt = new SingleplayerFahrt();
 		view = new SingleplayerFahrtErstellenView();
 	
-		System.out.println("Test");
 	}
 	
 	public static void main(String[] args)
