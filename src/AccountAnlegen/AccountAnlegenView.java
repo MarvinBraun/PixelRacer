@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
+import javax.swing.JLabel;
 
 public class AccountAnlegenView {
 
@@ -16,7 +18,7 @@ public class AccountAnlegenView {
 	private JTextField txtGeburtsdatum;
 	private JTextField txtEmail;
 	private JTextField txtNutzername;
-	private JTextField txtPasswort;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -53,47 +55,64 @@ public class AccountAnlegenView {
 		frmPixelRacer.getContentPane().setLayout(null);
 		
 		txtVorname = new JTextField();
-		txtVorname.setText("Vorname");
-		txtVorname.setBounds(300, 100, 86, 20);
+		txtVorname.setBounds(300, 53, 86, 20);
 		frmPixelRacer.getContentPane().add(txtVorname);
 		txtVorname.setColumns(10);
 		
 		txtNachname = new JTextField();
-		txtNachname.setText("Nachname");
-		txtNachname.setBounds(300, 131, 86, 20);
+		txtNachname.setBounds(300, 107, 86, 20);
 		frmPixelRacer.getContentPane().add(txtNachname);
 		txtNachname.setColumns(10);
 		
 		txtGeburtsdatum = new JTextField();
-		txtGeburtsdatum.setText("Geburtsdatum");
 		txtGeburtsdatum.setBounds(300, 162, 86, 20);
 		frmPixelRacer.getContentPane().add(txtGeburtsdatum);
 		txtGeburtsdatum.setColumns(10);
 		
 		txtEmail = new JTextField();
-		txtEmail.setText("Email");
-		txtEmail.setBounds(300, 193, 86, 20);
+		txtEmail.setBounds(300, 218, 86, 20);
 		frmPixelRacer.getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		txtNutzername = new JTextField();
-		txtNutzername.setText("Nutzername");
-		txtNutzername.setBounds(300, 224, 86, 20);
+		txtNutzername.setBounds(300, 274, 86, 20);
 		frmPixelRacer.getContentPane().add(txtNutzername);
 		txtNutzername.setColumns(10);
 		
-		txtPasswort = new JTextField();
-		txtPasswort.setText("Passwort");
-		txtPasswort.setBounds(300, 255, 86, 20);
-		frmPixelRacer.getContentPane().add(txtPasswort);
-		txtPasswort.setColumns(10);
-		
 		JButton btnAnlegen = new JButton("Anlegen");
-		btnAnlegen.setBounds(224, 333, 127, 45);
+		btnAnlegen.setBounds(223, 390, 127, 45);
 		frmPixelRacer.getContentPane().add(btnAnlegen);
 		
 		JButton btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setBounds(361, 333, 127, 45);
+		btnAbbrechen.setBounds(362, 390, 127, 45);
 		frmPixelRacer.getContentPane().add(btnAbbrechen);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(300, 330, 86, 20);
+		frmPixelRacer.getContentPane().add(passwordField);
+		
+		JLabel lblVorname = new JLabel("Vorname");
+		lblVorname.setBounds(300, 28, 46, 14);
+		frmPixelRacer.getContentPane().add(lblVorname);
+		
+		JLabel lblNachname = new JLabel("Nachname");
+		lblNachname.setBounds(300, 82, 86, 14);
+		frmPixelRacer.getContentPane().add(lblNachname);
+		
+		JLabel lblGeburtsdatum = new JLabel("Geburtsdatum");
+		lblGeburtsdatum.setBounds(300, 137, 127, 14);
+		frmPixelRacer.getContentPane().add(lblGeburtsdatum);
+		
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setBounds(300, 193, 46, 14);
+		frmPixelRacer.getContentPane().add(lblEmail);
+		
+		JLabel lblBenutzername = new JLabel("Benutzername");
+		lblBenutzername.setBounds(300, 249, 149, 14);
+		frmPixelRacer.getContentPane().add(lblBenutzername);
+		
+		JLabel lblPasswort = new JLabel("Passwort");
+		lblPasswort.setBounds(300, 305, 109, 14);
+		frmPixelRacer.getContentPane().add(lblPasswort);
 	}
 }
