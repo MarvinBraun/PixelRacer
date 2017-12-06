@@ -17,6 +17,7 @@ import BackgroundAnimation.Movement;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 
 public class SingleplayerFahrtSpielenView {
 

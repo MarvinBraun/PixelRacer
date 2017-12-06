@@ -14,12 +14,12 @@ import javax.swing.JLabel;
 
 public class LabelBackgroundX extends JLabel {
 	static int backgroundX1 = 0;
-	static int backgroundX2 = -800;
+	static int backgroundX2 = +800;
 	static int backgroundSpeed = 1;
-	
+
 	static File background;
 	
-	public static void setBufferedImage(String s)
+	public  void setBufferedImage(String s)
 	{
 		background = new File(s);
 	}

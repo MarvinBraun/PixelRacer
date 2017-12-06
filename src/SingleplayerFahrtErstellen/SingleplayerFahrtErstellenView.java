@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
 import MusicHandler.MusicPlayer;
+import SingleplayerFahrtSpielen.SingleplayerFahrtSpielenStrg;
 
 import javax.swing.JLabel;
 import javax.imageio.ImageIO;
@@ -44,6 +45,8 @@ public class SingleplayerFahrtErstellenView {
 	}
 	
 	
+	
+	
 
 	/**
 	 * Create the application.
@@ -69,28 +72,28 @@ public class SingleplayerFahrtErstellenView {
 		backward.setContentAreaFilled(false);
 		backward.setOpaque(false);
 		backward.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\backward.png"));
-		backward.setBounds(56, 115,60, 60);
+		backward.setBounds(27, 115,60, 60);
 		frame.getContentPane().add(backward);
 		
 		JButton forward2 = new JButton("");
 		forward2.setBorderPainted(false);
 		forward2.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\forward.png"));
 		forward2.setContentAreaFilled(false);
-		forward2.setBounds(672, 238, 60, 60);
+		forward2.setBounds(643, 238, 60, 60);
 		frame.getContentPane().add(forward2);
 		
 		JButton button_1 = new JButton("");
 		button_1.setBorderPainted(false);
 		button_1.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\forward.png"));
 		button_1.setContentAreaFilled(false);
-		button_1.setBounds(504, 500, 60, 60);
+		button_1.setBounds(345, 500, 60, 60);
 		frame.getContentPane().add(button_1);
 		
 		JButton forward = new JButton("");
 		forward.setBorderPainted(false);
 		forward.setContentAreaFilled(false);
 		forward.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\forward.png"));
-		forward.setBounds(672, 115, 60, 60);
+		forward.setBounds(643, 115, 60, 60);
 		frame.getContentPane().add(forward);
 		
 		JLabel waehleKart = new JLabel("Dein Kart:");
@@ -99,8 +102,8 @@ public class SingleplayerFahrtErstellenView {
 		frame.getContentPane().add(waehleKart);
 		
 		JLabel streckeName = new JLabel("Hockenheim");
-		streckeName.setFont(new Font("pixelmix", Font.PLAIN, 25));
-		streckeName.setBounds(439, 238, 194, 60);
+		streckeName.setFont(new Font("pixelmix", Font.PLAIN, 27));
+		streckeName.setBounds(404, 238, 215, 60);
 		frame.getContentPane().add(streckeName);
 		
 		JLabel kartName = new JLabel("FireBird");
@@ -110,7 +113,7 @@ public class SingleplayerFahrtErstellenView {
 		
 		JLabel kartBild = new JLabel("New label");
 		kartBild.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\Car1.png"));
-		kartBild.setBounds(126, 72, 545, 122);
+		kartBild.setBounds(88, 69, 545, 122);
 		frame.getContentPane().add(kartBild);
 		
 		JButton backward2 = new JButton("");
@@ -118,7 +121,7 @@ public class SingleplayerFahrtErstellenView {
 		backward2.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\backward.png"));
 		backward2.setOpaque(false);
 		backward2.setContentAreaFilled(false);
-		backward2.setBounds(56, 238, 60, 60);
+		backward2.setBounds(27, 238, 60, 60);
 		frame.getContentPane().add(backward2);
 		
 		JButton button = new JButton("");
@@ -126,27 +129,31 @@ public class SingleplayerFahrtErstellenView {
 		button.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\backward.png"));
 		button.setOpaque(false);
 		button.setContentAreaFilled(false);
-		button.setBounds(143, 500, 60, 60);
+		button.setBounds(38, 500, 60, 60);
 		frame.getContentPane().add(button);
 		
 		JLabel lblWhleDeineStrecke = new JLabel("Deine Strecke:");
 		lblWhleDeineStrecke.setFont(new Font("pixelmix", Font.PLAIN, 30));
-		lblWhleDeineStrecke.setBounds(126, 246, 303, 40);
+		lblWhleDeineStrecke.setBounds(102, 246, 303, 40);
 		frame.getContentPane().add(lblWhleDeineStrecke);
 		
 		JButton spielenBtn = new JButton("Spielen!");
+		spielenBtn.setBorderPainted(false);
+		spielenBtn.setOpaque(false);
 		spielenBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				SingleplayerFahrtSpielenStrg strg = new 	SingleplayerFahrtSpielenStrg();
+				frame.dispose();
 			}
 		});
-		spielenBtn.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+		spielenBtn.setFont(new Font("pixelmix", Font.PLAIN, 30));
 		spielenBtn.setBackground(SystemColor.activeCaption);
-		spielenBtn.setBounds(574, 501, 210, 59);
+		spielenBtn.setBounds(435, 501, 210, 59);
 		frame.getContentPane().add(spielenBtn);
 		
 		JLabel lblWhleDeineSchwierigkeit = new JLabel("Schwierigkeit");
 		lblWhleDeineSchwierigkeit.setFont(new Font("pixelmix", Font.PLAIN, 25));
-		lblWhleDeineSchwierigkeit.setBounds(244, 510, 233, 40);
+		lblWhleDeineSchwierigkeit.setBounds(108, 510, 233, 40);
 		frame.getContentPane().add(lblWhleDeineSchwierigkeit);
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(SingleplayerFahrtErstellenView.class.getResource("/Resources/Rennstrecke1Klein.png")));
@@ -154,13 +161,12 @@ public class SingleplayerFahrtErstellenView {
 	
 		
 		
-			lblNewLabel.setBounds(244, 297, 303, 177);
+			lblNewLabel.setBounds(212, 297, 303, 177);
 			frame.getContentPane().add(lblNewLabel);
 		
 		
-	
-		LabelBackgroundX.setBufferedImage("src/Resources/Hintergrund.png");
-		background =  new LabelBackgroundX();
+		LabelBackgroundX background = new LabelBackgroundX();
+		background.setBufferedImage("src/Resources/Hintergrund.png");
 		Movement m = new Movement(3);
 		background.setOpaque(false);
 		background.setBounds(0, 0, 800, 600);
