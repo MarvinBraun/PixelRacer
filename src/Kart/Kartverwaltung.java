@@ -1,6 +1,7 @@
 //@author Ferhat Koca
 package Kart;
 
+import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -8,25 +9,42 @@ import Datenbankverwaltung.Datenbankschnittstelle;
 
 public class Kartverwaltung {
 
-	LinkedList<Kartverwaltung> ll;
+	LinkedList<Kart> Kartliste = new LinkedList<Kart>();
 
-	public LinkedList<Kartverwaltung> gibKart() {
+	public LinkedList<Kart> gibKart() {
 
-		String abfrage = "select * from kart;";
+		String abfrage = "select * from kart";
 
 		try {
 			ResultSet rs = Datenbankschnittstelle.executeQuery(abfrage);
-			while (rs != null) {
-				rs.next();
-				ll.add((Kartverwaltung) rs);
+			while (rs.next()) {
 
-				rs.close();
+				Kart k = new Kart();
+				k.setKartname(rs.getString("Kartname"));
+				k.setBeschleunigung(Integer.parseInt(rs.getString("Beschleunigung")));
+				k.setMaxkmh(rs.getInt("Maxkmh"));
+				k.setPremium(rs.getString("Premium"));
+				k.setPunktewert(rs.getInt("Punktewert"));
+
+				String sql = "select grafik from kart where kartname = '" + k.kartname + "'";
+				String filepath = "src/Resources/" + k.kartname + ".png";
+				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
+				k.setGrafik(image);
 
 			}
+			rs.close();
+			Datenbankschnittstelle.closeConnections();
 		} catch (SQLException sql) {
 			System.out.println("Fehler beim auslesen der Karts" + sql.getMessage());
 		}
 
-		return ll;
+		return Kartliste;
+	}
+	public static void main(String[] args){
+		Kartverwaltung kart = new Kartverwaltung();
+		kart.gibKart();
+		Kart k = kart.Kartliste.getFirst();
+		System.out.println(k.getKartname());
 	}
 }
+
