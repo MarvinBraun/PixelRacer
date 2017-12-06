@@ -125,7 +125,7 @@ public class SingleplayerFahrtErstellenView {
 		strecke.setBounds(175, 327, 449, 77);
 		frame.getContentPane().add(strecke);
 		
-		LabelBackgroundX.setBufferedImage("src/Resources/b1.png.png");
+		LabelBackgroundX.setBufferedImage("src/Resources/Rennstrecke1.png");
 		background =  new LabelBackgroundX();
 		Movement m = new Movement(3);
 		background.setOpaque(false);
