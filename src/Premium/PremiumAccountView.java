@@ -1,3 +1,4 @@
+//@author Ferhat Koca
 package Premium;
 
 import java.awt.EventQueue;
