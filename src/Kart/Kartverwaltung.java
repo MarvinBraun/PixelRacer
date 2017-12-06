@@ -4,6 +4,7 @@ package Kart;
 import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.LinkedList;
 import Datenbankverwaltung.Datenbankschnittstelle;
 
@@ -25,15 +26,22 @@ public class Kartverwaltung {
 				k.setMaxkmh(rs.getInt("Maxkmh"));
 				k.setPremium(rs.getString("Premium"));
 				k.setPunktewert(rs.getInt("Punktewert"));
-
+				
 				String sql = "select grafik from kart where kartname = '" + k.kartname + "'";
 				String filepath = "src/Resources/" + k.kartname + ".png";
 				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
 				k.setGrafik(image);
-
+			
+				
 			}
 			rs.close();
 			Datenbankschnittstelle.closeConnections();
+			
+
+		
+			
+			
+			
 		} catch (SQLException sql) {
 			System.out.println("Fehler beim auslesen der Karts" + sql.getMessage());
 		}
@@ -43,8 +51,7 @@ public class Kartverwaltung {
 	public static void main(String[] args){
 		Kartverwaltung kart = new Kartverwaltung();
 		kart.gibKart();
-		Kart k = kart.Kartliste.getFirst();
-		System.out.println(k.getKartname());
+	
 	}
 }
 
