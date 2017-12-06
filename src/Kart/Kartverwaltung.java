@@ -13,17 +13,20 @@ public class Kartverwaltung {
 	public LinkedList<Kartverwaltung> gibKart() {
 
 		String abfrage = "select * from kart;";
+
 		try {
-			;
 			ResultSet rs = Datenbankschnittstelle.executeQuery(abfrage);
-			rs.next();
-			ll.add((Kartverwaltung) rs);
+			while (rs != null) {
+				rs.next();
+				ll.add((Kartverwaltung) rs);
 
-			rs.close();
+				rs.close();
 
+			}
 		} catch (SQLException sql) {
 			System.out.println("Fehler beim auslesen der Karts" + sql.getMessage());
 		}
+
 		return ll;
 	}
 }
