@@ -29,14 +29,16 @@ public class Datenbankschnittstelle {
 	
 	public static void main(String[] args)
 	{
+		/*
 		
-		String bild = "update strecke set grafik = ? where streckenname ='Hockenheim'";
-		File file = new File("src/Resources/map1.png");
-		uploadBlob(bild,file);
+		String sql = "insert into kart values('Blue Thunder','140','320','false',20,null)";
+		executeQuery(sql);
+		closeConnections();
+		*/
 		
-		String sql = "select grafik from strecke where streckenname ='Hockenheim'";
-		String filepath = "src/Resources/" + "hockenheim" + ".png";
-		BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
+		File file = new File("src/Resources/car3.png");
+		String updateBild="update kart set grafik =? where kartname ='Blue Thunder'";
+		uploadBlob(updateBild,file);
 		
 		
 
@@ -155,22 +157,12 @@ public class Datenbankschnittstelle {
 				
 			}
 			con.close();
-			
-			
-		
-			
-			
 		}
-	
-		
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		
-		
 		return image;
-		
 	}
 	
 	public static void closeConnections()

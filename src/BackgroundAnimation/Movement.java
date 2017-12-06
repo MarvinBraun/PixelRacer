@@ -6,33 +6,35 @@ import java.util.TimerTask;
 
 public class Movement {
 	Timer back;
-	int backgroundSpeed=10;
+	
+	public LabelBackgroundX label = new LabelBackgroundX();
 	
 	public Movement(int speed)
 	{
+		
 		back = new Timer();
 		back.scheduleAtFixedRate(new TimerTask() {
 			 public void run()
 			 {
-				 if(LabelBackgroundX.backgroundX1>-796)
+				 if(label.backgroundX1>-796)
 				 {
-					 LabelBackgroundX.backgroundX1-=2;
+					label.backgroundX1-=2;
 				 }
 				 else
 				 {
-					 LabelBackgroundX.backgroundX1=+800;
+					 label.backgroundX1=+800;
 				 }
 				 
-				 if(LabelBackgroundX.backgroundX2>-796)
+				 if(label.backgroundX2>-796)
 				 {
-					 LabelBackgroundX.backgroundX2-=2;
+					 label.backgroundX2-=2;
 				 }
 				 else
 				 {
-					 LabelBackgroundX.backgroundX2=+800;
+					 label.backgroundX2=+800;
 				 }
 			 }
-		},0,backgroundSpeed);
+		},0,speed);
 		
 	}
 

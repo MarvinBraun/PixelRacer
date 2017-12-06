@@ -13,11 +13,11 @@ import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 
 public class LabelBackgroundX extends JLabel {
-	static int backgroundX1 = 0;
-	static int backgroundX2 = +800;
-	static int backgroundSpeed = 1;
+	int backgroundX1 = 0;
+	int backgroundX2 = +800;
+	int backgroundSpeed = 1;
 
-	static File background;
+	 File background;
 	
 	public  void setBufferedImage(String s)
 	{

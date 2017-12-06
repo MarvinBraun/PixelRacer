@@ -91,17 +91,22 @@ public class SingleplayerFahrtSpielenView {
 		lblBestzeitDerStrecke.setBounds(10, 105, 368, 23);
 		frame.getContentPane().add(lblBestzeitDerStrecke);
 	
-		Movement m = new Movement(3);
+		Movement m = new Movement(5);
+		m.label.setLocation(0, 0);
+		m.label.setSize(800, 571);
+		m.label.setBufferedImage("src/Resources/car2.png");
 		
-	
+		m.label.setBounds(0, 0, 800, 571);
+		frame.getContentPane().add(m.label);
 		
-		LabelBackgroundX background2 = new LabelBackgroundX();
-		background2.setLocation(0, 0);
-		background2.setSize(800, 571);
-		background2.setBufferedImage("src/Resources/hockenheim.png");
+
+		Movement m2 = new Movement(5);
+		m2.label.setLocation(0, 0);
+		m2.label.setSize(800, 571);
+		m2.label.setBufferedImage("src/Resources/hockenheim.png");
 	
-		background2.setOpaque(false);
-		frame.getContentPane().add(background2);
+		m2.label.setOpaque(false);
+		frame.getContentPane().add(m2.label);
 		frame.setVisible(true);
 		
 	}
