@@ -12,7 +12,8 @@ public class Kartverwaltung {
 
 	LinkedList<Kart> Kartliste = new LinkedList<Kart>();
 
-	public LinkedList<Kart> gibKart() {
+	public LinkedList<Kart> gibKart()
+	{
 
 		String abfrage = "select * from kart";
 
@@ -31,6 +32,7 @@ public class Kartverwaltung {
 				String filepath = "src/Resources/" + k.kartname + ".png";
 				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
 				k.setGrafik(image);
+				Kartliste.add(k);
 
 			}
 			rs.close();
