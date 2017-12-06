@@ -29,10 +29,17 @@ public class Datenbankschnittstelle {
 	
 	public static void main(String[] args)
 	{
-		String sql ="select * from kart";
-		String filepath = "src/Resources/Car2.png";
-	BufferedImage image = 	downloadBlob(sql,filepath);
-		System.out.println(image.getHeight());
+		
+		String bild = "update strecke set grafik = ? where streckenname ='Hockenheim'";
+		File file = new File("src/Resources/map1.png");
+		uploadBlob(bild,file);
+		
+		String sql = "select grafik from strecke where streckenname ='Hockenheim'";
+		String filepath = "src/Resources/" + "hockenheim" + ".png";
+		BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
+		
+		
+
 	}
 
 	public static Connection getConnection() {
@@ -102,15 +109,15 @@ public class Datenbankschnittstelle {
 
 
 	
-	public static void uploadBlob(String sql,String filepath)
+	public static void uploadBlob(String sql,File file)
 	{
 		try {
 		Connection con = getConnection();
 		PreparedStatement prepstmt = con.prepareStatement(sql);
-		File image = new File( "src/Resources/Car1.png");
+	
 		System.out.println("Bild laden..");
-		FileInputStream fis  = new FileInputStream(image);
-		prepstmt.setBinaryStream(1,fis, (int) image.length());
+		FileInputStream fis  = new FileInputStream(file);
+		prepstmt.setBinaryStream(1,fis, (int) file.length());
 		prepstmt.execute();
 		fis.close();
 		prepstmt.close();

@@ -1,5 +1,8 @@
+//@Author Marvin Braun
 package Datenbankverwaltung;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.LinkedList;
@@ -26,9 +29,8 @@ public class Testklasse {
 	
 	public static void main(String[] args)
 	{
-	String sql = "update kart set grafik =? where kartname = 'FireBird'";
-	Datenbankschnittstelle.uploadBlob(sql,"src/Resources/podest.png");
-	System.out.println("Erfolg!");
+		
+	
 	
 		
 	}
