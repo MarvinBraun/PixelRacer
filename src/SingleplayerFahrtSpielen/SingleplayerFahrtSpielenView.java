@@ -14,6 +14,7 @@ import javax.swing.border.LineBorder;
 
 import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
+import BackgroundAnimation.MovementBackward;
 
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -91,7 +92,7 @@ public class SingleplayerFahrtSpielenView {
 		lblBestzeitDerStrecke.setBounds(10, 105, 368, 23);
 		frame.getContentPane().add(lblBestzeitDerStrecke);
 	
-		Movement m = new Movement(5);
+		MovementBackward m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
 		m.label.setSize(800, 571);
 		m.label.setBufferedImage("src/Resources/car2.png");
