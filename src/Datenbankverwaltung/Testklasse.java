@@ -22,8 +22,13 @@ public class Testklasse {
 		Datenbankschnittstelle.closeConnections();
 		System.out.println(liste.size());
 	}
+	
+	
 	public static void main(String[] args)
 	{
+	String sql = "update kart set grafik =? where kartname = 'FireBird'";
+	Datenbankschnittstelle.uploadBlob(sql,"src/Resources/podest.png");
+	System.out.println("Erfolg!");
 	
 		
 	}

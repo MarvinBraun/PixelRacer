@@ -25,11 +25,14 @@ public class Datenbankschnittstelle {
 
 	private static Connection con;
 	private static Statement stmt;
+	private static PreparedStatement prepStmt;
 	
 	public static void main(String[] args)
 	{
-		
-		
+		String sql ="select * from kart";
+		String filepath = "src/Resources/Car2.png";
+	BufferedImage image = 	downloadBlob(sql,filepath);
+		System.out.println(image.getHeight());
 	}
 
 	public static Connection getConnection() {
@@ -96,22 +99,70 @@ public class Datenbankschnittstelle {
 
 	}
 	
-	public static Blob konvertiereBild(BufferedImage bild)
+
+
+	
+	public static void uploadBlob(String sql,String filepath)
 	{
-		Blob blFile = null;
 		try {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(bild, "png", baos);
-		 blFile = new javax.sql.rowset.serial.SerialBlob(baos.toByteArray());
+		Connection con = getConnection();
+		PreparedStatement prepstmt = con.prepareStatement(sql);
+		File image = new File( "src/Resources/Car1.png");
+		System.out.println("Bild laden..");
+		FileInputStream fis  = new FileInputStream(image);
+		prepstmt.setBinaryStream(1,fis, (int) image.length());
+		prepstmt.execute();
+		fis.close();
+		prepstmt.close();
+		con.close();
 		}
-		catch(Exception e)
+		catch(Exception e )
 		{
-			System.out.println("Fehler!");
 			e.printStackTrace();
-			
 		}
 		
-		return blFile;
+	}
+	
+	public static BufferedImage downloadBlob(String sql, String filepath)
+	{
+		BufferedImage image = null;
+		try {
+			Connection con = getConnection();
+			PreparedStatement  prepstmt = con.prepareStatement(sql);
+			ResultSet rs = prepstmt.executeQuery(sql);
+			
+			while(rs.next())
+			{
+				File file = new File(filepath);
+				FileOutputStream fos = new FileOutputStream(file);
+				
+				byte[] buffer = new byte[1];
+				InputStream is = rs.getBinaryStream("grafik");
+				
+				while(is.read(buffer)>0)
+				{
+					fos.write(buffer);
+				}
+				fos.close();
+				image = ImageIO.read(file);
+				
+			}
+			con.close();
+			
+			
+		
+			
+			
+		}
+	
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return image;
 		
 	}
 	
@@ -212,4 +263,4 @@ public class Datenbankschnittstelle {
 
 }
 
-}
+
