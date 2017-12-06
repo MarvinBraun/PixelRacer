@@ -1,5 +1,7 @@
 package Rechnung;
 
+//author Matthias Westermeyer
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

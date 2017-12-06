@@ -1,3 +1,5 @@
+//author Matthias Westermeyer
+
 package Rechnung;
 
 import java.awt.EventQueue;
