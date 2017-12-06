@@ -26,32 +26,26 @@ public class Kartverwaltung {
 				k.setMaxkmh(rs.getInt("Maxkmh"));
 				k.setPremium(rs.getString("Premium"));
 				k.setPunktewert(rs.getInt("Punktewert"));
-				
+
 				String sql = "select grafik from kart where kartname = '" + k.kartname + "'";
 				String filepath = "src/Resources/" + k.kartname + ".png";
 				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
 				k.setGrafik(image);
-			
-				
+
 			}
 			rs.close();
 			Datenbankschnittstelle.closeConnections();
-			
 
-		
-			
-			
-			
 		} catch (SQLException sql) {
 			System.out.println("Fehler beim auslesen der Karts" + sql.getMessage());
 		}
 
 		return Kartliste;
 	}
-	public static void main(String[] args){
+
+	public static void main(String[] args) {
 		Kartverwaltung kart = new Kartverwaltung();
 		kart.gibKart();
-	
+
 	}
 }
-
