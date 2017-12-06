@@ -1,28 +1,19 @@
-<<<<<<< HEAD
-=======
 /AccountAnlegen/
 /Anmelden/
+/BackgroundAnimation/
 /Computergegner/
 /Datenbankverwaltung/
->>>>>>> branch 'master' of https://github.com/MarvinBraun/PixelRacer.git
 /Fahrt/
 /Kart/
 /MusicHandler/
 /Nutzer/
-<<<<<<< HEAD
-/Profil/
-/ProfilKunde/
-/Strecke/
-/MusicHandler/
-/Premium/
-/Kart/
-=======
 /Premium/
 /Profil/
+/ProfilBearbeiten/
 /ProfilKunde/
 /Resources/
 /SingleplayerFahrtErstellen/
+/SingleplayerFahrtSpielen/
 /Startansicht/
 /Strecke/
 /Rechnung/
->>>>>>> branch 'master' of https://github.com/MarvinBraun/PixelRacer.git
