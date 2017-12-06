@@ -8,9 +8,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
+import SingleplayerFahrtErstellen.SingleplayerFahrtErstellenView;
+import java.awt.Font;
+import javax.swing.border.LineBorder;
+
+import BackgroundAnimation.LabelBackgroundX;
+import BackgroundAnimation.Movement;
+
+import java.awt.Color;
+import javax.swing.JPanel;
+
 public class SingleplayerFahrtSpielenView {
 
 	private JFrame frame;
+	
 
 	/**
 	 * Launch the application.
@@ -45,45 +56,52 @@ public class SingleplayerFahrtSpielenView {
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Fahren!");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton fahrenBtn = new JButton("Fahren!");
+		fahrenBtn.setBackground(new Color(152, 251, 152));
+		fahrenBtn.setBorder(new LineBorder(new Color(255, 69, 0), 6));
+		fahrenBtn.setFont(new Font("pixelmix", Font.PLAIN, 22));
+		fahrenBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				ZeitBehaltenView viewZeit = new ZeitBehaltenView();
+			
+				
+				
 			}
 		});
-		btnNewButton.setBounds(296, 105, 172, 58);
-		frame.getContentPane().add(btnNewButton);
-		
-		JLabel lblDeineZeitBetrgt = new JLabel("Deine Zeit betr\u00E4gt: 00:00");
-		lblDeineZeitBetrgt.setBounds(296, 187, 172, 14);
-		frame.getContentPane().add(lblDeineZeitBetrgt);
-		
-		JButton btnNewButton_1 = new JButton("Zeit behalten");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setBounds(213, 223, 135, 58);
-		frame.getContentPane().add(btnNewButton_1);
-		
-		JButton button = new JButton("Neuer Versuch");
-		button.setBounds(425, 223, 135, 58);
-		frame.getContentPane().add(button);
+		fahrenBtn.setBounds(308, 143, 172, 58);
+		frame.getContentPane().add(fahrenBtn);
 		
 		JLabel lblAnzahlVerbleibenderVersuche = new JLabel("Anzahl verbleibender Versuche:");
-		lblAnzahlVerbleibenderVersuche.setBounds(10, 11, 196, 43);
+		lblAnzahlVerbleibenderVersuche.setForeground(Color.RED);
+		lblAnzahlVerbleibenderVersuche.setFont(new Font("pixelmix", Font.PLAIN, 18));
+		lblAnzahlVerbleibenderVersuche.setBounds(10, 11, 449, 33);
 		frame.getContentPane().add(lblAnzahlVerbleibenderVersuche);
 		
 		JLabel lblLetzteZeit = new JLabel("Letzte Zeit:");
-		lblLetzteZeit.setBounds(10, 60, 196, 43);
+		lblLetzteZeit.setForeground(Color.RED);
+		lblLetzteZeit.setFont(new Font("pixelmix", Font.PLAIN, 18));
+		lblLetzteZeit.setBounds(10, 55, 296, 33);
 		frame.getContentPane().add(lblLetzteZeit);
 		
 		JLabel lblBestzeitDerStrecke = new JLabel("Bestzeit der Strecke:");
-		lblBestzeitDerStrecke.setBounds(10, 114, 196, 43);
+		lblBestzeitDerStrecke.setForeground(Color.RED);
+		lblBestzeitDerStrecke.setFont(new Font("pixelmix", Font.PLAIN, 18));
+		lblBestzeitDerStrecke.setBounds(10, 105, 368, 23);
 		frame.getContentPane().add(lblBestzeitDerStrecke);
+	
+		Movement m = new Movement(3);
 		
-		JLabel background = new JLabel("");
-		background.setBounds(-23, -14, 817, 585);
-		frame.getContentPane().add(background);
+	
+		
+		LabelBackgroundX background2 = new LabelBackgroundX();
+		background2.setLocation(0, 0);
+		background2.setSize(800, 571);
+		background2.setBufferedImage("src/Resources/hockenheim.png");
+	
+		background2.setOpaque(false);
+		frame.getContentPane().add(background2);
+		frame.setVisible(true);
 		
 	}
 }
