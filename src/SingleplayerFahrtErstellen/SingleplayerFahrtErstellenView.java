@@ -42,6 +42,7 @@ public class SingleplayerFahrtErstellenView {
 	JButton spielenBtn;
 	JLabel lblWhleDeineSchwierigkeit;
 	JLabel lblNewLabel;
+	JLabel streckeLbl;
 	
 	
 	
@@ -83,17 +84,20 @@ public class SingleplayerFahrtErstellenView {
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+	
 		frame.setVisible(true);
 		
 		
+		
 		kartBackward = new JButton("");
-		kartBackward.setBorderPainted(false);
+		kartBackward.setFocusable(false);
+		kartBackward.setBorderPainted(true);
 		kartBackward.setContentAreaFilled(false);
 		kartBackward.setOpaque(false);
 		kartBackward.setIcon(new ImageIcon(SingleplayerFahrtErstellenView.class.getResource("/Resources/backward.png")));
 		kartBackward.setBounds(27, 115,60, 60);
 		frame.getContentPane().add(kartBackward);
+		
 		
 		forward2 = new JButton("");
 		forward2.setBorderPainted(false);
@@ -103,10 +107,6 @@ public class SingleplayerFahrtErstellenView {
 		frame.getContentPane().add(forward2);
 		
 		button_1 = new JButton("");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		button_1.setBorderPainted(false);
 		button_1.setIcon(new ImageIcon(SingleplayerFahrtErstellenView.class.getResource("/Resources/forward.png")));
 		button_1.setContentAreaFilled(false);
@@ -140,15 +140,21 @@ public class SingleplayerFahrtErstellenView {
 		});
 		spielenBtn.setFont(new Font("pixelmix", Font.PLAIN, 30));
 		spielenBtn.setBackground(SystemColor.activeCaption);
-		spielenBtn.setBounds(435, 468, 210, 59);
+		spielenBtn.setBounds(434, 490, 210, 59);
 		frame.getContentPane().add(spielenBtn);
 		
+		
 		kartForward = new JButton("");
-		kartForward.setBorderPainted(false);
+		kartForward.setFocusable(false);
+		kartForward.setBorderPainted(true);
 		kartForward.setContentAreaFilled(false);
 		kartForward.setIcon(new ImageIcon(SingleplayerFahrtErstellenView.class.getResource("/Resources/forward.png")));
 		kartForward.setBounds(643, 115, 60, 60);
 		frame.getContentPane().add(kartForward);
+		
+		streckeLbl = new JLabel("");
+		streckeLbl.setBounds(211, 285, 300, 200);
+		frame.getContentPane().add(streckeLbl);
 		
 		waehleKart = new JLabel("Dein Kart:");
 		waehleKart.setFont(new Font("pixelmix", Font.PLAIN, 30));
@@ -181,26 +187,25 @@ public class SingleplayerFahrtErstellenView {
 		frame.getContentPane().add(lblWhleDeineSchwierigkeit);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(SingleplayerFahrtErstellenView.class.getResource("/Resources/hockenheim.png")));
-	//	lblNewLabel.setIcon(new ImageIcon(SingleplayerFahrtErstellenView.class.getResource("/Resources/Rennstrecke1Klein.png")));
-	
-	
 		
-		
-		lblNewLabel.setBounds(212, 290, 303, 177);
-		frame.getContentPane().add(lblNewLabel);
-		
-	
+			//	lblNewLabel.setIcon(new ImageIcon(SingleplayerFahrtErstellenView.class.getResource("/Resources/Rennstrecke1Klein.png")));
+			
+			
+				
+				
+				lblNewLabel.setBounds(0, 0, 794, 571);
+				frame.getContentPane().add(lblNewLabel);
+		/*
 		Movement m = new Movement(10);
 		
-		m.label.setBufferedImage("src/Resources/Hintergrund.png");
+		m.label.setBufferedImage("src/Resources/Hintergrund.png",0);
 		
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
 		frame.getContentPane().add(m.label);
 		frame.setVisible(true);
-		
-
+	
+*/
 	
 	}
 }
