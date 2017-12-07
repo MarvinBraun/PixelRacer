@@ -66,7 +66,7 @@ public class AnmeldenView {
 		btnAnmelden.setBounds(205, 264, 127, 45);
 		btnAnmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AnmeldenStrg strg = new AnmeldenStrg();
+//				AnmeldenStrg strg = new AnmeldenStrg();
 				frmPixelRacer.dispose();
 			}
 		});
@@ -77,7 +77,7 @@ public class AnmeldenView {
 		btnAccountAnlegen.setBounds(365, 264, 127, 45);
 		btnAccountAnlegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AnmeldenStrg strg = new AnmeldenStrg();
+//				AnmeldenStrg strg = new AnmeldenStrg();
 				frmPixelRacer.dispose();
 			}
 		});
@@ -99,7 +99,7 @@ public class AnmeldenView {
 		btnMitarbeiter.setBounds(674, 518, 89, 23);
 		btnMitarbeiter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AnmeldenStrg strg = new AnmeldenStrg();
+//				AnmeldenStrg strg = new AnmeldenStrg();
 				frmPixelRacer.dispose();
 			}
 		});

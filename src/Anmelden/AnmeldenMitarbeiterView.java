@@ -1,6 +1,8 @@
 package Anmelden;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -70,6 +72,12 @@ public class AnmeldenMitarbeiterView {
 		
 		btnAnmelden = new JButton("Anmelden");
 		btnAnmelden.setBounds(252, 247, 89, 23);
+		btnAnmelden.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				AnmeldenStrg strg = new AnmeldenStrg();
+				frmPixelRacer.dispose();
+			}
+		});
 		frmPixelRacer.getContentPane().add(btnAnmelden);
 	}
 }

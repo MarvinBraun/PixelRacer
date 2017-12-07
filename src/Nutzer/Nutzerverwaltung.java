@@ -70,7 +70,7 @@ public class Nutzerverwaltung {
 	}
 	
 	public void setangKunde() {
-		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde where benutzername = " + AnmeldenStrg.getNutzername());
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde where benutzername = " + AnmeldenStrg.getAngNutzername());
 		try {
 			while(rs.next())
 			{

@@ -21,8 +21,13 @@ public class AnmeldenStrg implements ActionListener {
 	public AnmeldenStrg() {
 		view1 = new AnmeldenView();
 		view1.frmPixelRacer.setVisible(true);
+		
+		view1.btnAccountAnlegen.addActionListener(this);
+		view1.btnAnmelden.addActionListener(this);
+		view1.btnMitarbeiter.addActionListener(this);
 	}
 	
+
 	public static void main(String[] args) {
 		AnmeldenStrg strg = new AnmeldenStrg();
 	}
@@ -46,6 +51,7 @@ public class AnmeldenStrg implements ActionListener {
 		return true;
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()== view1.btnAnmelden) {
 			if(pruefeDatenKunden()) {
@@ -64,10 +70,11 @@ public class AnmeldenStrg implements ActionListener {
 		
 		if(e.getSource()== view1.btnMitarbeiter) {
 			AnmeldenMitarbeiterView view2 = new AnmeldenMitarbeiterView();
+			view2.frmPixelRacer.setVisible(true);
 		}
 	}
 
-	public static String getNutzername() {
+	public static String getAngNutzername() {
 		// TODO Auto-generated method stub
 		return benutzername;
 	}
