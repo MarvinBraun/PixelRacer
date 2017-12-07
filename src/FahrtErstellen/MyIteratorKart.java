@@ -1,18 +1,18 @@
 //@MarvinBraun
-package SingleplayerFahrtErstellen;
+package FahrtErstellen;
 import java.util.ListIterator;
 
 //modifizierter ListIterator um die Zeiger-Positionierung des ListIterators zu korrigieren.
 //mit dem normalen ListIterator würden sonst doppelte Elemente bei entsprechenden User-Interaktionen zurückgegeben werden.
 
-public class MyIterator<Kart>{
+public class MyIteratorKart<Kart>{
 	
 	 private final ListIterator<Kart> listIterator;
 
      private boolean nextWasCalled = false;
      private boolean previousWasCalled = false;
 
-     public MyIterator(ListIterator<Kart> listIterator) {
+     public MyIteratorKart(ListIterator<Kart> listIterator) {
          this.listIterator = listIterator;
      }
 

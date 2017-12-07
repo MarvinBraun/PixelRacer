@@ -8,13 +8,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
-import SingleplayerFahrtErstellen.SingleplayerFahrtErstellenView;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
 
 import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
 import BackgroundAnimation.MovementBackward;
+import FahrtErstellen.FahrtErstellenView;
 
 import java.awt.Color;
 import javax.swing.JPanel;
