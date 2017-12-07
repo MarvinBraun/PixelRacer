@@ -22,6 +22,7 @@ public class PremiumAccountView extends JFrame implements ActionListener {
 	private JFrame frame;
 	JButton bestätigen = new JButton("Bestätigen");
 	JButton abbrechen = new JButton("Abbrechen");
+	JLabel Frage;
 	anzeigenRechnung_ansicht2 rechnung = new anzeigenRechnung_ansicht2();
 
 	/**
@@ -63,7 +64,7 @@ public class PremiumAccountView extends JFrame implements ActionListener {
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
 
-		JLabel Frage = new JLabel("Möchten Sie wirklich für 9,99€ auf Premium upgraden?");
+		Frage = new JLabel("Möchten Sie wirklich für 9,99€ auf Premium upgraden?");
 		GridBagConstraints gbc_Frage = new GridBagConstraints();
 		gbc_Frage.anchor = GridBagConstraints.NORTH;
 		gbc_Frage.insets = new Insets(0, 0, 5, 0);
