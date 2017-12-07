@@ -1,6 +1,9 @@
+//@MarvinBraun
 package SingleplayerFahrtErstellen;
-
 import java.util.ListIterator;
+
+//modifizierter ListIterator um die Zeiger-Positionierung des ListIterators zu korrigieren.
+//mit dem normalen ListIterator würden sonst doppelte Elemente bei entsprechenden User-Interaktionen zurückgegeben werden.
 
 public class MyIterator<Kart>{
 	
