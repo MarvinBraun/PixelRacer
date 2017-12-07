@@ -19,6 +19,14 @@ public class AccountAnlegenView {
 	private JTextField txtEmail;
 	private JTextField txtNutzername;
 	private JPasswordField passwordField;
+	JButton btnAnlegen;
+	JButton btnAbbrechen;
+	JLabel lblVorname;
+	JLabel lblNachname;
+	JLabel lblGeburtsdatum;
+	JLabel lblEmail;
+	JLabel lblBenutzername;
+	JLabel lblPasswort;
 
 	/**
 	 * Launch the application.
@@ -79,11 +87,11 @@ public class AccountAnlegenView {
 		frmPixelRacer.getContentPane().add(txtNutzername);
 		txtNutzername.setColumns(10);
 		
-		JButton btnAnlegen = new JButton("Anlegen");
+		btnAnlegen = new JButton("Anlegen");
 		btnAnlegen.setBounds(223, 390, 127, 45);
 		frmPixelRacer.getContentPane().add(btnAnlegen);
 		
-		JButton btnAbbrechen = new JButton("Abbrechen");
+		btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setBounds(362, 390, 127, 45);
 		frmPixelRacer.getContentPane().add(btnAbbrechen);
 		
@@ -91,27 +99,27 @@ public class AccountAnlegenView {
 		passwordField.setBounds(300, 330, 86, 20);
 		frmPixelRacer.getContentPane().add(passwordField);
 		
-		JLabel lblVorname = new JLabel("Vorname");
-		lblVorname.setBounds(300, 28, 46, 14);
+		lblVorname = new JLabel("Vorname");
+		lblVorname.setBounds(300, 28, 189, 14);
 		frmPixelRacer.getContentPane().add(lblVorname);
 		
-		JLabel lblNachname = new JLabel("Nachname");
+		lblNachname = new JLabel("Nachname");
 		lblNachname.setBounds(300, 82, 86, 14);
 		frmPixelRacer.getContentPane().add(lblNachname);
 		
-		JLabel lblGeburtsdatum = new JLabel("Geburtsdatum");
+		lblGeburtsdatum = new JLabel("Geburtsdatum");
 		lblGeburtsdatum.setBounds(300, 137, 127, 14);
 		frmPixelRacer.getContentPane().add(lblGeburtsdatum);
 		
-		JLabel lblEmail = new JLabel("Email");
+		lblEmail = new JLabel("Email");
 		lblEmail.setBounds(300, 193, 46, 14);
 		frmPixelRacer.getContentPane().add(lblEmail);
 		
-		JLabel lblBenutzername = new JLabel("Benutzername");
+		lblBenutzername = new JLabel("Benutzername");
 		lblBenutzername.setBounds(300, 249, 149, 14);
 		frmPixelRacer.getContentPane().add(lblBenutzername);
 		
-		JLabel lblPasswort = new JLabel("Passwort");
+		lblPasswort = new JLabel("Passwort");
 		lblPasswort.setBounds(300, 305, 109, 14);
 		frmPixelRacer.getContentPane().add(lblPasswort);
 	}

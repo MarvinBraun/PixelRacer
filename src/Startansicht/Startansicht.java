@@ -14,6 +14,12 @@ import java.awt.event.ActionEvent;
 public class Startansicht {
 
 	private JFrame frmPixelRacer;
+	JLabel lblPixelRacer;
+	JButton btnSpielen;
+	JButton btnGarage;
+	JButton btnStreckenbersicht;
+	JButton btnProfil;
+	JButton btnAbmelden;
 
 	/**
 	 * Launch the application.
@@ -49,24 +55,24 @@ public class Startansicht {
 		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPixelRacer.getContentPane().setLayout(null);
 		
-		JLabel lblPixelRacer = new JLabel("Pixel Racer");
+		lblPixelRacer = new JLabel("Pixel Racer");
 		lblPixelRacer.setFont(new Font("Kartika", Font.BOLD | Font.ITALIC, 26));
 		lblPixelRacer.setBounds(300, 88, 161, 38);
 		frmPixelRacer.getContentPane().add(lblPixelRacer);
 		
-		JButton btnSpielen = new JButton("Spielen");
+		btnSpielen = new JButton("Spielen");
 		btnSpielen.setBounds(30, 404, 127, 45);
 		frmPixelRacer.getContentPane().add(btnSpielen);
 		
-		JButton btnGarage = new JButton("Garage");
+		btnGarage = new JButton("Garage");
 		btnGarage.setBounds(245, 404, 127, 45);
 		frmPixelRacer.getContentPane().add(btnGarage);
 		
-		JButton btnStreckenbersicht = new JButton("Strecken\u00FCbersicht");
+		btnStreckenbersicht = new JButton("Strecken\u00FCbersicht");
 		btnStreckenbersicht.setBounds(425, 404, 127, 45);
 		frmPixelRacer.getContentPane().add(btnStreckenbersicht);
 		
-		JButton btnProfil = new JButton("Profil");
+		btnProfil = new JButton("Profil");
 		btnProfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -74,8 +80,8 @@ public class Startansicht {
 		btnProfil.setBounds(634, 404, 127, 45);
 		frmPixelRacer.getContentPane().add(btnProfil);
 		
-		JButton btnAbmelden = new JButton("Abmelden");
-		btnAbmelden.setBounds(672, 476, 89, 23);
+		btnAbmelden = new JButton("Abmelden");
+		btnAbmelden.setBounds(672, 524, 89, 23);
 		frmPixelRacer.getContentPane().add(btnAbmelden);
 	}
 }

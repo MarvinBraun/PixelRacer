@@ -11,6 +11,11 @@ public class ProfilBearbeitenAttributView {
 
 	private JFrame frmProfilBearbeiten;
 	private JTextField textFieldNeu;
+	JLabel lblAktAnzeige;
+	JLabel lblAktuell;
+	JLabel lblNeu;
+	JLabel btnFertig;
+	JLabel btnAbbrechen;
 
 	/**
 	 * Launch the application.
@@ -40,12 +45,13 @@ public class ProfilBearbeitenAttributView {
 	 */
 	private void initialize() {
 		frmProfilBearbeiten = new JFrame();
+		frmProfilBearbeiten.setResizable(false);
 		frmProfilBearbeiten.setTitle("Profil Bearbeiten - Attribut");
 		frmProfilBearbeiten.setBounds(100, 100, 600, 400);
 		frmProfilBearbeiten.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmProfilBearbeiten.getContentPane().setLayout(null);
 		
-		JLabel lblAktAnzeige = new JLabel("Fehler");
+		lblAktAnzeige = new JLabel("Fehler");
 		lblAktAnzeige.setBounds(333, 66, 99, 14);
 		frmProfilBearbeiten.getContentPane().add(lblAktAnzeige);
 		
@@ -54,19 +60,19 @@ public class ProfilBearbeitenAttributView {
 		frmProfilBearbeiten.getContentPane().add(textFieldNeu);
 		textFieldNeu.setColumns(10);
 		
-		JLabel lblAktuell = new JLabel("Aktuell");
+		lblAktuell = new JLabel("Aktuell");
 		lblAktuell.setBounds(98, 66, 46, 14);
 		frmProfilBearbeiten.getContentPane().add(lblAktuell);
 		
-		JLabel lblNeu = new JLabel("Neu");
+		lblNeu = new JLabel("Neu");
 		lblNeu.setBounds(98, 94, 46, 14);
 		frmProfilBearbeiten.getContentPane().add(lblNeu);
 		
-		JButton btnFertig = new JButton("Fertig");
+		btnFertig = new JButton("Fertig");
 		btnFertig.setBounds(170, 252, 89, 23);
 		frmProfilBearbeiten.getContentPane().add(btnFertig);
 		
-		JButton btnAbbrechen = new JButton("Abbrechen");
+		btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setBounds(333, 252, 89, 23);
 		frmProfilBearbeiten.getContentPane().add(btnAbbrechen);
 	}

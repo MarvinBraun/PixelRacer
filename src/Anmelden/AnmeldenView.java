@@ -1,6 +1,8 @@
 package Anmelden;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -12,9 +14,14 @@ import javax.swing.JLabel;
 
 public class AnmeldenView {
 
-	private JFrame frmPixelRacer;
-	private JTextField txtNutzername;
-	private JPasswordField passwordField;
+	JFrame frmPixelRacer;
+	JTextField txtNutzername;
+	JPasswordField passwordField;
+	JButton btnAnmelden;
+	JButton btnAccountAnlegen;
+	JLabel lblNutzername;
+	JLabel lblPassowrt;
+	JButton btnMitarbeiter;
 
 	/**
 	 * Launch the application.
@@ -55,24 +62,47 @@ public class AnmeldenView {
 		frmPixelRacer.getContentPane().add(txtNutzername);
 		txtNutzername.setColumns(10);
 		
-		JButton btnAnmelden = new JButton("Anmelden");
+		btnAnmelden = new JButton("Anmelden");
 		btnAnmelden.setBounds(205, 264, 127, 45);
+		btnAnmelden.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AnmeldenStrg strg = new AnmeldenStrg();
+				frmPixelRacer.dispose();
+			}
+		});
 		frmPixelRacer.getContentPane().add(btnAnmelden);
+	
 		
-		JButton btnAccountAnlegen = new JButton("Account anlegen");
+		btnAccountAnlegen = new JButton("Account anlegen");
 		btnAccountAnlegen.setBounds(365, 264, 127, 45);
+		btnAccountAnlegen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AnmeldenStrg strg = new AnmeldenStrg();
+				frmPixelRacer.dispose();
+			}
+		});
 		frmPixelRacer.getContentPane().add(btnAccountAnlegen);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(254, 191, 190, 20);
 		frmPixelRacer.getContentPane().add(passwordField);
 		
-		JLabel lblNutzername = new JLabel("Nutzername");
+		lblNutzername = new JLabel("Nutzername");
 		lblNutzername.setBounds(252, 111, 80, 14);
 		frmPixelRacer.getContentPane().add(lblNutzername);
 		
-		JLabel lblPassowrt = new JLabel("Passwort");
-		lblPassowrt.setBounds(254, 167, 46, 14);
+		lblPassowrt = new JLabel("Passwort");
+		lblPassowrt.setBounds(254, 167, 78, 14);
 		frmPixelRacer.getContentPane().add(lblPassowrt);
+		
+		btnMitarbeiter = new JButton("Mitarbeiter");
+		btnMitarbeiter.setBounds(674, 518, 89, 23);
+		btnMitarbeiter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AnmeldenStrg strg = new AnmeldenStrg();
+				frmPixelRacer.dispose();
+			}
+		});
+		frmPixelRacer.getContentPane().add(btnMitarbeiter);
 	}
 }

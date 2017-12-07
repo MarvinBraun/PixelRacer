@@ -3,15 +3,17 @@ package Nutzer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
+import Anmelden.AnmeldenStrg;
 import Datenbankverwaltung.Datenbankschnittstelle;
 import Fahrt.SingleplayerFahrt;
 
 public class Nutzerverwaltung {
-	LinkedList<Kunde> kundenliste = new LinkedList<Kunde>();
-	LinkedList<Mitarbeiter> mitarbeiterliste = new LinkedList<Mitarbeiter>();
+	static LinkedList<Kunde> kundenliste = new LinkedList<Kunde>();
+	static LinkedList<Mitarbeiter> mitarbeiterliste = new LinkedList<Mitarbeiter>();
 	static Kunde angkunde = new Kunde();
 	
-	public LinkedList<Kunde> gibKundenliste() { //greift auf die Datenbank zu und gibt alle Kunden zurück
+	public static LinkedList<Kunde> gibKundenliste() { //greift auf die Datenbank zu und gibt alle Kunden zurück
 		
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde");
 		try {
@@ -34,10 +36,12 @@ public class Nutzerverwaltung {
 			e.printStackTrace();
 		}
 		
+		Datenbankschnittstelle.closeConnections();
+		
 		return kundenliste;
 	}
 	
-	public LinkedList<Mitarbeiter> gibMitarbeiterliste() { //greift auf die Datenbank zu und gibt alle Mitarbeiter zurück
+	public static LinkedList<Mitarbeiter> gibMitarbeiterliste() { //greift auf die Datenbank zu und gibt alle Mitarbeiter zurück
 		
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from mitarbeiter");
 		try {
@@ -60,11 +64,13 @@ public class Nutzerverwaltung {
 			e.printStackTrace();
 		}
 		
+		Datenbankschnittstelle.closeConnections();
+		
 		return mitarbeiterliste;
 	}
 	
 	public void setangKunde() {
-		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde where benutzername = " + anmelden.nutzername);
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde where benutzername = " + AnmeldenStrg.getNutzername());
 		try {
 			while(rs.next())
 			{
@@ -81,6 +87,8 @@ public class Nutzerverwaltung {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			Datenbankschnittstelle.closeConnections();
 		}
 	}
 	
