@@ -94,17 +94,17 @@ public class SingleplayerFahrtSpielenView {
 	
 		MovementBackward m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
-		m.label.setSize(800, 571);
-		m.label.setBufferedImage("src/Resources/car2.png");
+		m.label.setSize(200, 200);
+		m.label.setBufferedImage("src/Resources/car2.png",400);
 		
-		m.label.setBounds(0, 0, 800, 571);
+		m.label.setBounds(0, 0, 200, 200);
 		frame.getContentPane().add(m.label);
 		
 
 		Movement m2 = new Movement(5);
 		m2.label.setLocation(0, 0);
 		m2.label.setSize(800, 571);
-		m2.label.setBufferedImage("src/Resources/hockenheim.png");
+		m2.label.setBufferedImage("src/Resources/hockenheim.png",0);
 	
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);

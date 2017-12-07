@@ -18,35 +18,33 @@ public class LabelBackgroundX extends JLabel {
 	int backgroundSpeed = 1;
 
 	 File background;
+	 BufferedImage ib1;
+	 BufferedImage ib2;
+	 int y;
 	
-	public  void setBufferedImage(String s)
+	public  void setBufferedImage(String s, int y)
 	{
-		background = new File(s);
+		try {
+			ib1 = ImageIO.read(new File (s));
+			ib2 = ImageIO.read(new File(s));
+			this.y = y;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void paintComponent (Graphics g)
 	{
 		super.paintComponent(g);
-		this.setBounds(0,0,800,600);
-		BufferedImage ib1 = null;
-		BufferedImage ib2 = null;
-		
-		try {
-			ib1 = ImageIO.read(background);
-			ib2 = ImageIO.read(background);
-		}
-		catch (IOException e)
-		{
-			System.out.println("Bild konnte nicht geladen werden");
-			e.printStackTrace();
-		}
-		
+		this.setBounds(0,y,800,600);
 		
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		g.drawImage(ib1,backgroundX1,0,800,600,null);
-		g.drawImage(ib1,backgroundX2,0,800,600,null);
+		g.drawImage(ib1,backgroundX1,0,ib1.getWidth(),ib1.getHeight(),null);
+		g.drawImage(ib2,backgroundX2,0,ib1.getWidth(),ib1.getHeight(),null);
 		this.setVisible(true);
 		repaint();
 		
