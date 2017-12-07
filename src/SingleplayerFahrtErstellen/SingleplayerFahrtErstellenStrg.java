@@ -33,16 +33,9 @@ public class SingleplayerFahrtErstellenStrg implements ActionListener {
 		System.out.println(kartliste.size());
 		view.kartForward.addActionListener(this);
 		view.kartBackward.addActionListener(this);
-		try {
-			Thread.sleep(400);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		
+		view.frame.setVisible(false);
 		view.frame.setVisible(true);
-		
 
 	}
 	

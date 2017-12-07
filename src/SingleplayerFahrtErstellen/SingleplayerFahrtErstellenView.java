@@ -56,6 +56,7 @@ public class SingleplayerFahrtErstellenView {
 					SingleplayerFahrtErstellenView window = new SingleplayerFahrtErstellenView();
 					window.frame.setVisible(true);
 					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -72,7 +73,6 @@ public class SingleplayerFahrtErstellenView {
 	 */
 	public SingleplayerFahrtErstellenView() {
 		initialize();
-		System.out.println("Test2");
 	}
 
 	/**
@@ -190,6 +190,7 @@ public class SingleplayerFahrtErstellenView {
 		lblNewLabel.setBounds(212, 290, 303, 177);
 		frame.getContentPane().add(lblNewLabel);
 		
+	
 		Movement m = new Movement(10);
 		
 		m.label.setBufferedImage("src/Resources/Hintergrund.png");
@@ -197,6 +198,7 @@ public class SingleplayerFahrtErstellenView {
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
 		frame.getContentPane().add(m.label);
+		frame.setVisible(true);
 		
 
 	
