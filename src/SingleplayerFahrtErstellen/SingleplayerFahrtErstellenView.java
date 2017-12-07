@@ -190,7 +190,7 @@ public class SingleplayerFahrtErstellenView {
 		lblNewLabel.setBounds(212, 290, 303, 177);
 		frame.getContentPane().add(lblNewLabel);
 		
-		Movement m = new Movement(3);
+		Movement m = new Movement(10);
 		
 		m.label.setBufferedImage("src/Resources/Hintergrund.png");
 		

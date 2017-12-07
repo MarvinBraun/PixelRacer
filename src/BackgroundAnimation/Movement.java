@@ -16,7 +16,7 @@ public class Movement {
 		back.scheduleAtFixedRate(new TimerTask() {
 			 public void run()
 			 {
-				 if(label.backgroundX1>-796)
+				 if(label.backgroundX1>-790)
 				 {
 					label.backgroundX1-=2;
 				 }
@@ -25,7 +25,7 @@ public class Movement {
 					 label.backgroundX1=+800;
 				 }
 				 
-				 if(label.backgroundX2>-796)
+				 if(label.backgroundX2>-790)
 				 {
 					 label.backgroundX2-=2;
 				 }
