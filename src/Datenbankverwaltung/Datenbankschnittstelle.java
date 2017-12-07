@@ -57,29 +57,29 @@ public class Datenbankschnittstelle {
 		return con;
 	}
 
-	public static ResultSet executeQuery(String s) {
+	public static ResultSet executeQuery(String abfrage) {
 		ResultSet rs = null;
 		try {
 			con = getConnection();
 			stmt = con.createStatement();
-			rs = stmt.executeQuery(s);
+			rs = stmt.executeQuery(abfrage);
 
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Abfrage konnte nicht durchgeführt werden. " + "Fehler: " + e.getMessage());
+			System.out.println("Abfrage konnte nicht durchgefÃ¼hrt werden. " + "Fehler: " + e.getMessage());
 		}
 
 		return rs;
 	}
 
-	public static void executeUpdate(String s) {
+	public static void executeUpdate(String abfrage) {
 		int updateInfo = -1;
 		try {
 
 			con = getConnection();
 			stmt = con.createStatement();
-			updateInfo = stmt.executeUpdate(s);
+			updateInfo = stmt.executeUpdate(abfrage);
 		
 
 		}
@@ -103,7 +103,7 @@ public class Datenbankschnittstelle {
 			//stmt.close();
 			//con.close();
 		} catch (SQLException e) {
-			System.out.println("Batch konnte nicht ausgeführt werden. " + "Fehler: " + e.getMessage());
+			System.out.println("Batch konnte nicht ausgefÃ¼hrt werden. " + "Fehler: " + e.getMessage());
 		}
 
 	}
