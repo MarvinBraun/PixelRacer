@@ -9,15 +9,22 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import Rechnung.anzeigenRechnung_ansicht2;
+
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class PremiumKartView {
+public class PremiumKartView extends JFrame implements ActionListener{
 
 	private JFrame frame;
-
+	JLabel Frage;
+	JButton bestätigen;
+	JButton abbrechen;
 	/**
 	 * Launch the application.
 	 */
@@ -39,6 +46,8 @@ public class PremiumKartView {
 	 */
 	public PremiumKartView() {
 		initialize();
+		bestätigen.addActionListener(this);
+		abbrechen.addActionListener(this);
 	}
 
 	/**
@@ -55,7 +64,7 @@ public class PremiumKartView {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
-		JLabel Frage = new JLabel("  Möchten Sie das Kart wirklich fürr 4,99€ erwerben?");
+		Frage = new JLabel("  Möchten Sie das Kart wirklich fürr 4,99€ erwerben?");
 		GridBagConstraints gbc_Frage = new GridBagConstraints();
 		gbc_Frage.anchor = GridBagConstraints.NORTH;
 		gbc_Frage.insets = new Insets(0, 0, 5, 0);
@@ -65,7 +74,7 @@ public class PremiumKartView {
 		frame.getContentPane().add(Frage, gbc_Frage);
 		Frage.setFont(new Font("Calibri", Font.PLAIN, 18));
 		
-		JButton bestätigen = new JButton("Bestätigen");
+		bestätigen = new JButton("Bestätigen");
 		GridBagConstraints gbc_bestätigen = new GridBagConstraints();
 		gbc_bestätigen.anchor = GridBagConstraints.NORTHEAST;
 		gbc_bestätigen.insets = new Insets(0, 0, 5, 5);
@@ -73,12 +82,22 @@ public class PremiumKartView {
 		gbc_bestätigen.gridy = 2;
 		frame.getContentPane().add(bestätigen, gbc_bestätigen);
 		
-		JButton abbrechen = new JButton("Abbrechen");
+		abbrechen = new JButton("Abbrechen");
 		GridBagConstraints gbc_abbrechen = new GridBagConstraints();
 		gbc_abbrechen.insets = new Insets(0, 0, 5, 0);
 		gbc_abbrechen.anchor = GridBagConstraints.NORTHWEST;
 		gbc_abbrechen.gridx = 2;
 		gbc_abbrechen.gridy = 2;
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() == bestätigen) {
+			anzeigenRechnung_ansicht2.main(null);
+		}if(e.getSource() == abbrechen){
+			System.exit(0);
+		}
+		
 	}
 }
