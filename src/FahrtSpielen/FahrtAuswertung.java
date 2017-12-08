@@ -1,4 +1,4 @@
-package SingleplayerFahrtSpielen;
+package FahrtSpielen;
 
 import java.awt.EventQueue;
 
@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
-public class SingleplayerFahrtAuswertung {
+public class FahrtAuswertung {
 
 	private JFrame frame;
 
@@ -21,7 +21,7 @@ public class SingleplayerFahrtAuswertung {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SingleplayerFahrtAuswertung window = new SingleplayerFahrtAuswertung();
+					FahrtAuswertung window = new FahrtAuswertung();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class SingleplayerFahrtAuswertung {
 	/**
 	 * Create the application.
 	 */
-	public SingleplayerFahrtAuswertung() {
+	public FahrtAuswertung() {
 		initialize();
 	}
 

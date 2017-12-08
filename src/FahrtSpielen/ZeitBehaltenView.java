@@ -1,4 +1,4 @@
-package SingleplayerFahrtSpielen;
+package FahrtSpielen;
 
 import java.awt.EventQueue;
 
@@ -15,7 +15,12 @@ import java.awt.Color;
 public class ZeitBehaltenView {
 
 	private JFrame frame;
-
+	JButton erneutFahrenBtn;
+	JButton zeitBehaltenBtn; 
+	JLabel lblRundeXZeit;
+	JLabel background;
+	int zeit;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -35,40 +40,41 @@ public class ZeitBehaltenView {
 	/**
 	 * Create the application.
 	 */
-	public ZeitBehaltenView() {
-		initialize();
+	public ZeitBehaltenView(int x, int y, int zeit, int versuche) {
+		initialize(x, y, zeit, versuche);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(int x, int y, int zeit, int versuche) {
+		
 		frame = new JFrame();
 		frame.setBackground(new Color(211, 211, 211));
-		frame.setBounds(0, 0, 352, 140);
+		frame.setBounds(x, y, 352, 140);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Erneut Fahren");
-		btnNewButton.addActionListener(new ActionListener() {
+		erneutFahrenBtn = new JButton("Erneut Fahren");
+		erneutFahrenBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setFont(new Font("pixelmix", Font.PLAIN, 11));
-		btnNewButton.setBounds(10, 67, 144, 23);
-		frame.getContentPane().add(btnNewButton);
+		erneutFahrenBtn.setFont(new Font("pixelmix", Font.PLAIN, 11));
+		erneutFahrenBtn.setBounds(10, 67, 144, 23);
+		frame.getContentPane().add(erneutFahrenBtn);
 		
-		JButton btnNewButton_1 = new JButton("Zeit behalten");
-		btnNewButton_1.setFont(new Font("pixelmix", Font.PLAIN, 11));
-		btnNewButton_1.setBounds(174, 67, 152, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		zeitBehaltenBtn = new JButton("Zeit behalten");
+		zeitBehaltenBtn.setFont(new Font("pixelmix", Font.PLAIN, 11));
+		zeitBehaltenBtn.setBounds(174, 67, 152, 23);
+		frame.getContentPane().add(zeitBehaltenBtn);
 		
-		JLabel lblRundeXZeit = new JLabel("Runde: X, Zeit gefahren:");
+		lblRundeXZeit = new JLabel("Zeit gefahren: "+zeit+"s");
 		lblRundeXZeit.setFont(new Font("pixelmix", Font.PLAIN, 13));
 		lblRundeXZeit.setBounds(20, 11, 295, 45);
 		frame.getContentPane().add(lblRundeXZeit);
 		
-		JLabel background = new JLabel("");
+		background = new JLabel("");
 		background.setBounds(0, 0, 336, 101);
 		frame.getContentPane().add(background);
 		frame.setVisible(true);
