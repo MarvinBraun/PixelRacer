@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 
 public class Kart {
 	public String kartname;
-	public int beschleunigung;
-	public int maxkmh;
+	public static int beschleunigung;
+	public static int maxkmh;
 	public String premium;
 	public int punktewert;
 	public BufferedImage grafik;
@@ -39,11 +39,11 @@ public class Kart {
 		return kartname;
 	}
 
-	public int getBeschleunigung() {
+	public static int getBeschleunigung() {
 		return beschleunigung;
 	}
 
-	public int getMaxkmh() {
+	public static int getMaxkmh() {
 		return maxkmh;
 	}
 
