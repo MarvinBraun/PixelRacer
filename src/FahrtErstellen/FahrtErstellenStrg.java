@@ -17,25 +17,36 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 
+import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
+import FahrtSpielen.FahrtSpielenStrg;
 import MusicHandler.MusicPlayer;
-
+import Strecke.Strecke;
+import myIterator.MyIteratorKart;
+import myIterator.MyIteratorStrecke;
+import myIterator.MyIteratorString;
 import Kart.*;
 public class FahrtErstellenStrg implements ActionListener {
 	
 	//Objekte der Klasse
 	FahrtErstellenView view;
-	Kart previous;
 	boolean forward = false;
 	boolean backward = false;
-	static Kart k;
+	Kart k;
+	Strecke s;
 	static Kart previousKart;
 	Kartverwaltung karts;
-	static MyIteratorKart<Kart> it;
+	static MyIteratorKart<Kart> itKart;
 	static MyIteratorString<String> itString;
+	static MyIteratorStrecke<Strecke> itStrecke;
 	
 	LinkedList<String> schwierigkeiten;
 	LinkedList<Kart> kartliste = new LinkedList<Kart>();
+	LinkedList<Strecke> streckenliste = new LinkedList<Strecke>();
+	
+	SingleplayerFahrt sf;
+	MultiplayerFahrt mf;
+	
 
 	int counter=-1;
 	//Konstruktor
@@ -45,7 +56,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		//Initialisieren der Karts und der Buttons
 		karts = new Kartverwaltung();
 		kartliste =karts.gibKart();
-		it = new MyIteratorKart(kartliste.listIterator());
+		itKart = new MyIteratorKart(kartliste.listIterator());
 		System.out.println(kartliste.size());
 		view.kartForward.addActionListener(this);
 		view.kartBackward.addActionListener(this);
@@ -82,6 +93,8 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.schwierigkeitBtn1.addActionListener(this);
 			view.schwierigkeitBtn2.addActionListener(this);
 			view.schwierigkeitLbl.setText(itString.next());
+			sf = new SingleplayerFahrt();
+			
 			
 		
 		}
@@ -93,6 +106,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.schwierigkeitBtn2.setVisible(false);
 			view.schwierigkeitLbl.setVisible(false);
 			view.multiplayerLbl.setVisible(true);
+			mf = new MultiplayerFahrt();
 		}
 		
 		SwingUtilities.updateComponentTreeUI(view.frame);
@@ -111,7 +125,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	//Methode um vorwärts durch die Karts zu scrollen
 	public void ladeKarts()
 	{
-		if((k=it.next())!=null)
+		if((k=itKart.next())!=null)
 		{
 			System.out.println(k.kartname);
 			ImageIcon icon = new ImageIcon(k.grafik);
@@ -120,11 +134,11 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 	}
 	//Methode um rückwärts durch die Karts zu scrollen
-	public void kartBackwards()
+	public void kartRückwärts()
 	{
 		
 	
-		if((k=it.previous())!=null)
+		if((k=itKart.previous())!=null)
 		{
 			System.out.println(k.kartname);
 			ImageIcon icon = new ImageIcon(k.grafik);
@@ -133,6 +147,21 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 	
 	}
+	
+	public void streckeRückwärts()
+	{
+		if(s= )
+	}
+	
+	public void streckeVorwärts()
+	{
+		
+	}
+	
+	
+	
+	
+	
 	
 
 	//Methode um Bilddateien (800x600) in kleinere Formate zu ändern.
@@ -178,7 +207,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		if(e.getSource()==view.kartBackward)
 		{
-			kartBackwards();
+			kartRückwärts();
 			
 		}
 		if(e.getSource()==view.schwierigkeitBtn1)
@@ -188,6 +217,10 @@ public class FahrtErstellenStrg implements ActionListener {
 		if(e.getSource()==view.schwierigkeitBtn2)
 		{
 			schwierigkeitVorwärts();
+		}
+		if(e.getSource()==view.spielenBtn)
+		{
+			FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,mf,k,strecke);
 		}
 		
 	}

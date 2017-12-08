@@ -1,22 +1,22 @@
 //@MarvinBraun
-package FahrtErstellen;
+package myIterator;
 import java.util.ListIterator;
 
 //modifizierter ListIterator um die Zeiger-Positionierung des ListIterators zu korrigieren.
 //mit dem normalen ListIterator würden sonst doppelte Elemente bei entsprechenden User-Interaktionen zurückgegeben werden.
 
-public class MyIteratorKart<Kart>{
+public class MyIteratorString<String>{
 	
-	 private final ListIterator<Kart> listIterator;
+	 private final ListIterator<String> listIterator;
 
      private boolean nextWasCalled = false;
      private boolean previousWasCalled = false;
 
-     public MyIteratorKart(ListIterator<Kart> listIterator) {
+     public MyIteratorString(ListIterator<String> listIterator) {
          this.listIterator = listIterator;
      }
 
-     public Kart next() {
+     public String next() {
          nextWasCalled = true;
          if (previousWasCalled) {
              previousWasCalled = false;
@@ -25,7 +25,7 @@ public class MyIteratorKart<Kart>{
          return listIterator.next ();
      }
 
-     public Kart previous() {
+     public String previous() {
          if (nextWasCalled) {
              listIterator.previous();
              nextWasCalled = false;

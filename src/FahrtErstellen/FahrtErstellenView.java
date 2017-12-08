@@ -7,9 +7,9 @@ import javax.swing.JTextField;
 
 import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
+import FahrtSpielen.FahrtSpielenStrg;
 import Kart.Kart;
 import MusicHandler.MusicPlayer;
-import SingleplayerFahrtSpielen.SingleplayerFahrtSpielenStrg;
 
 import javax.swing.JLabel;
 import javax.imageio.ImageIO;
@@ -134,12 +134,7 @@ public class FahrtErstellenView {
 		spielenBtn = new JButton("Spielen!");
 		spielenBtn.setBorderPainted(false);
 		spielenBtn.setOpaque(false);
-		spielenBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SingleplayerFahrtSpielenStrg strg = new 	SingleplayerFahrtSpielenStrg();
-				frame.dispose();
-			}
-		});
+		
 		spielenBtn.setFont(new Font("pixelmix", Font.PLAIN, 30));
 		spielenBtn.setBackground(SystemColor.activeCaption);
 		spielenBtn.setBounds(562, 489, 210, 59);
