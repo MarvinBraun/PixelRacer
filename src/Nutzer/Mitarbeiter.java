@@ -1,7 +1,7 @@
 package Nutzer;
 
 public class Mitarbeiter extends Nutzer {
-	int mitarbeiterid;
+	String mitarbeiterid;
 	String jobtitel;
 	
 	public String getvn() {
@@ -52,11 +52,11 @@ public class Mitarbeiter extends Nutzer {
 		this.gebdat = gebdat;
 	}
 	
-	public int getmitarbeiterid() {
+	public String getmitarbeiterid() {
 		return mitarbeiterid;
 	}
 	
-	public void setmitarbeiterid(int id) {
+	public void setmitarbeiterid(String id) {
 		this.mitarbeiterid = id;
 	}
 	

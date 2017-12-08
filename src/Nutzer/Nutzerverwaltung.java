@@ -8,6 +8,8 @@ import Anmelden.AnmeldenStrg;
 import Datenbankverwaltung.Datenbankschnittstelle;
 import Fahrt.SingleplayerFahrt;
 
+//Autor Daniel Zeller
+
 public class Nutzerverwaltung {
 	static LinkedList<Kunde> kundenliste = new LinkedList<Kunde>();
 	static LinkedList<Mitarbeiter> mitarbeiterliste = new LinkedList<Mitarbeiter>();
@@ -24,7 +26,7 @@ public class Nutzerverwaltung {
 				kunde.setnn(rs.getString("nachname"));
 				kunde.setnutzername(rs.getString("benutzername"));
 				kunde.setpasswort(rs.getString("passwort"));
-				kunde.setpremium(rs.getBoolean("premium"));
+				kunde.setpremium(rs.getString("premium"));
 				kunde.setpunkte(rs.getInt("punktzahl"));
 				kunde.setemail(rs.getString("email"));
 				kunde.setgebdat(rs.getString("geburtsdatum"));
@@ -52,7 +54,7 @@ public class Nutzerverwaltung {
 				mitarbeiter.setnn(rs.getString("nachname"));
 				mitarbeiter.setnutzername(rs.getString("benutzername"));
 				mitarbeiter.setpasswort(rs.getString("passwort"));
-				mitarbeiter.setmitarbeiterid(rs.getInt("mitarbeiterID"));
+				mitarbeiter.setmitarbeiterid(rs.getString("mitarbeiterID"));
 				mitarbeiter.setjobtitel(rs.getString("jobtitel"));
 				mitarbeiter.setemail(rs.getString("email"));
 				mitarbeiter.setgebdat(rs.getString("geburtsdatum"));
@@ -78,7 +80,7 @@ public class Nutzerverwaltung {
 				angkunde.setnn(rs.getString("nachname"));
 				angkunde.setnutzername(rs.getString("benutzername"));
 				angkunde.setpasswort(rs.getString("passwort"));
-				angkunde.setpremium(rs.getBoolean("premium"));
+				angkunde.setpremium(rs.getString("premium"));
 				angkunde.setpunkte(rs.getInt("punktzahl"));
 				angkunde.setemail(rs.getString("email"));
 				angkunde.setgebdat(rs.getString("geburtsdatum"));

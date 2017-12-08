@@ -1,7 +1,7 @@
 package Nutzer;
 
 public class Kunde extends Nutzer {
-	boolean premium;
+	String premium;
 	int punkte;
 
 	public String getvn() {
@@ -52,11 +52,11 @@ public class Kunde extends Nutzer {
 		this.gebdat = gebdat;
 	}
 	
-	public Boolean getpremium() {
+	public String getpremium() {
 		return premium;
 	}
 	
-	public void setpremium(Boolean premium) {
+	public void setpremium(String premium) {
 		this.premium = premium;
 	}
 	

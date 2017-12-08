@@ -1,6 +1,8 @@
 package ProfilBearbeiten;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,9 +11,11 @@ import Nutzer.Nutzerverwaltung;
 
 import javax.swing.JButton;
 
+//Autor Daniel Zeller
+
 public class ProfilBearbeitenView {
 
-	private JFrame frmProfilBearbeiten;
+	JFrame frmProfilBearbeiten;
 	JLabel lblNutzername;
 	JLabel lblEmail;
 	JLabel lblVorname;
@@ -114,19 +118,43 @@ public class ProfilBearbeitenView {
 		
 		btnaendernNN = new JButton("\u00C4ndern");
 		btnaendernNN.setBounds(402, 66, 89, 23);
+		btnaendernNN.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				AnmeldenStrg strg = new AnmeldenStrg();
+				frmProfilBearbeiten.dispose();
+			}
+		});
 		frmProfilBearbeiten.getContentPane().add(btnaendernNN);
 		
 		btnaendernPW = new JButton("\u00C4ndern");
 		btnaendernPW.setBounds(402, 165, 89, 23);
+		btnaendernPW.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				AnmeldenStrg strg = new AnmeldenStrg();
+				frmProfilBearbeiten.dispose();
+			}
+		});
 		frmProfilBearbeiten.getContentPane().add(btnaendernPW);
 		
 		btnaendernMail = new JButton("\u00C4ndern");
 		btnaendernMail.setBounds(402, 206, 89, 23);
+		btnaendernMail.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				AnmeldenStrg strg = new AnmeldenStrg();
+				frmProfilBearbeiten.dispose();
+			}
+		});
 		frmProfilBearbeiten.getContentPane().add(btnaendernMail);
 		
 		btnFertig = new JButton("Fertig");
 		btnFertig.setBounds(52, 400, 89, 23);
 		frmProfilBearbeiten.getContentPane().add(btnFertig);
+		btnFertig.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				AnmeldenStrg strg = new AnmeldenStrg();
+				frmProfilBearbeiten.dispose();
+			}
+		});
 		
 		lblVn = new JLabel("Fehler");
 		lblVn.setBounds(214, 24, 46, 14);

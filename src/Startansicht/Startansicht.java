@@ -5,15 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
+
+import Anmelden.AnmeldenStrg;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+//Autor Daniel Zeller
+
 public class Startansicht {
 
-	private JFrame frmPixelRacer;
+	JFrame frmPixelRacer;
 	JLabel lblPixelRacer;
 	JButton btnSpielen;
 	JButton btnGarage;
@@ -62,19 +67,35 @@ public class Startansicht {
 		
 		btnSpielen = new JButton("Spielen");
 		btnSpielen.setBounds(30, 404, 127, 45);
+		btnSpielen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmPixelRacer.dispose();
+			}
+		});
 		frmPixelRacer.getContentPane().add(btnSpielen);
 		
 		btnGarage = new JButton("Garage");
 		btnGarage.setBounds(245, 404, 127, 45);
+		btnGarage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmPixelRacer.dispose();
+			}
+		});
 		frmPixelRacer.getContentPane().add(btnGarage);
 		
 		btnStreckenbersicht = new JButton("Strecken\u00FCbersicht");
 		btnStreckenbersicht.setBounds(425, 404, 127, 45);
+		btnStreckenbersicht.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmPixelRacer.dispose();
+			}
+		});
 		frmPixelRacer.getContentPane().add(btnStreckenbersicht);
 		
 		btnProfil = new JButton("Profil");
 		btnProfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				frmPixelRacer.dispose();
 			}
 		});
 		btnProfil.setBounds(634, 404, 127, 45);
@@ -83,5 +104,11 @@ public class Startansicht {
 		btnAbmelden = new JButton("Abmelden");
 		btnAbmelden.setBounds(672, 524, 89, 23);
 		frmPixelRacer.getContentPane().add(btnAbmelden);
+		btnAbmelden.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//AnmeldenStrg strg = new AnmeldenStrg();
+				frmPixelRacer.dispose();
+			}
+		});
 	}
 }

@@ -12,6 +12,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 
+//Autor Daniel Zeller
+
 public class AnmeldenView {
 
 	JFrame frmPixelRacer;

@@ -10,15 +10,17 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 
+//Autor Daniel Zeller
+
 public class AccountAnlegenView {
 
-	private JFrame frmPixelRacer;
-	private JTextField txtVorname;
-	private JTextField txtNachname;
-	private JTextField txtGeburtsdatum;
-	private JTextField txtEmail;
-	private JTextField txtNutzername;
-	private JPasswordField passwordField;
+	JFrame frmPixelRacer;
+	JTextField txtVorname;
+	JTextField txtNachname;
+	JTextField txtGeburtsdatum;
+	JTextField txtEmail;
+	JTextField txtNutzername;
+	JPasswordField passwordField;
 	JButton btnAnlegen;
 	JButton btnAbbrechen;
 	JLabel lblVorname;

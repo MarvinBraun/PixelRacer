@@ -1,21 +1,25 @@
 package ProfilBearbeiten;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+//Autor Daniel Zeller
+
 public class ProfilBearbeitenAttributView {
 
-	private JFrame frmProfilBearbeiten;
-	private JTextField textFieldNeu;
+	JFrame frmProfilBearbeiten;
+	JTextField textFieldNeu;
 	JLabel lblAktAnzeige;
 	JLabel lblAktuell;
 	JLabel lblNeu;
-	JLabel btnFertig;
-	JLabel btnAbbrechen;
+	JButton btnFertig;
+	JButton btnAbbrechen;
 
 	/**
 	 * Launch the application.
@@ -70,10 +74,22 @@ public class ProfilBearbeitenAttributView {
 		
 		btnFertig = new JButton("Fertig");
 		btnFertig.setBounds(170, 252, 89, 23);
+		btnFertig.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				AnmeldenStrg strg = new AnmeldenStrg();
+				frmProfilBearbeiten.dispose();
+			}
+		});
 		frmProfilBearbeiten.getContentPane().add(btnFertig);
 		
 		btnAbbrechen = new JButton("Abbrechen");
 		btnAbbrechen.setBounds(333, 252, 89, 23);
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				AnmeldenStrg strg = new AnmeldenStrg();
+				frmProfilBearbeiten.dispose();
+			}
+		});
 		frmProfilBearbeiten.getContentPane().add(btnAbbrechen);
 	}
 }

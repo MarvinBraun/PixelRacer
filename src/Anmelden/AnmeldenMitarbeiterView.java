@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
+//Autor Daniel Zeller
+
 public class AnmeldenMitarbeiterView {
 
 	JFrame frmPixelRacer;
@@ -18,6 +20,7 @@ public class AnmeldenMitarbeiterView {
 	JLabel lblMitarbeiterid;
 	JLabel lblPasswort;
 	JButton btnAnmelden;
+	JButton btnAbbrechen;
 
 	/**
 	 * Launch the application.
@@ -75,9 +78,19 @@ public class AnmeldenMitarbeiterView {
 		btnAnmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				AnmeldenStrg strg = new AnmeldenStrg();
-				frmPixelRacer.dispose();
+//				frmPixelRacer.dispose();
 			}
 		});
 		frmPixelRacer.getContentPane().add(btnAnmelden);
+		
+		btnAbbrechen = new JButton("Abbrechen");
+		btnAbbrechen.setBounds(380, 247, 89, 23);
+		btnAbbrechen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				AnmeldenStrg strg = new AnmeldenStrg();
+//				frmPixelRacer.dispose();
+			}
+		});
+		frmPixelRacer.getContentPane().add(btnAbbrechen);
 	}
 }
