@@ -11,14 +11,14 @@ import Rechnung.anzeigenRechnung_ansicht2;
 
 public class kaufePremiumAccount extends JFrame implements ActionListener {
 
-	double premium;
+	double preis;
 
-	public void setPremium(double premium) {
-		this.premium = premium;
+	public void setPreis(double preis) {
+		this.preis = preis;
 	}
 
-	public double getPremium() {
-		return premium = 9.99;
+	public double getPreis() {
+		return preis = 9.99;
 	}
 
 	PremiumAccountView pav;
