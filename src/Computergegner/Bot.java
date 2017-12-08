@@ -9,5 +9,10 @@ public class Bot {
 	//Strecke = gib schwierigkeit
 	
 	//(Strecke/geschw + beschlZeit)*math.random());
-
+	int strecke = Strecke.Strecke.getLaenge();
+	int geschw = Kart.Kart.getMaxkmh();
+	int beschl = Kart.Kart.getBeschleunigung();
+	int schw = Strecke.Strecke.getSchwierigkeit();
+	
+	
 }

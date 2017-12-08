@@ -4,12 +4,21 @@ package Premium;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import Rechnung.anzeigenRechnung_ansicht2;
 
 public class kaufePremiumAccount extends JFrame implements ActionListener {
+
+	double preis;
+
+	public void setPreis(double preis) {
+		this.preis = preis;
+	}
+
+	public double getPreis() {
+		return preis = 9.99;
+	}
 
 	PremiumAccountView pav;
 
