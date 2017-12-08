@@ -15,11 +15,10 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class PremiumAccountView extends JFrame implements ActionListener {
+public class PremiumAccountView extends JFrame {
 
-	private JFrame frame;
+	JFrame frame;
 	JButton bestätigen = new JButton("Bestätigen");
 	JButton abbrechen = new JButton("Abbrechen");
 	JLabel Frage;
@@ -46,8 +45,7 @@ public class PremiumAccountView extends JFrame implements ActionListener {
 	 */
 	public PremiumAccountView() {
 		initialize();
-		bestätigen.addActionListener(this);
-		abbrechen.addActionListener(this);
+
 	}
 
 	/**
@@ -87,16 +85,6 @@ public class PremiumAccountView extends JFrame implements ActionListener {
 		gbc_abbrechen.gridx = 2;
 		gbc_abbrechen.gridy = 2;
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
-
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == bestätigen) {
-			anzeigenRechnung_ansicht2.main(null);
-		}
-		if (e.getSource() == abbrechen) {
-			System.exit(0);
-		}
 
 	}
 
