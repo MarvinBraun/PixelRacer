@@ -108,7 +108,6 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.multiplayerLbl.setVisible(true);
 			mf = new MultiplayerFahrt();
 		}
-		
 		SwingUtilities.updateComponentTreeUI(view.frame);
 	
 
@@ -150,7 +149,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public void streckeRückwärts()
 	{
-		if(s= )
+		//
 	}
 	
 	public void streckeVorwärts()
@@ -220,7 +219,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		if(e.getSource()==view.spielenBtn)
 		{
-			FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,mf,k,strecke);
+			//FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,mf,k,strecke);
 		}
 		
 	}
