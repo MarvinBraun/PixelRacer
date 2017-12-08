@@ -15,9 +15,9 @@ import javax.swing.JLabel;
 
 import Rechnung.anzeigenRechnung_ansicht2;
 
-public class PremiumStreckeView extends JFrame implements ActionListener {
+public class PremiumStreckeView extends JFrame {
 
-	private JFrame frame;
+	JFrame frame;
 	JLabel Frage;
 	JButton bestätigen;
 	JButton abbrechen;
@@ -43,8 +43,7 @@ public class PremiumStreckeView extends JFrame implements ActionListener {
 	 */
 	public PremiumStreckeView() {
 		initialize();
-		bestätigen.addActionListener(this);
-		abbrechen.addActionListener(this);
+
 	}
 
 	/**
@@ -86,16 +85,6 @@ public class PremiumStreckeView extends JFrame implements ActionListener {
 		gbc_abbrechen.gridx = 2;
 		gbc_abbrechen.gridy = 2;
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getSource() == bestätigen) {
-			anzeigenRechnung_ansicht2.main(null);
-		}
-		if (e.getSource() == abbrechen) {
-			System.exit(0);
-		}
 	}
 
 }

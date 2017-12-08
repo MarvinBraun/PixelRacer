@@ -19,12 +19,13 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PremiumKartView extends JFrame implements ActionListener{
+public class PremiumKartView extends JFrame {
 
-	private JFrame frame;
+	JFrame frame;
 	JLabel Frage;
 	JButton bestätigen;
 	JButton abbrechen;
+
 	/**
 	 * Launch the application.
 	 */
@@ -46,8 +47,7 @@ public class PremiumKartView extends JFrame implements ActionListener{
 	 */
 	public PremiumKartView() {
 		initialize();
-		bestätigen.addActionListener(this);
-		abbrechen.addActionListener(this);
+
 	}
 
 	/**
@@ -58,12 +58,12 @@ public class PremiumKartView extends JFrame implements ActionListener{
 		frame.setBounds(100, 100, 432, 151);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{182, 38, 194, 0};
-		gridBagLayout.rowHeights = new int[]{30, 0, 23, 23, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[] { 182, 38, 194, 0 };
+		gridBagLayout.rowHeights = new int[] { 30, 0, 23, 23, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
-		
+
 		Frage = new JLabel("  Möchten Sie das Kart wirklich fürr 4,99€ erwerben?");
 		GridBagConstraints gbc_Frage = new GridBagConstraints();
 		gbc_Frage.anchor = GridBagConstraints.NORTH;
@@ -73,7 +73,7 @@ public class PremiumKartView extends JFrame implements ActionListener{
 		gbc_Frage.gridy = 1;
 		frame.getContentPane().add(Frage, gbc_Frage);
 		Frage.setFont(new Font("Calibri", Font.PLAIN, 18));
-		
+
 		bestätigen = new JButton("Bestätigen");
 		GridBagConstraints gbc_bestätigen = new GridBagConstraints();
 		gbc_bestätigen.anchor = GridBagConstraints.NORTHEAST;
@@ -81,7 +81,7 @@ public class PremiumKartView extends JFrame implements ActionListener{
 		gbc_bestätigen.gridx = 0;
 		gbc_bestätigen.gridy = 2;
 		frame.getContentPane().add(bestätigen, gbc_bestätigen);
-		
+
 		abbrechen = new JButton("Abbrechen");
 		GridBagConstraints gbc_abbrechen = new GridBagConstraints();
 		gbc_abbrechen.insets = new Insets(0, 0, 5, 0);
@@ -91,13 +91,4 @@ public class PremiumKartView extends JFrame implements ActionListener{
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getSource() == bestätigen) {
-			anzeigenRechnung_ansicht2.main(null);
-		}if(e.getSource() == abbrechen){
-			System.exit(0);
-		}
-		
-	}
 }
