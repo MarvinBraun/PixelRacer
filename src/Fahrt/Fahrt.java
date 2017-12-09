@@ -3,7 +3,7 @@ package Fahrt;
 public abstract class Fahrt {
 	private int sitzungsID;
 	private int rang;
-	private String zeit;
+	private int zeit;
 	private String streckenName;
 	private String kartName;
 	private String benutzername;
@@ -20,11 +20,11 @@ public abstract class Fahrt {
 	public void setRang(int rang) {
 		this.rang = rang;
 	}
-	public String getZeit() {
+	public int getZeit() {
 		return zeit;
 	}
-	public void setZeit(String zeit) {
-		this.zeit = zeit;
+	public void setZeit(int i) {
+		this.zeit = i;
 	}
 	public String getStreckenName() {
 		return streckenName;

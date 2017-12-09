@@ -219,7 +219,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		if(e.getSource()==view.spielenBtn)
 		{
-			//FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,mf,k,strecke);
+			FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,mf,k,strecke);
 		}
 		
 	}

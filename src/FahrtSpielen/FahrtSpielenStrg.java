@@ -54,7 +54,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 		if(versuche>0)
 		{
-			zeit = (int) ((kart.getMaxkmh()/5)*(0.1*kart.beschleunigung)*(Math.random()+1));
+			zeit = (int) ((kart.getMaxkmh()/5)*(0.1*kart.beschleunigung)*(Math.random() * (2 - 1) + 1));
 			versuche--;
 			String a = ""+versuche;
 			fahrtSpielenView.lblAnzahlVerbleibenderVersuche.setText(a);

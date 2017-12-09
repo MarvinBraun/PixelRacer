@@ -34,7 +34,8 @@ public class FahrtBeitretenView {
 	JLabel kartName;
 	JLabel kartBild;
 	JLabel lblNewLabel;
-	private JTextField textField;
+	JButton multiplayerBeitretenBtn;
+	JTextField multiplayerID;
 	
 	
 	
@@ -80,11 +81,11 @@ public class FahrtBeitretenView {
 		frame.setVisible(true);
 		frame.getContentPane().setLayout(null);
 		
-		textField = new JTextField();
-		textField.setToolTipText("MultiplayerID eingeben");
-		textField.setBounds(119, 245, 186, 60);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		multiplayerID = new JTextField();
+		multiplayerID.setToolTipText("MultiplayerID eingeben");
+		multiplayerID.setBounds(119, 245, 186, 60);
+		frame.getContentPane().add(multiplayerID);
+		multiplayerID.setColumns(10);
 		
 		
 		
@@ -106,7 +107,7 @@ public class FahrtBeitretenView {
 		kartForward.setBounds(693, 115, 60, 60);
 		frame.getContentPane().add(kartForward);
 		
-		JButton multiplayerBeitretenBtn = new JButton("Multiplayer Beitreten");
+		multiplayerBeitretenBtn = new JButton("Multiplayer Beitreten");
 		multiplayerBeitretenBtn.setBounds(392, 245, 280, 60);
 		frame.getContentPane().add(multiplayerBeitretenBtn);
 		
