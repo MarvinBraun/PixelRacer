@@ -30,13 +30,13 @@ public class FahrtErstellenView {
 	private JLabel background;
 	JButton kartForward;
 	JButton kartBackward;
-	JButton forward2;
+	JButton streckeForward;
 	JButton schwierigkeitBtn2;
 	JLabel waehleKart;
 	JLabel streckeName;
 	JLabel kartName;
 	JLabel kartBild;
-	JButton backward2;
+	JButton streckeBackward;
 	JButton schwierigkeitBtn1;
 	JLabel lblWhleDeineStrecke;
 	JButton spielenBtn;
@@ -101,12 +101,12 @@ public class FahrtErstellenView {
 		frame.getContentPane().add(kartBackward);
 		
 		
-		forward2 = new JButton("");
-		forward2.setBorderPainted(false);
-		forward2.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
-		forward2.setContentAreaFilled(false);
-		forward2.setBounds(643, 238, 60, 60);
-		frame.getContentPane().add(forward2);
+		streckeForward = new JButton("");
+		streckeForward.setBorderPainted(false);
+		streckeForward.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
+		streckeForward.setContentAreaFilled(false);
+		streckeForward.setBounds(643, 238, 60, 60);
+		frame.getContentPane().add(streckeForward);
 		
 		schwierigkeitBtn2 = new JButton("");
 		schwierigkeitBtn2.setBorderPainted(false);
@@ -115,13 +115,13 @@ public class FahrtErstellenView {
 		schwierigkeitBtn2.setBounds(345, 489, 60, 60);
 		frame.getContentPane().add(schwierigkeitBtn2);
 		
-		backward2 = new JButton("");
-		backward2.setBorderPainted(false);
-		backward2.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backward.png")));
-		backward2.setOpaque(false);
-		backward2.setContentAreaFilled(false);
-		backward2.setBounds(27, 238, 60, 60);
-		frame.getContentPane().add(backward2);
+		streckeBackward = new JButton("");
+		streckeBackward.setBorderPainted(false);
+		streckeBackward.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backward.png")));
+		streckeBackward.setOpaque(false);
+		streckeBackward.setContentAreaFilled(false);
+		streckeBackward.setBounds(27, 238, 60, 60);
+		frame.getContentPane().add(streckeBackward);
 		
 		schwierigkeitBtn1 = new JButton("");
 		schwierigkeitBtn1.setBorderPainted(false);

@@ -22,6 +22,7 @@ import Fahrt.SingleplayerFahrt;
 import FahrtSpielen.FahrtSpielenStrg;
 import MusicHandler.MusicPlayer;
 import Strecke.Strecke;
+import Strecke.Streckenverwaltung;
 import myIterator.MyIteratorKart;
 import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
@@ -32,10 +33,10 @@ public class FahrtErstellenStrg implements ActionListener {
 	FahrtErstellenView view;
 	boolean forward = false;
 	boolean backward = false;
-	Kart k;
-	Strecke s;
-	static Kart previousKart;
+	
 	Kartverwaltung karts;
+	Streckenverwaltung strecken;
+	
 	static MyIteratorKart<Kart> itKart;
 	static MyIteratorString<String> itString;
 	static MyIteratorStrecke<Strecke> itStrecke;
@@ -44,8 +45,13 @@ public class FahrtErstellenStrg implements ActionListener {
 	LinkedList<Kart> kartliste = new LinkedList<Kart>();
 	LinkedList<Strecke> streckenliste = new LinkedList<Strecke>();
 	
+	BufferedImage streckenbild;
+	
 	SingleplayerFahrt sf;
 	MultiplayerFahrt mf;
+	Kart k;
+	Strecke s;
+	
 	
 
 	int counter=-1;
@@ -53,13 +59,23 @@ public class FahrtErstellenStrg implements ActionListener {
 	public FahrtErstellenStrg(int singleMultiplayer) {
 		view = new FahrtErstellenView();
 	
-		//Initialisieren der Karts und der Buttons
+		//Initialisieren der Karts 
 		karts = new Kartverwaltung();
 		kartliste =karts.gibKart();
 		itKart = new MyIteratorKart(kartliste.listIterator());
-		System.out.println(kartliste.size());
+		
+		
+		//Initialisieren der Strecke
+		strecken= new Streckenverwaltung();
+		streckenliste = strecken.gibStrecke();
+		itStrecke = new MyIteratorStrecke(streckenliste.listIterator());
+		ladeStrecke();
+		
+		//ActionListener
 		view.kartForward.addActionListener(this);
 		view.kartBackward.addActionListener(this);
+		view.streckeBackward.addActionListener(this);
+		view.streckeForward.addActionListener(this);
 		
 		//Initialisieren der Strecke
 		
@@ -110,7 +126,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		SwingUtilities.updateComponentTreeUI(view.frame);
 	
-
+		SwingUtilities.updateComponentTreeUI(view.frame);
 		
 	}
 	
@@ -132,6 +148,19 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.kartName.setText(k.kartname);
 		}
 	}
+	
+	public void ladeStrecke()
+	{
+		if((s=itStrecke.next())!=null)
+		{
+			
+			BufferedImage newImage= s.getGrafik();
+			view.streckeName.setText(s.getStreckenname());
+			streckenbild = imageResizer(newImage);
+			ImageIcon icon = new ImageIcon(streckenbild);
+			view.streckeLbl.setIcon(icon);
+		}
+	}
 	//Methode um rückwärts durch die Karts zu scrollen
 	public void kartRückwärts()
 	{
@@ -149,13 +178,18 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public void streckeRückwärts()
 	{
-		//
+		if((s=itStrecke.previous())!=null)
+		{
+			
+			BufferedImage newImage= s.getGrafik();
+			view.streckeName.setText(s.getStreckenname());
+			streckenbild = imageResizer(newImage);
+			ImageIcon icon = new ImageIcon(streckenbild);
+			view.streckeLbl.setIcon(icon);
+		}
 	}
 	
-	public void streckeVorwärts()
-	{
-		
-	}
+
 	
 	
 	
@@ -219,7 +253,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		if(e.getSource()==view.spielenBtn)
 		{
-			FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,mf,k,strecke);
+			//FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,mf,k,strecke);
 		}
 		
 	}
