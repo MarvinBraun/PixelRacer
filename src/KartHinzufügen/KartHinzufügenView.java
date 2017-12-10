@@ -18,9 +18,9 @@ import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class KartHinzufügenView implements ActionListener {
+public class KartHinzufügenView {
 
-	private JFrame frmPixelRacer;
+	protected JFrame frmPixelRacer;
 	private JTextField textFieldName;
 	private JTextField textFieldBeschleunigung;
 	private JTextField textFieldMaxGeschwindigkeit;
@@ -41,7 +41,6 @@ public class KartHinzufügenView implements ActionListener {
 			public void run() {
 				try {
 					KartHinzufügenView window = new KartHinzufügenView();
-					window.frmPixelRacer.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -80,16 +79,31 @@ public class KartHinzufügenView implements ActionListener {
 		lblName.setBounds(194, 91, 46, 14);
 		frmPixelRacer.getContentPane().add(lblName);
 		
+		JLabel lblBeschleunigung = new JLabel("Beschleunigung:");
+		lblBeschleunigung.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblBeschleunigung.setBounds(194, 142, 107, 19);
+		frmPixelRacer.getContentPane().add(lblBeschleunigung);
+		
+		JLabel lblMaxGeschwindigkeit = new JLabel("MaxGeschwindigkeit:");
+		lblMaxGeschwindigkeit.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblMaxGeschwindigkeit.setBounds(194, 195, 148, 19);
+		frmPixelRacer.getContentPane().add(lblMaxGeschwindigkeit);
+		
+		JLabel lblPunktzahl = new JLabel("Punktzahl:");
+		lblPunktzahl.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblPunktzahl.setBounds(195, 250, 89, 14);
+		frmPixelRacer.getContentPane().add(lblPunktzahl);
+		
+		JLabel lblStatus = new JLabel("Status:");
+		lblStatus.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblStatus.setBounds(194, 301, 46, 14);
+		frmPixelRacer.getContentPane().add(lblStatus);
+		
 		textFieldName = new JTextField();
 		textFieldName.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		textFieldName.setColumns(10);
 		textFieldName.setBounds(382, 83, 175, 30);
 		frmPixelRacer.getContentPane().add(textFieldName);
-		
-		JLabel lblBeschleunigung = new JLabel("Beschleunigung:");
-		lblBeschleunigung.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblBeschleunigung.setBounds(194, 142, 107, 19);
-		frmPixelRacer.getContentPane().add(lblBeschleunigung);
 		
 		textFieldBeschleunigung = new JTextField();
 		textFieldBeschleunigung.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -97,32 +111,17 @@ public class KartHinzufügenView implements ActionListener {
 		frmPixelRacer.getContentPane().add(textFieldBeschleunigung);
 		textFieldBeschleunigung.setColumns(10);
 		
-		JLabel lblMaxGeschwindigkeit = new JLabel("MaxGeschwindigkeit:");
-		lblMaxGeschwindigkeit.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblMaxGeschwindigkeit.setBounds(194, 195, 148, 19);
-		frmPixelRacer.getContentPane().add(lblMaxGeschwindigkeit);
-		
 		textFieldMaxGeschwindigkeit = new JTextField();
 		textFieldMaxGeschwindigkeit.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		textFieldMaxGeschwindigkeit.setBounds(382, 189, 175, 30);
 		frmPixelRacer.getContentPane().add(textFieldMaxGeschwindigkeit);
 		textFieldMaxGeschwindigkeit.setColumns(10);
 		
-		JLabel lblPunktzahl = new JLabel("Punktzahl:");
-		lblPunktzahl.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPunktzahl.setBounds(195, 250, 89, 14);
-		frmPixelRacer.getContentPane().add(lblPunktzahl);
-		
 		textFieldPunktzahl = new JTextField();
 		textFieldPunktzahl.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		textFieldPunktzahl.setBounds(382, 242, 175, 30);
 		frmPixelRacer.getContentPane().add(textFieldPunktzahl);
 		textFieldPunktzahl.setColumns(10);
-		
-		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblStatus.setBounds(194, 301, 46, 14);
-		frmPixelRacer.getContentPane().add(lblStatus);
 		
 		rdbtnFree = new JRadioButton("Free");;
 		rdbtnFree.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -152,7 +151,6 @@ public class KartHinzufügenView implements ActionListener {
 		fc = new JFileChooser();
 
 		btnAuswhlen = new JButton("ausw\u00E4hlen");
-		btnAuswhlen.addActionListener(this);
 		btnAuswhlen.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAuswhlen.setBounds(586, 341, 112, 30);
 		
@@ -162,12 +160,5 @@ public class KartHinzufügenView implements ActionListener {
 		btnAbsenden.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAbsenden.setBounds(450, 413, 107, 23);
 		frmPixelRacer.getContentPane().add(btnAbsenden);
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		
-		if(e.getSource() == btnAuswhlen) {
-			fc.showOpenDialog(null);
-		}		
 	}
 }
