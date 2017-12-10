@@ -5,9 +5,9 @@ import java.awt.image.BufferedImage;
 public class Strecke {
 
 	String streckenname;
-	private static int laenge;
+	private int laenge;
 	private int schwierigkeit;
-	private boolean premium = false;
+	private String premium = "false";
 	private int punktewert;
 	private BufferedImage grafik;
 	
@@ -21,9 +21,9 @@ public class Strecke {
 		this.streckenname = streckenname;
 	}
 	public void setLaenge(int laenge) {
-		Strecke.laenge = laenge;
+		this.laenge = laenge;
 	}
-	public static int getLaenge() {
+	public int getLaenge() {
 		return laenge;
 	}
 	public int getSchwierigkeit() {
@@ -32,11 +32,11 @@ public class Strecke {
 	public void setSchwierigkeit(int schwierigkeit) {
 		this.schwierigkeit = schwierigkeit;
 	}
-	public boolean isPremium() {
+	public String isPremium() {
 		return premium;
 	}
-	public void setPremium(boolean premium) {
-		this.premium = premium;
+	public void setPremium(String string) {
+		this.premium = string;
 	}
 	public int getPunktewert() {
 		return punktewert;

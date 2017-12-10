@@ -13,20 +13,22 @@ public class Streckenverwaltung {
 	
 	public LinkedList<Strecke> gibStrecke(){
 		
+
 		String abfrage = "SELECT * FROM STRECKE";
-		
+
 		try{
+	
 			ResultSet rs = Datenbankschnittstelle.executeQuery(abfrage);
-			
+		
 			while(rs.next()){
 			
 				Strecke s = new Strecke();
 				s.setStreckenname(rs.getString("streckenname"));
 				s.setLaenge(rs.getInt("laenge"));
 				s.setSchwierigkeit(rs.getInt("schwierigkeit"));
-				s.setPremium(rs.getBoolean("premium"));
+				s.setPremium(rs.getString("premium"));
 				s.setPunktewert(rs.getInt("punktewert"));
-				
+				System.out.println(s.streckenname);
 				String sql = "SELECT grafik FROM strecke WHERE streckenname = '" + s.streckenname + "'";
 				String filepath = "src/Resources/" + s.streckenname + ".png";
 				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
@@ -47,8 +49,11 @@ public class Streckenverwaltung {
 	
 	
 	public static void main(String[] args) {
+	
 		Streckenverwaltung strecke = new Streckenverwaltung();
-		strecke.gibStrecke();
+	
+		System.out.println(strecke.Streckenliste.get(1).getStreckenname());
+	
 		
 	}
 
