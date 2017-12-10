@@ -20,15 +20,20 @@ public class ZeitBehaltenView {
 	JLabel lblRundeXZeit;
 	JLabel background;
 	int zeit;
+	static int x1;
+	static int y2;
+	static int zeit2;
+	static int versuche2;
 	
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ZeitBehaltenView window = new ZeitBehaltenView();
+					ZeitBehaltenView window = new ZeitBehaltenView(x1,y2,zeit2,versuche2);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,6 +47,10 @@ public class ZeitBehaltenView {
 	 */
 	public ZeitBehaltenView(int x, int y, int zeit, int versuche) {
 		initialize(x, y, zeit, versuche);
+		x1 = x;
+		y2=y;
+		zeit2 = zeit;
+		versuche2 = versuche;
 	}
 
 	/**
