@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 public class Strecke {
 
 	private String streckenname;
-	private static final int lange;
+	private static int laenge;
 	private int schwierigkeit;
 	private boolean premium = false;
 	private int punktewert;
@@ -19,6 +19,12 @@ public class Strecke {
 	}
 	public void setStreckenname(String streckenname) {
 		this.streckenname = streckenname;
+	}
+	public static int getLaenge() {
+		return laenge;
+	}
+	public static void setLaenge(int laenge) {
+		Strecke.laenge = laenge;
 	}
 	public int getSchwierigkeit() {
 		return schwierigkeit;
