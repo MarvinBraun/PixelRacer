@@ -1,4 +1,4 @@
-package FahrtSpielen;
+package MultiplayerFahrtSpielen;
 
 import java.awt.EventQueue;
 
@@ -15,14 +15,14 @@ import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import java.awt.Color;
 
-public class ZeitBehaltenView {
+public class MultiplayerZeitBehaltenView {
 
 	private JFrame frame;
 	JButton erneutFahrenBtn;
 	JButton zeitBehaltenBtn; 
 	JLabel lblRundeXZeit;
 	JLabel background;
-	static SingleplayerFahrt f;
+	SingleplayerFahrt f;
 	int zeit;
 	static int x1;
 	static int y2;
@@ -37,7 +37,7 @@ public class ZeitBehaltenView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ZeitBehaltenView window = new ZeitBehaltenView(x1,y2,f,versuche2);
+					MultiplayerZeitBehaltenView window = new MultiplayerZeitBehaltenView();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,22 +49,19 @@ public class ZeitBehaltenView {
 	/**
 	 * Create the application.
 	 */
-	public ZeitBehaltenView(int x, int y, SingleplayerFahrt f, int versuche) {
-		initialize(x, y, zeit, versuche);
-		x1 = x;
-		y2=y;
-		zeit2 = f.getZeit();
-		versuche2 = versuche;
+	public MultiplayerZeitBehaltenView() {
+		initialize();
+
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(int x, int y, int zeit, int versuche) {
+	private void initialize() {
 		
 		frame = new JFrame();
 		frame.setBackground(new Color(211, 211, 211));
-		frame.setBounds(x, y, 352, 140);
+		frame.setBounds(0,0, 352, 140);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
