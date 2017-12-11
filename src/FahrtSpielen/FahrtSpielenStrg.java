@@ -2,6 +2,7 @@ package FahrtSpielen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import Computergegner.Bot;
 import Fahrt.MultiplayerFahrt;
@@ -17,26 +18,30 @@ public class FahrtSpielenStrg implements ActionListener{
 	ZeitBehaltenView zeitBehaltenView;
 	int versuche = 3;
 	int zeit=0;
-	Bot[] bots;
+	int[] zeiten = new int[3];
+	int rang;
 	Kart kart;
 	Strecke strecke;
 	int schwierigkeit;
 	
 	//Singleplayerfahrt Konstruktor
 	
-	public FahrtSpielenStrg(SingleplayerFahrt sf, Kart k, Strecke s, int schwierigkeit)
+	public FahrtSpielenStrg(SingleplayerFahrt sfahrt, Kart k, Strecke s, int schwierigkeit)
 	{
 		kart = k;
 		strecke = s;
+		this.sf = sfahrt;
 		//Entscheidung ob ein Single oder MultiplayerSpiel gespielt wird
 		
 		this.schwierigkeit = schwierigkeit;
 		
-		for(int i = 0; i<bots.length;i++)
+		for(int i = 0; i<zeiten.length;i++)
 		{
 			Bot b = new Bot(s.getLaenge(),kart.beschleunigung,kart.getMaxkmh(),schwierigkeit);
-			bots[i] = b;
+			zeiten[i] = b.getZeit();
 		}
+		Arrays.sort(zeiten);
+		
 		
 
 		
@@ -72,21 +77,25 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 		if(versuche>1)
 		{
-			zeit = (int) ((kart.getMaxkmh()/5)*(0.1*kart.beschleunigung)*(Math.random() * (2 - 1) + 1));
+			int zeit =(int) ((kart.getMaxkmh()/5)*(0.1*kart.beschleunigung)*(Math.random() * (2 - 1) + 1));
+			System.out.println("Gefahrene Zeit:"+zeit);
+			sf.setZeit(zeit);
 			versuche--;
 			String a = ""+versuche;
 			fahrtSpielenView.lblAnzahlVerbleibenderVersuche.setText(a);
-			String b = ""+zeit;
+			String b = ""+sf.getZeit();
 			fahrtSpielenView.lblLetzteZeit.setText(b);
 			zeitBehaltenView = new ZeitBehaltenView(fahrtSpielenView.frame.getX(),fahrtSpielenView.frame.getY(),zeit, versuche);	
 		}
 		
-		if(versuche==1)
+		else if(versuche==1)
 		{
-			
-			
+			simuliereBotZeiten();
 			fahrtSpielenView.frame.dispose();
-			FahrtAuswertung fahrtAuswertung = new FahrtAuswertung(zeit, );
+			FahrtAuswertungStrg strg = new FahrtAuswertungStrg(sf);
+			
+	
+		//	FahrtAuswertung fahrtAuswertung = new FahrtAuswertung(sf.getZeit(),sf.getRang());
 			
 			
 		}
@@ -94,14 +103,23 @@ public class FahrtSpielenStrg implements ActionListener{
 	}
 	
 	public void simuliereBotZeiten()
-	{
-		switch(String s)
-		
-		
+	{	
 		int geschwindigkeit = kart.getMaxkmh();
 		int beschleunigung = kart.getBeschleunigung();
 		int länge = strecke.getLaenge();
-		int schwierigkeit = 
+		int schwierigkeit = this.schwierigkeit;
+		
+		for(int i = 0; i<zeiten.length;i++)
+		{
+			if(zeit>=zeiten[i])
+			{
+			sf.setRang(i+1);
+			break;
+			}
+			
+		}
+		
+		
 	}
 	public static void main(String[] args)
 	{

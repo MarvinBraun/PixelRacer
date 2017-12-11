@@ -252,6 +252,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			mf.setMultiplayerID(multiID);
 			FahrtSpielenStrg strg = new FahrtSpielenStrg(mf,k,s);
 		}
+		view.frame.dispose();
 		
 	}
 

@@ -1,10 +1,13 @@
 package FahrtSpielen;
 
+import Fahrt.SingleplayerFahrt;
+
 public class FahrtAuswertungStrg {
 	FahrtAuswertung view;
 	
-	public FahrtAuswertungStrg(int zeit, int rang)
+	public FahrtAuswertungStrg(SingleplayerFahrt sf)
 	{
+		
 		view = new FahrtAuswertung();
 	}
 
