@@ -61,7 +61,7 @@ public class ZeitBehaltenView {
 		frame = new JFrame();
 		frame.setBackground(new Color(211, 211, 211));
 		frame.setBounds(x, y, 352, 140);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		erneutFahrenBtn = new JButton("Erneut Fahren");
