@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 
+import Fahrt.Fahrtverwaltung;
 import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
 import FahrtSpielen.FahrtSpielenStrg;
@@ -36,6 +37,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	Kartverwaltung karts;
 	Streckenverwaltung strecken;
+	Fahrtverwaltung fahrten;
 	
 	static MyIteratorKart<Kart> itKart;
 	static MyIteratorString<String> itString;
@@ -46,11 +48,13 @@ public class FahrtErstellenStrg implements ActionListener {
 	LinkedList<Strecke> streckenliste = new LinkedList<Strecke>();
 	
 	BufferedImage streckenbild;
+	int singlemultiplayer;
 	
 	SingleplayerFahrt sf;
 	MultiplayerFahrt mf;
 	Kart k;
 	Strecke s;
+	int schwierigkeit=0;
 	
 	
 
@@ -58,6 +62,8 @@ public class FahrtErstellenStrg implements ActionListener {
 	//Konstruktor
 	public FahrtErstellenStrg(int singleMultiplayer) {
 		view = new FahrtErstellenView();
+		singlemultiplayer = singleMultiplayer;
+		fahrten = new Fahrtverwaltung();
 	
 		//Initialisieren der Karts 
 		karts = new Kartverwaltung();
@@ -216,6 +222,38 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		
 	}
+	// WICHTIG NOCH ÄNDERN DA NAME FESTGESCHRIEBEN
+	public void starteSpiel()
+	{
+		if(singlemultiplayer==1)
+		{
+		String schwierigkeit1 = view.schwierigkeitLbl.getText();
+		if(s.equals("Bronze"))
+			schwierigkeit = 1;
+		if(s.equals("Silber"))
+			schwierigkeit = 2;
+		if(s.equals("Gold"))
+			schwierigkeit = 3;
+		sf = new SingleplayerFahrt();
+		sf.setZeit(0);
+		sf.setBenutzername("DZeller");
+		int id = fahrten.gibNeueID(2);
+		sf.setSitzungsID(id);
+		FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,k,s,schwierigkeit);
+		
+		}
+		if(singlemultiplayer==2)
+		{
+			mf.setZeit(0);
+			mf.setRang(0);
+			int id = fahrten.gibNeueID(1);
+			mf.setSitzungsID(id);
+			int multiID = fahrten.gibNeueMultiplayerID(); 
+			mf.setMultiplayerID(multiID);
+			FahrtSpielenStrg strg = new FahrtSpielenStrg(mf,k,s);
+		}
+		
+	}
 
 
 	@Override
@@ -241,10 +279,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		if(e.getSource()==view.spielenBtn)
 		{
-			sf.setBenutzername("DZeller");
-			sf.setRang(0);
-			
-		FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,mf,k,s);
+		starteSpiel();
 		}
 		
 		if(e.getSource()==view.streckeBackward)
