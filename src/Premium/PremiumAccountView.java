@@ -55,6 +55,7 @@ public class PremiumAccountView extends JFrame {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 432, 151);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Premium erwerben");
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 182, 38, 194, 0 };
 		gridBagLayout.rowHeights = new int[] { 30, 0, 23, 23, 0 };
@@ -62,7 +63,7 @@ public class PremiumAccountView extends JFrame {
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
 
-		Frage = new JLabel("Möchten Sie wirklich für 9,99€ auf Premium upgraden?");
+		Frage = new JLabel("Möchten Sie wirklich für "+ kaufePremiumAccount.getPreis() +" € auf Premium upgraden?");
 		GridBagConstraints gbc_Frage = new GridBagConstraints();
 		gbc_Frage.anchor = GridBagConstraints.NORTH;
 		gbc_Frage.insets = new Insets(0, 0, 5, 0);

@@ -10,13 +10,10 @@ import Rechnung.anzeigenRechnung_ansicht2;
 
 public class kaufePremiumAccount extends JFrame implements ActionListener {
 
-	double preis;
+	static kaufePremiumAccount kpa;
+	static double preis;
 
-	public void setPreis(double preis) {
-		this.preis = preis;
-	}
-
-	public double getPreis() {
+	public static double getPreis() {
 		return preis = 9.99;
 	}
 
@@ -42,7 +39,7 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		kaufePremiumAccount kpa = new kaufePremiumAccount();
+		kpa = new kaufePremiumAccount();
 
 	}
 }
