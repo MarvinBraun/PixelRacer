@@ -67,6 +67,29 @@ public class Fahrtverwaltung {
 		
 	}
 	
+	public int gibNeueMultiplayerID()
+	{
+		int id = 0;
+		ResultSet rs = null;
+		rs = Datenbankschnittstelle.executeQuery("select max(multiplayerID) from Multiplayer_Fahrt");
+		try {
+			while(rs.next())
+			{
+
+				id = rs.getInt("max(MultiplayerID)");
+				id++;
+				System.out.println("MultiplayerID:"+id);
+			}
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+		
+	}
+	
 	public void sendeMultiplayerFahrt(MultiplayerFahrt mf)
 	{
 		System.out.println(mf.getSitzungsID()+","+mf.getZeit()+","+mf.getMultiplayerID()+","+mf.getRang()+",'"+mf.getBenutzername()+"','"+mf.getStreckenName()+"','"+mf.getKartName());
