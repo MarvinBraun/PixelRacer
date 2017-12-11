@@ -6,18 +6,33 @@ import Kart.Kart;
 
 public class Bot {
 
-	static int p;
-	static int strecke = Strecke.getLaenge();
-	static int geschwindigkeit = Kart.getMaxkmh();
-	static int beschleunigung = Kart.getBeschleunigung();
+	int zeit;
+	public int getZeit() {
+		return zeit;
+	}
 
-	public Bot() {
-		p = (int) (((strecke / geschwindigkeit) + (geschwindigkeit / beschleunigung)) * Math.random());
+	public void setZeit(int zeit) {
+		this.zeit = zeit;
+	}
+
+	int länge;
+	int geschwindigkeit;
+	int beschleunigung;
+	int schwierigkeit;
+
+	public Bot(int streckenlänge, int geschwindigkeit, int beschleunigung, int schwierigkeit) {
+		
+		länge = streckenlänge;
+		this.geschwindigkeit = geschwindigkeit;
+		this.beschleunigung = beschleunigung;
+		this.schwierigkeit = schwierigkeit;
+		
+		zeit = (int) (((länge / geschwindigkeit) + (geschwindigkeit / beschleunigung)) * Math.random());
 	}
 
 	public static void main(String[] args) {
-		Bot bot = new Bot();
-		System.out.println(bot);
+		
+		
 	}
 
 }
