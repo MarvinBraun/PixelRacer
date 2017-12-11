@@ -76,23 +76,11 @@ public class FahrtErstellenStrg implements ActionListener {
 		view.kartBackward.addActionListener(this);
 		view.streckeBackward.addActionListener(this);
 		view.streckeForward.addActionListener(this);
+		view.spielenBtn.addActionListener(this);
 		
 		//Initialisieren der Strecke
 		
-			BufferedImage image;
-			
-				try {
-					
-					image = ImageIO.read(new File("src/Resources/hockenheim.png"));
-					BufferedImage newImage = imageResizer(image);
-					ImageIcon icon = new ImageIcon(newImage);
-					view.streckeLbl.setIcon(icon);
-					} 	
-				
-				catch (IOException e) {
-			// TODO Auto-generated catch block
-					e.printStackTrace();
-		}
+	
 
 		//Initialisieren des Schwierigkeitsgrades
 		//nur für Singleplayer
@@ -253,7 +241,19 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		if(e.getSource()==view.spielenBtn)
 		{
-			//FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,mf,k,strecke);
+			sf.setBenutzername("DZeller");
+			sf.setRang(0);
+			
+		FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,mf,k,s);
+		}
+		
+		if(e.getSource()==view.streckeBackward)
+		{
+			streckeRückwärts();
+		}
+		if(e.getSource()==view.streckeForward)
+		{
+			ladeStrecke();
 		}
 		
 	}
