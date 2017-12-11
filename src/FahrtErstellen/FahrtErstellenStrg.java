@@ -28,6 +28,7 @@ import myIterator.MyIteratorKart;
 import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
 import Kart.*;
+import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
 public class FahrtErstellenStrg implements ActionListener {
 	
 	//Objekte der Klasse
@@ -126,7 +127,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public static void main(String[] args)
 	{
-		FahrtErstellenStrg strg = new FahrtErstellenStrg(1);
+		FahrtErstellenStrg strg = new FahrtErstellenStrg(2);
 		MusicPlayer.audioBackground();
 
 	}
@@ -234,7 +235,6 @@ public class FahrtErstellenStrg implements ActionListener {
 			schwierigkeit = 2;
 		if(s.equals("Gold"))
 			schwierigkeit = 3;
-		sf = new SingleplayerFahrt();
 		sf.setZeit(0);
 		sf.setBenutzername("DZeller");
 		int id = fahrten.gibNeueID(2);
@@ -250,7 +250,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			mf.setSitzungsID(id);
 			int multiID = fahrten.gibNeueMultiplayerID(); 
 			mf.setMultiplayerID(multiID);
-			FahrtSpielenStrg strg = new FahrtSpielenStrg(mf,k,s);
+			MultiplayerFahrtSpielenStrg strg = new MultiplayerFahrtSpielenStrg(mf,k,s);
 		}
 		view.frame.dispose();
 		

@@ -18,41 +18,34 @@ public class FahrtAuswertungMultiplayerStrg {
 		view = new FahrtAuswertungMultiplayer();
 		String zeit = "Gefahrene Zeit: "+mf.getZeit();
 		view.lblDeineZeit.setText(zeit);
+		ermittleRang();
+		
 		
 	}
 	
 	public void ermittleRang()
 	{
 		Fahrtverwaltung multi = new Fahrtverwaltung();
-		LinkedList<MultiplayerFahrt> fahrten = multi.gibMultiplayerFahrten();
-		
-		for(int i = 0; i<fahrten.size();i++)
+		String id = ""+mf.getMultiplayerID();
+		LinkedList<MultiplayerFahrt> fahrten = multi.gibMultiplayerFahrtenNachZeit(id);
+		if(fahrten.size()>0)
 		{
-			if(fahrten.get(i).getMultiplayerID()!=mf.getMultiplayerID())
-			{
-				fahrten.remove(i);
-			}
-		}
-		 Collections.sort(fahrten, new Comparator<MultiplayerFahrt>() {
-		     @Override
-		     public int compare(String o1, String o2) {
-		         return Collator.getInstance().compare(o1, o2);
-		     }
-
-			@Override
-			public int compare(MultiplayerFahrt arg0, MultiplayerFahrt arg1) {
-				// TODO Auto-generated method stub
-				return Collator.getInstance().compare()
-			}
-		 });
-		
-		
-	
-		
 		for (int i = 0; i<fahrten.size();i++)
 		{
-			if(mf.getZeit()<)
+			if(mf.getZeit()<fahrten.get(i).getZeit())
+			{
+				int rang = i+1;
+				mf.setRang(rang);
+				break;
+			}
+			
 		}
+		view.lblDeinPlatz.setText("Dein Rang: "+mf.getRang());
+	}
+		else {
+			view.lblDeinPlatz.setText("Du bist der erste, der ein Match zu dieser MultiplayerID abgeschlossen hat!");
+		}
+		
 	}
 	
 	

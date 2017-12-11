@@ -13,7 +13,14 @@ import javax.swing.ImageIcon;
 public class FahrtAuswertung {
 
 	private JFrame frame;
-
+	JButton btnNewButton;
+	JLabel lblDeinPlatz;
+	JLabel lblNewLabel ;
+	JLabel lblDeineZeit;
+	JLabel lblGewonnenPunkte;
+	
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -46,7 +53,7 @@ public class FahrtAuswertung {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Bestätigen");
+		btnNewButton = new JButton("Bestätigen");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -54,22 +61,23 @@ public class FahrtAuswertung {
 		btnNewButton.setBounds(291, 483, 192, 67);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblDeinPlatz = new JLabel("Dein Platz:");
+		lblDeinPlatz = new JLabel("Dein Platz:");
 		lblDeinPlatz.setBounds(291, 11, 142, 41);
 		frame.getContentPane().add(lblDeinPlatz);
 		
-		JLabel lblDeineZeit = new JLabel("Deine Zeit:");
+		lblDeineZeit = new JLabel("Deine Zeit:");
 		lblDeineZeit.setBounds(291, 60, 142, 34);
 		frame.getContentPane().add(lblDeineZeit);
 		
-		JLabel lblGewonnenPunkte = new JLabel("Gewonnen Punkte:");
+		lblGewonnenPunkte = new JLabel("Gewonnen Punkte:");
 		lblGewonnenPunkte.setBounds(291, 108, 142, 41);
 		frame.getContentPane().add(lblGewonnenPunkte);
 		
-		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\podest.png"));
 		lblNewLabel.setBounds(193, 266, 404, 200);
 		frame.getContentPane().add(lblNewLabel);
+		frame.setVisible(true);
 	}
 
 }

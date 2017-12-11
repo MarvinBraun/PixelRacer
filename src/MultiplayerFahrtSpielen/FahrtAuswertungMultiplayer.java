@@ -63,14 +63,11 @@ public class FahrtAuswertungMultiplayer {
 		lblDeineZeit.setBounds(291, 60, 142, 34);
 		frame.getContentPane().add(lblDeineZeit);
 		
-		lblGewonnenPunkte = new JLabel("Gewonnen Punkte:");
-		lblGewonnenPunkte.setBounds(291, 108, 142, 41);
-		frame.getContentPane().add(lblGewonnenPunkte);
-		
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\podest.png"));
 		lblNewLabel.setBounds(193, 266, 404, 200);
 		frame.getContentPane().add(lblNewLabel);
+		frame.setVisible(true);
 	}
 
 }

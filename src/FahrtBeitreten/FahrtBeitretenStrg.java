@@ -132,13 +132,15 @@ public class FahrtBeitretenStrg implements ActionListener {
 				mf.setStreckenName(fahrt.getStreckenName());
 				mf.setBenutzername("HMuller");
 				mf.setZeit(50);
-				mf.setRang(0);
+				mf.setRang(99);
 				mf.setKartName(k.getKartname());
 				int id = verwaltung.gibNeueID(1);
 
 					mf.setSitzungsID(id);
 					verwaltung.sendeMultiplayerFahrt(mf);
 					System.out.println("erfolg!");	
+					
+				
 			}
 			
 			

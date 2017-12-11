@@ -132,7 +132,7 @@ public class Fahrtverwaltung {
 	
 }
 	}
-		public LinkedList<MultiplayerFahrt> gibMultiplayerFahrten(String name)
+		public LinkedList<MultiplayerFahrt> gibMultiplayerFahrtenNachZeit(String name)
 		{
 			{
 				try {
@@ -144,10 +144,12 @@ public class Fahrtverwaltung {
 						
 						MultiplayerFahrt fahrt = new MultiplayerFahrt();
 						fahrt.setSitzungsID(rs.getInt("SitzungsID"));
+						
 						System.out.println(fahrt.getSitzungsID());
 						fahrt.setRang(rs.getInt("Rang"));
 						fahrt.setMultiplayerID(rs.getInt("MultiplayerID"));
 						fahrt.setZeit(rs.getInt("Zeit"));
+						System.out.println(fahrt.getZeit());
 						fahrt.setStreckenName(rs.getString("Streckenname"));
 						fahrt.setKartName(rs.getString("Kartname"));
 						fahrt.setBenutzername(rs.getString("Benutzername"));
@@ -170,7 +172,7 @@ public class Fahrtverwaltung {
 	public static void main(String[] args)
 	{
 		Fahrtverwaltung v = new Fahrtverwaltung();
-		LinkedList<MultiplayerFahrt> fahrten = v.gibMultiplayerFahrten();
+		LinkedList<MultiplayerFahrt> fahrten = v.gibMultiplayerFahrtenNachZeit("10001");
 		System.out.println(fahrten.size());
 		for(int i = 0; i<fahrten.size();i++)
 		{

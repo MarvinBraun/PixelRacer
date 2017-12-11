@@ -11,8 +11,8 @@ import Kart.Kart;
 import Strecke.Strecke;
 
 public class FahrtSpielenStrg implements ActionListener{
-	SingleplayerFahrt sf;
-	MultiplayerFahrt mf;
+	SingleplayerFahrt sf=null;
+	MultiplayerFahrt mf=null;
 	
 	FahrtSpielenView fahrtSpielenView;
 	ZeitBehaltenView zeitBehaltenView;
@@ -85,16 +85,16 @@ public class FahrtSpielenStrg implements ActionListener{
 			fahrtSpielenView.lblAnzahlVerbleibenderVersuche.setText(a);
 			String b = ""+sf.getZeit();
 			fahrtSpielenView.lblLetzteZeit.setText(b);
-			zeitBehaltenView = new ZeitBehaltenView(fahrtSpielenView.frame.getX(),fahrtSpielenView.frame.getY(),zeit, versuche);	
+			zeitBehaltenView = new ZeitBehaltenView(fahrtSpielenView.frame.getX(),fahrtSpielenView.frame.getY(),sf, versuche);	
 		}
 		
 		else if(versuche==1)
 		{
 			simuliereBotZeiten();
-			fahrtSpielenView.frame.dispose();
+		
 			FahrtAuswertungStrg strg = new FahrtAuswertungStrg(sf);
 			
-	
+			fahrtSpielenView.frame.dispose();
 		//	FahrtAuswertung fahrtAuswertung = new FahrtAuswertung(sf.getZeit(),sf.getRang());
 			
 			
@@ -111,7 +111,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 		for(int i = 0; i<zeiten.length;i++)
 		{
-			if(zeit>=zeiten[i])
+			if(zeit<=zeiten[i])
 			{
 			sf.setRang(i+1);
 			break;
