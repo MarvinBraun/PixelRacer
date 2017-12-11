@@ -15,38 +15,22 @@ import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 
 public class KartHinzufügenView {
 
 	protected JFrame frmPixelRacer;
-	private JTextField textFieldName;
-	private JTextField textFieldBeschleunigung;
-	private JTextField textFieldMaxGeschwindigkeit;
-	private JTextField textFieldPunktzahl;
-	private JTextField textFieldGrafik;
-	private JButton btnAuswhlen;
-	private JRadioButton rdbtnFree;
-	private JRadioButton rdbtnPremium;
-	private ButtonGroup bgStatus;
-	private JFileChooser fc;
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					KartHinzufügenView window = new KartHinzufügenView();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	protected JTextField textFieldName;
+	protected JTextField textFieldBeschleunigung;
+	protected JTextField textFieldMaxGeschwindigkeit;
+	protected JTextField textFieldPunktzahl;
+	protected JTextField textFieldGrafik;
+	protected JButton btnAuswhlen;
+	protected JButton btnAbsenden;
+	protected JRadioButton rdbtnFree;
+	protected JRadioButton rdbtnPremium;
+	protected ButtonGroup bgStatus;
+	protected JFileChooser fc;
 
 	/**
 	 * Create the application.
@@ -156,7 +140,7 @@ public class KartHinzufügenView {
 		
 		frmPixelRacer.getContentPane().add(btnAuswhlen);
 		
-		JButton btnAbsenden = new JButton("absenden");
+		btnAbsenden = new JButton("absenden");
 		btnAbsenden.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAbsenden.setBounds(450, 413, 107, 23);
 		frmPixelRacer.getContentPane().add(btnAbsenden);
