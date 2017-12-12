@@ -18,15 +18,13 @@ public class Bot {
 	int länge;
 	int geschwindigkeit;
 	int beschleunigung;
-	int schwierigkeit;
 
-	public Bot(int streckenlänge, int geschwindigkeit, int beschleunigung, int schwierigkeit) {
+	public Bot(int streckenlänge, int geschwindigkeit, int beschleunigung) {
 		
 		länge = streckenlänge;
 		this.geschwindigkeit = geschwindigkeit;
 		this.beschleunigung = beschleunigung;
-		this.schwierigkeit = schwierigkeit;
-		
+
 		zeit = (int) (((länge / geschwindigkeit) + (geschwindigkeit / beschleunigung)) * Math.random());
 	}
 
