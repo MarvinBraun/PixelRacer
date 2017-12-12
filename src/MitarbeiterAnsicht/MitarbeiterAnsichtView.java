@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class MitarbeiterAnsicht {
+public class MitarbeiterAnsichtView {
 
 	private JFrame frmPixelRacer;
 
@@ -25,7 +25,7 @@ public class MitarbeiterAnsicht {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MitarbeiterAnsicht window = new MitarbeiterAnsicht();
+					MitarbeiterAnsichtView window = new MitarbeiterAnsichtView();
 					window.frmPixelRacer.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +37,7 @@ public class MitarbeiterAnsicht {
 	/**
 	 * Create the application.
 	 */
-	public MitarbeiterAnsicht() {
+	public MitarbeiterAnsichtView() {
 		initialize();
 	}
 
