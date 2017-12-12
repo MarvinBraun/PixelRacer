@@ -14,6 +14,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.UIManager;
 
 
@@ -31,6 +33,9 @@ public class KartHinzufügenView {
 	protected JRadioButton rdbtnPremium;
 	protected ButtonGroup bgStatus;
 	protected JFileChooser fc;
+	protected FileFilter filter;
+
+
 
 	/**
 	 * Create the application.
@@ -133,6 +138,7 @@ public class KartHinzufügenView {
 		textFieldGrafik.setColumns(10);
 		
 		fc = new JFileChooser();
+		filter = new FileNameExtensionFilter("Portable Network Graphics (*.png)", "png");
 
 		btnAuswhlen = new JButton("ausw\u00E4hlen");
 		btnAuswhlen.setFont(new Font("Tahoma", Font.PLAIN, 15));
