@@ -16,7 +16,7 @@ public class Fahrtverwaltung {
 	
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrten()
 	{
-		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer-Fahrt");
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt");
 		try {
 			while(rs.next())
 			{
@@ -27,6 +27,34 @@ public class Fahrtverwaltung {
 				fahrt.setStreckenName(rs.getString("Streckenname"));
 				fahrt.setKartName(rs.getString("Kartname"));
 				fahrt.setBenutzername(rs.getString("Benutzername"));
+				fahrt.setSchwierigkeit(rs.getString("Schwierigkeit"));
+				singleplayerFahrten.add(fahrt);
+			}
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Datenbankschnittstelle.closeConnections();
+		return singleplayerFahrten;
+	}
+	
+	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzer(String benutzername, String streckenname)
+	{
+		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and streckenname = '"+streckenname+"'");
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and streckenname = '"+streckenname+"'");
+		try {
+			while(rs.next())
+			{
+				SingleplayerFahrt fahrt = new SingleplayerFahrt();
+				fahrt.setSitzungsID(rs.getInt("SitzungsID"));
+				fahrt.setRang(rs.getInt("Rang"));
+				fahrt.setZeit(rs.getInt("Zeit"));
+				fahrt.setStreckenName(rs.getString("Streckenname"));
+				fahrt.setKartName(rs.getString("Kartname"));
+				fahrt.setBenutzername(rs.getString("Benutzername"));
+				fahrt.setSchwierigkeit(rs.getString("Schwierigkeit"));
 				singleplayerFahrten.add(fahrt);
 			}
 			rs.close();
@@ -66,6 +94,7 @@ public class Fahrtverwaltung {
 		return id;
 		
 	}
+
 	
 	public int gibNeueMultiplayerID()
 	{
@@ -95,6 +124,14 @@ public class Fahrtverwaltung {
 		System.out.println(mf.getSitzungsID()+","+mf.getZeit()+","+mf.getMultiplayerID()+","+mf.getRang()+",'"+mf.getBenutzername()+"','"+mf.getStreckenName()+"','"+mf.getKartName());
 		
 			Datenbankschnittstelle.executeUpdate("insert into multiplayer_fahrt values("+mf.getSitzungsID()+","+mf.getZeit()+","+mf.getMultiplayerID()+","+mf.getRang()+",'"+mf.getBenutzername()+"','"+mf.getStreckenName()+"','"+mf.getKartName()+"')");
+			Datenbankschnittstelle.closeConnections();
+	}
+	
+	public void sendeSingleplayerFahrt(SingleplayerFahrt sf)
+	{
+		System.out.println(sf.getSitzungsID()+","+sf.getZeit()+","+sf.getRang()+",'"+sf.getBenutzername()+"','"+sf.getStreckenName()+"','"+sf.getKartName()+"','"+sf.getSchwierigkeit()+"')");
+		
+			Datenbankschnittstelle.executeUpdate(sf.getSitzungsID()+","+sf.getZeit()+","+sf.getRang()+",'"+sf.getBenutzername()+"','"+sf.getStreckenName()+"','"+sf.getKartName()+"','"+sf.getSchwierigkeit()+"')");
 			Datenbankschnittstelle.closeConnections();
 	}
 	

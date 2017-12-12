@@ -18,14 +18,26 @@ public class Bot {
 	int länge;
 	int geschwindigkeit;
 	int beschleunigung;
+	int schwierigkeit;
 
-	public Bot(int streckenlänge, int geschwindigkeit, int beschleunigung) {
+	public Bot(int streckenlänge, int geschwindigkeit, int beschleunigung, int schwierigkeit) {
 		
 		länge = streckenlänge;
 		this.geschwindigkeit = geschwindigkeit;
 		this.beschleunigung = beschleunigung;
+		float schwierigkeit2 = 0;
+		
+		if(schwierigkeit==1)
+			schwierigkeit2 = (float) (0.9 +(Math.random() * 1.7)); 
+		else if(schwierigkeit==2)
+			schwierigkeit2 = (float) (0.7 +(Math.random() * 1.3)); 
+		else	if(schwierigkeit==1)
+			schwierigkeit2 = (float) (0.5 +(Math.random() * 1.2)); 
+					
+		
 
-		zeit = (int) (((länge / geschwindigkeit) + (geschwindigkeit / beschleunigung)) * Math.random());
+		zeit = (int) (((länge/geschwindigkeit)+(geschwindigkeit/beschleunigung))*schwierigkeit2);
+		System.out.println("Gefahrene Zeit des Bots:"+zeit);
 	}
 
 	public static void main(String[] args) {

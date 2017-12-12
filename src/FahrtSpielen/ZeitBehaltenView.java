@@ -50,21 +50,22 @@ public class ZeitBehaltenView {
 	 * Create the application.
 	 */
 	public ZeitBehaltenView(int x, int y, SingleplayerFahrt f, int versuche) {
-		initialize(x, y, zeit, versuche);
+		initialize();
 		x1 = x;
 		y2=y;
 		zeit2 = f.getZeit();
+		lblRundeXZeit.setText("Zeit gefahren: "+zeit2+"s");
 		versuche2 = versuche;
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(int x, int y, int zeit, int versuche) {
+	private void initialize() {
 		
 		frame = new JFrame();
 		frame.setBackground(new Color(211, 211, 211));
-		frame.setBounds(x, y, 352, 140);
+		frame.setBounds(x1, y2, 352, 140);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -82,7 +83,7 @@ public class ZeitBehaltenView {
 		zeitBehaltenBtn.setBounds(174, 67, 152, 23);
 		frame.getContentPane().add(zeitBehaltenBtn);
 		
-		lblRundeXZeit = new JLabel("Zeit gefahren: "+zeit+"s");
+		lblRundeXZeit = new JLabel("Zeit gefahren: "+zeit2+"s");
 		lblRundeXZeit.setFont(new Font("pixelmix", Font.PLAIN, 13));
 		lblRundeXZeit.setBounds(20, 11, 295, 45);
 		frame.getContentPane().add(lblRundeXZeit);

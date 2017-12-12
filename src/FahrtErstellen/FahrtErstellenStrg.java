@@ -15,6 +15,7 @@ import java.util.ListIterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import Fahrt.Fahrtverwaltung;
@@ -47,6 +48,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	LinkedList<String> schwierigkeiten;
 	LinkedList<Kart> kartliste = new LinkedList<Kart>();
 	LinkedList<Strecke> streckenliste = new LinkedList<Strecke>();
+	LinkedList<SingleplayerFahrt> schwierigkeitsCheck = new LinkedList<SingleplayerFahrt>();
 	
 	BufferedImage streckenbild;
 	int singlemultiplayer;
@@ -70,7 +72,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		karts = new Kartverwaltung();
 		kartliste =karts.gibKart();
 		itKart = new MyIteratorKart(kartliste.listIterator());
-		
+		ladeKarts();
 		
 		//Initialisieren der Strecke
 		strecken= new Streckenverwaltung();
@@ -105,7 +107,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.schwierigkeitBtn2.addActionListener(this);
 			view.schwierigkeitLbl.setText(itString.next());
 			sf = new SingleplayerFahrt();
-			
+			sf.setSchwierigkeit("Bronze");
 			
 		
 		}
@@ -127,7 +129,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public static void main(String[] args)
 	{
-		FahrtErstellenStrg strg = new FahrtErstellenStrg(2);
+		FahrtErstellenStrg strg = new FahrtErstellenStrg(1);
 		MusicPlayer.audioBackground();
 
 	}
@@ -206,7 +208,8 @@ public class FahrtErstellenStrg implements ActionListener {
 	}
 	
 	public void schwierigkeitBack()
-	{String s;
+	{
+		String s;
 		if((s=itString.previous())!=null)
 		{
 			view.schwierigkeitLbl.setText(s);
@@ -214,12 +217,57 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 		
 	}
+	
+	public void pruefeKarts()
+	{
+		
+	}
+	
+	public void pruefeStrecke()
+	{
+		
+	}
+	
+	public boolean pruefeSchwierigkeit(String a)
+	{
+		schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFürBenutzer("DZeller",s.getStreckenname());
+		Iterator<SingleplayerFahrt> it = schwierigkeitsCheck.iterator();
+		boolean pruefung = false;
+		while(it.hasNext())
+		{
+			SingleplayerFahrt sf;
+			String check;
+			sf = it.next();
+			check = sf.getSchwierigkeit();
+			if(a.equals(check) && sf.getRang()==1)
+				
+			pruefung = true;
+			break;
+				
+		}
+		return pruefung;
+		
+		
+		
+	}
 	public void schwierigkeitVorwärts()
 	{
 		String s;
+		String prüfung;
+		
 		if((s=itString.next())!=null)
 		{
+			prüfung = view.schwierigkeitLbl.getText();
+			if(pruefeSchwierigkeit(prüfung)==true)
 			view.schwierigkeitLbl.setText(s);
+			else
+				{System.out.println("Schwierigkeit noch nicht freigeschaltet");
+				JOptionPane pane = new JOptionPane();
+				pane.setBounds(view.frame.getX()+300,view.frame.getY()+250,200,100);
+				pane.showMessageDialog(null, "Schwierigkeit nocht nicht freigeschaltet");
+					
+				itString.previous();
+				}
 		}
 		
 	}

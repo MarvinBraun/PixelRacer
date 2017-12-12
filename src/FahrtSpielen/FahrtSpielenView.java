@@ -26,8 +26,6 @@ public class FahrtSpielenView {
 	JLabel lblAnzahlVerbleibenderVersuche;
 
 	JLabel lblLetzteZeit;
-	
-	JLabel lblBestzeitDerStrecke; 
 	JButton fahrenBtn;
 	
 	
@@ -74,23 +72,17 @@ public class FahrtSpielenView {
 		fahrenBtn.setBounds(306, 214, 172, 58);
 		frame.getContentPane().add(fahrenBtn);
 		
-		lblAnzahlVerbleibenderVersuche = new JLabel("Anzahl verbleibender Versuche:");
+		lblAnzahlVerbleibenderVersuche = new JLabel("Versuche: 3");
 		lblAnzahlVerbleibenderVersuche.setForeground(Color.RED);
-		lblAnzahlVerbleibenderVersuche.setFont(new Font("pixelmix", Font.PLAIN, 18));
-		lblAnzahlVerbleibenderVersuche.setBounds(10, 11, 449, 33);
+		lblAnzahlVerbleibenderVersuche.setFont(new Font("pixelmix", Font.BOLD, 30));
+		lblAnzahlVerbleibenderVersuche.setBounds(22, 21, 272, 33);
 		frame.getContentPane().add(lblAnzahlVerbleibenderVersuche);
 		
-		lblLetzteZeit = new JLabel("Letzte Zeit:");
+		lblLetzteZeit = new JLabel("Zeit: 0s");
 		lblLetzteZeit.setForeground(Color.RED);
-		lblLetzteZeit.setFont(new Font("pixelmix", Font.PLAIN, 18));
-		lblLetzteZeit.setBounds(10, 55, 296, 33);
+		lblLetzteZeit.setFont(new Font("pixelmix", Font.BOLD, 26));
+		lblLetzteZeit.setBounds(22, 65, 296, 33);
 		frame.getContentPane().add(lblLetzteZeit);
-		
-		lblBestzeitDerStrecke = new JLabel("Bestzeit der Strecke:");
-		lblBestzeitDerStrecke.setForeground(Color.RED);
-		lblBestzeitDerStrecke.setFont(new Font("pixelmix", Font.PLAIN, 18));
-		lblBestzeitDerStrecke.setBounds(10, 105, 368, 23);
-		frame.getContentPane().add(lblBestzeitDerStrecke);
 	
 		MovementBackward m = new MovementBackward(5);
 		m.label.setLocation(0, 0);

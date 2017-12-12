@@ -17,7 +17,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	FahrtSpielenView fahrtSpielenView;
 	ZeitBehaltenView zeitBehaltenView;
 	int versuche = 3;
-	int zeit=0;
+
 	int[] zeiten = new int[3];
 	int rang;
 	Kart kart;
@@ -77,23 +77,22 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 		if(versuche>1)
 		{
-			int zeit =(int) ((kart.getMaxkmh()/5)*(0.1*kart.beschleunigung)*(Math.random() * (2 - 1) + 1));
+			
+			int zeit = (int) ((strecke.getLaenge()/kart.getMaxkmh())+(kart.getMaxkmh()/kart.beschleunigung)*(0.5*(Math.random()*1.2)));
 			System.out.println("Gefahrene Zeit:"+zeit);
 			sf.setZeit(zeit);
 			versuche--;
 			String a = ""+versuche;
-			fahrtSpielenView.lblAnzahlVerbleibenderVersuche.setText(a);
+			fahrtSpielenView.lblAnzahlVerbleibenderVersuche.setText("Versuche: "+a);
 			String b = ""+sf.getZeit();
-			fahrtSpielenView.lblLetzteZeit.setText(b);
-			zeitBehaltenView = new ZeitBehaltenView(fahrtSpielenView.frame.getX(),fahrtSpielenView.frame.getY(),sf, versuche);	
+			fahrtSpielenView.lblLetzteZeit.setText("Zeit: "+b+"s");
+			zeitBehaltenView = new ZeitBehaltenView(fahrtSpielenView.frame.getX()+400,fahrtSpielenView.frame.getY()+300,sf, versuche);	
 		}
 		
 		else if(versuche==1)
 		{
 			simuliereBotZeiten();
-		
 			FahrtAuswertungStrg strg = new FahrtAuswertungStrg(sf);
-			
 			fahrtSpielenView.frame.dispose();
 		//	FahrtAuswertung fahrtAuswertung = new FahrtAuswertung(sf.getZeit(),sf.getRang());
 			
@@ -111,11 +110,14 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 		for(int i = 0; i<zeiten.length;i++)
 		{
-			if(zeit<=zeiten[i])
+			if(sf.zeit<=zeiten[i])
 			{
+				System.out.println("Zeiten der Bots:"+zeiten[i]);
 			sf.setRang(i+1);
 			break;
 			}
+			else
+				sf.setRang(zeiten.length);
 			
 		}
 		
