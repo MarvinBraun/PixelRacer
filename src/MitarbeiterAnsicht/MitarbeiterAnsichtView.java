@@ -16,23 +16,13 @@ import java.awt.event.ActionEvent;
 
 public class MitarbeiterAnsichtView {
 
-	private JFrame frmPixelRacer;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MitarbeiterAnsichtView window = new MitarbeiterAnsichtView();
-					window.frmPixelRacer.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	protected JFrame frmPixelRacer;
+	protected JButton btnFgeKartHinzu;
+	protected JButton btnFgeStreckeHinzu;
+	protected JButton btnFgeBezahlartHinzu;
+	protected JButton btnAbmelden;
+	
+	
 
 	/**
 	 * Create the application.
@@ -58,26 +48,22 @@ public class MitarbeiterAnsichtView {
 		lblPixelRacer.setBounds(169, 88, 461, 33);
 		frmPixelRacer.getContentPane().add(lblPixelRacer);
 		
-		JButton btnFgeKartHinzu = new JButton("Füge Kart hinzu");
+		btnFgeKartHinzu = new JButton("Füge Kart hinzu");
 		btnFgeKartHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnFgeKartHinzu.setBounds(92, 333, 172, 45);
 		frmPixelRacer.getContentPane().add(btnFgeKartHinzu);
 		
-		JButton btnFgeStreckeHinzu = new JButton("F\u00FCge Strecke hinzu");
+		btnFgeStreckeHinzu = new JButton("F\u00FCge Strecke hinzu");
 		btnFgeStreckeHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnFgeStreckeHinzu.setBounds(296, 333, 172, 45);
 		frmPixelRacer.getContentPane().add(btnFgeStreckeHinzu);
 		
-		JButton btnFgeBezahlartHinzu = new JButton("F\u00FCge Bezahlart hinzu");
+		btnFgeBezahlartHinzu = new JButton("F\u00FCge Bezahlart hinzu");
 		btnFgeBezahlartHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnFgeBezahlartHinzu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnFgeBezahlartHinzu.setBounds(500, 333, 172, 45);
 		frmPixelRacer.getContentPane().add(btnFgeBezahlartHinzu);
 		
-		JButton btnAbmelden = new JButton("abmelden");
+		btnAbmelden = new JButton("abmelden");
 		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnAbmelden.setBounds(577, 473, 95, 23);
 		frmPixelRacer.getContentPane().add(btnAbmelden);
