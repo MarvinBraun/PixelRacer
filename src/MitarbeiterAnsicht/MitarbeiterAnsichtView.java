@@ -44,28 +44,28 @@ public class MitarbeiterAnsichtView {
 		frmPixelRacer.getContentPane().setLayout(null);
 		
 		JLabel lblPixelRacer = new JLabel("Pixel Racer - Mitarbeiter Men\u00FC");
-		lblPixelRacer.setFont(new Font("Tahoma", Font.BOLD, 30));
 		lblPixelRacer.setBounds(169, 88, 461, 33);
+		lblPixelRacer.setFont(new Font("Tahoma", Font.BOLD, 30));
 		frmPixelRacer.getContentPane().add(lblPixelRacer);
 		
 		btnFgeKartHinzu = new JButton("Füge Kart hinzu");
-		btnFgeKartHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnFgeKartHinzu.setBounds(92, 333, 172, 45);
+		btnFgeKartHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		frmPixelRacer.getContentPane().add(btnFgeKartHinzu);
 		
 		btnFgeStreckeHinzu = new JButton("F\u00FCge Strecke hinzu");
-		btnFgeStreckeHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnFgeStreckeHinzu.setBounds(296, 333, 172, 45);
+		btnFgeStreckeHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		frmPixelRacer.getContentPane().add(btnFgeStreckeHinzu);
 		
 		btnFgeBezahlartHinzu = new JButton("F\u00FCge Bezahlart hinzu");
-		btnFgeBezahlartHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnFgeBezahlartHinzu.setBounds(500, 333, 172, 45);
+		btnFgeBezahlartHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		frmPixelRacer.getContentPane().add(btnFgeBezahlartHinzu);
 		
 		btnAbmelden = new JButton("abmelden");
-		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnAbmelden.setBounds(577, 473, 95, 23);
+		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		frmPixelRacer.getContentPane().add(btnAbmelden);
 	}
 }
