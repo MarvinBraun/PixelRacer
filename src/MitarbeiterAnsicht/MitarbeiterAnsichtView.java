@@ -71,7 +71,7 @@ public class MitarbeiterAnsichtView {
 		frmPixelRacer.getContentPane().add(btnAbmelden);
 		
 		btnAddma = new JButton("");
-		btnAddma.setIcon(new ImageIcon("C:\\Users\\Sean\\Downloads\\Business-Man-Add-48.png"));
+		btnAddma.setIcon(new ImageIcon(MitarbeiterAnsichtView.class.getResource("/Resources/Business-Man-Add-48.png")));
 		btnAddma.setBounds(24, 24, 50, 33);
 		frmPixelRacer.getContentPane().add(btnAddma);
 	}
