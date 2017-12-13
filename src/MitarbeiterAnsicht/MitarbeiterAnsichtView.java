@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class MitarbeiterAnsichtView {
 
@@ -21,6 +22,7 @@ public class MitarbeiterAnsichtView {
 	protected JButton btnFgeStreckeHinzu;
 	protected JButton btnFgeBezahlartHinzu;
 	protected JButton btnAbmelden;
+	protected JButton btnAddma;
 	
 	
 
@@ -67,5 +69,10 @@ public class MitarbeiterAnsichtView {
 		btnAbmelden.setBounds(577, 473, 95, 23);
 		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		frmPixelRacer.getContentPane().add(btnAbmelden);
+		
+		btnAddma = new JButton("");
+		btnAddma.setIcon(new ImageIcon("C:\\Users\\Sean\\Downloads\\Business-Man-Add-48.png"));
+		btnAddma.setBounds(24, 24, 50, 33);
+		frmPixelRacer.getContentPane().add(btnAddma);
 	}
 }
