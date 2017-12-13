@@ -58,7 +58,7 @@ public class ModusAuswählenView {
 		btnMultiplayer.setBounds(429, 241, 187, 31);
 		frame.getContentPane().add(btnMultiplayer);
 		
-		MovementBackward m = new MovementBackward(5);
+		/*MovementBackward m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
 		m.label.setSize(200, 200);
 		m.label.setBufferedImage("src/Resources/car2.png",400);
@@ -75,6 +75,6 @@ public class ModusAuswählenView {
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);
 		frame.setVisible(true);
-		
+		*/
 	}
 }

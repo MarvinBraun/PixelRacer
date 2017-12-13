@@ -57,7 +57,7 @@ public class MultiplayerAuswahlView {
 		btnbeitreten.setBounds(406, 237, 315, 35);
 		frame.getContentPane().add(btnbeitreten);
 		
-		MovementBackward m = new MovementBackward(5);
+		/*MovementBackward m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
 		m.label.setSize(200, 200);
 		m.label.setBufferedImage("src/Resources/car2.png",400);
@@ -74,6 +74,7 @@ public class MultiplayerAuswahlView {
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);
 		frame.setVisible(true);
+		*/
 	}
 
 }

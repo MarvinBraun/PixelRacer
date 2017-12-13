@@ -2,34 +2,34 @@ package ModusAuswählen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-
 import FahrtErstellen.FahrtErstellenStrg;
 
 public class ModusauswählenStrg implements ActionListener {
 
 	static ModusauswählenStrg ms;
-	ModusAuswählenView mv;
+	ModusAuswählenView mav;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == mv.btnSingleplayer) {
+		if (e.getSource() == mav.btnSingleplayer) {
+			mav.frame.dispose();
 			FahrtErstellenStrg.main(null);
-
 		}
-		if (e.getSource() == mv.btnMultiplayer) {
+		if (e.getSource() == mav.btnMultiplayer) {
+			mav.frame.dispose();
 			MultiplayerAuswahlStrg.main(null);
+
 		}
 
 	}
 
 	public ModusauswählenStrg() {
-		mv = new ModusAuswählenView();
-		mv.frame.setVisible(true);
-		mv.btnMultiplayer.addActionListener(this);
-		mv.btnSingleplayer.addActionListener(this);
+		mav = new ModusAuswählenView();
+		mav.frame.setVisible(true);
+		mav.btnMultiplayer.addActionListener(this);
+		mav.btnSingleplayer.addActionListener(this);
+
 	}
 
 	public static void main(String[] args) {
