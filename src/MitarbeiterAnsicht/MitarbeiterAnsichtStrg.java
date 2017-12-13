@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import KartHinzufügen.KartHinzufügenStrg;
+import StreckeHinzufügen.StreckeHinzufügenStrg;
 
 public class MitarbeiterAnsichtStrg implements ActionListener {
 	
@@ -13,7 +14,6 @@ public class MitarbeiterAnsichtStrg implements ActionListener {
 		maaView = new MitarbeiterAnsichtView();
 		maaView.frmPixelRacer.setVisible(true);
 		maaView.btnFgeKartHinzu.addActionListener(this);
-		maaView.btnFgeStreckeHinzu.addActionListener(this);
 		maaView.btnFgeStreckeHinzu.addActionListener(this);
 		maaView.btnFgeBezahlartHinzu.addActionListener(this);
 		
@@ -25,12 +25,16 @@ public class MitarbeiterAnsichtStrg implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e){
-		if(e.getSource() == maaView.btnFgeBezahlartHinzu){
-			featureNichtVorhandenMeldung();
-		}
 		if(e.getSource() == maaView.btnFgeKartHinzu){
 			KartHinzufügenStrg khStrg = new KartHinzufügenStrg();
 			maaView.frmPixelRacer.dispose();
+		}
+		if(e.getSource() == maaView.btnFgeStreckeHinzu){
+			StreckeHinzufügenStrg stStrg = new StreckeHinzufügenStrg();
+			maaView.frmPixelRacer.dispose();
+		}
+		if(e.getSource() == maaView.btnFgeBezahlartHinzu){
+			featureNichtVorhandenMeldung();
 		}
 	}
 	
