@@ -13,6 +13,7 @@ public class FahrtAuswertungStrg {
 		view.lblDeineZeit.setText("Deine Zeit:"+sf.getZeit());
 		view.lblDeinPlatz.setText("Dein Rang:"+sf.getRang());
 		
+		
 		switch(sf.getRang())
 		{
 		

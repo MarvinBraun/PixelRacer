@@ -14,10 +14,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import java.awt.Color;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class ZeitBehaltenView {
 
-	private JFrame frame;
+	JFrame frame;
 	JButton erneutFahrenBtn;
 	JButton zeitBehaltenBtn; 
 	JLabel lblRundeXZeit;
@@ -55,6 +57,11 @@ public class ZeitBehaltenView {
 		y2=y;
 		zeit2 = f.getZeit();
 		lblRundeXZeit.setText("Zeit gefahren: "+zeit2+"s");
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(ZeitBehaltenView.class.getResource("/Resources/stopwatch_icon-icons.com_64805.png")));
+		lblNewLabel.setBounds(268, 0, 57, 67);
+		frame.getContentPane().add(lblNewLabel);
 		versuche2 = versuche;
 	}
 
@@ -64,32 +71,39 @@ public class ZeitBehaltenView {
 	private void initialize() {
 		
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(255, 182, 193));
 		frame.setBackground(new Color(211, 211, 211));
-		frame.setBounds(x1, y2, 352, 140);
+		frame.setBounds(100, 100, 354, 136);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setUndecorated(true);
 		
 		erneutFahrenBtn = new JButton("Erneut Fahren");
+		erneutFahrenBtn.setBackground(new Color(176, 224, 230));
+		erneutFahrenBtn.setBorderPainted(false);
 		erneutFahrenBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		erneutFahrenBtn.setFont(new Font("pixelmix", Font.PLAIN, 11));
-		erneutFahrenBtn.setBounds(10, 67, 144, 23);
+		erneutFahrenBtn.setFont(new Font("pixelmix", Font.PLAIN, 12));
+		erneutFahrenBtn.setBounds(10, 67, 152, 58);
 		frame.getContentPane().add(erneutFahrenBtn);
 		
 		zeitBehaltenBtn = new JButton("Zeit behalten");
-		zeitBehaltenBtn.setFont(new Font("pixelmix", Font.PLAIN, 11));
-		zeitBehaltenBtn.setBounds(174, 67, 152, 23);
+		zeitBehaltenBtn.setBackground(new Color(176, 224, 230));
+		zeitBehaltenBtn.setBorderPainted(false);
+		zeitBehaltenBtn.setFont(new Font("pixelmix", Font.PLAIN, 12));
+		zeitBehaltenBtn.setBounds(185, 67, 159, 58);
 		frame.getContentPane().add(zeitBehaltenBtn);
 		
 		lblRundeXZeit = new JLabel("Zeit gefahren: "+zeit2+"s");
-		lblRundeXZeit.setFont(new Font("pixelmix", Font.PLAIN, 13));
-		lblRundeXZeit.setBounds(20, 11, 295, 45);
+		lblRundeXZeit.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRundeXZeit.setFont(new Font("pixelmix", Font.BOLD, 18));
+		lblRundeXZeit.setBounds(-16, 11, 315, 45);
 		frame.getContentPane().add(lblRundeXZeit);
 		
 		background = new JLabel("");
-		background.setBounds(0, 0, 336, 101);
+		background.setBounds(0, 0, 304, 101);
 		frame.getContentPane().add(background);
 		frame.setVisible(true);
 	}

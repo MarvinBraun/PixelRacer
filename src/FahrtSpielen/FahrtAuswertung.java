@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class FahrtAuswertung {
 
@@ -18,6 +19,7 @@ public class FahrtAuswertung {
 	JLabel lblNewLabel ;
 	JLabel lblDeineZeit;
 	JLabel lblGewonnenPunkte;
+	private JLabel lblBackground;
 	
 	
 	
@@ -62,21 +64,28 @@ public class FahrtAuswertung {
 		frame.getContentPane().add(btnNewButton);
 		
 		lblDeinPlatz = new JLabel("Dein Platz:");
-		lblDeinPlatz.setBounds(291, 11, 142, 41);
+		lblDeinPlatz.setFont(new Font("pixelmix", Font.BOLD, 18));
+		lblDeinPlatz.setBounds(145, 60, 212, 73);
 		frame.getContentPane().add(lblDeinPlatz);
 		
 		lblDeineZeit = new JLabel("Deine Zeit:");
-		lblDeineZeit.setBounds(291, 60, 142, 34);
+		lblDeineZeit.setFont(new Font("pixelmix", Font.BOLD, 18));
+		lblDeineZeit.setBounds(431, 60, 234, 73);
 		frame.getContentPane().add(lblDeineZeit);
 		
-		lblGewonnenPunkte = new JLabel("Gewonnen Punkte:");
-		lblGewonnenPunkte.setBounds(291, 108, 142, 41);
+		lblGewonnenPunkte = new JLabel("Gewonnene Punkte:");
+		lblGewonnenPunkte.setFont(new Font("pixelmix", Font.BOLD, 18));
+		lblGewonnenPunkte.setBounds(51, 163, 254, 81);
 		frame.getContentPane().add(lblGewonnenPunkte);
 		
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\podest.png"));
 		lblNewLabel.setBounds(193, 266, 404, 200);
 		frame.getContentPane().add(lblNewLabel);
+		
+		lblBackground = new JLabel("");
+		lblBackground.setBounds(0, 0, 784, 561);
+		frame.getContentPane().add(lblBackground);
 		frame.setVisible(true);
 	}
 

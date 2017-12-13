@@ -57,7 +57,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	MultiplayerFahrt mf;
 	Kart k;
 	Strecke s;
-	int schwierigkeit=0;
+	int schwierigkeit=1;
 	
 	
 
@@ -288,7 +288,8 @@ public class FahrtErstellenStrg implements ActionListener {
 		int id = fahrten.gibNeueID(2);
 		sf.setSitzungsID(id);
 		FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,k,s,schwierigkeit);
-		
+		sf.setKartName(k.kartname);
+		sf.setStreckenName(s.getStreckenname());
 		}
 		if(singlemultiplayer==2)
 		{

@@ -203,7 +203,15 @@ public class FahrtErstellenView {
 				
 		Movement m = new Movement(10);
 		
-		m.label.setBufferedImage("src/Resources/Hintergrund.png",0);
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		m.label.setBufferedImage(image,0);
 		
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);

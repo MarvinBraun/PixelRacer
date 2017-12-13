@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
@@ -27,7 +28,11 @@ public class FahrtSpielenView {
 
 	JLabel lblLetzteZeit;
 	JButton fahrenBtn;
+	MovementBackward m;
+	Movement m2;
 	
+	static BufferedImage kartbild;
+	static BufferedImage streckenbild;
 	
 	
 	
@@ -39,7 +44,7 @@ public class FahrtSpielenView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FahrtSpielenView window = new FahrtSpielenView();
+					FahrtSpielenView window = new FahrtSpielenView(kartbild, streckenbild);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +56,9 @@ public class FahrtSpielenView {
 	/**
 	 * Create the application.
 	 */
-	public FahrtSpielenView() {
+	public FahrtSpielenView(BufferedImage kart, BufferedImage strecke) {
+		kartbild = kart;
+		streckenbild = strecke;
 		initialize();
 	}
 
@@ -84,19 +91,19 @@ public class FahrtSpielenView {
 		lblLetzteZeit.setBounds(22, 65, 296, 33);
 		frame.getContentPane().add(lblLetzteZeit);
 	
-		MovementBackward m = new MovementBackward(5);
+		m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
 		m.label.setSize(200, 200);
-		m.label.setBufferedImage("src/Resources/car2.png",400);
+		m.label.setBufferedImage(kartbild,400);
 		
 		m.label.setBounds(0, 0, 200, 200);
 		frame.getContentPane().add(m.label);
 		
 
-		Movement m2 = new Movement(5);
+		m2 = new Movement(5);
 		m2.label.setLocation(0, 0);
 		m2.label.setSize(800, 571);
-		m2.label.setBufferedImage("src/Resources/hockenheim.png",0);
+		m2.label.setBufferedImage(streckenbild,0);
 	
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);

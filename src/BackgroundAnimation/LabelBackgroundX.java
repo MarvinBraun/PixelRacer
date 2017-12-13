@@ -22,16 +22,11 @@ public class LabelBackgroundX extends JLabel {
 	 BufferedImage ib2;
 	 int y;
 	
-	public  void setBufferedImage(String s, int y)
+	public  void setBufferedImage(BufferedImage image, int y)
 	{
-		try {
-			ib1 = ImageIO.read(new File (s));
-			ib2 = ImageIO.read(new File(s));
+			ib1 = image;
+			ib2 = image;
 			this.y = y;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	}
 	
