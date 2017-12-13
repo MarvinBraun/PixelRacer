@@ -85,6 +85,16 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 		if(versuche>1)
 		{
+			
+			try {
+				fahrtSpielenView.fahrenBtn.setVisible(false);
+				Thread.sleep(300);
+				fahrtSpielenView.fahrenBtn.setVisible(true);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			float schwierigkeit2 = (float) (0.8 +(Math.random() * 1.5)); 
 			
 			int zeit = (int) ((strecke.getLaenge()/kart.getMaxkmh())+(kart.getMaxkmh()/kart.beschleunigung)*schwierigkeit2);
@@ -107,7 +117,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		else if(versuche==1)
 		{
 			simuliereBotZeiten();
-			FahrtAuswertungStrg strg = new FahrtAuswertungStrg(sf);
+			FahrtAuswertungStrg strg = new FahrtAuswertungStrg(sf,streckenBild);
 			fahrtSpielenView.frame.dispose();
 		//	FahrtAuswertung fahrtAuswertung = new FahrtAuswertung(sf.getZeit(),sf.getRang());
 			
@@ -155,7 +165,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		if(e.getSource()==zeitBehaltenView.zeitBehaltenBtn)
 		{
 			simuliereBotZeiten();
-			FahrtAuswertungStrg strg = new FahrtAuswertungStrg(sf);
+			FahrtAuswertungStrg strg = new FahrtAuswertungStrg(sf,streckenBild);
 			fahrtSpielenView.frame.dispose();
 			zeitBehaltenView.frame.dispose();
 			

@@ -6,21 +6,31 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+
+import BackgroundAnimation.Movement;
+import BackgroundAnimation.MovementY;
+
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Color;
 
 public class FahrtAuswertung {
 
-	private JFrame frame;
+	JFrame frame;
 	JButton btnNewButton;
 	JLabel lblDeinPlatz;
 	JLabel lblNewLabel ;
 	JLabel lblDeineZeit;
 	JLabel lblGewonnenPunkte;
-	private JLabel lblBackground;
-	
+	JLabel lblBackground;
+	JLabel lblConfetti;
+	MovementY m;
 	
 	
 	/**
@@ -55,38 +65,66 @@ public class FahrtAuswertung {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		btnNewButton = new JButton("Bestätigen");
+		btnNewButton = new JButton("Weiter");
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setBackground(new Color(60, 179, 113));
+		btnNewButton.setBorder(null);
+		btnNewButton.setFont(new Font("pixelmix", Font.BOLD, 34));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(291, 483, 192, 67);
+		btnNewButton.setBounds(226, 477, 325, 67);
 		frame.getContentPane().add(btnNewButton);
 		
-		lblDeinPlatz = new JLabel("Dein Platz:");
-		lblDeinPlatz.setFont(new Font("pixelmix", Font.BOLD, 18));
-		lblDeinPlatz.setBounds(145, 60, 212, 73);
+		lblDeinPlatz = new JLabel("Dein Platz: ");
+		lblDeinPlatz.setFont(new Font("pixelmix", Font.BOLD, 25));
+		lblDeinPlatz.setBounds(10, 33, 399, 112);
 		frame.getContentPane().add(lblDeinPlatz);
 		
-		lblDeineZeit = new JLabel("Deine Zeit:");
-		lblDeineZeit.setFont(new Font("pixelmix", Font.BOLD, 18));
-		lblDeineZeit.setBounds(431, 60, 234, 73);
+		lblDeineZeit = new JLabel("Deine Zeit: ");
+		lblDeineZeit.setFont(new Font("pixelmix", Font.BOLD, 25));
+		lblDeineZeit.setBounds(408, 33, 345, 112);
 		frame.getContentPane().add(lblDeineZeit);
 		
-		lblGewonnenPunkte = new JLabel("Gewonnene Punkte:");
-		lblGewonnenPunkte.setFont(new Font("pixelmix", Font.BOLD, 18));
-		lblGewonnenPunkte.setBounds(51, 163, 254, 81);
+		lblGewonnenPunkte = new JLabel("Gewonnene Punkte: ");
+		lblGewonnenPunkte.setFont(new Font("pixelmix", Font.BOLD, 25));
+		lblGewonnenPunkte.setBounds(10, 144, 399, 124);
 		frame.getContentPane().add(lblGewonnenPunkte);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\podest.png"));
-		lblNewLabel.setBounds(193, 266, 404, 200);
+		lblNewLabel.setIcon(new ImageIcon(FahrtAuswertung.class.getResource("/Resources/trophae.png")));
+		lblNewLabel.setBounds(285, 266, 198, 200);
 		frame.getContentPane().add(lblNewLabel);
+		
+		lblConfetti = new JLabel("");
+		lblConfetti.setBounds(0, 0, 784, 561);
+		frame.getContentPane().add(lblConfetti);
+		
+		m = new MovementY(13);
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("src/Resources/konfetti.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		m.label.setBufferedImage(image,0);
+		m.label.setOpaque(false);
+		m.label.setBounds(100, 100, 800, 600);
+		m.label.setVisible(true);
+		
+		frame.getContentPane().add(m.label);
 		
 		lblBackground = new JLabel("");
 		lblBackground.setBounds(0, 0, 784, 561);
 		frame.getContentPane().add(lblBackground);
+		
+		
 		frame.setVisible(true);
+		
+	
 	}
 
 }

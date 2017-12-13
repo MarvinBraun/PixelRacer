@@ -36,6 +36,7 @@ public class FahrtBeitretenView {
 	JLabel lblNewLabel;
 	JButton multiplayerBeitretenBtn;
 	JTextField multiplayerID;
+	Movement m;
 	
 	
 	
@@ -127,9 +128,17 @@ public class FahrtBeitretenView {
 		frame.getContentPane().add(kartName);
 		
 				
-		Movement m = new Movement(10);
+		m = new Movement(10);
 		
-		m.label.setBufferedImage("src/Resources/Hintergrund.png",0);
+		BufferedImage image;
+		try {
+			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		m.label.setBufferedImage(image,0);
 		
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
