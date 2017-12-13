@@ -57,6 +57,8 @@ public class PremiumKartView extends JFrame {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 432, 151);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Premiumkart erwerben");
+		frame.setResizable(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 182, 38, 194, 0 };
 		gridBagLayout.rowHeights = new int[] { 30, 0, 23, 23, 0 };
