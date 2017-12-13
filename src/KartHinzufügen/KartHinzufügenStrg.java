@@ -33,11 +33,6 @@ public class KartHinzufügenStrg implements ActionListener {
 		khView.btnAuswhlen.addActionListener(this);
 		khView.btnAbsenden.addActionListener(this);
 	}
-
-	//Main
-	public static void main(String[] args) {
-		KartHinzufügenStrg khStrg = new KartHinzufügenStrg();
-	}
 	
 	//Methode, die auf aufgerufen wird, wenn ein Button gedrueckt wird
 	public void actionPerformed(ActionEvent e) {
