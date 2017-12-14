@@ -64,23 +64,36 @@ public class MultiplayerAuswahlView {
 		btnbeitreten.setBounds(406, 237, 315, 35);
 		frame.getContentPane().add(btnbeitreten);
 
-		BufferedImage image = ImageIO.read(new File("src/Resources/car2.png"));
+		BufferedImage image2 = null;
+		try {
+			image2 = ImageIO.read(new File("src/Resources/car2.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		MovementBackward m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
-		m.label.setSize(200, 200);
-		m.label.setBufferedImage(image, 400);
+		m.label.setSize(800, 600);
+		m.label.setBufferedImage(image2, 400);
 
 		m.label.setBounds(0, 0, 200, 200);
 		frame.getContentPane().add(m.label);
 
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("src/Resources/hockenheim.png"));
+		} catch (IOException io) {
+			io.getMessage();
+		}
 		Movement m2 = new Movement(5);
 		m2.label.setLocation(0, 0);
-		m2.label.setSize(800, 571);
+		m2.label.setSize(200, 200);
 		m2.label.setBufferedImage(image, 0);
 
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);
 		frame.setVisible(true);
+
 
 	}
 
