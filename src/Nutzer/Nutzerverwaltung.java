@@ -32,6 +32,7 @@ public class Nutzerverwaltung {
 				kunde.setgebdat(rs.getString("geburtsdatum"));
 				kundenliste.add(kunde);
 			}
+			rs.close();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -60,6 +61,7 @@ public class Nutzerverwaltung {
 				mitarbeiter.setgebdat(rs.getString("geburtsdatum"));
 				mitarbeiterliste.add(mitarbeiter);
 			}
+			rs.close();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -85,7 +87,7 @@ public class Nutzerverwaltung {
 				angkunde.setemail(rs.getString("email"));
 				angkunde.setgebdat(rs.getString("geburtsdatum"));
 			}
-			
+			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
