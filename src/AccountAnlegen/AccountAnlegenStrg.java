@@ -101,6 +101,7 @@ public class AccountAnlegenStrg implements ActionListener{
 				eingegebeneDatenSpeichern();
 				if(DatenPruefen()) {
 					InsertIntoKunde();
+					JOptionPane.showMessageDialog(null, "Der Account wurde erfolgreich angelegt!","Viel Spaﬂ!", JOptionPane.ERROR_MESSAGE);
 				}
 				
 				else {

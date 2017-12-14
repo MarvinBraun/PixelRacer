@@ -7,6 +7,7 @@ import java.io.IOException;
 import Anmelden.AnmeldenStrg;
 import ModusAuswählen.ModusauswählenStrg;
 import Nutzer.Nutzerverwaltung;
+import ProfilBearbeiten.ProfilBearbeitenStrg;
 
 //Autor Daniel Zeller
 
@@ -44,7 +45,8 @@ public class StartansichtStrg implements ActionListener {
 		}
 		
 		if(e.getSource()== view1.btnProfil) {
-			
+			ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
+			view1.frmPixelRacer.dispose();
 		}
 		
 		if(e.getSource()== view1.btnSpielen) {

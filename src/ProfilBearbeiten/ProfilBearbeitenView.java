@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import Nutzer.Nutzerverwaltung;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 //Autor Daniel Zeller
@@ -23,6 +24,7 @@ public class ProfilBearbeitenView {
 	JLabel lblPasswort;
 	JLabel lblGeburtsdatum;
 	JLabel lblPunkte;
+	JLabel lblVN;
 	JLabel lblNN;
 	JLabel lblNutzer;
 	JLabel lblMail;
@@ -32,7 +34,6 @@ public class ProfilBearbeitenView {
 	JButton btnaendernPW;
 	JButton btnaendernMail;
 	JButton btnFertig;
-	JLabel lblVn;
 
 	/**
 	 * Launch the application.
@@ -105,15 +106,15 @@ public class ProfilBearbeitenView {
 		frmProfilBearbeiten.getContentPane().add(lblNutzer);
 		
 		lblMail = new JLabel("Fehler");
-		lblMail.setBounds(214, 210, 46, 14);
+		lblMail.setBounds(214, 210, 178, 14);
 		frmProfilBearbeiten.getContentPane().add(lblMail);
 		
 		lblGebDat = new JLabel("Fehler");
-		lblGebDat.setBounds(214, 251, 46, 14);
+		lblGebDat.setBounds(214, 251, 178, 14);
 		frmProfilBearbeiten.getContentPane().add(lblGebDat);
 		
 		lblPkt = new JLabel("Fehler");
-		lblPkt.setBounds(214, 299, 46, 14);
+		lblPkt.setBounds(214, 299, 94, 14);
 		frmProfilBearbeiten.getContentPane().add(lblPkt);
 		
 		btnaendernNN = new JButton("\u00C4ndern");
@@ -156,8 +157,13 @@ public class ProfilBearbeitenView {
 			}
 		});
 		
-		lblVn = new JLabel("Fehler");
-		lblVn.setBounds(214, 24, 46, 14);
-		frmProfilBearbeiten.getContentPane().add(lblVn);
+		lblVN = new JLabel("Fehler");
+		lblVN.setBounds(214, 24, 178, 14);
+		frmProfilBearbeiten.getContentPane().add(lblVN);
+		
+		JLabel lblHintergrund = new JLabel();
+		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
+		lblHintergrund.setBounds(0, 0, 800, 600);
+		frmProfilBearbeiten.getContentPane().add(lblHintergrund);
 	}
 }

@@ -1,8 +1,8 @@
 package Nutzer;
 
 public class Mitarbeiter extends Nutzer {
-	String mitarbeiterid;
-	String jobtitel;
+	private String mitarbeiterid;
+	private String jobtitel;
 	
 	public String getvn() {
 		return vorname;

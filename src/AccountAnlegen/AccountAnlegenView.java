@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -124,5 +125,10 @@ public class AccountAnlegenView {
 		lblPasswort = new JLabel("Passwort");
 		lblPasswort.setBounds(300, 305, 109, 14);
 		frmPixelRacer.getContentPane().add(lblPasswort);
+		
+		JLabel lblHintergrund = new JLabel();
+		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
+		lblHintergrund.setBounds(0, 0, 800, 600);
+		frmPixelRacer.getContentPane().add(lblHintergrund);
 	}
 }

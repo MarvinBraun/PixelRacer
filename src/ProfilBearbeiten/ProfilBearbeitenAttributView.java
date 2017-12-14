@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 //Autor Daniel Zeller
@@ -56,7 +57,7 @@ public class ProfilBearbeitenAttributView {
 		frmProfilBearbeiten.getContentPane().setLayout(null);
 		
 		lblAktAnzeige = new JLabel("Fehler");
-		lblAktAnzeige.setBounds(333, 66, 99, 14);
+		lblAktAnzeige.setBounds(333, 66, 198, 14);
 		frmProfilBearbeiten.getContentPane().add(lblAktAnzeige);
 		
 		textFieldNeu = new JTextField();
@@ -91,5 +92,10 @@ public class ProfilBearbeitenAttributView {
 			}
 		});
 		frmProfilBearbeiten.getContentPane().add(btnAbbrechen);
+		
+		JLabel lblHintergrund = new JLabel();
+		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
+		lblHintergrund.setBounds(0, 0, 800, 600);
+		frmProfilBearbeiten.getContentPane().add(lblHintergrund);
 	}
 }

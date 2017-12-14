@@ -3,9 +3,12 @@ package Anmelden;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Button;
 import javax.swing.SwingConstants;
@@ -68,7 +71,6 @@ public class AnmeldenView {
 		btnAnmelden.setBounds(205, 264, 127, 45);
 		btnAnmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				AnmeldenStrg strg = new AnmeldenStrg();
 				frmPixelRacer.dispose();
 			}
 		});
@@ -79,7 +81,6 @@ public class AnmeldenView {
 		btnAccountAnlegen.setBounds(365, 264, 127, 45);
 		btnAccountAnlegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				AnmeldenStrg strg = new AnmeldenStrg();
 				frmPixelRacer.dispose();
 			}
 		});
@@ -106,5 +107,10 @@ public class AnmeldenView {
 			}
 		});
 		frmPixelRacer.getContentPane().add(btnMitarbeiter);
+		
+		JLabel lblHintergrund = new JLabel();
+		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
+		lblHintergrund.setBounds(0, 0, 800, 600);
+		frmPixelRacer.getContentPane().add(lblHintergrund);
 	}
 }

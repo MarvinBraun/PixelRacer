@@ -75,7 +75,14 @@ public class Nutzerverwaltung {
 	
 	public static void setangKunde(Kunde kunde) {
 		angkunde = kunde;
-		/*ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde where benutzername = " + AnmeldenStrg.getAngNutzername());
+	}
+	
+	public static Kunde getangKunde() {
+		return angkunde;
+	}
+	
+	public static void aktualisereangKunde() {
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde where benutzername = '" + angkunde.getnutzername() + "'");
 		try {
 			while(rs.next())
 			{
@@ -89,15 +96,17 @@ public class Nutzerverwaltung {
 				angkunde.setgebdat(rs.getString("geburtsdatum"));
 			}
 			rs.close();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
-			Datenbankschnittstelle.closeConnections();
-		}*/
+		}
+		Datenbankschnittstelle.closeConnections();
 	}
 	
-	public static Kunde getangKunde() {
-		return angkunde;
+	public static void addpunkte(int punkte) {
+		String update = "Update kunde set punktzahl = punktzahl + '" + punkte + "' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
+		Datenbankschnittstelle.executeUpdate(update);
+		Datenbankschnittstelle.closeConnections();
 	}
 }

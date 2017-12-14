@@ -1,8 +1,8 @@
 package Nutzer;
 
 public class Kunde extends Nutzer {
-	String premium;
-	int punkte;
+	private String premium;
+	private int punkte = 0;
 
 	public String getvn() {
 		return vorname;

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import Datenbankverwaltung.Datenbankschnittstelle;
 import Nutzer.Kunde;
 import Nutzer.Nutzerverwaltung;
 
@@ -13,7 +14,6 @@ import Nutzer.Nutzerverwaltung;
 public class ProfilBearbeitenStrg implements ActionListener {
 	ProfilBearbeitenView view1;
 	ProfilBearbeitenAttributView view2;
-	Kunde k1;
 	private String auswahl;
 	private String neu;
 	
@@ -21,12 +21,18 @@ public class ProfilBearbeitenStrg implements ActionListener {
 		view1 = new ProfilBearbeitenView();
 		view1.frmProfilBearbeiten.setVisible(true);
 		
+		view1.lblVN.setText(Nutzerverwaltung.getangKunde().getvn());
+		view1.lblNN.setText(Nutzerverwaltung.getangKunde().getnn());
+		view1.lblNutzer.setText(Nutzerverwaltung.getangKunde().getnutzername());
+		view1.lblMail.setText(Nutzerverwaltung.getangKunde().getemail());
+		view1.lblGebDat.setText(Nutzerverwaltung.getangKunde().getgebdat());
+		view1.lblPkt.setText(String.valueOf(Nutzerverwaltung.getangKunde().getpunkte()));
+		
 		view1.btnaendernMail.addActionListener(this);
 		view1.btnaendernNN.addActionListener(this);
 		view1.btnaendernPW.addActionListener(this);
 		view1.btnFertig.addActionListener(this);
 		
-		k1 = Nutzerverwaltung.getangKunde();
 		
 		view2 = new ProfilBearbeitenAttributView();
 		
@@ -61,7 +67,9 @@ public class ProfilBearbeitenStrg implements ActionListener {
 	}
 	
 	public void DatenAktualisieren() {
-		String update = "Update kunde set " + auswahl + " = " + neu + " where benutzername = " + k1.getnutzername(); 
+		String update = "Update kunde set " + auswahl + " = '" + neu + "' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
+		Datenbankschnittstelle.executeUpdate(update);
+		Datenbankschnittstelle.closeConnections();
 	}
 
 	@Override
@@ -69,13 +77,13 @@ public class ProfilBearbeitenStrg implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		if(e.getSource()== view1.btnaendernMail) {
-			view2.lblAktAnzeige.setText(k1.getemail());
+			view2.lblAktAnzeige.setText(Nutzerverwaltung.getangKunde().getemail());
 			view2.frmProfilBearbeiten.setVisible(true);
 			auswahl = "email";
 		}
 		
 		if(e.getSource()== view1.btnaendernNN) {
-			view2.lblAktAnzeige.setText(k1.getnn());
+			view2.lblAktAnzeige.setText(Nutzerverwaltung.getangKunde().getnn());
 			view2.frmProfilBearbeiten.setVisible(true);
 			auswahl = "nachname";
 		}
@@ -102,6 +110,7 @@ public class ProfilBearbeitenStrg implements ActionListener {
 				DatenAktualisieren();
 				JOptionPane.showMessageDialog(null, "Profil wurde erfolgreich aktualisiert!","Super!", JOptionPane.PLAIN_MESSAGE);
 				view2.frmProfilBearbeiten.dispose();
+				Nutzerverwaltung.aktualisereangKunde();
 				ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
 			}
 			

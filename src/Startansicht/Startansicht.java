@@ -7,11 +7,17 @@ import javax.swing.JLabel;
 import javax.swing.UIManager;
 
 import Anmelden.AnmeldenStrg;
+import BackgroundAnimation.Movement;
 
 import java.awt.Font;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -28,6 +34,7 @@ public class Startansicht {
 	JButton btnProfil;
 	JButton btnAbmelden;
 	JLabel lblAnzeige;
+	private JLabel lblHintergrund;
 
 	/**
 	 * Launch the application.
@@ -117,5 +124,28 @@ public class Startansicht {
 		lblAnzeige.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblAnzeige.setBounds(544, 0, 240, 14);
 		frmPixelRacer.getContentPane().add(lblAnzeige);
+		
+		lblHintergrund = new JLabel("");
+		lblHintergrund.setVisible(false);		
+		lblHintergrund.setBounds(0, 0, 794, 571);
+		frmPixelRacer.getContentPane().add(lblHintergrund);
+		
+				
+		Movement m = new Movement(10);
+		
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		m.label.setBufferedImage(image,0);
+		
+		m.label.setOpaque(false);
+		m.label.setBounds(0, 0, 800, 600);
+		frmPixelRacer.getContentPane().add(m.label);
+		frmPixelRacer.setVisible(true);
 	}
 }
