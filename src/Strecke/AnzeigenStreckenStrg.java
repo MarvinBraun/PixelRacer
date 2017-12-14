@@ -1,112 +1,133 @@
 package Strecke;
 
 
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.LinkedList;
+
+import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
+
+import myIterator.MyIteratorStrecke;
+import myIterator.MyIteratorString;
 
 
-public class AnzeigenStreckenStrg extends Streckenuebersicht implements MouseListener{
+public class AnzeigenStreckenStrg implements ActionListener{
 
-	static StreckeDetailView viewDetail;
-	static Streckenuebersicht viewUebersicht;
-	Streckenverwaltung vstrecke;
-	static LinkedList<Strecke> streckenliste = new LinkedList<Strecke>();
+	StreckeDetailView viewDetail;
+	Streckenuebersicht viewUebersicht;
 	
+	Streckenverwaltung verwStrecke;
+	
+	static LinkedList<Strecke> streckenListe = new LinkedList<Strecke>();
+	
+	Strecke s;
+	
+	static MyIteratorStrecke<Strecke> itStrecke;
+	static MyIteratorString<String> itString;
+	
+	BufferedImage streckenbild;
+	
+	boolean forward = false;
+	boolean backward = false;
+	
+	int counter=-1;
 	
 	public AnzeigenStreckenStrg(){
 		
-		viewUebersicht.lblBildStrecke1.addMouseListener(this);
-		viewUebersicht.lblBildStrecke2.addMouseListener(this);
+		viewUebersicht = new Streckenuebersicht();
 		
+		
+		verwStrecke = new Streckenverwaltung();
+		streckenListe = verwStrecke.gibStrecke();
+		itStrecke = new MyIteratorStrecke(streckenListe.listIterator());
+		
+		viewUebersicht.streckeBackward.addActionListener(this);
+		viewUebersicht.streckeForward.addActionListener(this);
+		viewUebersicht.btnDetailView.addActionListener(this);
+		
+		
+		
+	
+		ladeStrecke();
+		
+		SwingUtilities.updateComponentTreeUI(viewUebersicht.frame);
+		
+	
 	}
 		
 	public static void main(String[] args) {
 		
-		try{
-			AnzeigenStreckenStrg.befuelleGUi();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
+		AnzeigenStreckenStrg steuerung = new AnzeigenStreckenStrg();
 		
 	}
 	
-	public static void befuelleGUi(){
-				
-		viewUebersicht = new Streckenuebersicht();	
-		Streckenverwaltung vstrecke = new Streckenverwaltung();  
-		streckenliste = vstrecke.gibStrecke();
-				
-		try{
-		
-		
-					
-			int i = 0;
-				
-			for(Strecke s : streckenliste){
-				
-				if(i == 0){
-					viewUebersicht.setlblBildStrecke1();
-					viewUebersicht.setTitelStrecke1(s.getStreckenname());
-					viewUebersicht.setBeschreibungStrecke1("Strecke in deinem Besitz");
-				}
-				if(i == 1){
-					viewUebersicht.setlblBildStrecke2();
-					viewUebersicht.setTitelStrecke2(s.getStreckenname());
-					viewUebersicht.setBeschreibungStrecke2("Erreiche 10 Punkte um diese Strecke freizuschalten");
-				}
-				i++;
-				
-			}	
-		
-		
-		}catch(Exception e){
-			e.printStackTrace();
+	public void ladeStrecke()
+	{
+		if((s=itStrecke.next())!=null)
+		{
+			
+			BufferedImage newImage= s.getGrafik();
+			viewUebersicht.streckeName.setText(s.getStreckenname());
+			streckenbild = imageResizer(newImage);
+			ImageIcon icon = new ImageIcon(streckenbild);
+			viewUebersicht.streckeLbl.setIcon(icon);
+								
+		}
+	}
 	
+	public void streckeRückwärts()
+	{
+		if((s=itStrecke.previous())!=null)
+		{
+			
+			BufferedImage newImage= s.getGrafik();
+			viewUebersicht.streckeName.setText(s.getStreckenname());
+			streckenbild = imageResizer(newImage);
+			ImageIcon icon = new ImageIcon(streckenbild);
+			viewUebersicht.streckeLbl.setIcon(icon);
+						
 		}
-}
+	}
+	
+	public static BufferedImage imageResizer(BufferedImage original)
+	{
+		
+		BufferedImage newImage = new BufferedImage(300, 200, BufferedImage.TYPE_INT_RGB);
 
+				Graphics g = newImage.createGraphics();
+				g.drawImage(original, 0, 0, 300, 200, null);
+				g.dispose();
+				return newImage;
+	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		if(arg0.getSource() == viewUebersicht.lblBildStrecke1){
-			viewDetail = new StreckeDetailView();
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==viewUebersicht.streckeBackward)
+		{
+			streckeRückwärts();
 		}
-		if(arg0.getSource() == viewUebersicht.lblBildStrecke2){
-			viewDetail = new StreckeDetailView();
+		if(e.getSource()==viewUebersicht.streckeForward)
+		{
+			ladeStrecke();
 		}
-	}
-
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		if(e.getSource()==viewUebersicht.btnDetailView)
+		{
+			StreckeDetailView viewDeatil= new StreckeDetailView();
+			viewDeatil.frame.setVisible(true);
+		}
+		if(e.getSource()==viewDetail.btnZurueck)
+		{
+			viewDetail.frame.dispose();
+		}
 		
 	}
 
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
+	
 	
 }
