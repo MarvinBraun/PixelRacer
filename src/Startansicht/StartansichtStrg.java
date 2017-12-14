@@ -45,13 +45,8 @@ public class StartansichtStrg implements ActionListener {
 		}
 		
 		if(e.getSource()== view1.btnSpielen) {
-			try {
-				ModusauswählenStrg strg = new ModusauswählenStrg();
-				view1.frmPixelRacer.dispose();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			ModusauswählenStrg strg = new ModusauswählenStrg();
+			view1.frmPixelRacer.dispose();
 		}
 		
 		if(e.getSource()== view1.btnStreckenbersicht) {
