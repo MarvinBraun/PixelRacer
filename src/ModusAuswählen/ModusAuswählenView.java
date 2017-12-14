@@ -40,7 +40,7 @@ public class ModusAuswählenView {
 	 * Create the application.
 	 * @throws IOException 
 	 */
-	public ModusAuswählenView() throws IOException {
+	public ModusAuswählenView() {
 		initialize();
 	}
 
@@ -48,7 +48,7 @@ public class ModusAuswählenView {
 	 * Initialize the contents of the frame.
 	 * @throws IOException 
 	 */
-	private void initialize() throws IOException {
+	private void initialize()  {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setTitle("Modus auswählen");
@@ -65,7 +65,14 @@ public class ModusAuswählenView {
 		btnMultiplayer.setBounds(429, 241, 187, 31);
 		frame.getContentPane().add(btnMultiplayer);
 		
-		BufferedImage image = ImageIO.read(new File( "src/Resources/car2.png"));
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File( "src/Resources/car2.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+			System.out.println("Fehler beim einbeziehen des Bildes!");
+		}
 		
 		MovementBackward m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
@@ -75,11 +82,19 @@ public class ModusAuswählenView {
 		m.label.setBounds(0, 0, 200, 200);
 		frame.getContentPane().add(m.label);
 		
+		BufferedImage image2 = null;
+		try {
+			image = ImageIO.read(new File( "src/Resources/hockenheim.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+			System.out.println("Fehler beim einbeziehen des Bildes!");
+		}
 
 		Movement m2 = new Movement(5);
 		m2.label.setLocation(0, 0);
 		m2.label.setSize(800, 571);
-		m2.label.setBufferedImage(image,0);
+		m2.label.setBufferedImage(image2,0);
 	
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);

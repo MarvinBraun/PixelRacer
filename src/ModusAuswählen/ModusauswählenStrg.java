@@ -32,7 +32,7 @@ public class ModusauswählenStrg implements ActionListener {
 
 	}
 
-	public ModusauswählenStrg() throws IOException {
+	public ModusauswählenStrg() {
 		mav = new ModusAuswählenView();
 		mav.frame.setVisible(true);
 		mav.btnMultiplayer.addActionListener(this);
@@ -41,11 +41,7 @@ public class ModusauswählenStrg implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		try{
-			ms = new ModusauswählenStrg();
-		}catch(IOException io){
-			io.getMessage();
-		}
+		ms = new ModusauswählenStrg();
 	}
 
 }

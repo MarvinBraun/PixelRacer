@@ -25,8 +25,13 @@ public class MultiplayerAuswahlStrg implements ActionListener {
 		}
 	}
 
-	public MultiplayerAuswahlStrg() throws IOException {
-		mv = new MultiplayerAuswahlView();
+	public MultiplayerAuswahlStrg() {
+		try {
+			mv = new MultiplayerAuswahlView();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+		}
 		mv.frame.setVisible(true);
 		mv.btnbeitreten.addActionListener(this);
 		mv.btnerstellen.addActionListener(this);
