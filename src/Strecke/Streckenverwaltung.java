@@ -25,7 +25,7 @@ public class Streckenverwaltung {
 				s.setStreckenname(rs.getString("streckenname"));
 				s.setLaenge(rs.getInt("laenge"));
 				s.setSchwierigkeit(rs.getInt("schwierigkeit"));
-				s.setPremium(rs.getBoolean("premium"));
+				s.setPremium(rs.getString("premium"));
 				s.setPunktewert(rs.getInt("punktewert"));
 				
 				String sql = "SELECT grafik FROM strecke WHERE streckenname = '" + s.streckenname + "'";

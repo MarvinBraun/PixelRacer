@@ -7,7 +7,7 @@ public class Strecke {
 	String streckenname;
 	private static int laenge;
 	private int schwierigkeit;
-	private boolean premium = false;
+	private String premium = "false";
 	private int punktewert;
 	private BufferedImage grafik;
 	
@@ -32,11 +32,11 @@ public class Strecke {
 	public void setSchwierigkeit(int schwierigkeit) {
 		this.schwierigkeit = schwierigkeit;
 	}
-	public boolean getPremium() {
+	public String getPremium() {
 		return premium;
 	}
-	public void setPremium(boolean premium) {
-		this.premium = premium;
+	public void setPremium(String string) {
+		this.premium = string;
 	}
 	public int getPunktewert() {
 		return punktewert;
