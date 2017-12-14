@@ -37,7 +37,8 @@ public class MultiplayerAuswahlView {
 
 	/**
 	 * Create the application.
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public MultiplayerAuswahlView() throws IOException {
 		initialize();
@@ -93,7 +94,6 @@ public class MultiplayerAuswahlView {
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);
 		frame.setVisible(true);
-
 
 	}
 
