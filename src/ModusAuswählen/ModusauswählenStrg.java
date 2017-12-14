@@ -1,3 +1,4 @@
+//@Author Ferhat Koca
 package ModusAuswählen;
 
 import java.awt.event.ActionEvent;

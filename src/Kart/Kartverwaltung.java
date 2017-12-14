@@ -1,4 +1,4 @@
-//@author Ferhat Koca
+//@Author Ferhat Koca
 package Kart;
 
 import java.awt.image.BufferedImage;

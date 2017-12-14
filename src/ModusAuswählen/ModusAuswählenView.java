@@ -1,4 +1,4 @@
-//@author Ferhat Koca
+//@Author Ferhat Koca
 package ModusAuswählen;
 
 import java.awt.EventQueue;

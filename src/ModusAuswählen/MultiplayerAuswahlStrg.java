@@ -1,3 +1,4 @@
+//@Author Ferhat Koca
 package ModusAuswählen;
 
 import java.awt.event.ActionEvent;
@@ -39,7 +40,8 @@ public class MultiplayerAuswahlStrg implements ActionListener {
 		mv.frame.setVisible(true);
 		mv.btnbeitreten.addActionListener(this);
 		mv.btnerstellen.addActionListener(this);
-		mv.btnzurück.addActionListener(this);;
+		mv.btnzurück.addActionListener(this);
+		;
 	}
 
 	public static void main(String[] args) throws IOException {

@@ -1,3 +1,4 @@
+//@Author Ferhat Koca
 package ModusAuswählen;
 
 import java.awt.EventQueue;
@@ -65,7 +66,7 @@ public class MultiplayerAuswahlView {
 		btnbeitreten = new JButton("Multiplayerfahrt beitreten");
 		btnbeitreten.setBounds(440, 237, 280, 31);
 		frame.getContentPane().add(btnbeitreten);
-		
+
 		btnzurück = new JButton("Zurück");
 		btnzurück.setBounds(325, 289, 150, 31);
 		frame.getContentPane().add(btnzurück);

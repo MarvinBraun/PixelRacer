@@ -1,4 +1,4 @@
-//@author Ferhat Koca
+//@Author Ferhat Koca
 package Premium;
 
 import java.awt.event.ActionEvent;
