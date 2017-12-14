@@ -14,13 +14,13 @@ import javax.swing.JButton;
 
 public class AnmeldenMitarbeiterView {
 
-	JFrame frmPixelRacer;
-	JTextField txtId;
-	JPasswordField pwdPasswort;
-	JLabel lblMitarbeiterid;
-	JLabel lblPasswort;
-	JButton btnAnmelden;
-	JButton btnAbbrechen;
+	private JFrame frmPixelRacer;
+	private JTextField txtId;
+	private JPasswordField pwdPasswort;
+	private JLabel lblMitarbeiterid;
+	private JLabel lblPasswort;
+	private JButton btnAnmelden;
+	private JButton btnAbbrechen;
 
 	/**
 	 * Launch the application.
@@ -92,5 +92,61 @@ public class AnmeldenMitarbeiterView {
 			}
 		});
 		frmPixelRacer.getContentPane().add(btnAbbrechen);
+	}
+
+	public JFrame getFrmPixelRacer() {
+		return frmPixelRacer;
+	}
+
+	public void setFrmPixelRacer(JFrame frmPixelRacer) {
+		this.frmPixelRacer = frmPixelRacer;
+	}
+
+	public JTextField getTxtId() {
+		return txtId;
+	}
+
+	public void setTxtId(JTextField txtId) {
+		this.txtId = txtId;
+	}
+
+	public JPasswordField getPwdPasswort() {
+		return pwdPasswort;
+	}
+
+	public void setPwdPasswort(JPasswordField pwdPasswort) {
+		this.pwdPasswort = pwdPasswort;
+	}
+
+	public JLabel getLblMitarbeiterid() {
+		return lblMitarbeiterid;
+	}
+
+	public void setLblMitarbeiterid(JLabel lblMitarbeiterid) {
+		this.lblMitarbeiterid = lblMitarbeiterid;
+	}
+
+	public JLabel getLblPasswort() {
+		return lblPasswort;
+	}
+
+	public void setLblPasswort(JLabel lblPasswort) {
+		this.lblPasswort = lblPasswort;
+	}
+
+	public JButton getBtnAnmelden() {
+		return btnAnmelden;
+	}
+
+	public void setBtnAnmelden(JButton btnAnmelden) {
+		this.btnAnmelden = btnAnmelden;
+	}
+
+	public JButton getBtnAbbrechen() {
+		return btnAbbrechen;
+	}
+
+	public void setBtnAbbrechen(JButton btnAbbrechen) {
+		this.btnAbbrechen = btnAbbrechen;
 	}
 }

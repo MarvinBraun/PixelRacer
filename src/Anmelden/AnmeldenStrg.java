@@ -24,15 +24,15 @@ public class AnmeldenStrg implements ActionListener {
 	
 	public AnmeldenStrg() {
 		view1 = new AnmeldenView();
-		view1.frmPixelRacer.setVisible(true);
+		view1.getFrmPixelRacer().setVisible(true);
 		
-		view1.btnAccountAnlegen.addActionListener(this);
-		view1.btnAnmelden.addActionListener(this);
-		view1.btnMitarbeiter.addActionListener(this);
+		view1.getBtnAccountAnlegen().addActionListener(this);
+		view1.getBtnAnmelden().addActionListener(this);
+		view1.getBtnMitarbeiter().addActionListener(this);
 		
 		view2 = new AnmeldenMitarbeiterView();
-		view2.btnAbbrechen.addActionListener(this);
-		view2.btnAnmelden.addActionListener(this);
+		view2.getBtnAbbrechen().addActionListener(this);
+		view2.getBtnAnmelden().addActionListener(this);
 	}
 	
 
@@ -42,8 +42,8 @@ public class AnmeldenStrg implements ActionListener {
 	
 	public Boolean pruefeDatenKunden() {
 		Kunde k1 = new Kunde();
-		k1.setnutzername(view1.txtNutzername.getText());
-		String pw = new String (view1.passwordField.getPassword());
+		k1.setnutzername(view1.getTxtNutzername().getText());
+		String pw = new String (view1.getPasswordField().getPassword());
 		k1.setpasswort(pw);
 		
 		kliste = Nutzerverwaltung.gibKundenliste();
@@ -62,8 +62,8 @@ public class AnmeldenStrg implements ActionListener {
 	
 	public Boolean pruefeDatenMitarbeiter() {
 		Mitarbeiter m1 = new Mitarbeiter();
-		m1.setmitarbeiterid(view2.txtId.getText());
-		String pw = new String (view2.pwdPasswort.getPassword());
+		m1.setmitarbeiterid(view2.getTxtId().getText());
+		String pw = new String (view2.getPwdPasswort().getPassword());
 		m1.setpasswort(pw);
 		
 		mliste = Nutzerverwaltung.gibMitarbeiterliste();
@@ -81,12 +81,12 @@ public class AnmeldenStrg implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()== view1.btnAnmelden) {
+		if(e.getSource()== view1.getBtnAnmelden()) {
 			if(pruefeDatenKunden()) {
 				JOptionPane.showMessageDialog(null, "Anmelden erfolgreich!","Super!", JOptionPane.PLAIN_MESSAGE);
 				Nutzerverwaltung.setangKunde(angKunde);
 				StartansichtStrg start = new StartansichtStrg();
-				view1.frmPixelRacer.dispose();
+				view1.getFrmPixelRacer().dispose();
 			}
 			
 			else {
@@ -94,19 +94,19 @@ public class AnmeldenStrg implements ActionListener {
 			}
 		}
 		
-		if(e.getSource()== view1.btnAccountAnlegen) {
+		if(e.getSource()== view1.getBtnAccountAnlegen()) {
 			AccountAnlegenStrg anlegenstrg = new AccountAnlegenStrg();
 		}
 		
-		if(e.getSource()== view1.btnMitarbeiter) {
-			view2.frmPixelRacer.setVisible(true);
+		if(e.getSource()== view1.getBtnMitarbeiter()) {
+			view2.getFrmPixelRacer().setVisible(true);
 		}
 		
-		if(e.getSource()== view2.btnAnmelden) {
+		if(e.getSource()== view2.getBtnAnmelden()) {
 			if(pruefeDatenMitarbeiter()) {
 				JOptionPane.showMessageDialog(null, "Anmelden erfolgreich!","Super!", JOptionPane.PLAIN_MESSAGE);
 				MitarbeiterAnsichtStrg strg = new MitarbeiterAnsichtStrg();
-				view2.frmPixelRacer.dispose();
+				view2.getFrmPixelRacer().dispose();
 			}
 			
 			else {
@@ -114,8 +114,8 @@ public class AnmeldenStrg implements ActionListener {
 			}
 		}
 		
-		if(e.getSource()== view2.btnAbbrechen) {
-			view2.frmPixelRacer.dispose();
+		if(e.getSource()== view2.getBtnAbbrechen()) {
+			view2.getFrmPixelRacer().dispose();
 			AnmeldenStrg strg = new AnmeldenStrg();
 		}
 	}

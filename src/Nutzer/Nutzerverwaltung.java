@@ -11,8 +11,8 @@ import Fahrt.SingleplayerFahrt;
 //Autor Daniel Zeller
 
 public class Nutzerverwaltung {
-	static LinkedList<Kunde> kundenliste = new LinkedList<Kunde>();
-	static LinkedList<Mitarbeiter> mitarbeiterliste = new LinkedList<Mitarbeiter>();
+	private static LinkedList<Kunde> kundenliste = new LinkedList<Kunde>();
+	private static LinkedList<Mitarbeiter> mitarbeiterliste = new LinkedList<Mitarbeiter>();
 	private static Kunde angkunde = new Kunde();
 	
 	public static LinkedList<Kunde> gibKundenliste() { //greift auf die Datenbank zu und gibt alle Kunden zurück

@@ -17,15 +17,15 @@ public class StartansichtStrg implements ActionListener {
 
 	public StartansichtStrg() {
 		view1 = new Startansicht();
-		view1.frmPixelRacer.setVisible(true);
+		view1.getFrmPixelRacer().setVisible(true);
 		
-		view1.btnAbmelden.addActionListener(this);
-		view1.btnGarage.addActionListener(this);
-		view1.btnProfil.addActionListener(this);
-		view1.btnSpielen.addActionListener(this);
-		view1.btnStreckenbersicht.addActionListener(this);
+		view1.getBtnAbmelden().addActionListener(this);
+		view1.getBtnGarage().addActionListener(this);
+		view1.getBtnProfil().addActionListener(this);
+		view1.getBtnSpielen().addActionListener(this);
+		view1.getBtnStreckenbersicht().addActionListener(this);
 		
-		view1.lblAnzeige.setText(Nutzerverwaltung.getangKunde().getnutzername() + "  -  " + Nutzerverwaltung.getangKunde().getpunkte());
+		view1.getLblAnzeige().setText(Nutzerverwaltung.getangKunde().getnutzername() + "  -  " + Nutzerverwaltung.getangKunde().getpunkte());
 	}
 	
 	public static void main(String[] args0){
@@ -35,26 +35,26 @@ public class StartansichtStrg implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()== view1.btnAbmelden) {
+		if(e.getSource()== view1.getBtnAbmelden()) {
 			AnmeldenStrg strg = new AnmeldenStrg();
-			view1.frmPixelRacer.dispose();
+			view1.getFrmPixelRacer().dispose();
 		}
 		
-		if(e.getSource()== view1.btnGarage) {
+		if(e.getSource()== view1.getBtnGarage()) {
 			
 		}
 		
-		if(e.getSource()== view1.btnProfil) {
+		if(e.getSource()== view1.getBtnProfil()) {
 			ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
-			view1.frmPixelRacer.dispose();
+			view1.getFrmPixelRacer().dispose();
 		}
 		
-		if(e.getSource()== view1.btnSpielen) {
+		if(e.getSource()== view1.getBtnSpielen()) {
 			ModusauswählenStrg strg = new ModusauswählenStrg();
-			view1.frmPixelRacer.dispose();
+			view1.getFrmPixelRacer().dispose();
 		}
 		
-		if(e.getSource()== view1.btnStreckenbersicht) {
+		if(e.getSource()== view1.getBtnStreckenbersicht()) {
 			
 		}
 	}

@@ -14,13 +14,13 @@ import javax.swing.JButton;
 
 public class ProfilBearbeitenAttributView {
 
-	JFrame frmProfilBearbeiten;
-	JTextField textFieldNeu;
-	JLabel lblAktAnzeige;
-	JLabel lblAktuell;
-	JLabel lblNeu;
-	JButton btnFertig;
-	JButton btnAbbrechen;
+	private JFrame frmProfilBearbeiten;
+	private JTextField textFieldNeu;
+	private JLabel lblAktAnzeige;
+	private JLabel lblAktuell;
+	private JLabel lblNeu;
+	private JButton btnFertig;
+	private JButton btnAbbrechen;
 
 	/**
 	 * Launch the application.
@@ -97,5 +97,61 @@ public class ProfilBearbeitenAttributView {
 		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmProfilBearbeiten.getContentPane().add(lblHintergrund);
+	}
+
+	public JFrame getFrmProfilBearbeiten() {
+		return frmProfilBearbeiten;
+	}
+
+	public void setFrmProfilBearbeiten(JFrame frmProfilBearbeiten) {
+		this.frmProfilBearbeiten = frmProfilBearbeiten;
+	}
+
+	public JTextField getTextFieldNeu() {
+		return textFieldNeu;
+	}
+
+	public void setTextFieldNeu(JTextField textFieldNeu) {
+		this.textFieldNeu = textFieldNeu;
+	}
+
+	public JLabel getLblAktAnzeige() {
+		return lblAktAnzeige;
+	}
+
+	public void setLblAktAnzeige(JLabel lblAktAnzeige) {
+		this.lblAktAnzeige = lblAktAnzeige;
+	}
+
+	public JLabel getLblAktuell() {
+		return lblAktuell;
+	}
+
+	public void setLblAktuell(JLabel lblAktuell) {
+		this.lblAktuell = lblAktuell;
+	}
+
+	public JLabel getLblNeu() {
+		return lblNeu;
+	}
+
+	public void setLblNeu(JLabel lblNeu) {
+		this.lblNeu = lblNeu;
+	}
+
+	public JButton getBtnFertig() {
+		return btnFertig;
+	}
+
+	public void setBtnFertig(JButton btnFertig) {
+		this.btnFertig = btnFertig;
+	}
+
+	public JButton getBtnAbbrechen() {
+		return btnAbbrechen;
+	}
+
+	public void setBtnAbbrechen(JButton btnAbbrechen) {
+		this.btnAbbrechen = btnAbbrechen;
 	}
 }

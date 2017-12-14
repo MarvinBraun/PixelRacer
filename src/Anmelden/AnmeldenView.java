@@ -19,14 +19,14 @@ import javax.swing.JLabel;
 
 public class AnmeldenView {
 
-	JFrame frmPixelRacer;
-	JTextField txtNutzername;
-	JPasswordField passwordField;
-	JButton btnAnmelden;
-	JButton btnAccountAnlegen;
-	JLabel lblNutzername;
-	JLabel lblPassowrt;
-	JButton btnMitarbeiter;
+	private JFrame frmPixelRacer;
+	private JTextField txtNutzername;
+	private JPasswordField passwordField;
+	private JButton btnAnmelden;
+	private JButton btnAccountAnlegen;
+	private JLabel lblNutzername;
+	private JLabel lblPassowrt;
+	private JButton btnMitarbeiter;
 
 	/**
 	 * Launch the application.
@@ -112,5 +112,69 @@ public class AnmeldenView {
 		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmPixelRacer.getContentPane().add(lblHintergrund);
+	}
+
+	public JFrame getFrmPixelRacer() {
+		return frmPixelRacer;
+	}
+
+	public void setFrmPixelRacer(JFrame frmPixelRacer) {
+		this.frmPixelRacer = frmPixelRacer;
+	}
+
+	public JTextField getTxtNutzername() {
+		return txtNutzername;
+	}
+
+	public void setTxtNutzername(JTextField txtNutzername) {
+		this.txtNutzername = txtNutzername;
+	}
+
+	public JPasswordField getPasswordField() {
+		return passwordField;
+	}
+
+	public void setPasswordField(JPasswordField passwordField) {
+		this.passwordField = passwordField;
+	}
+
+	public JButton getBtnAnmelden() {
+		return btnAnmelden;
+	}
+
+	public void setBtnAnmelden(JButton btnAnmelden) {
+		this.btnAnmelden = btnAnmelden;
+	}
+
+	public JButton getBtnAccountAnlegen() {
+		return btnAccountAnlegen;
+	}
+
+	public void setBtnAccountAnlegen(JButton btnAccountAnlegen) {
+		this.btnAccountAnlegen = btnAccountAnlegen;
+	}
+
+	public JLabel getLblNutzername() {
+		return lblNutzername;
+	}
+
+	public void setLblNutzername(JLabel lblNutzername) {
+		this.lblNutzername = lblNutzername;
+	}
+
+	public JLabel getLblPassowrt() {
+		return lblPassowrt;
+	}
+
+	public void setLblPassowrt(JLabel lblPassowrt) {
+		this.lblPassowrt = lblPassowrt;
+	}
+
+	public JButton getBtnMitarbeiter() {
+		return btnMitarbeiter;
+	}
+
+	public void setBtnMitarbeiter(JButton btnMitarbeiter) {
+		this.btnMitarbeiter = btnMitarbeiter;
 	}
 }

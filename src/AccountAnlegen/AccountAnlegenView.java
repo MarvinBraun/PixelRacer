@@ -15,21 +15,21 @@ import javax.swing.JLabel;
 
 public class AccountAnlegenView {
 
-	JFrame frmPixelRacer;
-	JTextField txtVorname;
-	JTextField txtNachname;
-	JTextField txtGeburtsdatum;
-	JTextField txtEmail;
-	JTextField txtNutzername;
-	JPasswordField passwordField;
-	JButton btnAnlegen;
-	JButton btnAbbrechen;
-	JLabel lblVorname;
-	JLabel lblNachname;
-	JLabel lblGeburtsdatum;
-	JLabel lblEmail;
-	JLabel lblBenutzername;
-	JLabel lblPasswort;
+	private JFrame frmPixelRacer;
+	private JTextField txtVorname;
+	private JTextField txtNachname;
+	private JTextField txtGeburtsdatum;
+	private JTextField txtEmail;
+	private JTextField txtNutzername;
+	private JPasswordField passwordField;
+	private JButton btnAnlegen;
+	private JButton btnAbbrechen;
+	private JLabel lblVorname;
+	private JLabel lblNachname;
+	private JLabel lblGeburtsdatum;
+	private JLabel lblEmail;
+	private JLabel lblBenutzername;
+	private JLabel lblPasswort;
 
 	/**
 	 * Launch the application.
@@ -130,5 +130,125 @@ public class AccountAnlegenView {
 		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmPixelRacer.getContentPane().add(lblHintergrund);
+	}
+
+	public JFrame getFrmPixelRacer() {
+		return frmPixelRacer;
+	}
+
+	public void setFrmPixelRacer(JFrame frmPixelRacer) {
+		this.frmPixelRacer = frmPixelRacer;
+	}
+
+	public JTextField getTxtVorname() {
+		return txtVorname;
+	}
+
+	public void setTxtVorname(JTextField txtVorname) {
+		this.txtVorname = txtVorname;
+	}
+
+	public JTextField getTxtNachname() {
+		return txtNachname;
+	}
+
+	public void setTxtNachname(JTextField txtNachname) {
+		this.txtNachname = txtNachname;
+	}
+
+	public JTextField getTxtGeburtsdatum() {
+		return txtGeburtsdatum;
+	}
+
+	public void setTxtGeburtsdatum(JTextField txtGeburtsdatum) {
+		this.txtGeburtsdatum = txtGeburtsdatum;
+	}
+
+	public JTextField getTxtEmail() {
+		return txtEmail;
+	}
+
+	public void setTxtEmail(JTextField txtEmail) {
+		this.txtEmail = txtEmail;
+	}
+
+	public JTextField getTxtNutzername() {
+		return txtNutzername;
+	}
+
+	public void setTxtNutzername(JTextField txtNutzername) {
+		this.txtNutzername = txtNutzername;
+	}
+
+	public JPasswordField getPasswordField() {
+		return passwordField;
+	}
+
+	public void setPasswordField(JPasswordField passwordField) {
+		this.passwordField = passwordField;
+	}
+
+	public JButton getBtnAnlegen() {
+		return btnAnlegen;
+	}
+
+	public void setBtnAnlegen(JButton btnAnlegen) {
+		this.btnAnlegen = btnAnlegen;
+	}
+
+	public JButton getBtnAbbrechen() {
+		return btnAbbrechen;
+	}
+
+	public void setBtnAbbrechen(JButton btnAbbrechen) {
+		this.btnAbbrechen = btnAbbrechen;
+	}
+
+	public JLabel getLblVorname() {
+		return lblVorname;
+	}
+
+	public void setLblVorname(JLabel lblVorname) {
+		this.lblVorname = lblVorname;
+	}
+
+	public JLabel getLblNachname() {
+		return lblNachname;
+	}
+
+	public void setLblNachname(JLabel lblNachname) {
+		this.lblNachname = lblNachname;
+	}
+
+	public JLabel getLblGeburtsdatum() {
+		return lblGeburtsdatum;
+	}
+
+	public void setLblGeburtsdatum(JLabel lblGeburtsdatum) {
+		this.lblGeburtsdatum = lblGeburtsdatum;
+	}
+
+	public JLabel getLblEmail() {
+		return lblEmail;
+	}
+
+	public void setLblEmail(JLabel lblEmail) {
+		this.lblEmail = lblEmail;
+	}
+
+	public JLabel getLblBenutzername() {
+		return lblBenutzername;
+	}
+
+	public void setLblBenutzername(JLabel lblBenutzername) {
+		this.lblBenutzername = lblBenutzername;
+	}
+
+	public JLabel getLblPasswort() {
+		return lblPasswort;
+	}
+
+	public void setLblPasswort(JLabel lblPasswort) {
+		this.lblPasswort = lblPasswort;
 	}
 }

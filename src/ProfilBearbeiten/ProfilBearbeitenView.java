@@ -16,24 +16,24 @@ import javax.swing.JButton;
 
 public class ProfilBearbeitenView {
 
-	JFrame frmProfilBearbeiten;
-	JLabel lblNutzername;
-	JLabel lblEmail;
-	JLabel lblVorname;
-	JLabel lblNachname;
-	JLabel lblPasswort;
-	JLabel lblGeburtsdatum;
-	JLabel lblPunkte;
-	JLabel lblVN;
-	JLabel lblNN;
-	JLabel lblNutzer;
-	JLabel lblMail;
-	JLabel lblGebDat;
-	JLabel lblPkt;
-	JButton btnaendernNN;
-	JButton btnaendernPW;
-	JButton btnaendernMail;
-	JButton btnFertig;
+	private JFrame frmProfilBearbeiten;
+	private JLabel lblNutzername;
+	private JLabel lblEmail;
+	private JLabel lblVorname;
+	private JLabel lblNachname;
+	private JLabel lblPasswort;
+	private JLabel lblGeburtsdatum;
+	private JLabel lblPunkte;
+	private JLabel lblVN;
+	private JLabel lblNN;
+	private JLabel lblNutzer;
+	private JLabel lblMail;
+	private JLabel lblGebDat;
+	private JLabel lblPkt;
+	private JButton btnaendernNN;
+	private JButton btnaendernPW;
+	private JButton btnaendernMail;
+	private JButton btnFertig;
 
 	/**
 	 * Launch the application.
@@ -165,5 +165,149 @@ public class ProfilBearbeitenView {
 		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmProfilBearbeiten.getContentPane().add(lblHintergrund);
+	}
+
+	public JFrame getFrmProfilBearbeiten() {
+		return frmProfilBearbeiten;
+	}
+
+	public void setFrmProfilBearbeiten(JFrame frmProfilBearbeiten) {
+		this.frmProfilBearbeiten = frmProfilBearbeiten;
+	}
+
+	public JLabel getLblNutzername() {
+		return lblNutzername;
+	}
+
+	public void setLblNutzername(JLabel lblNutzername) {
+		this.lblNutzername = lblNutzername;
+	}
+
+	public JLabel getLblEmail() {
+		return lblEmail;
+	}
+
+	public void setLblEmail(JLabel lblEmail) {
+		this.lblEmail = lblEmail;
+	}
+
+	public JLabel getLblVorname() {
+		return lblVorname;
+	}
+
+	public void setLblVorname(JLabel lblVorname) {
+		this.lblVorname = lblVorname;
+	}
+
+	public JLabel getLblNachname() {
+		return lblNachname;
+	}
+
+	public void setLblNachname(JLabel lblNachname) {
+		this.lblNachname = lblNachname;
+	}
+
+	public JLabel getLblPasswort() {
+		return lblPasswort;
+	}
+
+	public void setLblPasswort(JLabel lblPasswort) {
+		this.lblPasswort = lblPasswort;
+	}
+
+	public JLabel getLblGeburtsdatum() {
+		return lblGeburtsdatum;
+	}
+
+	public void setLblGeburtsdatum(JLabel lblGeburtsdatum) {
+		this.lblGeburtsdatum = lblGeburtsdatum;
+	}
+
+	public JLabel getLblPunkte() {
+		return lblPunkte;
+	}
+
+	public void setLblPunkte(JLabel lblPunkte) {
+		this.lblPunkte = lblPunkte;
+	}
+
+	public JLabel getLblVN() {
+		return lblVN;
+	}
+
+	public void setLblVN(JLabel lblVN) {
+		this.lblVN = lblVN;
+	}
+
+	public JLabel getLblNN() {
+		return lblNN;
+	}
+
+	public void setLblNN(JLabel lblNN) {
+		this.lblNN = lblNN;
+	}
+
+	public JLabel getLblNutzer() {
+		return lblNutzer;
+	}
+
+	public void setLblNutzer(JLabel lblNutzer) {
+		this.lblNutzer = lblNutzer;
+	}
+
+	public JLabel getLblMail() {
+		return lblMail;
+	}
+
+	public void setLblMail(JLabel lblMail) {
+		this.lblMail = lblMail;
+	}
+
+	public JLabel getLblGebDat() {
+		return lblGebDat;
+	}
+
+	public void setLblGebDat(JLabel lblGebDat) {
+		this.lblGebDat = lblGebDat;
+	}
+
+	public JLabel getLblPkt() {
+		return lblPkt;
+	}
+
+	public void setLblPkt(JLabel lblPkt) {
+		this.lblPkt = lblPkt;
+	}
+
+	public JButton getBtnaendernNN() {
+		return btnaendernNN;
+	}
+
+	public void setBtnaendernNN(JButton btnaendernNN) {
+		this.btnaendernNN = btnaendernNN;
+	}
+
+	public JButton getBtnaendernPW() {
+		return btnaendernPW;
+	}
+
+	public void setBtnaendernPW(JButton btnaendernPW) {
+		this.btnaendernPW = btnaendernPW;
+	}
+
+	public JButton getBtnaendernMail() {
+		return btnaendernMail;
+	}
+
+	public void setBtnaendernMail(JButton btnaendernMail) {
+		this.btnaendernMail = btnaendernMail;
+	}
+
+	public JButton getBtnFertig() {
+		return btnFertig;
+	}
+
+	public void setBtnFertig(JButton btnFertig) {
+		this.btnFertig = btnFertig;
 	}
 }

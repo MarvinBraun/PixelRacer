@@ -26,14 +26,14 @@ import javax.swing.SwingConstants;
 
 public class Startansicht {
 
-	JFrame frmPixelRacer;
-	JLabel lblPixelRacer;
-	JButton btnSpielen;
-	JButton btnGarage;
-	JButton btnStreckenbersicht;
-	JButton btnProfil;
-	JButton btnAbmelden;
-	JLabel lblAnzeige;
+	private JFrame frmPixelRacer;
+	private JLabel lblPixelRacer;
+	private JButton btnSpielen;
+	private JButton btnGarage;
+	private JButton btnStreckenbersicht;
+	private JButton btnProfil;
+	private JButton btnAbmelden;
+	private JLabel lblAnzeige;
 	private JLabel lblHintergrund;
 
 	/**
@@ -147,5 +147,77 @@ public class Startansicht {
 		m.label.setBounds(0, 0, 800, 600);
 		frmPixelRacer.getContentPane().add(m.label);
 		frmPixelRacer.setVisible(true);
+	}
+
+	public JFrame getFrmPixelRacer() {
+		return frmPixelRacer;
+	}
+
+	public void setFrmPixelRacer(JFrame frmPixelRacer) {
+		this.frmPixelRacer = frmPixelRacer;
+	}
+
+	public JLabel getLblPixelRacer() {
+		return lblPixelRacer;
+	}
+
+	public void setLblPixelRacer(JLabel lblPixelRacer) {
+		this.lblPixelRacer = lblPixelRacer;
+	}
+
+	public JButton getBtnSpielen() {
+		return btnSpielen;
+	}
+
+	public void setBtnSpielen(JButton btnSpielen) {
+		this.btnSpielen = btnSpielen;
+	}
+
+	public JButton getBtnGarage() {
+		return btnGarage;
+	}
+
+	public void setBtnGarage(JButton btnGarage) {
+		this.btnGarage = btnGarage;
+	}
+
+	public JButton getBtnStreckenbersicht() {
+		return btnStreckenbersicht;
+	}
+
+	public void setBtnStreckenbersicht(JButton btnStreckenbersicht) {
+		this.btnStreckenbersicht = btnStreckenbersicht;
+	}
+
+	public JButton getBtnProfil() {
+		return btnProfil;
+	}
+
+	public void setBtnProfil(JButton btnProfil) {
+		this.btnProfil = btnProfil;
+	}
+
+	public JButton getBtnAbmelden() {
+		return btnAbmelden;
+	}
+
+	public void setBtnAbmelden(JButton btnAbmelden) {
+		this.btnAbmelden = btnAbmelden;
+	}
+
+	public JLabel getLblAnzeige() {
+		return lblAnzeige;
+	}
+
+	public void setLblAnzeige(JLabel lblAnzeige) {
+		this.lblAnzeige = lblAnzeige;
+	}
+
+	public JLabel getLblHintergrund() {
+		return lblHintergrund;
+	}
+
+	public void setLblHintergrund(JLabel lblHintergrund) {
+		this.lblHintergrund = lblHintergrund;
 	}
 }

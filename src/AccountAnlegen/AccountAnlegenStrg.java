@@ -23,10 +23,10 @@ public class AccountAnlegenStrg implements ActionListener{
 	
 	public AccountAnlegenStrg() {
 			view1 = new AccountAnlegenView();
-			view1.frmPixelRacer.setVisible(true);
+			view1.getFrmPixelRacer().setVisible(true);
 			
-			view1.btnAnlegen.addActionListener(this);
-			view1.btnAbbrechen.addActionListener(this);
+			view1.getBtnAnlegen().addActionListener(this);
+			view1.getBtnAbbrechen().addActionListener(this);
 		}
 		
 		public static void main(String[] args) {
@@ -34,12 +34,12 @@ public class AccountAnlegenStrg implements ActionListener{
 		}
 		
 		public void eingegebeneDatenSpeichern() {
-			benutzername = view1.txtNutzername.getText();
-			pw = new String(view1.passwordField.getPassword());
-			vn = view1.txtVorname.getText();
-			nn = view1.txtNachname.getText();
-			email = view1.txtEmail.getText();
-			gebdat = view1.txtGeburtsdatum.getText();
+			benutzername = view1.getTxtNutzername().getText();
+			pw = new String(view1.getPasswordField().getPassword());
+			vn = view1.getTxtVorname().getText();
+			nn = view1.getTxtNachname().getText();
+			email = view1.getTxtEmail().getText();
+			gebdat = view1.getTxtGeburtsdatum().getText();
 		}
 		
 		public Boolean DatenPruefen() {
@@ -89,14 +89,14 @@ public class AccountAnlegenStrg implements ActionListener{
 			Datenbankschnittstelle.executeUpdate(update);
 			Datenbankschnittstelle.closeConnections();
 			
-			view1.frmPixelRacer.dispose();
+			view1.getFrmPixelRacer().dispose();
 			AnmeldenStrg strg = new AnmeldenStrg();
 		}
 	
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if(e.getSource()== view1.btnAnlegen) {
+			if(e.getSource()== view1.getBtnAnlegen()) {
 				
 				eingegebeneDatenSpeichern();
 				if(DatenPruefen()) {
@@ -110,8 +110,8 @@ public class AccountAnlegenStrg implements ActionListener{
 				}
 			}
 			
-			if(e.getSource()== view1.btnAbbrechen) {
-				view1.frmPixelRacer.dispose();
+			if(e.getSource()== view1.getBtnAbbrechen()) {
+				view1.getFrmPixelRacer().dispose();
 				AnmeldenStrg strg = new AnmeldenStrg();
 			}
 	}
