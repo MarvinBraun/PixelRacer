@@ -23,6 +23,8 @@ import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
 import FahrtSpielen.FahrtSpielenStrg;
 import MusicHandler.MusicPlayer;
+import Nutzer.Kunde;
+import Nutzer.Nutzerverwaltung;
 import Strecke.Strecke;
 import Strecke.Streckenverwaltung;
 import myIterator.MyIteratorKart;
@@ -57,6 +59,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	MultiplayerFahrt mf;
 	Kart k;
 	Strecke s;
+	Kunde kunde;
 	int schwierigkeit=1;
 	
 	
@@ -67,7 +70,9 @@ public class FahrtErstellenStrg implements ActionListener {
 		view = new FahrtErstellenView();
 		singlemultiplayer = singleMultiplayer;
 		fahrten = new Fahrtverwaltung();
-	
+		kunde = Nutzerverwaltung.getangKunde();
+		System.out.println(Nutzerverwaltung.getangKunde().getnutzername());
+		
 		//Initialisieren der Karts 
 		karts = new Kartverwaltung();
 		kartliste =karts.gibKart();
@@ -78,7 +83,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		strecken= new Streckenverwaltung();
 		streckenliste = strecken.gibStrecke();
 		itStrecke = new MyIteratorStrecke(streckenliste.listIterator());
-		ladeStrecke();
+	
 		
 		//ActionListener
 		view.kartForward.addActionListener(this);
@@ -86,9 +91,6 @@ public class FahrtErstellenStrg implements ActionListener {
 		view.streckeBackward.addActionListener(this);
 		view.streckeForward.addActionListener(this);
 		view.spielenBtn.addActionListener(this);
-		
-		//Initialisieren der Strecke
-		
 	
 
 		//Initialisieren des Schwierigkeitsgrades
@@ -96,7 +98,6 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 		if(singleMultiplayer==1)
 		{
-		
 			schwierigkeiten = new LinkedList<String>();
 			schwierigkeiten.add("Bronze");
 			schwierigkeiten.add("Silber");
@@ -108,6 +109,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.schwierigkeitLbl.setText(itString.next());
 			sf = new SingleplayerFahrt();
 			sf.setSchwierigkeit("Bronze");
+			sf.setBenutzername(kunde.getnutzername());
 			
 		
 		}
@@ -121,6 +123,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.multiplayerLbl.setVisible(true);
 			mf = new MultiplayerFahrt();
 		}
+		ladeStrecke();
 		SwingUtilities.updateComponentTreeUI(view.frame);
 	
 		SwingUtilities.updateComponentTreeUI(view.frame);
@@ -156,6 +159,10 @@ public class FahrtErstellenStrg implements ActionListener {
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			view.streckeLbl.setIcon(icon);
+			itString = new MyIteratorString(schwierigkeiten.listIterator());
+			view.schwierigkeitLbl.setText(itString.next());
+			
+		
 		}
 	}
 	//Methode um rückwärts durch die Karts zu scrollen
@@ -183,6 +190,9 @@ public class FahrtErstellenStrg implements ActionListener {
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			view.streckeLbl.setIcon(icon);
+			itString = new MyIteratorString(schwierigkeiten.listIterator());	
+			view.schwierigkeitLbl.setText(itString.next());
+			
 		}
 	}
 	
@@ -230,7 +240,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public boolean pruefeSchwierigkeit(String a)
 	{
-		schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFürBenutzer("DZeller",s.getStreckenname());
+		schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFürBenutzer(kunde.getnutzername(),s.getStreckenname());
 		Iterator<SingleplayerFahrt> it = schwierigkeitsCheck.iterator();
 		boolean pruefung = false;
 		while(it.hasNext())
@@ -284,7 +294,6 @@ public class FahrtErstellenStrg implements ActionListener {
 		if(s.equals("Gold"))
 			schwierigkeit = 3;
 		sf.setZeit(0);
-		sf.setBenutzername("DZeller");
 		int id = fahrten.gibNeueID(2);
 		sf.setSitzungsID(id);
 		FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,k,s,schwierigkeit);

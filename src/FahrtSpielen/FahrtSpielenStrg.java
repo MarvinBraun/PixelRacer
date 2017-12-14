@@ -35,6 +35,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		kart = k;
 		strecke = s;
 		this.sf = sfahrt;
+		System.out.println(sf.getBenutzername());
 		
 		
 		//Entscheidung ob ein Single oder MultiplayerSpiel gespielt wird

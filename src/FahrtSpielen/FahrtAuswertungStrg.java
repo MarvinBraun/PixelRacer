@@ -9,11 +9,13 @@ import javax.swing.ImageIcon;
 
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
+import Nutzer.Nutzerverwaltung;
 import Startansicht.StartansichtStrg;
 
 public class FahrtAuswertungStrg implements ActionListener {
 	FahrtAuswertung view;
 	Fahrtverwaltung verwaltung  = new Fahrtverwaltung();
+	int a = 0;
 	public FahrtAuswertungStrg(SingleplayerFahrt sf, BufferedImage strecke)
 	{
 		
@@ -29,14 +31,20 @@ public class FahrtAuswertungStrg implements ActionListener {
 		
 		
 		case(1): view.lblGewonnenPunkte.setText("Gewonnene Punkte: 3");
+		a = 3;
 		case(2): view.lblGewonnenPunkte.setText("Gewonnene Punkte: 2");
+		a = 2;
 		case(3): view.lblGewonnenPunkte.setText("Gewonnene Punkte: 1");
+		a = 1;
+	
 		
-		verwaltung.sendeSingleplayerFahrt(sf);	
-		
-		
+	
 		
 		}
+		verwaltung.sendeSingleplayerFahrt(sf);	
+		
+		Nutzerverwaltung.addpunkte(a);
+		
 		
 		view.btnNewButton.addActionListener(this);
 		

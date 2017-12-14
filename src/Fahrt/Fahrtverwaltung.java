@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 import Datenbankverwaltung.Datenbankschnittstelle;
+import Nutzer.Nutzerverwaltung;
 
 public class Fahrtverwaltung {
 	
@@ -129,6 +130,7 @@ public class Fahrtverwaltung {
 	
 	public void sendeSingleplayerFahrt(SingleplayerFahrt sf)
 	{
+		sf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
 		System.out.println(sf.getSitzungsID()+","+sf.getZeit()+","+sf.getRang()+",'"+sf.getBenutzername()+"','"+sf.getStreckenName()+"','"+sf.getKartName()+"','"+sf.getSchwierigkeit()+"')");
 		
 			Datenbankschnittstelle.executeUpdate("insert into singleplayer_fahrt values("+sf.getSitzungsID()+","+sf.getZeit()+","+sf.getRang()+",'"+sf.getBenutzername()+"','"+sf.getStreckenName()+"','"+sf.getKartName()+"','"+sf.getSchwierigkeit()+"')");

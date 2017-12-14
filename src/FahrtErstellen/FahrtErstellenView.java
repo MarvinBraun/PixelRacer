@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class FahrtErstellenView {
 
@@ -105,7 +106,7 @@ public class FahrtErstellenView {
 		streckeForward.setBorderPainted(false);
 		streckeForward.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
 		streckeForward.setContentAreaFilled(false);
-		streckeForward.setBounds(643, 238, 60, 60);
+		streckeForward.setBounds(712, 238, 60, 60);
 		frame.getContentPane().add(streckeForward);
 		
 		schwierigkeitBtn2 = new JButton("");
@@ -146,7 +147,7 @@ public class FahrtErstellenView {
 		kartForward.setBorderPainted(true);
 		kartForward.setContentAreaFilled(false);
 		kartForward.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
-		kartForward.setBounds(643, 115, 60, 60);
+		kartForward.setBounds(712, 115, 60, 60);
 		frame.getContentPane().add(kartForward);
 		
 		streckeLbl = new JLabel("");
@@ -159,8 +160,9 @@ public class FahrtErstellenView {
 		frame.getContentPane().add(waehleKart);
 		
 		streckeName = new JLabel("Hockenheim");
-		streckeName.setFont(new Font("pixelmix", Font.PLAIN, 27));
-		streckeName.setBounds(404, 238, 215, 60);
+		streckeName.setHorizontalAlignment(SwingConstants.CENTER);
+		streckeName.setFont(new Font("pixelmix", Font.PLAIN, 30));
+		streckeName.setBounds(415, 238, 287, 60);
 		frame.getContentPane().add(streckeName);
 		
 		kartName = new JLabel("FireBird");
@@ -169,22 +171,25 @@ public class FahrtErstellenView {
 		frame.getContentPane().add(kartName);
 		
 		multiplayerLbl = new JLabel("MultiplayerID: ");
+		multiplayerLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		multiplayerLbl.setVisible(false);
 		multiplayerLbl.setFont(new Font("pixelmix", Font.PLAIN, 18));
 		multiplayerLbl.setBounds(102, 493, 233, 56);
 		frame.getContentPane().add(multiplayerLbl);
 		
 		kartBild = new JLabel("");
-		kartBild.setIcon(new ImageIcon("C:\\Users\\Marvin\\OneDrive\\PixelRacer\\src\\Resources\\Car1.png"));
-		kartBild.setBounds(88, 69, 545, 122);
+		kartBild.setIcon(null);
+		kartBild.setBounds(135, 72, 545, 122);
 		frame.getContentPane().add(kartBild);
 		
 		lblWhleDeineStrecke = new JLabel("Deine Strecke:");
+		lblWhleDeineStrecke.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWhleDeineStrecke.setFont(new Font("pixelmix", Font.PLAIN, 30));
 		lblWhleDeineStrecke.setBounds(102, 246, 303, 40);
 		frame.getContentPane().add(lblWhleDeineStrecke);
 		
 		schwierigkeitLbl = new JLabel("Schwierigkeit");
+		schwierigkeitLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		schwierigkeitLbl.setFont(new Font("pixelmix", Font.PLAIN, 25));
 		schwierigkeitLbl.setBounds(105, 495, 233, 40);
 		frame.getContentPane().add(schwierigkeitLbl);
