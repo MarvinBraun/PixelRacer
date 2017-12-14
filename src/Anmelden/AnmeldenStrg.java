@@ -51,7 +51,7 @@ public class AnmeldenStrg implements ActionListener {
 		for(Kunde temp: kliste) {
 			if(k1.getnutzername().equals(temp.getnutzername())) {
 				if(k1.getpasswort().equals(temp.getpasswort())) {
-					angKunde = k1;
+					angKunde = temp;
 					return true;
 				}
 			}
