@@ -18,6 +18,7 @@ public class MultiplayerAuswahlView {
 	JFrame frame;
 	JButton btnerstellen;
 	JButton btnbeitreten;
+	JButton btnzurück;
 
 	/**
 	 * Launch the application.
@@ -58,12 +59,16 @@ public class MultiplayerAuswahlView {
 		frame.getContentPane().setLayout(null);
 
 		btnerstellen = new JButton("Multiplayerfahrt erstellen");
-		btnerstellen.setBounds(50, 237, 315, 35);
+		btnerstellen.setBounds(80, 237, 280, 31);
 		frame.getContentPane().add(btnerstellen);
 
 		btnbeitreten = new JButton("Multiplayerfahrt beitreten");
-		btnbeitreten.setBounds(406, 237, 315, 35);
+		btnbeitreten.setBounds(440, 237, 280, 31);
 		frame.getContentPane().add(btnbeitreten);
+		
+		btnzurück = new JButton("Zurück");
+		btnzurück.setBounds(325, 289, 150, 31);
+		frame.getContentPane().add(btnzurück);
 
 		BufferedImage image2 = null;
 		try {

@@ -23,6 +23,10 @@ public class MultiplayerAuswahlStrg implements ActionListener {
 			mv.frame.dispose();
 			FahrtErstellenStrg strg = new FahrtErstellenStrg(2);
 		}
+		if (e.getSource() == mv.btnzurück) {
+			mv.frame.dispose();
+			ModusauswählenStrg ma = new ModusauswählenStrg();
+		}
 	}
 
 	public MultiplayerAuswahlStrg() {
@@ -35,6 +39,7 @@ public class MultiplayerAuswahlStrg implements ActionListener {
 		mv.frame.setVisible(true);
 		mv.btnbeitreten.addActionListener(this);
 		mv.btnerstellen.addActionListener(this);
+		mv.btnzurück.addActionListener(this);;
 	}
 
 	public static void main(String[] args) throws IOException {

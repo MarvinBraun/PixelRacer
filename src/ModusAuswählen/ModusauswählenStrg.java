@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import FahrtErstellen.FahrtErstellenStrg;
+import Startansicht.StartansichtStrg;
 
 public class ModusauswählenStrg implements ActionListener {
 
@@ -29,7 +30,10 @@ public class ModusauswählenStrg implements ActionListener {
 			}
 
 		}
-
+		if (e.getSource() == mav.btnzurück) {
+			mav.frame.dispose();
+			StartansichtStrg sa = new StartansichtStrg();
+		}
 	}
 
 	public ModusauswählenStrg() {
@@ -37,6 +41,7 @@ public class ModusauswählenStrg implements ActionListener {
 		mav.frame.setVisible(true);
 		mav.btnMultiplayer.addActionListener(this);
 		mav.btnSingleplayer.addActionListener(this);
+		mav.btnzurück.addActionListener(this);
 
 	}
 

@@ -20,6 +20,7 @@ public class ModusAuswählenView {
 
 	JButton btnSingleplayer;
 	JButton btnMultiplayer;
+	JButton btnzurück;
 
 	/**
 	 * Launch the application.
@@ -61,12 +62,16 @@ public class ModusAuswählenView {
 		frame.setResizable(false);
 
 		btnSingleplayer = new JButton("Singleplayer");
-		btnSingleplayer.setBounds(178, 241, 187, 31);
+		btnSingleplayer.setBounds(200, 240, 160, 31);
 		frame.getContentPane().add(btnSingleplayer);
 
 		btnMultiplayer = new JButton("Multiplayer");
-		btnMultiplayer.setBounds(429, 241, 187, 31);
+		btnMultiplayer.setBounds(440, 240, 160, 31);
 		frame.getContentPane().add(btnMultiplayer);
+
+		btnzurück = new JButton("Zurück");
+		btnzurück.setBounds(325, 289, 150, 31);
+		frame.getContentPane().add(btnzurück);
 
 		BufferedImage image = null;
 		try {
