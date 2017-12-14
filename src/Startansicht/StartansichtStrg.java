@@ -2,8 +2,10 @@ package Startansicht;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import Anmelden.AnmeldenStrg;
+import ModusAuswählen.ModusauswählenStrg;
 
 //Autor Daniel Zeller
 
@@ -20,6 +22,10 @@ public class StartansichtStrg implements ActionListener {
 		view1.btnProfil.addActionListener(this);
 		view1.btnSpielen.addActionListener(this);
 		view1.btnStreckenbersicht.addActionListener(this);
+	}
+	
+	public static void main(String[] args0){
+		StartansichtStrg strg = new StartansichtStrg();
 	}
 	
 	@Override
@@ -39,7 +45,13 @@ public class StartansichtStrg implements ActionListener {
 		}
 		
 		if(e.getSource()== view1.btnSpielen) {
-			
+			try {
+				ModusauswählenStrg strg = new ModusauswählenStrg();
+				view1.frmPixelRacer.dispose();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 		if(e.getSource()== view1.btnStreckenbersicht) {
