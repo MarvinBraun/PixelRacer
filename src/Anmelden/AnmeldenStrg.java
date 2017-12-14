@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 import AccountAnlegen.AccountAnlegenStrg;
+import MitarbeiterAnsicht.MitarbeiterAnsichtStrg;
 import Nutzer.*;
 import Startansicht.StartansichtStrg;
 
@@ -16,7 +17,7 @@ public class AnmeldenStrg implements ActionListener {
 	private static String benutzername;
 	private LinkedList<Kunde> kliste;
 	private LinkedList<Mitarbeiter> mliste;
-	private static String angbenutzername;
+	private static Kunde angKunde;
 	
 	AnmeldenView view1;
 	AnmeldenMitarbeiterView view2;
@@ -50,7 +51,7 @@ public class AnmeldenStrg implements ActionListener {
 		for(Kunde temp: kliste) {
 			if(k1.getnutzername().equals(temp.getnutzername())) {
 				if(k1.getpasswort().equals(temp.getpasswort())) {
-					angbenutzername = k1.getnutzername();
+					angKunde = k1;
 					return true;
 				}
 			}
@@ -83,6 +84,7 @@ public class AnmeldenStrg implements ActionListener {
 		if(e.getSource()== view1.btnAnmelden) {
 			if(pruefeDatenKunden()) {
 				JOptionPane.showMessageDialog(null, "Anmelden erfolgreich!","Super!", JOptionPane.PLAIN_MESSAGE);
+				Nutzerverwaltung.setangKunde(angKunde);
 				StartansichtStrg start = new StartansichtStrg();
 				view1.frmPixelRacer.dispose();
 			}
@@ -103,8 +105,8 @@ public class AnmeldenStrg implements ActionListener {
 		if(e.getSource()== view2.btnAnmelden) {
 			if(pruefeDatenMitarbeiter()) {
 				JOptionPane.showMessageDialog(null, "Anmelden erfolgreich!","Super!", JOptionPane.PLAIN_MESSAGE);
-				StartansichtStrg start = new StartansichtStrg();
-				view1.frmPixelRacer.dispose();
+				MitarbeiterAnsichtStrg strg = new MitarbeiterAnsichtStrg();
+				view2.frmPixelRacer.dispose();
 			}
 			
 			else {
@@ -116,10 +118,5 @@ public class AnmeldenStrg implements ActionListener {
 			view2.frmPixelRacer.dispose();
 			AnmeldenStrg strg = new AnmeldenStrg();
 		}
-	}
-
-	public static String getAngNutzername() {
-		// TODO Auto-generated method stub
-		return angbenutzername;
 	}
 }

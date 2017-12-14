@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import Anmelden.AnmeldenStrg;
 import ModusAuswählen.ModusauswählenStrg;
+import Nutzer.Nutzerverwaltung;
 
 //Autor Daniel Zeller
 
@@ -22,6 +23,8 @@ public class StartansichtStrg implements ActionListener {
 		view1.btnProfil.addActionListener(this);
 		view1.btnSpielen.addActionListener(this);
 		view1.btnStreckenbersicht.addActionListener(this);
+		
+		view1.lblAnzeige.setText(Nutzerverwaltung.getangKunde().getnutzername() + "  -  " + Nutzerverwaltung.getangKunde().getpunkte());
 	}
 	
 	public static void main(String[] args0){

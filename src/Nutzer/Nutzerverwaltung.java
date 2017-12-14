@@ -13,7 +13,7 @@ import Fahrt.SingleplayerFahrt;
 public class Nutzerverwaltung {
 	static LinkedList<Kunde> kundenliste = new LinkedList<Kunde>();
 	static LinkedList<Mitarbeiter> mitarbeiterliste = new LinkedList<Mitarbeiter>();
-	static Kunde angkunde = new Kunde();
+	private static Kunde angkunde = new Kunde();
 	
 	public static LinkedList<Kunde> gibKundenliste() { //greift auf die Datenbank zu und gibt alle Kunden zurück
 		
@@ -73,8 +73,9 @@ public class Nutzerverwaltung {
 		return mitarbeiterliste;
 	}
 	
-	public void setangKunde() {
-		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde where benutzername = " + AnmeldenStrg.getAngNutzername());
+	public static void setangKunde(Kunde kunde) {
+		angkunde = kunde;
+		/*ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde where benutzername = " + AnmeldenStrg.getAngNutzername());
 		try {
 			while(rs.next())
 			{
@@ -93,7 +94,7 @@ public class Nutzerverwaltung {
 			e.printStackTrace();
 			
 			Datenbankschnittstelle.closeConnections();
-		}
+		}*/
 	}
 	
 	public static Kunde getangKunde() {

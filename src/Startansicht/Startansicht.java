@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 //Autor Daniel Zeller
 
@@ -25,6 +27,7 @@ public class Startansicht {
 	JButton btnStreckenbersicht;
 	JButton btnProfil;
 	JButton btnAbmelden;
+	JLabel lblAnzeige;
 
 	/**
 	 * Launch the application.
@@ -106,9 +109,13 @@ public class Startansicht {
 		frmPixelRacer.getContentPane().add(btnAbmelden);
 		btnAbmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//AnmeldenStrg strg = new AnmeldenStrg();
 				frmPixelRacer.dispose();
 			}
 		});
+		
+		lblAnzeige = new JLabel("Fehler");
+		lblAnzeige.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAnzeige.setBounds(544, 0, 240, 14);
+		frmPixelRacer.getContentPane().add(lblAnzeige);
 	}
 }
