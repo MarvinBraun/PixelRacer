@@ -1,14 +1,17 @@
 package ModusAuswählen;
 
 import java.awt.EventQueue;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 
 import BackgroundAnimation.Movement;
 import BackgroundAnimation.MovementBackward;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
-
 
 public class MultiplayerAuswahlView {
 
@@ -34,48 +37,51 @@ public class MultiplayerAuswahlView {
 
 	/**
 	 * Create the application.
+	 * @throws IOException 
 	 */
-	public MultiplayerAuswahlView() {
+	public MultiplayerAuswahlView() throws IOException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * @throws IOException
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setTitle("Multiplayerfahrt auswählen");
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		btnerstellen = new JButton("Multiplayerfahrt erstellen");
 		btnerstellen.setBounds(50, 237, 315, 35);
 		frame.getContentPane().add(btnerstellen);
-		
+
 		btnbeitreten = new JButton("Multiplayerfahrt beitreten");
 		btnbeitreten.setBounds(406, 237, 315, 35);
 		frame.getContentPane().add(btnbeitreten);
-		
-		/*MovementBackward m = new MovementBackward(5);
+
+		BufferedImage image = ImageIO.read(new File("src/Resources/car2.png"));
+		MovementBackward m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
 		m.label.setSize(200, 200);
-		m.label.setBufferedImage("src/Resources/car2.png",400);
-		
+		m.label.setBufferedImage(image, 400);
+
 		m.label.setBounds(0, 0, 200, 200);
 		frame.getContentPane().add(m.label);
-		
 
 		Movement m2 = new Movement(5);
 		m2.label.setLocation(0, 0);
 		m2.label.setSize(800, 571);
-		m2.label.setBufferedImage("src/Resources/hockenheim.png",0);
-	
+		m2.label.setBufferedImage(image, 0);
+
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);
 		frame.setVisible(true);
-		*/
+
 	}
 
 }

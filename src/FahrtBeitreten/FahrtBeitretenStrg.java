@@ -47,7 +47,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 
 	//Konstruktor
 	@SuppressWarnings("unchecked")
-	public FahrtBeitretenStrg(int singleMultiplayer) {
+	public FahrtBeitretenStrg() {
 		view = new FahrtBeitretenView();
 	
 		//Initialisieren der Karts und der Buttons
@@ -70,7 +70,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 	public static void main(String[] args)
 	{
-		FahrtBeitretenStrg strg = new FahrtBeitretenStrg(1);
+		FahrtBeitretenStrg strg = new FahrtBeitretenStrg();
 		MusicPlayer.audioBackground();
 
 	}

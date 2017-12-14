@@ -2,6 +2,8 @@ package ModusAuswählen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import FahrtErstellen.FahrtErstellenStrg;
 
 public class ModusauswählenStrg implements ActionListener {
@@ -14,17 +16,23 @@ public class ModusauswählenStrg implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getSource() == mav.btnSingleplayer) {
 			mav.frame.dispose();
-			FahrtErstellenStrg.main(null);
+			FahrtErstellenStrg strg = new FahrtErstellenStrg(1);
 		}
 		if (e.getSource() == mav.btnMultiplayer) {
 			mav.frame.dispose();
-			MultiplayerAuswahlStrg.main(null);
+			try {
+				MultiplayerAuswahlStrg.main(null);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.getMessage();
+				System.out.println("Fehler beim Klicken von MultiplayerButton!");
+			}
 
 		}
 
 	}
 
-	public ModusauswählenStrg() {
+	public ModusauswählenStrg() throws IOException {
 		mav = new ModusAuswählenView();
 		mav.frame.setVisible(true);
 		mav.btnMultiplayer.addActionListener(this);
@@ -33,7 +41,11 @@ public class ModusauswählenStrg implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		ms = new ModusauswählenStrg();
+		try{
+			ms = new ModusauswählenStrg();
+		}catch(IOException io){
+			io.getMessage();
+		}
 	}
 
 }
