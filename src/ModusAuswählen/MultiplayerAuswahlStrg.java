@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import FahrtBeitreten.FahrtBeitretenStrg;
 import FahrtErstellen.FahrtErstellenStrg;
+import MultiplayerFahrtSpielen.FahrtBeitretenStrg;
 
 public class MultiplayerAuswahlStrg implements ActionListener {
 

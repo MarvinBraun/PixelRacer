@@ -1,4 +1,4 @@
-package FahrtBeitreten;
+package MultiplayerFahrtSpielen;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

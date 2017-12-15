@@ -20,6 +20,7 @@ public class FahrtAuswertungStrg implements ActionListener {
 	{
 		
 		view = new FahrtAuswertung();
+		view.frame.setLocationRelativeTo(null);
 		view.lblDeineZeit.setText("Deine Zeit: "+sf.getZeit());
 		view.lblDeinPlatz.setText("Dein Rang: "+sf.getRang());
 		ImageIcon streckenBild = new ImageIcon(strecke);

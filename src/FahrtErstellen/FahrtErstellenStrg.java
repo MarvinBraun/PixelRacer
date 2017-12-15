@@ -68,6 +68,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	//Konstruktor
 	public FahrtErstellenStrg(int singleMultiplayer) {
 		view = new FahrtErstellenView();
+		view.frame.setLocationRelativeTo(null);
 		singlemultiplayer = singleMultiplayer;
 		fahrten = new Fahrtverwaltung();
 		kunde = Nutzerverwaltung.getangKunde();

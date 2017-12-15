@@ -1,4 +1,4 @@
-package FahrtBeitreten;
+package MultiplayerFahrtSpielen;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;

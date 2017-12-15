@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
@@ -18,6 +21,7 @@ import FahrtErstellen.FahrtErstellenView;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class MultiplayerFahrtSpielenView {
@@ -95,7 +99,14 @@ public class MultiplayerFahrtSpielenView {
 		MovementBackward m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
 		m.label.setSize(200, 200);
-		m.label.setBufferedImage("src/Resources/car2.png",400);
+		BufferedImage image1= null;
+		try {
+			image1 = ImageIO.read(new File("src/Resources/car2.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		m.label.setBufferedImage(image1,400);
 		
 		m.label.setBounds(0, 0, 200, 200);
 		frame.getContentPane().add(m.label);
@@ -104,7 +115,14 @@ public class MultiplayerFahrtSpielenView {
 		Movement m2 = new Movement(5);
 		m2.label.setLocation(0, 0);
 		m2.label.setSize(800, 571);
-		m2.label.setBufferedImage("src/Resources/hockenheim.png",0);
+		BufferedImage image2=null;
+		try {
+			image2 = ImageIO.read(new File("src/Resources/hockenheim.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		m2.label.setBufferedImage(image2,0);
 	
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);

@@ -71,6 +71,7 @@ public class FahrtSpielenView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		fahrenBtn = new JButton("Fahren!");
 		fahrenBtn.setBackground(new Color(176, 224, 230));
