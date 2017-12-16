@@ -8,11 +8,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 
+import Datenbankverwaltung.Datenbankschnittstelle;
+import Nutzer.Nutzerverwaltung;
 import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
 
@@ -27,6 +31,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	static LinkedList<Strecke> streckenListe = new LinkedList<Strecke>();
 	
 	Strecke s;
+	ResultSet rs;
 	
 	static MyIteratorStrecke<Strecke> itStrecke;
 	static MyIteratorString<String> itString;
@@ -51,9 +56,6 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		viewUebersicht.streckeForward.addActionListener(this);
 		viewUebersicht.btnDetailView.addActionListener(this);
 		
-		
-		
-	
 		ladeStrecke();
 		
 		SwingUtilities.updateComponentTreeUI(viewUebersicht.frame);
@@ -77,7 +79,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			viewUebersicht.streckeLbl.setIcon(icon);
-								
+											
 		}
 	}
 	
@@ -93,6 +95,25 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			viewUebersicht.streckeLbl.setIcon(icon);
 						
 		}
+	}
+	
+	public void setDetailView() throws SQLException {
+		
+		// auf angemeldeten Nutzer umschreiben
+		String abfrageAnzRennen = "SELECT BENUTZERNAME, STRECKENNAME, COUNT(SITZUNGSID)FROM SINGLEPLAYER_FAHRT WHERE BENUTZERNAME = 'DZeller' AND STRECKENNAME = 'Hockenheim' GROUP BY BENUTZERNAME, STRECKENNAME";
+		
+		System.out.println(abfrageAnzRennen);
+		
+		StreckeDetailView viewDetail= new StreckeDetailView();
+		viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
+			
+			
+		rs = Datenbankschnittstelle.executeQuery(abfrageAnzRennen);
+		viewDetail.lblSetGesRennen.setText(Integer.toString(rs.getInt(abfrageAnzRennen)));
+			
+		viewDetail.frame.setVisible(true);
+		rs.close();
+		Datenbankschnittstelle.closeConnections();
 	}
 	
 	public static BufferedImage imageResizer(BufferedImage original)
@@ -118,8 +139,15 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		}
 		if(e.getSource()==viewUebersicht.btnDetailView)
 		{
-			StreckeDetailView viewDeatil= new StreckeDetailView();
-			viewDeatil.frame.setVisible(true);
+			
+			try {
+				setDetailView();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+			
+			
 		}
 		if(e.getSource()==viewDetail.btnZurueck)
 		{

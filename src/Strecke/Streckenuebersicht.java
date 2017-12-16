@@ -66,21 +66,21 @@ public class Streckenuebersicht {
 		streckeBackward.setVisible(true);
 		frame.getContentPane().add(streckeBackward);
 		
-		streckeLbl = new JLabel("");
+		streckeLbl = new JLabel("", JLabel.CENTER);
 		streckeLbl.setBounds(247, 144, 300, 200);
 		streckeLbl.setVisible(true);
 		frame.getContentPane().add(streckeLbl);
 		
 		
-		streckeName = new JLabel("Hockenheim");
+		streckeName = new JLabel("Hockenheim", JLabel.CENTER);
 		streckeName.setFont(new Font("pixelmix", Font.PLAIN, 27));
-		streckeName.setBounds(318, 357, 215, 60);
+		streckeName.setBounds(296, 355, 215, 60);
 		streckeName.setVisible(true);
 		frame.getContentPane().add(streckeName);
 		
 		btnDetailView = new JButton("Zeig mir mehr!");
 		btnDetailView.setFont(new Font("Dialog", Font.PLAIN, 20));
-		btnDetailView.setBounds(275, 428, 229, 35);
+		btnDetailView.setBounds(282, 428, 229, 35);
 		btnDetailView.setVisible(true);
 		frame.getContentPane().add(btnDetailView);
 		
