@@ -2,6 +2,8 @@ package FahrtSpielen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
 
@@ -17,7 +19,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	
 	FahrtSpielenView fahrtSpielenView;
 	ZeitBehaltenView zeitBehaltenView;
-	int versuche = 3;
+	int versuche = 5;
 
 	BufferedImage kartBild;
 	BufferedImage streckenBild;
@@ -27,6 +29,8 @@ public class FahrtSpielenStrg implements ActionListener{
 	Kart kart;
 	Strecke strecke;
 	int schwierigkeit;
+	int speed = 1;
+	int wert =0;
 	
 	//Singleplayerfahrt Konstruktor
 	
@@ -36,6 +40,9 @@ public class FahrtSpielenStrg implements ActionListener{
 		strecke = s;
 		this.sf = sfahrt;
 		System.out.println(sf.getBenutzername());
+		
+		
+		
 		
 		
 		//Entscheidung ob ein Single oder MultiplayerSpiel gespielt wird
@@ -55,6 +62,13 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 		fahrtSpielenView = new FahrtSpielenView(kartBild,streckenBild);
 		fahrtSpielenView.fahrenBtn.addActionListener(this);
+		
+		//KeyAdapter
+		fahrtSpielenView.zeiger.balken.setVisible(false);
+		fahrtSpielenView.frame.setVisible(true);
+		fahrtSpielenView.frame.setFocusable(true);
+		fahrtSpielenView.frame.setFocusTraversalKeysEnabled(false);
+		
 		
 		System.out.println("Registriert");
 	
@@ -84,6 +98,71 @@ public class FahrtSpielenStrg implements ActionListener{
 	public void fahren()
 	{
 		
+		fahrtSpielenView.fahrenBtn.setVisible(false);
+		fahrtSpielenView.zeiger.balken.setVisible(true);
+		fahrtSpielenView.balkenLbl.setVisible(true);
+		fahrtSpielenView.bewertungLbl.setVisible(true);
+		fahrtSpielenView.frame.addKeyListener(new KeyAdapter() {
+	         @Override
+	         public void keyPressed(KeyEvent e) {
+	            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+	            	if( versuche>=0)
+	            	{ 
+	            		int record = fahrtSpielenView.zeiger.balken.backgroundX1;
+	            	wert = wert + record;
+	            	System.out.println(wert);
+	            	speed = speed+speed;
+	            	fahrtSpielenView.zeiger.setSpeed(speed);
+	            	System.out.println("Hi from KeyListener");
+	            	versuche--;
+	            	String a = ""+versuche;
+	            	fahrtSpielenView.lblAnzahlVerbleibenderVersuche.setText("Versuche: "+a);
+	               	String b = ""+sf.getZeit();
+	               	fahrtSpielenView.lblLetzteZeit.setText("Zeit: "+b+"s");
+	               	
+	               	if(200<record&&record<500)
+	               	{
+	               		fahrtSpielenView.bewertungLbl.setText("Super");
+	               	
+	               	}
+	               	
+	               	
+	            	}
+	            	
+	            	
+	            	if(versuche == 0)
+	            	{
+	            		float berechneLeistung = (float) wert / 1750;
+	            		System.out.println("Alter Wert: "+berechneLeistung);
+	            		if(berechneLeistung<1)
+	            		{
+	            			berechneLeistung = (float) 1/berechneLeistung;
+	            		}
+	            	
+	            		
+	            		System.out.println(berechneLeistung);
+	            		
+	            		
+	            		float schwierigkeit2 = (float) (0.8 +(Math.random() * 1.5)); 
+	        			
+	        			int zeit = (int) ((int) ((strecke.getLaenge()/kart.getMaxkmh())+(kart.getMaxkmh()/kart.beschleunigung)*schwierigkeit2)*berechneLeistung);
+	        			System.out.println("Zeit"+zeit);
+	        			sf.setZeit(zeit);
+	        			versuche--;
+	        			
+	        			simuliereBotZeiten();
+	        			FahrtAuswertungStrg strg = new FahrtAuswertungStrg(sf,streckenBild);
+	        			fahrtSpielenView.frame.dispose();
+	        		//	FahrtAuswertung fahrtAuswertung = new FahrtAuswertung(sf.getZeit(),sf.getRang());
+	        			
+	        	
+	        			
+	            	}
+	            }
+	         }
+	      });
+	
+		/*
 		if(versuche>1)
 		{
 			
@@ -124,6 +203,7 @@ public class FahrtSpielenStrg implements ActionListener{
 			
 			
 		}
+		*/
 		
 	}
 	
