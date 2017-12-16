@@ -159,4 +159,8 @@ public class KartHinzufügenStrg implements ActionListener {
 		Datenbankschnittstelle.uploadBlob(updateBild,grafik);
 		Datenbankschnittstelle.closeConnections();
 	}
+	
+	public KartHinzufügenView getView() {
+		return khView;
+	}
 }
