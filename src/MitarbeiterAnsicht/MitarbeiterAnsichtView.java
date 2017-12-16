@@ -1,78 +1,76 @@
-/**
- @author Sean Cartner
-*/
-
 package MitarbeiterAnsicht;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.CardLayout;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.Color;
 
-public class MitarbeiterAnsichtView {
+public class MitarbeiterAnsichtView extends JFrame {
 
-	protected JFrame frmPixelRacer;
-	protected JButton btnFgeKartHinzu;
-	protected JButton btnFgeStreckeHinzu;
-	protected JButton btnFgeBezahlartHinzu;
-	protected JButton btnAbmelden;
-	protected JButton btnAddma;
-	
-	
+	private JPanel contentPane;
+	protected JPanel panelContent;
+	protected JTree tree;
+	protected CardLayout cl;
 
 	/**
-	 * Create the application.
+	 * Create the frame.
 	 */
 	public MitarbeiterAnsichtView() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frmPixelRacer = new JFrame();
-		frmPixelRacer.setTitle("Pixel Racer - Mitarbeiter Men\u00FC");
-		frmPixelRacer.setResizable(false);
-		frmPixelRacer.setSize(800, 600);
-		frmPixelRacer.setLocationRelativeTo(null);
-		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmPixelRacer.getContentPane().setLayout(null);
+		setTitle("Pixel Racer - Mitarbeiter Men\u00FC");
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(800, 600);
+		setLocationRelativeTo(null);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		JLabel lblPixelRacer = new JLabel("Pixel Racer - Mitarbeiter Men\u00FC");
-		lblPixelRacer.setBounds(169, 88, 461, 33);
-		lblPixelRacer.setFont(new Font("Tahoma", Font.BOLD, 30));
-		frmPixelRacer.getContentPane().add(lblPixelRacer);
+		JPanel panelMenu = new JPanel();
+		panelMenu.setBackground(Color.WHITE);
+		panelMenu.setBounds(0, 0, 170, 570);
+		contentPane.add(panelMenu);
+		panelMenu.setLayout(null);
 		
-		btnFgeKartHinzu = new JButton("Füge Kart hinzu");
-		btnFgeKartHinzu.setBounds(92, 333, 172, 45);
-		btnFgeKartHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		frmPixelRacer.getContentPane().add(btnFgeKartHinzu);
+		//Wurzel
+		DefaultMutableTreeNode menu = new DefaultMutableTreeNode("Menu");
+		//Kategorien
+		DefaultMutableTreeNode startansicht = new DefaultMutableTreeNode("Startansicht");
+		DefaultMutableTreeNode kart = new DefaultMutableTreeNode("Kart");
+		DefaultMutableTreeNode strecke = new DefaultMutableTreeNode("Strecke");
+		DefaultMutableTreeNode bezahlart = new DefaultMutableTreeNode("Bezahlart");
+		//MenuPunkte
+		DefaultMutableTreeNode start = new DefaultMutableTreeNode("Start");
+		DefaultMutableTreeNode kartHinzufügen = new DefaultMutableTreeNode("Füge Kart hinzu");
+		DefaultMutableTreeNode streckeHinzufügen = new DefaultMutableTreeNode("Füge Strecke hinzu");
+		DefaultMutableTreeNode bezahlartHinzufügen = new DefaultMutableTreeNode("Füge Bezahlart hinzu");
+		// Zuweisung Wurzel - Kategorie
+		menu.add(startansicht);
+		menu.add(kart);
+		menu.add(strecke);
+		menu.add(bezahlart);
+		//Zuweisung Kategroie - MenuPunkt
+		startansicht.add(start);
+		kart.add(kartHinzufügen);
+		strecke.add(streckeHinzufügen);
+		bezahlart.add(bezahlartHinzufügen);
 		
-		btnFgeStreckeHinzu = new JButton("F\u00FCge Strecke hinzu");
-		btnFgeStreckeHinzu.setBounds(296, 333, 172, 45);
-		btnFgeStreckeHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		frmPixelRacer.getContentPane().add(btnFgeStreckeHinzu);
+		tree = new JTree(menu);
+		tree.setBackground(Color.WHITE);
+		tree.setRootVisible( false );
+		tree.setBounds(10, 30, 160, 541);
 		
-		btnFgeBezahlartHinzu = new JButton("F\u00FCge Bezahlart hinzu");
-		btnFgeBezahlartHinzu.setBounds(500, 333, 172, 45);
-		btnFgeBezahlartHinzu.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		frmPixelRacer.getContentPane().add(btnFgeBezahlartHinzu);
+		panelMenu.add(tree);
 		
-		btnAbmelden = new JButton("abmelden");
-		btnAbmelden.setBounds(577, 473, 95, 23);
-		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		frmPixelRacer.getContentPane().add(btnAbmelden);
-		
-		btnAddma = new JButton("");
-		btnAddma.setIcon(new ImageIcon(MitarbeiterAnsichtView.class.getResource("/Resources/Business-Man-Add-48.png")));
-		btnAddma.setBounds(24, 24, 50, 33);
-		frmPixelRacer.getContentPane().add(btnAddma);
+		panelContent = new JPanel();
+		panelContent.setBounds(170, 0, 624, 570);
+		contentPane.add(panelContent);
+		cl = new CardLayout();
+		panelContent.setLayout(cl);
 	}
 }

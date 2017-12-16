@@ -1,47 +1,75 @@
+/**
+ @author Sean Cartner
+*/
+
 package MitarbeiterAnsicht;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 import KartHinzufügen.KartHinzufügenStrg;
 import StreckeHinzufügen.StreckeHinzufügenStrg;
 
-public class MitarbeiterAnsichtStrg implements ActionListener {
+import Anmelden.AnmeldenStrg;
+
+public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionListener{
 	
 	protected MitarbeiterAnsichtView maaView;
+	protected StartView start;
+	protected FunktionNichtVorhandenView nv;
+	protected KartHinzufügenStrg kStrg;
+	protected StreckeHinzufügenStrg sStrg;
 	
-	public MitarbeiterAnsichtStrg(){
+	public MitarbeiterAnsichtStrg() {
 		maaView = new MitarbeiterAnsichtView();
-		maaView.frmPixelRacer.setVisible(true);
-		maaView.btnFgeKartHinzu.addActionListener(this);
-		maaView.btnFgeStreckeHinzu.addActionListener(this);
-		maaView.btnFgeBezahlartHinzu.addActionListener(this);
+		maaView.setVisible(true);
 		
-	}
+		start = new StartView();
+		
+		maaView.panelContent.add("Start", start);
+		start.btnAbmelden.addActionListener(this);
+		
+   	    kStrg = new KartHinzufügenStrg();
+   	    kStrg.getView();
+  	    maaView.panelContent.add("KartHinzufügen", kStrg.getView());
+  	    
+    	StreckeHinzufügenStrg sStrg = new StreckeHinzufügenStrg();
+    	sStrg.getView();
+   	    maaView.panelContent.add("StreckeHinzufügen", sStrg.getView());
+   	    
+ 	    nv = new FunktionNichtVorhandenView();
+ 	    maaView.panelContent.add("FunktionNichtVorhanden", nv);
+		
+		maaView.tree.getSelectionModel().addTreeSelectionListener(this);
+	} 
 
 	public static void main(String[] args) {
 		MitarbeiterAnsichtStrg maaStrg = new MitarbeiterAnsichtStrg();
-
 	}
 	
+    public void valueChanged(TreeSelectionEvent e) {
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) maaView.tree.getLastSelectedPathComponent();
+        if(selectedNode.getUserObject().toString() == "Start") {
+    	   maaView.cl.show(maaView.panelContent, "Start");
+        }
+        if(selectedNode.getUserObject().toString() == "Füge Kart hinzu") {
+     	   maaView.cl.show(maaView.panelContent, "KartHinzufügen");
+         }
+        if(selectedNode.getUserObject().toString() == "Füge Strecke hinzu") {
+      	   maaView.cl.show(maaView.panelContent, "StreckeHinzufügen");
+          }
+        if(selectedNode.getUserObject().toString() == "Füge Bezahlart hinzu") {
+     	   maaView.cl.show(maaView.panelContent, "FunktionNichtVorhanden");
+       }
+    }
+    
 	public void actionPerformed(ActionEvent e){
-		if(e.getSource() == maaView.btnFgeKartHinzu){
-			KartHinzufügenStrg khStrg = new KartHinzufügenStrg();
-			maaView.frmPixelRacer.dispose();
+		if(e.getSource() == start.btnAbmelden) {
+			maaView.dispose();
+			AnmeldenStrg anmelden = new AnmeldenStrg();
 		}
-		if(e.getSource() == maaView.btnFgeStreckeHinzu){
-			StreckeHinzufügenStrg stStrg = new StreckeHinzufügenStrg();
-			maaView.frmPixelRacer.dispose();
-		}
-		if(e.getSource() == maaView.btnFgeBezahlartHinzu){
-			featureNichtVorhandenMeldung();
-		}
-	}
-	
-	private void featureNichtVorhandenMeldung(){
-		JOptionPane.showMessageDialog(maaView.frmPixelRacer,
-			    "Diese Funktion steht aktuell nicht zur Verfügung", "Funktion nicht vorhanden",
-			    JOptionPane.WARNING_MESSAGE);
 	}
 
 }
