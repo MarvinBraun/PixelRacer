@@ -159,4 +159,8 @@ public class StreckeHinzufügenStrg implements ActionListener {
 		Datenbankschnittstelle.uploadBlob(updateBild,grafik);
 		Datenbankschnittstelle.closeConnections();
 	}
+	
+	public StreckeHinzufügenView getView() {
+		return stView;
+	}
 }

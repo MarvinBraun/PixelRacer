@@ -6,7 +6,7 @@ package StreckeHinzufügen;
 
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -19,9 +19,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.UIManager;
 
 
-public class StreckeHinzufügenView {
+public class StreckeHinzufügenView extends JPanel {
 
-	protected JFrame frmPixelRacer;
+	protected JPanel frmPixelRacer;
 	protected JTextField textFieldName;
 	protected JTextField textFieldLaenge;
 	protected JTextField textFieldSchwierigkeit;
@@ -34,6 +34,7 @@ public class StreckeHinzufügenView {
 	protected ButtonGroup bgStatus;
 	protected JFileChooser fc;
 	protected FileFilter filter;
+	private JLabel lblStrecke;
 
 
 
@@ -55,72 +56,68 @@ public class StreckeHinzufügenView {
 			System.out.println(e);
 		}
 		
-		frmPixelRacer = new JFrame();
-		frmPixelRacer.setTitle("Pixel Racer - F\u00FCge Strecke hinzu");
-		frmPixelRacer.setResizable(false);
-		frmPixelRacer.setSize(800, 600);
-		frmPixelRacer.setLocationRelativeTo(null);
-		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmPixelRacer.getContentPane().setLayout(null);
+		frmPixelRacer = new JPanel();
+		setSize(624, 570);
+		setLayout(null);
 		
 		JLabel lblName = new JLabel("Name:");
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblName.setBounds(194, 91, 46, 14);
-		frmPixelRacer.getContentPane().add(lblName);
+		lblName.setBounds(77, 97, 46, 14);
+		add(lblName);
 		
 		JLabel lblLaenge = new JLabel("Länge:");
 		lblLaenge.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblLaenge.setBounds(194, 142, 107, 19);
-		frmPixelRacer.getContentPane().add(lblLaenge);
+		lblLaenge.setBounds(77, 148, 107, 19);
+		add(lblLaenge);
 		
 		JLabel lblSchwierigkeit = new JLabel("Schwierigkeit:");
 		lblSchwierigkeit.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblSchwierigkeit.setBounds(194, 195, 148, 19);
-		frmPixelRacer.getContentPane().add(lblSchwierigkeit);
+		lblSchwierigkeit.setBounds(77, 201, 148, 19);
+		add(lblSchwierigkeit);
 		
 		JLabel lblPunktzahl = new JLabel("Punktzahl:");
 		lblPunktzahl.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPunktzahl.setBounds(195, 250, 89, 14);
-		frmPixelRacer.getContentPane().add(lblPunktzahl);
+		lblPunktzahl.setBounds(78, 256, 89, 14);
+		add(lblPunktzahl);
 		
 		JLabel lblStatus = new JLabel("Status:");
 		lblStatus.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblStatus.setBounds(194, 301, 46, 14);
-		frmPixelRacer.getContentPane().add(lblStatus);
+		lblStatus.setBounds(77, 307, 46, 14);
+		add(lblStatus);
 		
 		textFieldName = new JTextField();
 		textFieldName.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		textFieldName.setColumns(10);
-		textFieldName.setBounds(382, 83, 175, 30);
-		frmPixelRacer.getContentPane().add(textFieldName);
+		textFieldName.setBounds(265, 89, 175, 30);
+		add(textFieldName);
 		
 		textFieldLaenge = new JTextField();
 		textFieldLaenge.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		textFieldLaenge.setBounds(382, 136, 175, 30);
-		frmPixelRacer.getContentPane().add(textFieldLaenge);
+		textFieldLaenge.setBounds(265, 142, 175, 30);
+		add(textFieldLaenge);
 		textFieldLaenge.setColumns(10);
 		
 		textFieldSchwierigkeit = new JTextField();
 		textFieldSchwierigkeit.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		textFieldSchwierigkeit.setBounds(382, 189, 175, 30);
-		frmPixelRacer.getContentPane().add(textFieldSchwierigkeit);
+		textFieldSchwierigkeit.setBounds(265, 195, 175, 30);
+		add(textFieldSchwierigkeit);
 		textFieldSchwierigkeit.setColumns(10);
 		
 		textFieldPunktzahl = new JTextField();
 		textFieldPunktzahl.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		textFieldPunktzahl.setBounds(382, 242, 175, 30);
-		frmPixelRacer.getContentPane().add(textFieldPunktzahl);
+		textFieldPunktzahl.setBounds(265, 248, 175, 30);
+		add(textFieldPunktzahl);
 		textFieldPunktzahl.setColumns(10);
 		
 		rdbtnFree = new JRadioButton("Free");;
 		rdbtnFree.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		rdbtnFree.setBounds(382, 299, 61, 23);
-		frmPixelRacer.getContentPane().add(rdbtnFree);
+		rdbtnFree.setBounds(265, 305, 61, 23);
+		add(rdbtnFree);
 		
 		rdbtnPremium = new JRadioButton("Premium");
 		rdbtnPremium.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		rdbtnPremium.setBounds(468, 299, 89, 23);
-		frmPixelRacer.getContentPane().add(rdbtnPremium);
+		rdbtnPremium.setBounds(351, 305, 89, 23);
+		add(rdbtnPremium);
 		
 		bgStatus = new ButtonGroup();
 		bgStatus.add(rdbtnFree);
@@ -128,13 +125,13 @@ public class StreckeHinzufügenView {
 		
 		JLabel lblGrafik = new JLabel("Grafik:");
 		lblGrafik.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblGrafik.setBounds(194, 352, 46, 19);
-		frmPixelRacer.getContentPane().add(lblGrafik);
+		lblGrafik.setBounds(77, 358, 46, 19);
+		add(lblGrafik);
 		
 		textFieldGrafik = new JTextField();
 		textFieldGrafik.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		textFieldGrafik.setBounds(382, 341, 175, 30);
-		frmPixelRacer.getContentPane().add(textFieldGrafik);
+		textFieldGrafik.setBounds(265, 347, 175, 30);
+		add(textFieldGrafik);
 		textFieldGrafik.setColumns(10);
 		
 		fc = new JFileChooser();
@@ -142,13 +139,20 @@ public class StreckeHinzufügenView {
 
 		btnAuswhlen = new JButton("ausw\u00E4hlen");
 		btnAuswhlen.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAuswhlen.setBounds(586, 341, 112, 30);
+		btnAuswhlen.setBounds(470, 346, 112, 30);
 		
-		frmPixelRacer.getContentPane().add(btnAuswhlen);
+		add(btnAuswhlen);
 		
 		btnAbsenden = new JButton("absenden");
 		btnAbsenden.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAbsenden.setBounds(450, 413, 107, 23);
-		frmPixelRacer.getContentPane().add(btnAbsenden);
+		btnAbsenden.setBounds(333, 419, 107, 23);
+		add(btnAbsenden);
+		
+		lblStrecke = new JLabel("Strecke Hinzuf\u00FCgen");
+		lblStrecke.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblStrecke.setBounds(78, 30, 205, 30);
+		add(lblStrecke);
+		
+
 	}
 }
