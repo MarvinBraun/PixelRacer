@@ -59,7 +59,6 @@ public class ModusAuswählenView {
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		frame.setResizable(false);
 
 		btnSingleplayer = new JButton("Singleplayer");
 		btnSingleplayer.setBounds(200, 240, 160, 31);
