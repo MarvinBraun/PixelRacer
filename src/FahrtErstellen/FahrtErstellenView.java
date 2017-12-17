@@ -1,4 +1,5 @@
 package FahrtErstellen;
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -27,24 +28,24 @@ import javax.swing.SwingConstants;
 
 public class FahrtErstellenView {
 
-	JFrame frame;
+	private JFrame frame;
 	private JLabel background;
-	JButton kartForward;
-	JButton kartBackward;
-	JButton streckeForward;
-	JButton schwierigkeitBtn2;
-	JLabel waehleKart;
-	JLabel streckeName;
-	JLabel kartName;
-	JLabel kartBild;
-	JButton streckeBackward;
-	JButton schwierigkeitBtn1;
-	JLabel lblWhleDeineStrecke;
-	JButton spielenBtn;
-	JLabel schwierigkeitLbl;
-	JLabel lblNewLabel;
-	JLabel streckeLbl;
-	JLabel multiplayerLbl;
+	private JButton kartForward;
+	private JButton kartBackward;
+	private JButton streckeForward;
+	private JButton schwierigkeitBtn2;
+	private JLabel waehleKart;
+	private JLabel streckeName;
+	private JLabel kartName;
+	private JLabel kartBild;
+	private JButton streckeBackward;
+	private JButton schwierigkeitBtn1;
+	private JLabel lblWhleDeineStrecke;
+	private JButton spielenBtn;
+	private JLabel schwierigkeitLbl;
+	private JLabel lblNewLabel;
+	private JLabel streckeLbl;
+	private JLabel multiplayerLbl;
 	
 	
 	
@@ -57,7 +58,7 @@ public class FahrtErstellenView {
 			public void run() {
 				try {
 					FahrtErstellenView window = new FahrtErstellenView();
-					window.frame.setVisible(true);
+					window.getFrame().setVisible(true);
 					
 					
 				} catch (Exception e) {
@@ -82,117 +83,117 @@ public class FahrtErstellenView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setFrame(new JFrame());
+		getFrame().setResizable(false);
+		getFrame().setBounds(100, 100, 800, 600);
+		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-		frame.setVisible(true);
-		frame.getContentPane().setLayout(null);
+		getFrame().setVisible(true);
+		getFrame().getContentPane().setLayout(null);
 		
 		
 		
-		kartBackward = new JButton("");
-		kartBackward.setFocusable(false);
-		kartBackward.setBorderPainted(true);
-		kartBackward.setContentAreaFilled(false);
-		kartBackward.setOpaque(false);
-		kartBackward.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backward.png")));
-		kartBackward.setBounds(27, 115,60, 60);
-		frame.getContentPane().add(kartBackward);
+		setKartBackward(new JButton(""));
+		getKartBackward().setFocusable(false);
+		getKartBackward().setBorderPainted(true);
+		getKartBackward().setContentAreaFilled(false);
+		getKartBackward().setOpaque(false);
+		getKartBackward().setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backward.png")));
+		getKartBackward().setBounds(27, 115,60, 60);
+		getFrame().getContentPane().add(getKartBackward());
 		
 		
-		streckeForward = new JButton("");
-		streckeForward.setBorderPainted(false);
-		streckeForward.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
-		streckeForward.setContentAreaFilled(false);
-		streckeForward.setBounds(712, 238, 60, 60);
-		frame.getContentPane().add(streckeForward);
+		setStreckeForward(new JButton(""));
+		getStreckeForward().setBorderPainted(false);
+		getStreckeForward().setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
+		getStreckeForward().setContentAreaFilled(false);
+		getStreckeForward().setBounds(712, 238, 60, 60);
+		getFrame().getContentPane().add(getStreckeForward());
 		
-		schwierigkeitBtn2 = new JButton("");
-		schwierigkeitBtn2.setBorderPainted(false);
-		schwierigkeitBtn2.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
-		schwierigkeitBtn2.setContentAreaFilled(false);
-		schwierigkeitBtn2.setBounds(345, 489, 60, 60);
-		frame.getContentPane().add(schwierigkeitBtn2);
+		setSchwierigkeitBtn2(new JButton(""));
+		getSchwierigkeitBtn2().setBorderPainted(false);
+		getSchwierigkeitBtn2().setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
+		getSchwierigkeitBtn2().setContentAreaFilled(false);
+		getSchwierigkeitBtn2().setBounds(345, 489, 60, 60);
+		getFrame().getContentPane().add(getSchwierigkeitBtn2());
 		
-		streckeBackward = new JButton("");
-		streckeBackward.setBorderPainted(false);
-		streckeBackward.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backward.png")));
-		streckeBackward.setOpaque(false);
-		streckeBackward.setContentAreaFilled(false);
-		streckeBackward.setBounds(27, 238, 60, 60);
-		frame.getContentPane().add(streckeBackward);
+		setStreckeBackward(new JButton(""));
+		getStreckeBackward().setBorderPainted(false);
+		getStreckeBackward().setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backward.png")));
+		getStreckeBackward().setOpaque(false);
+		getStreckeBackward().setContentAreaFilled(false);
+		getStreckeBackward().setBounds(27, 238, 60, 60);
+		getFrame().getContentPane().add(getStreckeBackward());
 		
-		schwierigkeitBtn1 = new JButton("");
-		schwierigkeitBtn1.setBorderPainted(false);
-		schwierigkeitBtn1.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backward.png")));
-		schwierigkeitBtn1.setOpaque(false);
-		schwierigkeitBtn1.setContentAreaFilled(false);
-		schwierigkeitBtn1.setBounds(27, 489, 60, 60);
-		frame.getContentPane().add(schwierigkeitBtn1);
+		setSchwierigkeitBtn1(new JButton(""));
+		getSchwierigkeitBtn1().setBorderPainted(false);
+		getSchwierigkeitBtn1().setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backward.png")));
+		getSchwierigkeitBtn1().setOpaque(false);
+		getSchwierigkeitBtn1().setContentAreaFilled(false);
+		getSchwierigkeitBtn1().setBounds(27, 489, 60, 60);
+		getFrame().getContentPane().add(getSchwierigkeitBtn1());
 		
-		spielenBtn = new JButton("Spielen!");
-		spielenBtn.setBorderPainted(false);
-		spielenBtn.setOpaque(false);
+		setSpielenBtn(new JButton("Spielen!"));
+		getSpielenBtn().setBorderPainted(false);
+		getSpielenBtn().setOpaque(false);
 		
-		spielenBtn.setFont(new Font("pixelmix", Font.PLAIN, 30));
-		spielenBtn.setBackground(SystemColor.activeCaption);
-		spielenBtn.setBounds(562, 489, 210, 59);
-		frame.getContentPane().add(spielenBtn);
+		getSpielenBtn().setFont(new Font("pixelmix", Font.PLAIN, 30));
+		getSpielenBtn().setBackground(SystemColor.activeCaption);
+		getSpielenBtn().setBounds(562, 489, 210, 59);
+		getFrame().getContentPane().add(getSpielenBtn());
 		
 		
-		kartForward = new JButton("");
-		kartForward.setFocusable(false);
-		kartForward.setBorderPainted(true);
-		kartForward.setContentAreaFilled(false);
-		kartForward.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
-		kartForward.setBounds(712, 115, 60, 60);
-		frame.getContentPane().add(kartForward);
+		setKartForward(new JButton(""));
+		getKartForward().setFocusable(false);
+		getKartForward().setBorderPainted(true);
+		getKartForward().setContentAreaFilled(false);
+		getKartForward().setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
+		getKartForward().setBounds(712, 115, 60, 60);
+		getFrame().getContentPane().add(getKartForward());
 		
-		streckeLbl = new JLabel("");
-		streckeLbl.setBounds(211, 285, 300, 200);
-		frame.getContentPane().add(streckeLbl);
+		setStreckeLbl(new JLabel(""));
+		getStreckeLbl().setBounds(211, 285, 300, 200);
+		getFrame().getContentPane().add(getStreckeLbl());
 		
 		waehleKart = new JLabel("Dein Kart:");
 		waehleKart.setFont(new Font("pixelmix", Font.PLAIN, 30));
 		waehleKart.setBounds(153, 16, 210, 50);
-		frame.getContentPane().add(waehleKart);
+		getFrame().getContentPane().add(waehleKart);
 		
-		streckeName = new JLabel("Hockenheim");
-		streckeName.setHorizontalAlignment(SwingConstants.CENTER);
-		streckeName.setFont(new Font("pixelmix", Font.PLAIN, 30));
-		streckeName.setBounds(415, 238, 287, 60);
-		frame.getContentPane().add(streckeName);
+		setStreckeName(new JLabel("Hockenheim"));
+		getStreckeName().setHorizontalAlignment(SwingConstants.CENTER);
+		getStreckeName().setFont(new Font("pixelmix", Font.PLAIN, 30));
+		getStreckeName().setBounds(415, 238, 287, 60);
+		getFrame().getContentPane().add(getStreckeName());
 		
-		kartName = new JLabel("FireBird");
-		kartName.setFont(new Font("pixelmix", Font.PLAIN, 30));
-		kartName.setBounds(373, 11, 330, 60);
-		frame.getContentPane().add(kartName);
+		setKartName(new JLabel("FireBird"));
+		getKartName().setFont(new Font("pixelmix", Font.PLAIN, 30));
+		getKartName().setBounds(373, 11, 330, 60);
+		getFrame().getContentPane().add(getKartName());
 		
-		multiplayerLbl = new JLabel("MultiplayerID: ");
-		multiplayerLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		multiplayerLbl.setVisible(false);
-		multiplayerLbl.setFont(new Font("pixelmix", Font.PLAIN, 18));
-		multiplayerLbl.setBounds(102, 493, 233, 56);
-		frame.getContentPane().add(multiplayerLbl);
+		setMultiplayerLbl(new JLabel("MultiplayerID: "));
+		getMultiplayerLbl().setHorizontalAlignment(SwingConstants.CENTER);
+		getMultiplayerLbl().setVisible(false);
+		getMultiplayerLbl().setFont(new Font("pixelmix", Font.PLAIN, 18));
+		getMultiplayerLbl().setBounds(102, 493, 233, 56);
+		getFrame().getContentPane().add(getMultiplayerLbl());
 		
-		kartBild = new JLabel("");
-		kartBild.setIcon(null);
-		kartBild.setBounds(135, 72, 545, 122);
-		frame.getContentPane().add(kartBild);
+		setKartBild(new JLabel(""));
+		getKartBild().setIcon(null);
+		getKartBild().setBounds(135, 72, 545, 122);
+		getFrame().getContentPane().add(getKartBild());
 		
 		lblWhleDeineStrecke = new JLabel("Deine Strecke:");
 		lblWhleDeineStrecke.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWhleDeineStrecke.setFont(new Font("pixelmix", Font.PLAIN, 30));
 		lblWhleDeineStrecke.setBounds(102, 246, 303, 40);
-		frame.getContentPane().add(lblWhleDeineStrecke);
+		getFrame().getContentPane().add(lblWhleDeineStrecke);
 		
-		schwierigkeitLbl = new JLabel("Schwierigkeit");
-		schwierigkeitLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		schwierigkeitLbl.setFont(new Font("pixelmix", Font.PLAIN, 25));
-		schwierigkeitLbl.setBounds(105, 495, 233, 40);
-		frame.getContentPane().add(schwierigkeitLbl);
+		setSchwierigkeitLbl(new JLabel("Schwierigkeit"));
+		getSchwierigkeitLbl().setHorizontalAlignment(SwingConstants.CENTER);
+		getSchwierigkeitLbl().setFont(new Font("pixelmix", Font.PLAIN, 25));
+		getSchwierigkeitLbl().setBounds(105, 495, 233, 40);
+		getFrame().getContentPane().add(getSchwierigkeitLbl());
 		
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setVisible(false);
@@ -203,7 +204,7 @@ public class FahrtErstellenView {
 				
 				
 				lblNewLabel.setBounds(0, 0, 794, 571);
-				frame.getContentPane().add(lblNewLabel);
+				getFrame().getContentPane().add(lblNewLabel);
 		
 				
 		Movement m = new Movement(10);
@@ -220,10 +221,235 @@ public class FahrtErstellenView {
 		
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
-		frame.getContentPane().add(m.label);
-		frame.setVisible(true);
+		getFrame().getContentPane().add(m.label);
+		getFrame().setVisible(true);
 	
 
 	
 	}
+
+
+
+
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+
+
+
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+
+
+
+
+	public JButton getKartForward() {
+		return kartForward;
+	}
+
+
+
+
+
+	public void setKartForward(JButton kartForward) {
+		this.kartForward = kartForward;
+	}
+
+
+
+
+
+	public JButton getKartBackward() {
+		return kartBackward;
+	}
+
+
+
+
+
+	public void setKartBackward(JButton kartBackward) {
+		this.kartBackward = kartBackward;
+	}
+
+
+
+
+
+	public JButton getStreckeBackward() {
+		return streckeBackward;
+	}
+
+
+
+
+
+	public void setStreckeBackward(JButton streckeBackward) {
+		this.streckeBackward = streckeBackward;
+	}
+
+
+
+
+
+	public JButton getStreckeForward() {
+		return streckeForward;
+	}
+
+
+
+
+
+	public void setStreckeForward(JButton streckeForward) {
+		this.streckeForward = streckeForward;
+	}
+
+
+
+
+
+	public JButton getSpielenBtn() {
+		return spielenBtn;
+	}
+
+
+
+
+
+	public void setSpielenBtn(JButton spielenBtn) {
+		this.spielenBtn = spielenBtn;
+	}
+
+
+
+
+
+	public JButton getSchwierigkeitBtn1() {
+		return schwierigkeitBtn1;
+	}
+
+
+
+
+
+	public void setSchwierigkeitBtn1(JButton schwierigkeitBtn1) {
+		this.schwierigkeitBtn1 = schwierigkeitBtn1;
+	}
+
+
+
+
+
+	public JButton getSchwierigkeitBtn2() {
+		return schwierigkeitBtn2;
+	}
+
+
+
+
+
+	public void setSchwierigkeitBtn2(JButton schwierigkeitBtn2) {
+		this.schwierigkeitBtn2 = schwierigkeitBtn2;
+	}
+
+
+
+
+
+	public JLabel getSchwierigkeitLbl() {
+		return schwierigkeitLbl;
+	}
+
+
+
+
+
+	public void setSchwierigkeitLbl(JLabel schwierigkeitLbl) {
+		this.schwierigkeitLbl = schwierigkeitLbl;
+	}
+
+
+
+
+
+	public JLabel getMultiplayerLbl() {
+		return multiplayerLbl;
+	}
+
+
+
+
+
+	public void setMultiplayerLbl(JLabel multiplayerLbl) {
+		this.multiplayerLbl = multiplayerLbl;
+	}
+
+
+
+
+
+	public JLabel getKartBild() {
+		return kartBild;
+	}
+
+
+
+
+
+	public void setKartBild(JLabel kartBild) {
+		this.kartBild = kartBild;
+	}
+
+
+
+
+
+	public JLabel getKartName() {
+		return kartName;
+	}
+
+
+
+
+
+	public void setKartName(JLabel kartName) {
+		this.kartName = kartName;
+	}
+
+
+
+
+
+	public JLabel getStreckeName() {
+		return streckeName;
+	}
+
+
+
+
+
+	public void setStreckeName(JLabel streckeName) {
+		this.streckeName = streckeName;
+	}
+
+
+
+
+
+	public JLabel getStreckeLbl() {
+		return streckeLbl;
+	}
+
+
+
+
+
+	public void setStreckeLbl(JLabel streckeLbl) {
+		this.streckeLbl = streckeLbl;
+	}
+
 }

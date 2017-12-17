@@ -15,6 +15,7 @@ import java.util.ListIterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -68,7 +69,8 @@ public class FahrtErstellenStrg implements ActionListener {
 	//Konstruktor
 	public FahrtErstellenStrg(int singleMultiplayer) {
 		view = new FahrtErstellenView();
-		view.frame.setLocationRelativeTo(null);
+	
+		view.getFrame().setLocationRelativeTo(null);
 		singlemultiplayer = singleMultiplayer;
 		fahrten = new Fahrtverwaltung();
 		kunde = Nutzerverwaltung.getangKunde();
@@ -87,11 +89,11 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 		
 		//ActionListener
-		view.kartForward.addActionListener(this);
-		view.kartBackward.addActionListener(this);
-		view.streckeBackward.addActionListener(this);
-		view.streckeForward.addActionListener(this);
-		view.spielenBtn.addActionListener(this);
+		view.getKartForward().addActionListener(this);
+		view.getKartBackward().addActionListener(this);
+		view.getStreckeBackward().addActionListener(this);
+		view.getStreckeForward().addActionListener(this);
+		view.getSpielenBtn().addActionListener(this);
 	
 
 		//Initialisieren des Schwierigkeitsgrades
@@ -105,9 +107,9 @@ public class FahrtErstellenStrg implements ActionListener {
 			schwierigkeiten.add("Gold");
 			itString = new MyIteratorString(schwierigkeiten.listIterator());
 			
-			view.schwierigkeitBtn1.addActionListener(this);
-			view.schwierigkeitBtn2.addActionListener(this);
-			view.schwierigkeitLbl.setText(itString.next());
+			view.getSchwierigkeitBtn1().addActionListener(this);
+			view.getSchwierigkeitBtn2().addActionListener(this);
+			view.getSchwierigkeitLbl().setText(itString.next());
 			sf = new SingleplayerFahrt();
 			sf.setSchwierigkeit("Bronze");
 			sf.setBenutzername(kunde.getnutzername());
@@ -118,16 +120,16 @@ public class FahrtErstellenStrg implements ActionListener {
 		// nur für Multiplayer
 		else
 		{
-			view.schwierigkeitBtn1.setVisible(false);
-			view.schwierigkeitBtn2.setVisible(false);
-			view.schwierigkeitLbl.setVisible(false);
-			view.multiplayerLbl.setVisible(true);
+			view.getSchwierigkeitBtn1().setVisible(false);
+			view.getSchwierigkeitBtn2().setVisible(false);
+			view.getSchwierigkeitLbl().setVisible(false);
+			view.getMultiplayerLbl().setVisible(true);
 			mf = new MultiplayerFahrt();
 		}
 		ladeStrecke();
-		SwingUtilities.updateComponentTreeUI(view.frame);
+		SwingUtilities.updateComponentTreeUI(view.getFrame());
 	
-		SwingUtilities.updateComponentTreeUI(view.frame);
+		SwingUtilities.updateComponentTreeUI(view.getFrame());
 		
 	}
 	
@@ -145,8 +147,8 @@ public class FahrtErstellenStrg implements ActionListener {
 		{
 			System.out.println(k.kartname);
 			ImageIcon icon = new ImageIcon(k.grafik);
-			view.kartBild.setIcon(icon);
-			view.kartName.setText(k.kartname);
+			view.getKartBild().setIcon(icon);
+			view.getKartName().setText(k.kartname);
 		}
 	}
 	
@@ -156,12 +158,12 @@ public class FahrtErstellenStrg implements ActionListener {
 		{
 			
 			BufferedImage newImage= s.getGrafik();
-			view.streckeName.setText(s.getStreckenname());
+			view.getStreckeName().setText(s.getStreckenname());
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
-			view.streckeLbl.setIcon(icon);
+			view.getStreckeLbl().setIcon(icon);
 			itString = new MyIteratorString(schwierigkeiten.listIterator());
-			view.schwierigkeitLbl.setText(itString.next());
+			view.getSchwierigkeitLbl().setText(itString.next());
 			
 		
 		}
@@ -175,8 +177,8 @@ public class FahrtErstellenStrg implements ActionListener {
 		{
 			System.out.println(k.kartname);
 			ImageIcon icon = new ImageIcon(k.grafik);
-			view.kartBild.setIcon(icon);
-			view.kartName.setText(k.kartname);
+			view.getKartBild().setIcon(icon);
+			view.getKartName().setText(k.kartname);
 		}
 	
 	}
@@ -187,12 +189,12 @@ public class FahrtErstellenStrg implements ActionListener {
 		{
 			
 			BufferedImage newImage= s.getGrafik();
-			view.streckeName.setText(s.getStreckenname());
+			view.getStreckeName().setText(s.getStreckenname());
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
-			view.streckeLbl.setIcon(icon);
+			view.getStreckeLbl().setIcon(icon);
 			itString = new MyIteratorString(schwierigkeiten.listIterator());	
-			view.schwierigkeitLbl.setText(itString.next());
+			view.getSchwierigkeitLbl().setText(itString.next());
 			
 		}
 	}
@@ -223,7 +225,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		String s;
 		if((s=itString.previous())!=null)
 		{
-			view.schwierigkeitLbl.setText(s);
+			view.getSchwierigkeitLbl().setText(s);
 		}
 		
 		
@@ -268,13 +270,13 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 		if((s=itString.next())!=null)
 		{
-			prüfung = view.schwierigkeitLbl.getText();
+			prüfung = view.getSchwierigkeitLbl().getText();
 			if(pruefeSchwierigkeit(prüfung)==true)
-			view.schwierigkeitLbl.setText(s);
+			view.getSchwierigkeitLbl().setText(s);
 			else
 				{System.out.println("Schwierigkeit noch nicht freigeschaltet");
 				JOptionPane pane = new JOptionPane();
-				pane.setBounds(view.frame.getX()+300,view.frame.getY()+250,200,100);
+				pane.setBounds(view.getFrame().getX()+300,view.getFrame().getY()+250,200,100);
 				pane.showMessageDialog(null, "Schwierigkeit nocht nicht freigeschaltet");
 					
 				itString.previous();
@@ -287,7 +289,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	{
 		if(singlemultiplayer==1)
 		{
-		String schwierigkeit1 = view.schwierigkeitLbl.getText();
+		String schwierigkeit1 = view.getSchwierigkeitLbl().getText();
 		if(s.equals("Bronze"))
 			schwierigkeit = 1;
 		if(s.equals("Silber"))
@@ -311,7 +313,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			mf.setMultiplayerID(multiID);
 			MultiplayerFahrtSpielenStrg strg = new MultiplayerFahrtSpielenStrg(mf,k,s);
 		}
-		view.frame.dispose();
+		view.getFrame().dispose();
 		
 	}
 
@@ -320,33 +322,33 @@ public class FahrtErstellenStrg implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		if(e.getSource()==view.kartForward)
+		if(e.getSource()==view.getKartForward())
 		{
 			ladeKarts();
 		}
-		if(e.getSource()==view.kartBackward)
+		if(e.getSource()==view.getKartBackward())
 		{
 			kartRückwärts();
 			
 		}
-		if(e.getSource()==view.schwierigkeitBtn1)
+		if(e.getSource()==view.getSchwierigkeitBtn1())
 		{
 			schwierigkeitBack();
 		}
-		if(e.getSource()==view.schwierigkeitBtn2)
+		if(e.getSource()==view.getSchwierigkeitBtn2())
 		{
 			schwierigkeitVorwärts();
 		}
-		if(e.getSource()==view.spielenBtn)
+		if(e.getSource()==view.getSpielenBtn())
 		{
 		starteSpiel();
 		}
 		
-		if(e.getSource()==view.streckeBackward)
+		if(e.getSource()==view.getStreckeBackward())
 		{
 			streckeRückwärts();
 		}
-		if(e.getSource()==view.streckeForward)
+		if(e.getSource()==view.getStreckeForward())
 		{
 			ladeStrecke();
 		}

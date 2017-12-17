@@ -40,12 +40,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		strecke = s;
 		this.sf = sfahrt;
 		System.out.println(sf.getBenutzername());
-		
-		
-		
-		
-		
-		//Entscheidung ob ein Single oder MultiplayerSpiel gespielt wird
+	
 		
 		this.schwierigkeit = schwierigkeit;
 		
@@ -76,17 +71,6 @@ public class FahrtSpielenStrg implements ActionListener{
 
 	//Singleplayerfahrt Konstruktor
 	
-	public FahrtSpielenStrg(MultiplayerFahrt mf, Kart k, Strecke s)
-	{
-		kart = k;
-		strecke = s;
-		mf = new MultiplayerFahrt();
-	
-		fahrtSpielenView = new FahrtSpielenView(kartBild,streckenBild);
-		fahrtSpielenView.fahrenBtn.addActionListener(this);
-		System.out.println("Registriert");
-	
-	}
 	public FahrtSpielenStrg()
 	{
 		fahrtSpielenView = new FahrtSpielenView(kartBild,streckenBild);

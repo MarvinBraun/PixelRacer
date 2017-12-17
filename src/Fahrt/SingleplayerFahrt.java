@@ -4,7 +4,7 @@ import Computergegner.Bot;
 
 public class SingleplayerFahrt extends Fahrt {
 Bot bot;
-String schwierigkeit;
+private String schwierigkeit;
 
 public String getSchwierigkeit() {
 	return schwierigkeit;
