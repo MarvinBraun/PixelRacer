@@ -88,7 +88,6 @@ public class Kartübersicht {
 		btnDetailView.setBounds(282, 428, 229, 35);
 		btnDetailView.setVisible(true);
 		frame.getContentPane().add(btnDetailView);
-
 	}
 
 }
