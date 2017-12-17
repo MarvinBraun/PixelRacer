@@ -11,6 +11,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import KartHinzufügen.KartHinzufügenStrg;
 import StreckeHinzufügen.StreckeHinzufügenStrg;
+import MitarbeiterHinzufügen.MitarbeiterHinzufügenStrg;
 
 import Anmelden.AnmeldenStrg;
 
@@ -30,6 +31,10 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 		
 		maaView.panelContent.add("Start", start);
 		start.btnAbmelden.addActionListener(this);
+		
+    	MitarbeiterHinzufügenStrg mStrg = new MitarbeiterHinzufügenStrg();
+    	mStrg.getView();
+   	    maaView.panelContent.add("MitarbeiterHinzufügen", mStrg.getView());
 		
    	    kStrg = new KartHinzufügenStrg();
    	    kStrg.getView();
@@ -54,6 +59,9 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
         if(selectedNode.getUserObject().toString() == "Start") {
     	   maaView.cl.show(maaView.panelContent, "Start");
         }
+        if(selectedNode.getUserObject().toString() == "Füge Mitarbeiter hinzu") {
+      	   maaView.cl.show(maaView.panelContent, "MitarbeiterHinzufügen");
+          }
         if(selectedNode.getUserObject().toString() == "Füge Kart hinzu") {
      	   maaView.cl.show(maaView.panelContent, "KartHinzufügen");
          }

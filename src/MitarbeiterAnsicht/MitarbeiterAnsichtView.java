@@ -10,6 +10,7 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.Color;
 
+
 public class MitarbeiterAnsichtView extends JFrame {
 
 	private JPanel contentPane;
@@ -21,6 +22,7 @@ public class MitarbeiterAnsichtView extends JFrame {
 	 * Create the frame.
 	 */
 	public MitarbeiterAnsichtView() {
+
 		setTitle("Pixel Racer - Mitarbeiter Men\u00FC");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,21 +43,25 @@ public class MitarbeiterAnsichtView extends JFrame {
 		DefaultMutableTreeNode menu = new DefaultMutableTreeNode("Menu");
 		//Kategorien
 		DefaultMutableTreeNode startansicht = new DefaultMutableTreeNode("Startansicht");
+		DefaultMutableTreeNode mitarbeiter = new DefaultMutableTreeNode("Mitarbeiter");
 		DefaultMutableTreeNode kart = new DefaultMutableTreeNode("Kart");
 		DefaultMutableTreeNode strecke = new DefaultMutableTreeNode("Strecke");
 		DefaultMutableTreeNode bezahlart = new DefaultMutableTreeNode("Bezahlart");
 		//MenuPunkte
 		DefaultMutableTreeNode start = new DefaultMutableTreeNode("Start");
+		DefaultMutableTreeNode mitarbeiterHinzufügen = new DefaultMutableTreeNode("Füge Mitarbeiter hinzu");
 		DefaultMutableTreeNode kartHinzufügen = new DefaultMutableTreeNode("Füge Kart hinzu");
 		DefaultMutableTreeNode streckeHinzufügen = new DefaultMutableTreeNode("Füge Strecke hinzu");
 		DefaultMutableTreeNode bezahlartHinzufügen = new DefaultMutableTreeNode("Füge Bezahlart hinzu");
 		// Zuweisung Wurzel - Kategorie
 		menu.add(startansicht);
+		menu.add(mitarbeiter);
 		menu.add(kart);
 		menu.add(strecke);
 		menu.add(bezahlart);
 		//Zuweisung Kategroie - MenuPunkt
 		startansicht.add(start);
+		mitarbeiter.add(mitarbeiterHinzufügen);
 		kart.add(kartHinzufügen);
 		strecke.add(streckeHinzufügen);
 		bezahlart.add(bezahlartHinzufügen);
