@@ -50,7 +50,6 @@ public class KartHinzufügenView extends JPanel{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
