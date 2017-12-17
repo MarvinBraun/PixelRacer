@@ -32,6 +32,7 @@ public class KartHinzufügenStrg implements ActionListener {
 		khView.frmPixelRacer.setVisible(true);
 		khView.btnAuswhlen.addActionListener(this);
 		khView.btnAbsenden.addActionListener(this);
+		khView.btnAbbrechen.addActionListener(this);
 	}
 	
 	//Methode, die auf aufgerufen wird, wenn ein Button gedrueckt wird
@@ -61,8 +62,13 @@ public class KartHinzufügenStrg implements ActionListener {
 				deklariereVariablenVTextfeldern();
 				erstelleKartInDB();
 				updateKartGrafik();
+				leereFormular();
 			}
 				}
+		}
+		//Soll Formular bei Abbruch leeren
+		if(e.getSource() == khView.btnAbbrechen) {
+			leereFormular();
 		}
 	}
 	
@@ -160,6 +166,17 @@ public class KartHinzufügenStrg implements ActionListener {
 		Datenbankschnittstelle.closeConnections();
 	}
 	
+	//Methode, die das Formular leeren soll
+	private void leereFormular() {
+		khView.textFieldName.setText(" ");
+		khView.textFieldBeschleunigung.setText(" ");
+		khView.textFieldMaxGeschwindigkeit.setText(" ");
+		khView.textFieldPunktzahl.setText(" ");
+		khView.textFieldGrafik.setText(" ");
+		khView.bgStatus.clearSelection();
+	}
+	
+	//Getter für die View
 	public KartHinzufügenView getView() {
 		return khView;
 	}

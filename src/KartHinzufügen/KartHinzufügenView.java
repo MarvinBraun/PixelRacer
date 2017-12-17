@@ -29,6 +29,7 @@ public class KartHinzufügenView extends JPanel{
 	protected JTextField textFieldGrafik;
 	protected JButton btnAuswhlen;
 	protected JButton btnAbsenden;
+	protected JButton btnAbbrechen;
 	protected JRadioButton rdbtnFree;
 	protected JRadioButton rdbtnPremium;
 	protected ButtonGroup bgStatus;
@@ -145,12 +146,17 @@ public class KartHinzufügenView extends JPanel{
 		
 		btnAbsenden = new JButton("absenden");
 		btnAbsenden.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAbsenden.setBounds(333, 419, 107, 23);
+		btnAbsenden.setBounds(345, 419, 95, 23);
 		add(btnAbsenden);
 		
 		lblKartHinzufgen = new JLabel("Kart Hinzuf\u00FCgen");
 		lblKartHinzufgen.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblKartHinzufgen.setBounds(78, 30, 175, 30);
 		add(lblKartHinzufgen);
+		
+		btnAbbrechen = new JButton("abbrechen");
+		btnAbbrechen.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAbbrechen.setBounds(225, 419, 101, 23);
+		add(btnAbbrechen);
 	}
 }
