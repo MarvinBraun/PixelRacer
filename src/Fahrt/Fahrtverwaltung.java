@@ -41,7 +41,7 @@ public class Fahrtverwaltung {
 		return singleplayerFahrten;
 	}
 	
-	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzer(String benutzername, String streckenname)
+	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzerUndStrecke(String benutzername, String streckenname)
 	{
 		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and streckenname = '"+streckenname+"'");
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and streckenname = '"+streckenname+"'");
@@ -68,7 +68,7 @@ public class Fahrtverwaltung {
 		return singleplayerFahrten;
 	}
 	
-	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzer2(String benutzername)
+	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzer(String benutzername)
 	{
 		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"'");
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"'");
@@ -239,7 +239,7 @@ public class Fahrtverwaltung {
 	public static void main(String[] args)
 	{
 		Fahrtverwaltung v = new Fahrtverwaltung();
-		LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzer2("DZeller");
+		LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller","Tundra");
 		System.out.println("Gefahrene Fahrten:"+fahrten.size());
 	}
 }

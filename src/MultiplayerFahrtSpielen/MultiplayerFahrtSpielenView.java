@@ -17,10 +17,13 @@ import javax.swing.border.LineBorder;
 import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
 import BackgroundAnimation.MovementBackward;
+import BackgroundAnimation.ZeigerMovement;
 import FahrtErstellen.FahrtErstellenView;
+import FahrtSpielen.FahrtSpielenView;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -34,6 +37,9 @@ public class MultiplayerFahrtSpielenView {
 	JLabel lblBestzeitDerStrecke; 
 	JButton fahrenBtn;
 	
+	ZeigerMovement zeiger;
+	JLabel balkenLbl;
+	JLabel bewertungLbl;
 	
 	
 	
@@ -71,6 +77,14 @@ public class MultiplayerFahrtSpielenView {
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
 		
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("src/Resources/zeiger.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		fahrenBtn = new JButton("Fahren!");
 		fahrenBtn.setBackground(new Color(176, 224, 230));
 		fahrenBtn.setBorder(new LineBorder(new Color(255, 69, 0), 6));
@@ -78,7 +92,29 @@ public class MultiplayerFahrtSpielenView {
 		fahrenBtn.setBounds(306, 214, 172, 58);
 		frame.getContentPane().add(fahrenBtn);
 		
-		lblAnzahlVerbleibenderVersuche = new JLabel("Anzahl verbleibender Versuche:");
+		zeiger = new ZeigerMovement(1);
+		zeiger.balken.setBufferedImage(image, 0);
+		zeiger.balken.setVisible(true);
+		zeiger.balken.setBounds(0,100,800,600);
+		zeiger.balken.setOpaque(false);
+		frame.getContentPane().add(zeiger.balken);
+
+		
+		balkenLbl = new JLabel("New label");
+		balkenLbl.setVisible(false);
+		
+		bewertungLbl = new JLabel("Druecke Leertaste");
+		bewertungLbl.setForeground(Color.RED);
+		bewertungLbl.setFont(new Font("pixelmix", Font.BOLD, 35));
+		bewertungLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		bewertungLbl.setVisible(false);
+		bewertungLbl.setBounds(152, 146, 500, 95);
+		frame.getContentPane().add(bewertungLbl);
+		balkenLbl.setIcon(new ImageIcon(FahrtSpielenView.class.getResource("/Resources/ladeBalken.png")));
+		balkenLbl.setBounds(152, 252, 500, 60);
+		frame.getContentPane().add(balkenLbl);
+		
+		lblAnzahlVerbleibenderVersuche = new JLabel("Versuche: 5");
 		lblAnzahlVerbleibenderVersuche.setForeground(Color.RED);
 		lblAnzahlVerbleibenderVersuche.setFont(new Font("pixelmix", Font.PLAIN, 18));
 		lblAnzahlVerbleibenderVersuche.setBounds(10, 11, 449, 33);

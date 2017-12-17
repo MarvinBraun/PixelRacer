@@ -243,7 +243,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public boolean pruefeSchwierigkeit(String a)
 	{
-		schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFürBenutzer(kunde.getnutzername(),s.getStreckenname());
+		schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFürBenutzerUndStrecke(kunde.getnutzername(),s.getStreckenname());
 		Iterator<SingleplayerFahrt> it = schwierigkeitsCheck.iterator();
 		boolean pruefung = false;
 		while(it.hasNext())
