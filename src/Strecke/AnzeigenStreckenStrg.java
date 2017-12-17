@@ -4,9 +4,6 @@ package Strecke;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 
 import Datenbankverwaltung.Datenbankschnittstelle;
+import Fahrt.Fahrt;
+import Fahrt.Fahrtverwaltung;
+import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
 import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
@@ -26,9 +26,17 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	StreckeDetailView viewDetail;
 	Streckenuebersicht viewUebersicht;
 	
-	Streckenverwaltung verwStrecke;
+	SingleplayerFahrt sf;
 	
-	static LinkedList<Strecke> streckenListe = new LinkedList<Strecke>();
+	Streckenverwaltung verwStrecke;
+	Fahrtverwaltung verwFahrt;
+	
+	LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
+	LinkedList<Strecke> streckenListe = new LinkedList<Strecke>();
+	
+	int counterRang1 =0;
+	int counterRang2 =0;
+	int counterRang3 =0;
 	
 	Strecke s;
 	ResultSet rs;
@@ -47,6 +55,8 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		
 		viewUebersicht = new Streckenuebersicht();
 		
+		verwFahrt = new Fahrtverwaltung();
+		singleplayerFahrten = verwFahrt.gibSingleplayerFahrten();
 		
 		verwStrecke = new Streckenverwaltung();
 		streckenListe = verwStrecke.gibStrecke();
@@ -99,21 +109,49 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	
 	public void setDetailView() throws SQLException {
 		
-		// auf angemeldeten Nutzer umschreiben
-		String abfrageAnzRennen = "SELECT BENUTZERNAME, STRECKENNAME, COUNT(SITZUNGSID)FROM SINGLEPLAYER_FAHRT WHERE BENUTZERNAME = 'DZeller' AND STRECKENNAME = 'Hockenheim' GROUP BY BENUTZERNAME, STRECKENNAME";
-		
-		System.out.println(abfrageAnzRennen);
-		
 		StreckeDetailView viewDetail= new StreckeDetailView();
+		
+		//streckenListe = verwStrecke.gibStrecke();
+		
+		//for(Strecke s:streckenListe) {
+		//if((s=itStrecke.next())!=null) {
+		
+		//Länge setzten
 		viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
+		
+		// Label umschreiben auf ges. Sf-Strecke
+		Fahrtverwaltung v = new Fahrtverwaltung();
+		LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller","Tundra");
+		viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
+				
+		// Label umschreiben auf ges. m pro Sf-Strecke
+		viewDetail.lblSetGesKm.setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
+				
+		// Anzahl Erster
+		SingleplayerFahrt sf = new SingleplayerFahrt();
+		for(int i =0; i <= fahrten.size(); i++) {
 			
-			
-		rs = Datenbankschnittstelle.executeQuery(abfrageAnzRennen);
-		viewDetail.lblSetGesRennen.setText(Integer.toString(rs.getInt(abfrageAnzRennen)));
-			
+			if(sf.getRang()==1) {
+			counterRang1 ++; 
+			}
+			if(sf.getRang()==2) {
+				counterRang2 ++; 
+			}
+			if(sf.getRang()==3) {
+				counterRang3 ++; 
+			}
+		}
+		System.out.println("Anzahl Erster:" + counterRang1);
+		System.out.println("Anzahl Zweiter:" + counterRang2);
+		System.out.println("Anzahl Dritter:" + counterRang3);
+		
 		viewDetail.frame.setVisible(true);
+		
+		//}
+		//}
 		rs.close();
 		Datenbankschnittstelle.closeConnections();
+		
 	}
 	
 	public static BufferedImage imageResizer(BufferedImage original)

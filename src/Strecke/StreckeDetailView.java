@@ -64,11 +64,11 @@ public class StreckeDetailView {
 		lblLaenge.setBounds(55, 32, 72, 14);
 		frame.getContentPane().add(lblLaenge);
 		
-		lblGefahreneRennen = new JLabel("Gefahrene Rennen:");
+		lblGefahreneRennen = new JLabel("Gefahrene SP-Rennen:");
 		lblGefahreneRennen.setBounds(32, 57, 95, 14);
 		frame.getContentPane().add(lblGefahreneRennen);
 		
-		lblGefahreneKmGesamt = new JLabel("Gefahrene km gesamt:");
+		lblGefahreneKmGesamt = new JLabel("Gefahrene m SP gesamt:");
 		lblGefahreneKmGesamt.setBounds(18, 82, 109, 14);
 		frame.getContentPane().add(lblGefahreneKmGesamt);
 		
