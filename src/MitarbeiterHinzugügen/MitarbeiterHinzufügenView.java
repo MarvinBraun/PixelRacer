@@ -33,9 +33,9 @@ public class MitarbeiterHinzufügenView extends JPanel{
 	protected JFileChooser fc;
 	protected FileFilter filter;
 	private JLabel lblMitarbeiterHinzufgen;
-	private JTextField textFieldEmail;
+	protected JTextField textFieldEmail;
 	private JLabel lblPasswort;
-	private JPasswordField passwordField;
+	protected JPasswordField passwordField;
 
 
 
