@@ -2,7 +2,7 @@
  @author Sean Cartner
 */
 
-package MitarbeiterHinzugügen;
+package MitarbeiterHinzufügen;
 
 import java.awt.EventQueue;
 
@@ -10,13 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.UIManager;
+import javax.swing.JButton;
 import javax.swing.JPasswordField;
 
 
@@ -30,8 +25,6 @@ public class MitarbeiterHinzufügenView extends JPanel{
 	protected JTextField textFieldBenutzername;
 	protected JButton btnAbsenden;
 	protected JButton btnAbbrechen;
-	protected JFileChooser fc;
-	protected FileFilter filter;
 	private JLabel lblMitarbeiterHinzufgen;
 	protected JTextField textFieldEmail;
 	private JLabel lblPasswort;
@@ -50,7 +43,7 @@ public class MitarbeiterHinzufügenView extends JPanel{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
+	
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
@@ -115,9 +108,6 @@ public class MitarbeiterHinzufügenView extends JPanel{
 		textFieldBenutzername.setBounds(265, 301, 175, 30);
 		add(textFieldBenutzername);
 		textFieldBenutzername.setColumns(10);
-		
-		fc = new JFileChooser();
-		filter = new FileNameExtensionFilter("Portable Network Graphics (*.png)", "png");
 		
 		btnAbsenden = new JButton("absenden");
 		btnAbsenden.setFont(new Font("Tahoma", Font.PLAIN, 15));
