@@ -58,7 +58,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 				laengeOk = "true";
 			} else{
 				deklariereVariablenVTextfeldern();
-				erstelleKartInDB();
+				erstelleMitarbeiterInDB();
 				leereFormular();
 			}
 				}
@@ -182,7 +182,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	}
 	
 	//Methode, welche ein Mitarbeiter in der Datenbank erstellt
-	private void erstelleKartInDB(){
+	private void erstelleMitarbeiterInDB(){
 
 		String abfrage = "insert into mitarbeiter values('" + mitarbeiterID + "', '" + benutzername + 
 				"', '" + passwort + "', '" + vorname + "', '" + nachname + "', '" + job + "', '" + email + 
