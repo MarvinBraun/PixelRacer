@@ -52,6 +52,7 @@ public class Kartübersicht {
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
 
 		kartForward = new JButton("");
