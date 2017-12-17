@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -33,6 +34,8 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	
 	LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
 	LinkedList<Strecke> streckenListe = new LinkedList<Strecke>();
+	
+	Array[] array;
 	
 	int counterRang1 =0;
 	int counterRang2 =0;
@@ -110,12 +113,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	public void setDetailView() throws SQLException {
 		
 		StreckeDetailView viewDetail= new StreckeDetailView();
-		
-		//streckenListe = verwStrecke.gibStrecke();
-		
-		//for(Strecke s:streckenListe) {
-		//if((s=itStrecke.next())!=null) {
-		
+					
 		//Länge setzten
 		viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
 		
@@ -128,8 +126,9 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		viewDetail.lblSetGesKm.setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
 				
 		// Anzahl Erster
-		SingleplayerFahrt sf = new SingleplayerFahrt();
 		for(int i =0; i <= fahrten.size(); i++) {
+			
+			sf = fahrten.get(i);
 			
 			if(sf.getRang()==1) {
 			counterRang1 ++; 
@@ -141,10 +140,14 @@ public class AnzeigenStreckenStrg implements ActionListener{
 				counterRang3 ++; 
 			}
 		}
+		
 		System.out.println("Anzahl Erster:" + counterRang1);
 		System.out.println("Anzahl Zweiter:" + counterRang2);
 		System.out.println("Anzahl Dritter:" + counterRang3);
 		
+		
+		
+
 		viewDetail.frame.setVisible(true);
 		
 		//}
