@@ -29,12 +29,14 @@ public class StreckeHinzufügenView extends JPanel {
 	protected JTextField textFieldGrafik;
 	protected JButton btnAuswhlen;
 	protected JButton btnAbsenden;
+	protected JButton btnAbbrechen;
 	protected JRadioButton rdbtnFree;
 	protected JRadioButton rdbtnPremium;
 	protected ButtonGroup bgStatus;
 	protected JFileChooser fc;
 	protected FileFilter filter;
 	private JLabel lblStrecke;
+
 
 
 
@@ -145,13 +147,18 @@ public class StreckeHinzufügenView extends JPanel {
 		
 		btnAbsenden = new JButton("absenden");
 		btnAbsenden.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAbsenden.setBounds(333, 419, 107, 23);
+		btnAbsenden.setBounds(345, 419, 95, 23);
 		add(btnAbsenden);
 		
 		lblStrecke = new JLabel("Strecke Hinzuf\u00FCgen");
 		lblStrecke.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblStrecke.setBounds(78, 30, 205, 30);
 		add(lblStrecke);
+		
+		btnAbbrechen = new JButton("abbrechen");
+		btnAbbrechen.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAbbrechen.setBounds(225, 419, 101, 23);
+		add(btnAbbrechen);
 		
 
 	}

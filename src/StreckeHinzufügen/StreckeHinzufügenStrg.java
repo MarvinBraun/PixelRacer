@@ -32,6 +32,7 @@ public class StreckeHinzufügenStrg implements ActionListener {
 		stView.frmPixelRacer.setVisible(true);
 		stView.btnAuswhlen.addActionListener(this);
 		stView.btnAbsenden.addActionListener(this);
+		stView.btnAbbrechen.addActionListener(this);
 	}
 
 	//Methode, die auf aufgerufen wird, wenn ein Button gedrueckt wird
@@ -61,8 +62,12 @@ public class StreckeHinzufügenStrg implements ActionListener {
 				deklariereVariablenVTextfeldern();
 				erstelleStreckeInDB();
 				updateKartGrafik();
+				leereFormular();
 			}
 				}
+		}
+		if(e.getSource() == stView.btnAbbrechen) {
+			leereFormular();
 		}
 	}
 	
@@ -160,6 +165,16 @@ public class StreckeHinzufügenStrg implements ActionListener {
 		Datenbankschnittstelle.closeConnections();
 	}
 	
+	private void leereFormular() {
+		stView.textFieldName.setText(" ");
+		stView.textFieldLaenge.setText(" ");
+		stView.textFieldSchwierigkeit.setText(" ");
+		stView.textFieldPunktzahl.setText(" ");
+		stView.textFieldGrafik.setText(" ");
+		stView.bgStatus.clearSelection();
+	}
+	
+	//Getter fuer View
 	public StreckeHinzufügenView getView() {
 		return stView;
 	}
