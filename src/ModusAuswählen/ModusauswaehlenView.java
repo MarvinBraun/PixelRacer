@@ -1,5 +1,5 @@
 //@Author Ferhat Koca
-package ModusAuswählen;
+package ModusAusw�hlen;
 
 import java.awt.EventQueue;
 import java.awt.image.BufferedImage;
@@ -14,13 +14,13 @@ import BackgroundAnimation.MovementBackward;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
-public class ModusAuswählenView {
+public class ModusauswaehlenView {
 
 	JFrame frame;
 
 	JButton btnSingleplayer;
 	JButton btnMultiplayer;
-	JButton btnzurück;
+	JButton btnzurueck;
 
 	/**
 	 * Launch the application.
@@ -29,7 +29,7 @@ public class ModusAuswählenView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModusAuswählenView window = new ModusAuswählenView();
+					ModusauswaehlenView window = new ModusauswaehlenView();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class ModusAuswählenView {
 	 * 
 	 * @throws IOException
 	 */
-	public ModusAuswählenView() {
+	public ModusauswaehlenView() {
 		initialize();
 	}
 
@@ -69,9 +69,9 @@ public class ModusAuswählenView {
 		btnMultiplayer.setBounds(440, 240, 160, 31);
 		frame.getContentPane().add(btnMultiplayer);
 
-		btnzurück = new JButton("Zurück");
-		btnzurück.setBounds(325, 289, 150, 31);
-		frame.getContentPane().add(btnzurück);
+		btnzurueck = new JButton("Zur�ck");
+		btnzurueck.setBounds(325, 289, 150, 31);
+		frame.getContentPane().add(btnzurueck);
 
 		BufferedImage image = null;
 		try {

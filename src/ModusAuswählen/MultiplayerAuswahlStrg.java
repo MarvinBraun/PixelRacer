@@ -26,7 +26,7 @@ public class MultiplayerAuswahlStrg implements ActionListener {
 		}
 		if (e.getSource() == mv.btnzurück) {
 			mv.frame.dispose();
-			ModusauswählenStrg ma = new ModusauswählenStrg();
+			ModusauswaehlenStrg ma = new ModusauswaehlenStrg();
 		}
 	}
 

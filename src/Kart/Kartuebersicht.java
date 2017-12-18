@@ -11,9 +11,9 @@ import javax.swing.JLabel;
 
 import Strecke.Streckenuebersicht;
 
-public class Kartübersicht {
+public class Kartuebersicht {
 
-	private JFrame frame;
+	JFrame frame;
 
 	JButton kartForward;
 	JButton kartBackward;
@@ -28,7 +28,7 @@ public class Kartübersicht {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Kartübersicht window = new Kartübersicht();
+					Kartuebersicht window = new Kartuebersicht();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class Kartübersicht {
 	/**
 	 * Create the application.
 	 */
-	public Kartübersicht() {
+	public Kartuebersicht() {
 		initialize();
 	}
 

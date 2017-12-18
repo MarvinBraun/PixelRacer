@@ -8,10 +8,11 @@ import java.io.IOException;
 import FahrtErstellen.FahrtErstellenStrg;
 import Startansicht.StartansichtStrg;
 
-public class ModusauswählenStrg implements ActionListener {
 
-	static ModusauswählenStrg ms;
-	ModusAuswählenView mav;
+public class ModusauswaehlenStrg implements ActionListener {
+
+	static ModusauswaehlenStrg ms;
+	ModusauswaehlenView mav;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -31,23 +32,23 @@ public class ModusauswählenStrg implements ActionListener {
 			}
 
 		}
-		if (e.getSource() == mav.btnzurück) {
+		if (e.getSource() == mav.btnzurueck) {
 			mav.frame.dispose();
 			StartansichtStrg sa = new StartansichtStrg();
 		}
 	}
 
-	public ModusauswählenStrg() {
-		mav = new ModusAuswählenView();
+	public ModusauswaehlenStrg() {
+		mav = new ModusauswaehlenView();
 		mav.frame.setVisible(true);
 		mav.btnMultiplayer.addActionListener(this);
 		mav.btnSingleplayer.addActionListener(this);
-		mav.btnzurück.addActionListener(this);
+		mav.btnzurueck.addActionListener(this);
 
 	}
 
 	public static void main(String[] args) {
-		ms = new ModusauswählenStrg();
+		ms = new ModusauswaehlenStrg();
 	}
 
 }
