@@ -5,6 +5,9 @@ package Rechnung;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Nutzer.Kunde;
+
+
 
 public class anzeigenRechnungStrg implements ActionListener{
 	

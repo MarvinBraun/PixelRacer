@@ -13,8 +13,33 @@ public class speicherRechnung {
 	private JFrame frmSpeicherrechnung;
 			JLabel lblRechnungErfolgreichAuf;
 			JButton btnZurck;
-				
+			
+	
 		
+	public JFrame getFrmSpeicherrechnung() {
+				return frmSpeicherrechnung;
+			}
+
+			public void setFrmSpeicherrechnung(JFrame frmSpeicherrechnung) {
+				this.frmSpeicherrechnung = frmSpeicherrechnung;
+			}
+
+			public JLabel getLblRechnungErfolgreichAuf() {
+				return lblRechnungErfolgreichAuf;
+			}
+
+			public void setLblRechnungErfolgreichAuf(JLabel lblRechnungErfolgreichAuf) {
+				this.lblRechnungErfolgreichAuf = lblRechnungErfolgreichAuf;
+			}
+
+			public JButton getBtnZurck() {
+				return btnZurck;
+			}
+
+			public void setBtnZurck(JButton btnZurck) {
+				this.btnZurck = btnZurck;
+			}
+
 	/**
 	 * Launch the application.
 	 */

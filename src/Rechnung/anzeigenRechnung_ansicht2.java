@@ -32,8 +32,88 @@ public class anzeigenRechnung_ansicht2 {
 	JLabel lblBezahlmethode;
 	JLabel lblRechnungsbetrag;
 	JLabel lblPremium;
+
 	
-	
+
+	public JFrame getFrmRechnungsübersicht() {
+		return frmRechnungsübersicht;
+	}
+
+	public void setFrmRechnungsübersicht(JFrame frmRechnungsübersicht) {
+		this.frmRechnungsübersicht = frmRechnungsübersicht;
+	}
+
+	public JLabel getLblRechnungsnummer() {
+		return lblRechnungsnummer;
+	}
+
+	public void setLblRechnungsnummer(JLabel lblRechnungsnummer) {
+		this.lblRechnungsnummer = lblRechnungsnummer;
+	}
+
+	public JLabel getLblRechnungsdatum() {
+		return lblRechnungsdatum;
+	}
+
+	public void setLblRechnungsdatum(JLabel lblRechnungsdatum) {
+		this.lblRechnungsdatum = lblRechnungsdatum;
+	}
+
+	public JLabel getLblKartname() {
+		return lblKartname;
+	}
+
+	public void setLblKartname(JLabel lblKartname) {
+		this.lblKartname = lblKartname;
+	}
+
+	public JLabel getLblStreckenname_1() {
+		return lblStreckenname_1;
+	}
+
+	public void setLblStreckenname_1(JLabel lblStreckenname_1) {
+		this.lblStreckenname_1 = lblStreckenname_1;
+	}
+
+	public JLabel getLblBenutzername() {
+		return lblBenutzername;
+	}
+
+	public void setLblBenutzername(JLabel lblBenutzername) {
+		this.lblBenutzername = lblBenutzername;
+	}
+
+	public JLabel getLblArtikel() {
+		return lblArtikel;
+	}
+
+	public void setLblArtikel(JLabel lblArtikel) {
+		this.lblArtikel = lblArtikel;
+	}
+
+	public JLabel getLblBezahlmethode() {
+		return lblBezahlmethode;
+	}
+
+	public void setLblBezahlmethode(JLabel lblBezahlmethode) {
+		this.lblBezahlmethode = lblBezahlmethode;
+	}
+
+	public JLabel getLblRechnungsbetrag() {
+		return lblRechnungsbetrag;
+	}
+
+	public void setLblRechnungsbetrag(JLabel lblRechnungsbetrag) {
+		this.lblRechnungsbetrag = lblRechnungsbetrag;
+	}
+
+	public JLabel getLblPremium() {
+		return lblPremium;
+	}
+
+	public void setLblPremium(JLabel lblPremium) {
+		this.lblPremium = lblPremium;
+	}
 
 	/**
 	 * Launch the application.

@@ -29,6 +29,79 @@ public class bezahlenRechnung_ansicht {
 	private JTextPane textPane;
 	private JLabel lblNewLabel;
 
+	
+	public JFrame getFrmBezahlung() {
+		return frmBezahlung;
+	}
+
+	public void setFrmBezahlung(JFrame frmBezahlung) {
+		this.frmBezahlung = frmBezahlung;
+	}
+
+	public JTextField getTxtEmail() {
+		return txtEmail;
+	}
+
+	public void setTxtEmail(JTextField txtEmail) {
+		this.txtEmail = txtEmail;
+	}
+
+	public JLabel getLblE() {
+		return lblE;
+	}
+
+	public void setLblE(JLabel lblE) {
+		this.lblE = lblE;
+	}
+
+	public JButton getBtnNewButton() {
+		return btnNewButton;
+	}
+
+	public void setBtnNewButton(JButton btnNewButton) {
+		this.btnNewButton = btnNewButton;
+	}
+
+	public JLabel getLblOder() {
+		return lblOder;
+	}
+
+	public void setLblOder(JLabel lblOder) {
+		this.lblOder = lblOder;
+	}
+
+	public JButton getBtnNeuAnmelden() {
+		return btnNeuAnmelden;
+	}
+
+	public void setBtnNeuAnmelden(JButton btnNeuAnmelden) {
+		this.btnNeuAnmelden = btnNeuAnmelden;
+	}
+
+	public JPasswordField getPasswordField() {
+		return passwordField;
+	}
+
+	public void setPasswordField(JPasswordField passwordField) {
+		this.passwordField = passwordField;
+	}
+
+	public JTextPane getTextPane() {
+		return textPane;
+	}
+
+	public void setTextPane(JTextPane textPane) {
+		this.textPane = textPane;
+	}
+
+	public JLabel getLblNewLabel() {
+		return lblNewLabel;
+	}
+
+	public void setLblNewLabel(JLabel lblNewLabel) {
+		this.lblNewLabel = lblNewLabel;
+	}
+
 	/**
 	 * Launch the application.
 	 */

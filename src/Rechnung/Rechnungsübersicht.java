@@ -22,6 +22,54 @@ public class Rechnungsübersicht {
 	JTextPane textPane;
 
 
+	public JFrame getFrmRechnungsbersicht() {
+		return frmRechnungsbersicht;
+	}
+
+	public void setFrmRechnungsbersicht(JFrame frmRechnungsbersicht) {
+		this.frmRechnungsbersicht = frmRechnungsbersicht;
+	}
+
+	public JLabel getLblRechnung() {
+		return lblRechnung;
+	}
+
+	public void setLblRechnung(JLabel lblRechnung) {
+		this.lblRechnung = lblRechnung;
+	}
+
+	public JButton getBtnAnzeigen() {
+		return btnAnzeigen;
+	}
+
+	public void setBtnAnzeigen(JButton btnAnzeigen) {
+		this.btnAnzeigen = btnAnzeigen;
+	}
+
+	public JButton getBtnBezahlen() {
+		return btnBezahlen;
+	}
+
+	public void setBtnBezahlen(JButton btnBezahlen) {
+		this.btnBezahlen = btnBezahlen;
+	}
+
+	public JButton getBtnSpeichern() {
+		return btnSpeichern;
+	}
+
+	public void setBtnSpeichern(JButton btnSpeichern) {
+		this.btnSpeichern = btnSpeichern;
+	}
+
+	public JTextPane getTextPane() {
+		return textPane;
+	}
+
+	public void setTextPane(JTextPane textPane) {
+		this.textPane = textPane;
+	}
+
 	/**
 	 * Launch the application.
 	 */
