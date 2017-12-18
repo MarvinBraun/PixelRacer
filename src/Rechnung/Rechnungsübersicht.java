@@ -15,6 +15,12 @@ import javax.swing.JTextPane;
 public class Rechnungsübersicht {
 
 	private JFrame frmRechnungsbersicht;
+	JLabel lblRechnung;
+	JButton btnAnzeigen;
+	JButton btnBezahlen;
+	JButton btnSpeichern;
+	JTextPane textPane;
+
 
 	/**
 	 * Launch the application.
@@ -45,20 +51,20 @@ public class Rechnungsübersicht {
 	private void initialize() {
 		frmRechnungsbersicht = new JFrame();
 		frmRechnungsbersicht.setTitle("Rechnungs\u00FCbersicht");
-		frmRechnungsbersicht.setBounds(100, 100, 800, 600);
+		frmRechnungsbersicht.setBounds(100, 100, 800, 200);
 		frmRechnungsbersicht.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmRechnungsbersicht.getContentPane().setLayout(null);
 		
-		JLabel lblRechnung = new JLabel("Rechnung:");
+		lblRechnung = new JLabel("Rechnung:");
 		lblRechnung.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblRechnung.setBounds(20, 44, 89, 30);
 		frmRechnungsbersicht.getContentPane().add(lblRechnung);
 		
-		JButton btnAnzeigen = new JButton("anzeigen");
+		btnAnzeigen = new JButton("anzeigen");
 		btnAnzeigen.setBounds(341, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnAnzeigen);
 		
-		JButton btnBezahlen = new JButton("bezahlen");
+		btnBezahlen = new JButton("bezahlen");
 		btnBezahlen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -66,11 +72,11 @@ public class Rechnungsübersicht {
 		btnBezahlen.setBounds(457, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnBezahlen);
 		
-		JButton btnSpeichern = new JButton("speichern");
+		btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(569, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnSpeichern);
 		
-		JTextPane textPane = new JTextPane();
+		textPane = new JTextPane();
 		textPane.setBounds(140, 50, 111, 24);
 		frmRechnungsbersicht.getContentPane().add(textPane);
 	}

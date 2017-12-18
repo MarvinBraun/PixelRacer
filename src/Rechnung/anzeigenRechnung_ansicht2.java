@@ -22,7 +22,18 @@ import java.awt.Color;
 
 public class anzeigenRechnung_ansicht2 {
 
-	private JFrame frmRechnungsbersicht;
+	JFrame frmRechnungsübersicht;
+	JLabel lblRechnungsnummer;
+	JLabel lblRechnungsdatum;
+	JLabel lblKartname;
+	JLabel lblStreckenname_1;
+	JLabel lblBenutzername;
+	JLabel lblArtikel;
+	JLabel lblBezahlmethode;
+	JLabel lblRechnungsbetrag;
+	JLabel lblPremium;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -32,7 +43,7 @@ public class anzeigenRechnung_ansicht2 {
 			public void run() {
 				try {
 					anzeigenRechnung_ansicht2 window = new anzeigenRechnung_ansicht2();
-					window.frmRechnungsbersicht.setVisible(true);
+					window.frmRechnungsübersicht.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -51,59 +62,59 @@ public class anzeigenRechnung_ansicht2 {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmRechnungsbersicht = new JFrame();
-		frmRechnungsbersicht.getContentPane().setForeground(Color.BLACK);
-		frmRechnungsbersicht.setResizable(false);
-		frmRechnungsbersicht.setTitle("Rechnung");
-		frmRechnungsbersicht.setBounds(100, 100, 800, 600);
-		frmRechnungsbersicht.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmRechnungsbersicht.getContentPane().setLayout(null);
+		frmRechnungsübersicht = new JFrame();
+		frmRechnungsübersicht.getContentPane().setForeground(Color.BLACK);
+		frmRechnungsübersicht.setResizable(false);
+		frmRechnungsübersicht.setTitle("Rechnung");
+		frmRechnungsübersicht.setBounds(100, 100, 800, 600);
+		frmRechnungsübersicht.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmRechnungsübersicht.getContentPane().setLayout(null);
 		
-		JLabel lblRechnungsnummer = new JLabel("Rechnungsnummer:");
+		lblRechnungsnummer = new JLabel("Rechnungsnummer:");
 		lblRechnungsnummer.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblRechnungsnummer.setBounds(33, 26, 166, 45);
-		frmRechnungsbersicht.getContentPane().add(lblRechnungsnummer);
+		frmRechnungsübersicht.getContentPane().add(lblRechnungsnummer);
 		
-		JLabel lblRechnungsdatum = new JLabel("Rechnungsdatum:");
+		lblRechnungsdatum = new JLabel("Rechnungsdatum:");
 		lblRechnungsdatum.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblRechnungsdatum.setBounds(435, 26, 166, 45);
-		frmRechnungsbersicht.getContentPane().add(lblRechnungsdatum);
+		frmRechnungsübersicht.getContentPane().add(lblRechnungsdatum);
 		
-		JLabel lblStreckenname = new JLabel("Kartname:");
-		lblStreckenname.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblStreckenname.setBounds(33, 260, 145, 45);
-		frmRechnungsbersicht.getContentPane().add(lblStreckenname);
+		lblKartname = new JLabel("Kartname:");
+		lblKartname.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblKartname.setBounds(33, 260, 145, 45);
+		frmRechnungsübersicht.getContentPane().add(lblKartname);
 		
-		JLabel lblStreckenname_1 = new JLabel("Streckenname:");
+		lblStreckenname_1 = new JLabel("Streckenname:");
 		lblStreckenname_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblStreckenname_1.setBounds(33, 204, 145, 45);
-		frmRechnungsbersicht.getContentPane().add(lblStreckenname_1);
+		frmRechnungsübersicht.getContentPane().add(lblStreckenname_1);
 		
-		JLabel lblBenutzername = new JLabel("Benutzername:");
+		lblBenutzername = new JLabel("Benutzername:");
 		lblBenutzername.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblBenutzername.setBounds(33, 82, 145, 45);
-		frmRechnungsbersicht.getContentPane().add(lblBenutzername);
+		frmRechnungsübersicht.getContentPane().add(lblBenutzername);
 		
-		JLabel lblArtikel = new JLabel("Artikel");
+		lblArtikel = new JLabel("Artikel");
 		lblArtikel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblArtikel.setForeground(Color.BLACK);
 		lblArtikel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblArtikel.setBounds(33, 161, 74, 32);
-		frmRechnungsbersicht.getContentPane().add(lblArtikel);
+		frmRechnungsübersicht.getContentPane().add(lblArtikel);
 		
-		JLabel lblBezahlmethode = new JLabel("Bezahlmethode:");
+		lblBezahlmethode = new JLabel("Bezahlmethode:");
 		lblBezahlmethode.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblBezahlmethode.setBounds(33, 419, 145, 45);
-		frmRechnungsbersicht.getContentPane().add(lblBezahlmethode);
+		frmRechnungsübersicht.getContentPane().add(lblBezahlmethode);
 		
-		JLabel lblRechnungsbetrag = new JLabel("Rechnungsbetrag:");
+		lblRechnungsbetrag = new JLabel("Rechnungsbetrag:");
 		lblRechnungsbetrag.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblRechnungsbetrag.setBounds(31, 475, 182, 45);
-		frmRechnungsbersicht.getContentPane().add(lblRechnungsbetrag);
+		frmRechnungsübersicht.getContentPane().add(lblRechnungsbetrag);
 		
-		JLabel lblPremium = new JLabel("Premium:");
+		lblPremium = new JLabel("Premium:");
 		lblPremium.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblPremium.setBounds(33, 316, 145, 45);
-		frmRechnungsbersicht.getContentPane().add(lblPremium);
+		frmRechnungsübersicht.getContentPane().add(lblPremium);
 	}
 }

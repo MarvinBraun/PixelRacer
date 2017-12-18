@@ -26,6 +26,8 @@ public class bezahlenRechnung_ansicht {
 	private JLabel lblOder;
 	private JButton btnNeuAnmelden;
 	private JPasswordField passwordField;
+	private JTextPane textPane;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -94,11 +96,11 @@ public class bezahlenRechnung_ansicht {
 		passwordField.setBounds(221, 173, 220, 39);
 		frmBezahlung.getContentPane().add(passwordField);
 		
-		JTextPane textPane = new JTextPane();
+		textPane = new JTextPane();
 		textPane.setBounds(266, 126, 6, 20);
 		frmBezahlung.getContentPane().add(textPane);
 		
-		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Matze\\Pictures\\paypalIcon.jpg"));
 		lblNewLabel.setBounds(221, 28, 220, 65);
 		frmBezahlung.getContentPane().add(lblNewLabel);
