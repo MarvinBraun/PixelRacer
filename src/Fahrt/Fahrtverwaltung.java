@@ -234,6 +234,43 @@ public class Fahrtverwaltung {
 		
 		
 	}
+			
+			public LinkedList<MultiplayerFahrt> gibMultiplayerFahrtenNachSitzungsID(int i)
+			{
+				{
+					try {
+						String abfrage = "select * from multiplayer_fahrt where sitzungsid = "+i+" order by zeit asc";
+						ResultSet rs = Datenbankschnittstelle.executeQuery(abfrage);
+					
+						while(rs.next())
+						{	
+							
+							MultiplayerFahrt fahrt = new MultiplayerFahrt();
+							fahrt.setSitzungsID(rs.getInt("SitzungsID"));
+							
+							System.out.println(fahrt.getSitzungsID());
+							fahrt.setRang(rs.getInt("Rang"));
+							fahrt.setMultiplayerID(rs.getInt("MultiplayerID"));
+							fahrt.setZeit(rs.getInt("Zeit"));
+							System.out.println(fahrt.getZeit());
+							fahrt.setStreckenName(rs.getString("Streckenname"));
+							fahrt.setKartName(rs.getString("Kartname"));
+							fahrt.setBenutzername(rs.getString("Benutzername"));
+							multiplayerFahrten.add(fahrt);
+						}
+						rs.close();
+						Datenbankschnittstelle.closeConnections();
+						
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					return multiplayerFahrten;
+			
+			
+		}
+			
 	}
 	
 	public static void main(String[] args)

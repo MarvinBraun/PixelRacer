@@ -19,8 +19,6 @@ public class FahrtAuswertungMultiplayerStrg {
 		String zeit = "Gefahrene Zeit: "+mf.getZeit();
 		view.lblDeineZeit.setText(zeit);
 		ermittleRang();
-		
-		
 	}
 	
 	public void ermittleRang()

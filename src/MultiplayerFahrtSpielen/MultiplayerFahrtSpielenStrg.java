@@ -63,7 +63,8 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 		            	if( versuche>=0)
 		            	{ 
-		            		int record = fahrtSpielenView.zeiger.balken.backgroundX1;
+		            	
+		            	int record = fahrtSpielenView.zeiger.balken.backgroundX1;
 		            	wert = wert + record;
 		            	System.out.println(wert);
 		            	speed = speed+speed;
@@ -77,14 +78,13 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		               	
 		               	if(200<record&&record<500)
 		               	{
-		               		fahrtSpielenView.bewertungLbl.setText("Super");
-		               	
+		               		fahrtSpielenView.bewertungLbl.setText("Super!");
 		               	}
-		               	
-		               	
+		               	else
+		               		fahrtSpielenView.bewertungLbl.setText("Schlecht!");
+		            	
 		            	}
-		            	
-		            	
+
 		            	if(versuche == 0)
 		            	{
 		            		float berechneLeistung = (float) wert / 1750;
@@ -96,14 +96,12 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		            	
 		            		
 		            		System.out.println(berechneLeistung);
-		            		
-		            		
 		            		float schwierigkeit2 = (float) (0.8 +(Math.random() * 1.5)); 
-		        			
 		        			int zeit = (int) ((int) ((strecke.getLaenge()/kart.getMaxkmh())+(kart.getMaxkmh()/kart.beschleunigung)*schwierigkeit2)*berechneLeistung);
 		        			System.out.println("Zeit"+zeit);
 		        			mf.setZeit(zeit);
 		        			versuche--;
+		        			
 
 		        			
 		            	}

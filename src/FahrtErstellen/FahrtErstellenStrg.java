@@ -125,6 +125,13 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.getSchwierigkeitLbl().setVisible(false);
 			view.getMultiplayerLbl().setVisible(true);
 			mf = new MultiplayerFahrt();
+			int sitzungsID = fahrten.gibNeueID(1);
+			view.getMultiplayerLbl().setText(""+sitzungsID);
+			mf.setSitzungsID(sitzungsID);
+			
+			int multiplayerID = fahrten.gibNeueMultiplayerID();
+			view.getMultiplayerLbl().setText(""+multiplayerID);
+			mf.setMultiplayerID(multiplayerID);
 		}
 		ladeStrecke();
 		SwingUtilities.updateComponentTreeUI(view.getFrame());
@@ -307,10 +314,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		{
 			mf.setZeit(0);
 			mf.setRang(0);
-			int id = fahrten.gibNeueID(1);
-			mf.setSitzungsID(id);
-			int multiID = fahrten.gibNeueMultiplayerID(); 
-			mf.setMultiplayerID(multiID);
+			mf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
 			MultiplayerFahrtSpielenStrg strg = new MultiplayerFahrtSpielenStrg(mf,k,s);
 		}
 		view.getFrame().dispose();
