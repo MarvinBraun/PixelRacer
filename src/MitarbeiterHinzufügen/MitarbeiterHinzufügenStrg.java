@@ -33,14 +33,14 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	//Konstruktor
 	public MitarbeiterHinzufügenStrg(){
 		mhView = new MitarbeiterHinzufügenView();
-		mhView.frmPixelRacer.setVisible(true);
-		mhView.btnAbsenden.addActionListener(this);
-		mhView.btnAbbrechen.addActionListener(this);
+		mhView.getPanel().setVisible(true);
+		mhView.getBtnAbsenden().addActionListener(this);
+		mhView.getBtnAbbrechen().addActionListener(this);
 	}
 	
 	//Methode, die auf aufgerufen wird, wenn ein Button gedrueckt wird
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == mhView.btnAbsenden){
+		if(e.getSource() == mhView.getBtnAbsenden()){
 			//Daten pruefen und wenn alles Korrekt ist einen neuen Datensatz anlegen
 			if(pruefeFormarAufVollständigkeit() == false){
 				formularUnvollständigMeldung();
@@ -64,31 +64,31 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 				}
 		}
 		//Soll Formular bei Abbruch leeren
-		if(e.getSource() == mhView.btnAbbrechen) {
+		if(e.getSource() == mhView.getBtnAbbrechen()) {
 			leereFormular();
 		}
 	}
 	
 	//Meldung, die erscheint, wenn Formular nicht vollstaendig ausgefuellt ist
 	private void formularUnvollständigMeldung(){
-		JOptionPane.showMessageDialog(mhView.frmPixelRacer,
+		JOptionPane.showMessageDialog(mhView.getPanel(),
 			    "Alle Felder müssen ausgefüllt sein!", "Formular unvollständig",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
 	//Meldung, die erscheint, wenn die Eingabe zu einem oder mehreren Feldern zu lang ist
 	private void inhaltZuLangMeldung(){
-		JOptionPane.showMessageDialog(mhView.frmPixelRacer,
+		JOptionPane.showMessageDialog(mhView.getPanel(),
 			    fehlermeldung, "Inhalt zu lang",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
 	//Methode, welche pruefen soll, ob das Formular auch vollstaendig ausgefuellt ist
 	private boolean pruefeFormarAufVollständigkeit(){
-		if(mhView.textFieldVorname.getText().isEmpty() || mhView.textFieldNachname.getText().isEmpty() 
-				|| mhView.textFieldGeburtsdatum.getText().isEmpty() || mhView.textFieldJob.getText().isEmpty()
-				|| mhView.textFieldBenutzername.getText().isEmpty() || mhView.textFieldEmail.getText().isEmpty()
-				|| mhView.passwordField.getPassword().length == 0){
+		if(mhView.getTfVorname().getText().isEmpty() || mhView.getTfNachname().getText().isEmpty() 
+				|| mhView.getTfGeburtsdatum().getText().isEmpty() || mhView.getTfJob().getText().isEmpty()
+				|| mhView.getTfBenutzername().getText().isEmpty() || mhView.getTfEmail().getText().isEmpty()
+				|| mhView.getPfPasswort().getPassword().length == 0){
 		return false;
 		}
 		return true;
@@ -96,7 +96,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Vorname-Feldes kontrollieren soll
 	private void istVornameZuLang(){
-		if(mhView.textFieldVorname.getText().length() > 20){
+		if(mhView.getTfVorname().getText().length() > 20){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Vorname";
 		}	
@@ -104,7 +104,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Nachname-Feldes kontrollieren soll
 	private void istNachnameZuLang(){
-		if(mhView.textFieldNachname.getText().length() > 20){
+		if(mhView.getTfNachname().getText().length() > 20){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Nachname";
 		}
@@ -112,7 +112,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Geburtsdatum-Feldes kontrollieren soll
 	private void istGeburtsdatumZuLang(){
-		if(mhView.textFieldGeburtsdatum.getText().length() > 8){
+		if(mhView.getTfGeburtsdatum().getText().length() > 8){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Geburtsdatum";
 		}
@@ -120,7 +120,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Job-Feldes kontrollieren soll
 	private void istJobZuLang(){
-		if(mhView.textFieldJob.getText().length() > 20){
+		if(mhView.getTfJob().getText().length() > 20){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Job";
 		}
@@ -128,7 +128,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Benutzername-Feldes kontrollieren soll
 	private void istBenutzernameZuLang(){
-		if(mhView.textFieldBenutzername.getText().length() > 20){
+		if(mhView.getTfBenutzername().getText().length() > 20){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Benutzername";
 		}
@@ -136,7 +136,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Email-Feldes kontrollieren soll
 	private void istEmailZuLang(){
-		if(mhView.textFieldEmail.getText().length() > 50){
+		if(mhView.getTfEmail().getText().length() > 50){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Email";
 		}
@@ -144,9 +144,9 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Passwort-Feldes kontrollieren soll
 	private void istPasswortZuLang(){
-		if(mhView.passwordField.getPassword().toString().length() > 20){
+		if(mhView.getPfPasswort().getPassword().length > 20){
 			laengeOk = "false";
-			fehlermeldung = fehlermeldung + "  " + "Job";
+			fehlermeldung = fehlermeldung + "  " + "Passwort";
 		}
 	}
 	
@@ -172,13 +172,13 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	//Methode, in die Datenbank relevanten Variablen aufgrundlage des Formulars deklariert werden
 	private void deklariereVariablenVTextfeldern(){
 		mitarbeiterID = berechneMitarbeiterID();
-		vorname = mhView.textFieldVorname.getText();
-		nachname = mhView.textFieldNachname.getText();
-		geburtsdatum = mhView.textFieldGeburtsdatum.getText();
-		job = mhView.textFieldJob.getText();
-		benutzername = mhView.textFieldBenutzername.getText();
-		email = mhView.textFieldEmail.getText();
-		passwort = new String(mhView.passwordField.getPassword());
+		vorname = mhView.getTfVorname().getText();
+		nachname = mhView.getTfNachname().getText();
+		geburtsdatum = mhView.getTfGeburtsdatum().getText();
+		job = mhView.getTfJob().getText();
+		benutzername = mhView.getTfBenutzername().getText();
+		email = mhView.getTfEmail().getText();
+		passwort = new String(mhView.getPfPasswort().getPassword());
 	}
 	
 	//Methode, welche ein Mitarbeiter in der Datenbank erstellt
@@ -193,13 +193,13 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 		
 	//Methode, die das Formular leeren soll
 	private void leereFormular() {
-		mhView.textFieldVorname.setText(" ");
-		mhView.textFieldNachname.setText(" ");
-		mhView.textFieldGeburtsdatum.setText(" ");
-		mhView.textFieldJob.setText(" ");
-		mhView.textFieldBenutzername.setText(" ");
-		mhView.textFieldEmail.setText(" ");
-		mhView.passwordField.setText("");
+		mhView.getTfVorname().setText(" ");
+		mhView.getTfNachname().setText(" ");
+		mhView.getTfGeburtsdatum().setText(" ");
+		mhView.getTfJob().setText(" ");
+		mhView.getTfBenutzername().setText(" ");
+		mhView.getTfEmail().setText(" ");
+		mhView.getPfPasswort().setText("");
 	}
 	
 	//Getter für die View

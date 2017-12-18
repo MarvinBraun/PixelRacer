@@ -17,18 +17,18 @@ import javax.swing.JPasswordField;
 
 public class MitarbeiterHinzufügenView extends JPanel{
 
-	protected JPanel frmPixelRacer;
-	protected JTextField textFieldVorname;
-	protected JTextField textFieldNachname;
-	protected JTextField textFieldGeburtsdatum;
-	protected JTextField textFieldJob;
-	protected JTextField textFieldBenutzername;
-	protected JButton btnAbsenden;
-	protected JButton btnAbbrechen;
+	private JPanel frmPixelRacer;
+	private JTextField textFieldVorname;
+	private JTextField textFieldNachname;
+	private JTextField textFieldGeburtsdatum;
+	private JTextField textFieldJob;
+	private JTextField textFieldBenutzername;
+	private JButton btnAbsenden;
+	private JButton btnAbbrechen;
 	private JLabel lblMitarbeiterHinzufgen;
-	protected JTextField textFieldEmail;
+	private JTextField textFieldEmail;
 	private JLabel lblPasswort;
-	protected JPasswordField passwordField;
+	private JPasswordField passwordField;
 
 
 
@@ -144,5 +144,45 @@ public class MitarbeiterHinzufügenView extends JPanel{
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		passwordField.setBounds(265, 407, 175, 30);
 		add(passwordField);
+	}
+	
+	public JPanel getPanel() {
+		return frmPixelRacer;
+	}
+	
+	public JTextField getTfVorname() {
+		return textFieldVorname;
+	}
+	
+	public JTextField getTfNachname() {
+		return textFieldNachname;
+	}
+	
+	public JTextField getTfGeburtsdatum() {
+		return textFieldGeburtsdatum;
+	}
+	
+	public JTextField getTfJob() {
+		return textFieldJob;
+	}
+	
+	public JTextField getTfBenutzername() {
+		return textFieldBenutzername;
+	}
+	
+	public JButton getBtnAbsenden() {
+		return btnAbsenden;
+	}
+	
+	public JButton getBtnAbbrechen() {
+		return btnAbbrechen;
+	}
+	
+	public JTextField getTfEmail() {
+		return textFieldEmail;
+	}
+	
+	public JPasswordField getPfPasswort() {
+		return passwordField;
 	}
 }
