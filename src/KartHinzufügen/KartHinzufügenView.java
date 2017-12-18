@@ -21,20 +21,20 @@ import javax.swing.UIManager;
 
 public class KartHinzufügenView extends JPanel{
 
-	protected JPanel frmPixelRacer;
-	protected JTextField textFieldName;
-	protected JTextField textFieldBeschleunigung;
-	protected JTextField textFieldMaxGeschwindigkeit;
-	protected JTextField textFieldPunktzahl;
-	protected JTextField textFieldGrafik;
-	protected JButton btnAuswhlen;
-	protected JButton btnAbsenden;
-	protected JButton btnAbbrechen;
-	protected JRadioButton rdbtnFree;
-	protected JRadioButton rdbtnPremium;
-	protected ButtonGroup bgStatus;
-	protected JFileChooser fc;
-	protected FileFilter filter;
+	private JPanel frmPixelRacer;
+	private JTextField textFieldName;
+	private JTextField textFieldBeschleunigung;
+	private JTextField textFieldMaxGeschwindigkeit;
+	private JTextField textFieldPunktzahl;
+	private JTextField textFieldGrafik;
+	private JButton btnAuswhlen;
+	private JButton btnAbsenden;
+	private JButton btnAbbrechen;
+	private JRadioButton rdbtnFree;
+	private JRadioButton rdbtnPremium;
+	private ButtonGroup bgStatus;
+	private JFileChooser fc;
+	private FileFilter filter;
 	private JLabel lblKartHinzufgen;
 
 
@@ -158,4 +158,61 @@ public class KartHinzufügenView extends JPanel{
 		btnAbbrechen.setBounds(225, 419, 101, 23);
 		add(btnAbbrechen);
 	}
+	
+	public JPanel getPanel(){
+		return frmPixelRacer;
+	}
+	
+	public JTextField getTfName(){
+		return textFieldName;
+	}
+	
+	public JTextField getTfBeschleunigung(){
+		return textFieldBeschleunigung;
+	}
+	
+	public JTextField getTfGeschwindigkeit(){
+		return textFieldMaxGeschwindigkeit;
+	}
+	
+	public JTextField getTfPunktzahl(){
+		return textFieldPunktzahl;
+	}
+	
+	public JTextField getTfGrafik(){
+		return textFieldGrafik;
+	}
+	
+	public JButton getBtnAuswaehlen(){
+		return btnAuswhlen;
+	}
+	
+	public JButton getBtnAbsenden(){
+		return btnAbsenden;
+	}
+	
+	public JButton getBtnAbbrechen(){
+		return btnAbbrechen;
+	}
+	
+	public JRadioButton getRbFree(){
+		return rdbtnFree;
+	}
+	
+	public JRadioButton getRbPremium(){
+		return rdbtnPremium;
+	}
+	
+	public ButtonGroup getBgStatus(){
+		return bgStatus;
+	}
+	
+	public JFileChooser getFc(){
+		return fc;
+	}
+	
+	public FileFilter getFilter(){
+		return filter;
+	}
+	
 }

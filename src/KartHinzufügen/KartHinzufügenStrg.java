@@ -29,23 +29,23 @@ public class KartHinzufügenStrg implements ActionListener {
 	//Konstruktor
 	public KartHinzufügenStrg(){
 		khView = new KartHinzufügenView();
-		khView.frmPixelRacer.setVisible(true);
-		khView.btnAuswhlen.addActionListener(this);
-		khView.btnAbsenden.addActionListener(this);
-		khView.btnAbbrechen.addActionListener(this);
+		khView.getPanel().setVisible(true);
+		khView.getBtnAuswaehlen().addActionListener(this);
+		khView.getBtnAbsenden().addActionListener(this);
+		khView.getBtnAbbrechen().addActionListener(this);
 	}
 	
 	//Methode, die auf aufgerufen wird, wenn ein Button gedrueckt wird
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==khView.btnAuswhlen){
+		if(e.getSource()==khView.getBtnAuswaehlen()){
 			//FileChooser aufrufen
-			khView.fc.setFileFilter(khView.filter);
-			int rueckgabeWert = khView.fc.showOpenDialog(null);
+			khView.getFc().setFileFilter(khView.getFilter());
+			int rueckgabeWert = khView.getFc().showOpenDialog(null);
 			if(rueckgabeWert == JFileChooser.APPROVE_OPTION){
-				khView.textFieldGrafik.setText(khView.fc.getSelectedFile().getAbsolutePath());
+				khView.getTfGrafik().setText(khView.getFc().getSelectedFile().getAbsolutePath());
 			}
 		} 
-		if(e.getSource() == khView.btnAbsenden){
+		if(e.getSource() == khView.getBtnAbsenden()){
 			//Daten pruefen und wenn alles Korrekt ist einen neuen Datensatz anlegen
 			if(pruefeFormarAufVollständigkeit() == false){
 				formularUnvollständigMeldung();
@@ -67,37 +67,37 @@ public class KartHinzufügenStrg implements ActionListener {
 				}
 		}
 		//Soll Formular bei Abbruch leeren
-		if(e.getSource() == khView.btnAbbrechen) {
+		if(e.getSource() == khView.getBtnAbbrechen()) {
 			leereFormular();
 		}
 	}
 	
 	//Meldung, die erscheint, wenn Formular nicht vollstaendig ausgefuellt ist
 	private void formularUnvollständigMeldung(){
-		JOptionPane.showMessageDialog(khView.frmPixelRacer,
+		JOptionPane.showMessageDialog(khView.getPanel(),
 			    "Alle Felder müssen ausgefüllt sein!", "Formular unvollständig",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
 	//Meldung, die erscheint, wenn die Eingabe zu einem oder mehreren Feldern zu lang ist
 	private void inhaltZuLangMeldung(){
-		JOptionPane.showMessageDialog(khView.frmPixelRacer,
+		JOptionPane.showMessageDialog(khView.getPanel(),
 			    fehlermeldung, "Inhalt zu lang",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
 	//Meldung, die erscheint, wenn ein Zahlen-Feld mit sonstigen Zeichen befuellt wird
 	public void istKeineZahl(){
-		JOptionPane.showMessageDialog(khView.frmPixelRacer,
+		JOptionPane.showMessageDialog(khView.getPanel(),
 			   "Beschleunigung, MaxGeschwindkeit und Punktzahl müssen eine Zahl sein!", "Keine Zahl",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
 	//Methode, welche pruefen soll, ob das Formular auch vollstaendig ausgefuellt ist
 	private boolean pruefeFormarAufVollständigkeit(){
-		if(khView.textFieldName.getText().isEmpty() || khView.textFieldBeschleunigung.getText().isEmpty() || 
-				khView.textFieldMaxGeschwindigkeit.getText().isEmpty() || khView.textFieldPunktzahl.getText().isEmpty() ||
-				khView.textFieldGrafik.getText().isEmpty() || khView.bgStatus.getSelection() == null){
+		if(khView.getTfName().getText().isEmpty() || khView.getTfBeschleunigung().getText().isEmpty() || 
+				khView.getTfGeschwindigkeit().getText().isEmpty() || khView.getTfPunktzahl().getText().isEmpty() ||
+				khView.getTfGrafik().getText().isEmpty() || khView.getBgStatus().getSelection() == null){
 		return false;
 		}
 		return true;
@@ -105,7 +105,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Namen-Feldes kontrollieren soll
 	private void istNameZuLang(){
-		if(khView.textFieldName.getText().length() > 20){
+		if(khView.getTfName().getText().length() > 20){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Name";
 		}	
@@ -113,7 +113,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Beschleunigungs-Feldes kontrollieren soll
 	private void istBeschleunigungZuLang(){
-		if(khView.textFieldBeschleunigung.getText().length() > 8){
+		if(khView.getTfBeschleunigung().getText().length() > 8){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Beschleunigung";
 		}
@@ -121,7 +121,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des MaxGeschwindigkeit-Feldes kontrollieren soll
 	private void istMaxGeschwindigkeitZuLang(){
-		if(khView.textFieldMaxGeschwindigkeit.getText().length() > 3){
+		if(khView.getTfGeschwindigkeit().getText().length() > 3){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "MaxGeschwindigkeit";
 		}
@@ -129,7 +129,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Punktzahl-Feldes kontrollieren soll
 	private void istPunktzahlZuLang(){
-		if(khView.textFieldPunktzahl.getText().length() > 2){
+		if(khView.getTfPunktzahl().getText().length() > 2){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Punktzahl";
 		}
@@ -138,12 +138,12 @@ public class KartHinzufügenStrg implements ActionListener {
 	//Methode, in die Datenbank relevanten Variablen aufgrundlage des Formulars deklariert werden
 	private void deklariereVariablenVTextfeldern(){
 		try {
-		name = khView.textFieldName.getText();
-		beschleunigung = Integer.parseInt(khView.textFieldBeschleunigung.getText());
-		maxGeschwindigkeit = Integer.parseInt(khView.textFieldMaxGeschwindigkeit.getText());
-		punktzahl = Integer.parseInt(khView.textFieldPunktzahl.getText());
-		status = khView.rdbtnFree.isSelected()?'f':(khView.rdbtnPremium.isSelected()?'p':' ');
-		grafik = new File(khView.textFieldGrafik.getText());
+		name = khView.getTfName().getText();
+		beschleunigung = Integer.parseInt(khView.getTfBeschleunigung().getText());
+		maxGeschwindigkeit = Integer.parseInt(khView.getTfGeschwindigkeit().getText());
+		punktzahl = Integer.parseInt(khView.getTfPunktzahl().getText());
+		status = khView.getRbFree().isSelected()?'f':(khView.getRbPremium().isSelected()?'p':' ');
+		grafik = new File(khView.getTfGrafik().getText());
 		} catch (NumberFormatException e) {
 			istKeineZahl();
 		}
@@ -168,12 +168,12 @@ public class KartHinzufügenStrg implements ActionListener {
 	
 	//Methode, die das Formular leeren soll
 	private void leereFormular() {
-		khView.textFieldName.setText(" ");
-		khView.textFieldBeschleunigung.setText(" ");
-		khView.textFieldMaxGeschwindigkeit.setText(" ");
-		khView.textFieldPunktzahl.setText(" ");
-		khView.textFieldGrafik.setText(" ");
-		khView.bgStatus.clearSelection();
+		khView.getTfName().setText(" ");
+		khView.getTfBeschleunigung().setText(" ");
+		khView.getTfGeschwindigkeit().setText(" ");
+		khView.getTfPunktzahl().setText(" ");
+		khView.getTfGrafik().setText(" ");
+		khView.getBgStatus().clearSelection();
 	}
 	
 	//Getter für die View
