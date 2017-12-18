@@ -62,6 +62,7 @@ public class AccountAnlegenView {
 		frmPixelRacer.setResizable(false);
 		frmPixelRacer.setTitle("Pixel Racer - Account Anlegen");
 		frmPixelRacer.setBounds(100, 100, 800, 600);
+		frmPixelRacer.setLocationRelativeTo(null);
 		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPixelRacer.getContentPane().setLayout(null);
 		
