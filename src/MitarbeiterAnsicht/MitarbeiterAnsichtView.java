@@ -14,9 +14,9 @@ import java.awt.Color;
 public class MitarbeiterAnsichtView extends JFrame {
 
 	private JPanel contentPane;
-	protected JPanel panelContent;
-	protected JTree tree;
-	protected CardLayout cl;
+	private JPanel panelContent;
+	private JTree tree;
+	private CardLayout cl;
 
 	/**
 	 * Create the frame.
@@ -79,4 +79,17 @@ public class MitarbeiterAnsichtView extends JFrame {
 		cl = new CardLayout();
 		panelContent.setLayout(cl);
 	}
+	
+	public JPanel getPanelContent() {
+		return panelContent;
+	}
+	
+	public JTree getTree() {
+		return tree;
+	}
+	
+	public CardLayout getCL() {
+		return cl;
+	}
+
 }

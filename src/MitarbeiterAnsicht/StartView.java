@@ -12,7 +12,7 @@ import javax.swing.JButton;
 
 public class StartView extends JPanel {
 	
-	protected JButton btnAbmelden;
+	private JButton btnAbmelden;
 
 	/**
 	 * Create the panel.
@@ -30,5 +30,9 @@ public class StartView extends JPanel {
 		btnAbmelden.setBounds(438, 509, 105, 23);
 		add(btnAbmelden);
 
+	}
+	
+	public JButton getbtnAbmelden() {
+		return btnAbmelden;
 	}
 }
