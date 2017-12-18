@@ -61,6 +61,7 @@ public class AnmeldenView {
 		frmPixelRacer.setBounds(100, 100, 800, 600);
 		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPixelRacer.getContentPane().setLayout(null);
+		frmPixelRacer.setLocationRelativeTo(null);
 		
 		txtNutzername = new JTextField();
 		txtNutzername.setBounds(254, 136, 190, 20);
