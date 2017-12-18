@@ -21,20 +21,20 @@ import javax.swing.UIManager;
 
 public class StreckeHinzufügenView extends JPanel {
 
-	protected JPanel frmPixelRacer;
-	protected JTextField textFieldName;
-	protected JTextField textFieldLaenge;
-	protected JTextField textFieldSchwierigkeit;
-	protected JTextField textFieldPunktzahl;
-	protected JTextField textFieldGrafik;
-	protected JButton btnAuswhlen;
-	protected JButton btnAbsenden;
-	protected JButton btnAbbrechen;
-	protected JRadioButton rdbtnFree;
-	protected JRadioButton rdbtnPremium;
-	protected ButtonGroup bgStatus;
-	protected JFileChooser fc;
-	protected FileFilter filter;
+	private JPanel frmPixelRacer;
+	private JTextField textFieldName;
+	private JTextField textFieldLaenge;
+	private JTextField textFieldSchwierigkeit;
+	private JTextField textFieldPunktzahl;
+	private JTextField textFieldGrafik;
+	private JButton btnAuswhlen;
+	private JButton btnAbsenden;
+	private JButton btnAbbrechen;
+	private JRadioButton rdbtnFree;
+	private JRadioButton rdbtnPremium;
+	private ButtonGroup bgStatus;
+	private JFileChooser fc;
+	private FileFilter filter;
 	private JLabel lblStrecke;
 
 
@@ -161,5 +161,61 @@ public class StreckeHinzufügenView extends JPanel {
 		add(btnAbbrechen);
 		
 
+	}
+	
+	public JPanel getPanel() {
+		return frmPixelRacer;
+	}
+	
+	public JTextField getTfName() {
+		return textFieldName;
+	}
+	
+	public JTextField getTfLaenge() {
+		return textFieldLaenge;
+	}
+	
+	public JTextField getTfSchwierigkeit() {
+		return textFieldSchwierigkeit;
+	}
+	
+	public JTextField getTfPunktzahl() {
+		return textFieldPunktzahl;
+	}
+	
+	public JTextField getTfGrafik() {
+		return textFieldGrafik;
+	}
+	
+	public JButton getBtnAuswhlen() {
+		return btnAuswhlen;
+	}
+	
+	public JButton getBtnAbsenden() {
+		return btnAbsenden;
+	}
+	
+	public JButton getBtnAbbrechen() {
+		return btnAbbrechen;
+	}
+	
+	public JRadioButton getRbFree() {
+		return rdbtnFree;
+	}
+	
+	public JRadioButton getRbPremium() {
+		return rdbtnPremium;
+	}
+	
+	public ButtonGroup getBgStatus() {
+		return bgStatus;
+	}
+	
+	public JFileChooser getFileChooser() {
+		return fc;
+	}
+	
+	public FileFilter getFilter() {
+		return filter;
 	}
 }

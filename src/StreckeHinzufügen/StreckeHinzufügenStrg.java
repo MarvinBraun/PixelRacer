@@ -29,23 +29,23 @@ public class StreckeHinzufügenStrg implements ActionListener {
 	//Konstruktor
 	public StreckeHinzufügenStrg(){
 		stView = new StreckeHinzufügenView();
-		stView.frmPixelRacer.setVisible(true);
-		stView.btnAuswhlen.addActionListener(this);
-		stView.btnAbsenden.addActionListener(this);
-		stView.btnAbbrechen.addActionListener(this);
+		stView.getPanel().setVisible(true);
+		stView.getBtnAuswhlen().addActionListener(this);
+		stView.getBtnAbsenden().addActionListener(this);
+		stView.getBtnAbbrechen().addActionListener(this);
 	}
 
 	//Methode, die auf aufgerufen wird, wenn ein Button gedrueckt wird
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==stView.btnAuswhlen){
+		if(e.getSource()==stView.getBtnAuswhlen()){
 			//FileChooser aufrufen
-			stView.fc.setFileFilter(stView.filter);
-			int rueckgabeWert = stView.fc.showOpenDialog(null);
+			stView.getFileChooser().setFileFilter(stView.getFilter());
+			int rueckgabeWert = stView.getFileChooser().showOpenDialog(null);
 			if(rueckgabeWert == JFileChooser.APPROVE_OPTION){
-				stView.textFieldGrafik.setText(stView.fc.getSelectedFile().getAbsolutePath());
+				stView.getTfGrafik().setText(stView.getFileChooser().getSelectedFile().getAbsolutePath());
 			}
 		} 
-		if(e.getSource() == stView.btnAbsenden){
+		if(e.getSource() == stView.getBtnAbsenden()){
 			//Daten pruefen und wenn alles Korrekt ist einen neuen Datensatz anlegen
 			if(pruefeFormarAufVollständigkeit() == false){
 				formularUnvollständigMeldung();
@@ -66,37 +66,37 @@ public class StreckeHinzufügenStrg implements ActionListener {
 			}
 				}
 		}
-		if(e.getSource() == stView.btnAbbrechen) {
+		if(e.getSource() == stView.getBtnAbbrechen()) {
 			leereFormular();
 		}
 	}
 	
 	//Meldung, die erscheint, wenn Formular nicht vollstaendig ausgefuellt ist
 	private void formularUnvollständigMeldung(){
-		JOptionPane.showMessageDialog(stView.frmPixelRacer,
+		JOptionPane.showMessageDialog(stView.getPanel(),
 			    "Alle Felder müssen ausgefüllt sein!", "Formular unvollständig",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
 	//Meldung, die erscheint, wenn die Eingabe zu einem oder mehreren Feldern zu lang ist
 	private void inhaltZuLangMeldung(){
-		JOptionPane.showMessageDialog(stView.frmPixelRacer,
+		JOptionPane.showMessageDialog(stView.getPanel(),
 			    fehlermeldung, "Inhalt zu lang",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
 	//Meldung, die erscheint, wenn ein Zahlen-Feld mit sonstigen Zeichen befuellt wird
 	public void istKeineZahl(){
-		JOptionPane.showMessageDialog(stView.frmPixelRacer,
+		JOptionPane.showMessageDialog(stView.getPanel(),
 			   "Länge, Schwierigkeit und Punktzahl müssen eine Zahl sein!", "Keine Zahl",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
 	//Methode, welche pruefen soll, ob das Formular auch vollstaendig ausgefuellt ist
 	private boolean pruefeFormarAufVollständigkeit(){
-		if(stView.textFieldName.getText().isEmpty() || stView.textFieldLaenge.getText().isEmpty() || 
-				stView.textFieldSchwierigkeit.getText().isEmpty() || stView.textFieldPunktzahl.getText().isEmpty() ||
-				stView.textFieldGrafik.getText().isEmpty() || stView.bgStatus.getSelection() == null){
+		if(stView.getTfName().getText().isEmpty() || stView.getTfLaenge().getText().isEmpty() || 
+				stView.getTfSchwierigkeit().getText().isEmpty() || stView.getTfPunktzahl().getText().isEmpty() ||
+				stView.getTfPunktzahl().getText().isEmpty() || stView.getBgStatus().getSelection() == null){
 		return false;
 		}
 		return true;
@@ -104,7 +104,7 @@ public class StreckeHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Namen-Feldes kontrollieren soll
 	private void istNameZuLang(){
-		if(stView.textFieldName.getText().length() > 20){
+		if(stView.getTfName().getText().length() > 20){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Name";
 		}	
@@ -112,7 +112,7 @@ public class StreckeHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Länge-Feldes kontrollieren soll
 	private void istLaengeZuLang(){
-		if(stView.textFieldLaenge.getText().length() > 5){
+		if(stView.getTfLaenge().getText().length() > 5){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Länge";
 		}
@@ -120,7 +120,7 @@ public class StreckeHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Schwierigkeit-Feldes kontrollieren soll
 	private void istSchwierigkeitZuLang(){
-		if(stView.textFieldSchwierigkeit.getText().length() > 1){
+		if(stView.getTfSchwierigkeit().getText().length() > 1){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Schwierigkeit";
 		}
@@ -128,7 +128,7 @@ public class StreckeHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche die Laenge des Punktzahl-Feldes kontrollieren soll
 	private void istPunktzahlZuLang(){
-		if(stView.textFieldPunktzahl.getText().length() > 2){
+		if(stView.getTfPunktzahl().getText().length() > 2){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Punktzahl";
 		}
@@ -137,12 +137,12 @@ public class StreckeHinzufügenStrg implements ActionListener {
 	//Methode, in die Datenbank relevanten Variablen aufgrundlage des Formulars deklariert werden
 	private void deklariereVariablenVTextfeldern(){
 		try {
-		name = stView.textFieldName.getText();
-		laenge = Integer.parseInt(stView.textFieldLaenge.getText());
-		schwierigkeit = Integer.parseInt(stView.textFieldSchwierigkeit.getText());
-		punktzahl = Integer.parseInt(stView.textFieldPunktzahl.getText());
-		status = stView.rdbtnFree.isSelected()?'f':(stView.rdbtnPremium.isSelected()?'p':' ');
-		grafik = new File(stView.textFieldGrafik.getText());
+		name = stView.getTfName().getText();
+		laenge = Integer.parseInt(stView.getTfLaenge().getText());
+		schwierigkeit = Integer.parseInt(stView.getTfSchwierigkeit().getText());
+		punktzahl = Integer.parseInt(stView.getTfPunktzahl().getText());
+		status = stView.getRbFree().isSelected()?'f':(stView.getRbPremium().isSelected()?'p':' ');
+		grafik = new File(stView.getTfGrafik().getText());
 		} catch (NumberFormatException e) {
 			istKeineZahl();
 		}
@@ -166,12 +166,12 @@ public class StreckeHinzufügenStrg implements ActionListener {
 	}
 	
 	private void leereFormular() {
-		stView.textFieldName.setText(" ");
-		stView.textFieldLaenge.setText(" ");
-		stView.textFieldSchwierigkeit.setText(" ");
-		stView.textFieldPunktzahl.setText(" ");
-		stView.textFieldGrafik.setText(" ");
-		stView.bgStatus.clearSelection();
+		stView.getTfName().setText(" ");
+		stView.getTfLaenge().setText(" ");
+		stView.getTfSchwierigkeit().setText(" ");
+		stView.getTfPunktzahl().setText(" ");
+		stView.getTfGrafik().setText(" ");
+		stView.getBgStatus().clearSelection();
 	}
 	
 	//Getter fuer View
