@@ -1,5 +1,5 @@
 //@Author Ferhat Koca
-package ModusAusw‰hlen;
+package ModusAusw√§hlen;
 
 import java.awt.EventQueue;
 import java.awt.image.BufferedImage;
@@ -14,13 +14,13 @@ import BackgroundAnimation.MovementBackward;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
-public class ModusAusw‰hlenView {
+public class ModusAusw√§hlenView {
 
 	JFrame frame;
 
 	JButton btnSingleplayer;
 	JButton btnMultiplayer;
-	JButton btnzur¸ck;
+	JButton btnzur√ºck;
 
 	/**
 	 * Launch the application.
@@ -29,7 +29,7 @@ public class ModusAusw‰hlenView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModusAusw‰hlenView window = new ModusAusw‰hlenView();
+					ModusAusw√§hlenView window = new ModusAusw√§hlenView();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class ModusAusw‰hlenView {
 	 * 
 	 * @throws IOException
 	 */
-	public ModusAusw‰hlenView() {
+	public ModusAusw√§hlenView() {
 		initialize();
 	}
 
@@ -55,10 +55,11 @@ public class ModusAusw‰hlenView {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
-		frame.setTitle("Modus ausw‰hlen");
+		frame.setTitle("Modus ausw√§hlen");
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 
 		btnSingleplayer = new JButton("Singleplayer");
 		btnSingleplayer.setBounds(200, 240, 160, 31);
@@ -68,9 +69,9 @@ public class ModusAusw‰hlenView {
 		btnMultiplayer.setBounds(440, 240, 160, 31);
 		frame.getContentPane().add(btnMultiplayer);
 
-		btnzur¸ck = new JButton("Zur¸ck");
-		btnzur¸ck.setBounds(325, 289, 150, 31);
-		frame.getContentPane().add(btnzur¸ck);
+		btnzur√ºck = new JButton("Zur√ºck");
+		btnzur√ºck.setBounds(325, 289, 150, 31);
+		frame.getContentPane().add(btnzur√ºck);
 
 		BufferedImage image = null;
 		try {
