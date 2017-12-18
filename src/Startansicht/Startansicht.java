@@ -69,6 +69,7 @@ public class Startansicht {
 		frmPixelRacer.setBounds(100, 100, 800, 600);
 		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPixelRacer.getContentPane().setLayout(null);
+		frmPixelRacer.setLocationRelativeTo(null);
 		
 		lblPixelRacer = new JLabel("Pixel Racer");
 		lblPixelRacer.setFont(new Font("Kartika", Font.BOLD | Font.ITALIC, 26));
