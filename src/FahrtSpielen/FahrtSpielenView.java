@@ -122,15 +122,15 @@ public class FahrtSpielenView {
 		balkenLbl.setBounds(152, 252, 500, 60);
 		frame.getContentPane().add(balkenLbl);
 		
-		lblAnzahlVerbleibenderVersuche = new JLabel("Versuche: 3");
+		lblAnzahlVerbleibenderVersuche = new JLabel("Runden verbleibend: 5");
 		lblAnzahlVerbleibenderVersuche.setForeground(Color.RED);
 		lblAnzahlVerbleibenderVersuche.setFont(new Font("pixelmix", Font.BOLD, 30));
-		lblAnzahlVerbleibenderVersuche.setBounds(22, 21, 272, 33);
+		lblAnzahlVerbleibenderVersuche.setBounds(22, 21, 381, 33);
 		frame.getContentPane().add(lblAnzahlVerbleibenderVersuche);
 		
 		lblLetzteZeit = new JLabel("Zeit: 0s");
 		lblLetzteZeit.setForeground(Color.RED);
-		lblLetzteZeit.setFont(new Font("pixelmix", Font.BOLD, 26));
+		lblLetzteZeit.setFont(new Font("Dialog", Font.BOLD, 30));
 		lblLetzteZeit.setBounds(22, 65, 296, 33);
 		frame.getContentPane().add(lblLetzteZeit);
 	

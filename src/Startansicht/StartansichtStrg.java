@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import Anmelden.AnmeldenStrg;
+import ModusAuswählen.ModusauswaehlenStrg;
 import ModusAuswählen.ModusauswählenStrg;
 import Nutzer.Nutzerverwaltung;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
@@ -50,7 +51,7 @@ public class StartansichtStrg implements ActionListener {
 		}
 		
 		if(e.getSource()== view1.getBtnSpielen()) {
-			ModusauswählenStrg strg = new ModusauswählenStrg();
+			ModusauswaehlenStrg strg = new ModusauswaehlenStrg();
 			view1.getFrmPixelRacer().dispose();
 		}
 		

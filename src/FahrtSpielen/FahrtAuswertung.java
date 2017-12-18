@@ -78,18 +78,21 @@ public class FahrtAuswertung {
 		frame.getContentPane().add(btnNewButton);
 		
 		lblDeinPlatz = new JLabel("Dein Platz: ");
-		lblDeinPlatz.setFont(new Font("pixelmix", Font.BOLD, 25));
-		lblDeinPlatz.setBounds(10, 33, 399, 112);
+		lblDeinPlatz.setForeground(Color.RED);
+		lblDeinPlatz.setFont(new Font("Dialog", Font.BOLD, 30));
+		lblDeinPlatz.setBounds(10, 0, 399, 112);
 		frame.getContentPane().add(lblDeinPlatz);
 		
 		lblDeineZeit = new JLabel("Deine Zeit: ");
-		lblDeineZeit.setFont(new Font("pixelmix", Font.BOLD, 25));
-		lblDeineZeit.setBounds(408, 33, 345, 112);
+		lblDeineZeit.setForeground(Color.RED);
+		lblDeineZeit.setFont(new Font("Dialog", Font.BOLD, 30));
+		lblDeineZeit.setBounds(10, 87, 345, 112);
 		frame.getContentPane().add(lblDeineZeit);
 		
 		lblGewonnenPunkte = new JLabel("Gewonnene Punkte: ");
-		lblGewonnenPunkte.setFont(new Font("pixelmix", Font.BOLD, 25));
-		lblGewonnenPunkte.setBounds(10, 144, 399, 124);
+		lblGewonnenPunkte.setForeground(Color.RED);
+		lblGewonnenPunkte.setFont(new Font("Dialog", Font.BOLD, 30));
+		lblGewonnenPunkte.setBounds(10, 171, 399, 124);
 		frame.getContentPane().add(lblGewonnenPunkte);
 		
 		lblNewLabel = new JLabel("");

@@ -100,7 +100,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	            	System.out.println("Hi from KeyListener");
 	            	versuche--;
 	            	String a = ""+versuche;
-	            	fahrtSpielenView.lblAnzahlVerbleibenderVersuche.setText("Versuche: "+a);
+	            	fahrtSpielenView.lblAnzahlVerbleibenderVersuche.setText("Runden verbleibend: "+a);
 	               	String b = ""+sf.getZeit();
 	               	fahrtSpielenView.lblLetzteZeit.setText("Zeit: "+b+"s");
 	               	
