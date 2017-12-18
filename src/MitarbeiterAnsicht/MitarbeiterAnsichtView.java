@@ -1,3 +1,7 @@
+/**
+ @author Sean Cartner
+*/
+
 package MitarbeiterAnsicht;
 
 import java.awt.EventQueue;
