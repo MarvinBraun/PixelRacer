@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class ProfilKundeAnsicht {
+public class ProfilKundeAnsicht{
 
 	JFrame frmPixelRacer;
 
@@ -122,9 +122,19 @@ public class ProfilKundeAnsicht {
 		btnProfilBearbeiten.setFont(new Font("Impact", Font.PLAIN, 20));
 		btnProfilBearbeiten.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		btnProfilBearbeiten.setBounds(481, 415, 179, 33);
+		btnProfilBearbeiten.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		
+		});
+		
 		frmPixelRacer.getContentPane().add(btnProfilBearbeiten);
 		
 		btnZurueck = new JButton("Zur\u00FCck");
@@ -337,4 +347,6 @@ public class ProfilKundeAnsicht {
 	public void setLblSetAlsDritter(JLabel lblSetAlsDritter) {
 		this.lblSetAlsDritter = lblSetAlsDritter;
 	}
+
+	
 }
