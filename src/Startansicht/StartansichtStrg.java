@@ -10,6 +10,7 @@ import ModusAuswählen.ModusauswählenStrg;
 import Nutzer.Nutzerverwaltung;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
 import ProfilKunde.AnzeigenProfilKundeStrg;
+import Strecke.AnzeigenStreckenStrg;
 
 //Autor Daniel Zeller
 
@@ -57,7 +58,8 @@ public class StartansichtStrg implements ActionListener {
 		}
 		
 		if(e.getSource()== view1.getBtnStreckenbersicht()) {
-			
+			AnzeigenStreckenStrg strg = new AnzeigenStreckenStrg();
+			view1.getFrmPixelRacer().dispose();
 		}
 	}
 	
