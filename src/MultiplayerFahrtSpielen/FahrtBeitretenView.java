@@ -130,7 +130,7 @@ public class FahrtBeitretenView {
 				
 		m = new Movement(10);
 		
-		BufferedImage image;
+		BufferedImage image = null;
 		try {
 			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
 		} catch (IOException e) {

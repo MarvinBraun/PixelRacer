@@ -19,13 +19,12 @@ import BackgroundAnimation.Movement;
 import BackgroundAnimation.MovementBackward;
 import BackgroundAnimation.ZeigerMovement;
 import FahrtErstellen.FahrtErstellenView;
-import FahrtSpielen.FahrtSpielenView;
 
 import java.awt.Color;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class MultiplayerFahrtSpielenView {
 
@@ -33,13 +32,16 @@ public class MultiplayerFahrtSpielenView {
 	JLabel lblAnzahlVerbleibenderVersuche;
 
 	JLabel lblLetzteZeit;
-	
-	JLabel lblBestzeitDerStrecke; 
 	JButton fahrenBtn;
-	
+	MovementBackward m;
+	Movement m2;
 	ZeigerMovement zeiger;
 	JLabel balkenLbl;
+	
+	static BufferedImage kartbild;
+	static BufferedImage streckenbild;
 	JLabel bewertungLbl;
+	
 	
 	
 	
@@ -51,7 +53,7 @@ public class MultiplayerFahrtSpielenView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MultiplayerFahrtSpielenView window = new MultiplayerFahrtSpielenView();
+					MultiplayerFahrtSpielenView window = new MultiplayerFahrtSpielenView(kartbild, streckenbild);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,7 +65,9 @@ public class MultiplayerFahrtSpielenView {
 	/**
 	 * Create the application.
 	 */
-	public MultiplayerFahrtSpielenView() {
+	public MultiplayerFahrtSpielenView(BufferedImage kart, BufferedImage strecke) {
+		kartbild = kart;
+		streckenbild = strecke;
 		initialize();
 	}
 
@@ -76,6 +80,18 @@ public class MultiplayerFahrtSpielenView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
+		
+		fahrenBtn = new JButton("Fahren!");
+		fahrenBtn.setBackground(new Color(176, 224, 230));
+		fahrenBtn.setBorder(new LineBorder(new Color(255, 69, 0), 6));
+		fahrenBtn.setFont(new Font("pixelmix", Font.PLAIN, 26));
+		fahrenBtn.setBounds(305, 98, 172, 58);
+		frame.getContentPane().add(fahrenBtn);
+		
+		frame.setVisible(true);
+		frame.setFocusable(true);
+		frame.setFocusTraversalKeysEnabled(false);
 		
 		BufferedImage image = null;
 		try {
@@ -84,14 +100,6 @@ public class MultiplayerFahrtSpielenView {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		fahrenBtn = new JButton("Fahren!");
-		fahrenBtn.setBackground(new Color(176, 224, 230));
-		fahrenBtn.setBorder(new LineBorder(new Color(255, 69, 0), 6));
-		fahrenBtn.setFont(new Font("pixelmix", Font.PLAIN, 26));
-		fahrenBtn.setBounds(306, 214, 172, 58);
-		frame.getContentPane().add(fahrenBtn);
-		
 		zeiger = new ZeigerMovement(1);
 		zeiger.balken.setBufferedImage(image, 0);
 		zeiger.balken.setVisible(true);
@@ -110,55 +118,35 @@ public class MultiplayerFahrtSpielenView {
 		bewertungLbl.setVisible(false);
 		bewertungLbl.setBounds(152, 146, 500, 95);
 		frame.getContentPane().add(bewertungLbl);
-		balkenLbl.setIcon(new ImageIcon(FahrtSpielenView.class.getResource("/Resources/ladeBalken.png")));
+		balkenLbl.setIcon(new ImageIcon(MultiplayerFahrtSpielenView.class.getResource("/Resources/ladeBalken.png")));
 		balkenLbl.setBounds(152, 252, 500, 60);
 		frame.getContentPane().add(balkenLbl);
 		
-		lblAnzahlVerbleibenderVersuche = new JLabel("Versuche: 5");
+		lblAnzahlVerbleibenderVersuche = new JLabel("Runden verbleibend: 5");
 		lblAnzahlVerbleibenderVersuche.setForeground(Color.RED);
-		lblAnzahlVerbleibenderVersuche.setFont(new Font("pixelmix", Font.PLAIN, 18));
-		lblAnzahlVerbleibenderVersuche.setBounds(10, 11, 449, 33);
+		lblAnzahlVerbleibenderVersuche.setFont(new Font("pixelmix", Font.BOLD, 30));
+		lblAnzahlVerbleibenderVersuche.setBounds(22, 21, 381, 33);
 		frame.getContentPane().add(lblAnzahlVerbleibenderVersuche);
 		
-		lblLetzteZeit = new JLabel("Letzte Zeit:");
+		lblLetzteZeit = new JLabel("Zeit: 0s");
 		lblLetzteZeit.setForeground(Color.RED);
-		lblLetzteZeit.setFont(new Font("pixelmix", Font.PLAIN, 18));
-		lblLetzteZeit.setBounds(10, 55, 296, 33);
+		lblLetzteZeit.setFont(new Font("Dialog", Font.BOLD, 30));
+		lblLetzteZeit.setBounds(22, 65, 296, 33);
 		frame.getContentPane().add(lblLetzteZeit);
-		
-		lblBestzeitDerStrecke = new JLabel("Bestzeit der Strecke:");
-		lblBestzeitDerStrecke.setForeground(Color.RED);
-		lblBestzeitDerStrecke.setFont(new Font("pixelmix", Font.PLAIN, 18));
-		lblBestzeitDerStrecke.setBounds(10, 105, 368, 23);
-		frame.getContentPane().add(lblBestzeitDerStrecke);
 	
-		MovementBackward m = new MovementBackward(5);
+		m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
 		m.label.setSize(200, 200);
-		BufferedImage image1= null;
-		try {
-			image1 = ImageIO.read(new File("src/Resources/car2.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		m.label.setBufferedImage(image1,400);
+		m.label.setBufferedImage(kartbild,400);
 		
 		m.label.setBounds(0, 0, 200, 200);
 		frame.getContentPane().add(m.label);
 		
 
-		Movement m2 = new Movement(5);
+		m2 = new Movement(5);
 		m2.label.setLocation(0, 0);
 		m2.label.setSize(800, 571);
-		BufferedImage image2=null;
-		try {
-			image2 = ImageIO.read(new File("src/Resources/hockenheim.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		m2.label.setBufferedImage(image2,0);
+		m2.label.setBufferedImage(streckenbild,0);
 	
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);

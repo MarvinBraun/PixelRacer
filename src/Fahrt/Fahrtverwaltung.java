@@ -234,12 +234,13 @@ public class Fahrtverwaltung {
 		
 		
 	}
+		}
 			
-			public LinkedList<MultiplayerFahrt> gibMultiplayerFahrtenNachSitzungsID(int i)
+			public LinkedList<MultiplayerFahrt> gibMultiplayerFahrtenNachMultiplayerID(int i)
 			{
 				{
 					try {
-						String abfrage = "select * from multiplayer_fahrt where sitzungsid = "+i+" order by zeit asc";
+						String abfrage = "select * from multiplayer_fahrt where multiplayerID = "+i+" order by zeit asc";
 						ResultSet rs = Datenbankschnittstelle.executeQuery(abfrage);
 					
 						while(rs.next())
@@ -247,7 +248,6 @@ public class Fahrtverwaltung {
 							
 							MultiplayerFahrt fahrt = new MultiplayerFahrt();
 							fahrt.setSitzungsID(rs.getInt("SitzungsID"));
-							
 							System.out.println(fahrt.getSitzungsID());
 							fahrt.setRang(rs.getInt("Rang"));
 							fahrt.setMultiplayerID(rs.getInt("MultiplayerID"));
@@ -257,6 +257,8 @@ public class Fahrtverwaltung {
 							fahrt.setKartName(rs.getString("Kartname"));
 							fahrt.setBenutzername(rs.getString("Benutzername"));
 							multiplayerFahrten.add(fahrt);
+							
+							System.out.println("Fahrtzeit: "+fahrt.zeit);
 						}
 						rs.close();
 						Datenbankschnittstelle.closeConnections();
@@ -276,7 +278,7 @@ public class Fahrtverwaltung {
 	public static void main(String[] args)
 	{
 		Fahrtverwaltung v = new Fahrtverwaltung();
-		LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller","Tundra");
+		LinkedList<MultiplayerFahrt> fahrten = v.gibMultiplayerFahrtenNachMultiplayerID(10001);
 		System.out.println("Gefahrene Fahrten:"+fahrten.size());
 	}
 }

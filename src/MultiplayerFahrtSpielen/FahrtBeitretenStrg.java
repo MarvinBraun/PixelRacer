@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -24,6 +25,7 @@ import Kart.Kart;
 import Kart.Kartverwaltung;
 import MusicHandler.MusicPlayer;
 import Strecke.Strecke;
+import Strecke.Streckenverwaltung;
 import myIterator.MyIteratorKart;
 import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
@@ -42,6 +44,9 @@ public class FahrtBeitretenStrg implements ActionListener {
 	LinkedList<String> schwierigkeiten;
 	LinkedList<Kart> kartliste = new LinkedList<Kart>();
 
+	Streckenverwaltung verwaltungStrecke;
+	LinkedList<Strecke> Streckenliste ;
+	
 	MultiplayerFahrt mf;
 	
 
@@ -53,6 +58,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 		//Initialisieren der Karts und der Buttons
 		karts = new Kartverwaltung();
 		kartliste =karts.gibKart();
+	
 		k = kartliste.get(0);
 		itKart = new MyIteratorKart(kartliste.listIterator());
 		System.out.println(kartliste.size());
@@ -60,8 +66,13 @@ public class FahrtBeitretenStrg implements ActionListener {
 		view.kartBackward.addActionListener(this);
 		view.multiplayerBeitretenBtn.addActionListener(this);
 		mf = new MultiplayerFahrt();
+		ladeKarts();
 		
 		SwingUtilities.updateComponentTreeUI(view.frame);
+		
+		verwaltungStrecke = new Streckenverwaltung();
+		Streckenliste = verwaltungStrecke.gibStrecke();
+		
 	
 
 		
@@ -101,6 +112,29 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 	}
 	
+	public Strecke gibStrecke(LinkedList<Strecke> liste,String strecke)
+	{
+		Strecke s = null;
+		
+		ListIterator<Strecke> it = liste.listIterator();
+		
+		while(it.hasNext())
+		{ 
+			
+			s = it.next();
+			System.out.println(s.getStreckenname() + " vergleich zu: "+ strecke);
+			if(strecke.equals(s.getStreckenname()))
+			{
+				break;
+			}
+			else
+				System.out.println("Strecke nicht gefunden");
+		}
+		
+		return s;
+		
+	}
+	
 	/* Sucht die MultiplayerID aus der Fahrtenliste 
 	 * wenn das Rennen gefunden wird, wird die nächsthöhere verfügbare ID ermittelt und dann eine neue Fahrt mit dem Rang 0 und der Zeit 0 eingetragen. 
 	 * 
@@ -131,15 +165,22 @@ public class FahrtBeitretenStrg implements ActionListener {
 				mf.setMultiplayerID(multiplayerID);
 				mf.setStreckenName(fahrt.getStreckenName());
 				mf.setBenutzername("HMuller");
+				
+				//Hole Strecke aus DB
+				System.out.println(mf.getStreckenName());
+				Strecke s = gibStrecke(Streckenliste, mf.getStreckenName());
+				
+				
+				
 				mf.setZeit(50);
 				mf.setRang(99);
 				mf.setKartName(k.getKartname());
 				int id = verwaltung.gibNeueID(1);
-
-					mf.setSitzungsID(id);
-					verwaltung.sendeMultiplayerFahrt(mf);
-					System.out.println("erfolg!");	
+				mf.setSitzungsID(id);
+				System.out.println("erfolg!");	
 					
+				
+				MultiplayerFahrtSpielenStrg strg = new MultiplayerFahrtSpielenStrg(mf,k,s);
 				
 			}
 			

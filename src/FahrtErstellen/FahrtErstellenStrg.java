@@ -33,6 +33,7 @@ import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
 import Kart.*;
 import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
+import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
 public class FahrtErstellenStrg implements ActionListener {
 	
 	//Objekte der Klasse

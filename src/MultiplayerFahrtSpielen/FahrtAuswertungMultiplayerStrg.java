@@ -1,5 +1,6 @@
 package MultiplayerFahrtSpielen;
 
+import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -12,7 +13,7 @@ public class FahrtAuswertungMultiplayerStrg {
 	FahrtAuswertungMultiplayer view;
 	MultiplayerFahrt mf;
 	
-	public FahrtAuswertungMultiplayerStrg(MultiplayerFahrt mf)
+	public FahrtAuswertungMultiplayerStrg(MultiplayerFahrt mf, BufferedImage streckenBild)
 	{
 		this.mf = mf;
 		view = new FahrtAuswertungMultiplayer();
