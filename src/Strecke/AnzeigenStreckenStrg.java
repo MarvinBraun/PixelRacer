@@ -34,9 +34,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	
 	LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
 	LinkedList<Strecke> streckenListe = new LinkedList<Strecke>();
-	
-	Array[] array;
-	
+			
 	int counterRang1 =0;
 	int counterRang2 =0;
 	int counterRang3 =0;
@@ -52,12 +50,10 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	boolean forward = false;
 	boolean backward = false;
 	
-	int counter=-1;
-	
 	public AnzeigenStreckenStrg(){
 		
 		viewUebersicht = new Streckenuebersicht();
-		
+				
 		verwFahrt = new Fahrtverwaltung();
 		singleplayerFahrten = verwFahrt.gibSingleplayerFahrten();
 		
@@ -69,6 +65,13 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		viewUebersicht.streckeForward.addActionListener(this);
 		viewUebersicht.btnDetailView.addActionListener(this);
 		
+		viewDetail = new StreckeDetailView();
+		viewDetail.frame.setVisible(false);
+		
+		viewDetail.btnZurueck.addActionListener(this);
+		
+		
+	
 		ladeStrecke();
 		
 		SwingUtilities.updateComponentTreeUI(viewUebersicht.frame);
@@ -86,13 +89,13 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	{
 		if((s=itStrecke.next())!=null)
 		{
-			
 			BufferedImage newImage= s.getGrafik();
 			viewUebersicht.streckeName.setText(s.getStreckenname());
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			viewUebersicht.streckeLbl.setIcon(icon);
-											
+			s.getLaenge();
+														
 		}
 	}
 	
@@ -110,23 +113,24 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		}
 	}
 	
-	public void setDetailView() throws SQLException {
+	public void setDetailView() throws SQLException{
+		
 		
 		StreckeDetailView viewDetail= new StreckeDetailView();
-					
+				
 		//Länge setzten
 		viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
 		
 		// Label umschreiben auf ges. Sf-Strecke
 		Fahrtverwaltung v = new Fahrtverwaltung();
-		LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller","Tundra");
+		LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
 		viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 				
 		// Label umschreiben auf ges. m pro Sf-Strecke
 		viewDetail.lblSetGesKm.setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
 				
 		// Anzahl Erster
-		for(int i =0; i <= fahrten.size(); i++) {
+		for(int i =0; i < fahrten.size(); i++) {
 			
 			sf = fahrten.get(i);
 			
@@ -141,21 +145,19 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			}
 		}
 		
-		System.out.println("Anzahl Erster:" + counterRang1);
-		System.out.println("Anzahl Zweiter:" + counterRang2);
-		System.out.println("Anzahl Dritter:" + counterRang3);
+		viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
+		viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
+		viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
 		
-		
-		
-
 		viewDetail.frame.setVisible(true);
 		
-		//}
-		//}
 		rs.close();
 		Datenbankschnittstelle.closeConnections();
 		
+		
 	}
+	
+
 	
 	public static BufferedImage imageResizer(BufferedImage original)
 	{
@@ -170,33 +172,34 @@ public class AnzeigenStreckenStrg implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==viewDetail.btnZurueck) {
+			
+			viewDetail.frame.dispose();
+			viewUebersicht.frame.setVisible(true);
+		}
 		if(e.getSource()==viewUebersicht.streckeBackward)
 		{
 			streckeRückwärts();
+			
 		}
 		if(e.getSource()==viewUebersicht.streckeForward)
 		{
 			ladeStrecke();
+			viewDetail.frame.dispose();				
 		}
 		if(e.getSource()==viewUebersicht.btnDetailView)
 		{
-			
 			try {
-				setDetailView();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			
-			
-			
+			setDetailView();
+			viewDetail.frame.setVisible(true);			
+		}catch(SQLException e1) {
+			e1.printStackTrace();
 		}
-		if(e.getSource()==viewDetail.btnZurueck)
-		{
-			viewDetail.frame.dispose();
+		
 		}
+		
 		
 	}
 
+}	
 	
-	
-}

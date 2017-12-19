@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import Datenbankverwaltung.Datenbankschnittstelle;
+import Fahrt.SingleplayerFahrt;
 
 
 public class Streckenverwaltung {
@@ -42,6 +43,37 @@ public class Streckenverwaltung {
 			}
 		
 			return streckenliste;
+	}
+	
+	LinkedList<Strecke> streckenlistePunkte = new LinkedList<Strecke>();
+	
+	public LinkedList<Strecke> gibStreckeBenutzerNachPunktestand(String benutzername, int punktestand)
+	{
+		System.out.println("select * from strecke"+" where benutzername='"+benutzername+"'" + " and punktewert <=" + punktestand);
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from strecke"+" where benutzername='"+benutzername+"'" + " and punktewert <=" + punktestand);
+		try {
+			while(rs.next())
+			{
+				Strecke s = new Strecke();
+				s.setStreckenname(rs.getString("streckenname"));
+				s.setLaenge(rs.getInt("laenge"));
+				s.setSchwierigkeit(rs.getInt("schwierigkeit"));
+				s.setPremium(rs.getString("premium"));
+				s.setPunktewert(rs.getInt("punktewert"));
+				
+				String sql = "SELECT grafik FROM strecke WHERE streckenname = '" + s.streckenname + "'";
+				String filepath = "src/Resources/" + s.streckenname + ".png";
+				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
+				s.setGrafik(image);
+				streckenlistePunkte.add(s);
+			}
+			rs.close();
+			Datenbankschnittstelle.closeConnections();
+			} catch(SQLException sql) {
+				System.err.println("Fehler beim auslesen der Strecken" + sql.getMessage());
+			}
+		
+			return streckenlistePunkte;
 	}
 	
 	

@@ -1,6 +1,8 @@
 package Strecke;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,7 +25,7 @@ public class StreckeDetailView {
 	JLabel lblSetAnzErster;
 	JLabel lblSetAnzZweiter;
 	JLabel lblSetAnzDritter;
-	
+		
 	JButton btnZurueck; 
 	
 	/**
@@ -55,7 +57,7 @@ public class StreckeDetailView {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
 		frame.getContentPane().setLayout(null);
 		
@@ -111,6 +113,128 @@ public class StreckeDetailView {
 		btnZurueck = new JButton("Zur\u00FCck");
 		btnZurueck.setBounds(10, 227, 89, 23);
 		frame.getContentPane().add(btnZurueck);
+		btnZurueck.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				}
+				
+			
+			
+			
+		});
 	}
 
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JLabel getLblLaenge() {
+		return lblLaenge;
+	}
+
+	public void setLblLaenge(JLabel lblLaenge) {
+		this.lblLaenge = lblLaenge;
+	}
+
+	public JLabel getLblGefahreneRennen() {
+		return lblGefahreneRennen;
+	}
+
+	public void setLblGefahreneRennen(JLabel lblGefahreneRennen) {
+		this.lblGefahreneRennen = lblGefahreneRennen;
+	}
+
+	public JLabel getLblGefahreneKmGesamt() {
+		return lblGefahreneKmGesamt;
+	}
+
+	public void setLblGefahreneKmGesamt(JLabel lblGefahreneKmGesamt) {
+		this.lblGefahreneKmGesamt = lblGefahreneKmGesamt;
+	}
+
+	public JLabel getLblRennenAlsErster() {
+		return lblRennenAlsErster;
+	}
+
+	public void setLblRennenAlsErster(JLabel lblRennenAlsErster) {
+		this.lblRennenAlsErster = lblRennenAlsErster;
+	}
+
+	public JLabel getLblRennenAlsZweiter() {
+		return lblRennenAlsZweiter;
+	}
+
+	public void setLblRennenAlsZweiter(JLabel lblRennenAlsZweiter) {
+		this.lblRennenAlsZweiter = lblRennenAlsZweiter;
+	}
+
+	public JLabel getLblRennenAlsDritter() {
+		return lblRennenAlsDritter;
+	}
+
+	public void setLblRennenAlsDritter(JLabel lblRennenAlsDritter) {
+		this.lblRennenAlsDritter = lblRennenAlsDritter;
+	}
+
+	public JLabel getLblSetLaenge() {
+		return lblSetLaenge;
+	}
+
+	public void setLblSetLaenge(JLabel lblSetLaenge) {
+		this.lblSetLaenge = lblSetLaenge;
+	}
+
+	public JLabel getLblSetGesKm() {
+		return lblSetGesKm;
+	}
+
+	public void setLblSetGesKm(JLabel lblSetGesKm) {
+		this.lblSetGesKm = lblSetGesKm;
+	}
+
+	public JLabel getLblSetGesRennen() {
+		return lblSetGesRennen;
+	}
+
+	public void setLblSetGesRennen(JLabel lblSetGesRennen) {
+		this.lblSetGesRennen = lblSetGesRennen;
+	}
+
+	public JLabel getLblSetAnzErster() {
+		return lblSetAnzErster;
+	}
+
+	public void setLblSetAnzErster(JLabel lblSetAnzErster) {
+		this.lblSetAnzErster = lblSetAnzErster;
+	}
+
+	public JLabel getLblSetAnzZweiter() {
+		return lblSetAnzZweiter;
+	}
+
+	public void setLblSetAnzZweiter(JLabel lblSetAnzZweiter) {
+		this.lblSetAnzZweiter = lblSetAnzZweiter;
+	}
+
+	public JLabel getLblSetAnzDritter() {
+		return lblSetAnzDritter;
+	}
+
+	public void setLblSetAnzDritter(JLabel lblSetAnzDritter) {
+		this.lblSetAnzDritter = lblSetAnzDritter;
+	}
+
+	public JButton getBtnZurueck() {
+		return btnZurueck;
+	}
+
+	public void setBtnZurueck(JButton btnZurueck) {
+		this.btnZurueck = btnZurueck;
+	}
 }

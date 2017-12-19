@@ -87,4 +87,60 @@ public class Streckenuebersicht {
 				
 	
 	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JButton getStreckeForward() {
+		return streckeForward;
+	}
+
+	public void setStreckeForward(JButton streckeForward) {
+		this.streckeForward = streckeForward;
+	}
+
+	public JButton getStreckeBackward() {
+		return streckeBackward;
+	}
+
+	public void setStreckeBackward(JButton streckeBackward) {
+		this.streckeBackward = streckeBackward;
+	}
+
+	public JLabel getStreckeName() {
+		return streckeName;
+	}
+
+	public void setStreckeName(JLabel streckeName) {
+		this.streckeName = streckeName;
+	}
+
+	public JLabel getStreckeLbl() {
+		return streckeLbl;
+	}
+
+	public void setStreckeLbl(JLabel streckeLbl) {
+		this.streckeLbl = streckeLbl;
+	}
+
+	public JLabel getLblNewLabel() {
+		return lblNewLabel;
+	}
+
+	public void setLblNewLabel(JLabel lblNewLabel) {
+		this.lblNewLabel = lblNewLabel;
+	}
+
+	public JButton getBtnDetailView() {
+		return btnDetailView;
+	}
+
+	public void setBtnDetailView(JButton btnDetailView) {
+		this.btnDetailView = btnDetailView;
+	}
 }
