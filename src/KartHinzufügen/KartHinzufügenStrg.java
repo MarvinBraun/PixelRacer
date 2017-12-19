@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.activation.MimetypesFileTypeMap;
 import Datenbankverwaltung.Datenbankschnittstelle;
 
 import java.awt.event.ActionEvent;
@@ -18,6 +19,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	private KartHinzufügenView khView;
 	private String laengeOk = "true";
 	private String fehlermeldung = "Folgende Angaben sind zu lang:";
+	private boolean istKeineZahl = false;
 	private String name;
 	private String typ;
 	private int beschleunigung;
@@ -56,13 +58,32 @@ public class KartHinzufügenStrg implements ActionListener {
 			istPunktzahlZuLang();
 			if(laengeOk == "false"){
 				inhaltZuLangMeldung();
+				//reset
 				fehlermeldung = "Folgende Angaben sind zu lang:";
 				laengeOk = "true";
 			} else{
 				deklariereVariablenVTextfeldern();
-				erstelleKartInDB();
-				updateKartGrafik();
-				leereFormular();
+				if(istKeineZahl == true){
+					istKeineZahl();
+					//reset
+					istKeineZahl = false;
+				}else{
+					if(!grafik.exists()){
+						keineDateiGefundenMeldung();
+					}else{
+						if(IstGrafikPng() == false){
+							nichtPngMeldung();
+						}else{
+							if(grafik.length() > 20480){
+								grafikZuGrossMeldung();
+							}else{
+								erstelleKartInDB();
+								updateKartGrafik();
+								leereFormular();
+							}
+						}
+					}
+				}
 			}
 				}
 		}
@@ -90,6 +111,27 @@ public class KartHinzufügenStrg implements ActionListener {
 	public void istKeineZahl(){
 		JOptionPane.showMessageDialog(khView.getPanel(),
 			   "Beschleunigung, MaxGeschwindkeit und Punktzahl müssen eine Zahl sein!", "Keine Zahl",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn Grafik nicht existiert
+	public void keineDateiGefundenMeldung(){
+		JOptionPane.showMessageDialog(khView.getPanel(),
+			   "Es wurde keine Datei unter dem angegebenen Pfad gefunden", "Keine Datei gefunden",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn Grafik nicht im png Formart vorliegt
+	public void nichtPngMeldung(){
+		JOptionPane.showMessageDialog(khView.getPanel(),
+			   "Die Grafik muss im Format .png vorliegen", "Grafik liegt nicht im PNG Format vor",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn Grafik zu Gross (in Speicher) ist
+	public void grafikZuGrossMeldung(){
+		JOptionPane.showMessageDialog(khView.getPanel(),
+			   "Die Grafik darf maximal 20kb groß sein", "Grafik zu Groß",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
@@ -135,6 +177,16 @@ public class KartHinzufügenStrg implements ActionListener {
 		}
 	}
 	
+	//Methode, die kontrollen, ob die Grafik im png Format vorliegt
+	public boolean IstGrafikPng(){    
+		MimetypesFileTypeMap mtftp = new MimetypesFileTypeMap();
+	    mtftp.addMimeTypes("image png");
+	    String mimetype = mtftp.getContentType(grafik);
+	    String fileType = mimetype.split("/")[0];
+	    return fileType.equalsIgnoreCase(mimetype);
+	}
+	
+	
 	//Methode, in die Datenbank relevanten Variablen aufgrundlage des Formulars deklariert werden
 	private void deklariereVariablenVTextfeldern(){
 		try {
@@ -145,7 +197,7 @@ public class KartHinzufügenStrg implements ActionListener {
 		status = khView.getRbFree().isSelected()?'f':(khView.getRbPremium().isSelected()?'p':' ');
 		grafik = new File(khView.getTfGrafik().getText());
 		} catch (NumberFormatException e) {
-			istKeineZahl();
+			istKeineZahl = true;
 		}
 	}
 	
@@ -153,6 +205,8 @@ public class KartHinzufügenStrg implements ActionListener {
 	private void erstelleKartInDB(){
 		if(status == 'p'){
 				typ = "true";
+		} else{
+			typ = "false";
 		}
 		String abfrage = "insert into kart values('" + name + "','" + beschleunigung + "','" + maxGeschwindigkeit + "','" + typ + "'," + punktzahl + ",null)";
 		Datenbankschnittstelle.executeQuery(abfrage);
@@ -168,11 +222,11 @@ public class KartHinzufügenStrg implements ActionListener {
 	
 	//Methode, die das Formular leeren soll
 	private void leereFormular() {
-		khView.getTfName().setText(" ");
-		khView.getTfBeschleunigung().setText(" ");
-		khView.getTfGeschwindigkeit().setText(" ");
-		khView.getTfPunktzahl().setText(" ");
-		khView.getTfGrafik().setText(" ");
+		khView.getTfName().setText("");
+		khView.getTfBeschleunigung().setText("");
+		khView.getTfGeschwindigkeit().setText("");
+		khView.getTfPunktzahl().setText("");
+		khView.getTfGrafik().setText("");
 		khView.getBgStatus().clearSelection();
 	}
 	
