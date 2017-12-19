@@ -9,6 +9,7 @@ import ModusAuswählen.ModusauswaehlenStrg;
 import ModusAuswählen.ModusauswählenStrg;
 import Nutzer.Nutzerverwaltung;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
+import ProfilKunde.AnzeigenProfilKundeStrg;
 
 //Autor Daniel Zeller
 
@@ -46,7 +47,7 @@ public class StartansichtStrg implements ActionListener {
 		}
 		
 		if(e.getSource()== view1.getBtnProfil()) {
-			ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
+			AnzeigenProfilKundeStrg strg = new AnzeigenProfilKundeStrg();
 			view1.getFrmPixelRacer().dispose();
 		}
 		
