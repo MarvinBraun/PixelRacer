@@ -225,14 +225,7 @@ public class ProfilKundeAnsicht {
 		this.lblFahrtenAbsolviert = lblFahrtenAbsolviert;
 	}
 
-	public JLabel getLblGefahreneKmGesamt() {
-		return lblGefahreneKmGesamt;
-	}
-
-	public void setLblGefahreneKmGesamt(JLabel lblGefahreneKmGesamt) {
-		this.lblGefahreneKmGesamt = lblGefahreneKmGesamt;
-	}
-
+	
 	public JLabel getLblRennenAlsErster() {
 		return lblRennenAlsErster;
 	}
@@ -319,14 +312,6 @@ public class ProfilKundeAnsicht {
 
 	public void setLblSetGesFahrten(JLabel lblSetGesFahrten) {
 		this.lblSetGesFahrten = lblSetGesFahrten;
-	}
-
-	public JLabel getLblSetKmGesamt() {
-		return lblSetKmGesamt;
-	}
-
-	public void setLblSetKmGesamt(JLabel lblSetKmGesamt) {
-		this.lblSetKmGesamt = lblSetKmGesamt;
 	}
 
 	public JLabel getLblSetAlsErster() {
