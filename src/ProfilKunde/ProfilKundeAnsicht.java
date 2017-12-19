@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class ProfilKundenAnsicht {
+public class ProfilKundeAnsicht {
 
 	JFrame frmPixelRacer;
 
@@ -18,7 +18,6 @@ public class ProfilKundenAnsicht {
 	JLabel lblStatus;
 	JLabel lblPunktestand;
 	JLabel lblFahrtenAbsolviert;
-	JLabel lblGefahreneKmGesamt;
 	JLabel lblRennenAlsErster;
 	JLabel lblRennenAlsZweiter;
 	JLabel lblRennenAlsDritter;
@@ -32,7 +31,6 @@ public class ProfilKundenAnsicht {
 	JLabel lblSetStatus;
 	JLabel lblSetPunktestand;
 	JLabel lblSetGesFahrten;
-	JLabel lblSetKmGesamt;
 	JLabel lblSetAlsErster;
 	JLabel lblSetAlsZweiter;
 	JLabel lblSetAlsDritter;
@@ -45,7 +43,7 @@ public class ProfilKundenAnsicht {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ProfilKundenAnsicht window = new ProfilKundenAnsicht();
+					ProfilKundeAnsicht window = new ProfilKundeAnsicht();
 					window.frmPixelRacer.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +55,7 @@ public class ProfilKundenAnsicht {
 	/**
 	 * Create the application.
 	 */
-	public ProfilKundenAnsicht() {
+	public ProfilKundeAnsicht() {
 		initialize();
 	}
 
@@ -95,11 +93,6 @@ public class ProfilKundenAnsicht {
 		lblFahrtenAbsolviert.setFont(new Font("Impact", Font.PLAIN, 20));
 		lblFahrtenAbsolviert.setBounds(210, 213, 169, 23);
 		frmPixelRacer.getContentPane().add(lblFahrtenAbsolviert);
-		
-		lblGefahreneKmGesamt = new JLabel("Gefahrene km gesamt:");
-		lblGefahreneKmGesamt.setFont(new Font("Impact", Font.PLAIN, 20));
-		lblGefahreneKmGesamt.setBounds(180, 238, 204, 23);
-		frmPixelRacer.getContentPane().add(lblGefahreneKmGesamt);
 		
 		lblRennenAlsErster = new JLabel("Rennen als Erster abgeschlossen:");
 		lblRennenAlsErster.setFont(new Font("Impact", Font.PLAIN, 20));
@@ -168,11 +161,6 @@ public class ProfilKundenAnsicht {
 		lblSetGesFahrten.setBounds(481, 215, 212, 19);
 		frmPixelRacer.getContentPane().add(lblSetGesFahrten);
 		
-		lblSetKmGesamt = new JLabel("New label");
-		lblSetKmGesamt.setFont(new Font("Impact", Font.PLAIN, 20));
-		lblSetKmGesamt.setBounds(481, 240, 212, 19);
-		frmPixelRacer.getContentPane().add(lblSetKmGesamt);
-		
 		lblSetAlsErster = new JLabel("New label");
 		lblSetAlsErster.setFont(new Font("Impact", Font.PLAIN, 20));
 		lblSetAlsErster.setBounds(481, 296, 212, 23);
@@ -187,5 +175,181 @@ public class ProfilKundenAnsicht {
 		lblSetAlsDritter.setFont(new Font("Impact", Font.PLAIN, 20));
 		lblSetAlsDritter.setBounds(481, 348, 212, 19);
 		frmPixelRacer.getContentPane().add(lblSetAlsDritter);
+	}
+
+	public JFrame getFrmPixelRacer() {
+		return frmPixelRacer;
+	}
+
+	public void setFrmPixelRacer(JFrame frmPixelRacer) {
+		this.frmPixelRacer = frmPixelRacer;
+	}
+
+	public JLabel getLblNewLabel() {
+		return lblNewLabel;
+	}
+
+	public void setLblNewLabel(JLabel lblNewLabel) {
+		this.lblNewLabel = lblNewLabel;
+	}
+
+	public JLabel getLblNachname() {
+		return lblNachname;
+	}
+
+	public void setLblNachname(JLabel lblNachname) {
+		this.lblNachname = lblNachname;
+	}
+
+	public JLabel getLblStatus() {
+		return lblStatus;
+	}
+
+	public void setLblStatus(JLabel lblStatus) {
+		this.lblStatus = lblStatus;
+	}
+
+	public JLabel getLblPunktestand() {
+		return lblPunktestand;
+	}
+
+	public void setLblPunktestand(JLabel lblPunktestand) {
+		this.lblPunktestand = lblPunktestand;
+	}
+
+	public JLabel getLblFahrtenAbsolviert() {
+		return lblFahrtenAbsolviert;
+	}
+
+	public void setLblFahrtenAbsolviert(JLabel lblFahrtenAbsolviert) {
+		this.lblFahrtenAbsolviert = lblFahrtenAbsolviert;
+	}
+
+	public JLabel getLblGefahreneKmGesamt() {
+		return lblGefahreneKmGesamt;
+	}
+
+	public void setLblGefahreneKmGesamt(JLabel lblGefahreneKmGesamt) {
+		this.lblGefahreneKmGesamt = lblGefahreneKmGesamt;
+	}
+
+	public JLabel getLblRennenAlsErster() {
+		return lblRennenAlsErster;
+	}
+
+	public void setLblRennenAlsErster(JLabel lblRennenAlsErster) {
+		this.lblRennenAlsErster = lblRennenAlsErster;
+	}
+
+	public JLabel getLblRennenAlsZweiter() {
+		return lblRennenAlsZweiter;
+	}
+
+	public void setLblRennenAlsZweiter(JLabel lblRennenAlsZweiter) {
+		this.lblRennenAlsZweiter = lblRennenAlsZweiter;
+	}
+
+	public JLabel getLblRennenAlsDritter() {
+		return lblRennenAlsDritter;
+	}
+
+	public void setLblRennenAlsDritter(JLabel lblRennenAlsDritter) {
+		this.lblRennenAlsDritter = lblRennenAlsDritter;
+	}
+
+	public JButton getBtnGetPremium() {
+		return btnGetPremium;
+	}
+
+	public void setBtnGetPremium(JButton btnGetPremium) {
+		this.btnGetPremium = btnGetPremium;
+	}
+
+	public JButton getBtnProfilBearbeiten() {
+		return btnProfilBearbeiten;
+	}
+
+	public void setBtnProfilBearbeiten(JButton btnProfilBearbeiten) {
+		this.btnProfilBearbeiten = btnProfilBearbeiten;
+	}
+
+	public JButton getBtnZurueck() {
+		return btnZurueck;
+	}
+
+	public void setBtnZurueck(JButton btnZurueck) {
+		this.btnZurueck = btnZurueck;
+	}
+
+	public JLabel getLblSetVorname() {
+		return lblSetVorname;
+	}
+
+	public void setLblSetVorname(JLabel lblSetVorname) {
+		this.lblSetVorname = lblSetVorname;
+	}
+
+	public JLabel getLblSetNachname() {
+		return lblSetNachname;
+	}
+
+	public void setLblSetNachname(JLabel lblSetNachname) {
+		this.lblSetNachname = lblSetNachname;
+	}
+
+	public JLabel getLblSetStatus() {
+		return lblSetStatus;
+	}
+
+	public void setLblSetStatus(JLabel lblSetStatus) {
+		this.lblSetStatus = lblSetStatus;
+	}
+
+	public JLabel getLblSetPunktestand() {
+		return lblSetPunktestand;
+	}
+
+	public void setLblSetPunktestand(JLabel lblSetPunktestand) {
+		this.lblSetPunktestand = lblSetPunktestand;
+	}
+
+	public JLabel getLblSetGesFahrten() {
+		return lblSetGesFahrten;
+	}
+
+	public void setLblSetGesFahrten(JLabel lblSetGesFahrten) {
+		this.lblSetGesFahrten = lblSetGesFahrten;
+	}
+
+	public JLabel getLblSetKmGesamt() {
+		return lblSetKmGesamt;
+	}
+
+	public void setLblSetKmGesamt(JLabel lblSetKmGesamt) {
+		this.lblSetKmGesamt = lblSetKmGesamt;
+	}
+
+	public JLabel getLblSetAlsErster() {
+		return lblSetAlsErster;
+	}
+
+	public void setLblSetAlsErster(JLabel lblSetAlsErster) {
+		this.lblSetAlsErster = lblSetAlsErster;
+	}
+
+	public JLabel getLblSetAlsZweiter() {
+		return lblSetAlsZweiter;
+	}
+
+	public void setLblSetAlsZweiter(JLabel lblSetAlsZweiter) {
+		this.lblSetAlsZweiter = lblSetAlsZweiter;
+	}
+
+	public JLabel getLblSetAlsDritter() {
+		return lblSetAlsDritter;
+	}
+
+	public void setLblSetAlsDritter(JLabel lblSetAlsDritter) {
+		this.lblSetAlsDritter = lblSetAlsDritter;
 	}
 }
