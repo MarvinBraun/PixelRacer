@@ -64,7 +64,7 @@ public class KartHinzufügenStrg implements ActionListener {
 			} else{
 				deklariereVariablenVTextfeldern();
 				if(istKeineZahl == true){
-					istKeineZahl();
+					istKeineZahlMeldung();
 					//reset
 					istKeineZahl = false;
 				}else{
@@ -108,7 +108,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 	
 	//Meldung, die erscheint, wenn ein Zahlen-Feld mit sonstigen Zeichen befuellt wird
-	public void istKeineZahl(){
+	public void istKeineZahlMeldung(){
 		JOptionPane.showMessageDialog(khView.getPanel(),
 			   "Beschleunigung, MaxGeschwindkeit und Punktzahl müssen eine Zahl sein!", "Keine Zahl",
 			    JOptionPane.WARNING_MESSAGE);
@@ -177,8 +177,8 @@ public class KartHinzufügenStrg implements ActionListener {
 		}
 	}
 	
-	//Methode, die kontrollen, ob die Grafik im png Format vorliegt
-	public boolean IstGrafikPng(){    
+	//Methode, die kontrolliert, ob die Grafik im png Format vorliegt
+	private boolean IstGrafikPng(){    
 		MimetypesFileTypeMap mtftp = new MimetypesFileTypeMap();
 	    mtftp.addMimeTypes("image png");
 	    String mimetype = mtftp.getContentType(grafik);
@@ -208,7 +208,8 @@ public class KartHinzufügenStrg implements ActionListener {
 		} else{
 			typ = "false";
 		}
-		String abfrage = "insert into kart values('" + name + "','" + beschleunigung + "','" + maxGeschwindigkeit + "','" + typ + "'," + punktzahl + ",null)";
+		String abfrage = "insert into kart values('" + name + "','" + beschleunigung + "',"
+				+ "'" + maxGeschwindigkeit + "','" + typ + "'," + punktzahl + ",null)";
 		Datenbankschnittstelle.executeQuery(abfrage);
 		Datenbankschnittstelle.closeConnections();
 	}
