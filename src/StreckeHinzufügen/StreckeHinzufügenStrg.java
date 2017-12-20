@@ -205,7 +205,8 @@ public class StreckeHinzufügenStrg implements ActionListener {
 		if(status == 'p'){
 				typ = "true";
 		}
-		String abfrage = "insert into strecke values('" + name + "','" + laenge + "','" + schwierigkeit + "','" + typ + "'," + punktzahl + ",null)";
+		String abfrage = "insert into strecke values('" + name + "','" + laenge + "','" + schwierigkeit + "','" + typ + "'," 
+		+ punktzahl + ",null)";
 		Datenbankschnittstelle.executeQuery(abfrage);
 		Datenbankschnittstelle.closeConnections();
 	}
