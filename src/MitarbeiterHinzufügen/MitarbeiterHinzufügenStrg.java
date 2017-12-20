@@ -5,11 +5,12 @@
 package MitarbeiterHinzufügen;
 
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.swing.JFileChooser;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import Datenbankverwaltung.Datenbankschnittstelle;
 
@@ -21,6 +22,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	private MitarbeiterHinzufügenView mhView;
 	private String laengeOk = "true";
 	private String fehlermeldung = "Folgende Angaben sind zu lang:";
+	private boolean datumGueltig = true;
 	private int mitarbeiterID;
 	private String vorname;
 	private String nachname;
@@ -58,8 +60,15 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 				laengeOk = "true";
 			} else{
 				deklariereVariablenVTextfeldern();
-				erstelleMitarbeiterInDB();
-				leereFormular();
+				istDatumGueltig();
+				if(datumGueltig == false) {
+					datumUngueltigMeldung();
+					//reset
+					datumGueltig = true;
+				}else {
+					erstelleMitarbeiterInDB();
+					leereFormular();
+				}
 			}
 				}
 		}
@@ -80,6 +89,14 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	private void inhaltZuLangMeldung(){
 		JOptionPane.showMessageDialog(mhView.getPanel(),
 			    fehlermeldung, "Inhalt zu lang",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	
+	//Meldung, die erscheint, wenn ein ungueltiges Datum eingegebn wuude
+	private void datumUngueltigMeldung(){
+		JOptionPane.showMessageDialog(mhView.getPanel(),
+			    "Das Datum muss im Format DD.MM.YY vorliegen", "Datum ungültig",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
@@ -150,6 +167,18 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 		}
 	}
 	
+	//Methode, die kontrolliert, ob das Datum im richtigen Format eingegeben wurde
+	private void istDatumGueltig() {
+		Date date = null;
+		try {
+		    DateFormat format = new SimpleDateFormat("dd.MM.yy");
+		    format.setLenient(false);
+		    date = format.parse(geburtsdatum);
+		} catch (ParseException e) { 
+		    datumGueltig = false;
+		}
+	}
+	
 	//Methode, welche die hoechste MitarbeiterID aus der Datenbank liest und anhand dieser eine neue ID berechnet (+1)
 	private int berechneMitarbeiterID() {
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select max(mitarbeiterid) from mitarbeiter");
@@ -193,12 +222,12 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 		
 	//Methode, die das Formular leeren soll
 	private void leereFormular() {
-		mhView.getTfVorname().setText(" ");
-		mhView.getTfNachname().setText(" ");
-		mhView.getTfGeburtsdatum().setText(" ");
-		mhView.getTfJob().setText(" ");
-		mhView.getTfBenutzername().setText(" ");
-		mhView.getTfEmail().setText(" ");
+		mhView.getTfVorname().setText("");
+		mhView.getTfNachname().setText("");
+		mhView.getTfGeburtsdatum().setText("");
+		mhView.getTfJob().setText("");
+		mhView.getTfBenutzername().setText("");
+		mhView.getTfEmail().setText("");
 		mhView.getPfPasswort().setText("");
 	}
 	

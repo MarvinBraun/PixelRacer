@@ -144,6 +144,10 @@ public class MitarbeiterHinzufügenView extends JPanel{
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		passwordField.setBounds(265, 407, 175, 30);
 		add(passwordField);
+		
+		JLabel lbldDateFormat = new JLabel("(DD.MM.YY)");
+		lbldDateFormat.setBounds(77, 220, 64, 14);
+		add(lbldDateFormat);
 	}
 	
 	public JPanel getPanel() {
