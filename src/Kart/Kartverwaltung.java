@@ -12,13 +12,13 @@ public class Kartverwaltung {
 
 	LinkedList<Kart> Kartliste = new LinkedList<Kart>();
 
-	public LinkedList<Kart> gibKart()
-	{
+	public LinkedList<Kart> gibKart() {
 
-		String abfrage = "select * from kart";
+		String abfrage = "SELECT * FROM KART";
 
 		try {
 			ResultSet rs = Datenbankschnittstelle.executeQuery(abfrage);
+			
 			while (rs.next()) {
 
 				Kart k = new Kart();
