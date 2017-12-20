@@ -90,7 +90,7 @@ public class ProfilBearbeitenView {
 		frmProfilBearbeiten.getContentPane().add(lblPasswort);
 		
 		lblGeburtsdatum = new JLabel("Geburtsdatum");
-		lblGeburtsdatum.setBounds(52, 251, 79, 14);
+		lblGeburtsdatum.setBounds(52, 251, 105, 14);
 		frmProfilBearbeiten.getContentPane().add(lblGeburtsdatum);
 		
 		lblPunkte = new JLabel("Punkte");
@@ -114,7 +114,7 @@ public class ProfilBearbeitenView {
 		frmProfilBearbeiten.getContentPane().add(lblGebDat);
 		
 		lblPkt = new JLabel("Fehler");
-		lblPkt.setBounds(214, 299, 94, 14);
+		lblPkt.setBounds(214, 299, 142, 14);
 		frmProfilBearbeiten.getContentPane().add(lblPkt);
 		
 		btnaendernNN = new JButton("\u00C4ndern");

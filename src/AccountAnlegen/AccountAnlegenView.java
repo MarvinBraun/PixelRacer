@@ -67,27 +67,32 @@ public class AccountAnlegenView {
 		frmPixelRacer.getContentPane().setLayout(null);
 		
 		txtVorname = new JTextField();
-		txtVorname.setBounds(300, 53, 86, 20);
+		txtVorname.setToolTipText("Keine Sonderzeichen oder Zahlen, max 20 Zeichen");
+		txtVorname.setBounds(300, 53, 161, 20);
 		frmPixelRacer.getContentPane().add(txtVorname);
 		txtVorname.setColumns(10);
 		
 		txtNachname = new JTextField();
-		txtNachname.setBounds(300, 107, 86, 20);
+		txtNachname.setToolTipText("Keine Sonderzeichen oder Zahlen, max 20 Zeichen");
+		txtNachname.setBounds(300, 107, 161, 20);
 		frmPixelRacer.getContentPane().add(txtNachname);
 		txtNachname.setColumns(10);
 		
 		txtGeburtsdatum = new JTextField();
-		txtGeburtsdatum.setBounds(300, 162, 86, 20);
+		txtGeburtsdatum.setToolTipText("Format: DD.MM.JJ");
+		txtGeburtsdatum.setBounds(300, 162, 161, 20);
 		frmPixelRacer.getContentPane().add(txtGeburtsdatum);
 		txtGeburtsdatum.setColumns(10);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(300, 218, 86, 20);
+		txtEmail.setToolTipText("maximale L\u00E4nge von 50 Zeichen, , @ muss vorhanden sein");
+		txtEmail.setBounds(300, 218, 161, 20);
 		frmPixelRacer.getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		txtNutzername = new JTextField();
-		txtNutzername.setBounds(300, 274, 86, 20);
+		txtNutzername.setToolTipText("max 20 Zeichen");
+		txtNutzername.setBounds(300, 274, 161, 20);
 		frmPixelRacer.getContentPane().add(txtNutzername);
 		txtNutzername.setColumns(10);
 		
@@ -100,7 +105,8 @@ public class AccountAnlegenView {
 		frmPixelRacer.getContentPane().add(btnAbbrechen);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(300, 330, 86, 20);
+		passwordField.setToolTipText("max 20 Zeichen");
+		passwordField.setBounds(300, 330, 161, 20);
 		frmPixelRacer.getContentPane().add(passwordField);
 		
 		lblVorname = new JLabel("Vorname");

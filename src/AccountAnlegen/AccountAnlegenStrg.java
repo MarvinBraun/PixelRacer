@@ -44,40 +44,55 @@ public class AccountAnlegenStrg implements ActionListener{
 		
 		public Boolean DatenPruefen() {
 			if(benutzername.length() <=20 && benutzername.length() != 0) {
-				if(pw.length() <=20 && pw.length() != 0) {
-					if(vn.length() <=20 && vn.length() != 0) {
-						if(nn.length() <=20 && nn.length() != 0) {
-							if(gebdat.length() <=8 && gebdat.length() != 0) {
-								if(email.length() <=50 && email.length() != 0) {
+				if(pw.length() <=20 && pw.length() != 0){
+					if(vn.length() <=20 && vn.length() != 0 && vn.matches("[a-zA-ZäÄöÖüÜß]+")){
+						if(nn.length() <=20 && nn.length() != 0 && nn.matches("[a-zA-ZäÄöÖüÜß]+")){
+							if(gebdat.length() <=8 && gebdat.length() != 0 && gebdat.matches("[0-9.]+")){
+								if(email.length() <=50 && email.length() != 0 && email.contains("@")){
 									return true;
 								}
 								
 								else {
+									JOptionPane.showMessageDialog(null, "Die Daten der Email sind falsch!\nBeachte das max 50 Zeichen verwendet werden dürfen"
+											+ " und ein @ vorhanden sein muss!", 
+											"Ok", JOptionPane.ERROR_MESSAGE);
 									return false;
 								}
 							}
 							
 							else {
+								JOptionPane.showMessageDialog(null, "Bitte beachte das das Format des Datums den Vorgaben übereinstimmt!", 
+										"Ok", JOptionPane.ERROR_MESSAGE);
 								return false;
 							}
 						}
 						
 						else {
+							JOptionPane.showMessageDialog(null, "Beachte das beim Nachnamen max 20 Zeichen erlaubt sind und auch keine Zahlen"
+									+ "oder Sonderzeichen!", 
+									"Ok", JOptionPane.ERROR_MESSAGE);
 							return false;
 						}
 					}
 					
 					else {
+						JOptionPane.showMessageDialog(null, "Beachte das beim Vornamen max 20 Zeichen erlaubt sind und auch keine Zahlen"
+								+ "oder Sonderzeichen!", 
+								"Ok", JOptionPane.ERROR_MESSAGE);
 						return false;
 					}
 				}
 				
 				else {
+					JOptionPane.showMessageDialog(null, "Beachte das höchstens 20 Zeichen beim Passwort benutzt werden dürfen!", 
+							"Ok", JOptionPane.ERROR_MESSAGE);
 					return false;
 				}
 			}
 			
 			else {
+				JOptionPane.showMessageDialog(null, "Beachte das höchstens 20 Zeichen beim Benutzernamen benutzt werden dürfen!", 
+						"Ok", JOptionPane.ERROR_MESSAGE);
 				return false;
 			}
 		}
@@ -88,9 +103,6 @@ public class AccountAnlegenStrg implements ActionListener{
 			
 			Datenbankschnittstelle.executeUpdate(update);
 			Datenbankschnittstelle.closeConnections();
-			
-			view1.getFrmPixelRacer().dispose();
-			AnmeldenStrg strg = new AnmeldenStrg();
 		}
 	
 		@Override
@@ -101,12 +113,9 @@ public class AccountAnlegenStrg implements ActionListener{
 				eingegebeneDatenSpeichern();
 				if(DatenPruefen()) {
 					InsertIntoKunde();
-					JOptionPane.showMessageDialog(null, "Der Account wurde erfolgreich angelegt!","Viel Spaß!", JOptionPane.ERROR_MESSAGE);
-				}
-				
-				else {
-					JOptionPane.showMessageDialog(null, "Manche der eingegebenen Daten stimmen nicht mit den Anforderungen überein!", 
-							"Ok", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Der Account wurde erfolgreich angelegt!","Viel Spaß!", JOptionPane.PLAIN_MESSAGE);
+					view1.getFrmPixelRacer().dispose();
+					AnmeldenStrg strg = new AnmeldenStrg();
 				}
 			}
 			

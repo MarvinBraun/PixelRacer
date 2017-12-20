@@ -79,7 +79,7 @@ public class AnmeldenView {
 	
 		
 		btnAccountAnlegen = new JButton("Account anlegen");
-		btnAccountAnlegen.setBounds(365, 264, 127, 45);
+		btnAccountAnlegen.setBounds(365, 264, 170, 45);
 		btnAccountAnlegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmPixelRacer.dispose();
@@ -100,7 +100,7 @@ public class AnmeldenView {
 		frmPixelRacer.getContentPane().add(lblPassowrt);
 		
 		btnMitarbeiter = new JButton("Mitarbeiter");
-		btnMitarbeiter.setBounds(674, 518, 89, 23);
+		btnMitarbeiter.setBounds(642, 519, 108, 23);
 		btnMitarbeiter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				AnmeldenStrg strg = new AnmeldenStrg();
