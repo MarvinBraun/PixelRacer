@@ -6,6 +6,8 @@ package StreckeHinzufügen;
 
 import java.awt.event.ActionListener;
 import java.io.File;
+
+import javax.activation.MimetypesFileTypeMap;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import Datenbankverwaltung.Datenbankschnittstelle;
@@ -18,6 +20,7 @@ public class StreckeHinzufügenStrg implements ActionListener {
 	private StreckeHinzufügenView stView;
 	private String laengeOk = "true";
 	private String fehlermeldung = "Folgende Angaben sind zu lang:";
+	private boolean istKeineZahl = false;
 	private String name;
 	private String typ;
 	private int laenge;
@@ -60,9 +63,28 @@ public class StreckeHinzufügenStrg implements ActionListener {
 				laengeOk = "true";
 			} else{
 				deklariereVariablenVTextfeldern();
-				erstelleStreckeInDB();
-				updateKartGrafik();
-				leereFormular();
+				if(istKeineZahl == true) {
+					istKeineZahlMeldung();
+					//reset
+					istKeineZahl = false;
+				}else {
+					if(!grafik.exists()) {
+						keineDateiGefundenMeldung();
+					}else {
+						if(IstGrafikPng() == false) {
+							nichtPngMeldung();
+						}else {
+							if(grafik.length() > 256000) {
+								grafikZuGrossMeldung();
+							}else {
+								erstelleStreckeInDB();
+								updateKartGrafik();
+								leereFormular();
+							}
+						}
+					}
+				}
+
 			}
 				}
 		}
@@ -86,9 +108,30 @@ public class StreckeHinzufügenStrg implements ActionListener {
 	}
 	
 	//Meldung, die erscheint, wenn ein Zahlen-Feld mit sonstigen Zeichen befuellt wird
-	public void istKeineZahl(){
+	public void istKeineZahlMeldung(){
 		JOptionPane.showMessageDialog(stView.getPanel(),
 			   "Länge, Schwierigkeit und Punktzahl müssen eine Zahl sein!", "Keine Zahl",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn Grafik nicht existiert
+	public void keineDateiGefundenMeldung(){
+		JOptionPane.showMessageDialog(stView.getPanel(),
+			   "Es wurde keine Datei unter dem angegebenen Pfad gefunden", "Keine Datei gefunden",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn Grafik nicht im png Formart vorliegt
+	public void nichtPngMeldung(){
+		JOptionPane.showMessageDialog(stView.getPanel(),
+			   "Die Grafik muss im Format .png vorliegen", "Grafik liegt nicht im PNG Format vor",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn Grafik zu Gross (in Speicher) ist
+	public void grafikZuGrossMeldung(){
+		JOptionPane.showMessageDialog(stView.getPanel(),
+			   "Die Grafik darf maximal 20kb groß sein", "Grafik zu Groß",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
@@ -134,6 +177,15 @@ public class StreckeHinzufügenStrg implements ActionListener {
 		}
 	}
 	
+	//Methode, die kontrolliert, ob die Grafik im png Format vorliegt
+	private boolean IstGrafikPng(){    
+		MimetypesFileTypeMap mtftp = new MimetypesFileTypeMap();
+	    mtftp.addMimeTypes("image png");
+	    String mimetype = mtftp.getContentType(grafik);
+	    String fileType = mimetype.split("/")[0];
+	    return fileType.equalsIgnoreCase(mimetype);
+	}
+	
 	//Methode, in die Datenbank relevanten Variablen aufgrundlage des Formulars deklariert werden
 	private void deklariereVariablenVTextfeldern(){
 		try {
@@ -144,7 +196,7 @@ public class StreckeHinzufügenStrg implements ActionListener {
 		status = stView.getRbFree().isSelected()?'f':(stView.getRbPremium().isSelected()?'p':' ');
 		grafik = new File(stView.getTfGrafik().getText());
 		} catch (NumberFormatException e) {
-			istKeineZahl();
+			istKeineZahl = true;
 		}
 	}
 	
@@ -165,12 +217,13 @@ public class StreckeHinzufügenStrg implements ActionListener {
 		Datenbankschnittstelle.closeConnections();
 	}
 	
+	//Methode, die das Formular leeren soll
 	private void leereFormular() {
-		stView.getTfName().setText(" ");
-		stView.getTfLaenge().setText(" ");
-		stView.getTfSchwierigkeit().setText(" ");
-		stView.getTfPunktzahl().setText(" ");
-		stView.getTfGrafik().setText(" ");
+		stView.getTfName().setText("");
+		stView.getTfLaenge().setText("");
+		stView.getTfSchwierigkeit().setText("");
+		stView.getTfPunktzahl().setText("");
+		stView.getTfGrafik().setText("");
 		stView.getBgStatus().clearSelection();
 	}
 	
