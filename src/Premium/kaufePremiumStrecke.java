@@ -6,16 +6,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 
 public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	
 	PremiumStreckeView psv;
+	anzeigenRechnungStrg anzr;
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == psv.bestätigen ){
-			anzeigenRechnung_ansicht2.main(null);
+			anzr = new anzeigenRechnungStrg();
 		}if(e.getSource() == psv.abbrechen){
 			System.exit(0);
 		}

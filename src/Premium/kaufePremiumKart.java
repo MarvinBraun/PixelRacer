@@ -6,16 +6,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 
 public class kaufePremiumKart extends JFrame implements ActionListener {
 
 	PremiumKartView pkv;
+	anzeigenRechnungStrg anzr;
 	
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == pkv.bestätigen) {
-			anzeigenRechnung_ansicht2.main(null);
+			anzr = new anzeigenRechnungStrg();
 		}
 		if (e.getSource() == pkv.abbrechen) {
 			System.exit(0);
