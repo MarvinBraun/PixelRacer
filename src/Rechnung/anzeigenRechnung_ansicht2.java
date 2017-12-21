@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -32,7 +33,7 @@ public class anzeigenRechnung_ansicht2 {
 	JLabel lblBezahlmethode;
 	JLabel lblRechnungsbetrag;
 	JLabel lblPremium;
-
+	JLabel lblHintergrund;
 	
 
 	public JFrame getFrmRechnungsübersicht() {
@@ -196,5 +197,10 @@ public class anzeigenRechnung_ansicht2 {
 		lblPremium.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblPremium.setBounds(33, 316, 145, 45);
 		frmRechnungsübersicht.getContentPane().add(lblPremium);
+		
+		lblHintergrund = new JLabel();
+		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
+		lblHintergrund.setBounds(0, 0, 800, 600);
+		frmRechnungsübersicht.getContentPane().add(lblHintergrund);
 	}
 }

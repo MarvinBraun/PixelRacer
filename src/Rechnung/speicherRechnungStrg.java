@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JFrame;
-
+ 
 
 public class speicherRechnungStrg extends JFrame implements ActionListener {
 	

@@ -7,6 +7,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -14,13 +16,22 @@ import javax.swing.JTextPane;
 
 public class Rechnungsübersicht {
 
-	private JFrame frmRechnungsbersicht;
+	JFrame frmRechnungsbersicht;
 	JLabel lblRechnung;
 	JButton btnAnzeigen;
 	JButton btnBezahlen;
 	JButton btnSpeichern;
 	JTextPane textPane;
+	JLabel lblHintergrund;
+	
 
+	public JLabel getLblHintergrund() {
+		return lblHintergrund;
+	}
+
+	public void setLblHintergrund(JLabel lblHintergrund) {
+		this.lblHintergrund = lblHintergrund;
+	}
 
 	public JFrame getFrmRechnungsbersicht() {
 		return frmRechnungsbersicht;
@@ -127,6 +138,11 @@ public class Rechnungsübersicht {
 		textPane = new JTextPane();
 		textPane.setBounds(140, 50, 111, 24);
 		frmRechnungsbersicht.getContentPane().add(textPane);
+		
+		lblHintergrund = new JLabel();
+		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
+		lblHintergrund.setBounds(0, 0, 800, 600);
+		frmRechnungsbersicht.getContentPane().add(lblHintergrund);
 	}
 
 }

@@ -5,14 +5,17 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 
 public class speicherRechnung {
 
-	JFrame frmSpeicherrechnung;
-			JLabel lblRechnungErfolgreichAuf;
-			JButton btnZurck;
+		JFrame frmSpeicherrechnung;
+		JLabel lblRechnungErfolgreichAuf;
+		JButton btnZurck;
+		JLabel lblHintergrund;
 			
 	
 		
@@ -81,6 +84,11 @@ public class speicherRechnung {
 		btnZurck = new JButton("zur\u00FCck");
 		btnZurck.setBounds(22, 114, 89, 23);
 		frmSpeicherrechnung.getContentPane().add(btnZurck);
+		
+		lblHintergrund = new JLabel();
+		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
+		lblHintergrund.setBounds(0, 0, 800, 600);
+		frmSpeicherrechnung.getContentPane().add(lblHintergrund);
 	
 	}
 }
