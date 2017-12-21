@@ -14,7 +14,7 @@ public class ModusauswaehlenStrg implements ActionListener {
 
 	static ModusauswaehlenStrg ms;
 	static ModusauswaehlenView mav;
-	Kunde kunde; 
+	Kunde kunde;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -30,9 +30,7 @@ public class ModusauswaehlenStrg implements ActionListener {
 			StartansichtStrg sa = new StartansichtStrg();
 		}
 
-		if (Nutzerverwaltung.getangKunde().getpremium().equals("false")) {
-			mav.btnMultiplayer.setEnabled(false);
-		} else {
+		
 			if (e.getSource() == mav.btnMultiplayer) {
 				mav.frame.dispose();
 				try {
@@ -44,16 +42,19 @@ public class ModusauswaehlenStrg implements ActionListener {
 				}
 			}
 		}
-	}
+	
 
 	public ModusauswaehlenStrg() {
 		mav = new ModusauswaehlenView();
 		mav.frame.setVisible(true);
 		mav.btnSingleplayer.addActionListener(this);
 		mav.btnzurueck.addActionListener(this);
+		if (Nutzerverwaltung.getangKunde().getpremium().equals("false")) {
+			mav.btnMultiplayer.setEnabled(false);
+		} else {
 		mav.btnMultiplayer.addActionListener(this);
 	}
-
+	}
 	public static void main(String[] args) {
 		ms = new ModusauswaehlenStrg();
 	}
