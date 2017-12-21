@@ -10,7 +10,7 @@ import java.awt.Font;
 
 public class speicherRechnung {
 
-	private JFrame frmSpeicherrechnung;
+	JFrame frmSpeicherrechnung;
 			JLabel lblRechnungErfolgreichAuf;
 			JButton btnZurck;
 			

@@ -10,10 +10,21 @@ import Rechnung.bezahlenRechnungStrg;
 import Rechnung.speicherRechnungStrg;
 
 
-public class RechnungsübersichtStrg {
+public class RechnungsübersichtStrg implements ActionListener {
 	
 	
 	Rechnungsübersicht rues;
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+		if()
+		
+	}
+	
+	
+	
 	
 	
 	
