@@ -7,16 +7,18 @@ import java.io.IOException;
 
 import FahrtErstellen.FahrtErstellenStrg;
 import Startansicht.StartansichtStrg;
-
+import Nutzer.Kunde;
 
 public class ModusauswaehlenStrg implements ActionListener {
 
 	static ModusauswaehlenStrg ms;
 	ModusauswaehlenView mav;
+	Kunde k;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+
 		if (e.getSource() == mav.btnSingleplayer) {
 			mav.frame.dispose();
 			FahrtErstellenStrg strg = new FahrtErstellenStrg(1);

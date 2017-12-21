@@ -28,8 +28,8 @@ public class Kartverwaltung {
 				k.setPremium(rs.getString("Premium"));
 				k.setPunktewert(rs.getInt("Punktewert"));
 
-				String sql = "select grafik from kart where kartname = '" + k.kartname + "'";
-				String filepath = "src/Resources/" + k.kartname + ".png";
+				String sql = "select grafik from kart where kartname = '" + k.getKartname() + "'";
+				String filepath = "src/Resources/" + k.getKartname() + ".png";
 				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
 				k.setGrafik(image);
 				Kartliste.add(k);

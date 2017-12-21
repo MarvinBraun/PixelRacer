@@ -4,12 +4,12 @@ package Kart;
 import java.awt.image.BufferedImage;
 
 public class Kart {
-	public String kartname;
-	public static int beschleunigung;
-	public static int maxkmh;
-	public String premium;
-	public int punktewert;
-	public BufferedImage grafik;
+	private String kartname;
+	private static int beschleunigung;
+	private static int maxkmh;
+	private String premium;
+	private int punktewert;
+	private BufferedImage grafik;
 
 	public void setKartname(String kartname) {
 		this.kartname = kartname;
