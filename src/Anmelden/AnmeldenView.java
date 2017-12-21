@@ -17,9 +17,9 @@ import javax.swing.JLabel;
 
 //Autor Daniel Zeller
 
-public class AnmeldenView {
+public class AnmeldenView { 
 
-	private JFrame frmPixelRacer;
+	private JFrame frmPixelRacer; //Deklarierung der benötigten Variablen
 	private JTextField txtNutzername;
 	private JPasswordField passwordField;
 	private JButton btnAnmelden;
@@ -47,14 +47,14 @@ public class AnmeldenView {
 	/**
 	 * Create the application.
 	 */
-	public AnmeldenView() {
+	public AnmeldenView() { //Konstruktor
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() { //Initialisierung des Fensters und den dazugehörigen Komponenten
 		frmPixelRacer = new JFrame();
 		frmPixelRacer.setTitle("Pixel Racer - Anmelden");
 		frmPixelRacer.setResizable(false);
@@ -103,7 +103,6 @@ public class AnmeldenView {
 		btnMitarbeiter.setBounds(642, 519, 108, 23);
 		btnMitarbeiter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				AnmeldenStrg strg = new AnmeldenStrg();
 				frmPixelRacer.dispose();
 			}
 		});
@@ -115,7 +114,7 @@ public class AnmeldenView {
 		frmPixelRacer.getContentPane().add(lblHintergrund);
 	}
 
-	public JFrame getFrmPixelRacer() {
+	public JFrame getFrmPixelRacer() { //Getter und Setter der Variablen
 		return frmPixelRacer;
 	}
 

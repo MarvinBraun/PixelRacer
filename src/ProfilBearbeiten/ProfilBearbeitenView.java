@@ -16,7 +16,7 @@ import javax.swing.JButton;
 
 public class ProfilBearbeitenView {
 
-	private JFrame frmProfilBearbeiten;
+	private JFrame frmProfilBearbeiten; //Deklarierung der benötigten Variablen
 	private JLabel lblNutzername;
 	private JLabel lblEmail;
 	private JLabel lblVorname;
@@ -54,14 +54,14 @@ public class ProfilBearbeitenView {
 	/**
 	 * Create the application.
 	 */
-	public ProfilBearbeitenView() {
+	public ProfilBearbeitenView() { //Konstruktor
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() { //Initialisierung des Fensters und den dazugehörigen Komponenten
 		frmProfilBearbeiten = new JFrame();
 		frmProfilBearbeiten.setResizable(false);
 		frmProfilBearbeiten.setTitle("Profil bearbeiten - \u00DCberblick");
@@ -131,8 +131,6 @@ public class ProfilBearbeitenView {
 		btnaendernPW.setBounds(402, 165, 89, 23);
 		btnaendernPW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				AnmeldenStrg strg = new AnmeldenStrg();
-				frmProfilBearbeiten.dispose();
 			}
 		});
 		frmProfilBearbeiten.getContentPane().add(btnaendernPW);
@@ -141,8 +139,6 @@ public class ProfilBearbeitenView {
 		btnaendernMail.setBounds(402, 206, 89, 23);
 		btnaendernMail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				AnmeldenStrg strg = new AnmeldenStrg();
-				frmProfilBearbeiten.dispose();
 			}
 		});
 		frmProfilBearbeiten.getContentPane().add(btnaendernMail);
@@ -152,8 +148,6 @@ public class ProfilBearbeitenView {
 		frmProfilBearbeiten.getContentPane().add(btnFertig);
 		btnFertig.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				AnmeldenStrg strg = new AnmeldenStrg();
-				frmProfilBearbeiten.dispose();
 			}
 		});
 		
@@ -167,7 +161,7 @@ public class ProfilBearbeitenView {
 		frmProfilBearbeiten.getContentPane().add(lblHintergrund);
 	}
 
-	public JFrame getFrmProfilBearbeiten() {
+	public JFrame getFrmProfilBearbeiten() { //Getter und Setter der Variablen
 		return frmProfilBearbeiten;
 	}
 

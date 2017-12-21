@@ -12,7 +12,7 @@ import javax.swing.JButton;
 
 //Autor Daniel Zeller
 
-public class ProfilBearbeitenAttributView {
+public class ProfilBearbeitenAttributView { //Deklaration der benötigten Variablen
 
 	private JFrame frmProfilBearbeiten;
 	private JTextField textFieldNeu;
@@ -41,14 +41,14 @@ public class ProfilBearbeitenAttributView {
 	/**
 	 * Create the application.
 	 */
-	public ProfilBearbeitenAttributView() {
+	public ProfilBearbeitenAttributView() { //Konstruktor
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() { //Initialisierung des Fensters und den dazugehörigen Komponenten
 		frmProfilBearbeiten = new JFrame();
 		frmProfilBearbeiten.setResizable(false);
 		frmProfilBearbeiten.setTitle("Profil Bearbeiten - Attribut");
@@ -77,17 +77,15 @@ public class ProfilBearbeitenAttributView {
 		btnFertig.setBounds(170, 252, 89, 23);
 		btnFertig.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				AnmeldenStrg strg = new AnmeldenStrg();
 				frmProfilBearbeiten.dispose();
 			}
 		});
 		frmProfilBearbeiten.getContentPane().add(btnFertig);
 		
 		btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setBounds(333, 252, 89, 23);
+		btnAbbrechen.setBounds(333, 252, 120, 23);
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				AnmeldenStrg strg = new AnmeldenStrg();
 				frmProfilBearbeiten.dispose();
 			}
 		});
@@ -99,7 +97,7 @@ public class ProfilBearbeitenAttributView {
 		frmProfilBearbeiten.getContentPane().add(lblHintergrund);
 	}
 
-	public JFrame getFrmProfilBearbeiten() {
+	public JFrame getFrmProfilBearbeiten() { //Getter und Setter der Variablen
 		return frmProfilBearbeiten;
 	}
 

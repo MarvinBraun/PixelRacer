@@ -10,10 +10,10 @@ import Fahrt.SingleplayerFahrt;
 
 //Autor Daniel Zeller
 
-public class Nutzerverwaltung {
+public class Nutzerverwaltung { //Deklaration der benötigten Variablen
 	private static LinkedList<Kunde> kundenliste = new LinkedList<Kunde>();
 	private static LinkedList<Mitarbeiter> mitarbeiterliste = new LinkedList<Mitarbeiter>();
-	private static Kunde angkunde = new Kunde();
+	private static Kunde angkunde = new Kunde(); //Variable um die Daten des angemeldeten Kunden zu speichern
 	
 	public static LinkedList<Kunde> gibKundenliste() { //greift auf die Datenbank zu und gibt alle Kunden zurück
 		
@@ -73,15 +73,15 @@ public class Nutzerverwaltung {
 		return mitarbeiterliste;
 	}
 	
-	public static void setangKunde(Kunde kunde) {
+	public static void setangKunde(Kunde kunde) { //Setter der Variable angkunde
 		angkunde = kunde;
 	}
 	
-	public static Kunde getangKunde() {
+	public static Kunde getangKunde() { //Getter der Variable angkunde
 		return angkunde;
 	}
 	
-	public static void aktualisereangKunde() {
+	public static void aktualisereangKunde() { //Die Variable angkunde wird mit neuen Werten aus der Datenbank überschrieben/aktualisierit
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde where benutzername = '" + angkunde.getnutzername() + "'");
 		try {
 			while(rs.next())
@@ -104,7 +104,7 @@ public class Nutzerverwaltung {
 		Datenbankschnittstelle.closeConnections();
 	}
 	
-	public static void addpunkte(int punkte) {
+	public static void addpunkte(int punkte) { //Die Punktzahl wird in der Datenbank erhöht, über den Benutzernamen des angemeldeten Kunden
 		String update = "Update kunde set punktzahl = punktzahl + '" + punkte + "' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
 		Datenbankschnittstelle.executeUpdate(update);
 		Datenbankschnittstelle.closeConnections();

@@ -8,20 +8,21 @@ import javax.swing.JOptionPane;
 import Datenbankverwaltung.Datenbankschnittstelle;
 import Nutzer.Kunde;
 import Nutzer.Nutzerverwaltung;
+import Profil.AnzeigenProfilStrg;
 
 //Autor Daniel Zeller
 
 public class ProfilBearbeitenStrg implements ActionListener {
-	ProfilBearbeitenView view1;
+	ProfilBearbeitenView view1; //Deklarierung der benötigten Variablen
 	ProfilBearbeitenAttributView view2;
 	private String auswahl;
 	private String neu;
 	
-	public ProfilBearbeitenStrg() {
+	public ProfilBearbeitenStrg() { //Konstruktor
 		view1 = new ProfilBearbeitenView();
 		view1.getFrmProfilBearbeiten().setVisible(true);
 		
-		view1.getLblVN().setText(Nutzerverwaltung.getangKunde().getvn());
+		view1.getLblVN().setText(Nutzerverwaltung.getangKunde().getvn()); //Setze den Text des Labels auf die Daten des angemeldeten Kunden
 		view1.getLblNN().setText(Nutzerverwaltung.getangKunde().getnn());
 		view1.getLblNutzer().setText(Nutzerverwaltung.getangKunde().getnutzername());
 		view1.getLblMail().setText(Nutzerverwaltung.getangKunde().getemail());
@@ -44,15 +45,15 @@ public class ProfilBearbeitenStrg implements ActionListener {
 		ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
 	}
 	
-	public Boolean DatenPruefen() {
+	public Boolean DatenPruefen() { //Prüfung der eingegbenen Daten
 		if(auswahl.equals("email")) {
-			if(neu.length() <= 50 && neu.length() != 0) {
+			if(neu.length() <= 50 && neu.length() != 0 && neu.contains("@")) {
 				return true;
 			}
 		}
 		
 		if(auswahl.equals("nachname")) {
-			if(neu.length() <= 20 && neu.length() != 0) {
+			if(neu.length() <= 20 && neu.length() != 0 && neu.matches("[a-zA-ZäÄöÖüÜß]+")) {
 				return true;
 			}
 		}
@@ -66,45 +67,45 @@ public class ProfilBearbeitenStrg implements ActionListener {
 		return false;
 	}
 	
-	public void DatenAktualisieren() {
+	public void DatenAktualisieren() { //Speichern der Änderungen in die Datenbank
 		String update = "Update kunde set " + auswahl + " = '" + neu + "' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
 		Datenbankschnittstelle.executeUpdate(update);
 		Datenbankschnittstelle.closeConnections();
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { //ActionPerformed der Button
 		// TODO Auto-generated method stub
 		
-		if(e.getSource()== view1.getBtnaendernMail()) {
+		if(e.getSource()== view1.getBtnaendernMail()) { //Aufrufen der ProfilBearbeitenAttributView mit Anpassung auf die Email
 			view2.getLblAktAnzeige().setText(Nutzerverwaltung.getangKunde().getemail());
 			view2.getFrmProfilBearbeiten().setVisible(true);
 			auswahl = "email";
 		}
 		
-		if(e.getSource()== view1.getBtnaendernNN()) {
+		if(e.getSource()== view1.getBtnaendernNN()) { //Aufrufen der ProfilBearbeitenAttributView mit Anpassung auf den Nachnamen
 			view2.getLblAktAnzeige().setText(Nutzerverwaltung.getangKunde().getnn());
 			view2.getFrmProfilBearbeiten().setVisible(true);
 			auswahl = "nachname";
 		}
 		
-		if(e.getSource()== view1.getBtnaendernPW()) {
+		if(e.getSource()== view1.getBtnaendernPW()) { //Aufrufen der ProfilBearbeitenAttributView mit Anpassung auf das Passwort
 			view2.getLblAktAnzeige().setText("*************");
 			view2.getFrmProfilBearbeiten().setVisible(true);
 			auswahl = "passwort";
 		}
 		
-		if(e.getSource()== view1.getBtnFertig()) {
+		if(e.getSource()== view1.getBtnFertig()) { //Aufrufen des Profils des Kunden
 			view1.getFrmProfilBearbeiten().dispose();
-			//neues ProfilStrg
+			AnzeigenProfilStrg strg = new AnzeigenProfilStrg();
 		}
 		
-		if(e.getSource()== view2.getBtnAbbrechen()) {
+		if(e.getSource()== view2.getBtnAbbrechen()) { //Der Vorgang des Änderns wird abgebrochen und die ProfilBearbeitenView wird aufgerufen
 			view2.getFrmProfilBearbeiten().dispose();
 			ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
 		}
 		
-		if(e.getSource()== view2.getBtnFertig()) {
+		if(e.getSource()== view2.getBtnFertig()) { //Der Vorgang des Änderns ist fertig, es werden die Daten überprüft und bei richtiger Eingabe aktualisiert
 			neu = view2.getTextFieldNeu().getText();
 			if(DatenPruefen()) {
 				DatenAktualisieren();

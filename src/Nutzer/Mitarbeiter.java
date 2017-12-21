@@ -1,10 +1,10 @@
 package Nutzer;
 
-public class Mitarbeiter extends Nutzer {
-	private String mitarbeiterid;
+public class Mitarbeiter extends Nutzer { // Mitarbeiter ist ein Nutzer des Systems
+	private String mitarbeiterid; //Deklaration der benötigten Variablen
 	private String jobtitel;
 	
-	public String getvn() {
+	public String getvn() { //Getter und Setter der Variablen des Nutzers/Mitarbeiter
 		return vorname;
 		}
 	

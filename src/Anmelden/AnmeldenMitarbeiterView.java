@@ -14,7 +14,7 @@ import javax.swing.JButton;
 
 public class AnmeldenMitarbeiterView {
 
-	private JFrame frmPixelRacer;
+	private JFrame frmPixelRacer; //Deklaration der benötigten Variablen
 	private JTextField txtId;
 	private JPasswordField pwdPasswort;
 	private JLabel lblMitarbeiterid;
@@ -41,14 +41,14 @@ public class AnmeldenMitarbeiterView {
 	/**
 	 * Create the application.
 	 */
-	public AnmeldenMitarbeiterView() {
+	public AnmeldenMitarbeiterView() { //Konstruktor
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() { //Initialisierung des Fenster und den dazugehörigen Komponenten
 		frmPixelRacer = new JFrame();
 		frmPixelRacer.setResizable(false);
 		frmPixelRacer.setTitle("Pixel Racer - Mitarbeiterlogin");
@@ -66,7 +66,7 @@ public class AnmeldenMitarbeiterView {
 		txtId.setColumns(10);
 		
 		lblPasswort = new JLabel("Passwort");
-		lblPasswort.setBounds(252, 165, 46, 14);
+		lblPasswort.setBounds(252, 165, 217, 14);
 		frmPixelRacer.getContentPane().add(lblPasswort);
 		
 		pwdPasswort = new JPasswordField();
@@ -74,27 +74,23 @@ public class AnmeldenMitarbeiterView {
 		frmPixelRacer.getContentPane().add(pwdPasswort);
 		
 		btnAnmelden = new JButton("Anmelden");
-		btnAnmelden.setBounds(252, 247, 89, 23);
+		btnAnmelden.setBounds(252, 247, 118, 23);
 		btnAnmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				AnmeldenStrg strg = new AnmeldenStrg();
-//				frmPixelRacer.dispose();
 			}
 		});
 		frmPixelRacer.getContentPane().add(btnAnmelden);
 		
 		btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setBounds(380, 247, 89, 23);
+		btnAbbrechen.setBounds(380, 247, 131, 23);
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				AnmeldenStrg strg = new AnmeldenStrg();
-//				frmPixelRacer.dispose();
 			}
 		});
 		frmPixelRacer.getContentPane().add(btnAbbrechen);
 	}
 
-	public JFrame getFrmPixelRacer() {
+	public JFrame getFrmPixelRacer() { //Getter und Setter der Variablen
 		return frmPixelRacer;
 	}
 

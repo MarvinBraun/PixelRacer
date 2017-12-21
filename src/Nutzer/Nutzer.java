@@ -1,6 +1,6 @@
 package Nutzer;
 
-public abstract class Nutzer extends Nutzerverwaltung {
+public abstract class Nutzer extends Nutzerverwaltung { //Deklaration der benötigten Variablen
  String vorname;
  String nachname;
  String nutzername;

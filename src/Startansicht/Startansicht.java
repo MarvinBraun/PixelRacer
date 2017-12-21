@@ -26,7 +26,7 @@ import javax.swing.SwingConstants;
 
 public class Startansicht {
 
-	private JFrame frmPixelRacer;
+	private JFrame frmPixelRacer; //Deklarierung der benötigten Variablen
 	private JLabel lblPixelRacer;
 	private JButton btnSpielen;
 	private JButton btnGarage;
@@ -55,14 +55,14 @@ public class Startansicht {
 	/**
 	 * Create the application.
 	 */
-	public Startansicht() {
+	public Startansicht() { //Konstruktor
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() { //Initialisierung des Fensters und den dazugehörigen Komponenten
 		frmPixelRacer = new JFrame();
 		frmPixelRacer.setResizable(false);
 		frmPixelRacer.setTitle("Pixel Racer");
@@ -113,7 +113,7 @@ public class Startansicht {
 		frmPixelRacer.getContentPane().add(btnProfil);
 		
 		btnAbmelden = new JButton("Abmelden");
-		btnAbmelden.setBounds(672, 524, 89, 23);
+		btnAbmelden.setBounds(649, 524, 112, 23);
 		frmPixelRacer.getContentPane().add(btnAbmelden);
 		btnAbmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -150,7 +150,7 @@ public class Startansicht {
 		frmPixelRacer.setVisible(true);
 	}
 
-	public JFrame getFrmPixelRacer() {
+	public JFrame getFrmPixelRacer() { //Getter und Setter der Variablen
 		return frmPixelRacer;
 	}
 

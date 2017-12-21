@@ -14,15 +14,14 @@ import Startansicht.StartansichtStrg;
 //Autor Daniel Zeller
 
 public class AnmeldenStrg implements ActionListener {
-	private static String benutzername;
-	private LinkedList<Kunde> kliste;
+	private LinkedList<Kunde> kliste; //Deklaration der benötigten Variablen
 	private LinkedList<Mitarbeiter> mliste;
 	private static Kunde angKunde;
 	
 	AnmeldenView view1;
 	AnmeldenMitarbeiterView view2;
 	
-	public AnmeldenStrg() {
+	public AnmeldenStrg() { //Konstruktor
 		view1 = new AnmeldenView();
 		view1.getFrmPixelRacer().setVisible(true);
 		
@@ -40,15 +39,15 @@ public class AnmeldenStrg implements ActionListener {
 		AnmeldenStrg strg = new AnmeldenStrg();
 	}
 	
-	public Boolean pruefeDatenKunden() {
+	public Boolean pruefeDatenKunden() { //Prüfung auf Übereinstimmung der eingegebenen Daten mit den in der Datenbank hinterlegten Anmeldedaten
 		Kunde k1 = new Kunde();
 		k1.setnutzername(view1.getTxtNutzername().getText());
 		String pw = new String (view1.getPasswordField().getPassword());
 		k1.setpasswort(pw);
 		
-		kliste = Nutzerverwaltung.gibKundenliste();
+		kliste = Nutzerverwaltung.gibKundenliste(); //Jeder Kunde aus der Datenbank
 		
-		for(Kunde temp: kliste) {
+		for(Kunde temp: kliste) { //Überprüfung auf Gleichheit
 			if(k1.getnutzername().equals(temp.getnutzername())) {
 				if(k1.getpasswort().equals(temp.getpasswort())) {
 					angKunde = temp;
@@ -60,15 +59,15 @@ public class AnmeldenStrg implements ActionListener {
 		return false;
 	}
 	
-	public Boolean pruefeDatenMitarbeiter() {
+	public Boolean pruefeDatenMitarbeiter() { //Prüfung auf Übereinstimmung der eingegebenen Daten mit den in der Datenbank hinterlegten Anmeldedaten
 		Mitarbeiter m1 = new Mitarbeiter();
 		m1.setmitarbeiterid(view2.getTxtId().getText());
 		String pw = new String (view2.getPwdPasswort().getPassword());
 		m1.setpasswort(pw);
 		
-		mliste = Nutzerverwaltung.gibMitarbeiterliste();
+		mliste = Nutzerverwaltung.gibMitarbeiterliste(); //Jeder Mitarbeiter aus der Datenbank
 		
-		for(Mitarbeiter temp: mliste) {
+		for(Mitarbeiter temp: mliste) { //Überprüfung auf Gleichheit
 			if(m1.getmitarbeiterid().equals(temp.getmitarbeiterid())) {
 				if(m1.getpasswort().equals(temp.getpasswort())) {
 					return true;
@@ -80,8 +79,8 @@ public class AnmeldenStrg implements ActionListener {
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()== view1.getBtnAnmelden()) {
+	public void actionPerformed(ActionEvent e) { //ActionPerformed der Button
+		if(e.getSource()== view1.getBtnAnmelden()) { //Überprüfung der Anmeldedaten und eventuelles Aufrufen der Startansicht
 			if(pruefeDatenKunden()) {
 				JOptionPane.showMessageDialog(null, "Anmelden erfolgreich!","Super!", JOptionPane.PLAIN_MESSAGE);
 				Nutzerverwaltung.setangKunde(angKunde);
@@ -94,15 +93,15 @@ public class AnmeldenStrg implements ActionListener {
 			}
 		}
 		
-		if(e.getSource()== view1.getBtnAccountAnlegen()) {
+		if(e.getSource()== view1.getBtnAccountAnlegen()) { //AccountAnlegenStrg wird aufgerufen
 			AccountAnlegenStrg anlegenstrg = new AccountAnlegenStrg();
 		}
 		
-		if(e.getSource()== view1.getBtnMitarbeiter()) {
+		if(e.getSource()== view1.getBtnMitarbeiter()) { //Mitarbeiterlogin wird aufgerufen
 			view2.getFrmPixelRacer().setVisible(true);
 		}
 		
-		if(e.getSource()== view2.getBtnAnmelden()) {
+		if(e.getSource()== view2.getBtnAnmelden()) { //Überprüfung der Anmeldedaten und eventuelles Aufrufen der Mitarbeiteransicht
 			if(pruefeDatenMitarbeiter()) {
 				JOptionPane.showMessageDialog(null, "Anmelden erfolgreich!","Super!", JOptionPane.PLAIN_MESSAGE);
 				MitarbeiterAnsichtStrg strg = new MitarbeiterAnsichtStrg();
@@ -114,7 +113,7 @@ public class AnmeldenStrg implements ActionListener {
 			}
 		}
 		
-		if(e.getSource()== view2.getBtnAbbrechen()) {
+		if(e.getSource()== view2.getBtnAbbrechen()) { //Abbruch des Mitarbeiterlogins, erneutes Aufrufen des Kundenanmeldenfenster
 			view2.getFrmPixelRacer().dispose();
 			AnmeldenStrg strg = new AnmeldenStrg();
 		}

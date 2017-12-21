@@ -12,7 +12,7 @@ import Datenbankverwaltung.Datenbankschnittstelle;
 //Autor Daniel Zeller
 
 public class AccountAnlegenStrg implements ActionListener{
-	private String benutzername;
+	private String benutzername; //Deklarierung der benötigten variablen
 	private String vn;
 	private String nn;
 	private String gebdat;
@@ -21,7 +21,7 @@ public class AccountAnlegenStrg implements ActionListener{
 	
 	AccountAnlegenView view1;
 	
-	public AccountAnlegenStrg() {
+	public AccountAnlegenStrg() { //Konstruktor
 			view1 = new AccountAnlegenView();
 			view1.getFrmPixelRacer().setVisible(true);
 			
@@ -33,7 +33,7 @@ public class AccountAnlegenStrg implements ActionListener{
 			AccountAnlegenStrg strg = new AccountAnlegenStrg();
 		}
 		
-		public void eingegebeneDatenSpeichern() {
+		public void eingegebeneDatenSpeichern() { //Speichern der eingegebenen Werte in den Textfeldern der View in Variablen
 			benutzername = view1.getTxtNutzername().getText();
 			pw = new String(view1.getPasswordField().getPassword());
 			vn = view1.getTxtVorname().getText();
@@ -42,7 +42,7 @@ public class AccountAnlegenStrg implements ActionListener{
 			gebdat = view1.getTxtGeburtsdatum().getText();
 		}
 		
-		public Boolean DatenPruefen() {
+		public Boolean DatenPruefen() {  //Prüfung der eingegebenen Daten auf Länge und Zeicheninhalte
 			if(benutzername.length() <=20 && benutzername.length() != 0) {
 				if(pw.length() <=20 && pw.length() != 0){
 					if(vn.length() <=20 && vn.length() != 0 && vn.matches("[a-zA-ZäÄöÖüÜß]+")){
@@ -51,7 +51,7 @@ public class AccountAnlegenStrg implements ActionListener{
 								if(email.length() <=50 && email.length() != 0 && email.contains("@")){
 									return true;
 								}
-								
+								//Fehlermeldungen je nachdem, welche IF nicht true ist
 								else {
 									JOptionPane.showMessageDialog(null, "Die Daten der Email sind falsch!\nBeachte das max 50 Zeichen verwendet werden dürfen"
 											+ " und ein @ vorhanden sein muss!", 
@@ -97,7 +97,7 @@ public class AccountAnlegenStrg implements ActionListener{
 			}
 		}
 		
-		public void InsertIntoKunde() {
+		public void InsertIntoKunde() { //Speichern des Kundens in der Datenbank
 			String update = ("insert into kunde values('" + benutzername + "','" + pw + "','" + vn
 					+ "','" + nn + "','false',0,'" + gebdat + "','" + email +"')");
 			
@@ -106,9 +106,9 @@ public class AccountAnlegenStrg implements ActionListener{
 		}
 	
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) { //ActionPerformed der Buttons
 			// TODO Auto-generated method stub
-			if(e.getSource()== view1.getBtnAnlegen()) {
+			if(e.getSource()== view1.getBtnAnlegen()) { //Die Daten werden geprüft und bei richtiger Eingabe in die Datenbank geschrieben
 				
 				eingegebeneDatenSpeichern();
 				if(DatenPruefen()) {
@@ -119,7 +119,7 @@ public class AccountAnlegenStrg implements ActionListener{
 				}
 			}
 			
-			if(e.getSource()== view1.getBtnAbbrechen()) {
+			if(e.getSource()== view1.getBtnAbbrechen()) { //Der Vorgang wird abgebrochen und das Anmeldenfenster wird erneut angezeigt
 				view1.getFrmPixelRacer().dispose();
 				AnmeldenStrg strg = new AnmeldenStrg();
 			}

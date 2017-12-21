@@ -1,10 +1,10 @@
 package Nutzer;
 
-public class Kunde extends Nutzer {
-	private String premium;
+public class Kunde extends Nutzer { //Kunde ist ein Nutzer des Systems
+	private String premium; //Deklaration der benötigten Variablen
 	private int punkte = 0;
 
-	public String getvn() {
+	public String getvn() { //Getter und Setter der Variablen von Kunde/Nutzer
 		return vorname;
 		}
 	

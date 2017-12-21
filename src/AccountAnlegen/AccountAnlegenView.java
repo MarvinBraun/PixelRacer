@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 
 public class AccountAnlegenView {
 
-	private JFrame frmPixelRacer;
+	private JFrame frmPixelRacer; //Deklaration der benötigten Variablen
 	private JTextField txtVorname;
 	private JTextField txtNachname;
 	private JTextField txtGeburtsdatum;
@@ -50,14 +50,14 @@ public class AccountAnlegenView {
 	/**
 	 * Create the application.
 	 */
-	public AccountAnlegenView() {
+	public AccountAnlegenView() { //Konstruktor
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() { //Initialisierung des Fenster und den dazugehörigen Komponenten
 		frmPixelRacer = new JFrame();
 		frmPixelRacer.setResizable(false);
 		frmPixelRacer.setTitle("Pixel Racer - Account Anlegen");
@@ -139,7 +139,7 @@ public class AccountAnlegenView {
 		frmPixelRacer.getContentPane().add(lblHintergrund);
 	}
 
-	public JFrame getFrmPixelRacer() {
+	public JFrame getFrmPixelRacer() { //Getter und Setter der Variablen
 		return frmPixelRacer;
 	}
 
