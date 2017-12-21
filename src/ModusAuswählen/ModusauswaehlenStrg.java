@@ -8,45 +8,50 @@ import java.io.IOException;
 import FahrtErstellen.FahrtErstellenStrg;
 import Startansicht.StartansichtStrg;
 import Nutzer.Kunde;
+import Nutzer.Nutzerverwaltung;
 
 public class ModusauswaehlenStrg implements ActionListener {
 
 	static ModusauswaehlenStrg ms;
-	ModusauswaehlenView mav;
-	Kunde k;
+	static ModusauswaehlenView mav;
+	Kunde kunde; 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
+		kunde = Nutzerverwaltung.getangKunde();
 		if (e.getSource() == mav.btnSingleplayer) {
 			mav.frame.dispose();
 			FahrtErstellenStrg strg = new FahrtErstellenStrg(1);
 		}
-		if (e.getSource() == mav.btnMultiplayer) {
-			mav.frame.dispose();
-			try {
-				MultiplayerAuswahlStrg.main(null);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.getMessage();
-				System.out.println("Fehler beim Klicken von MultiplayerButton!");
-			}
 
-		}
 		if (e.getSource() == mav.btnzurueck) {
 			mav.frame.dispose();
 			StartansichtStrg sa = new StartansichtStrg();
+		}
+
+		if (Nutzerverwaltung.getangKunde().getpremium().equals("false")) {
+			mav.btnMultiplayer.setEnabled(false);
+		} else {
+			if (e.getSource() == mav.btnMultiplayer) {
+				mav.frame.dispose();
+				try {
+					MultiplayerAuswahlStrg.main(null);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.getMessage();
+					System.out.println("Fehler beim Klicken von MultiplayerButton!");
+				}
+			}
 		}
 	}
 
 	public ModusauswaehlenStrg() {
 		mav = new ModusauswaehlenView();
 		mav.frame.setVisible(true);
-		mav.btnMultiplayer.addActionListener(this);
 		mav.btnSingleplayer.addActionListener(this);
 		mav.btnzurueck.addActionListener(this);
-
+		mav.btnMultiplayer.addActionListener(this);
 	}
 
 	public static void main(String[] args) {
