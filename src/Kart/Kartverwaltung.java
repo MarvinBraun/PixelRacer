@@ -14,11 +14,11 @@ public class Kartverwaltung {
 
 	public LinkedList<Kart> gibKart() {
 
-		String abfrage = "SELECT * FROM KART";
+		String abfrage = "SELECT * FROM KART WHERE Premium = 'false'";
 
 		try {
 			ResultSet rs = Datenbankschnittstelle.executeQuery(abfrage);
-			
+
 			while (rs.next()) {
 
 				Kart k = new Kart();
@@ -39,7 +39,7 @@ public class Kartverwaltung {
 			Datenbankschnittstelle.closeConnections();
 
 		} catch (SQLException sql) {
-			System.out.println("Fehler beim auslesen der Karts" + sql.getMessage());
+			System.out.println("Fehler beim auslesen der Karts " + sql.getMessage());
 		}
 
 		return Kartliste;

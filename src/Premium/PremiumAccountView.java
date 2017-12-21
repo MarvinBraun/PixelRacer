@@ -64,7 +64,7 @@ public class PremiumAccountView extends JFrame {
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
 
-		Frage = new JLabel("Möchten Sie wirklich für "+ kaufePremiumAccount.getPreis() +" € auf Premium upgraden?");
+		Frage = new JLabel("Möchten Sie wirklich für 4,99€ auf Premium upgraden?");
 		GridBagConstraints gbc_Frage = new GridBagConstraints();
 		gbc_Frage.anchor = GridBagConstraints.NORTH;
 		gbc_Frage.insets = new Insets(0, 0, 5, 0);

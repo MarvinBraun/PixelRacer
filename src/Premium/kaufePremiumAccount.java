@@ -6,29 +6,29 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import ProfilKunde.AnzeigenProfilKundeStrg;
+import Rechnung.RechnungsübersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 
 public class kaufePremiumAccount extends JFrame implements ActionListener {
 
 	static kaufePremiumAccount kpa;
-	anzeigenRechnungStrg anzr;
-	static double preis;
-
-	public static double getPreis() {
-		return preis = 9.99;
-	}
-
 	PremiumAccountView pav;
+	RechnungsübersichtStrg anzr;
+	AnzeigenProfilKundeStrg strg;
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == pav.bestätigen) {
-			anzr = new anzeigenRechnungStrg();
+			pav.frame.dispose();
+			anzr = new RechnungsübersichtStrg();
 		}
 		if (e.getSource() == pav.abbrechen) {
-			System.exit(0);
+			pav.frame.dispose();
+			strg = new AnzeigenProfilKundeStrg();
 		}
 	}
 
