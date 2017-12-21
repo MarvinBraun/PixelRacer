@@ -30,19 +30,17 @@ public class ModusauswaehlenStrg implements ActionListener {
 			StartansichtStrg sa = new StartansichtStrg();
 		}
 
-		
-			if (e.getSource() == mav.btnMultiplayer) {
-				mav.frame.dispose();
-				try {
-					MultiplayerAuswahlStrg.main(null);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.getMessage();
-					System.out.println("Fehler beim Klicken von MultiplayerButton!");
-				}
+		if (e.getSource() == mav.btnMultiplayer) {
+			mav.frame.dispose();
+			try {
+				MultiplayerAuswahlStrg.main(null);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.getMessage();
+				System.out.println("Fehler beim Klicken von MultiplayerButton!");
 			}
 		}
-	
+	}
 
 	public ModusauswaehlenStrg() {
 		mav = new ModusauswaehlenView();
@@ -52,9 +50,10 @@ public class ModusauswaehlenStrg implements ActionListener {
 		if (Nutzerverwaltung.getangKunde().getpremium().equals("false")) {
 			mav.btnMultiplayer.setEnabled(false);
 		} else {
-		mav.btnMultiplayer.addActionListener(this);
+			mav.btnMultiplayer.addActionListener(this);
+		}
 	}
-	}
+
 	public static void main(String[] args) {
 		ms = new ModusauswaehlenStrg();
 	}
