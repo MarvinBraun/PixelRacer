@@ -50,17 +50,40 @@ public class ProfilBearbeitenStrg implements ActionListener {
 			if(neu.length() <= 50 && neu.length() != 0 && neu.contains("@")) {
 				return true;
 			}
+			
+			else {
+				JOptionPane.showMessageDialog(null,
+						"Die Daten der Email sind falsch!\nBeachte das max 50 Zeichen verwendet werden dürfen"
+								+ " und ein @ vorhanden sein muss!",
+						"Ok", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
 		}
 		
 		if(auswahl.equals("nachname")) {
 			if(neu.length() <= 20 && neu.length() != 0 && neu.matches("[a-zA-ZäÄöÖüÜß]+")) {
 				return true;
 			}
+			
+			else {
+				JOptionPane.showMessageDialog(null,
+						"Beachte das beim Nachnamen max 20 Zeichen erlaubt sind und auch keine Zahlen "
+								+ "oder Sonderzeichen!",
+						"Ok", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
 		}
 		
 		if(auswahl.equals("passwort")) {
 			if(neu.length() <= 20 && neu.length() != 0) {
 				return true;
+			}
+			
+			else {
+				JOptionPane.showMessageDialog(null,
+						"Beachte das höchstens 20 Zeichen beim Passwort benutzt werden dürfen!", "Ok",
+						JOptionPane.ERROR_MESSAGE);
+				return false;
 			}
 		}
 		
@@ -113,10 +136,6 @@ public class ProfilBearbeitenStrg implements ActionListener {
 				view2.getFrmProfilBearbeiten().dispose();
 				Nutzerverwaltung.aktualisereangKunde();
 				ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
-			}
-			
-			else {
-				JOptionPane.showMessageDialog(null, "Daten entsprechen nicht den Voraussetzungen","Verdammt!", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

@@ -72,7 +72,6 @@ public class AnmeldenView {
 		btnAnmelden.setBounds(205, 264, 127, 45);
 		btnAnmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmPixelRacer.dispose();
 			}
 		});
 		frmPixelRacer.getContentPane().add(btnAnmelden);
