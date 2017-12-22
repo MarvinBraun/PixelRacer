@@ -95,7 +95,7 @@ public class Startansicht {
 		frmPixelRacer.getContentPane().add(btnGarage);
 		
 		btnStreckenbersicht = new JButton("Strecken\u00FCbersicht");
-		btnStreckenbersicht.setBounds(425, 404, 127, 45);
+		btnStreckenbersicht.setBounds(425, 404, 152, 45);
 		btnStreckenbersicht.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frmPixelRacer.dispose();
