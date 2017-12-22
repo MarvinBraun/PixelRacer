@@ -26,17 +26,18 @@ import java.awt.event.ActionEvent;
 
 public class FahrtBeitretenView {
 
-	JFrame frame;
+	private JFrame frame;
+
 	private JLabel background;
-	JButton kartForward;
-	JButton kartBackward;
-	JLabel waehleKart;
-	JLabel kartName;
-	JLabel kartBild;
-	JLabel lblNewLabel;
-	JButton multiplayerBeitretenBtn;
-	JTextField multiplayerID;
-	Movement m;
+	private JButton kartForward;
+	private JButton kartBackward;
+	private JLabel waehleKart;
+	private JLabel kartName;
+	private JLabel kartBild;
+	private JLabel lblNewLabel;
+	private JButton multiplayerBeitretenBtn;
+	private JTextField multiplayerID;
+	private Movement m;
 	
 	
 	
@@ -159,4 +160,176 @@ public class FahrtBeitretenView {
 
 	
 	}
+	public JFrame getFrame() {
+		return frame;
+	}
+
+
+
+
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+
+
+
+
+	public JLabel getBackground() {
+		return background;
+	}
+
+
+
+
+
+	public void setBackground(JLabel background) {
+		this.background = background;
+	}
+
+
+
+
+
+	public JButton getKartForward() {
+		return kartForward;
+	}
+
+
+
+
+
+	public void setKartForward(JButton kartForward) {
+		this.kartForward = kartForward;
+	}
+
+
+
+
+
+	public JButton getKartBackward() {
+		return kartBackward;
+	}
+
+
+
+
+
+	public void setKartBackward(JButton kartBackward) {
+		this.kartBackward = kartBackward;
+	}
+
+
+
+
+
+	public JLabel getWaehleKart() {
+		return waehleKart;
+	}
+
+
+
+
+
+	public void setWaehleKart(JLabel waehleKart) {
+		this.waehleKart = waehleKart;
+	}
+
+
+
+
+
+	public JLabel getKartName() {
+		return kartName;
+	}
+
+
+
+
+
+	public void setKartName(JLabel kartName) {
+		this.kartName = kartName;
+	}
+
+
+
+
+
+	public JLabel getKartBild() {
+		return kartBild;
+	}
+
+
+
+
+
+	public void setKartBild(JLabel kartBild) {
+		this.kartBild = kartBild;
+	}
+
+
+
+
+
+	public JLabel getLblNewLabel() {
+		return lblNewLabel;
+	}
+
+
+
+
+
+	public void setLblNewLabel(JLabel lblNewLabel) {
+		this.lblNewLabel = lblNewLabel;
+	}
+
+
+
+
+
+	public JButton getMultiplayerBeitretenBtn() {
+		return multiplayerBeitretenBtn;
+	}
+
+
+
+
+
+	public void setMultiplayerBeitretenBtn(JButton multiplayerBeitretenBtn) {
+		this.multiplayerBeitretenBtn = multiplayerBeitretenBtn;
+	}
+
+
+
+
+
+	public JTextField getMultiplayerID() {
+		return multiplayerID;
+	}
+
+
+
+
+
+	public void setMultiplayerID(JTextField multiplayerID) {
+		this.multiplayerID = multiplayerID;
+	}
+
+
+
+
+
+	public Movement getM() {
+		return m;
+	}
+
+
+
+
+
+	public void setM(Movement m) {
+		this.m = m;
+	}
+
 }

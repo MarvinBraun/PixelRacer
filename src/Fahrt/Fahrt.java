@@ -3,7 +3,7 @@ package Fahrt;
 public abstract class Fahrt {
 	private int sitzungsID;
 	private int rang;
-	public int zeit;
+	private  int zeit;
 	private String streckenName;
 	private String kartName;
 	private String benutzername;

@@ -37,32 +37,32 @@ import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
 public class FahrtErstellenStrg implements ActionListener {
 	
 	//Objekte der Klasse
-	FahrtErstellenView view;
-	boolean forward = false;
-	boolean backward = false;
+	private FahrtErstellenView view;
+	private boolean forward = false;
+	private boolean backward = false;
 	
-	Kartverwaltung karts;
-	Streckenverwaltung strecken;
-	Fahrtverwaltung fahrten;
+	private Kartverwaltung karts;
+	private Streckenverwaltung strecken;
+	private Fahrtverwaltung fahrten;
 	
-	static MyIteratorKart<Kart> itKart;
-	static MyIteratorString<String> itString;
-	static MyIteratorStrecke<Strecke> itStrecke;
+	private static MyIteratorKart<Kart> itKart;
+	private static MyIteratorString<String> itString;
+	private static MyIteratorStrecke<Strecke> itStrecke;
 	
-	LinkedList<String> schwierigkeiten;
-	LinkedList<Kart> kartliste = new LinkedList<Kart>();
-	LinkedList<Strecke> streckenliste = new LinkedList<Strecke>();
-	LinkedList<SingleplayerFahrt> schwierigkeitsCheck = new LinkedList<SingleplayerFahrt>();
+	private LinkedList<String> schwierigkeiten;
+	private LinkedList<Kart> kartliste = new LinkedList<Kart>();
+	private LinkedList<Strecke> streckenliste = new LinkedList<Strecke>();
+	private LinkedList<SingleplayerFahrt> schwierigkeitsCheck = new LinkedList<SingleplayerFahrt>();
 	
-	BufferedImage streckenbild;
-	int singlemultiplayer;
+	private BufferedImage streckenbild;
+	private int singlemultiplayer;
 	
-	SingleplayerFahrt sf;
-	MultiplayerFahrt mf;
-	Kart k;
-	Strecke s;
-	Kunde kunde;
-	int schwierigkeit=1;
+	private SingleplayerFahrt sf;
+	private MultiplayerFahrt mf;
+	private Kart k;
+	private Strecke s;
+	private Kunde kunde;
+	private int schwierigkeit=1;
 	
 	
 
@@ -153,10 +153,10 @@ public class FahrtErstellenStrg implements ActionListener {
 	{
 		if((k=itKart.next())!=null)
 		{
-			System.out.println(k.kartname);
-			ImageIcon icon = new ImageIcon(k.grafik);
+			System.out.println(k.getKartname());
+			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
-			view.getKartName().setText(k.kartname);
+			view.getKartName().setText(k.getKartname());
 		}
 	}
 	
@@ -183,10 +183,10 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 		if((k=itKart.previous())!=null)
 		{
-			System.out.println(k.kartname);
-			ImageIcon icon = new ImageIcon(k.grafik);
+			System.out.println(k.getKartname());
+			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
-			view.getKartName().setText(k.kartname);
+			view.getKartName().setText(k.getKartname());
 		}
 	
 	}
@@ -308,7 +308,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		int id = fahrten.gibNeueID(2);
 		sf.setSitzungsID(id);
 		FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,k,s,schwierigkeit);
-		sf.setKartName(k.kartname);
+		sf.setKartName(k.getKartname());
 		sf.setStreckenName(s.getStreckenname());
 		}
 		if(singlemultiplayer==2)

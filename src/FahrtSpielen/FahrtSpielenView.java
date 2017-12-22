@@ -28,19 +28,19 @@ import javax.swing.SwingConstants;
 
 public class FahrtSpielenView {
 
-	JFrame frame;
-	JLabel lblAnzahlVerbleibenderVersuche;
+	private JFrame frame;
+	private JLabel lblAnzahlVerbleibenderVersuche;
 
-	JLabel lblLetzteZeit;
-	JButton fahrenBtn;
-	MovementBackward m;
-	Movement m2;
-	ZeigerMovement zeiger;
-	JLabel balkenLbl;
+	private JLabel lblLetzteZeit;
+	private JButton fahrenBtn;
+	private MovementBackward m;
+	private Movement m2;
+	private ZeigerMovement zeiger;
+	private JLabel balkenLbl;
 	
-	static BufferedImage kartbild;
-	static BufferedImage streckenbild;
-	JLabel bewertungLbl;
+	private static BufferedImage kartbild;
+	private static BufferedImage streckenbild;
+	private JLabel bewertungLbl;
 	
 	
 	
@@ -54,7 +54,7 @@ public class FahrtSpielenView {
 			public void run() {
 				try {
 					FahrtSpielenView window = new FahrtSpielenView(kartbild, streckenbild);
-					window.frame.setVisible(true);
+					window.getFrame().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -75,23 +75,23 @@ public class FahrtSpielenView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
-		frame.getContentPane().setLayout(null);
-		frame.setLocationRelativeTo(null);
+		setFrame(new JFrame());
+		getFrame().setBounds(100, 100, 800, 600);
+		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrame().setResizable(false);
+		getFrame().getContentPane().setLayout(null);
+		getFrame().setLocationRelativeTo(null);
 		
-		fahrenBtn = new JButton("Fahren!");
-		fahrenBtn.setBackground(new Color(176, 224, 230));
-		fahrenBtn.setBorder(new LineBorder(new Color(255, 69, 0), 6));
-		fahrenBtn.setFont(new Font("pixelmix", Font.PLAIN, 26));
-		fahrenBtn.setBounds(305, 98, 172, 58);
-		frame.getContentPane().add(fahrenBtn);
+		setFahrenBtn(new JButton("Fahren!"));
+		getFahrenBtn().setBackground(new Color(176, 224, 230));
+		getFahrenBtn().setBorder(new LineBorder(new Color(255, 69, 0), 6));
+		getFahrenBtn().setFont(new Font("pixelmix", Font.PLAIN, 26));
+		getFahrenBtn().setBounds(305, 98, 172, 58);
+		getFrame().getContentPane().add(getFahrenBtn());
 		
-		frame.setVisible(true);
-		frame.setFocusable(true);
-		frame.setFocusTraversalKeysEnabled(false);
+		getFrame().setVisible(true);
+		getFrame().setFocusable(true);
+		getFrame().setFocusTraversalKeysEnabled(false);
 		
 		BufferedImage image = null;
 		try {
@@ -100,39 +100,39 @@ public class FahrtSpielenView {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		zeiger = new ZeigerMovement(1);
-		zeiger.balken.setBufferedImage(image, 0);
-		zeiger.balken.setVisible(true);
-		zeiger.balken.setBounds(0,100,800,600);
-		zeiger.balken.setOpaque(false);
-		frame.getContentPane().add(zeiger.balken);
+		setZeiger(new ZeigerMovement(1));
+		getZeiger().balken.setBufferedImage(image, 0);
+		getZeiger().balken.setVisible(true);
+		getZeiger().balken.setBounds(0,100,800,600);
+		getZeiger().balken.setOpaque(false);
+		getFrame().getContentPane().add(getZeiger().balken);
 
 		
-		balkenLbl = new JLabel("New label");
-		balkenLbl.setVisible(false);
+		setBalkenLbl(new JLabel("New label"));
+		getBalkenLbl().setVisible(false);
 		
-		bewertungLbl = new JLabel("Druecke Leertaste");
-		bewertungLbl.setForeground(Color.RED);
-		bewertungLbl.setFont(new Font("pixelmix", Font.BOLD, 35));
-		bewertungLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		bewertungLbl.setVisible(false);
-		bewertungLbl.setBounds(152, 146, 500, 95);
-		frame.getContentPane().add(bewertungLbl);
-		balkenLbl.setIcon(new ImageIcon(FahrtSpielenView.class.getResource("/Resources/ladeBalken.png")));
-		balkenLbl.setBounds(152, 252, 500, 60);
-		frame.getContentPane().add(balkenLbl);
+		setBewertungLbl(new JLabel("Druecke Leertaste"));
+		getBewertungLbl().setForeground(Color.RED);
+		getBewertungLbl().setFont(new Font("pixelmix", Font.BOLD, 35));
+		getBewertungLbl().setHorizontalAlignment(SwingConstants.CENTER);
+		getBewertungLbl().setVisible(false);
+		getBewertungLbl().setBounds(152, 146, 500, 95);
+		getFrame().getContentPane().add(getBewertungLbl());
+		getBalkenLbl().setIcon(new ImageIcon(FahrtSpielenView.class.getResource("/Resources/ladeBalken.png")));
+		getBalkenLbl().setBounds(152, 252, 500, 60);
+		getFrame().getContentPane().add(getBalkenLbl());
 		
-		lblAnzahlVerbleibenderVersuche = new JLabel("Runden verbleibend: 5");
-		lblAnzahlVerbleibenderVersuche.setForeground(Color.RED);
-		lblAnzahlVerbleibenderVersuche.setFont(new Font("pixelmix", Font.BOLD, 30));
-		lblAnzahlVerbleibenderVersuche.setBounds(22, 21, 381, 33);
-		frame.getContentPane().add(lblAnzahlVerbleibenderVersuche);
+		setLblAnzahlVerbleibenderVersuche(new JLabel("Runden verbleibend: 5"));
+		getLblAnzahlVerbleibenderVersuche().setForeground(Color.RED);
+		getLblAnzahlVerbleibenderVersuche().setFont(new Font("pixelmix", Font.BOLD, 30));
+		getLblAnzahlVerbleibenderVersuche().setBounds(22, 21, 381, 33);
+		getFrame().getContentPane().add(getLblAnzahlVerbleibenderVersuche());
 		
-		lblLetzteZeit = new JLabel("Zeit: 0s");
-		lblLetzteZeit.setForeground(Color.RED);
-		lblLetzteZeit.setFont(new Font("Dialog", Font.BOLD, 30));
-		lblLetzteZeit.setBounds(22, 65, 296, 33);
-		frame.getContentPane().add(lblLetzteZeit);
+		setLblLetzteZeit(new JLabel("Zeit: 0s"));
+		getLblLetzteZeit().setForeground(Color.RED);
+		getLblLetzteZeit().setFont(new Font("Dialog", Font.BOLD, 30));
+		getLblLetzteZeit().setBounds(22, 65, 296, 33);
+		getFrame().getContentPane().add(getLblLetzteZeit());
 	
 		m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
@@ -140,7 +140,7 @@ public class FahrtSpielenView {
 		m.label.setBufferedImage(kartbild,400);
 		
 		m.label.setBounds(0, 0, 200, 200);
-		frame.getContentPane().add(m.label);
+		getFrame().getContentPane().add(m.label);
 		
 
 		m2 = new Movement(5);
@@ -149,8 +149,64 @@ public class FahrtSpielenView {
 		m2.label.setBufferedImage(streckenbild,0);
 	
 		m2.label.setOpaque(false);
-		frame.getContentPane().add(m2.label);
-		frame.setVisible(true);
+		getFrame().getContentPane().add(m2.label);
+		getFrame().setVisible(true);
 		
+	}
+
+	public JButton getFahrenBtn() {
+		return fahrenBtn;
+	}
+
+	public void setFahrenBtn(JButton fahrenBtn) {
+		this.fahrenBtn = fahrenBtn;
+	}
+
+	public ZeigerMovement getZeiger() {
+		return zeiger;
+	}
+
+	public void setZeiger(ZeigerMovement zeiger) {
+		this.zeiger = zeiger;
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JLabel getBalkenLbl() {
+		return balkenLbl;
+	}
+
+	public void setBalkenLbl(JLabel balkenLbl) {
+		this.balkenLbl = balkenLbl;
+	}
+
+	public JLabel getBewertungLbl() {
+		return bewertungLbl;
+	}
+
+	public void setBewertungLbl(JLabel bewertungLbl) {
+		this.bewertungLbl = bewertungLbl;
+	}
+
+	public JLabel getLblAnzahlVerbleibenderVersuche() {
+		return lblAnzahlVerbleibenderVersuche;
+	}
+
+	public void setLblAnzahlVerbleibenderVersuche(JLabel lblAnzahlVerbleibenderVersuche) {
+		this.lblAnzahlVerbleibenderVersuche = lblAnzahlVerbleibenderVersuche;
+	}
+
+	public JLabel getLblLetzteZeit() {
+		return lblLetzteZeit;
+	}
+
+	public void setLblLetzteZeit(JLabel lblLetzteZeit) {
+		this.lblLetzteZeit = lblLetzteZeit;
 	}
 }

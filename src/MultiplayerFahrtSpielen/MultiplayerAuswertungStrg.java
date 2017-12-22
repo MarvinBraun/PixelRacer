@@ -8,10 +8,42 @@ import Fahrt.Fahrtverwaltung;
 import Fahrt.MultiplayerFahrt;
 
 public class MultiplayerAuswertungStrg {
-	MultiplayerAuswertungView view;
-	Fahrtverwaltung verwaltung;
-	LinkedList<MultiplayerFahrt> fahrten = new LinkedList<MultiplayerFahrt>();
-	MultiplayerFahrt fahrt;
+	private MultiplayerAuswertungView view;
+	public MultiplayerAuswertungView getView() {
+		return view;
+	}
+
+	public void setView(MultiplayerAuswertungView view) {
+		this.view = view;
+	}
+
+	public Fahrtverwaltung getVerwaltung() {
+		return verwaltung;
+	}
+
+	public void setVerwaltung(Fahrtverwaltung verwaltung) {
+		this.verwaltung = verwaltung;
+	}
+
+	public LinkedList<MultiplayerFahrt> getFahrten() {
+		return fahrten;
+	}
+
+	public void setFahrten(LinkedList<MultiplayerFahrt> fahrten) {
+		this.fahrten = fahrten;
+	}
+
+	public MultiplayerFahrt getFahrt() {
+		return fahrt;
+	}
+
+	public void setFahrt(MultiplayerFahrt fahrt) {
+		this.fahrt = fahrt;
+	}
+
+	private Fahrtverwaltung verwaltung;
+	private LinkedList<MultiplayerFahrt> fahrten = new LinkedList<MultiplayerFahrt>();
+	private MultiplayerFahrt fahrt;
 	
 	public MultiplayerAuswertungStrg(MultiplayerFahrt mf, BufferedImage streckenBild)
 	{
@@ -24,9 +56,9 @@ public class MultiplayerAuswertungStrg {
 		fahrten = verwaltung.gibMultiplayerFahrtenNachMultiplayerID(mf.getMultiplayerID());	
 		ListIterator<MultiplayerFahrt> it = fahrten.listIterator();
 		
-		view.MultiplayerIdLbl.setText("MultiplayerID: "+ fahrt.getMultiplayerID());
+		view.getMultiplayerIdLbl().setText("MultiplayerID: "+ fahrt.getMultiplayerID());
 		
-		view.frame.setVisible(true);
+		view.getFrame().setVisible(true);
 		
 		//Ränge einfügen
 		int raenge = 1;
@@ -36,18 +68,18 @@ public class MultiplayerAuswertungStrg {
 			fahrt = it.next();
 			if(raenge ==1)
 			{
-				view.lblName1.setText(fahrt.getBenutzername());
-				view.lblZeit1.setText(fahrt.getZeit()+"");
+				view.getLblName1().setText(fahrt.getBenutzername());
+				view.getLblZeit1().setText(fahrt.getZeit()+"");
 			}
 			else if(raenge ==2)
 			{
-				view.lblName2.setText(fahrt.getBenutzername());
-				view.lblZeit2.setText(fahrt.getZeit()+"");
+				view.getLblName2().setText(fahrt.getBenutzername());
+				view.getLblZeit2().setText(fahrt.getZeit()+"");
 			}
 			else if(raenge ==3)
 			{
-				view.lblName3.setText(fahrt.getBenutzername());
-				view.lblZeit3.setText(fahrt.getZeit()+"");
+				view.getLblName3().setText(fahrt.getBenutzername());
+				view.getLblZeit3().setText(fahrt.getZeit()+"");
 			}
 			raenge++;
 			

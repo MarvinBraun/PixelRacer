@@ -28,19 +28,19 @@ import javax.swing.SwingConstants;
 
 public class MultiplayerFahrtSpielenView {
 
-	JFrame frame;
-	JLabel lblAnzahlVerbleibenderVersuche;
-
-	JLabel lblLetzteZeit;
-	JButton fahrenBtn;
-	MovementBackward m;
-	Movement m2;
-	ZeigerMovement zeiger;
-	JLabel balkenLbl;
+	private 	JFrame frame;
+	private JLabel lblAnzahlVerbleibenderVersuche;
+ 
+	private JLabel lblLetzteZeit;
+	private JButton fahrenBtn;
+	private MovementBackward m;
+	private Movement m2;
+	private ZeigerMovement zeiger;
+	private JLabel balkenLbl;
 	
-	static BufferedImage kartbild;
-	static BufferedImage streckenbild;
-	JLabel bewertungLbl;
+	private static BufferedImage kartbild;
+	private static BufferedImage streckenbild;
+	private JLabel bewertungLbl;
 	
 	
 	
@@ -152,5 +152,93 @@ public class MultiplayerFahrtSpielenView {
 		frame.getContentPane().add(m2.label);
 		frame.setVisible(true);
 		
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JLabel getLblAnzahlVerbleibenderVersuche() {
+		return lblAnzahlVerbleibenderVersuche;
+	}
+
+	public void setLblAnzahlVerbleibenderVersuche(JLabel lblAnzahlVerbleibenderVersuche) {
+		this.lblAnzahlVerbleibenderVersuche = lblAnzahlVerbleibenderVersuche;
+	}
+
+	public JLabel getLblLetzteZeit() {
+		return lblLetzteZeit;
+	}
+
+	public void setLblLetzteZeit(JLabel lblLetzteZeit) {
+		this.lblLetzteZeit = lblLetzteZeit;
+	}
+
+	public JButton getFahrenBtn() {
+		return fahrenBtn;
+	}
+
+	public void setFahrenBtn(JButton fahrenBtn) {
+		this.fahrenBtn = fahrenBtn;
+	}
+
+	public MovementBackward getM() {
+		return m;
+	}
+
+	public void setM(MovementBackward m) {
+		this.m = m;
+	}
+
+	public Movement getM2() {
+		return m2;
+	}
+
+	public void setM2(Movement m2) {
+		this.m2 = m2;
+	}
+
+	public ZeigerMovement getZeiger() {
+		return zeiger;
+	}
+
+	public void setZeiger(ZeigerMovement zeiger) {
+		this.zeiger = zeiger;
+	}
+
+	public JLabel getBalkenLbl() {
+		return balkenLbl;
+	}
+
+	public void setBalkenLbl(JLabel balkenLbl) {
+		this.balkenLbl = balkenLbl;
+	}
+
+	public static BufferedImage getKartbild() {
+		return kartbild;
+	}
+
+	public static void setKartbild(BufferedImage kartbild) {
+		MultiplayerFahrtSpielenView.kartbild = kartbild;
+	}
+
+	public static BufferedImage getStreckenbild() {
+		return streckenbild;
+	}
+
+	public static void setStreckenbild(BufferedImage streckenbild) {
+		MultiplayerFahrtSpielenView.streckenbild = streckenbild;
+	}
+
+	public JLabel getBewertungLbl() {
+		return bewertungLbl;
+	}
+
+	public void setBewertungLbl(JLabel bewertungLbl) {
+		this.bewertungLbl = bewertungLbl;
 	}
 }

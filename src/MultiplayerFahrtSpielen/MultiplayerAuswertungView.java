@@ -15,15 +15,15 @@ import java.awt.event.ActionEvent;
 
 public class MultiplayerAuswertungView {
 
-	JFrame frame;
-	JLabel lblName1;
-	JLabel lblName2;
-	JLabel lblName3;
-	JLabel lblZeit2;
-	JLabel lblZeit1;
-	JLabel MultiplayerIdLbl;
-	JLabel lblZeit3;
-	JButton btn;
+	private JFrame frame;
+	private JLabel lblName1;
+	private JLabel lblName2;
+	private JLabel lblName3;
+	private JLabel lblZeit2;
+	private JLabel lblZeit1;
+	private JLabel MultiplayerIdLbl;
+	private JLabel lblZeit3;
+	private JButton btn;
 	
 	
 	/**
@@ -179,5 +179,77 @@ public class MultiplayerAuswertungView {
 		lblNewLabel.setBounds(0, 0, 784, 561);
 		frame.getContentPane().add(lblNewLabel);
 		
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JLabel getLblName1() {
+		return lblName1;
+	}
+
+	public void setLblName1(JLabel lblName1) {
+		this.lblName1 = lblName1;
+	}
+
+	public JLabel getLblName2() {
+		return lblName2;
+	}
+
+	public void setLblName2(JLabel lblName2) {
+		this.lblName2 = lblName2;
+	}
+
+	public JLabel getLblName3() {
+		return lblName3;
+	}
+
+	public void setLblName3(JLabel lblName3) {
+		this.lblName3 = lblName3;
+	}
+
+	public JLabel getLblZeit2() {
+		return lblZeit2;
+	}
+
+	public void setLblZeit2(JLabel lblZeit2) {
+		this.lblZeit2 = lblZeit2;
+	}
+
+	public JLabel getLblZeit1() {
+		return lblZeit1;
+	}
+
+	public void setLblZeit1(JLabel lblZeit1) {
+		this.lblZeit1 = lblZeit1;
+	}
+
+	public JLabel getMultiplayerIdLbl() {
+		return MultiplayerIdLbl;
+	}
+
+	public void setMultiplayerIdLbl(JLabel multiplayerIdLbl) {
+		MultiplayerIdLbl = multiplayerIdLbl;
+	}
+
+	public JLabel getLblZeit3() {
+		return lblZeit3;
+	}
+
+	public void setLblZeit3(JLabel lblZeit3) {
+		this.lblZeit3 = lblZeit3;
+	}
+
+	public JButton getBtn() {
+		return btn;
+	}
+
+	public void setBtn(JButton btn) {
+		this.btn = btn;
 	}
 }

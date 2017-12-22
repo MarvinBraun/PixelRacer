@@ -23,7 +23,7 @@ public class ZeigerMovement{
 		back.scheduleAtFixedRate(new TimerTask() {
 			 public void run()
 			 {
-				while(balken.backgroundX1<550)
+				while(balken.backgroundX1<600)
 				{
 					
 					balken.backgroundX1+=speed2;
@@ -33,7 +33,7 @@ public class ZeigerMovement{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					if(balken.backgroundX1>=550)
+					if(balken.backgroundX1>=600)
 					{
 						while(balken.backgroundX1>100)
 						{

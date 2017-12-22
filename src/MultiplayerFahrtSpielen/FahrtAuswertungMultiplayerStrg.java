@@ -10,15 +10,15 @@ import Fahrt.MultiplayerFahrt;
 import FahrtSpielen.FahrtAuswertung;
 
 public class FahrtAuswertungMultiplayerStrg {
-	FahrtAuswertungMultiplayer view;
-	MultiplayerFahrt mf;
+	private FahrtAuswertungMultiplayer view;
+	private MultiplayerFahrt mf;
 	
 	public FahrtAuswertungMultiplayerStrg(MultiplayerFahrt mf, BufferedImage streckenBild)
 	{
 		this.mf = mf;
 		view = new FahrtAuswertungMultiplayer();
 		String zeit = "Gefahrene Zeit: "+mf.getZeit();
-		view.lblDeineZeit.setText(zeit);
+		view.getLblDeineZeit().setText(zeit);
 		ermittleRang();
 	}
 	
@@ -39,10 +39,10 @@ public class FahrtAuswertungMultiplayerStrg {
 			}
 			
 		}
-		view.lblDeinPlatz.setText("Dein Rang: "+mf.getRang());
+		view.getLblDeinPlatz().setText("Dein Rang: "+mf.getRang());
 	}
 		else {
-			view.lblDeinPlatz.setText("Du bist der erste, der ein Match zu dieser MultiplayerID abgeschlossen hat!");
+			view.getLblDeinPlatz().setText("Du bist der erste, der ein Match zu dieser MultiplayerID abgeschlossen hat!");
 		}
 		
 	}

@@ -32,22 +32,22 @@ import myIterator.MyIteratorString;
 public class FahrtBeitretenStrg implements ActionListener {
 	
 	//Objekte der Klasse
-	FahrtBeitretenView view;
-	boolean forward = false;
-	boolean backward = false;
-	Kart k;
-	Kartverwaltung karts;
-	static MyIteratorKart<Kart> itKart;
-	static MyIteratorString<String> itString;
-	int multi =2;
+	private FahrtBeitretenView view;
+	private boolean forward = false;
+	private boolean backward = false;
+	private Kart k;
+	private Kartverwaltung karts;
+	private static MyIteratorKart<Kart> itKart;
+	private static MyIteratorString<String> itString;
+	private int multi =2;
 	
-	LinkedList<String> schwierigkeiten;
-	LinkedList<Kart> kartliste = new LinkedList<Kart>();
+	private LinkedList<String> schwierigkeiten;
+	private LinkedList<Kart> kartliste = new LinkedList<Kart>();
 
-	Streckenverwaltung verwaltungStrecke;
-	LinkedList<Strecke> Streckenliste ;
+	private Streckenverwaltung verwaltungStrecke;
+	private LinkedList<Strecke> Streckenliste ;
 	
-	MultiplayerFahrt mf;
+	private MultiplayerFahrt mf;
 	
 
 	//Konstruktor
@@ -62,13 +62,13 @@ public class FahrtBeitretenStrg implements ActionListener {
 		k = kartliste.get(0);
 		itKart = new MyIteratorKart(kartliste.listIterator());
 		System.out.println(kartliste.size());
-		view.kartForward.addActionListener(this);
-		view.kartBackward.addActionListener(this);
-		view.multiplayerBeitretenBtn.addActionListener(this);
+		view.getKartForward().addActionListener(this);
+		view.getKartBackward().addActionListener(this);
+		view.getMultiplayerBeitretenBtn().addActionListener(this);
 		mf = new MultiplayerFahrt();
 		ladeKarts();
 		
-		SwingUtilities.updateComponentTreeUI(view.frame);
+		SwingUtilities.updateComponentTreeUI(view.getFrame());
 		
 		verwaltungStrecke = new Streckenverwaltung();
 		Streckenliste = verwaltungStrecke.gibStrecke();
@@ -91,10 +91,10 @@ public class FahrtBeitretenStrg implements ActionListener {
 	{
 		if((k=itKart.next())!=null)
 		{
-			System.out.println(k.kartname);
-			ImageIcon icon = new ImageIcon(k.grafik);
-			view.kartBild.setIcon(icon);
-			view.kartName.setText(k.kartname);
+			System.out.println(k.getKartname());
+			ImageIcon icon = new ImageIcon(k.getGrafik());
+			view.getKartBild().setIcon(icon);
+			view.getKartName().setText(k.getKartname());
 		}
 	}
 	//Methode um rückwärts durch die Karts zu scrollen
@@ -104,10 +104,10 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 		if((k=itKart.previous())!=null)
 		{
-			System.out.println(k.kartname);
-			ImageIcon icon = new ImageIcon(k.grafik);
-			view.kartBild.setIcon(icon);
-			view.kartName.setText(k.kartname);
+			System.out.println(k.getKartname());
+			ImageIcon icon = new ImageIcon(k.getGrafik());
+			view.getKartBild().setIcon(icon);
+			view.getKartName().setText(k.getKartname());
 		}
 	
 	}
@@ -146,7 +146,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 		boolean gefunden = false;
 		Fahrtverwaltung verwaltung = new Fahrtverwaltung();
 		LinkedList<MultiplayerFahrt> fahrten = verwaltung.gibMultiplayerFahrten();
-		String a = view.multiplayerID.getText();
+		String a = view.getMultiplayerID().getText();
 		int multiplayerID = Integer.parseInt(a);
 		System.out.println(multiplayerID);
 		
@@ -209,16 +209,16 @@ public class FahrtBeitretenStrg implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		if(e.getSource()==view.kartForward)
+		if(e.getSource()==view.getKartForward())
 		{
 			ladeKarts();
 		}
-		if(e.getSource()==view.kartBackward)
+		if(e.getSource()==view.getKartBackward())
 		{
 			kartRückwärts();
 			
 		}
-		if(e.getSource()==view.multiplayerBeitretenBtn)
+		if(e.getSource()==view.getMultiplayerBeitretenBtn())
 		{
 			multiplayerBeitreten();
 		}

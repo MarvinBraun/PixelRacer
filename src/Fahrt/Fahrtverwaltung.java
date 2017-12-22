@@ -10,11 +10,27 @@ import Nutzer.Nutzerverwaltung;
 
 public class Fahrtverwaltung {
 	
-	LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
-	LinkedList<MultiplayerFahrt> multiplayerFahrten = new LinkedList<MultiplayerFahrt>();
+	private LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
+	private LinkedList<MultiplayerFahrt> multiplayerFahrten = new LinkedList<MultiplayerFahrt>();
 	
 
 	
+	public LinkedList<SingleplayerFahrt> getSingleplayerFahrten() {
+		return singleplayerFahrten;
+	}
+
+	public void setSingleplayerFahrten(LinkedList<SingleplayerFahrt> singleplayerFahrten) {
+		this.singleplayerFahrten = singleplayerFahrten;
+	}
+
+	public LinkedList<MultiplayerFahrt> getMultiplayerFahrten() {
+		return multiplayerFahrten;
+	}
+
+	public void setMultiplayerFahrten(LinkedList<MultiplayerFahrt> multiplayerFahrten) {
+		this.multiplayerFahrten = multiplayerFahrten;
+	}
+
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrten()
 	{
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt");
@@ -258,7 +274,7 @@ public class Fahrtverwaltung {
 							fahrt.setBenutzername(rs.getString("Benutzername"));
 							multiplayerFahrten.add(fahrt);
 							
-							System.out.println("Fahrtzeit: "+fahrt.zeit);
+							System.out.println("Fahrtzeit: "+fahrt.getZeit());
 						}
 						rs.close();
 						Datenbankschnittstelle.closeConnections();

@@ -15,22 +15,22 @@ import Kart.Kart;
 import Strecke.Strecke;
 
 public class MultiplayerFahrtSpielenStrg implements ActionListener{
-	MultiplayerFahrt mf=null;
+	private MultiplayerFahrt mf=null;
 	
-	MultiplayerFahrtSpielenView fahrtSpielenView;
+	private MultiplayerFahrtSpielenView fahrtSpielenView;
 
-	int versuche = 5;
+	private int versuche = 5;
 
-	BufferedImage kartBild;
-	BufferedImage streckenBild;
+	private BufferedImage kartBild;
+	private BufferedImage streckenBild;
 	
-	int[] zeiten = new int[3];
-	int rang;
-	Kart kart;
-	Strecke strecke;
-	int schwierigkeit;
-	int speed = 1;
-	int wert =0;
+	private int[] zeiten = new int[3];
+	private int rang;
+	private Kart kart;
+	private Strecke strecke;
+	private int schwierigkeit;
+	private int speed = 1;
+	private int wert =0;
 	
 	//Singleplayerfahrt Konstruktor
 	
@@ -46,7 +46,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		
 		for(int i = 0; i<zeiten.length;i++)
 		{
-			Bot b = new Bot(s.getLaenge(),kart.beschleunigung,kart.getMaxkmh(),schwierigkeit);
+			Bot b = new Bot(s.getLaenge(),kart.getBeschleunigung(),kart.getMaxkmh(),schwierigkeit);
 			zeiten[i] = b.getZeit();
 		}
 		Arrays.sort(zeiten);
@@ -56,13 +56,13 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 
 		
 		fahrtSpielenView = new MultiplayerFahrtSpielenView(kartBild,streckenBild);
-		fahrtSpielenView.fahrenBtn.addActionListener(this);
+		fahrtSpielenView.getFahrenBtn().addActionListener(this);
 		
 		//KeyAdapter
-		fahrtSpielenView.zeiger.balken.setVisible(false);
-		fahrtSpielenView.frame.setVisible(true);
-		fahrtSpielenView.frame.setFocusable(true);
-		fahrtSpielenView.frame.setFocusTraversalKeysEnabled(false);
+		fahrtSpielenView.getZeiger().balken.setVisible(false);
+		fahrtSpielenView.getFrame().setVisible(true);
+		fahrtSpielenView.getFrame().setFocusable(true);
+		fahrtSpielenView.getFrame().setFocusTraversalKeysEnabled(false);
 		
 		
 		System.out.println("Registriert");
@@ -74,7 +74,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	public MultiplayerFahrtSpielenStrg()
 	{
 		fahrtSpielenView = new MultiplayerFahrtSpielenView(kartBild,streckenBild);
-		fahrtSpielenView.fahrenBtn.addActionListener(this);
+		fahrtSpielenView.getFahrenBtn().addActionListener(this);
 		System.out.println("Registriert");
 	}
 	
@@ -82,31 +82,31 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	public void fahren()
 	{
 		
-		fahrtSpielenView.fahrenBtn.setVisible(false);
-		fahrtSpielenView.zeiger.balken.setVisible(true);
-		fahrtSpielenView.balkenLbl.setVisible(true);
-		fahrtSpielenView.bewertungLbl.setVisible(true);
-		fahrtSpielenView.frame.addKeyListener(new KeyAdapter() {
+		fahrtSpielenView.getFahrenBtn().setVisible(false);
+		fahrtSpielenView.getZeiger().balken.setVisible(true);
+		fahrtSpielenView.getBalkenLbl().setVisible(true);
+		fahrtSpielenView.getBewertungLbl().setVisible(true);
+		fahrtSpielenView.getFrame().addKeyListener(new KeyAdapter() {
 	         @Override
 	         public void keyPressed(KeyEvent e) {
 	            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 	            	if( versuche>=0)
 	            	{ 
-	            		int record = fahrtSpielenView.zeiger.balken.backgroundX1;
+	            		int record = fahrtSpielenView.getZeiger().balken.backgroundX1;
 	            	wert = wert + record;
 	            	System.out.println(wert);
 	            	speed = speed+speed;
-	            	fahrtSpielenView.zeiger.setSpeed(speed);
+	            	fahrtSpielenView.getZeiger().setSpeed(speed);
 	            	System.out.println("Hi from KeyListener");
 	            	versuche--;
 	            	String a = ""+versuche;
-	            	fahrtSpielenView.lblAnzahlVerbleibenderVersuche.setText("Runden verbleibend: "+a);
+	            	fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Runden verbleibend: "+a);
 	               	String b = ""+mf.getZeit();
-	               	fahrtSpielenView.lblLetzteZeit.setText("Zeit: "+b+"s");
+	               	fahrtSpielenView.getLblLetzteZeit().setText("Zeit: "+b+"s");
 	               	
 	               	if(200<record&&record<500)
 	               	{
-	               		fahrtSpielenView.bewertungLbl.setText("Super");
+	               		fahrtSpielenView.getBewertungLbl().setText("Super");
 	               	
 	               	}
 	               	
@@ -129,7 +129,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	            		
 	            		float schwierigkeit2 = (float) (0.8 +(Math.random() * 1.5)); 
 	        			
-	        			int zeit = (int) ((int) ((strecke.getLaenge()/kart.getMaxkmh())+(kart.getMaxkmh()/kart.beschleunigung)*schwierigkeit2)*berechneLeistung);
+	        			int zeit = (int) ((int) ((strecke.getLaenge()/kart.getMaxkmh())+(kart.getMaxkmh()/kart.getBeschleunigung())*schwierigkeit2)*berechneLeistung);
 	        			System.out.println("Zeit"+zeit);
 	        			mf.setZeit(zeit);
 	        			versuche--;
@@ -142,7 +142,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	        			
 	        			Fahrtverwaltung verwaltung = new Fahrtverwaltung();
 	        			verwaltung.sendeMultiplayerFahrt(mf);
-	        			fahrtSpielenView.frame.dispose();
+	        			fahrtSpielenView.getFrame().dispose();
 	        			MultiplayerAuswertungStrg auswertung = new MultiplayerAuswertungStrg(mf,streckenBild);
 	        			
 	        	
@@ -164,7 +164,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource()==fahrtSpielenView.fahrenBtn)
+		if(e.getSource()==fahrtSpielenView.getFahrenBtn())
 		{
 			System.out.println("Hallo");
 			fahren();
@@ -172,6 +172,102 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 
 		// TODO Auto-generated method stub
 		
+	}
+
+	public MultiplayerFahrt getMf() {
+		return mf;
+	}
+
+	public void setMf(MultiplayerFahrt mf) {
+		this.mf = mf;
+	}
+
+	public MultiplayerFahrtSpielenView getFahrtSpielenView() {
+		return fahrtSpielenView;
+	}
+
+	public void setFahrtSpielenView(MultiplayerFahrtSpielenView fahrtSpielenView) {
+		this.fahrtSpielenView = fahrtSpielenView;
+	}
+
+	public int getVersuche() {
+		return versuche;
+	}
+
+	public void setVersuche(int versuche) {
+		this.versuche = versuche;
+	}
+
+	public BufferedImage getKartBild() {
+		return kartBild;
+	}
+
+	public void setKartBild(BufferedImage kartBild) {
+		this.kartBild = kartBild;
+	}
+
+	public BufferedImage getStreckenBild() {
+		return streckenBild;
+	}
+
+	public void setStreckenBild(BufferedImage streckenBild) {
+		this.streckenBild = streckenBild;
+	}
+
+	public int[] getZeiten() {
+		return zeiten;
+	}
+
+	public void setZeiten(int[] zeiten) {
+		this.zeiten = zeiten;
+	}
+
+	public int getRang() {
+		return rang;
+	}
+
+	public void setRang(int rang) {
+		this.rang = rang;
+	}
+
+	public Kart getKart() {
+		return kart;
+	}
+
+	public void setKart(Kart kart) {
+		this.kart = kart;
+	}
+
+	public Strecke getStrecke() {
+		return strecke;
+	}
+
+	public void setStrecke(Strecke strecke) {
+		this.strecke = strecke;
+	}
+
+	public int getSchwierigkeit() {
+		return schwierigkeit;
+	}
+
+	public void setSchwierigkeit(int schwierigkeit) {
+		this.schwierigkeit = schwierigkeit;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	public int getWert() {
+		return wert;
+	}
+
+	public void setWert(int wert) {
+		this.wert = wert;
 	}
 	
 	

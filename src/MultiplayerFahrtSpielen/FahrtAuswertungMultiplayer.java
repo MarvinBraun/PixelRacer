@@ -13,11 +13,12 @@ import javax.swing.ImageIcon;
 public class FahrtAuswertungMultiplayer {
 
 	private JFrame frame;
-	JButton bestätigenBtn;
-	JLabel lblDeinPlatz;
-	JLabel lblDeineZeit;
-	JLabel lblGewonnenPunkte;
-	JLabel lblNewLabel;
+
+	private JButton bestätigenBtn;
+	private JLabel lblDeinPlatz;
+	private JLabel lblDeineZeit;
+	private JLabel lblGewonnenPunkte;
+	private JLabel lblNewLabel;
 	/**
 	 * Launch the application.
 	 */
@@ -69,5 +70,53 @@ public class FahrtAuswertungMultiplayer {
 		frame.getContentPane().add(lblNewLabel);
 		frame.setVisible(true);
 	}
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JButton getBestätigenBtn() {
+		return bestätigenBtn;
+	}
+
+	public void setBestätigenBtn(JButton bestätigenBtn) {
+		this.bestätigenBtn = bestätigenBtn;
+	}
+
+	public JLabel getLblDeinPlatz() {
+		return lblDeinPlatz;
+	}
+
+	public void setLblDeinPlatz(JLabel lblDeinPlatz) {
+		this.lblDeinPlatz = lblDeinPlatz;
+	}
+
+	public JLabel getLblDeineZeit() {
+		return lblDeineZeit;
+	}
+
+	public void setLblDeineZeit(JLabel lblDeineZeit) {
+		this.lblDeineZeit = lblDeineZeit;
+	}
+
+	public JLabel getLblGewonnenPunkte() {
+		return lblGewonnenPunkte;
+	}
+
+	public void setLblGewonnenPunkte(JLabel lblGewonnenPunkte) {
+		this.lblGewonnenPunkte = lblGewonnenPunkte;
+	}
+
+	public JLabel getLblNewLabel() {
+		return lblNewLabel;
+	}
+
+	public void setLblNewLabel(JLabel lblNewLabel) {
+		this.lblNewLabel = lblNewLabel;
+	}
+
 
 }

@@ -22,15 +22,15 @@ import java.awt.Color;
 
 public class FahrtAuswertung {
 
-	JFrame frame;
-	JButton btnNewButton;
-	JLabel lblDeinPlatz;
-	JLabel lblNewLabel ;
-	JLabel lblDeineZeit;
-	JLabel lblGewonnenPunkte;
-	JLabel lblBackground;
-	JLabel lblConfetti;
-	MovementY m;
+	private JFrame frame;
+	private JButton btnNewButton;
+	private JLabel lblDeinPlatz;
+	private JLabel lblNewLabel ;
+	private JLabel lblDeineZeit;
+	private JLabel lblGewonnenPunkte;
+	private JLabel lblBackground;
+	private JLabel lblConfetti;
+	private MovementY m;
 	
 	
 	/**
@@ -41,7 +41,7 @@ public class FahrtAuswertung {
 			public void run() {
 				try {
 					FahrtAuswertung window = new FahrtAuswertung();
-					window.frame.setVisible(true);
+					window.getFrame().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -60,49 +60,49 @@ public class FahrtAuswertung {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		setFrame(new JFrame());
+		getFrame().setBounds(100, 100, 800, 600);
+		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrame().getContentPane().setLayout(null);
 		
-		btnNewButton = new JButton("Weiter");
-		btnNewButton.setBorderPainted(false);
-		btnNewButton.setBackground(new Color(60, 179, 113));
-		btnNewButton.setBorder(null);
-		btnNewButton.setFont(new Font("pixelmix", Font.BOLD, 34));
-		btnNewButton.addActionListener(new ActionListener() {
+		setBtnNewButton(new JButton("Weiter"));
+		getBtnNewButton().setBorderPainted(false);
+		getBtnNewButton().setBackground(new Color(60, 179, 113));
+		getBtnNewButton().setBorder(null);
+		getBtnNewButton().setFont(new Font("pixelmix", Font.BOLD, 34));
+		getBtnNewButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(226, 477, 325, 67);
-		frame.getContentPane().add(btnNewButton);
+		getBtnNewButton().setBounds(226, 477, 325, 67);
+		getFrame().getContentPane().add(getBtnNewButton());
 		
-		lblDeinPlatz = new JLabel("Dein Platz: ");
-		lblDeinPlatz.setForeground(Color.RED);
-		lblDeinPlatz.setFont(new Font("Dialog", Font.BOLD, 30));
-		lblDeinPlatz.setBounds(10, 0, 399, 112);
-		frame.getContentPane().add(lblDeinPlatz);
+		setLblDeinPlatz(new JLabel("Dein Platz: "));
+		getLblDeinPlatz().setForeground(Color.RED);
+		getLblDeinPlatz().setFont(new Font("Dialog", Font.BOLD, 30));
+		getLblDeinPlatz().setBounds(10, 0, 399, 112);
+		getFrame().getContentPane().add(getLblDeinPlatz());
 		
-		lblDeineZeit = new JLabel("Deine Zeit: ");
-		lblDeineZeit.setForeground(Color.RED);
-		lblDeineZeit.setFont(new Font("Dialog", Font.BOLD, 30));
-		lblDeineZeit.setBounds(10, 87, 345, 112);
-		frame.getContentPane().add(lblDeineZeit);
+		setLblDeineZeit(new JLabel("Deine Zeit: "));
+		getLblDeineZeit().setForeground(Color.RED);
+		getLblDeineZeit().setFont(new Font("Dialog", Font.BOLD, 30));
+		getLblDeineZeit().setBounds(10, 87, 345, 112);
+		getFrame().getContentPane().add(getLblDeineZeit());
 		
-		lblGewonnenPunkte = new JLabel("Gewonnene Punkte: ");
-		lblGewonnenPunkte.setForeground(Color.RED);
-		lblGewonnenPunkte.setFont(new Font("Dialog", Font.BOLD, 30));
-		lblGewonnenPunkte.setBounds(10, 171, 399, 124);
-		frame.getContentPane().add(lblGewonnenPunkte);
+		setLblGewonnenPunkte(new JLabel("Gewonnene Punkte: "));
+		getLblGewonnenPunkte().setForeground(Color.RED);
+		getLblGewonnenPunkte().setFont(new Font("Dialog", Font.BOLD, 30));
+		getLblGewonnenPunkte().setBounds(10, 171, 399, 124);
+		getFrame().getContentPane().add(getLblGewonnenPunkte());
 		
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(FahrtAuswertung.class.getResource("/Resources/trophae.png")));
 		lblNewLabel.setBounds(285, 266, 198, 200);
-		frame.getContentPane().add(lblNewLabel);
+		getFrame().getContentPane().add(lblNewLabel);
 		
 		lblConfetti = new JLabel("");
 		lblConfetti.setBounds(0, 0, 784, 561);
-		frame.getContentPane().add(lblConfetti);
+		getFrame().getContentPane().add(lblConfetti);
 		
 		m = new MovementY(13);
 		BufferedImage image = null;
@@ -118,16 +118,64 @@ public class FahrtAuswertung {
 		m.label.setBounds(100, 100, 800, 600);
 		m.label.setVisible(true);
 		
-		frame.getContentPane().add(m.label);
+		getFrame().getContentPane().add(m.label);
 		
-		lblBackground = new JLabel("");
-		lblBackground.setBounds(0, 0, 784, 561);
-		frame.getContentPane().add(lblBackground);
+		setLblBackground(new JLabel(""));
+		getLblBackground().setBounds(0, 0, 784, 561);
+		getFrame().getContentPane().add(getLblBackground());
 		
 		
-		frame.setVisible(true);
+		getFrame().setVisible(true);
 		
 	
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JLabel getLblDeineZeit() {
+		return lblDeineZeit;
+	}
+
+	public void setLblDeineZeit(JLabel lblDeineZeit) {
+		this.lblDeineZeit = lblDeineZeit;
+	}
+
+	public JLabel getLblDeinPlatz() {
+		return lblDeinPlatz;
+	}
+
+	public void setLblDeinPlatz(JLabel lblDeinPlatz) {
+		this.lblDeinPlatz = lblDeinPlatz;
+	}
+
+	public JLabel getLblBackground() {
+		return lblBackground;
+	}
+
+	public void setLblBackground(JLabel lblBackground) {
+		this.lblBackground = lblBackground;
+	}
+
+	public JLabel getLblGewonnenPunkte() {
+		return lblGewonnenPunkte;
+	}
+
+	public void setLblGewonnenPunkte(JLabel lblGewonnenPunkte) {
+		this.lblGewonnenPunkte = lblGewonnenPunkte;
+	}
+
+	public JButton getBtnNewButton() {
+		return btnNewButton;
+	}
+
+	public void setBtnNewButton(JButton btnNewButton) {
+		this.btnNewButton = btnNewButton;
 	}
 
 }

@@ -13,29 +13,30 @@ import Nutzer.Nutzerverwaltung;
 import Startansicht.StartansichtStrg;
 
 public class FahrtAuswertungStrg implements ActionListener {
-	FahrtAuswertung view;
-	Fahrtverwaltung verwaltung  = new Fahrtverwaltung();
-	int a = 0;
+	private FahrtAuswertung view;
+	private Fahrtverwaltung verwaltung  = new Fahrtverwaltung();
+	private int a = 0;
+	
 	public FahrtAuswertungStrg(SingleplayerFahrt sf, BufferedImage strecke)
 	{
 		
 		view = new FahrtAuswertung();
-		view.frame.setLocationRelativeTo(null);
-		view.lblDeineZeit.setText("Deine Zeit: "+sf.getZeit());
-		view.lblDeinPlatz.setText("Dein Rang: "+sf.getRang());
+		view.getFrame().setLocationRelativeTo(null);
+		view.getLblDeineZeit().setText("Deine Zeit: "+sf.getZeit());
+		view.getLblDeinPlatz().setText("Dein Rang: "+sf.getRang());
 		ImageIcon streckenBild = new ImageIcon(strecke);
-		view.lblBackground.setIcon(streckenBild);
+		view.getLblBackground().setIcon(streckenBild);
 		
 		
 		switch(sf.getRang())
 		{
 		
 		
-		case(1): view.lblGewonnenPunkte.setText("Gewonnene Punkte: 3");
+		case(1): view.getLblGewonnenPunkte().setText("Gewonnene Punkte: 3");
 		a = 3;
-		case(2): view.lblGewonnenPunkte.setText("Gewonnene Punkte: 2");
+		case(2): view.getLblGewonnenPunkte().setText("Gewonnene Punkte: 2");
 		a = 2;
-		case(3): view.lblGewonnenPunkte.setText("Gewonnene Punkte: 1");
+		case(3): view.getLblGewonnenPunkte().setText("Gewonnene Punkte: 1");
 		a = 1;
 	
 		
@@ -47,7 +48,7 @@ public class FahrtAuswertungStrg implements ActionListener {
 		Nutzerverwaltung.addpunkte(a);
 		
 		
-		view.btnNewButton.addActionListener(this);
+		view.getBtnNewButton().addActionListener(this);
 		
 		
 		
@@ -66,9 +67,9 @@ public class FahrtAuswertungStrg implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource()==view.btnNewButton)
+		if(e.getSource()==view.getBtnNewButton())
 		{
-			view.frame.dispose();
+			view.getFrame().dispose();
 			StartansichtStrg strg = new StartansichtStrg();
 		}
 		// TODO Auto-generated method stub
