@@ -174,7 +174,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	//Meldung, die erscheint, wenn ein Mitarbeiter erfolgreich angelegt wurde
 	private void mitarbeiterErfolgreichAngelegtMeldung(){
 		JOptionPane.showMessageDialog(mhView.getPanel(),
-			    "Mitarbeiter erfolgreich angelegt", "Erfolgreich",
+			    "Mitarbeiter mit der ID " + mitarbeiterID + " erfolgreich angelegt", "Erfolgreich",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
