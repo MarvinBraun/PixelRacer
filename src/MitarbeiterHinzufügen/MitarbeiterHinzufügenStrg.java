@@ -83,9 +83,14 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 									if(istEmailFormatOk() == false) {
 										emailFormatNichtOkMeldung();
 									}else {
-										deklariereVariablenVTextfeldern();
-										erstelleMitarbeiterInDB();
-										leereFormular();
+										if(istDatumFormatOk() == false) {
+											datumFormatNichtOkMeldung();
+										}else {
+											deklariereVariablenVTextfeldern();
+											erstelleMitarbeiterInDB();
+											mitarbeiterErfolgreichAngelegtMeldung();
+											leereFormular();
+										}
 									}
 								}
 							}
@@ -120,7 +125,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	//Meldung, die erscheint, wenn ein ungueltiges Datum eingegeben wurde
 	private void datumUngueltigMeldung(){
 		JOptionPane.showMessageDialog(mhView.getPanel(),
-			    "Das Datum muss im Format DD.MM.YY vorliegen", "Datum ungültig",
+			    "Das eingegebene Datum existiert nicht", "Datum ungültig",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
@@ -145,10 +150,10 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
-	//Meldung, die erscheint, wenn Benutzername nicht mindestens 4 Buchstaben hat
+	//Meldung, die erscheint, wenn Benutzername nicht mindestens 3 Buchstaben hat
 	private void benutzernameFormatNichtOkMeldung(){
 		JOptionPane.showMessageDialog(mhView.getPanel(),
-			    "Benutzername muss mindestens 4 Buchstaben am Anfang haben", "Benutzername ungültig",
+			    "Benutzername muss mindestens 3 Buchstaben am Anfang haben", "Benutzername ungültig",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
@@ -156,6 +161,20 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	private void emailFormatNichtOkMeldung(){
 		JOptionPane.showMessageDialog(mhView.getPanel(),
 			    "Die eingegene Email entspricht keiner gültigen Email-Adresse", "Email ungültig",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn ein ungueltiges Datum eingegeben wurde
+	private void datumFormatNichtOkMeldung(){
+		JOptionPane.showMessageDialog(mhView.getPanel(),
+			    "Das Datum muss im Format DD.MM.YY vorliegen", "Datum ungültig",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn ein Mitarbeiter erfolgreich angelegt wurde
+	private void mitarbeiterErfolgreichAngelegtMeldung(){
+		JOptionPane.showMessageDialog(mhView.getPanel(),
+			    "Mitarbeiter erfolgreich angelegt", "Erfolgreich",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
@@ -253,7 +272,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	
 	//Methode, die kontrolliert, ob der Benutzername im richtigen Format eingegeben wurde
 	private boolean istBenutzernameFormatOk() {
-		  Pattern patt = Pattern.compile("[A-ZÄÖÜa-zäöüß]{4}.*");
+		  Pattern patt = Pattern.compile("[A-ZÄÖÜa-zäöüß]{3}.*");
 		  Matcher match = patt.matcher(mhView.getTfBenutzername().getText());
 		  return match.matches();
 	}
@@ -262,6 +281,13 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	private boolean istEmailFormatOk() {
 		  Pattern patt = Pattern.compile("[A-ZÄÖÜa-zäöüß0-9.!#$%&'*+-/=?^_`{|}~]+[@][a-zäöüß0-9-]+[.][a-z]{2,3}([.][a-z]{2})?");
 		  Matcher match = patt.matcher(mhView.getTfEmail().getText());
+		  return match.matches();
+	}
+	
+	//Methode, die kontrolliert, ob das Datum im richtigen Format eingegeben wurde
+	private boolean istDatumFormatOk() {
+		  Pattern patt = Pattern.compile("[0-9]{2}[.][0-9]{2}[.][0-9]{2}");
+		  Matcher match = patt.matcher(mhView.getTfGeburtsdatum().getText());
 		  return match.matches();
 	}
 	
