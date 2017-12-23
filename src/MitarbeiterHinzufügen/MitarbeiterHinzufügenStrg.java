@@ -157,7 +157,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
-	//Meldung, die erscheint, wenn Email keinen gueltigen Muster
+	//Meldung, die erscheint, wenn Email keinen gueltigen Muster entspricht
 	private void emailFormatNichtOkMeldung(){
 		JOptionPane.showMessageDialog(mhView.getPanel(),
 			    "Die eingegene Email entspricht keiner gültigen Email-Adresse", "Email ungültig",
