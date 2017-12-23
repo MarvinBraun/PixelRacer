@@ -11,13 +11,16 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.swing.JOptionPane;
 import Datenbankverwaltung.Datenbankschnittstelle;
 
 import java.awt.event.ActionEvent;
 
 public class MitarbeiterHinzufügenStrg implements ActionListener {
-	
+
 	//Globale Variablen
 	private MitarbeiterHinzufügenView mhView;
 	private String laengeOk = "true";
@@ -49,7 +52,6 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 			} else{
 			istVornameZuLang();
 			istNachnameZuLang();
-			istGeburtsdatumZuLang();
 			istJobZuLang();
 			istBenutzernameZuLang();
 			istEmailZuLang();
@@ -57,21 +59,43 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 			if(laengeOk == "false"){
 				inhaltZuLangMeldung();
 				fehlermeldung = "Folgende Angaben sind zu lang:";
+				//reset
 				laengeOk = "true";
 			} else{
-				deklariereVariablenVTextfeldern();
 				istDatumGueltig();
 				if(datumGueltig == false) {
 					datumUngueltigMeldung();
 					//reset
 					datumGueltig = true;
 				}else {
-					erstelleMitarbeiterInDB();
-					leereFormular();
+					if(istVornameFormatOk() == false) {
+						vornameFormatNichtOkMeldung();
+					}else {
+						if(istNachnameFormatOk() == false) {
+							nachnameFormatNichtOkMeldung();
+						}else {
+							if(istJobFormatOk() == false) {
+								jobFormatNichtOkMeldung();
+							}else {
+								if(istBenutzernameFormatOk() == false)  {
+									benutzernameFormatNichtOkMeldung();
+								}else {
+									if(istEmailFormatOk() == false) {
+										emailFormatNichtOkMeldung();
+									}else {
+										deklariereVariablenVTextfeldern();
+										erstelleMitarbeiterInDB();
+										leereFormular();
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 				}
 		}
+		
 		//Soll Formular bei Abbruch leeren
 		if(e.getSource() == mhView.getBtnAbbrechen()) {
 			leereFormular();
@@ -93,10 +117,45 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	}
 	
 	
-	//Meldung, die erscheint, wenn ein ungueltiges Datum eingegebn wuude
+	//Meldung, die erscheint, wenn ein ungueltiges Datum eingegeben wurde
 	private void datumUngueltigMeldung(){
 		JOptionPane.showMessageDialog(mhView.getPanel(),
 			    "Das Datum muss im Format DD.MM.YY vorliegen", "Datum ungültig",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn ungueltige Zeichen im Vornamen eingegeben wurde
+	private void vornameFormatNichtOkMeldung(){
+		JOptionPane.showMessageDialog(mhView.getPanel(),
+			    "Beachte die Groß- und Kleinschreibung beim Vornamen, sowie die nicht erlaubten Sonderzeichen", "Vorname ungültig",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn ungueltige Zeichen im Nachnamen eingegeben wurde
+	private void nachnameFormatNichtOkMeldung(){
+		JOptionPane.showMessageDialog(mhView.getPanel(),
+			    "Beachte die Groß- und Kleinschreibung beim Nachnamen, sowie die nicht erlaubten Sonderzeichen", "Nachname ungültig",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn ungueltige Zeichen im Job eingegeben wurde
+	private void jobFormatNichtOkMeldung(){
+		JOptionPane.showMessageDialog(mhView.getPanel(),
+			    "Beachte die Groß- und Kleinschreibung beim Job, sowie, dass keine Sonderzeichen erlaubt sind", "Job ungültig",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn Benutzername nicht mindestens 4 Buchstaben hat
+	private void benutzernameFormatNichtOkMeldung(){
+		JOptionPane.showMessageDialog(mhView.getPanel(),
+			    "Benutzername muss mindestens 4 Buchstaben am Anfang haben", "Benutzername ungültig",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn Email keinen gueltigen Muster
+	private void emailFormatNichtOkMeldung(){
+		JOptionPane.showMessageDialog(mhView.getPanel(),
+			    "Die eingegene Email entspricht keiner gültigen Email-Adresse", "Email ungültig",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
@@ -124,14 +183,6 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 		if(mhView.getTfNachname().getText().length() > 20){
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Nachname";
-		}
-	}
-	
-	//Methode, welche die Laenge des Geburtsdatum-Feldes kontrollieren soll
-	private void istGeburtsdatumZuLang(){
-		if(mhView.getTfGeburtsdatum().getText().length() > 8){
-			laengeOk = "false";
-			fehlermeldung = fehlermeldung + "  " + "Geburtsdatum";
 		}
 	}
 	
@@ -173,10 +224,45 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 		try {
 		    DateFormat format = new SimpleDateFormat("dd.MM.yy");
 		    format.setLenient(false);
-		    date = format.parse(geburtsdatum);
+		    date = format.parse(mhView.getTfGeburtsdatum().getText());
 		} catch (ParseException e) { 
 		    datumGueltig = false;
 		}
+	}
+	
+	//Methode, die kontrolliert, ob der Vorname im richtigen Format eingegeben wurde
+	private boolean istVornameFormatOk() {
+		  Pattern patt = Pattern.compile("[A-ZÄÖÜ][a-zäöüß]+([ -][A-ZÄÖÜ][a-zäöüß]+)?");
+		  Matcher match = patt.matcher(mhView.getTfVorname().getText());
+		  return match.matches();
+	}
+	
+	//Methode, die kontrolliert, ob der Nachname im richtigen Format eingegeben wurde
+	private boolean istNachnameFormatOk() {
+		  Pattern patt = Pattern.compile("([a-z]{2,3})?[ ]?([a-z]{2,3}[ ])?[A-ZÄÖÜ][a-zäöüß]+([ -][A-ZÄÖÜ][a-zäöüß]+)?");
+		  Matcher match = patt.matcher(mhView.getTfNachname().getText());
+		  return match.matches();
+	}
+	
+	//Methode, die kontrolliert, ob der Job im richtigen Format eingegeben wurde
+	private boolean istJobFormatOk() {
+		  Pattern patt = Pattern.compile("[A-ZÄÖÜ][a-zäöüß]+");
+		  Matcher match = patt.matcher(mhView.getTfJob().getText());
+		  return match.matches();
+	}
+	
+	//Methode, die kontrolliert, ob der Benutzername im richtigen Format eingegeben wurde
+	private boolean istBenutzernameFormatOk() {
+		  Pattern patt = Pattern.compile("[A-ZÄÖÜa-zäöüß]{4}.*");
+		  Matcher match = patt.matcher(mhView.getTfBenutzername().getText());
+		  return match.matches();
+	}
+	
+	//Methode, die kontrolliert, ob die Email im richtigen Format eingegeben wurde
+	private boolean istEmailFormatOk() {
+		  Pattern patt = Pattern.compile("[A-ZÄÖÜa-zäöüß0-9.!#$%&'*+-/=?^_`{|}~]+[@][a-z0-9-]+[.][a-z]{2,3}([.][a-z]{2})?");
+		  Matcher match = patt.matcher(mhView.getTfEmail().getText());
+		  return match.matches();
 	}
 	
 	//Methode, welche die hoechste MitarbeiterID aus der Datenbank liest und anhand dieser eine neue ID berechnet (+1)
@@ -212,7 +298,6 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	
 	//Methode, welche ein Mitarbeiter in der Datenbank erstellt
 	private void erstelleMitarbeiterInDB(){
-
 		String abfrage = "insert into mitarbeiter values('" + mitarbeiterID + "', '" + benutzername + 
 				"', '" + passwort + "', '" + vorname + "', '" + nachname + "', '" + job + "', '" + email + 
 				"', '" + geburtsdatum + "')";
