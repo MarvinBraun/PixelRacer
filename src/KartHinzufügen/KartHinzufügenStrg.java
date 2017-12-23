@@ -6,6 +6,9 @@ package KartHinzufügen;
 
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.activation.MimetypesFileTypeMap;
@@ -53,8 +56,6 @@ public class KartHinzufügenStrg implements ActionListener {
 				formularUnvollständigMeldung();
 			} else{
 			istNameZuLang();
-			istBeschleunigungZuLang();
-			istMaxGeschwindigkeitZuLang();
 			istPunktzahlZuLang();
 			if(laengeOk == "false"){
 				inhaltZuLangMeldung();
@@ -77,9 +78,21 @@ public class KartHinzufügenStrg implements ActionListener {
 							if(grafik.length() > 20480){
 								grafikZuGrossMeldung();
 							}else{
-								erstelleKartInDB();
-								updateKartGrafik();
-								leereFormular();
+								if(istNameFormatOk() == false) {
+									nameFormatNichtOkMeldung();
+								}else {
+									if(maxGeschwindigkeit > 999) {
+										maxGeschwindigkeitZuHochMeldung();
+									}else {
+										if(beschleunigung > 99) {
+											beschleunigungZuHochMeldung();
+										}else {
+											erstelleKartInDB();
+											updateKartGrafik();
+											leereFormular();
+										}
+									}
+								}
 							}
 						}
 					}
@@ -129,12 +142,33 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 	
 	//Meldung, die erscheint, wenn Grafik zu Gross (in Speicher) ist
-	public void grafikZuGrossMeldung(){
+	private void grafikZuGrossMeldung(){
 		JOptionPane.showMessageDialog(khView.getPanel(),
 			   "Die Grafik darf maximal 20kb groß sein", "Grafik zu Groß",
 			    JOptionPane.WARNING_MESSAGE);
 	}
 	
+	//Meldung, die erscheint, wenn ungueltige Zeichen im Vornamen eingegeben wurde
+	private void nameFormatNichtOkMeldung(){
+		JOptionPane.showMessageDialog(khView.getPanel(),
+			    "Beachte die Groß- und Kleinschreibung beim Namen, sowie die nicht erlaubten Sonderzeichen", "Name ungültig",
+			    JOptionPane.WARNING_MESSAGE);
+	}
+	
+	//Meldung, die erscheint, wenn zu hoher Wert für MaxGeschwindigkeit eingegeben wurde
+	private void maxGeschwindigkeitZuHochMeldung(){
+		JOptionPane.showMessageDialog(khView.getPanel(),
+				   "Die maximalGeschwindigkeit darf höchstens 450 betragen", "MaximalGeschwindigkeit überschritten",
+				   JOptionPane.WARNING_MESSAGE);
+		}
+	
+	//Meldung, die erscheint, wenn zu hoher Wert für Beschleunigung eingegeben wurde
+	private void beschleunigungZuHochMeldung(){
+		JOptionPane.showMessageDialog(khView.getPanel(),
+				   "Die Beschleunigung darf höchstens 99 betragen", "Beschleunigung zu hoch",
+				   JOptionPane.WARNING_MESSAGE);
+		}
+		
 	//Methode, welche pruefen soll, ob das Formular auch vollstaendig ausgefuellt ist
 	private boolean pruefeFormarAufVollständigkeit(){
 		if(khView.getTfName().getText().isEmpty() || khView.getTfBeschleunigung().getText().isEmpty() || 
@@ -151,22 +185,6 @@ public class KartHinzufügenStrg implements ActionListener {
 			laengeOk = "false";
 			fehlermeldung = fehlermeldung + "  " + "Name";
 		}	
-	}
-	
-	//Methode, welche die Laenge des Beschleunigungs-Feldes kontrollieren soll
-	private void istBeschleunigungZuLang(){
-		if(khView.getTfBeschleunigung().getText().length() > 8){
-			laengeOk = "false";
-			fehlermeldung = fehlermeldung + "  " + "Beschleunigung";
-		}
-	}
-	
-	//Methode, welche die Laenge des MaxGeschwindigkeit-Feldes kontrollieren soll
-	private void istMaxGeschwindigkeitZuLang(){
-		if(khView.getTfGeschwindigkeit().getText().length() > 3){
-			laengeOk = "false";
-			fehlermeldung = fehlermeldung + "  " + "MaxGeschwindigkeit";
-		}
 	}
 	
 	//Methode, welche die Laenge des Punktzahl-Feldes kontrollieren soll
@@ -186,6 +204,12 @@ public class KartHinzufügenStrg implements ActionListener {
 	    return fileType.equalsIgnoreCase(mimetype);
 	}
 	
+	//Methode, die kontrolliert, ob der Name im richtigen Format eingegeben wurde
+	private boolean istNameFormatOk() {
+		  Pattern patt = Pattern.compile("[A-ZÄÖÜ][a-zäöüß]+[0-9]{0,4}?([ -]?[A-ZÄÖÜ][a-zäöüß]+)?[0-9]{0,4}");
+		  Matcher match = patt.matcher(khView.getTfName().getText());
+		  return match.matches();
+	}
 	
 	//Methode, in die Datenbank relevanten Variablen aufgrundlage des Formulars deklariert werden
 	private void deklariereVariablenVTextfeldern(){
