@@ -260,7 +260,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	
 	//Methode, die kontrolliert, ob die Email im richtigen Format eingegeben wurde
 	private boolean istEmailFormatOk() {
-		  Pattern patt = Pattern.compile("[A-ZÄÖÜa-zäöüß0-9.!#$%&'*+-/=?^_`{|}~]+[@][a-z0-9-]+[.][a-z]{2,3}([.][a-z]{2})?");
+		  Pattern patt = Pattern.compile("[A-ZÄÖÜa-zäöüß0-9.!#$%&'*+-/=?^_`{|}~]+[@][a-zäöüß0-9-]+[.][a-z]{2,3}([.][a-z]{2})?");
 		  Matcher match = patt.matcher(mhView.getTfEmail().getText());
 		  return match.matches();
 	}
