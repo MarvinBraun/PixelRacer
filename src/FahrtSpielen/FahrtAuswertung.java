@@ -66,7 +66,6 @@ public class FahrtAuswertung {
 		getFrame().getContentPane().setLayout(null);
 		
 		setBtnNewButton(new JButton("Weiter"));
-		getBtnNewButton().setBorderPainted(false);
 		getBtnNewButton().setBackground(new Color(60, 179, 113));
 		getBtnNewButton().setBorder(null);
 		getBtnNewButton().setFont(new Font("pixelmix", Font.BOLD, 34));
@@ -79,20 +78,20 @@ public class FahrtAuswertung {
 		
 		setLblDeinPlatz(new JLabel("Dein Platz: "));
 		getLblDeinPlatz().setForeground(Color.RED);
-		getLblDeinPlatz().setFont(new Font("Dialog", Font.BOLD, 30));
-		getLblDeinPlatz().setBounds(10, 0, 399, 112);
+		getLblDeinPlatz().setFont(new Font("pixelmix", Font.BOLD, 30));
+		getLblDeinPlatz().setBounds(10, 0, 541, 112);
 		getFrame().getContentPane().add(getLblDeinPlatz());
 		
 		setLblDeineZeit(new JLabel("Deine Zeit: "));
 		getLblDeineZeit().setForeground(Color.RED);
-		getLblDeineZeit().setFont(new Font("Dialog", Font.BOLD, 30));
-		getLblDeineZeit().setBounds(10, 87, 345, 112);
+		getLblDeineZeit().setFont(new Font("pixelmix", Font.BOLD, 30));
+		getLblDeineZeit().setBounds(10, 87, 541, 112);
 		getFrame().getContentPane().add(getLblDeineZeit());
 		
 		setLblGewonnenPunkte(new JLabel("Gewonnene Punkte: "));
 		getLblGewonnenPunkte().setForeground(Color.RED);
-		getLblGewonnenPunkte().setFont(new Font("Dialog", Font.BOLD, 30));
-		getLblGewonnenPunkte().setBounds(10, 171, 399, 124);
+		getLblGewonnenPunkte().setFont(new Font("pixelmix", Font.BOLD, 30));
+		getLblGewonnenPunkte().setBounds(10, 171, 541, 124);
 		getFrame().getContentPane().add(getLblGewonnenPunkte());
 		
 		lblNewLabel = new JLabel("");
@@ -176,6 +175,7 @@ public class FahrtAuswertung {
 
 	public void setBtnNewButton(JButton btnNewButton) {
 		this.btnNewButton = btnNewButton;
+		btnNewButton.setBorderPainted(false);
 	}
 
 }

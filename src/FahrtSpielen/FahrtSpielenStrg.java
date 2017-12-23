@@ -86,13 +86,15 @@ public class FahrtSpielenStrg implements ActionListener{
 		fahrtSpielenView.getZeiger().balken.setVisible(true);
 		fahrtSpielenView.getBalkenLbl().setVisible(true);
 		fahrtSpielenView.getBewertungLbl().setVisible(true);
-		fahrtSpielenView.getFrame().addKeyListener(new KeyAdapter() {
+		fahrtSpielenView.getFrame().addKeyListener(new KeyAdapter() 
+		{
 	         @Override
 	         public void keyPressed(KeyEvent e) {
 	            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 	            	if( versuche>=0)
 	            	{ 
-	            		int record = fahrtSpielenView.getZeiger().balken.backgroundX1;
+	            	
+	            	int record = fahrtSpielenView.getZeiger().balken.backgroundX1;
 	            	wert = wert + record;
 	            	System.out.println(wert);
 	            	speed = speed+speed;

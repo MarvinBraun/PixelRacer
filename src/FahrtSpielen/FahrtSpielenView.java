@@ -86,7 +86,7 @@ public class FahrtSpielenView {
 		getFahrenBtn().setBackground(new Color(176, 224, 230));
 		getFahrenBtn().setBorder(new LineBorder(new Color(255, 69, 0), 6));
 		getFahrenBtn().setFont(new Font("pixelmix", Font.PLAIN, 26));
-		getFahrenBtn().setBounds(305, 98, 172, 58);
+		getFahrenBtn().setBounds(305, 111, 172, 58);
 		getFrame().getContentPane().add(getFahrenBtn());
 		
 		getFrame().setVisible(true);
@@ -125,13 +125,13 @@ public class FahrtSpielenView {
 		setLblAnzahlVerbleibenderVersuche(new JLabel("Runden verbleibend: 5"));
 		getLblAnzahlVerbleibenderVersuche().setForeground(Color.RED);
 		getLblAnzahlVerbleibenderVersuche().setFont(new Font("pixelmix", Font.BOLD, 30));
-		getLblAnzahlVerbleibenderVersuche().setBounds(22, 21, 381, 33);
+		getLblAnzahlVerbleibenderVersuche().setBounds(22, 21, 505, 33);
 		getFrame().getContentPane().add(getLblAnzahlVerbleibenderVersuche());
 		
-		setLblLetzteZeit(new JLabel("Zeit: 0s"));
+		setLblLetzteZeit(new JLabel("Zeit verbleibend:"));
 		getLblLetzteZeit().setForeground(Color.RED);
-		getLblLetzteZeit().setFont(new Font("Dialog", Font.BOLD, 30));
-		getLblLetzteZeit().setBounds(22, 65, 296, 33);
+		getLblLetzteZeit().setFont(new Font("pixelmix", Font.BOLD, 30));
+		getLblLetzteZeit().setBounds(22, 65, 485, 33);
 		getFrame().getContentPane().add(getLblLetzteZeit());
 	
 		m = new MovementBackward(5);

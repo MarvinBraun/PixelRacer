@@ -224,229 +224,116 @@ public class FahrtErstellenView {
 		getFrame().getContentPane().add(m.label);
 		getFrame().setVisible(true);
 	
-
-	
 	}
-
-
-
-
 
 	public JFrame getFrame() {
 		return frame;
 	}
 
-
-
-
-
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 	}
-
-
-
-
 
 	public JButton getKartForward() {
 		return kartForward;
 	}
 
-
-
-
-
 	public void setKartForward(JButton kartForward) {
 		this.kartForward = kartForward;
 	}
-
-
-
-
 
 	public JButton getKartBackward() {
 		return kartBackward;
 	}
 
-
-
-
-
 	public void setKartBackward(JButton kartBackward) {
 		this.kartBackward = kartBackward;
 	}
-
-
-
-
 
 	public JButton getStreckeBackward() {
 		return streckeBackward;
 	}
 
-
-
-
-
 	public void setStreckeBackward(JButton streckeBackward) {
 		this.streckeBackward = streckeBackward;
 	}
-
-
-
-
 
 	public JButton getStreckeForward() {
 		return streckeForward;
 	}
 
 
-
-
-
 	public void setStreckeForward(JButton streckeForward) {
 		this.streckeForward = streckeForward;
 	}
-
-
-
-
 
 	public JButton getSpielenBtn() {
 		return spielenBtn;
 	}
 
-
-
-
-
 	public void setSpielenBtn(JButton spielenBtn) {
 		this.spielenBtn = spielenBtn;
 	}
-
-
-
-
 
 	public JButton getSchwierigkeitBtn1() {
 		return schwierigkeitBtn1;
 	}
 
-
-
-
-
 	public void setSchwierigkeitBtn1(JButton schwierigkeitBtn1) {
 		this.schwierigkeitBtn1 = schwierigkeitBtn1;
 	}
-
-
-
-
 
 	public JButton getSchwierigkeitBtn2() {
 		return schwierigkeitBtn2;
 	}
 
-
-
-
-
 	public void setSchwierigkeitBtn2(JButton schwierigkeitBtn2) {
 		this.schwierigkeitBtn2 = schwierigkeitBtn2;
 	}
-
-
-
-
 
 	public JLabel getSchwierigkeitLbl() {
 		return schwierigkeitLbl;
 	}
 
-
-
-
-
 	public void setSchwierigkeitLbl(JLabel schwierigkeitLbl) {
 		this.schwierigkeitLbl = schwierigkeitLbl;
 	}
-
-
-
-
 
 	public JLabel getMultiplayerLbl() {
 		return multiplayerLbl;
 	}
 
-
-
-
-
 	public void setMultiplayerLbl(JLabel multiplayerLbl) {
 		this.multiplayerLbl = multiplayerLbl;
 	}
-
-
-
-
 
 	public JLabel getKartBild() {
 		return kartBild;
 	}
 
-
-
-
-
 	public void setKartBild(JLabel kartBild) {
 		this.kartBild = kartBild;
 	}
-
-
-
-
 
 	public JLabel getKartName() {
 		return kartName;
 	}
 
-
-
-
-
 	public void setKartName(JLabel kartName) {
 		this.kartName = kartName;
 	}
-
-
-
-
 
 	public JLabel getStreckeName() {
 		return streckeName;
 	}
 
-
-
-
-
 	public void setStreckeName(JLabel streckeName) {
 		this.streckeName = streckeName;
 	}
 
-
-
-
-
 	public JLabel getStreckeLbl() {
 		return streckeLbl;
 	}
-
-
-
-
 
 	public void setStreckeLbl(JLabel streckeLbl) {
 		this.streckeLbl = streckeLbl;

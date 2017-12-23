@@ -1,4 +1,10 @@
+//@Author Marvin Braun
 package Fahrt;
+
+/*
+ * Klasse der Entität Fahrt.
+ * Die Klasse ist abstrakt, da sie lediglich als Supertyp fungiert und nicht instanziiert wird.
+ */
 
 public abstract class Fahrt {
 	private int sitzungsID;
