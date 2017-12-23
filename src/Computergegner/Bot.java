@@ -22,21 +22,21 @@ public class Bot {
 
 	public Bot(int streckenlänge, int geschwindigkeit, int beschleunigung, int schwierigkeit) {
 		
-		länge = streckenlänge;
+		this.länge = streckenlänge;
 		this.geschwindigkeit = geschwindigkeit;
 		this.beschleunigung = beschleunigung;
 		float schwierigkeit2 = 0;
 		
 		if(schwierigkeit==1)
-			schwierigkeit2 = (float) (0.9 +(Math.random() * 1.7)); 
+			schwierigkeit2 = (float) (0.9 +(Math.random() * 1.4)); 
 		else if(schwierigkeit==2)
 			schwierigkeit2 = (float) (0.7 +(Math.random() * 1.3)); 
-		else	if(schwierigkeit==1)
+		else	if(schwierigkeit==3)
 			schwierigkeit2 = (float) (0.5 +(Math.random() * 1.2)); 
 					
 		
 
-		zeit = (int) (((länge/geschwindigkeit)+(geschwindigkeit/beschleunigung))*schwierigkeit2);
+		zeit = (int) ((int) (((länge/geschwindigkeit)+(geschwindigkeit/beschleunigung))*schwierigkeit2)*0.4);
 		System.out.println("Gefahrene Zeit des Bots:"+zeit);
 	}
 

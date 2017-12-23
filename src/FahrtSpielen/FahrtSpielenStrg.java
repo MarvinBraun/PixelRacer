@@ -19,7 +19,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	
 	private FahrtSpielenView fahrtSpielenView;
 
-	private int versuche = 5;
+	private int versuche = 10;
 
 	private BufferedImage kartBild;
 	private BufferedImage streckenBild;
@@ -57,6 +57,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 		fahrtSpielenView = new FahrtSpielenView(kartBild,streckenBild);
 		fahrtSpielenView.getFahrenBtn().addActionListener(this);
+		fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Anzahl verbleibender Runden: 10");
 		
 		//KeyAdapter
 		fahrtSpielenView.getZeiger().balken.setVisible(false);
@@ -94,23 +95,30 @@ public class FahrtSpielenStrg implements ActionListener{
 	            	if( versuche>=0)
 	            	{ 
 	            	
-	            	int record = fahrtSpielenView.getZeiger().balken.backgroundX1;
-	            	wert = wert + record;
+	          	int record = fahrtSpielenView.getZeiger().balken.backgroundX1;
+	            //	wert = wert + record;
 	            	System.out.println(wert);
+	            	if(speed<6)
 	            	speed = speed+speed;
 	            	fahrtSpielenView.getZeiger().setSpeed(speed);
-	            	System.out.println("Hi from KeyListener");
 	            	versuche--;
 	            	String a = ""+versuche;
 	            	fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Runden verbleibend: "+a);
-	               	String b = ""+sf.getZeit();
-	               	fahrtSpielenView.getLblLetzteZeit().setText("Zeit: "+b+"s");
+	               
+	            	String b = ""+sf.getZeit();
 	               	
-	               	if(200<record&&record<500)
+	               	if(350<record&&record<450)
 	               	{
+	               		wert = wert+1;
 	               		fahrtSpielenView.getBewertungLbl().setText("Super");
 	               	
 	               	}
+	               	else
+	               	{
+	               		wert = wert+2;
+	               		fahrtSpielenView.getBewertungLbl().setText("Mittelmaß");
+	               	}
+	               	
 	               	
 	               	
 	            	}
@@ -118,7 +126,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	            	
 	            	if(versuche == 0)
 	            	{
-	            		float berechneLeistung = (float) wert / 1750;
+	            		float berechneLeistung = (float) wert / 10;
 	            		System.out.println("Alter Wert: "+berechneLeistung);
 	            		if(berechneLeistung<1)
 	            		{
@@ -139,10 +147,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	        			simuliereBotZeiten();
 	        			FahrtAuswertungStrg strg = new FahrtAuswertungStrg(sf,streckenBild);
 	        			fahrtSpielenView.getFrame().dispose();
-	        		//	FahrtAuswertung fahrtAuswertung = new FahrtAuswertung(sf.getZeit(),sf.getRang());
-	        			
-	        	
-	        			
+	
 	            	}
 	            }
 	         }
