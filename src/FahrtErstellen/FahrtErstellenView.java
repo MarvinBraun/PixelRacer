@@ -46,6 +46,7 @@ public class FahrtErstellenView {
 	private JLabel lblNewLabel;
 	private JLabel streckeLbl;
 	private JLabel multiplayerLbl;
+	private 	JButton backBtn;
 	
 	
 	
@@ -95,7 +96,7 @@ public class FahrtErstellenView {
 		
 		setKartBackward(new JButton(""));
 		getKartBackward().setFocusable(false);
-		getKartBackward().setBorderPainted(true);
+		getKartBackward().setBorderPainted(false);
 		getKartBackward().setContentAreaFilled(false);
 		getKartBackward().setOpaque(false);
 		getKartBackward().setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backward.png")));
@@ -133,6 +134,14 @@ public class FahrtErstellenView {
 		getSchwierigkeitBtn1().setBounds(27, 489, 60, 60);
 		getFrame().getContentPane().add(getSchwierigkeitBtn1());
 		
+		backBtn = new JButton("");
+		backBtn.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backButton2.png")));
+		backBtn.setBounds(27, 16, 89, 50);
+		backBtn.setOpaque(false);
+		backBtn.setBorderPainted(false);
+		backBtn.setContentAreaFilled(false);
+		frame.getContentPane().add(backBtn);
+		
 		setSpielenBtn(new JButton("Spielen!"));
 		getSpielenBtn().setBorderPainted(false);
 		getSpielenBtn().setOpaque(false);
@@ -145,14 +154,14 @@ public class FahrtErstellenView {
 		
 		setKartForward(new JButton(""));
 		getKartForward().setFocusable(false);
-		getKartForward().setBorderPainted(true);
+		getKartForward().setBorderPainted(false);
 		getKartForward().setContentAreaFilled(false);
 		getKartForward().setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
 		getKartForward().setBounds(712, 115, 60, 60);
 		getFrame().getContentPane().add(getKartForward());
 		
 		setStreckeLbl(new JLabel(""));
-		getStreckeLbl().setBounds(211, 285, 300, 200);
+		getStreckeLbl().setBounds(228, 284, 300, 200);
 		getFrame().getContentPane().add(getStreckeLbl());
 		
 		waehleKart = new JLabel("Dein Kart:");
@@ -180,7 +189,7 @@ public class FahrtErstellenView {
 		
 		setKartBild(new JLabel(""));
 		getKartBild().setIcon(null);
-		getKartBild().setBounds(135, 72, 545, 122);
+		getKartBild().setBounds(141, 72, 545, 122);
 		getFrame().getContentPane().add(getKartBild());
 		
 		lblWhleDeineStrecke = new JLabel("Deine Strecke:");
@@ -226,6 +235,22 @@ public class FahrtErstellenView {
 	
 	}
 
+	public JButton getBackBtn() {
+		return backBtn;
+	}
+
+
+
+
+
+	public void setBackBtn(JButton backBtn) {
+		this.backBtn = backBtn;
+	}
+
+
+
+
+
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -240,6 +265,7 @@ public class FahrtErstellenView {
 
 	public void setKartForward(JButton kartForward) {
 		this.kartForward = kartForward;
+		kartForward.setBorder(null);
 	}
 
 	public JButton getKartBackward() {
@@ -248,6 +274,7 @@ public class FahrtErstellenView {
 
 	public void setKartBackward(JButton kartBackward) {
 		this.kartBackward = kartBackward;
+		kartBackward.setBorder(null);
 	}
 
 	public JButton getStreckeBackward() {
@@ -338,5 +365,4 @@ public class FahrtErstellenView {
 	public void setStreckeLbl(JLabel streckeLbl) {
 		this.streckeLbl = streckeLbl;
 	}
-
 }

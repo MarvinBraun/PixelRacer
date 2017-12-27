@@ -49,15 +49,21 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 	private MultiplayerFahrt mf;
 	
-
-	//Konstruktor
-	@SuppressWarnings("unchecked")
+	/* 
+	 * Konstruktor: public FahrtBeitretenStrg()
+	 * das Objekt "view" der Klasse FahrtBeitretenView wird initialisiert. Anschließend werden die Karts über die Kartverwaltung geladen.
+	 * Damit der ListIterator funktioniert wird hier wieder die angepasste Version"myIterator" verwendet. Anschleßend wird eine MultiplayerFahrt erzeugt.
+	 */
+	
 	public FahrtBeitretenStrg() {
 		view = new FahrtBeitretenView();
 	
-		//Initialisieren der Karts und der Buttons
+		//Initialisieren der Karts, Strecken und der Buttons
 		karts = new Kartverwaltung();
 		kartliste =karts.gibKart();
+		
+		verwaltungStrecke = new Streckenverwaltung();
+		Streckenliste = verwaltungStrecke.gibStrecke();
 	
 		k = kartliste.get(0);
 		itKart = new MyIteratorKart(kartliste.listIterator());
@@ -70,8 +76,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 		
 		SwingUtilities.updateComponentTreeUI(view.getFrame());
 		
-		verwaltungStrecke = new Streckenverwaltung();
-		Streckenliste = verwaltungStrecke.gibStrecke();
+	
 		
 	
 
@@ -86,7 +91,13 @@ public class FahrtBeitretenStrg implements ActionListener {
 
 	}
 	
-	//Methode um vorwärts durch die Karts zu scrollen
+
+	/* 
+	 * Methode:	public void ladeKarts()
+	 * Die Methode prüft ob der ListIterator itKart ein weiteres Element hat. Wenn ja, dann wird die Grafik des neuen Element gesetzt und auch der Kartname aktualisiert.
+	 * Keine Parameter vorhanden.
+	 * 
+	 */
 	public void ladeKarts()
 	{
 		if((k=itKart.next())!=null)
@@ -97,7 +108,13 @@ public class FahrtBeitretenStrg implements ActionListener {
 			view.getKartName().setText(k.getKartname());
 		}
 	}
-	//Methode um rückwärts durch die Karts zu scrollen
+	
+	/* 
+	 * Methode:	public void kartRückwärts()
+	 * Die Methode prüft ob der ListIterator itKart ein Element n-1 hat. Wenn ja, dann wird die Grafik des neuen Element gesetzt und auch der Kartname aktualisiert.
+	 * Keine Parameter vorhanden.
+	 */
+	
 	public void kartRückwärts()
 	{
 		
@@ -111,6 +128,13 @@ public class FahrtBeitretenStrg implements ActionListener {
 		}
 	
 	}
+	
+	/* 
+	 * Methode:	public Strecke gibStrecke(LinkedList<Strecke> liste,String strecke)
+	 * Die Methode bekommt als Parameter eine LinkedList<Strecke> und einen Streckennamen (String) übergeben.
+	 * Anschließend wird über den Namen geprüft ob die Strecke vorhanden ist. Wenn ja wird das Objekt s der Klasse Strecke entsprechend der gefundenen Strecke initialisiert.
+	 * Das Objekt s wird am Ende zurückgegeben.
+	 */
 	
 	public Strecke gibStrecke(LinkedList<Strecke> liste,String strecke)
 	{
@@ -135,10 +159,11 @@ public class FahrtBeitretenStrg implements ActionListener {
 		
 	}
 	
-	/* Sucht die MultiplayerID aus der Fahrtenliste 
-	 * wenn das Rennen gefunden wird, wird die nächsthöhere verfügbare ID ermittelt und dann eine neue Fahrt mit dem Rang 0 und der Zeit 0 eingetragen. 
-	 * 
-	 * Falls die ID nicht gefunden wird, wird ein JOptionPane erstellt mit dem Hinweis, eine gültige ID einzugeben.
+	/* Methode: public void multiplayerBeitreten()
+	 * Sucht die MultiplayerID aus der Fahrtenliste mithilfe eines Iterators. Wenn die MultiplayerID existiert, werden dem Objekt "mf" der Klasse MultiplayerFahrt die
+	 * entsprechenden Werte zugewiesen. Anschließend wird die nächsthöhere SitungsID (PK der Relation MultiplayerFahrt) ermittelt und dem Objekt mf zugewiesen.
+	 * Anschließend wird ein Objekt der Klasse MultiplayerFahrtSpielenStrg erzeugt und die entsprechenden Objekte übergeben.
+	 * Falls die ID nicht gefunden wird, wird ein JOptionPane erstellt mit dem Hinweis, eine gültige ID einzugeben. 
 	 */
 	
 	public void multiplayerBeitreten()

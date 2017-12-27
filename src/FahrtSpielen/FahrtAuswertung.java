@@ -175,7 +175,6 @@ public class FahrtAuswertung {
 
 	public void setBtnNewButton(JButton btnNewButton) {
 		this.btnNewButton = btnNewButton;
-		btnNewButton.setBorderPainted(false);
 	}
 
 }

@@ -194,8 +194,6 @@ public class FahrtSpielenView {
 		this.lblAnzahlVerbleibenderVersuche = lblAnzahlVerbleibenderVersuche;
 	}
 
-	public JLabel getLblLetzteZeit() {
-	}
 
 	public void setLblLetzteZeit(JLabel lblLetzteZeit) {
 	}

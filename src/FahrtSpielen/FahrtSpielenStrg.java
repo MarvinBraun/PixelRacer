@@ -30,9 +30,15 @@ public class FahrtSpielenStrg implements ActionListener{
 	private Strecke strecke;
 	private int schwierigkeit;
 	private int speed = 1;
-	private int wert =0;
+	private int spielstand =0;
 	
-	//Singleplayerfahrt Konstruktor
+	/* 
+	 * Konstruktor: public FahrtSpielenStrg(SingleplayerFahrt sfahrt, Kart k, Strecke s, int schwierigkeit)
+	 * Eine Neue FahrtSpielenStrg wird erzeugt. Dabei wird ein Objekt der Klasse SingleplayerFahrt, ein Objekt der Klasse Kart, 
+	 * ein Objekt der Klasse Strecke und eine int-Variable (Schwierigkeit) übergeben. Im Konstruktor werden dann die Zeiten der Bots über eine For-Schleife ermittelt und in 
+	 * ein int-Array eingetragen. Anschließend wird dieses Array nach den Zeiten sortiert.
+	 * Der Konstruktor erzeugt außerdem ein Objekt der Klasse FahrtSpielenView und aktualisiert die entsprechenden Felder.
+	 */
 	
 	public FahrtSpielenStrg(SingleplayerFahrt sfahrt, Kart k, Strecke s, int schwierigkeit)
 	{
@@ -57,28 +63,26 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 		fahrtSpielenView = new FahrtSpielenView(kartBild,streckenBild);
 		fahrtSpielenView.getFahrenBtn().addActionListener(this);
-		fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Anzahl verbleibender Runden: 10");
+		fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Verbleibende Runden: 10");
 		
-		//KeyAdapter
+		
 		fahrtSpielenView.getZeiger().balken.setVisible(false);
 		fahrtSpielenView.getFrame().setVisible(true);
 		fahrtSpielenView.getFrame().setFocusable(true);
+		//KeyAdapter
 		fahrtSpielenView.getFrame().setFocusTraversalKeysEnabled(false);
-		
-		
-		System.out.println("Registriert");
-	
 	}
 
-	//Singleplayerfahrt Konstruktor
-	
-	public FahrtSpielenStrg()
-	{
-		fahrtSpielenView = new FahrtSpielenView(kartBild,streckenBild);
-		fahrtSpielenView.getFahrenBtn().addActionListener(this);
-		System.out.println("Registriert");
-	}
-	
+	/* Methode: public void fahren()
+	 * Sobald auf den Fahren-Button geklickt wird, wird der Balken, die Bewertung und der Zeiger sichtbar gemacht.
+	 * Der Fahren-Button wird entsprechend ausgeblendet. Ein Key-Listener wird über die @Override Annotation eingefügt und ein entsprechendes KeyEvent für die Leertaste gesetzt.
+	 * Beim drücken auf die Leertaste wird der X-Wert des Zeigers ausgelesen. 
+	 * Bei jedem Drücken der Leertaste wird der "Speed" erhöht (max. bis 6). Die Textfelder werden bei jedem Drücken ebenfalls aktualisiert.
+	 * Wenn der X-Wert des Zeigers zwischen 300 und 450 liegt, dann wird auf die Variable "spielstand" +1 addiert, andernfalls wird +2 auf die Variable spielstand addiert. Die Variable ist im Nachgang für die Bewertung der Leistung des Spielers zuständig,
+	 * da sie durch die Anzahl der Runden geteilt wird (10). Abschließend (Versuche == 0) wird der dort errechnete Wert mit der errechneten Zeit multipliziert. Über die Methode "setzeRang()" wird der Rang des Spielers
+	 * ermittelt. Abschließend wird ein Objet der Klasse FahrtAuswertungStrg aufgerufen und das JFrame der Klasse fahrtSpielenView geschlossen.
+	 * 
+	 */
 	
 	public void fahren()
 	{
@@ -94,10 +98,9 @@ public class FahrtSpielenStrg implements ActionListener{
 	            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 	            	if( versuche>=0)
 	            	{ 
-	            	
-	          	int record = fahrtSpielenView.getZeiger().balken.backgroundX1;
-	            //	wert = wert + record;
-	            	System.out.println(wert);
+	            		
+	            	int record = fahrtSpielenView.getZeiger().balken.backgroundX1;
+	            	System.out.println(spielstand);
 	            	if(speed<6)
 	            	speed = speed+speed;
 	            	fahrtSpielenView.getZeiger().setSpeed(speed);
@@ -107,26 +110,23 @@ public class FahrtSpielenStrg implements ActionListener{
 	               
 	            	String b = ""+sf.getZeit();
 	               	
-	               	if(350<record&&record<450)
+	               	if(300<record&&record<450)
 	               	{
-	               		wert = wert+1;
+	               		spielstand = spielstand+1;
 	               		fahrtSpielenView.getBewertungLbl().setText("Super");
 	               	
 	               	}
 	               	else
 	               	{
-	               		wert = wert+2;
-	               		fahrtSpielenView.getBewertungLbl().setText("Mittelmaß");
+	               		spielstand = spielstand+2;
+	               		fahrtSpielenView.getBewertungLbl().setText("Das geht besser!");
 	               	}
-	               	
-	               	
-	               	
 	            	}
 	            	
 	            	
 	            	if(versuche == 0)
 	            	{
-	            		float berechneLeistung = (float) wert / 10;
+	            		float berechneLeistung = (float) spielstand / 10;
 	            		System.out.println("Alter Wert: "+berechneLeistung);
 	            		if(berechneLeistung<1)
 	            		{
@@ -157,12 +157,15 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 	}
 	
-	public void simuliereBotZeiten()
+	/* Methode: public void public void setzeRang()
+	 * Die Methode ermittelt den Rang des Spielers in einer For-Schleife. 
+	 * Beim Erfüllen der Bedingung if(sf.getZeit()<=zeiten[i]) wird der Rang entsprechend gesetzt.
+	 * "sf.setRang(i+1);" der Rang ist immer +1 höher als der Index, da dieser bei 0 beginnt.
+	 * Über ein "break;" wird die Schleife an der entsprechenden Stelle beendet.
+	 */
+	
+	public void setzeRang()
 	{	
-		int geschwindigkeit = kart.getMaxkmh();
-		int beschleunigung = kart.getBeschleunigung();
-		int länge = strecke.getLaenge();
-		int schwierigkeit = this.schwierigkeit;
 		
 		for(int i = 0; i<zeiten.length;i++)
 		{
@@ -181,7 +184,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	}
 	public static void main(String[] args)
 	{
-		FahrtSpielenStrg strg = new FahrtSpielenStrg();
+		
 	}
 
 

@@ -32,6 +32,7 @@ import myIterator.MyIteratorKart;
 import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
 import Kart.*;
+import ModusAuswählen.ModusauswaehlenStrg;
 import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
 import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
 public class FahrtErstellenStrg implements ActionListener {
@@ -63,11 +64,8 @@ public class FahrtErstellenStrg implements ActionListener {
 	private Strecke s;
 	private Kunde kunde;
 	private int schwierigkeit=1;
-	
-	
-
-	
 	int counter=-1;
+	
 	/* 
 	 * Konstruktor: public FahrtErstellenStrg (int singleMultiplayer)
 	 * Eine Neue FahrtErstellenStrg wird erzeugt. Dabei wird die Variable int "singleMultiplayer" verwendet um zu entscheiden ob es sich um eine 
@@ -105,6 +103,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		view.getStreckeBackward().addActionListener(this);
 		view.getStreckeForward().addActionListener(this);
 		view.getSpielenBtn().addActionListener(this);
+		view.getBackBtn().addActionListener(this);
 	
 
 		//Initialisieren des Schwierigkeitsgrades
@@ -421,6 +420,11 @@ public class FahrtErstellenStrg implements ActionListener {
 		if(e.getSource()==view.getSpielenBtn())
 		{
 		starteSpiel();
+		}
+		if(e.getSource()==view.getBackBtn())
+		{
+			ModusauswaehlenStrg strg = new ModusauswaehlenStrg();
+			view.getFrame().dispose();
 		}
 		
 		if(e.getSource()==view.getStreckeBackward())
