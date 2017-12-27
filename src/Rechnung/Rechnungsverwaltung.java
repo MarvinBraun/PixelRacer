@@ -1,3 +1,5 @@
+//Autor Marvin Braun, Daniel Zeller
+
 package Rechnung;
 
 import java.sql.ResultSet;
@@ -8,6 +10,7 @@ import java.util.Date;
 import java.util.LinkedList;
 
 import Datenbankverwaltung.Datenbankschnittstelle;
+import Fahrt.SingleplayerFahrt;
 import Kart.Kart;
 import Nutzer.Nutzerverwaltung;
 import Strecke.Strecke;
@@ -15,18 +18,16 @@ import Strecke.Strecke;
 public class Rechnungsverwaltung {
 
 
-	private LinkedList<Rechnung> rechnungenKart = new LinkedList<Rechnung>();
-	private LinkedList<Rechnung> rechnungenStrecke= new LinkedList<Rechnung>();
-	private static final DateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
-	static Date today = new Date();
+	private static LinkedList<Rechnung> rechnungenKart = new LinkedList<Rechnung>();
+	private static LinkedList<Rechnung> rechnungenStrecke= new LinkedList<Rechnung>();
+	private static Date today = new Date();
 	
-	public static void sendeKartRechnung()
+	public static void sendeKartRechnung(Kart k)
 	{
 		Rechnung r = new Rechnung();
-	//	r.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
-		r.setBenutzername("Marv");
+		r.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
 		r.setBezahlmethode("Paypal");
-		r.setKartname("FireBird");
+		r.setKartname(k.getKartname());
 		r.setRechnungsbetrag(5);
 		r.setRechnungsnummer(gibNeueRechnungsNummerKart());
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yy");
@@ -36,8 +37,9 @@ public class Rechnungsverwaltung {
 		
 		String sql = "insert into rechnungkart values("+r.getRechnungsnummer()+",'"+r.getBenutzername()+"',"+r.getRechnungsbetrag()+",'"+r.getRechnungsdatum()+"','"+r.getBezahlmethode()+"','"+r.getKartname()+"')";
 		Datenbankschnittstelle.executeUpdate(sql);
+		Datenbankschnittstelle.closeConnections();
 		
-		
+		System.out.println("Erfolg");
 	}
 	
 	public static int gibNeueRechnungsNummerKart()
@@ -63,6 +65,8 @@ public class Rechnungsverwaltung {
 		Datenbankschnittstelle.closeConnections();
 		return id;
 	}
+	
+
 	
 	public static int gibNeueRechnungsNummerStrecke()
 	{
@@ -91,12 +95,98 @@ public class Rechnungsverwaltung {
 	
 	public static void sendeStreckenRechnung(Strecke s)
 	{
+		Rechnung r = new Rechnung();
+	r.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
+			r.setBezahlmethode("Paypal");
+			r.setKartname(s.getStreckenname());
+			r.setRechnungsbetrag(5);
+			r.setRechnungsnummer(gibNeueRechnungsNummerStrecke());
+			SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yy");
+			String date = DATE_FORMAT.format(today);
+	        System.out.println("Today in dd/MM/yy pattern : " + date);
+	        r.setRechnungsdatum(date);
+			
+			String sql = "insert into rechnungkart values("+r.getRechnungsnummer()+",'"+r.getBenutzername()+"',"+r.getRechnungsbetrag()+",'"+r.getRechnungsdatum()+"','"+r.getBezahlmethode()+"','"+r.getKartname()+"')";
+			Datenbankschnittstelle.executeUpdate(sql);
+			Datenbankschnittstelle.closeConnections();
+			
+			System.out.println("Erfolg");
+	}
+	
+	public static LinkedList<Rechnung> gibKartRechnungenfuerBenutzer()
+	{
+		Rechnung r = null;
 		
+		
+		String benutzername = Nutzerverwaltung.getangKunde().getnutzername();
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from rechnungkart where benutzername='"+benutzername+"'");
+		try {
+			while(rs.next())
+			{
+				r = new Rechnung();
+				r.setKartname(rs.getString("Kartname"));
+				r.setBezahlmethode(rs.getString("Bezahlmethode"));
+				r.setRechnungsbetrag(rs.getInt("Rechnungsbetrag"));
+				r.setRechnungsnummer(rs.getInt("Rechnungsnummer"));
+				String datum = rs.getDate("Rechnungsdatum").toString();
+				r.setRechnungsdatum(datum);
+				
+				rechnungenKart.add(r);
+			}
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Datenbankschnittstelle.closeConnections();
+		return rechnungenKart;
+	}
+	
+	public static LinkedList<Rechnung> gibStreckenRechnungenfuerBenutzer()
+	{
+
+		Rechnung r = null;
+		String benutzername = Nutzerverwaltung.getangKunde().getnutzername();
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from rechnungstrecke where benutzername='"+benutzername+"'");
+		try {
+			while(rs.next())
+			{
+				r = new Rechnung();
+				r.setStreckenname(rs.getString("streckenname"));
+				r.setBezahlmethode(rs.getString("Bezahlmethode"));
+				r.setRechnungsbetrag(rs.getInt("Rechnungsbetrag"));
+				r.setRechnungsnummer(rs.getInt("Rechnungsnummer"));
+				String datum = rs.getDate("Rechnungsdatum").toString();
+				r.setRechnungsdatum(datum);
+				
+				rechnungenStrecke.add(r);
+			}
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Datenbankschnittstelle.closeConnections();
+		return rechnungenKart;
 	}
 	
 	public static void main(String[] args)
 	{
-		sendeKartRechnung();
+		gibKartRechnungenfuerBenutzer();
+		
+		for(int i = 0; i<rechnungenKart.size();i++)
+		{
+			System.out.println("Nr: "+rechnungenKart.get(i).getRechnungsnummer());
+		}
+		
+		gibStreckenRechnungenfuerBenutzer();
+		
+		for(int i = 0; i<rechnungenStrecke.size();i++)
+		{
+			System.out.println("2. Nr: "+rechnungenStrecke.get(i).getRechnungsnummer());
+		}
 	
 	}
 	
