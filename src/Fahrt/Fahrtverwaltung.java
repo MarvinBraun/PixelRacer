@@ -380,7 +380,6 @@ public class Fahrtverwaltung {
 	public static void main(String[] args)
 	{
 		Fahrtverwaltung v = new Fahrtverwaltung();
-		LinkedList<MultiplayerFahrt> fahrten = v.gibMultiplayerFahrtenNachMultiplayerID(10001);
-		System.out.println("Gefahrene Fahrten:"+fahrten.size());
+		System.out.println(v.gibNeueID(1));
 	}
 }

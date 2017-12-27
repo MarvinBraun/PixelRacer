@@ -144,7 +144,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	        			sf.setZeit(zeit);
 	        			versuche--;
 	        			
-	        			simuliereBotZeiten();
+	        		setzeRang();
 	        			FahrtAuswertungStrg strg = new FahrtAuswertungStrg(sf,streckenBild);
 	        			fahrtSpielenView.getFrame().dispose();
 	
