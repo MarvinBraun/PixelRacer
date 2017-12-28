@@ -1,5 +1,4 @@
 package FahrtErstellen;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -35,6 +34,12 @@ import Kart.*;
 import ModusAuswählen.ModusauswaehlenStrg;
 import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
 import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
+
+/**
+ * Die Klasse FahrtErstellenStrg steuert das Erstellen einer Fahrt. Sie verwaltet dabei die grafische Benutzeroberfläche (FahrtErstellenView).
+ * @author Marvin Braun
+ *
+ */
 public class FahrtErstellenStrg implements ActionListener {
 	
 	//Objekte der Klasse

@@ -1,4 +1,5 @@
-//@Author Marvin Braun
+
+
 package Fahrt;
 
 import java.sql.ResultSet;
@@ -7,10 +8,10 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import Datenbankverwaltung.Datenbankschnittstelle;
 import Nutzer.Nutzerverwaltung;
-
-/*
+/**
  * Die Klasse Fahrtverwaltung verarbeitet Objekte der Klassen SingleplayerFahrt und MultiplayerFahrt.
  * Gespeichert werden die Fahrten in einer LinkedList.
+ * @author Marvin Braun
  */
 
 public class Fahrtverwaltung {
@@ -40,13 +41,9 @@ public class Fahrtverwaltung {
 
 	
 	
-	/* 
-	 * Methode: public LinkedList<SingleplayerFahrt> gibSingleplayerFahrten()
-	 * Über die Datenbankschnittstelle werden alle SingleplayerFahrten über ein ResultSet ausgelesen.
-	 * Dabei werden die Fahrten anschließend in der LinkedList der Fahrtverwaltung gespeichert.
-	 * Im Anschluss wird noch die Methode closeConnections aufgerufen, damit die Verbindung und das ResultSet entsprechend geschlossen werden.
-	 * Keine Parameter vorhanden.
-	 * Die LinkedList wird am Ende zurückgegeben.
+	/**
+	 * Liest alle SingleplayerFahrten aus der Datenbank aus und speichert sie in einer LinkedList.
+	 * @return LinkedList mit allen SingleplayerFahrten.
 	 */
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrten()
 	{
@@ -73,15 +70,13 @@ public class Fahrtverwaltung {
 		Datenbankschnittstelle.closeConnections();
 		return singleplayerFahrten;
 	}
-	/* 
-	 * Methode: public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzerUndStrecke(String benutzername, String streckenname)
-	 * Über die Datenbankschnittstelle werden alle SingleplayerFahrten für einen bestimmten Benutzer zu einer bestimmten Strecke ausgelesen.
-	 * Die Parameter der Methode übergeben den Benutzernamen und den Streckennamen. Der entsprechende SQL-Befehl wird anschließend erstellt und über Datenbankschnittstelle.executeQuery ausgeführt.
-	 * Dabei werden die Fahrten anschließend in der LinkedList der Fahrtverwaltung gespeichert.
-	 * Im Anschluss wird noch die Methode closeConnections aufgerufen, damit die Verbindung und das ResultSet entsprechend geschlossen werden.
-	 * Die LinkedList wird am Ende zurückgegeben.
+
+	/**
+	 * Liest alle SingleplayerFahrten aus der Datenbank, für einen bestimmten Nutzer und eine bestimmte Strecke, aus und speichert sie in einer LinkedList.
+	 * @param benutzername Der Benutzername des Spielers
+	 * @param streckenname Der Streckenname der Strecke
+	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer zu einer Strecke.
 	 */
-	
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzerUndStrecke(String benutzername, String streckenname)
 	{
 		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and streckenname = '"+streckenname+"'");
@@ -110,13 +105,10 @@ public class Fahrtverwaltung {
 	}
 	
 	
-	/*
-	 *  Methode: public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzer(String benutzername)
-	 * Über die Datenbankschnittstelle werden alle SingleplayerFahrten für einen bestimmten Benutzer (alle Strecken) ausgelesen.
-	 * Die Parameter der Methode übergeben den Benutzernamen. Der entsprechende SQL-Befehl wird anschließend erstellt und über Datenbankschnittstelle.executeQuery ausgeführt.
-	 * Dabei werden die Fahrten anschließend in der LinkedList der Fahrtverwaltung gespeichert.
-	 * Im Anschluss wird noch die Methode closeConnections aufgerufen, damit die Verbindung und das ResultSet entsprechend geschlossen werden.
-	 * Die LinkedList wird am Ende zurückgegeben.
+	/**
+	 * * Liest alle SingleplayerFahrten aus der Datenbank, für einen bestimmten Nutzer, aus und speichert sie in einer LinkedList.
+	 * @param benutzername Der Benutzername des Spielers
+	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer.
 	 */
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzer(String benutzername)
 	{
@@ -145,20 +137,19 @@ public class Fahrtverwaltung {
 		return singleplayerFahrten;
 	}
 	
-	/*
-	 *  Methode: public int gibNeueID(int a)
-	 * Über die Datenbankschnittstelle wird die Anzahl an vorhandenen SingleplayerFahrten ausgelesen. Auf den Int-Wert wird am Ende +1 addiert.
-	 * Über den Parameter (int a) wird entschieden ob die Relation "Multiplayer_Fahrt" oder die Relation "
-	 * Die zu verwendende SitzungsID wird im Anschluss zurückgegeben.
+	/**
+	 * Gibt eine zu verwendende SitzungsID aus, mit der eine Fahrt erstellt werden kann.
+	 *@param singleMulti Über den Parameter wird entschieden ob die Relation "Multiplayer_Fahrt" oder die Relation "Singleplayer_Fahrt" angesprochen wird.
+	 *@return Eine ID, welche genutzt werden kann um eine Single- oder MultiplayerFahrt zu erstellen.
 	 */
-	public int gibNeueID(int a)
+	public int gibNeueID(int singleMulti)
 	{
 		int id=0;
 		
 		ResultSet rs = null;
-		if(a==1)
+		if(singleMulti==1)
 		rs = Datenbankschnittstelle.executeQuery("select max(sitzungsid) from Multiplayer_Fahrt");
-		if(a==2)
+		if(singleMulti==2)
 		rs = Datenbankschnittstelle.executeQuery("select max(sitzungsid) from Singleplayer_Fahrt");
 		try {
 			while(rs.next())
@@ -179,14 +170,10 @@ public class Fahrtverwaltung {
 		
 	}
 
-	/*
-	 *  Methode: public int gibNeueMultiplayerID()
-	 * Über die Datenbankschnittstelle wird die Anzahl an vorhandenen MultiplayerFahrten ausgelesen. Auf den Int-Wert wird am Ende +1 addiert.
-	 * Auf die Anzahl der MultiplayerID's wird dann +1 addiert.
-	 * Die zu verwendende MultiplayerID wird im Anschluss zurückgegeben.
+	/**
+	 * Gibt eine zu verwendende MultiplayerID aus.
+	 *@return Eine MultiplayerID, welche genutzt werden kann um mit Freunden zu spielen.
 	 */
-	
-	
 	public int gibNeueMultiplayerID()
 	{
 		int id = 0;
@@ -210,13 +197,11 @@ public class Fahrtverwaltung {
 		
 	}
 	
-	/*
-	 * Methode: public void sendeMultiplayerFahrt(MultiplayerFahrt mf)
-	 * Die MultiplayerFahrt wird über die Datenbankschnittstelle an die Datenbank gesendet.
-	 * Alle Verbindungen werden im Anschluss geschlossen.
+
+	/**
+	 * Sendet eine MultiplayerFahrt an die Datenbank.
+	 * @param mf Ein Objekt der Klasse MultiplayerFahrt
 	 */
-	
-	
 	public void sendeMultiplayerFahrt(MultiplayerFahrt mf)
 	{
 			mf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
@@ -226,10 +211,9 @@ public class Fahrtverwaltung {
 			Datenbankschnittstelle.closeConnections();
 	}
 	
-	/*
-	 * Methode: sendeSingleplayerFahrt(SingleplayerFahrt sf)
-	 * Die SingleplayerFahrt wird über die Datenbankschnittstelle an die Datenbank gesendet.
-	 * Alle Verbindungen werden im Anschluss geschlossen.
+	/**
+	 * Sendet eine SingleplayerFahrt an die Datenbank.
+	 * @param sf Ein Objekt der Klasse SingleplayerFahrt
 	 */
 	
 	public void sendeSingleplayerFahrt(SingleplayerFahrt sf)
@@ -241,13 +225,9 @@ public class Fahrtverwaltung {
 			Datenbankschnittstelle.closeConnections();
 	}
 	
-	/* 
-	 * Methode: public LinkedList<MultiplayerFahrt> gibMultiplayerFahrten()
-	 * Über die Datenbankschnittstelle werden alle MultiplayerFahrten über ein ResultSet ausgelesen.
-	 * Dabei werden die Fahrten anschließend in der LinkedList der Fahrtverwaltung gespeichert.
-	 * Im Anschluss wird noch die Methode closeConnections aufgerufen, damit die Verbindung und das ResultSet entsprechend geschlossen werden.
-	 * Keine Parameter vorhanden.
-	 * Die LinkedList wird am Ende zurückgegeben.
+	/**
+	 * Liest alle MultiplayerFahrten aus der Datenbank aus und speichert diese in einer LinkedList.
+	 * @return Die LinkedList wird am Ende zurückgegeben.
 	 */
 	
 	public LinkedList<MultiplayerFahrt> gibMultiplayerFahrten()
@@ -285,12 +265,10 @@ public class Fahrtverwaltung {
 		}
 }
 	
-	/* 
-	 * Methode:	public LinkedList<MultiplayerFahrt> gibMultiplayerFahrtenNachZeit(String name)
-	 * Über die Datenbankschnittstelle werden alle MultiplayerFahrten einer bestimmten MultiplayerID über ein ResultSet ausgelesen.
-	 * Dabei werden die Fahrten anschließend in der LinkedList der Fahrtverwaltung gespeichert.
-	 * Im Anschluss wird noch die Methode closeConnections aufgerufen, damit die Verbindung und das ResultSet entsprechend geschlossen werden.
-	 * Die LinkedList wird am Ende zurückgegeben.
+	/**
+	 * Liest alle MultiplayerFahrten für eine bestimmte MultiplayerID aus und ordnet diese nach der Zeit.
+	 * @param id MultiplayerID
+	 * @return LinkedList mit MultiplayerFahrten zu einer ID.
 	 */
 		public LinkedList<MultiplayerFahrt> gibMultiplayerFahrtenNachZeit(String id)
 		{
@@ -329,14 +307,11 @@ public class Fahrtverwaltung {
 	}
 }
 		
-		/* 
-		 * Methode:	public LinkedList<MultiplayerFahrt> gibMultiplayerFahrtenNachZeit(String name)
-		 * Über die Datenbankschnittstelle werden alle MultiplayerFahrten einer bestimmten MultiplayerID über ein ResultSet ausgelesen.
-		 * Dabei werden die Fahrten anschließend in der LinkedList der Fahrtverwaltung gespeichert.
-		 * Im Anschluss wird noch die Methode closeConnections aufgerufen, damit die Verbindung und das ResultSet entsprechend geschlossen werden.
-		 * Die LinkedList wird am Ende zurückgegeben.
+		/**
+		 * Liest alle MultiplayerFahrten für eine bestimmte MultiplayerID aus und ordnet diese nach der Zeit.
+		 * @param i MultiplayerID
+		 * @return LinkedList mit MultiplayerFahrten zu einer ID.
 		 */
-		
 			
 			public LinkedList<MultiplayerFahrt> gibMultiplayerFahrtenNachMultiplayerID(int i)
 			{

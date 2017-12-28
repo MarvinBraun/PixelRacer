@@ -1,11 +1,11 @@
-//@Author Marvin Braun
+
 package Fahrt;
 
-/*
- * Klasse der Entität Fahrt.
- * Die Klasse ist abstrakt, da sie lediglich als Supertyp fungiert und nicht instanziiert wird.
+/**
+ *
+ * Abstrakte Klasse Fahrt, speichert die relevanten Daten einer Single- bzw. MultiplayerFahrt.
+ *  @author Marvin Braun
  */
-
 public abstract class Fahrt {
 	private int sitzungsID;
 	private int rang;

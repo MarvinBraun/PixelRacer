@@ -2,6 +2,11 @@ package Fahrt;
 
 import Computergegner.Bot;
 
+/**
+ * Klasse der Entität SingleplayerFahrt. Subtyp der Klasse Fahrt.
+ * @author Marvin Braun
+ *
+ */
 public class SingleplayerFahrt extends Fahrt {
 private Bot bot;
 public Bot getBot() {
