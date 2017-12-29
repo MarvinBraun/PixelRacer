@@ -54,6 +54,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	private static MyIteratorKart<Kart> itKart;
 	private static MyIteratorString<String> itString;
 	private static MyIteratorStrecke<Strecke> itStrecke;
+	private static Iterator<SingleplayerFahrt> it;
 	
 	private LinkedList<String> schwierigkeiten;
 	private LinkedList<Kart> kartliste = new LinkedList<Kart>();
@@ -99,7 +100,9 @@ public class FahrtErstellenStrg implements ActionListener {
 		//Initialisieren der Strecke
 		strecken= new Streckenverwaltung();
 		streckenliste = strecken.gibStrecke();
+		
 		itStrecke = new MyIteratorStrecke(streckenliste.listIterator());
+		
 	
 		
 		//ActionListener
@@ -121,14 +124,16 @@ public class FahrtErstellenStrg implements ActionListener {
 			schwierigkeiten.add("Silber");
 			schwierigkeiten.add("Gold");
 			itString = new MyIteratorString(schwierigkeiten.listIterator());
-			
+
 			view.getSchwierigkeitBtn1().addActionListener(this);
 			view.getSchwierigkeitBtn2().addActionListener(this);
-			view.getSchwierigkeitLbl().setText(itString.next());
+	
 			sf = new SingleplayerFahrt();
 			sf.setSchwierigkeit("Bronze");
 			sf.setBenutzername(kunde.getnutzername());
 			sf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
+			ladeStrecke();
+			schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFürBenutzerUndStrecke(kunde.getnutzername(),s.getStreckenname());
 			
 		
 		}
@@ -136,6 +141,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		// nur für Multiplayer
 		else
 		{
+			ladeStrecke();
 			view.getSchwierigkeitBtn1().setVisible(false);
 			view.getSchwierigkeitBtn2().setVisible(false);
 			view.getSchwierigkeitLbl().setVisible(false);
@@ -150,10 +156,11 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.getMultiplayerLbl().setText(""+multiplayerID);
 			mf.setMultiplayerID(multiplayerID);
 		}
-		ladeStrecke();
+		
 		SwingUtilities.updateComponentTreeUI(view.getFrame());
 	
 		SwingUtilities.updateComponentTreeUI(view.getFrame());
+		
 		
 	}
 	
@@ -200,7 +207,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			view.getStreckeLbl().setIcon(icon);
-			itString = new MyIteratorString(schwierigkeiten.listIterator());
+			
 			view.getSchwierigkeitLbl().setText(itString.next());
 			
 		
@@ -307,20 +314,23 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public boolean pruefeSchwierigkeit(String a)
 	{
-		schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFürBenutzerUndStrecke(kunde.getnutzername(),s.getStreckenname());
-		Iterator<SingleplayerFahrt> it = schwierigkeitsCheck.iterator();
+	
+		it = schwierigkeitsCheck.iterator();
 		boolean pruefung = false;
 		while(it.hasNext())
 		{
 			SingleplayerFahrt sf;
+			System.out.println("Vergleiche:"+a);
+			
 			String check;
 			sf = it.next();
 			check = sf.getSchwierigkeit();
+			System.out.println("Vergleich zu:"+check);
 			if(a.equals(check) && sf.getRang()==1)
-				
+			{	
 			pruefung = true;
 			break;
-				
+			}	
 		}
 		return pruefung;
 		
@@ -341,6 +351,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		if((s=itString.next())!=null)
 		{
 			prüfung = view.getSchwierigkeitLbl().getText();
+			System.out.println(prüfung);
 			if(pruefeSchwierigkeit(prüfung)==true)
 			view.getSchwierigkeitLbl().setText(s);
 			else
@@ -372,15 +383,29 @@ public class FahrtErstellenStrg implements ActionListener {
 		if(singlemultiplayer==1)
 		{
 		String schwierigkeit1 = view.getSchwierigkeitLbl().getText();
-		if(s.equals("Bronze"))
+		if(schwierigkeit1.equals("Bronze"))
+			{
 			schwierigkeit = 1;
-		if(s.equals("Silber"))
+			sf.setSchwierigkeit("Bronze");
+			}
+		
+		
+		if(schwierigkeit1.equals("Silber"))
+		{
+			sf.setSchwierigkeit("Silber");
 			schwierigkeit = 2;
-		if(s.equals("Gold"))
+		}
+		if(schwierigkeit1.equals("Gold"))
+		{	
+			sf.setSchwierigkeit("Gold");
 			schwierigkeit = 3;
-		sf.setZeit(0);
+		
+		}
+			sf.setZeit(0);
+		System.out.println("Schwierigkeit:" + schwierigkeit);
 		int id = fahrten.gibNeueID(2);
 		sf.setSitzungsID(id);
+		
 		sf.setKartName(k.getKartname());
 		sf.setStreckenName(s.getStreckenname());
 		FahrtSpielenStrg strg = new FahrtSpielenStrg(sf,k,s,schwierigkeit);

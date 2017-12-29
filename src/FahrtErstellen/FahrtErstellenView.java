@@ -26,6 +26,11 @@ import java.util.Iterator;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
+/**
+ * Grafische Benutzeroberfläche die benutzt wird um eine Fahrt zu erstellen.
+ * @author Marvin Braun
+ *
+ */
 public class FahrtErstellenView {
 
 	private JFrame frame;

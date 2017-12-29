@@ -12,17 +12,21 @@ import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
 import Startansicht.StartansichtStrg;
 
+/**
+ * Steuerungsklasse, die die grafische Benutzeroberfläche FahrtAuswertung verwaltet und befüllt.
+ * @author Marvin Braun
+ *
+ */
+
 public class FahrtAuswertungStrg implements ActionListener {
 	private FahrtAuswertung view;
 	private Fahrtverwaltung verwaltung  = new Fahrtverwaltung();
 	private int a = 0;
 	
-	/* 
-	 * Konstruktor: public FahrtAuswertungStrg(SingleplayerFahrt sf, BufferedImage strecke)
-	 * Eine Neue FahrtAuswertungStrg wird erzeugt. Dabei wird ein Objekt der Klasse SingleplayerFahrt und ein Objekt der Klasse BufferedImage(Streckenbild) übergeben. 
-	 * Ungeachtet dessen, wird im Konstruktor die GUI "view" der Klasse FahrtAuswertungView erzeugt. 
-	 * Anhand des ermittelten Ranges wird in einer Switch-Case-Anweisung ermittelt und sichtbar gemacht wieviele Punkte der Spieler gewonnen hat.
-	 * Anschließend wird die SingleplayerFahrt an die Datenbank übermittelt und den Nutzer werden die Punkte gutgeschrieben.
+	/**
+	 * Erstellt eine neue FahrtAuswertung Strg und befüllt dabei das Objekt "view" der Klasse FahrtAuswertung.
+	 * @param sf Objekt der Klasse SingleplayerFahrt
+	 * @param strecke Objekt der Klasse BufferedImage
 	 */
 	
 	public FahrtAuswertungStrg(SingleplayerFahrt sf, BufferedImage strecke)
@@ -33,12 +37,10 @@ public class FahrtAuswertungStrg implements ActionListener {
 		view.getLblDeineZeit().setText("Deine Zeit: "+sf.getZeit());
 		view.getLblDeinPlatz().setText("Dein Rang: "+sf.getRang());
 		ImageIcon streckenBild = new ImageIcon(strecke);
-		view.getLblBackground().setIcon(streckenBild);
-		
+		view.getLblBackground().setIcon(streckenBild);	
 		
 		switch(sf.getRang())
 		{
-		
 		
 		case(1):
 			{view.getLblGewonnenPunkte().setText("Gewonnene Punkte: 3");
@@ -57,25 +59,12 @@ public class FahrtAuswertungStrg implements ActionListener {
 		a = 1;
 		break;
 			}
-	
-		
-	
-		
+
 		}
-		verwaltung.sendeSingleplayerFahrt(sf);	
 		
+		verwaltung.sendeSingleplayerFahrt(sf);		
 		Nutzerverwaltung.addpunkte(a);
-		
-		
-		view.getBtnNewButton().addActionListener(this);
-		
-		
-		
-		
-	
-		
-		
-		
+		view.getBtnNewButton().addActionListener(this);	
 	}
 	
 

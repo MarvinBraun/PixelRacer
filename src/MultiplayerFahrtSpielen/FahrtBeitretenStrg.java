@@ -29,6 +29,12 @@ import Strecke.Streckenverwaltung;
 import myIterator.MyIteratorKart;
 import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
+
+/**
+ * Steuerungsklasse, welche die grafische Benutzeroberfläche FahrtBeitretenView verwaltet und mit den Multientitäten (Verwaltungen).
+ * @author Marvin Braun
+ *
+ */
 public class FahrtBeitretenStrg implements ActionListener {
 	
 	//Objekte der Klasse
@@ -49,10 +55,9 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 	private MultiplayerFahrt mf;
 	
-	/* 
-	 * Konstruktor: public FahrtBeitretenStrg()
-	 * das Objekt "view" der Klasse FahrtBeitretenView wird initialisiert. Anschließend werden die Karts über die Kartverwaltung geladen.
-	 * Damit der ListIterator funktioniert wird hier wieder die angepasste Version"myIterator" verwendet. Anschleßend wird eine MultiplayerFahrt erzeugt.
+	/**
+	 * Erzeugt ein Objekt der Klasse FahrtBeitretenStrg und befüllt das Objekt "view" der Klasse FahrtBeitretenView. 
+	 * Ein ListIterator der Klasse MyIteratorKart wird erzeugt um das korrekte hin und her klicken zwischen den Karts zu gewährleisten.
 	 */
 	
 	public FahrtBeitretenStrg() {
@@ -92,11 +97,9 @@ public class FahrtBeitretenStrg implements ActionListener {
 	}
 	
 
-	/* 
-	 * Methode:	public void ladeKarts()
-	 * Die Methode prüft ob der ListIterator itKart ein weiteres Element hat. Wenn ja, dann wird die Grafik des neuen Element gesetzt und auch der Kartname aktualisiert.
-	 * Keine Parameter vorhanden.
-	 * 
+	/**
+	 * Die Methode prüft ob der ListIterator itKart ein weiteres Element hat. 
+	 * Wenn ja, dann wird die Grafik des neuen Element gesetzt und auch der Kartname aktualisiert.
 	 */
 	public void ladeKarts()
 	{
@@ -109,10 +112,9 @@ public class FahrtBeitretenStrg implements ActionListener {
 		}
 	}
 	
-	/* 
-	 * Methode:	public void kartRückwärts()
-	 * Die Methode prüft ob der ListIterator itKart ein Element n-1 hat. Wenn ja, dann wird die Grafik des neuen Element gesetzt und auch der Kartname aktualisiert.
-	 * Keine Parameter vorhanden.
+	/**
+	 * Die Methode prüft ob der ListIterator itKart ein Element n-1 hat. 
+	 * Wenn ja, dann wird die Grafik des neuen Element gesetzt und auch der Kartname aktualisiert.
 	 */
 	
 	public void kartRückwärts()
@@ -129,11 +131,11 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 	}
 	
-	/* 
-	 * Methode:	public Strecke gibStrecke(LinkedList<Strecke> liste,String strecke)
-	 * Die Methode bekommt als Parameter eine LinkedList<Strecke> und einen Streckennamen (String) übergeben.
-	 * Anschließend wird über den Namen geprüft ob die Strecke vorhanden ist. Wenn ja wird das Objekt s der Klasse Strecke entsprechend der gefundenen Strecke initialisiert.
-	 * Das Objekt s wird am Ende zurückgegeben.
+	/** 
+	 * Die Methode prüft ob eine Strecke vorhanden ist. Wenn ja wird das Objekt s der Klasse Strecke entsprechend der gefundenen Strecke initialisiert.
+	 * @param liste
+	 * @param strecke
+	 * @return Das Objekt s der Klasse Strecke.
 	 */
 	
 	public Strecke gibStrecke(LinkedList<Strecke> liste,String strecke)
@@ -159,7 +161,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 		
 	}
 	
-	/* Methode: public void multiplayerBeitreten()
+	/**
 	 * Sucht die MultiplayerID aus der Fahrtenliste mithilfe eines Iterators. Wenn die MultiplayerID existiert, werden dem Objekt "mf" der Klasse MultiplayerFahrt die
 	 * entsprechenden Werte zugewiesen. Anschließend wird die nächsthöhere SitungsID (PK der Relation MultiplayerFahrt) ermittelt und dem Objekt mf zugewiesen.
 	 * Anschließend wird ein Objekt der Klasse MultiplayerFahrtSpielenStrg erzeugt und die entsprechenden Objekte übergeben.

@@ -13,6 +13,11 @@ import Fahrt.SingleplayerFahrt;
 import Kart.Kart;
 import Strecke.Strecke;
 
+/**
+ * Steuerungsklasse, die die grafische Benutzeroberfläche FahrtSpielenView verwaltet und befüllt.
+ * @author Marvin Braun
+ *
+ */
 public class FahrtSpielenStrg implements ActionListener{
 	private SingleplayerFahrt sf=null;
 	private MultiplayerFahrt mf=null;
@@ -32,12 +37,13 @@ public class FahrtSpielenStrg implements ActionListener{
 	private int speed = 1;
 	private int spielstand =0;
 	
-	/* 
-	 * Konstruktor: public FahrtSpielenStrg(SingleplayerFahrt sfahrt, Kart k, Strecke s, int schwierigkeit)
-	 * Eine Neue FahrtSpielenStrg wird erzeugt. Dabei wird ein Objekt der Klasse SingleplayerFahrt, ein Objekt der Klasse Kart, 
-	 * ein Objekt der Klasse Strecke und eine int-Variable (Schwierigkeit) übergeben. Im Konstruktor werden dann die Zeiten der Bots über eine For-Schleife ermittelt und in 
-	 * ein int-Array eingetragen. Anschließend wird dieses Array nach den Zeiten sortiert.
-	 * Der Konstruktor erzeugt außerdem ein Objekt der Klasse FahrtSpielenView und aktualisiert die entsprechenden Felder.
+	/**
+	 * Erzeugt ein neues Objekt der Klasse FahrtSpielenStrg. Befüllt die das Objekt fahrtSpielenView.
+	 * @param sfahrt Objekt der Klasse SingleplayerFahrt
+	 * @param k Objekt der Klasse Kart
+	 * @param s Objekt der Klasse Strecke
+	 * @param schwierigkeit Int-Variable der ausgewählten Schwierigkeit.
+	 * 
 	 */
 	
 	public FahrtSpielenStrg(SingleplayerFahrt sfahrt, Kart k, Strecke s, int schwierigkeit)
@@ -73,15 +79,9 @@ public class FahrtSpielenStrg implements ActionListener{
 		fahrtSpielenView.getFrame().setFocusTraversalKeysEnabled(false);
 	}
 
-	/* Methode: public void fahren()
-	 * Sobald auf den Fahren-Button geklickt wird, wird der Balken, die Bewertung und der Zeiger sichtbar gemacht.
-	 * Der Fahren-Button wird entsprechend ausgeblendet. Ein Key-Listener wird über die @Override Annotation eingefügt und ein entsprechendes KeyEvent für die Leertaste gesetzt.
-	 * Beim drücken auf die Leertaste wird der X-Wert des Zeigers ausgelesen. 
-	 * Bei jedem Drücken der Leertaste wird der "Speed" erhöht (max. bis 6). Die Textfelder werden bei jedem Drücken ebenfalls aktualisiert.
-	 * Wenn der X-Wert des Zeigers zwischen 300 und 450 liegt, dann wird auf die Variable "spielstand" +1 addiert, andernfalls wird +2 auf die Variable spielstand addiert. Die Variable ist im Nachgang für die Bewertung der Leistung des Spielers zuständig,
-	 * da sie durch die Anzahl der Runden geteilt wird (10). Abschließend (Versuche == 0) wird der dort errechnete Wert mit der errechneten Zeit multipliziert. Über die Methode "setzeRang()" wird der Rang des Spielers
-	 * ermittelt. Abschließend wird ein Objet der Klasse FahrtAuswertungStrg aufgerufen und das JFrame der Klasse fahrtSpielenView geschlossen.
-	 * 
+	/** 
+	 * Methode um das Fahren des Karts zu simulieren. Über einen KeyListener wird ein Event für die Leertaste festgelegt. 
+	 * Beim Drücken wird der X-Wert ausgelesen und mit den Grenzen des grünen Bereichs verglichen.
 	 */
 	
 	public void fahren()
@@ -157,11 +157,10 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 	}
 	
-	/* Methode: public void public void setzeRang()
-	 * Die Methode ermittelt den Rang des Spielers in einer For-Schleife. 
+	/** 
+	 * Die Methode ermittelt den Rang des Spielers.
 	 * Beim Erfüllen der Bedingung if(sf.getZeit()<=zeiten[i]) wird der Rang entsprechend gesetzt.
 	 * "sf.setRang(i+1);" der Rang ist immer +1 höher als der Index, da dieser bei 0 beginnt.
-	 * Über ein "break;" wird die Schleife an der entsprechenden Stelle beendet.
 	 */
 	
 	public void setzeRang()

@@ -309,7 +309,7 @@ public class Fahrtverwaltung {
 		
 		/**
 		 * Liest alle MultiplayerFahrten für eine bestimmte MultiplayerID aus und ordnet diese nach der Zeit.
-		 * @param i MultiplayerID
+		 * @param i MultiplayerID nach der in der Datenbank gesucht wird.
 		 * @return LinkedList mit MultiplayerFahrten zu einer ID.
 		 */
 			
