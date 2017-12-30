@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import Anmelden.AnmeldenStrg;
+import Kart.AnzeigenKartStrg;
 import ModusAuswählen.ModusauswaehlenStrg;
 import Nutzer.Nutzerverwaltung;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
@@ -43,7 +44,8 @@ public class StartansichtStrg implements ActionListener {
 		}
 		
 		if(e.getSource()== view1.getBtnGarage()) { //Anzeigen der verschiedenen Karts
-			
+			AnzeigenKartStrg strg = new AnzeigenKartStrg();
+			view1.getFrmPixelRacer().dispose();
 		}
 		
 		if(e.getSource()== view1.getBtnProfil()) { //Anzeigen des Profils des Kunden
