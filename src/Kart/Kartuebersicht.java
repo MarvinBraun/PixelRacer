@@ -14,16 +14,13 @@ import Strecke.Streckenuebersicht;
 public class Kartuebersicht {
 
 	JFrame frame;
-
 	JButton kartForward;
 	JButton kartBackward;
-	JLabel kartLbl;
 	JLabel kartName;
+	JLabel kartLbl;
+	JLabel lblNewLabel;
 	JButton btnDetailView;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -37,16 +34,10 @@ public class Kartuebersicht {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public Kartuebersicht() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
@@ -57,7 +48,7 @@ public class Kartuebersicht {
 
 		kartForward = new JButton("");
 		kartForward.setBorderPainted(false);
-		kartForward.setIcon(new ImageIcon(Streckenuebersicht.class.getResource("/Resources/forward.png")));
+		kartForward.setIcon(new ImageIcon(Kartuebersicht.class.getResource("/Resources/forward.png")));
 		kartForward.setContentAreaFilled(false);
 		kartForward.setBounds(712, 238, 60, 60);
 		kartForward.setVisible(true);
@@ -65,7 +56,7 @@ public class Kartuebersicht {
 
 		kartBackward = new JButton("");
 		kartBackward.setBorderPainted(false);
-		kartBackward.setIcon(new ImageIcon(Streckenuebersicht.class.getResource("/Resources/backward.png")));
+		kartBackward.setIcon(new ImageIcon(Kartuebersicht.class.getResource("/Resources/backward.png")));
 		kartBackward.setOpaque(false);
 		kartBackward.setContentAreaFilled(false);
 		kartBackward.setBounds(27, 238, 60, 60);
@@ -88,6 +79,62 @@ public class Kartuebersicht {
 		btnDetailView.setBounds(282, 428, 229, 35);
 		btnDetailView.setVisible(true);
 		frame.getContentPane().add(btnDetailView);
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public JButton getKartForward() {
+		return kartForward;
+	}
+
+	public JButton getKartBackward() {
+		return kartBackward;
+	}
+
+	public JLabel getKartName() {
+		return kartName;
+	}
+
+	public JLabel getKartLbl() {
+		return kartLbl;
+	}
+
+	public JLabel getLblNewLabel() {
+		return lblNewLabel;
+	}
+
+	public JButton getBtnDetailView() {
+		return btnDetailView;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public void setKartForward(JButton kartForward) {
+		this.kartForward = kartForward;
+	}
+
+	public void setKartBackward(JButton kartBackward) {
+		this.kartBackward = kartBackward;
+	}
+
+	public void setKartName(JLabel kartName) {
+		this.kartName = kartName;
+	}
+
+	public void setKartLbl(JLabel kartLbl) {
+		this.kartLbl = kartLbl;
+	}
+
+	public void setLblNewLabel(JLabel lblNewLabel) {
+		this.lblNewLabel = lblNewLabel;
+	}
+
+	public void setBtnDetailView(JButton btnDetailView) {
+		this.btnDetailView = btnDetailView;
 	}
 
 }
