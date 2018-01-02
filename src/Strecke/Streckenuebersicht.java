@@ -2,6 +2,8 @@ package Strecke;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 
@@ -12,6 +14,7 @@ public class Streckenuebersicht {
 	JFrame frame;
 	JButton streckeForward;
 	JButton streckeBackward;
+	JButton btnZurueck;
 	JLabel streckeName;
 	JLabel streckeLbl;
 	JLabel lblNewLabel;
@@ -98,11 +101,29 @@ public class Streckenuebersicht {
 		lblStreckePunkteLimit.setBounds(165, 474, 478, 76);
 		frame.getContentPane().add(lblStreckePunkteLimit);
 		
+		btnZurueck = new JButton("Zur\u00FCck");
+		btnZurueck.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnZurueck.setBounds(27, 510, 102, 29);
+		frame.getContentPane().add(btnZurueck);
+		btnZurueck.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				}
+				
+			
+			
+			
+		});
+		
 				
 	
 	}
 
 
+
+	
 
 	public JFrame getFrame() {
 		return frame;
@@ -173,5 +194,12 @@ public class Streckenuebersicht {
 
 	public void setLblStreckePunkteLimit(JLabel lblStreckePunkteLimit) {
 		this.lblStreckePunkteLimit = lblStreckePunkteLimit;
+	}
+	public JButton getBtnZurueck() {
+		return btnZurueck;
+	}
+
+	public void setBtnZurueck(JButton btnZurueck) {
+		this.btnZurueck = btnZurueck;
 	}
 }

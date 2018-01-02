@@ -18,6 +18,7 @@ import Fahrt.Fahrt;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
+import Startansicht.StartansichtStrg;
 import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
 
@@ -64,6 +65,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		viewUebersicht.streckeBackward.addActionListener(this);
 		viewUebersicht.streckeForward.addActionListener(this);
 		viewUebersicht.btnDetailView.addActionListener(this);
+		viewUebersicht.btnZurueck.addActionListener(this);
 		
 		ladeStrecke();
 		
@@ -181,16 +183,26 @@ public class AnzeigenStreckenStrg implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
+		if(e.getSource()==viewUebersicht.getBtnZurueck()) {
+			
+			viewUebersicht.frame.dispose();
+			viewUebersicht.frame.setVisible(false);
+			StartansichtStrg strg = new StartansichtStrg();
+		}
+		
 		if(e.getSource()==viewDetail.btnZurueck) {
 			
 			viewDetail.frame.dispose();
 			viewUebersicht.frame.setVisible(true);
 		}
+		
 		if(e.getSource()==viewUebersicht.streckeBackward)
 		{
 			streckeRückwärts();
 			
 		}
+		
 		if(e.getSource()==viewUebersicht.streckeForward)
 		{
 			viewDetail.frame.dispose();
@@ -198,6 +210,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			ladeStrecke();
 							
 		}
+		
 		if(e.getSource()==viewUebersicht.btnDetailView)
 		{				
 			viewDetail.frame.setVisible(true);		
