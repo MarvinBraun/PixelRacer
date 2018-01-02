@@ -69,7 +69,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		
 		ladeStrecke();
 		
-		SwingUtilities.updateComponentTreeUI(viewUebersicht.frame);
+		SwingUtilities.updateComponentTreeUI(viewUebersicht.frmPixelRacer);
 			
 	}
 		
@@ -186,15 +186,15 @@ public class AnzeigenStreckenStrg implements ActionListener{
 
 		if(e.getSource()==viewUebersicht.getBtnZurueck()) {
 			
-			viewUebersicht.frame.dispose();
-			viewUebersicht.frame.setVisible(false);
+			viewUebersicht.frmPixelRacer.dispose();
+			viewUebersicht.frmPixelRacer.setVisible(false);
 			StartansichtStrg strg = new StartansichtStrg();
 		}
 		
 		if(e.getSource()==viewDetail.btnZurueck) {
 			
 			viewDetail.frame.dispose();
-			viewUebersicht.frame.setVisible(true);
+			viewUebersicht.frmPixelRacer.setVisible(true);
 		}
 		
 		if(e.getSource()==viewUebersicht.streckeBackward)

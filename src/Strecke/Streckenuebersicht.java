@@ -11,7 +11,7 @@ import javax.swing.*;
 
 public class Streckenuebersicht {
 
-	JFrame frame;
+	JFrame frmPixelRacer;
 	JButton streckeForward;
 	JButton streckeBackward;
 	JButton btnZurueck;
@@ -29,7 +29,7 @@ public class Streckenuebersicht {
 			public void run() {
 				try {
 					Streckenuebersicht window = new Streckenuebersicht();
-					window.frame.setVisible(true);
+					window.frmPixelRacer.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -48,11 +48,12 @@ public class Streckenuebersicht {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-		frame.getContentPane().setLayout(null);
+		frmPixelRacer = new JFrame();
+		frmPixelRacer.setTitle("Pixel Racer - Strecken\u00FCbersicht");
+		frmPixelRacer.setBounds(100, 100, 800, 600);
+		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPixelRacer.setVisible(true);
+		frmPixelRacer.getContentPane().setLayout(null);
 		
 		streckeForward = new JButton("");
 		streckeForward.setBorderPainted(false);
@@ -60,7 +61,7 @@ public class Streckenuebersicht {
 		streckeForward.setContentAreaFilled(false);
 		streckeForward.setBounds(712, 238, 60, 60);
 		streckeForward.setVisible(true);
-		frame.getContentPane().add(streckeForward);
+		frmPixelRacer.getContentPane().add(streckeForward);
 		
 		streckeBackward = new JButton("");
 		streckeBackward.setBorderPainted(false);
@@ -69,42 +70,42 @@ public class Streckenuebersicht {
 		streckeBackward.setContentAreaFilled(false);
 		streckeBackward.setBounds(27, 238, 60, 60);
 		streckeBackward.setVisible(true);
-		frame.getContentPane().add(streckeBackward);
+		frmPixelRacer.getContentPane().add(streckeBackward);
 		
 		streckeLbl = new JLabel("", JLabel.CENTER);
 		streckeLbl.setBounds(247, 144, 300, 200);
 		streckeLbl.setVisible(true);
-		frame.getContentPane().add(streckeLbl);
+		frmPixelRacer.getContentPane().add(streckeLbl);
 		
 		
 		streckeName = new JLabel("Hockenheim", JLabel.CENTER);
 		streckeName.setFont(new Font("pixelmix", Font.PLAIN, 27));
 		streckeName.setBounds(296, 355, 215, 60);
 		streckeName.setVisible(true);
-		frame.getContentPane().add(streckeName);
+		frmPixelRacer.getContentPane().add(streckeName);
 		
 		btnDetailView = new JButton("Zeig mir mehr!");
 		btnDetailView.setFont(new Font("Dialog", Font.PLAIN, 20));
 		btnDetailView.setBounds(282, 428, 229, 35);
 		btnDetailView.setVisible(true);
-		frame.getContentPane().add(btnDetailView);
+		frmPixelRacer.getContentPane().add(btnDetailView);
 		
 		lblStreckePunkte = new JLabel("New label");
 		lblStreckePunkte.setVisible(false);
 		lblStreckePunkte.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblStreckePunkte.setBounds(282, 474, 229, 65);
-		frame.getContentPane().add(lblStreckePunkte);
+		frmPixelRacer.getContentPane().add(lblStreckePunkte);
 		
 		lblStreckePunkteLimit = new JLabel("New label");
 		lblStreckePunkteLimit.setVisible(false);
 		lblStreckePunkteLimit.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblStreckePunkteLimit.setBounds(165, 474, 478, 76);
-		frame.getContentPane().add(lblStreckePunkteLimit);
+		frmPixelRacer.getContentPane().add(lblStreckePunkteLimit);
 		
 		btnZurueck = new JButton("Zur\u00FCck");
 		btnZurueck.setFont(new Font("Dialog", Font.PLAIN, 20));
 		btnZurueck.setBounds(27, 510, 102, 29);
-		frame.getContentPane().add(btnZurueck);
+		frmPixelRacer.getContentPane().add(btnZurueck);
 		btnZurueck.addActionListener(new ActionListener(){
 
 			@Override
@@ -126,11 +127,11 @@ public class Streckenuebersicht {
 	
 
 	public JFrame getFrame() {
-		return frame;
+		return frmPixelRacer;
 	}
 
 	public void setFrame(JFrame frame) {
-		this.frame = frame;
+		this.frmPixelRacer = frame;
 	}
 
 	public JButton getStreckeForward() {
