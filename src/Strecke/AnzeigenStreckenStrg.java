@@ -64,17 +64,11 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		viewUebersicht.streckeBackward.addActionListener(this);
 		viewUebersicht.streckeForward.addActionListener(this);
 		viewUebersicht.btnDetailView.addActionListener(this);
-			
 		
-		
-		
-		
-	
 		ladeStrecke();
 		
 		SwingUtilities.updateComponentTreeUI(viewUebersicht.frame);
-		
-	
+			
 	}
 		
 	public static void main(String[] args) {
@@ -87,25 +81,35 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	{
 		if((s=itStrecke.next())!=null)
 		{	
-			
-			System.out.println("s.getStreckenname(1)"+s.getStreckenname());
-			System.out.println("s.getLaenge(1)"+s.getLaenge());
+			counterRang1 = 0;
+			counterRang2 = 0;
+			counterRang3 = 0;
+						
 			BufferedImage newImage= s.getGrafik();
 			viewUebersicht.streckeName.setText(s.getStreckenname());
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			viewUebersicht.streckeLbl.setIcon(icon);
-						
+			
+			//Punktestandprüfung
+			if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
+				viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
+				viewUebersicht.getLblStreckePunkte().setVisible(true);
+			}
+			else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){
+				viewUebersicht.getLblStreckePunkte().setVisible(false);
+				viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
+				viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
+			}
+			
 			viewDetail= new StreckeDetailView();
 			viewDetail.btnZurueck.addActionListener(this);
 			viewDetail.frame.setVisible(false);
 			
 			//Länge setzten
-			System.out.println("s.getStreckenname(2)"+s.getStreckenname());
-			System.out.println("s.getLaenge(2)"+s.getLaenge());
 			viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
 			
-			// Label umschreiben auf ges. Sf-Strecke
+			// Label umschreiben auf ges. Sf-Strecke & auf angmeldeter Benutzer
 			Fahrtverwaltung v = new Fahrtverwaltung();
 			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
 			viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));

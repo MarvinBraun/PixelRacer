@@ -15,7 +15,9 @@ public class Streckenuebersicht {
 	JLabel streckeName;
 	JLabel streckeLbl;
 	JLabel lblNewLabel;
+	JLabel lblStreckePunkte;
 	JButton btnDetailView;
+	JLabel lblStreckePunkteLimit;
 	
 	
 	
@@ -84,9 +86,23 @@ public class Streckenuebersicht {
 		btnDetailView.setVisible(true);
 		frame.getContentPane().add(btnDetailView);
 		
+		lblStreckePunkte = new JLabel("New label");
+		lblStreckePunkte.setVisible(false);
+		lblStreckePunkte.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblStreckePunkte.setBounds(282, 474, 229, 65);
+		frame.getContentPane().add(lblStreckePunkte);
+		
+		lblStreckePunkteLimit = new JLabel("New label");
+		lblStreckePunkteLimit.setVisible(false);
+		lblStreckePunkteLimit.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblStreckePunkteLimit.setBounds(165, 474, 478, 76);
+		frame.getContentPane().add(lblStreckePunkteLimit);
+		
 				
 	
 	}
+
+
 
 	public JFrame getFrame() {
 		return frame;
@@ -142,5 +158,20 @@ public class Streckenuebersicht {
 
 	public void setBtnDetailView(JButton btnDetailView) {
 		this.btnDetailView = btnDetailView;
+	}
+	public JLabel getLblStreckePunkte() {
+		return lblStreckePunkte;
+	}
+
+	public void setLblStreckePunkte(JLabel lblStreckePunkte) {
+		this.lblStreckePunkte = lblStreckePunkte;
+	}
+	
+	public JLabel getLblStreckePunkteLimit() {
+		return lblStreckePunkteLimit;
+	}
+
+	public void setLblStreckePunkteLimit(JLabel lblStreckePunkteLimit) {
+		this.lblStreckePunkteLimit = lblStreckePunkteLimit;
 	}
 }
