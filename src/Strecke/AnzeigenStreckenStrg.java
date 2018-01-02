@@ -64,11 +64,9 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		viewUebersicht.streckeBackward.addActionListener(this);
 		viewUebersicht.streckeForward.addActionListener(this);
 		viewUebersicht.btnDetailView.addActionListener(this);
+			
 		
-		viewDetail = new StreckeDetailView();
-		viewDetail.frame.setVisible(false);
 		
-		viewDetail.btnZurueck.addActionListener(this);
 		
 		
 	
@@ -88,15 +86,58 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	public void ladeStrecke()
 	{
 		if((s=itStrecke.next())!=null)
-		{
+		{	
+			
+			System.out.println("s.getStreckenname(1)"+s.getStreckenname());
+			System.out.println("s.getLaenge(1)"+s.getLaenge());
 			BufferedImage newImage= s.getGrafik();
 			viewUebersicht.streckeName.setText(s.getStreckenname());
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			viewUebersicht.streckeLbl.setIcon(icon);
-			s.getLaenge();
+						
+			viewDetail= new StreckeDetailView();
+			viewDetail.btnZurueck.addActionListener(this);
+			viewDetail.frame.setVisible(false);
+			
+			//Länge setzten
+			System.out.println("s.getStreckenname(2)"+s.getStreckenname());
+			System.out.println("s.getLaenge(2)"+s.getLaenge());
+			viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
+			
+			// Label umschreiben auf ges. Sf-Strecke
+			Fahrtverwaltung v = new Fahrtverwaltung();
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
+			viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
+					
+			// Label umschreiben auf ges. m pro Sf-Strecke
+			viewDetail.lblSetGesKm.setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
+					
+			// Anzahl Erster
+			for(int i =0; i < fahrten.size(); i++) {
+				
+				sf = fahrten.get(i);
+				
+				if(sf.getRang()==1) {
+				counterRang1 ++; 
+				}
+				if(sf.getRang()==2) {
+					counterRang2 ++; 
+				}
+				if(sf.getRang()==3) {
+					counterRang3 ++; 
+				}
+			}
+			
+			viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
+			viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
+			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
+						
+			
+			
 														
 		}
+		Datenbankschnittstelle.closeConnections();
 	}
 	
 	public void streckeRückwärts()
@@ -116,43 +157,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	public void setDetailView() throws SQLException{
 		
 		
-		StreckeDetailView viewDetail= new StreckeDetailView();
-				
-		//Länge setzten
-		viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
-		
-		// Label umschreiben auf ges. Sf-Strecke
-		Fahrtverwaltung v = new Fahrtverwaltung();
-		LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
-		viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
-				
-		// Label umschreiben auf ges. m pro Sf-Strecke
-		viewDetail.lblSetGesKm.setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
-				
-		// Anzahl Erster
-		for(int i =0; i < fahrten.size(); i++) {
-			
-			sf = fahrten.get(i);
-			
-			if(sf.getRang()==1) {
-			counterRang1 ++; 
-			}
-			if(sf.getRang()==2) {
-				counterRang2 ++; 
-			}
-			if(sf.getRang()==3) {
-				counterRang3 ++; 
-			}
-		}
-		
-		viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
-		viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
-		viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
-		
-		viewDetail.frame.setVisible(true);
-		
-		rs.close();
-		Datenbankschnittstelle.closeConnections();
+	
 		
 		
 	}
@@ -184,18 +189,14 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		}
 		if(e.getSource()==viewUebersicht.streckeForward)
 		{
+			viewDetail.frame.dispose();
+			viewDetail.frame.setVisible(false);
 			ladeStrecke();
-			viewDetail.frame.dispose();				
+							
 		}
 		if(e.getSource()==viewUebersicht.btnDetailView)
-		{
-			try {
-			setDetailView();
-			viewDetail.frame.setVisible(true);			
-		}catch(SQLException e1) {
-			e1.printStackTrace();
-		}
-		
+		{				
+			viewDetail.frame.setVisible(true);		
 		}
 		
 		
