@@ -11,6 +11,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
+/**
+ * Klasse, zuständig für das Zeichnen einer Animation in eine horizontale Richtung.
+ * @author Marvin Braun
+ *
+ */
 
 public class LabelBackgroundX extends JLabel {
 	int backgroundX1 = 0;
@@ -22,6 +27,11 @@ public class LabelBackgroundX extends JLabel {
 	 BufferedImage ib2;
 	 int y;
 	
+	 /**
+	  * setzt die beiden BufferedImages ib1 und ib2.
+	  * @param image BufferedImage
+	  * @param y int-Variable, falls das Bild an einen bestimmten Y-Wert gesetzt werden soll.
+	  */
 	public  void setBufferedImage(BufferedImage image, int y)
 	{
 			ib1 = image;
@@ -29,7 +39,9 @@ public class LabelBackgroundX extends JLabel {
 			this.y = y;
 		
 	}
-	
+	 /**
+	  * Methode zeichnet die beiden Bilder konstant neu. Aktualisierungen der X/Y-Koordinaten werden sofort umgesetzt.
+	  */
 	public void paintComponent (Graphics g)
 	{
 		super.paintComponent(g);
