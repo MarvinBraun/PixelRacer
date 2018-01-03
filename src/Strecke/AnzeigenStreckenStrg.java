@@ -83,31 +83,21 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	{
 		if((s=itStrecke.next())!=null)
 		{	
-			counterRang1 = 0;
-			counterRang2 = 0;
-			counterRang3 = 0;
-						
+									
 			BufferedImage newImage= s.getGrafik();
 			viewUebersicht.streckeName.setText(s.getStreckenname());
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			viewUebersicht.streckeLbl.setIcon(icon);
 			
-			//Punktestandprüfung
-			if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
-				viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
-				viewUebersicht.getLblStreckePunkte().setVisible(true);
-			}
-			else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){
-				viewUebersicht.getLblStreckePunkte().setVisible(false);
-				viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
-				viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
-			}
-			
+			//StreckeDetailView initiieren
+			counterRang1 = 0;
+			counterRang2 = 0;
+			counterRang3 = 0;
+						
 			viewDetail= new StreckeDetailView();
 			viewDetail.btnZurueck.addActionListener(this);
-			viewDetail.frame.setVisible(false);
-			
+						
 			//Länge setzten
 			viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
 			
@@ -133,43 +123,92 @@ public class AnzeigenStreckenStrg implements ActionListener{
 				if(sf.getRang()==3) {
 					counterRang3 ++; 
 				}
-			}
-			
+			}			
 			viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
 			viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
-			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
-						
-			
-			
-														
+			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));														
 		}
 		Datenbankschnittstelle.closeConnections();
-	}
+			
+		//Punktestandprüfung und Label Aktivierung
+			if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
+				viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
+				viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
+				viewUebersicht.getLblStreckePunkte().setVisible(true);
+			}
+			else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){
+				viewUebersicht.getLblStreckePunkte().setVisible(false);
+				viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
+				viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
+			}
+				
+}
+	
 	
 	public void streckeRückwärts()
 	{
 		if((s=itStrecke.previous())!=null)
-		{
-			
+		{			
 			BufferedImage newImage= s.getGrafik();
 			viewUebersicht.streckeName.setText(s.getStreckenname());
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			viewUebersicht.streckeLbl.setIcon(icon);
+			
+			//StreckeDetailView initiieren
+			counterRang1 = 0;
+			counterRang2 = 0;
+			counterRang3 = 0;
 						
+			viewDetail= new StreckeDetailView();
+			viewDetail.btnZurueck.addActionListener(this);
+						
+			//Länge setzten
+			viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
+			
+			// Label umschreiben auf ges. Sf-Strecke & auf angmeldeter Benutzer
+			Fahrtverwaltung v = new Fahrtverwaltung();
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
+			viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
+					
+			// Label umschreiben auf ges. m pro Sf-Strecke
+			viewDetail.lblSetGesKm.setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
+					
+			// Anzahl Erster
+			for(int i =0; i < fahrten.size(); i++) {
+				
+				sf = fahrten.get(i);
+				
+				if(sf.getRang()==1) {
+				counterRang1 ++; 
+				}
+				if(sf.getRang()==2) {
+					counterRang2 ++; 
+				}
+				if(sf.getRang()==3) {
+					counterRang3 ++; 
+				}
+			}			
+			viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
+			viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
+			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));														
 		}
-	}
+		Datenbankschnittstelle.closeConnections();
+			
+			//Punktestandprüfung und Label Aktivierung
+			if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
+				viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
+				viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
+				viewUebersicht.getLblStreckePunkte().setVisible(true);
+			}
+			else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){
+				viewUebersicht.getLblStreckePunkte().setVisible(false);
+				viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
+				viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
+			}
+}
 	
-	public void setDetailView() throws SQLException{
 		
-		
-	
-		
-		
-	}
-	
-
-	
 	public static BufferedImage imageResizer(BufferedImage original)
 	{
 		
@@ -187,7 +226,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		if(e.getSource()==viewUebersicht.getBtnZurueck()) {
 			
 			viewUebersicht.frmPixelRacer.dispose();
-			viewUebersicht.frmPixelRacer.setVisible(false);
+			viewDetail.frame.dispose();
 			StartansichtStrg strg = new StartansichtStrg();
 		}
 		
@@ -199,25 +238,22 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		
 		if(e.getSource()==viewUebersicht.streckeBackward)
 		{
-			streckeRückwärts();
-			
+			viewDetail.frame.dispose();
+			streckeRückwärts();			
 		}
 		
 		if(e.getSource()==viewUebersicht.streckeForward)
 		{
 			viewDetail.frame.dispose();
-			viewDetail.frame.setVisible(false);
-			ladeStrecke();
-							
+			ladeStrecke();							
 		}
 		
 		if(e.getSource()==viewUebersicht.btnDetailView)
-		{				
+		{		
 			viewDetail.frame.setVisible(true);		
 		}
-		
-		
 	}
+}
 
-}	
+
 	
