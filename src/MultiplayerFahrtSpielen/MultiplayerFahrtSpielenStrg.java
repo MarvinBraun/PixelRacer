@@ -13,7 +13,11 @@ import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
 import Kart.Kart;
 import Strecke.Strecke;
-
+/**
+ * Steuerungsklasse, welche die grafische Benutzeroberfläche MultiplayerFahrtSpielenView verwaltet und mit den Multientitäten (Verwaltungen) kommuniziert.
+ * @author Marvin Braun
+ *
+ */
 public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	private MultiplayerFahrt mf=null;
 	
@@ -34,10 +38,16 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	
 	//Singleplayerfahrt Konstruktor
 	
-	public MultiplayerFahrtSpielenStrg(MultiplayerFahrt fahrt, Kart k, Strecke s)
+	/**
+	 * Erzeugt ein Objekt der Klasse MultiplayerFahrtSpielenStrg und befüllt die grafische Benutzeroberfläche "fahrtSpielenView".
+	 * @param fahrt Ein Objekt der Klasse MultiplayerFahrt
+	 * @param kart1 Ein Objekt der Klasse Kart
+	 * @param strecke1 Ein Objekt der Klasse Strecke
+	 */
+	public MultiplayerFahrtSpielenStrg(MultiplayerFahrt fahrt, Kart kart1, Strecke strecke1)
 	{
-		kart = k;
-		strecke = s;
+		kart = kart1;
+		strecke = strecke1;
 		this.mf = fahrt;
 		System.out.println(mf.getBenutzername());
 	
@@ -46,19 +56,17 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		
 		for(int i = 0; i<zeiten.length;i++)
 		{
-			Bot b = new Bot(s.getLaenge(),kart.getBeschleunigung(),kart.getMaxkmh(),schwierigkeit);
+			Bot b = new Bot(strecke1.getLaenge(),kart.getBeschleunigung(),kart.getMaxkmh(),schwierigkeit);
 			zeiten[i] = b.getZeit();
 		}
 		Arrays.sort(zeiten);
 		
-		 kartBild = k.getGrafik();
+		 kartBild = kart1.getGrafik();
 		streckenBild = strecke.getGrafik(); 
 
 		
 		fahrtSpielenView = new MultiplayerFahrtSpielenView(kartBild,streckenBild);
 		fahrtSpielenView.getFahrenBtn().addActionListener(this);
-		
-		//KeyAdapter
 		fahrtSpielenView.getZeiger().balken.setVisible(false);
 		fahrtSpielenView.getFrame().setVisible(true);
 		fahrtSpielenView.getFrame().setFocusable(true);
@@ -70,7 +78,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	}
 
 	//Singleplayerfahrt Konstruktor
-	
+	/*
 	public MultiplayerFahrtSpielenStrg()
 	{
 		fahrtSpielenView = new MultiplayerFahrtSpielenView(kartBild,streckenBild);
@@ -78,7 +86,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		System.out.println("Registriert");
 	}
 	
-	
+	*/
 	public void fahren()
 	{
 		

@@ -1,10 +1,14 @@
-//@MarvinBraun
+
 package myIterator;
 import java.util.ListIterator;
 
-//modifizierter ListIterator um die Zeiger-Positionierung des ListIterators zu korrigieren.
-//mit dem normalen ListIterator würden sonst doppelte Elemente bei entsprechenden User-Interaktionen zurückgegeben werden.
-
+/**
+ * modifizierter ListIterator um die Zeiger-Positionierung des ListIterators zu korrigieren, da sich ein ListIterator sich zwischen den Elementen platziert und
+ *  sonst doppelte Elemente bei entsprechenden User-Interaktionen (Vor und zurück im Wechsel) zurückgegeben werden.
+ * @param <Strecke>
+ * @author Marvin Braun
+ * 
+ */
 public class MyIteratorStrecke<Strecke>{
 	
 	 private final ListIterator<Strecke> listIterator;
@@ -16,6 +20,10 @@ public class MyIteratorStrecke<Strecke>{
          this.listIterator = listIterator;
      }
 
+     /**
+      * Springt n+1 oder n+2 Elemente weiter.
+      * @return Strecke Ein Objekt der Klasse Strecke.
+      */
      public Strecke next() {
          nextWasCalled = true;
          if (previousWasCalled) {
@@ -24,6 +32,11 @@ public class MyIteratorStrecke<Strecke>{
          }
          return listIterator.next ();
      }
+     
+     /**
+      * Springt n-1 oder n-2 Elemente weiter.
+      * @return Strecke Ein Objekt der Klasse Strecke.
+      */
 
      public Strecke previous() {
          if (nextWasCalled) {

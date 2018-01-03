@@ -25,7 +25,11 @@ import javax.swing.JPanel;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
-
+/**
+ * Grafische Benutzeroberfläche, die den Spieler eine SingleplayerFahrt spielen lässt.
+ * @author Marvin Braun
+ *
+ */
 public class FahrtSpielenView {
 
 	private JFrame frame;
@@ -61,7 +65,7 @@ public class FahrtSpielenView {
 	}
 
 	/**
-	 * Create the application.
+	 * Initialisiert und befüllt die grafische Benutzeroberfläche über die Methode initialize().
 	 */
 	public FahrtSpielenView(BufferedImage kart, BufferedImage strecke) {
 		kartbild = kart;
@@ -70,7 +74,7 @@ public class FahrtSpielenView {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialisiert das JFrame.
 	 */
 	private void initialize() {
 		setFrame(new JFrame());

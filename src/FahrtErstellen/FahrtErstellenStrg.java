@@ -72,15 +72,11 @@ public class FahrtErstellenStrg implements ActionListener {
 	private int schwierigkeit=1;
 	int counter=-1;
 	
-	/* 
-	 * Konstruktor: public FahrtErstellenStrg (int singleMultiplayer)
-	 * Eine Neue FahrtErstellenStrg wird erzeugt. Dabei wird die Variable int "singleMultiplayer" verwendet um zu entscheiden ob es sich um eine 
-	 * Single oder MultiplayerFahrt handelt. Ungeachtet dessen, wird im Konstruktor die GUI "view" der Klasse FahrtErstellenView erzeugt. 
-	 * Objekte die für beide Fahrten gebraucht werden (Kunde, Kart, Strecke) werden im Anschluss deklariert.
-	 * Außerdem müssen spezielle Listiteratoren der Klasse myIterator verwendet werden, da ein Nutzer sonst bei dem Drücken auf "Vorwärts" 
-	 * und anschließend auf "Rückwärts" das gleiche Objekt angezeigt bekommt, da der Zeiger des normalen Listiterators zwischen zwei Objekten platziert ist. 
-	 * Bei einer SingleplayerFahrt werden außerdem Schwierigkeiten hinzugefügt.
-	 * Bei einem MultiplayerFahrt wird eine MultiplayerID generiert.
+	/**
+	 * Erzeugt ein neues Objekt der Klasse FahrtErstellenStrg und deklariert die entsprechenden Variablen.
+	 * Bei einer SingleplayerFahrt wird zusätzlich die Schwierigkeit geladen.
+	 * Bei einer MultiplayerFahrt wird eine MultiplayerID erzeugt.
+	 * @param singleMultiplayer entscheidet ob es sich um eine SingleplayerFahrt oder eine MultiplayerFahrt handelt.
 	 */
 	public FahrtErstellenStrg(int singleMultiplayer) {
 		view = new FahrtErstellenView();
@@ -132,8 +128,10 @@ public class FahrtErstellenStrg implements ActionListener {
 			sf.setSchwierigkeit("Bronze");
 			sf.setBenutzername(kunde.getnutzername());
 			sf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
+			view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
 			ladeStrecke();
 			schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFürBenutzerUndStrecke(kunde.getnutzername(),s.getStreckenname());
+			System.out.println("Fahrten:"+schwierigkeitsCheck.size());
 			
 		
 		}
@@ -171,11 +169,8 @@ public class FahrtErstellenStrg implements ActionListener {
 
 	}
 
-	/* 
-	 * Methode:	public void ladeKarts()
-	 * Die Methode prüft ob der ListIterator itKart ein weiteres Element hat. Wenn ja, dann wird die Grafik des neuen Element gesetzt und auch der Kartname aktualisiert.
-	 * Keine Parameter vorhanden.
-	 * 
+	/**
+	 * Prüft ob ein weiteres Kart n+1 existiert. Wenn ja, werden die enstprechenden Felder der GUI aktualisiert.
 	 */
 	public void ladeKarts()
 	{
@@ -188,12 +183,8 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 	}
 	
-	/* 
-	 * Methode:	public void ladeStrecke()
-	 * Die Methode prüft ob der ListIterator itStrecke ein weiteres Element hat. Wenn ja, wird die Grafik entsprechend von 800x600 auf 300x200 über die Methode "imageResizer(BufferedImage image)"
-	 * verkleinert und dann in der View aktualisiert. Der Name wird ebenfalls aktualisiert. Der Schwierigkeiten Iterator "itString" wird dabei zurückgesetzt, 
-	 * da sonst z.B. erst die Schwierigkeit Silber ausgesucht werden könnte und dann auf die nächste Strecke geklickt werden könnte.
-	 * Keine Parameter vorhanden.
+	/**
+	 * Prüft ob eine weitere Strecke n+1 existiert. Wenn ja, dann wird das Streckenbild über die Methode imageResizer(BufferedImage image) verkleinert und die GUI befüllt.
 	 * 
 	 */
 	
@@ -207,16 +198,16 @@ public class FahrtErstellenStrg implements ActionListener {
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			view.getStreckeLbl().setIcon(icon);
+			itString = new MyIteratorString(schwierigkeiten.listIterator());
+			sf.setSchwierigkeit(itString.next());
+			view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
 			
-			view.getSchwierigkeitLbl().setText(itString.next());
-			
-		
+
 		}
 	}
-	/* 
-	 * Methode:	public void kartRückwärts()
-	 * Die Methode prüft ob der ListIterator itKart ein Element n-1 hat. Wenn ja, dann wird die Grafik des neuen Element gesetzt und auch der Kartname aktualisiert.
-	 * Keine Parameter vorhanden.
+	/** 
+	 * Prüft ob ein weiteres Kart n-1 existiert. Wenn ja, werden die enstprechenden Felder der GUI aktualisiert.
+	 * 
 	 */
 	public void kartRückwärts()
 	{
@@ -232,15 +223,9 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	}
 	
-	/* 
-	 * Methode:	public void ladeStrecke()
-	 * Die Methode prüft ob der ListIterator itStrecke ein Element n-1 hat. Wenn ja, wird die Grafik entsprechend von 800x600 auf 300x200 über die Methode "imageResizer(BufferedImage image)"
-	 * verkleinert und dann in der View aktualisiert. Der Name wird ebenfalls aktualisiert. Der Schwierigkeiten Iterator "itString" wird dabei zurückgesetzt, 
-	 * da sonst z.B. erst die Schwierigkeit Silber ausgesucht werden könnte und dann auf die nächste Strecke geklickt werden könnte.
-	 * Keine Parameter vorhanden.
-	 * 
+	/** 
+	 * Prüft ob eine weitere Strecke n-1 existiert. Wenn ja,  Wenn ja, dann wird das Streckenbild über die Methode imageResizer(BufferedImage image) verkleinert und die GUI befüllt.
 	 */
-	
 	public void streckeRückwärts()
 	{
 		if((s=itStrecke.previous())!=null)
@@ -252,10 +237,12 @@ public class FahrtErstellenStrg implements ActionListener {
 			ImageIcon icon = new ImageIcon(streckenbild);
 			view.getStreckeLbl().setIcon(icon);
 			itString = new MyIteratorString(schwierigkeiten.listIterator());	
-			view.getSchwierigkeitLbl().setText(itString.next());
+			sf.setSchwierigkeit(itString.next());
+			view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
 			
 		}
 	}
+	
 	
 
 	
@@ -264,10 +251,9 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	
 	
-	/* 
-	 * Methode:	public static BufferedImage imageResizer(BufferedImage original)
+	/** 
 	 * Die Methode verkleinert ein Objekt des Typs BufferedImage von 800x600 auf 300x200. Die Grafiken werden dabei über die Klasse Graphics neu gezeichnet.
-	 * Anschließend wird das Bild zurückgegeben.
+	 * @return BufferedImage in der Größe 300x200.
 	 */
 	public static BufferedImage imageResizer(BufferedImage original)
 	{
@@ -280,9 +266,8 @@ public class FahrtErstellenStrg implements ActionListener {
 				return newImage;
 	}
 	
-	/* 
-	 * Methode:	public void schwierigkeitBack()
-	 * Die Methode prüft ob das Element n-1 existiert und springt wenn möglich auf dieses Element. Anschließend wird das TextFeld der GUI gesetzt.
+	/** 
+	 * Die Methode prüft ob die Schwierigkeit n-1 existiert und springt wenn möglich auf dieses Element. Anschließend wird das TextFeld der GUI befüllt.
 	 */
 	
 	public void schwierigkeitBack()
@@ -291,6 +276,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		if((s=itString.previous())!=null)
 		{
 			view.getSchwierigkeitLbl().setText(s);
+			sf.setSchwierigkeit(s);
 		}
 		
 		
@@ -306,23 +292,27 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 	}
 	
-	/* 
-	 * Methode:	public boolean pruefeSchwierigkeit(String a)
-	 * Die Methode prüft ob die Schwierigkeit bereits für den Nutzer freigeschaltet ist. Wenn ja, dann wird ein boolean = true zurück geliefert.
+	/** 
+	 * Die Methode prüft ob die Schwierigkeit bereits für den Nutzer freigeschaltet ist. 
+	 * @return boolean
 	 */
 	
 	
 	public boolean pruefeSchwierigkeit(String a)
 	{
+	System.out.println("Starte Methode PruefeSchwierigkeit");
 	
 		it = schwierigkeitsCheck.iterator();
 		boolean pruefung = false;
 		while(it.hasNext())
 		{
+			System.out.println("Starte Schleife");
 			SingleplayerFahrt sf;
+			
 			System.out.println("Vergleiche:"+a);
 			
 			String check;
+			
 			sf = it.next();
 			check = sf.getSchwierigkeit();
 			System.out.println("Vergleich zu:"+check);
@@ -338,22 +328,23 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 	}
 	
-	/* 
-	 * Methode:	public void schwierigkeitVorwärts()
-	 * Die Methode iteriert eine Schwierigkeit nach vorne, wenn die aufgerufene Methode "pruefeSchwierigkeit" true als Wert zurückliefert.
-	 * Keine Parameter vorhanden.
+	/** 
+	 * Prüft ob eine Schwierigkeit n+1 existiert. Falls dies der Fall ist und der Spieler zum Spielen der Schwierigkeit berechtigt ist (pruefeSchwierigkeit() == true) dann wird auf dieses Element verwiesen und die GUI entsprechend aktualisiert.
 	 */
 	public void schwierigkeitVorwärts()
 	{
 		String s;
-		String prüfung;
+		String prüfung = sf.getSchwierigkeit();
 		
 		if((s=itString.next())!=null)
 		{
-			prüfung = view.getSchwierigkeitLbl().getText();
+			System.out.println("Bis hierhin kommt die Mtehode");
 			System.out.println(prüfung);
 			if(pruefeSchwierigkeit(prüfung)==true)
+			{
 			view.getSchwierigkeitLbl().setText(s);
+			sf.setSchwierigkeit(s);
+			}
 			else
 				{System.out.println("Schwierigkeit noch nicht freigeschaltet");
 				JOptionPane pane = new JOptionPane();
@@ -365,17 +356,8 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		
 	}
-	/* 
-	 * Methode:	public void starteSpiel()
-	 * Die Methode agiert je nacht Wert der Variablen "singleMultiplayer":
-	 * 
-	 * singleMultiplayer = 1:
-	 * Die Schwierigkeit wird ausgelesen, außerdem werden die Variablen der SingleplayerFahrt deklariert und anschließend an die erzeugte FahrtSpielenStrg übergeben.
-	 * _____________________
-	 * 
-	 * singleMultiplayer = 2:
-	 * Der Rang der MultiplayerFahrt und die Zeit werden auf 0 gesetzt. 
-	 * Anschließend wird noch der Benutzername zugewiesen und die Klasse MultiplayerFahrtSpielenStrg aufgerufen und die Objekte MultiplayerFahrt, Kart und Strecke übergeben.
+	/**
+	 * Liest den Schwierigkeitswert bei einer SingleplayerFahrt aus und initialisert je nach Fahrtenart die entsprechenden Attribute. Anschließend wird die Fahrt gestartet.
 	 * 
 	 */
 	public void starteSpiel()

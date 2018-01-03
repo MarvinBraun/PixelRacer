@@ -10,6 +10,7 @@ import java.util.Arrays;
 import Computergegner.Bot;
 import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
+import FahrtAuswertung.FahrtAuswertungStrg;
 import Kart.Kart;
 import Strecke.Strecke;
 
@@ -137,7 +138,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	            		System.out.println(berechneLeistung);
 	            		
 	            		
-	            		float schwierigkeit2 = (float) (0.8 +(Math.random() * 1.5)); 
+	            		float schwierigkeit2 = (float) (0.8 +(Math.random() * 1.3)); 
 	        			
 	        			int zeit = (int) ((int) ((strecke.getLaenge()/kart.getMaxkmh())+(kart.getMaxkmh()/kart.getBeschleunigung())*schwierigkeit2)*berechneLeistung);
 	        			System.out.println("Zeit"+zeit);
@@ -179,10 +180,6 @@ public class FahrtSpielenStrg implements ActionListener{
 			
 		}
 		
-		
-	}
-	public static void main(String[] args)
-	{
 		
 	}
 

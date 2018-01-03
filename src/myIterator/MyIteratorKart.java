@@ -2,8 +2,13 @@
 package myIterator;
 import java.util.ListIterator;
 
-//modifizierter ListIterator um die Zeiger-Positionierung des ListIterators zu korrigieren.
-//mit dem normalen ListIterator würden sonst doppelte Elemente bei entsprechenden User-Interaktionen zurückgegeben werden.
+/**
+ * modifizierter ListIterator um die Zeiger-Positionierung des ListIterators zu korrigieren, da sich ein ListIterator sich zwischen den Elementen platziert und
+ *  sonst doppelte Elemente bei entsprechenden User-Interaktionen (Vor und zurück im Wechsel) zurückgegeben werden.
+ * @param <Kart>
+ * @author Marvin Braun
+ * 
+ */
 
 public class MyIteratorKart<Kart>{
 	
@@ -16,14 +21,24 @@ public class MyIteratorKart<Kart>{
          this.listIterator = listIterator;
      }
 
+     /**
+      * Springt n+1 oder n+2 Elemente weiter.
+      * @return Kart Ein Objekt der Klasse Kart.
+      */
+     
      public Kart next() {
          nextWasCalled = true;
          if (previousWasCalled) {
              previousWasCalled = false;
-             listIterator.next ();
+             listIterator.next();
          }
-         return listIterator.next ();
+         return listIterator.next();
      }
+     
+     /**
+      * Springt n-1 oder n-2 Elemente weiter.
+      * @return Kart Ein Objekt der Klasse Kart.
+      */
 
      public Kart previous() {
          if (nextWasCalled) {

@@ -7,6 +7,11 @@ import java.util.ListIterator;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.MultiplayerFahrt;
 
+/**
+ * Steuerungsklasse, welche die grafische Benutzeroberfläche MultiplayerAuswertungView verwaltet und mit den Multientitäten kommuniziert.
+ * @author Marvin Braun
+ *
+ */
 public class MultiplayerAuswertungStrg {
 	private MultiplayerAuswertungView view;
 	public MultiplayerAuswertungView getView() {
@@ -44,6 +49,12 @@ public class MultiplayerAuswertungStrg {
 	private Fahrtverwaltung verwaltung;
 	private LinkedList<MultiplayerFahrt> fahrten = new LinkedList<MultiplayerFahrt>();
 	private MultiplayerFahrt fahrt;
+	
+	/**
+	 * Erstellt ein Objekt der Klasse MultiplayerAuswertungStrg und befüllt das Objekt "view" der Klasse MultiplayerAuswertungView.
+	 * @param mf Objekt der Klasse MultiplayerFahrt
+	 * @param streckenBild Objekt der Klasse BufferedImage
+	 */
 	
 	public MultiplayerAuswertungStrg(MultiplayerFahrt mf, BufferedImage streckenBild)
 	{

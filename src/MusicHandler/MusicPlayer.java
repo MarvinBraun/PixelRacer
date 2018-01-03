@@ -1,4 +1,7 @@
-//@Author Marvin Braun
+/**
+ * Stellt Methoden zur Verfügung um Musik abzuspielen.
+ * @author Marvin Braun
+ */
 
 package MusicHandler;
 
@@ -10,6 +13,9 @@ import javax.sound.sampled.Clip;
 
 public class MusicPlayer {
 
+	/**
+	 * Spielt Hintergrundmusik ab.
+	 */
 	public static void audioBackground(){
 		
 		try {

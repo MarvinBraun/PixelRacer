@@ -57,7 +57,7 @@ public class FahrtErstellenView {
 	
 	
 	/**
-	 * Launch the application.
+	 * Führt die GUI aus.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -79,14 +79,14 @@ public class FahrtErstellenView {
 	
 
 	/**
-	 * Create the application.
+	 * Initialisiert das Objekt und befüllt es über die Methode initialize().
 	 */
 	public FahrtErstellenView() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialisiert das Objekt.
 	 */
 	private void initialize() {
 		setFrame(new JFrame());
