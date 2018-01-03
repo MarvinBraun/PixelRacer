@@ -3,15 +3,23 @@ package Strecke;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import BackgroundAnimation.Movement;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
 public class StreckeDetailView {
 
 	JFrame frame;
 	
+	JLabel lblHintergrund;
 	JLabel lblLaenge;
 	JLabel lblGefahreneRennen;
 	JLabel lblGefahreneKmGesamt;
@@ -55,14 +63,14 @@ public class StreckeDetailView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(false);
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
-		
-		
+				
 		lblLaenge = new JLabel("Streckenl\u00E4nge:");
 		lblLaenge.setBounds(55, 32, 72, 14);
 		frame.getContentPane().add(lblLaenge);
@@ -119,13 +127,29 @@ public class StreckeDetailView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
-				}
-				
-			
-			
-			
+			}
 		});
+	
+	lblHintergrund = new JLabel("");
+	lblHintergrund.setVisible(false);		
+	lblHintergrund.setBounds(0, 0, 794, 571);
+	frame.getContentPane().add(lblHintergrund);
+			
+	Movement m = new Movement(10);
+	
+	BufferedImage image = null;
+	try {
+		image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
+	
+	m.label.setBufferedImage(image,0);
+	m.label.setOpaque(false);
+	m.label.setBounds(0, 0, 800, 600);
+	frame.getContentPane().add(m.label);
+}
 
 	public JFrame getFrame() {
 		return frame;

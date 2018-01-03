@@ -5,7 +5,13 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import BackgroundAnimation.Movement;
 
 
 
@@ -17,13 +23,12 @@ public class Streckenuebersicht {
 	JButton btnZurueck;
 	JLabel streckeName;
 	JLabel streckeLbl;
+	JLabel lblHintergrund;
 	JLabel lblNewLabel;
 	JLabel lblStreckePunkte;
 	JButton btnDetailView;
 	JLabel lblStreckePunkteLimit;
-	
-	
-	
+		
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,6 +53,7 @@ public class Streckenuebersicht {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frmPixelRacer = new JFrame();
 		frmPixelRacer.setTitle("Pixel Racer - Strecken\u00FCbersicht");
 		frmPixelRacer.setBounds(100, 100, 800, 600);
@@ -112,20 +118,31 @@ public class Streckenuebersicht {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
-				}
-				
-			
-			
-			
+			}
 		});
 		
-				
-	
+		lblHintergrund = new JLabel("");
+		lblHintergrund.setVisible(false);		
+		lblHintergrund.setBounds(0, 0, 794, 571);
+		frmPixelRacer.getContentPane().add(lblHintergrund);
+					
+		Movement m = new Movement(10);
+		
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		m.label.setBufferedImage(image,0);
+		
+		m.label.setOpaque(false);
+		m.label.setBounds(0, 0, 800, 600);
+		frmPixelRacer.getContentPane().add(m.label);
+		
 	}
-
-
-
-	
 
 	public JFrame getFrame() {
 		return frmPixelRacer;
