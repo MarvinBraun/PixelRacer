@@ -18,7 +18,15 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+/**
+ * Die Klasse PremiumKartView füllt das Fenster mit allen dazugehörigen
+ * Inhalten (Buttons, Textfelder usw.).
+ * 
+ * @author Ferhat Koca
+ *
+ */
 public class PremiumKartView extends JFrame {
 
 	JFrame frame;
@@ -27,7 +35,9 @@ public class PremiumKartView extends JFrame {
 	JButton abbrechen;
 
 	/**
-	 * Launch the application.
+	 * Die main-Methode ruft die Klasse, durch den Konstruktor selber, auf und setzt
+	 * das Fenster auf sichtbar.
+	 * 
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -43,7 +53,8 @@ public class PremiumKartView extends JFrame {
 	}
 
 	/**
-	 * Create the application.
+	 * Der Konstruktor führt die Methode initialize aus.
+	 * 
 	 */
 	public PremiumKartView() {
 		initialize();
@@ -51,7 +62,11 @@ public class PremiumKartView extends JFrame {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Die Methode initialize füllt den Inhalt des Frames.
+	 * 
+	 * @throws IOException wenn ein Fehler beim füllen des 
+	 * Frames mit Werten ein Fehler entstanden ist.
+	 * 
 	 */
 	private void initialize() {
 		frame = new JFrame();

@@ -11,17 +11,27 @@ import Rechnung.RechnungsübersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 
+/**
+ * 
+ * @author Ferhat Koca
+ *
+ */
 public class kaufePremiumAccount extends JFrame implements ActionListener {
 
 	static kaufePremiumAccount kpa;
 	PremiumAccountView pav;
 	RechnungsübersichtStrg anzr;
 	AnzeigenProfilKundeStrg strg;
-	
 
-	@Override
+	/**
+	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der View
+	 * klickt, aus und führt den jeweiligen Befehl aus.
+	 * 
+	 * Das Drücken auf den bestätigen Button führt dazu das der Nutzer weiter zur
+	 * Rechnungsübersicht geleitet wird. 
+	 * Das Drücken auf Abbrechen bricht den Kaufprozess ab.
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getSource() == pav.bestätigen) {
 			pav.frame.dispose();
 			anzr = new RechnungsübersichtStrg();
@@ -31,7 +41,11 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 			strg = new AnzeigenProfilKundeStrg();
 		}
 	}
-
+/**
+ * Der Konstruktor kaufePremium ruft die PremiumAccountView auf
+ * und füllt die Buttons mit der hier definierten Methode actionPerformed.
+ * 
+ */
 	public kaufePremiumAccount() {
 		pav = new PremiumAccountView();
 		pav.frame.setVisible(true);

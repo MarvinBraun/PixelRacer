@@ -1,4 +1,3 @@
-//@Author Ferhat Koca
 package ModusAuswählen;
 
 import java.awt.event.ActionEvent;
@@ -8,14 +7,31 @@ import java.io.IOException;
 import FahrtErstellen.FahrtErstellenStrg;
 import MultiplayerFahrtSpielen.FahrtBeitretenStrg;
 
+/**
+ * Die Klasse MultiplayerAuswahlStrg steuert die Aktionen, die in der Klasse
+ * MultiplayerAuswahlView getätigt werden
+ * 
+ * @author Ferhat Koca
+ *
+ */
 public class MultiplayerAuswahlStrg implements ActionListener {
 
 	static MultiplayerAuswahlStrg ms;
 	MultiplayerAuswahlView mv;
 
-	@Override
+	/**
+	 * Die Methode actionPerformed liest den Button aus, auf den der Nutzer inder
+	 * View klickt und führt die dazugehörige Methode aus.
+	 * 
+	 * Der Button "Multiplayer beitreten" lässt den Nutzer einer schon bereits
+	 * erstellten Fahrt beitreten.
+	 * 
+	 * Der Button "Multiplayer erstellen" lässt den Nutzer eine eigene
+	 * Multiplayerfahrt erstellen.
+	 * 
+	 * Der "Zurück"-Button bringt den Nutzer zurück zur ModusauswahlenView.
+	 */
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getSource() == mv.btnbeitreten) {
 			mv.frame.dispose();
 			FahrtBeitretenStrg fb = new FahrtBeitretenStrg();
@@ -30,11 +46,15 @@ public class MultiplayerAuswahlStrg implements ActionListener {
 		}
 	}
 
+	/**
+	 * Der Konstruktor MultiplayerAuswahlStrg ruft die MultiplayerAuswahlView auf
+	 * und gibt jedem Button den dazugehörigen Befehl aus der Methode
+	 * actionPerformed.
+	 */
 	public MultiplayerAuswahlStrg() {
 		try {
 			mv = new MultiplayerAuswahlView();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.getMessage();
 		}
 		mv.frame.setVisible(true);
@@ -45,7 +65,6 @@ public class MultiplayerAuswahlStrg implements ActionListener {
 	}
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		ms = new MultiplayerAuswahlStrg();
 	}
 

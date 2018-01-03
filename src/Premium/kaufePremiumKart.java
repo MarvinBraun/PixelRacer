@@ -11,11 +11,24 @@ import Rechnung.RechnungsübersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 
+/**
+ * 
+ * @author Ferhat Koca
+ *
+ */
 public class kaufePremiumKart extends JFrame implements ActionListener {
 
 	PremiumKartView pkv;
 	RechnungsübersichtStrg anzr;
 
+	/**
+	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der View
+	 * klickt, aus und führt den jeweiligen Befehl aus.
+	 * 
+	 * Das Drücken auf den bestätigen Button führt dazu das der Nutzer weiter zur
+	 * Rechnungsübersicht geleitet wird. Das Drücken auf Abbrechen bricht den
+	 * Kaufprozess ab.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == pkv.bestätigen) {
@@ -27,6 +40,11 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * Der Konstruktor kaufePremiumKart ruft die PremiumKartView auf und füllt
+	 * die Buttons mit der hier definierten Methode actionPerformed.
+	 * 
+	 */
 	public kaufePremiumKart() {
 		pkv = new PremiumKartView();
 		pkv.frame.setVisible(true);

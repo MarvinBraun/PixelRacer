@@ -1,4 +1,3 @@
-//@Author Ferhat Koca
 package Kart;
 
 import java.awt.image.BufferedImage;
@@ -7,7 +6,17 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import Datenbankverwaltung.Datenbankschnittstelle;
+import Rechnung.Rechnungsverwaltung;
 
+/**
+ * 
+ * Die Klasse Kartverwaltung liest die Objekte der Klasse Kart aus und verarbeitet diese.
+ * Alle Daten aus der Datenbank werden hier ausgelesen und in der LinkedList Kart abgespeichert.
+ * @return gibt die LinkedList mit allen Daten aus der Datenbank wieder.
+ * 
+ * @author Ferhat Koca
+ * 
+ */
 public class Kartverwaltung {
 
 	LinkedList<Kart> Kartliste = new LinkedList<Kart>();
@@ -33,7 +42,7 @@ public class Kartverwaltung {
 				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
 				k.setGrafik(image);
 				Kartliste.add(k);
-
+				
 			}
 			rs.close();
 			Datenbankschnittstelle.closeConnections();

@@ -1,4 +1,3 @@
-//@Author Ferhat Koca
 package ModusAuswählen;
 
 import java.awt.EventQueue;
@@ -14,6 +13,13 @@ import BackgroundAnimation.MovementBackward;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
+/**
+ * Die Klasse MultiplayerAuswahlView füllt das Fenster mit allen dazugehörigen
+ * Inhalten (Buttons, Textfelder usw.).
+ * 
+ * @author Ferhat Koca
+ *
+ */
 public class MultiplayerAuswahlView {
 
 	JFrame frame;
@@ -22,7 +28,9 @@ public class MultiplayerAuswahlView {
 	JButton btnzurück;
 
 	/**
-	 * Launch the application.
+	 * Die main-Methode ruft die Klasse, durch den Konstruktor selber, auf und setzt
+	 * das Fenster auf sichtbar.
+	 * 
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -38,18 +46,17 @@ public class MultiplayerAuswahlView {
 	}
 
 	/**
-	 * Create the application.
+	 * Der Konstruktor führt die Methode initialize aus.
 	 * 
-	 * @throws IOException
 	 */
 	public MultiplayerAuswahlView() throws IOException {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
-	 * 
-	 * @throws IOException
+	 * Die Methode initialize füllt den Inhalt des Frames.
+	 * @throws IOException wenn ein Fehler beim füllen des 
+	 * Frames mit Werten ein Fehler entstanden ist.
 	 */
 	private void initialize() throws IOException {
 		frame = new JFrame();
@@ -75,7 +82,6 @@ public class MultiplayerAuswahlView {
 		try {
 			image2 = ImageIO.read(new File("src/Resources/car2.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		MovementBackward m = new MovementBackward(5);

@@ -1,4 +1,3 @@
-//@Author Ferhat Koca
 package ModusAuswählen;
 
 import java.awt.EventQueue;
@@ -14,6 +13,13 @@ import BackgroundAnimation.MovementBackward;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
+/**
+ * Die Klasse ModusauswaehlenView füllt das Fenster mit allen dazugehörigen
+ * Inhalten (Buttons, Textfelder usw.).
+ * 
+ * @author Ferhat Koca
+ *
+ */
 public class ModusauswaehlenView {
 
 	JFrame frame;
@@ -23,7 +29,9 @@ public class ModusauswaehlenView {
 	JButton btnzurueck;
 
 	/**
-	 * Launch the application.
+	 * Die main-Methode ruft die Klasse, durch den Konstruktor selber, auf und setzt
+	 * das Fenster auf sichtbar.
+	 * 
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -39,18 +47,17 @@ public class ModusauswaehlenView {
 	}
 
 	/**
-	 * Create the application.
+	 * Der Konstruktor führt die Methode initialize aus.
 	 * 
-	 * @throws IOException
 	 */
 	public ModusauswaehlenView() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
-	 * 
-	 * @throws IOException
+	 * Die Methode initialize füllt den Inhalt des Frames.
+	 * @throws IOException wenn ein Fehler beim füllen des 
+	 * Frames mit Werten ein Fehler entstanden ist.
 	 */
 	private void initialize() {
 		frame = new JFrame();
@@ -77,7 +84,6 @@ public class ModusauswaehlenView {
 		try {
 			image = ImageIO.read(new File("src/Resources/car2.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.getMessage();
 			System.out.println("Fehler beim einbeziehen des Bildes!");
 		}
@@ -94,7 +100,6 @@ public class ModusauswaehlenView {
 		try {
 			image2 = ImageIO.read(new File("src/Resources/car2.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		MovementBackward m1 = new MovementBackward(5);
@@ -119,6 +124,5 @@ public class ModusauswaehlenView {
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);
 		frame.setVisible(true);
-
 	}
 }

@@ -15,7 +15,15 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
+/**
+ * Die Klasse PremiumAccountView füllt das Fenster mit allen dazugehörigen
+ * Inhalten (Buttons, Textfelder usw.).
+ * 
+ * @author Ferhat Koca
+ *
+ */
 public class PremiumAccountView extends JFrame {
 
 	JFrame frame;
@@ -25,7 +33,9 @@ public class PremiumAccountView extends JFrame {
 	anzeigenRechnung_ansicht2 rechnung = new anzeigenRechnung_ansicht2();
 
 	/**
-	 * Launch the application.
+	 * Die main-Methode ruft die Klasse, durch den Konstruktor selber, auf und setzt
+	 * das Fenster auf sichtbar.
+	 * 
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -41,7 +51,8 @@ public class PremiumAccountView extends JFrame {
 	}
 
 	/**
-	 * Create the application.
+	 * Der Konstruktor führt die Methode initialize aus.
+	 * 
 	 */
 	public PremiumAccountView() {
 		initialize();
@@ -49,7 +60,11 @@ public class PremiumAccountView extends JFrame {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Die Methode initialize füllt den Inhalt des Frames.
+	 * 
+	 * @throws IOException wenn ein Fehler beim füllen des 
+	 * Frames mit Werten ein Fehler entstanden ist.
+	 * 
 	 */
 	private void initialize() {
 		frame = new JFrame();

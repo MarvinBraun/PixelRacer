@@ -8,6 +8,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,6 +16,13 @@ import javax.swing.JLabel;
 
 import Rechnung.anzeigenRechnung_ansicht2;
 
+/**
+ * Die Klasse PremiumKartView füllt das Fenster mit allen dazugehörigen Inhalten
+ * (Buttons, Textfelder usw.).
+ * 
+ * @author Ferhat Koca
+ *
+ */
 public class PremiumStreckeView extends JFrame {
 
 	JFrame frame;
@@ -23,7 +31,9 @@ public class PremiumStreckeView extends JFrame {
 	JButton abbrechen;
 
 	/**
-	 * Launch the application.
+	 * Die main-Methode ruft die Klasse, durch den Konstruktor selber, auf und setzt
+	 * das Fenster auf sichtbar.
+	 * 
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -39,7 +49,8 @@ public class PremiumStreckeView extends JFrame {
 	}
 
 	/**
-	 * Create the application.
+	 * Der Konstruktor führt die Methode initialize aus.
+	 * 
 	 */
 	public PremiumStreckeView() {
 		initialize();
@@ -47,7 +58,12 @@ public class PremiumStreckeView extends JFrame {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Die Methode initialize füllt den Inhalt des Frames.
+	 * 
+	 * @throws IOException
+	 *             wenn ein Fehler beim füllen des Frames mit Werten ein Fehler
+	 *             entstanden ist.
+	 * 
 	 */
 	private void initialize() {
 		frame = new JFrame();

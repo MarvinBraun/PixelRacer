@@ -1,12 +1,18 @@
-//@Author Ferhat Koca
 package Kart;
 
+/**
+ /* Speichert alle relevanten Daten der Karts ab.
+ * @Author Ferhat Koca
+ */
 import java.awt.image.BufferedImage;
 
+/**
+ * Die benötigten Daten werden hier generiert und Getter/Setter werden gesetzt.
+ */
 public class Kart {
 	private String kartname;
-	private static int beschleunigung;
-	private static int maxkmh;
+	private int beschleunigung;
+	private int maxkmh;
 	private String premium;
 	private int punktewert;
 	private BufferedImage grafik;
@@ -39,11 +45,11 @@ public class Kart {
 		return kartname;
 	}
 
-	public static int getBeschleunigung() {
+	public  int getBeschleunigung() {
 		return beschleunigung;
 	}
 
-	public static int getMaxkmh() {
+	public int getMaxkmh() {
 		return maxkmh;
 	}
 
