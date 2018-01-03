@@ -4,8 +4,15 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import BackgroundAnimation.Movement;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
@@ -21,6 +28,7 @@ public class ProfilKundeAnsicht{
 	JLabel lblRennenAlsErster;
 	JLabel lblRennenAlsZweiter;
 	JLabel lblRennenAlsDritter;
+	JLabel lblHintergrund;
 	
 	JButton btnGetPremium;
 	JButton btnProfilBearbeiten;
@@ -186,6 +194,28 @@ public class ProfilKundeAnsicht{
 		lblSetAlsDritter.setFont(new Font("Impact", Font.PLAIN, 20));
 		lblSetAlsDritter.setBounds(481, 348, 212, 19);
 		frmPixelRacer.getContentPane().add(lblSetAlsDritter);
+		
+		lblHintergrund = new JLabel("");
+		lblHintergrund.setVisible(false);		
+		lblHintergrund.setBounds(0, 0, 794, 571);
+		frmPixelRacer.getContentPane().add(lblHintergrund);
+		
+				
+		Movement m = new Movement(10);
+		
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		m.label.setBufferedImage(image,0);
+		
+		m.label.setOpaque(false);
+		m.label.setBounds(0, 0, 800, 600);
+		frmPixelRacer.getContentPane().add(m.label);
 	}
 
 	public JFrame getFrmPixelRacer() {
