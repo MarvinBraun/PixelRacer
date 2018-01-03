@@ -67,6 +67,7 @@ public class ProfilKundeAnsicht{
 		frmPixelRacer.setTitle("Pixel Racer - ");
 		frmPixelRacer.setBounds(100, 100, 800, 600);
 		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPixelRacer.setResizable(false);
 		frmPixelRacer.getContentPane().setLayout(null);
 		
 		lblNewLabel = new JLabel("Vorname:");
