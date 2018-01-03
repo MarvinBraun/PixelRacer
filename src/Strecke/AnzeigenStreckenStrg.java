@@ -18,6 +18,8 @@ import Fahrt.Fahrt;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
+import Rechnung.Rechnung;
+import Rechnung.Rechnungsverwaltung;
 import Startansicht.StartansichtStrg;
 import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
@@ -29,24 +31,25 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	Streckenuebersicht viewUebersicht;
 	
 	SingleplayerFahrt sf;
+	Rechnung r;
+	Strecke s;
+	ResultSet rs;
+	BufferedImage streckenbild;
 	
+	Rechnungsverwaltung verwRechnung;
 	Streckenverwaltung verwStrecke;
 	Fahrtverwaltung verwFahrt;
 	
 	LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
 	LinkedList<Strecke> streckenListe = new LinkedList<Strecke>();
+	LinkedList<Rechnung> rechnungsListe = new LinkedList<Rechnung>();
 			
 	int counterRang1 =0;
 	int counterRang2 =0;
 	int counterRang3 =0;
-	
-	Strecke s;
-	ResultSet rs;
-	
+		
 	static MyIteratorStrecke<Strecke> itStrecke;
 	static MyIteratorString<String> itString;
-	
-	BufferedImage streckenbild;
 	
 	boolean forward = false;
 	boolean backward = false;
@@ -61,6 +64,9 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		verwStrecke = new Streckenverwaltung();
 		streckenListe = verwStrecke.gibStrecke();
 		itStrecke = new MyIteratorStrecke(streckenListe.listIterator());
+		
+		verwRechnung = new Rechnungsverwaltung();
+		rechnungsListe = verwRechnung.gibStreckenRechnungenfuerBenutzer();
 		
 		viewUebersicht.streckeBackward.addActionListener(this);
 		viewUebersicht.streckeForward.addActionListener(this);
@@ -191,10 +197,20 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			}			
 			viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
 			viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
-			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));														
+			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
+			
+			//Prüfung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
+			
+			Rechnungsverwaltung r = new Rechnungsverwaltung();
+			LinkedList<Rechnung> rechnungen = r.gibStreckenRechnungenfuerBenutzer();
+					
+			if(s.getPremium()== "true"){
+				viewUebersicht.getBtnStreckeKaufen().setVisible(true);			
+			}
 		}
 		Datenbankschnittstelle.closeConnections();
-			
+		
+
 			//Punktestandprüfung und Label Aktivierung
 			if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
 				viewUebersicht.getLblStreckePunkteLimit().setVisible(false);

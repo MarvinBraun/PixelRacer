@@ -20,6 +20,7 @@ public class Streckenuebersicht {
 	JFrame frmPixelRacer;
 	JButton streckeForward;
 	JButton streckeBackward;
+	
 	JButton btnZurueck;
 	JLabel streckeName;
 	JLabel streckeLbl;
@@ -28,6 +29,7 @@ public class Streckenuebersicht {
 	JLabel lblStreckePunkte;
 	JButton btnDetailView;
 	JLabel lblStreckePunkteLimit;
+	JButton btnStreckeKaufen;
 		
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -142,6 +144,36 @@ public class Streckenuebersicht {
 		m.label.setBounds(0, 0, 800, 600);
 		frmPixelRacer.getContentPane().add(m.label);
 		
+		btnStreckeKaufen = new JButton("Strecke kaufen!");
+		btnStreckeKaufen.setVisible(false);
+		btnStreckeKaufen.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnStreckeKaufen.setBounds(568, 428, 181, 33);
+		frmPixelRacer.getContentPane().add(btnStreckeKaufen);
+		
+	}
+
+	public JFrame getFrmPixelRacer() {
+		return frmPixelRacer;
+	}
+
+	public void setFrmPixelRacer(JFrame frmPixelRacer) {
+		this.frmPixelRacer = frmPixelRacer;
+	}
+
+	public JLabel getLblHintergrund() {
+		return lblHintergrund;
+	}
+
+	public void setLblHintergrund(JLabel lblHintergrund) {
+		this.lblHintergrund = lblHintergrund;
+	}
+
+	public JButton getBtnStreckeKaufen() {
+		return btnStreckeKaufen;
+	}
+
+	public void setBtnStreckeKaufen(JButton btnStreckeKaufen) {
+		this.btnStreckeKaufen = btnStreckeKaufen;
 	}
 
 	public JFrame getFrame() {
