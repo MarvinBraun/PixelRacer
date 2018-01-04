@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
+import Premium.kaufePremiumStrecke;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
 import Startansicht.StartansichtStrg;
 import Strecke.Strecke;
@@ -45,12 +46,10 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		viewKunde.getLblSetNachname().setText(Nutzerverwaltung.getangKunde().getvn());
 		
 		//SetStatus
-		System.out.println(Nutzerverwaltung.getangKunde().getpremium()=="true");
-		
-		if(Nutzerverwaltung.getangKunde().getpremium()=="true") {
+		if(Nutzerverwaltung.getangKunde().getpremium().equals("true")) {
 			viewKunde.getLblSetStatus().setText("Premiumkunde");
 		}
-		else if(Nutzerverwaltung.getangKunde().getpremium()=="false") {
+		else if(Nutzerverwaltung.getangKunde().getpremium().equals("false")) {
 			viewKunde.getLblSetStatus().setText("Free to Play");
 		}
 				
@@ -79,17 +78,14 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		viewKunde.getLblSetAlsErster().setText(Integer.toString(counterRang1));
 		viewKunde.getLblSetAlsZweiter().setText(Integer.toString(counterRang2));
 		viewKunde.getLblSetAlsDritter().setText(Integer.toString(counterRang3));
-		
-		
+			
 	}
-	
-	
+		
 	public static void main(String[] args) {
 	 
 		AnzeigenProfilKundeStrg ansichtKunde = new AnzeigenProfilKundeStrg();
 
 	}
-
 
 	@Override
 	public void actionPerformed(ActionEvent a) {
@@ -99,6 +95,10 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		if(a.getSource()==viewKunde.btnZurueck) {
 			viewKunde.frmPixelRacer.dispose();
 			StartansichtStrg strg = new StartansichtStrg();
+		}
+		if(a.getSource()==viewKunde.getBtnGetPremium()) {
+			viewKunde.frmPixelRacer.dispose();
+			kaufePremiumStrecke strecke = new kaufePremiumStrecke();
 		}
 		
 	}
