@@ -23,7 +23,7 @@ public class Kartverwaltung {
 
 	public LinkedList<Kart> gibKart() {
 
-		String abfrage = "SELECT * FROM KART WHERE Premium = 'false'";
+		String abfrage = "SELECT * FROM KART";
 
 		try {
 			ResultSet rs = Datenbankschnittstelle.executeQuery(abfrage);
