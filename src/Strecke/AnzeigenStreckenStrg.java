@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.lang.reflect.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
@@ -140,9 +141,22 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		Rechnungsverwaltung r = new Rechnungsverwaltung();
 		LinkedList<Rechnung> rechnungen = r.gibStreckenRechnungenfuerBenutzer();
 		
-		//for(strecken)		
-		if(s.getPremium()== "true"){
-			viewUebersicht.getBtnStreckeKaufen().setVisible(true);			
+		
+		if(s.getPremium().equals("true")){
+			viewUebersicht.getBtnStreckeKaufen().setVisible(true);
+			
+		
+			Rechnung rechnung = null;
+			Iterator<Rechnung> it = rechnungen.iterator();
+			while(it.hasNext())
+			{
+				rechnung = it.next();
+				if(s.getStreckenname().equals(rechnung.getStreckenname()))
+						{
+							
+						}
+			}
+			
 		}
 		
 		Datenbankschnittstelle.closeConnections();
