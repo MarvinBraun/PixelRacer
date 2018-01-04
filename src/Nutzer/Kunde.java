@@ -1,4 +1,9 @@
 package Nutzer;
+/**
+ * Klasse der Entität Kunde, Subtyp der Klasse Nutzer.
+ * @author Daniel Zeller
+ *
+ */
 
 public class Kunde extends Nutzer { //Kunde ist ein Nutzer des Systems
 	private String premium; //Deklaration der benötigten Variablen

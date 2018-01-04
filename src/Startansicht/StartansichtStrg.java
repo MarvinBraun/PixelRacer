@@ -12,12 +12,18 @@ import ProfilBearbeiten.ProfilBearbeitenStrg;
 import ProfilKunde.AnzeigenProfilKundeStrg;
 import Strecke.AnzeigenStreckenStrg;
 
-//Autor Daniel Zeller
+/**
+ * Die Klasse StartansichtStrg steuert die Startansicht. Sie verwaltet dabei die grafische Benutzeroberfläche (Startansicht).
+ * @author Daniel Zeller
+ *
+ */
 
 public class StartansichtStrg implements ActionListener {
 	
 	Startansicht view1; //Deklarierung der StartansichtView
-
+	/**
+	 * Erzeugt ein neues Objekt der Klasse StartansichtStrg und deklariert die entsprechenden Variablen.
+	 */
 	public StartansichtStrg() { //Konstruktor
 		view1 = new Startansicht();
 		view1.getFrmPixelRacer().setVisible(true);

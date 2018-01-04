@@ -22,7 +22,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-//Autor Daniel Zeller
+/**
+ * Grafische Benutzeroberfläche, auf der Buttons sind, worüber man zu anderen Funktionen kommt.
+ * @author Daniel Zeller
+ *
+ */
 
 public class Startansicht {
 

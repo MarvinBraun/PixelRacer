@@ -11,7 +11,12 @@ import MitarbeiterAnsicht.MitarbeiterAnsichtStrg;
 import Nutzer.*;
 import Startansicht.StartansichtStrg;
 
-//Autor Daniel Zeller
+/**
+ * Die Klasse AnmeldenStrg steuert das Anmelden eines Nutzer.
+ * Sie verwaltet dabei die grafischen Benutzeroberflächen AnmeldenView und AnmeldenMitarbeiterView.
+ * @author Daniel
+ *
+ */
 
 public class AnmeldenStrg implements ActionListener {
 	private LinkedList<Kunde> kliste; //Deklaration der benötigten Variablen
@@ -39,7 +44,12 @@ public class AnmeldenStrg implements ActionListener {
 		AnmeldenStrg strg = new AnmeldenStrg();
 	}
 	
-	public Boolean pruefeDatenKunden() { //Prüfung auf Übereinstimmung der eingegebenen Daten mit den in der Datenbank hinterlegten Anmeldedaten
+	/**
+	 * Die eingegebenen Daten werden überprüft und mit den Daten aus der Datenbank verglichen.
+	 * Dabei wird eine LinkedList durchgegangen, die alle Kundendaten aus der Datenbank enthält.
+	 * @return Boolean
+	 */
+	public Boolean pruefeDatenKunden() { 
 		Kunde k1 = new Kunde();
 		k1.setnutzername(view1.getTxtNutzername().getText());
 		String pw = new String (view1.getPasswordField().getPassword());
@@ -59,6 +69,11 @@ public class AnmeldenStrg implements ActionListener {
 		return false;
 	}
 	
+	/**
+	 * Die eingegebenen Daten werden überprüft und mit den Daten aus der Datenbank verglichen.
+	 * Dabei wird eine LinkedList durchgegangen, die alle Mitarbeiterdaten aus der Datenbank enthält.
+	 * @return Boolean
+	 */
 	public Boolean pruefeDatenMitarbeiter() { //Prüfung auf Übereinstimmung der eingegebenen Daten mit den in der Datenbank hinterlegten Anmeldedaten
 		Mitarbeiter m1 = new Mitarbeiter();
 		m1.setmitarbeiterid(view2.getTxtId().getText());

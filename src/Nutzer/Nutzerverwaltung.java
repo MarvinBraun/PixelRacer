@@ -8,14 +8,24 @@ import Anmelden.AnmeldenStrg;
 import Datenbankverwaltung.Datenbankschnittstelle;
 import Fahrt.SingleplayerFahrt;
 
-//Autor Daniel Zeller
+/**
+ * Die Klasse Nutzerverwaltung verarbeitet Objekte der Klassen Kunde und Mitarbeiter.
+ * Die Nutzer werden in verschiedenen LinkedLists gespeichert.
+ * @author Daniel Zeller
+ *
+ */
 
 public class Nutzerverwaltung { //Deklaration der benötigten Variablen
 	private static LinkedList<Kunde> kundenliste = new LinkedList<Kunde>();
 	private static LinkedList<Mitarbeiter> mitarbeiterliste = new LinkedList<Mitarbeiter>();
 	private static Kunde angkunde = new Kunde(); //Variable um die Daten des angemeldeten Kunden zu speichern
 	
-	public static LinkedList<Kunde> gibKundenliste() { //greift auf die Datenbank zu und gibt alle Kunden zurück
+	/**
+	 * Liest alle Kunden aus der Datenbank aus und speichert sie in einer LinkedList.
+	 * @return LinkedList<Kunde>
+	 */
+	
+	public static LinkedList<Kunde> gibKundenliste() {
 		
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde");
 		try {
@@ -43,7 +53,10 @@ public class Nutzerverwaltung { //Deklaration der benötigten Variablen
 		
 		return kundenliste;
 	}
-	
+	/**
+	 * Liest alle Mitarbeiter aus der Datenbank aus und speichert sie in einer LinkedList.
+	 * @return LinkedList<Mitarbeiter>
+	 */
 	public static LinkedList<Mitarbeiter> gibMitarbeiterliste() { //greift auf die Datenbank zu und gibt alle Mitarbeiter zurück
 		
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from mitarbeiter");
@@ -81,7 +94,10 @@ public class Nutzerverwaltung { //Deklaration der benötigten Variablen
 		return angkunde;
 	}
 	
-	public static void aktualisereangKunde() { //Die Variable angkunde wird mit neuen Werten aus der Datenbank überschrieben/aktualisierit
+	/**
+	 * Die Daten des angemeldeten Kunden werden durch die aktuellen Daten in der Datenbank aktualisiert.
+	 */
+	public static void aktualisereangKunde() { 
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from kunde where benutzername = '" + angkunde.getnutzername() + "'");
 		try {
 			while(rs.next())
@@ -104,7 +120,11 @@ public class Nutzerverwaltung { //Deklaration der benötigten Variablen
 		Datenbankschnittstelle.closeConnections();
 	}
 	
-	public static void addpunkte(int punkte) { //Die Punktzahl wird in der Datenbank erhöht, über den Benutzernamen des angemeldeten Kunden
+	/**
+	 * Eine bestimmte Anzahl an Punkten wird dem angemeldeten Kunden auf seinem Punktestand gutgeschrieben.
+	 * @param punkte
+	 */
+	public static void addpunkte(int punkte) {
 		String update = "Update kunde set punktzahl = punktzahl + '" + punkte + "' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
 		Datenbankschnittstelle.executeUpdate(update);
 		Datenbankschnittstelle.closeConnections();

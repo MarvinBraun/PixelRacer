@@ -3,16 +3,25 @@ package ProfilBearbeiten;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import BackgroundAnimation.Movement;
 import Nutzer.Nutzerverwaltung;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-//Autor Daniel Zeller
+/**
+ * Grafische Benutzeroberfläche, worüber man bestimmte Sachen des Profils bearbeiten kann.
+ * @author Daniel Zeller
+ *
+ */
 
 public class ProfilBearbeitenView {
 
@@ -155,10 +164,22 @@ public class ProfilBearbeitenView {
 		lblVN.setBounds(214, 24, 178, 14);
 		frmProfilBearbeiten.getContentPane().add(lblVN);
 		
-		JLabel lblHintergrund = new JLabel();
-		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
-		lblHintergrund.setBounds(0, 0, 800, 600);
-		frmProfilBearbeiten.getContentPane().add(lblHintergrund);
+		Movement m = new Movement(10);
+		
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		m.label.setBufferedImage(image,0);
+		
+		m.label.setOpaque(false);
+		m.label.setBounds(0, 0, 800, 600);
+		frmProfilBearbeiten.getContentPane().add(m.label);
+		frmProfilBearbeiten.setVisible(true);
 	}
 
 	public JFrame getFrmProfilBearbeiten() { //Getter und Setter der Variablen

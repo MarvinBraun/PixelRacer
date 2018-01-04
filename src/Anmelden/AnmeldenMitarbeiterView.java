@@ -10,7 +10,11 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-//Autor Daniel Zeller
+/**
+ * Grafische Benutzeroberfläche, die das Anmeldefenster für die Mitarbeiter anzeigt.
+ * @author Daniel Zeller
+ *
+ */
 
 public class AnmeldenMitarbeiterView {
 

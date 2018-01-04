@@ -10,13 +10,22 @@ import Nutzer.Kunde;
 import Nutzer.Nutzerverwaltung;
 import Profil.AnzeigenProfilStrg;
 
-//Autor Daniel Zeller
+/**
+ * Die Klasse ProfilBearbeitenStrg steuert das Bearbeiten eines Profils.
+ * Sie verwaltet dabei die grafische Benutzeroberflächen ProfilBearbeitenView und ProfilBearbeitenAttributView.
+ * @author Daniel Zeller
+ *
+ */
 
 public class ProfilBearbeitenStrg implements ActionListener {
 	ProfilBearbeitenView view1; //Deklarierung der benötigten Variablen
 	ProfilBearbeitenAttributView view2;
 	private String auswahl;
 	private String neu;
+	
+	/**
+	 * Erzeugt ein neues Objekt der Klasse ProfilBearbeitenStrg und deklariert die entsprechenden Variablen.
+	 */
 	
 	public ProfilBearbeitenStrg() { //Konstruktor
 		view1 = new ProfilBearbeitenView();
@@ -36,6 +45,7 @@ public class ProfilBearbeitenStrg implements ActionListener {
 		
 		
 		view2 = new ProfilBearbeitenAttributView();
+		view2.getFrmProfilBearbeiten().setVisible(false);
 		
 		view2.getBtnAbbrechen().addActionListener(this);
 		view2.getBtnFertig().addActionListener(this);
@@ -44,7 +54,10 @@ public class ProfilBearbeitenStrg implements ActionListener {
 	public static void main(String[] args) {
 		ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
 	}
-	
+	/**
+	 * Überprüft die eingegebenen Daten auf Fehler.
+	 * @return Boolean
+	 */
 	public Boolean DatenPruefen() { //Prüfung der eingegbenen Daten
 		if(auswahl.equals("email")) {
 			if(neu.length() <= 50 && neu.length() != 0 && neu.contains("@")) {
@@ -89,8 +102,10 @@ public class ProfilBearbeitenStrg implements ActionListener {
 		
 		return false;
 	}
-	
-	public void DatenAktualisieren() { //Speichern der Änderungen in die Datenbank
+	/**
+	 * Speichert die eingegebenen Daten in die Datenbank.
+	 */
+	public void DatenAktualisieren() { 
 		String update = "Update kunde set " + auswahl + " = '" + neu + "' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
 		Datenbankschnittstelle.executeUpdate(update);
 		Datenbankschnittstelle.closeConnections();

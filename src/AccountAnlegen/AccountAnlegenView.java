@@ -4,14 +4,25 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import BackgroundAnimation.Movement;
+
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 
-//Autor Daniel Zeller
+/**
+ * Grafische Benutzeroberfläche, über die ein Account für den Kunden erstelt werden kann.
+ * @author Daniel Zeller
+ *
+ */
 
 public class AccountAnlegenView {
 
@@ -133,10 +144,22 @@ public class AccountAnlegenView {
 		lblPasswort.setBounds(300, 305, 109, 14);
 		frmPixelRacer.getContentPane().add(lblPasswort);
 		
-		JLabel lblHintergrund = new JLabel();
-		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
-		lblHintergrund.setBounds(0, 0, 800, 600);
-		frmPixelRacer.getContentPane().add(lblHintergrund);
+		Movement m = new Movement(10);
+		
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		m.label.setBufferedImage(image,0);
+		
+		m.label.setOpaque(false);
+		m.label.setBounds(0, 0, 800, 600);
+		frmPixelRacer.getContentPane().add(m.label);
+		frmPixelRacer.setVisible(true);
 	}
 
 	public JFrame getFrmPixelRacer() { //Getter und Setter der Variablen

@@ -11,7 +11,12 @@ import Nutzer.*;
 import Anmelden.AnmeldenStrg;
 import Datenbankverwaltung.Datenbankschnittstelle;
 
-//Autor Daniel Zeller
+/**
+ * Die Klasse AccountAnlegenStrg steuert das Erstellen eines Accounts für den Kunden.
+ * Sie verwaltet dabei die grafische Benutzeroberfläche (AccountAnlegenView).
+ * @author Daniel
+ *
+ */
 
 public class AccountAnlegenStrg implements ActionListener {
 	private String benutzername; // Deklarierung der benötigten variablen
@@ -36,6 +41,9 @@ public class AccountAnlegenStrg implements ActionListener {
 		AccountAnlegenStrg strg = new AccountAnlegenStrg();
 	}
 
+	/**
+	 * Die eingegebnen Daten werden aus der Klasse AccountAnlegenView in die Variablen übergeben.
+	 */
 	public void eingegebeneDatenSpeichern() { // Speichern der eingegebenen Werte in den Textfeldern der View in
 												// Variablen
 		benutzername = view1.getTxtNutzername().getText();
@@ -45,7 +53,10 @@ public class AccountAnlegenStrg implements ActionListener {
 		email = view1.getTxtEmail().getText();
 		gebdat = view1.getTxtGeburtsdatum().getText();
 	}
-
+	/**
+	 * Die eingegebenen Daten werden auf Fehler und unerwünschte Inhalte überprüft.
+	 * @return Boolean
+	 */
 	public Boolean DatenPruefen() { // Prüfung der eingegebenen Daten auf Länge und Zeicheninhalte
 		if (benutzername.length() <= 20 && benutzername.length() != 0) {
 
@@ -117,6 +128,9 @@ public class AccountAnlegenStrg implements ActionListener {
 		}
 	}
 
+	/**
+	 * Die Daten werden mit Hilfe der Datenbankschnittstelle in die Datenbank geschrieben.
+	 */
 	public void InsertIntoKunde() { // Speichern des Kundens in der Datenbank
 		String update = ("insert into kunde values('" + benutzername + "','" + pw + "','" + vn + "','" + nn
 				+ "','false',0,'" + gebdat + "','" + email + "')");
