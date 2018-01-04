@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
-import Premium.kaufePremiumStrecke;
+import Premium.kaufePremiumAccount;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
 import Startansicht.StartansichtStrg;
 import Strecke.Strecke;
@@ -98,7 +98,7 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		}
 		if(a.getSource()==viewKunde.getBtnGetPremium()) {
 			viewKunde.frmPixelRacer.dispose();
-			kaufePremiumStrecke strecke = new kaufePremiumStrecke();
+			kaufePremiumAccount account = new kaufePremiumAccount();
 		}
 		
 	}
