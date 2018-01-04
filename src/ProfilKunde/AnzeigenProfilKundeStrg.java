@@ -17,7 +17,6 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 	SingleplayerFahrt sf;
 	
 	ProfilKundeAnsicht viewKunde;
-	String premium;
 	
 	int counterRang1 =0;
 	int counterRang2 =0;
@@ -46,17 +45,15 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		viewKunde.getLblSetNachname().setText(Nutzerverwaltung.getangKunde().getvn());
 		
 		//SetStatus
+		System.out.println(Nutzerverwaltung.getangKunde().getpremium()=="true");
+		
 		if(Nutzerverwaltung.getangKunde().getpremium()=="true") {
-			premium ="Premiumkunde";
+			viewKunde.getLblSetStatus().setText("Premiumkunde");
 		}
 		else if(Nutzerverwaltung.getangKunde().getpremium()=="false") {
-			premium = "Free To Play";
+			viewKunde.getLblSetStatus().setText("Free to Play");
 		}
-					
-		viewKunde.getLblSetStatus().setText(premium);
-		
-		System.out.println("Gesamt sf:" +fahrten1.size());
-		
+				
 		//SetPunktestand
 		viewKunde.getLblSetPunktestand().setText(Integer.toString((Nutzerverwaltung.getangKunde().getpunkte())));
 		
