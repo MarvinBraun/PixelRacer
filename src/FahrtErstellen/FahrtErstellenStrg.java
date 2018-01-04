@@ -25,6 +25,8 @@ import FahrtSpielen.FahrtSpielenStrg;
 import MusicHandler.MusicPlayer;
 import Nutzer.Kunde;
 import Nutzer.Nutzerverwaltung;
+import Rechnung.Rechnung;
+import Rechnung.Rechnungsverwaltung;
 import Strecke.Strecke;
 import Strecke.Streckenverwaltung;
 import myIterator.MyIteratorKart;
@@ -61,6 +63,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	private LinkedList<Strecke> streckenliste = new LinkedList<Strecke>();
 	private LinkedList<SingleplayerFahrt> schwierigkeitsCheck = new LinkedList<SingleplayerFahrt>();
 	
+	
 	private BufferedImage streckenbild;
 	private int singlemultiplayer;
 	
@@ -89,7 +92,8 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 		//Initialisieren der Karts 
 		karts = new Kartverwaltung();
-		kartliste =karts.gibKart();
+		kartliste = gibZuFahrendeKarts();
+		System.out.println("Zu verfüungstehende Karts:" +kartliste.size());
 		itKart = new MyIteratorKart(kartliste.listIterator());
 		ladeKarts();
 		
@@ -181,6 +185,64 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
 		}
+	}
+	
+	public LinkedList<Kart> gibZuFahrendeKarts()
+	{
+		LinkedList<Kart> alleKarts = new LinkedList<Kart>();
+		
+		Kartverwaltung karts1 = new Kartverwaltung();
+		
+		//Laden aller Karts
+		alleKarts =karts1.gibKart();
+		System.out.println("Anzahl Karts insgesamt:"+alleKarts.size());
+		Iterator<Kart> it = alleKarts.iterator();
+		
+		//Laden der Rechnungsliste
+		LinkedList<Rechnung> kartrechnungen = Rechnungsverwaltung.gibKartRechnungenfuerBenutzer();
+		System.out.println("Länge der Recnungen des Benutzers:" + kartrechnungen.size());
+		Iterator<Rechnung> itR = kartrechnungen.iterator();
+		
+		//Leere LinkedList für Karts des Benutzers:
+		kartliste = new LinkedList<Kart>();
+		
+		//Laden der kostenlosen Karts
+		Kart k= null;
+		while(it.hasNext())
+		{
+			
+			k = it.next();
+			if(k.getPremium().equals("false") && k.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=k.getPunktewert())
+			{
+				System.out.println("Wird hinzugefügt: "+ k.getKartname());
+				kartliste.add(k);
+			}
+		}
+		
+		//Laden der gekauften Karts
+		Rechnung r = null;
+		while(itR.hasNext())
+		{
+			r = itR.next();
+			String kartName;
+			kartName = r.getKartname();
+			System.out.println("Zu suchendes Kart"+ kartName);
+			
+			Iterator<Kart> itN = alleKarts.iterator();
+		
+			while(it.hasNext())
+			{
+				
+				k = it.next();
+				System.out.println("Vergleiche: "+kartName + " mit: "+k.getKartname() );
+				if(k.getKartname().equals(kartName))
+				{	
+					System.out.println("Wird hinzugefügt über Rechnungen: "+ k.getKartname());
+					kartliste.add(k);
+				}
+			}
+		}
+		return kartliste;
 	}
 	
 	/**
@@ -327,6 +389,8 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 		
 	}
+	
+	
 	
 	/** 
 	 * Prüft ob eine Schwierigkeit n+1 existiert. Falls dies der Fall ist und der Spieler zum Spielen der Schwierigkeit berechtigt ist (pruefeSchwierigkeit() == true) dann wird auf dieses Element verwiesen und die GUI entsprechend aktualisiert.
