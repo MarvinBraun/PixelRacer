@@ -11,7 +11,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
-
+/**
+ * Klasse, zuständig für die Visualisierung der Animation in eine vertikale Richtung.
+ * @author Marvin Braun
+ *
+ */
 public class LabelBackgroundY extends JLabel {
 	int backgroundY1 = 0;
 	int backgroundY2 = -600;
@@ -22,6 +26,11 @@ public class LabelBackgroundY extends JLabel {
 	 BufferedImage ib2;
 	 int x;
 	
+	 /**
+	  * Setzt das zu animierende Bild und den X-Wert der Bilder.
+	  * @param image Ein Objekt der Klasse BufferedImage
+	  * @param x X-Wert der Animation.
+	  */
 	public  void setBufferedImage(BufferedImage image, int x)
 	{
 			ib1 = image;
@@ -30,6 +39,9 @@ public class LabelBackgroundY extends JLabel {
 		
 	}
 	
+	/**
+	 * Zeichnet die Bilder konstant neu auf dem JLabel.
+	 */
 	public void paintComponent (Graphics g)
 	{
 		super.paintComponent(g);

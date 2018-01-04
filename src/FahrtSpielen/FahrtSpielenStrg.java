@@ -73,7 +73,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Verbleibende Runden: 10");
 		
 		
-		fahrtSpielenView.getZeiger().balken.setVisible(false);
+		fahrtSpielenView.getZeiger().zeiger.setVisible(false);
 		fahrtSpielenView.getFrame().setVisible(true);
 		fahrtSpielenView.getFrame().setFocusable(true);
 		//KeyAdapter
@@ -89,7 +89,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	{
 		
 		fahrtSpielenView.getFahrenBtn().setVisible(false);
-		fahrtSpielenView.getZeiger().balken.setVisible(true);
+		fahrtSpielenView.getZeiger().zeiger.setVisible(true);
 		fahrtSpielenView.getBalkenLbl().setVisible(true);
 		fahrtSpielenView.getBewertungLbl().setVisible(true);
 		fahrtSpielenView.getFrame().addKeyListener(new KeyAdapter() 
@@ -100,7 +100,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	            	if( versuche>=0)
 	            	{ 
 	            		
-	            	int record = fahrtSpielenView.getZeiger().balken.backgroundX1;
+	            	int record = fahrtSpielenView.getZeiger().zeiger.backgroundX1;
 	            	System.out.println(spielstand);
 	            	if(speed<6)
 	            	speed = speed+speed;

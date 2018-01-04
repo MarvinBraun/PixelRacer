@@ -103,11 +103,11 @@ public class FahrtSpielenView {
 			e.printStackTrace();
 		}
 		setZeiger(new ZeigerMovement(1));
-		getZeiger().balken.setBufferedImage(image, 0);
-		getZeiger().balken.setVisible(true);
-		getZeiger().balken.setBounds(0,100,800,600);
-		getZeiger().balken.setOpaque(false);
-		getFrame().getContentPane().add(getZeiger().balken);
+		getZeiger().zeiger.setBufferedImage(image, 0);
+		getZeiger().zeiger.setVisible(true);
+		getZeiger().zeiger.setBounds(0,100,800,600);
+		getZeiger().zeiger.setOpaque(false);
+		getFrame().getContentPane().add(getZeiger().zeiger);
 
 		
 		setBalkenLbl(new JLabel("New label"));

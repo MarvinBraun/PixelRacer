@@ -3,12 +3,19 @@ package BackgroundAnimation;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
+/**
+ * Bewegt die Bilder der Klasse LabelBackgroundX horizontal (rechts nach links) und erzeugt eine Animation.
+ * @author Marvin Braun
+ *
+ */
 public class Movement {
 	Timer back;
 	
 	public LabelBackgroundX label = new LabelBackgroundX();
-	
+	/**
+	 * Erzeugt ein Objekt und definiert die Geschwindigkeit und die Grenzen der Animation.
+	 * @param speed Geschwindigkeit der Animation.
+	 */
 	public Movement(int speed)
 	{
 		

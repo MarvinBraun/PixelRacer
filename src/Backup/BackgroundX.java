@@ -1,5 +1,5 @@
 // @Author Marvin Braun
-package BackgroundAnimation;
+package Backup;
 
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -13,6 +13,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import BackgroundAnimation.LabelBackgroundX;
+import BackgroundAnimation.Movement;
+
 import javax.swing.JButton;
 
 public class BackgroundX {

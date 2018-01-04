@@ -11,23 +11,32 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
-
-public class LabelBalken extends JLabel {
+/**
+ * Klasse, zuständig für die Visualisierung der Animation des Zeigers im Spiel.
+ * @author Marvin Braun
+ *
+ */
+public class LabelZeiger extends JLabel {
 	public int backgroundX1 = 100;
 	int backgroundSpeed= 1;
 	 File zeigerBild;
 	 BufferedImage ib1;
 	 int y;
 
-	
+	 /**
+	  * setzt die beiden BufferedImages ib1 und ib2.
+	  * @param image BufferedImage
+	  * @param y int-Variable, falls das Bild an einen bestimmten Y-Wert gesetzt werden soll.
+	  */
 	public  void setBufferedImage(BufferedImage image, int y)
 	{
 			ib1 = image;		
 		this.y = y;
 	}
 	
-
-	
+	/**
+	 * Zeichnet die Bilder konstant neu auf dem JLabel.
+	 */
 	public void paintComponent (Graphics g)
 	{
 		super.paintComponent(g);
