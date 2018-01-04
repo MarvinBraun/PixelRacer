@@ -97,7 +97,6 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 			StartansichtStrg strg = new StartansichtStrg();
 		}
 		if(a.getSource()==viewKunde.getBtnGetPremium()) {
-			viewKunde.frmPixelRacer.dispose();
 			kaufePremiumAccount account = new kaufePremiumAccount();
 		}
 		
