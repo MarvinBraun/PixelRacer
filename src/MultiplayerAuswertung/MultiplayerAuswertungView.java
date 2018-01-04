@@ -12,7 +12,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * Grafische Benutzeroberfläche der Auswertung einer MultiplayerFahrt. 
+ * @author Marvin Braun
+ *
+ */
 public class MultiplayerAuswertungView {
 
 	private JFrame frame;
@@ -27,7 +31,7 @@ public class MultiplayerAuswertungView {
 	
 	
 	/**
-	 * Launch the application.
+	 * Main-Methode.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -43,14 +47,14 @@ public class MultiplayerAuswertungView {
 	}
 
 	/**
-	 * Create the application.
+	 * Initialisiert und befüllt das Objekt.
 	 */
 	public MultiplayerAuswertungView() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialisiert die Inhalte des JFrames.
 	 */
 	private void initialize() {
 		frame = new JFrame();

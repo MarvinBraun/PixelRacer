@@ -101,11 +101,11 @@ public class MultiplayerFahrtSpielenView {
 			e.printStackTrace();
 		}
 		zeiger = new ZeigerMovement(1);
-		zeiger.balken.setBufferedImage(image, 0);
-		zeiger.balken.setVisible(true);
-		zeiger.balken.setBounds(0,100,800,600);
-		zeiger.balken.setOpaque(false);
-		frame.getContentPane().add(zeiger.balken);
+		zeiger.zeiger.setBufferedImage(image, 0);
+		zeiger.zeiger.setVisible(true);
+		zeiger.zeiger.setBounds(0,100,800,600);
+		zeiger.zeiger.setOpaque(false);
+		frame.getContentPane().add(zeiger.zeiger);
 
 		
 		balkenLbl = new JLabel("New label");

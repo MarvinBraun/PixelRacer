@@ -200,7 +200,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 				
 				
 				
-				mf.setZeit(50);
+				mf.setZeit(100);
 				mf.setRang(99);
 				mf.setKartName(k.getKartname());
 				int id = verwaltung.gibNeueID(1);

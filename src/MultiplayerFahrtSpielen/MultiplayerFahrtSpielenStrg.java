@@ -68,7 +68,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		
 		fahrtSpielenView = new MultiplayerFahrtSpielenView(kartBild,streckenBild);
 		fahrtSpielenView.getFahrenBtn().addActionListener(this);
-		fahrtSpielenView.getZeiger().balken.setVisible(false);
+		fahrtSpielenView.getZeiger().zeiger.setVisible(false);
 		fahrtSpielenView.getFrame().setVisible(true);
 		fahrtSpielenView.getFrame().setFocusable(true);
 		fahrtSpielenView.getFrame().setFocusTraversalKeysEnabled(false);
@@ -92,7 +92,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	{
 		
 		fahrtSpielenView.getFahrenBtn().setVisible(false);
-		fahrtSpielenView.getZeiger().balken.setVisible(true);
+		fahrtSpielenView.getZeiger().zeiger.setVisible(true);
 		fahrtSpielenView.getBalkenLbl().setVisible(true);
 		fahrtSpielenView.getBewertungLbl().setVisible(true);
 		fahrtSpielenView.getFrame().addKeyListener(new KeyAdapter() {
@@ -101,7 +101,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 	            	if( versuche>=0)
 	            	{ 
-	            		int record = fahrtSpielenView.getZeiger().balken.backgroundX1;
+	            		int record = fahrtSpielenView.getZeiger().zeiger.backgroundX1;
 	            	wert = wert + record;
 	            	System.out.println(wert);
 	            	speed = speed+speed;

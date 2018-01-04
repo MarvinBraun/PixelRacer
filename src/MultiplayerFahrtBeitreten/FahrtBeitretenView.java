@@ -23,7 +23,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.awt.event.ActionEvent;
-
+/**
+ * Grafische Benutzeroberfläche um einer MultiplayerFahrt beizutreten.
+ * @author Marvin Braun
+ *
+ */
 public class FahrtBeitretenView {
 
 	private JFrame frame;
@@ -43,7 +47,7 @@ public class FahrtBeitretenView {
 	
 	
 	/**
-	 * Launch the application.
+	 * Main-Methode.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -65,14 +69,14 @@ public class FahrtBeitretenView {
 	
 
 	/**
-	 * Create the application.
+	 * Erstellt und befüllt ein Objekt über die Methode initialize().
 	 */
 	public FahrtBeitretenView() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialisiert die Inhalte des JFrames.
 	 */
 	private void initialize() {
 		frame = new JFrame();
