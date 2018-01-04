@@ -134,6 +134,17 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
 			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));														
 		}
+		
+		//Prüfung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
+		
+		Rechnungsverwaltung r = new Rechnungsverwaltung();
+		LinkedList<Rechnung> rechnungen = r.gibStreckenRechnungenfuerBenutzer();
+		
+		//for(strecken)		
+		if(s.getPremium()== "true"){
+			viewUebersicht.getBtnStreckeKaufen().setVisible(true);			
+		}
+		
 		Datenbankschnittstelle.closeConnections();
 			
 		//Punktestandprüfung und Label Aktivierung
@@ -198,15 +209,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
 			viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
 			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
-			
-			//Prüfung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
-			
-			Rechnungsverwaltung r = new Rechnungsverwaltung();
-			LinkedList<Rechnung> rechnungen = r.gibStreckenRechnungenfuerBenutzer();
-					
-			if(s.getPremium()== "true"){
-				viewUebersicht.getBtnStreckeKaufen().setVisible(true);			
-			}
+				
 		}
 		Datenbankschnittstelle.closeConnections();
 		
