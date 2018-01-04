@@ -1,4 +1,4 @@
-package FahrtSpielen;
+package FahrtAuswertung;
 
 import java.awt.EventQueue;
 
@@ -20,7 +20,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
 
-public class FahrtAuswertung {
+public class FahrtAuswertungView {
 
 	private JFrame frame;
 	private JButton btnNewButton;
@@ -40,7 +40,7 @@ public class FahrtAuswertung {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FahrtAuswertung window = new FahrtAuswertung();
+					FahrtAuswertungView window = new FahrtAuswertungView();
 					window.getFrame().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@ public class FahrtAuswertung {
 	/**
 	 * Create the application.
 	 */
-	public FahrtAuswertung() {
+	public FahrtAuswertungView() {
 		initialize();
 	}
 
@@ -95,7 +95,7 @@ public class FahrtAuswertung {
 		getFrame().getContentPane().add(getLblGewonnenPunkte());
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(FahrtAuswertung.class.getResource("/Resources/trophae.png")));
+		lblNewLabel.setIcon(new ImageIcon(FahrtAuswertungView.class.getResource("/Resources/trophae.png")));
 		lblNewLabel.setBounds(285, 266, 198, 200);
 		getFrame().getContentPane().add(lblNewLabel);
 		

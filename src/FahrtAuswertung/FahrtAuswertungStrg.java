@@ -1,4 +1,4 @@
-package FahrtSpielen;
+package FahrtAuswertung;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +19,7 @@ import Startansicht.StartansichtStrg;
  */
 
 public class FahrtAuswertungStrg implements ActionListener {
-	private FahrtAuswertung view;
+	private FahrtAuswertungView view;
 	private Fahrtverwaltung verwaltung  = new Fahrtverwaltung();
 	private int a = 0;
 	
@@ -32,7 +32,7 @@ public class FahrtAuswertungStrg implements ActionListener {
 	public FahrtAuswertungStrg(SingleplayerFahrt sf, BufferedImage strecke)
 	{
 		
-		view = new FahrtAuswertung();
+		view = new FahrtAuswertungView();
 		view.getFrame().setLocationRelativeTo(null);
 		view.getLblDeineZeit().setText("Deine Zeit: "+sf.getZeit());
 		view.getLblDeinPlatz().setText("Dein Rang: "+sf.getRang());

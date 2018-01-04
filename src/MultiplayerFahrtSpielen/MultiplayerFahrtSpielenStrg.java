@@ -12,6 +12,7 @@ import Fahrt.Fahrtverwaltung;
 import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
 import Kart.Kart;
+import MultiplayerAuswertung.MultiplayerAuswertungStrg;
 import Strecke.Strecke;
 /**
  * Steuerungsklasse, welche die grafische Benutzeroberfläche MultiplayerFahrtSpielenView verwaltet und mit den Multientitäten (Verwaltungen) kommuniziert.
@@ -161,11 +162,6 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	      });
 
 		
-	}
-	
-	public static void main(String[] args)
-	{
-		MultiplayerFahrtSpielenStrg strg = new MultiplayerFahrtSpielenStrg();
 	}
 
 

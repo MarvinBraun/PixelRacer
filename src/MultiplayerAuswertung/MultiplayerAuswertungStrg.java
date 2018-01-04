@@ -1,4 +1,4 @@
-package MultiplayerFahrtSpielen;
+package MultiplayerAuswertung;
 
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
