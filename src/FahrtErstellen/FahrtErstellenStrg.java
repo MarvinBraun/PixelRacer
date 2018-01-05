@@ -100,8 +100,8 @@ public class FahrtErstellenStrg implements ActionListener {
 		//Initialisieren der Strecke
 		strecken= new Streckenverwaltung();
 		streckenliste = strecken.gibStrecke();
-		
 		itStrecke = new MyIteratorStrecke(streckenliste.listIterator());
+
 		
 	
 		
@@ -118,7 +118,8 @@ public class FahrtErstellenStrg implements ActionListener {
 		//nur für Singleplayer
 	
 		if(singleMultiplayer==1)
-		{
+		{	
+			
 			schwierigkeiten = new LinkedList<String>();
 			schwierigkeiten.add("Bronze");
 			schwierigkeiten.add("Silber");
@@ -134,16 +135,16 @@ public class FahrtErstellenStrg implements ActionListener {
 			sf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
 			view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
 			ladeStrecke();
+			
 			schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFürBenutzerUndStrecke(kunde.getnutzername(),s.getStreckenname());
 			System.out.println("Fahrten:"+schwierigkeitsCheck.size());
 			
-		
 		}
 		//Initialisieren der MultiplayerID
 		// nur für Multiplayer
 		else
 		{
-			ladeStrecke();
+		
 			view.getSchwierigkeitBtn1().setVisible(false);
 			view.getSchwierigkeitBtn2().setVisible(false);
 			view.getSchwierigkeitLbl().setVisible(false);
@@ -157,6 +158,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			int multiplayerID = fahrten.gibNeueMultiplayerID();
 			view.getMultiplayerLbl().setText(""+multiplayerID);
 			mf.setMultiplayerID(multiplayerID);
+			ladeStrecke();
 		}
 		
 		SwingUtilities.updateComponentTreeUI(view.getFrame());
@@ -226,7 +228,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		{
 			
 			k = it.next();
-			if(k.getPremium().equals("false") && k.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=k.getPunktewert())
+			if(k.getPremium().equals("false") && k.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=k.getPunktewert()&&k.getPunktewert()>0)
 			{
 				System.out.println("Wird hinzugefügt: "+ k.getKartname());
 				kartliste.add(k);
@@ -474,7 +476,8 @@ public class FahrtErstellenStrg implements ActionListener {
 			sf = it.next();
 			check = sf.getSchwierigkeit();
 			System.out.println("Vergleich zu:"+check);
-			if(a.equals(check) && sf.getRang()==1)
+			System.out.println(s.getStreckenname() + " Vergleiche zu: "+sf.getStreckenName());
+			if(a.equals(check) && sf.getRang()==1 && s.getStreckenname().equals(sf.getStreckenName()))
 			{	
 			pruefung = true;
 			break;
