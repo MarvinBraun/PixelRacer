@@ -19,6 +19,7 @@ import BackgroundAnimation.Movement;
 import BackgroundAnimation.MovementBackward;
 import BackgroundAnimation.ZeigerMovement;
 import FahrtErstellen.FahrtErstellenView;
+import FontHandler.FontHandler;
 
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -75,6 +76,11 @@ public class MultiplayerFahrtSpielenView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		Font customFont26f = FontHandler.registriereSchriftart(26f);
+		Font customFont30f = FontHandler.registriereSchriftart(30f);
+		Font customFont35f = FontHandler.registriereSchriftart(35f);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,7 +91,7 @@ public class MultiplayerFahrtSpielenView {
 		fahrenBtn = new JButton("Fahren!");
 		fahrenBtn.setBackground(new Color(176, 224, 230));
 		fahrenBtn.setBorder(new LineBorder(new Color(255, 69, 0), 6));
-		fahrenBtn.setFont(new Font("pixelmix", Font.PLAIN, 26));
+		fahrenBtn.setFont(customFont26f);
 		fahrenBtn.setBounds(305, 98, 172, 58);
 		frame.getContentPane().add(fahrenBtn);
 		
@@ -113,7 +119,7 @@ public class MultiplayerFahrtSpielenView {
 		
 		bewertungLbl = new JLabel("Druecke Leertaste");
 		bewertungLbl.setForeground(Color.RED);
-		bewertungLbl.setFont(new Font("pixelmix", Font.BOLD, 35));
+		bewertungLbl.setFont(customFont35f);
 		bewertungLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		bewertungLbl.setVisible(false);
 		bewertungLbl.setBounds(152, 146, 500, 95);
@@ -124,13 +130,13 @@ public class MultiplayerFahrtSpielenView {
 		
 		lblAnzahlVerbleibenderVersuche = new JLabel("Runden verbleibend: 5");
 		lblAnzahlVerbleibenderVersuche.setForeground(Color.RED);
-		lblAnzahlVerbleibenderVersuche.setFont(new Font("pixelmix", Font.BOLD, 30));
+		lblAnzahlVerbleibenderVersuche.setFont(customFont30f);
 		lblAnzahlVerbleibenderVersuche.setBounds(22, 21, 381, 33);
 		frame.getContentPane().add(lblAnzahlVerbleibenderVersuche);
 		
 		lblLetzteZeit = new JLabel("Zeit: 0s");
 		lblLetzteZeit.setForeground(Color.RED);
-		lblLetzteZeit.setFont(new Font("Dialog", Font.BOLD, 30));
+		lblLetzteZeit.setFont(customFont30f);
 		lblLetzteZeit.setBounds(22, 65, 296, 33);
 		frame.getContentPane().add(lblLetzteZeit);
 	

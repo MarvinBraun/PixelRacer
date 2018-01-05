@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+
+import FontHandler.FontHandler;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JScrollPane;
@@ -57,6 +60,10 @@ public class MultiplayerAuswertungView {
 	 * Initialisiert die Inhalte des JFrames.
 	 */
 	private void initialize() {
+		Font customFont16f = FontHandler.registriereSchriftart(16f);
+		Font customFont20f = FontHandler.registriereSchriftart(20f);
+		Font customFont30f = FontHandler.registriereSchriftart(30f);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,7 +73,7 @@ public class MultiplayerAuswertungView {
 		
 		JLabel lblNewLabel_3 = new JLabel("Rang");
 		lblNewLabel_3.setForeground(Color.RED);
-		lblNewLabel_3.setFont(new Font("pixelmix", Font.BOLD, 20));
+		lblNewLabel_3.setFont(customFont20f);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(10, 191, 226, 42);
@@ -76,7 +83,7 @@ public class MultiplayerAuswertungView {
 		label.setHorizontalTextPosition(SwingConstants.CENTER);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.RED);
-		label.setFont(new Font("pixelmix", Font.BOLD, 20));
+		label.setFont(customFont20f);
 		label.setBounds(10, 283, 226, 42);
 		frame.getContentPane().add(label);
 		
@@ -84,7 +91,7 @@ public class MultiplayerAuswertungView {
 		label_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setForeground(Color.RED);
-		label_1.setFont(new Font("pixelmix", Font.BOLD, 20));
+		label_1.setFont(customFont20f);
 		label_1.setBounds(10, 347, 226, 42);
 		frame.getContentPane().add(label_1);
 		
@@ -92,7 +99,7 @@ public class MultiplayerAuswertungView {
 		label_2.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setForeground(Color.RED);
-		label_2.setFont(new Font("pixelmix", Font.BOLD, 20));
+		label_2.setFont(customFont20f);
 		label_2.setBounds(10, 412, 226, 42);
 		frame.getContentPane().add(label_2);
 		
@@ -100,7 +107,7 @@ public class MultiplayerAuswertungView {
 		lblName1.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblName1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName1.setForeground(Color.RED);
-		lblName1.setFont(new Font("pixelmix", Font.BOLD, 20));
+		lblName1.setFont(customFont20f);
 		lblName1.setBounds(302, 283, 226, 42);
 		frame.getContentPane().add(lblName1);
 		
@@ -108,7 +115,7 @@ public class MultiplayerAuswertungView {
 		lblName2.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblName2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName2.setForeground(Color.RED);
-		lblName2.setFont(new Font("pixelmix", Font.BOLD, 20));
+		lblName2.setFont(customFont20f);
 		lblName2.setBounds(302, 347, 226, 42);
 		frame.getContentPane().add(lblName2);
 		
@@ -124,7 +131,7 @@ public class MultiplayerAuswertungView {
 		lblName3.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblName3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName3.setForeground(Color.RED);
-		lblName3.setFont(new Font("pixelmix", Font.BOLD, 20));
+		lblName3.setFont(customFont20f);
 		lblName3.setBounds(302, 412, 226, 42);
 		frame.getContentPane().add(lblName3);
 		
@@ -132,7 +139,7 @@ public class MultiplayerAuswertungView {
 		lblZeit1.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblZeit1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblZeit1.setForeground(Color.RED);
-		lblZeit1.setFont(new Font("pixelmix", Font.BOLD, 20));
+		lblZeit1.setFont(customFont20f);
 		lblZeit1.setBounds(548, 283, 226, 42);
 		frame.getContentPane().add(lblZeit1);
 		
@@ -140,7 +147,7 @@ public class MultiplayerAuswertungView {
 		lblZeit2.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblZeit2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblZeit2.setForeground(Color.RED);
-		lblZeit2.setFont(new Font("pixelmix", Font.BOLD, 20));
+		lblZeit2.setFont(customFont20f);
 		lblZeit2.setBounds(548, 347, 226, 42);
 		frame.getContentPane().add(lblZeit2);
 		
@@ -148,32 +155,32 @@ public class MultiplayerAuswertungView {
 		lblZeit3.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblZeit3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblZeit3.setForeground(Color.RED);
-		lblZeit3.setFont(new Font("pixelmix", Font.BOLD, 20));
+		lblZeit3.setFont(customFont20f);
 		lblZeit3.setBounds(548, 412, 226, 42);
 		frame.getContentPane().add(lblZeit3);
 		
 		JLabel lblZeit = new JLabel("Zeit");
 		lblZeit.setForeground(Color.RED);
-		lblZeit.setFont(new Font("pixelmix", Font.BOLD, 20));
+		lblZeit.setFont(customFont20f);
 		lblZeit.setHorizontalAlignment(SwingConstants.CENTER);
 		lblZeit.setBounds(548, 191, 226, 42);
 		frame.getContentPane().add(lblZeit);
 		
 		JLabel lblNewLabel_2 = new JLabel("_______________________________________________________________________");
-		lblNewLabel_2.setFont(new Font("pixelmix", Font.BOLD, 16));
+		lblNewLabel_2.setFont(customFont16f);
 		lblNewLabel_2.setBounds(0, 166, 784, 14);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 	JLabel lblName = new JLabel("Name");
 		lblName.setForeground(Color.RED);
-		lblName.setFont(new Font("pixelmix", Font.BOLD, 20));
+		lblName.setFont(customFont20f);
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName.setBounds(302, 191, 226, 42);
 		frame.getContentPane().add(lblName);
 		
 		MultiplayerIdLbl = new JLabel("MultiplayerID: XXXXXXX");
 		MultiplayerIdLbl.setForeground(Color.RED);
-		MultiplayerIdLbl.setFont(new Font("pixelmix", Font.BOLD, 30));
+		MultiplayerIdLbl.setFont(customFont30f);
 		MultiplayerIdLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		MultiplayerIdLbl.setBounds(0, 75, 784, 90);
 		frame.getContentPane().add(MultiplayerIdLbl);

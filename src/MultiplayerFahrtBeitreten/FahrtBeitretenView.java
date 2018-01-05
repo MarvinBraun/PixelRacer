@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
 import FahrtSpielen.FahrtSpielenStrg;
+import FontHandler.FontHandler;
 import Kart.Kart;
 import MusicHandler.MusicPlayer;
 
@@ -79,6 +80,9 @@ public class FahrtBeitretenView {
 	 * Initialisiert die Inhalte des JFrames.
 	 */
 	private void initialize() {
+		
+		Font customFont30f = FontHandler.registriereSchriftart(30f);
+		
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 800, 600);
@@ -123,12 +127,12 @@ public class FahrtBeitretenView {
 		frame.getContentPane().add(kartBild);
 		
 		waehleKart = new JLabel("Dein Kart:");
-		waehleKart.setFont(new Font("pixelmix", Font.PLAIN, 30));
+		waehleKart.setFont(customFont30f);
 		waehleKart.setBounds(173, 16, 210, 50);
 		frame.getContentPane().add(waehleKart);
 		
 		kartName = new JLabel("FireBird");
-		kartName.setFont(new Font("pixelmix", Font.PLAIN, 30));
+		kartName.setFont(customFont30f);
 		kartName.setBounds(423, 11, 330, 60);
 		frame.getContentPane().add(kartName);
 		

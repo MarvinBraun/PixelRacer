@@ -19,6 +19,7 @@ import BackgroundAnimation.Movement;
 import BackgroundAnimation.MovementBackward;
 import BackgroundAnimation.ZeigerMovement;
 import FahrtErstellen.FahrtErstellenView;
+import FontHandler.FontHandler;
 
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -77,6 +78,10 @@ public class FahrtSpielenView {
 	 * Initialisiert das JFrame.
 	 */
 	private void initialize() {
+		Font customFont26f = FontHandler.registriereSchriftart(26f);
+		Font customFont30f = FontHandler.registriereSchriftart(30f);
+		Font customFont35f = FontHandler.registriereSchriftart(35f);
+		
 		setFrame(new JFrame());
 		getFrame().setBounds(100, 100, 800, 600);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,7 +92,7 @@ public class FahrtSpielenView {
 		setFahrenBtn(new JButton("Fahren!"));
 		getFahrenBtn().setBackground(new Color(176, 224, 230));
 		getFahrenBtn().setBorder(new LineBorder(new Color(255, 69, 0), 6));
-		getFahrenBtn().setFont(new Font("pixelmix", Font.PLAIN, 26));
+		getFahrenBtn().setFont(customFont26f);
 		getFahrenBtn().setBounds(307, 94, 172, 58);
 		getFrame().getContentPane().add(getFahrenBtn());
 		
@@ -115,7 +120,7 @@ public class FahrtSpielenView {
 		
 		setBewertungLbl(new JLabel("Druecke Leertaste"));
 		getBewertungLbl().setForeground(Color.RED);
-		getBewertungLbl().setFont(new Font("pixelmix", Font.BOLD, 35));
+		getBewertungLbl().setFont(customFont35f);
 		getBewertungLbl().setHorizontalAlignment(SwingConstants.CENTER);
 		getBewertungLbl().setVisible(false);
 		getBewertungLbl().setBounds(152, 146, 500, 95);
@@ -124,10 +129,10 @@ public class FahrtSpielenView {
 		getBalkenLbl().setBounds(152, 252, 500, 60);
 		getFrame().getContentPane().add(getBalkenLbl());
 		
-		setLblAnzahlVerbleibenderVersuche(new JLabel("Runden verbleibend: 5"));
+		setLblAnzahlVerbleibenderVersuche(new JLabel("Runden verbleibend: 10"));
 		getLblAnzahlVerbleibenderVersuche().setForeground(Color.RED);
-		getLblAnzahlVerbleibenderVersuche().setFont(new Font("pixelmix", Font.BOLD, 30));
-		getLblAnzahlVerbleibenderVersuche().setBounds(22, 21, 505, 33);
+		getLblAnzahlVerbleibenderVersuche().setFont(customFont30f);
+		getLblAnzahlVerbleibenderVersuche().setBounds(22, 21, 748, 33);
 		getFrame().getContentPane().add(getLblAnzahlVerbleibenderVersuche());
 	
 		m = new MovementBackward(5);
@@ -196,6 +201,7 @@ public class FahrtSpielenView {
 
 	public void setLblAnzahlVerbleibenderVersuche(JLabel lblAnzahlVerbleibenderVersuche) {
 		this.lblAnzahlVerbleibenderVersuche = lblAnzahlVerbleibenderVersuche;
+		lblAnzahlVerbleibenderVersuche.setHorizontalAlignment(SwingConstants.CENTER);
 	}
 
 

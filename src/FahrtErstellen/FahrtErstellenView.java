@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
 import FahrtSpielen.FahrtSpielenStrg;
+import FontHandler.FontHandler;
 import Kart.Kart;
 import MusicHandler.MusicPlayer;
 
@@ -89,6 +90,10 @@ public class FahrtErstellenView {
 	 * Initialisiert das Objekt.
 	 */
 	private void initialize() {
+		
+		//Lade Schriftart
+		Font customFont = FontHandler.registriereSchriftart(30f);
+		
 		setFrame(new JFrame());
 		getFrame().setResizable(false);
 		getFrame().setBounds(100, 100, 800, 600);
@@ -120,7 +125,7 @@ public class FahrtErstellenView {
 		getSchwierigkeitBtn2().setBorderPainted(false);
 		getSchwierigkeitBtn2().setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
 		getSchwierigkeitBtn2().setContentAreaFilled(false);
-		getSchwierigkeitBtn2().setBounds(345, 489, 60, 60);
+		getSchwierigkeitBtn2().setBounds(424, 489, 60, 60);
 		getFrame().getContentPane().add(getSchwierigkeitBtn2());
 		
 		setStreckeBackward(new JButton(""));
@@ -151,7 +156,7 @@ public class FahrtErstellenView {
 		getSpielenBtn().setBorderPainted(false);
 		getSpielenBtn().setOpaque(false);
 		
-		getSpielenBtn().setFont(new Font("pixelmix", Font.PLAIN, 30));
+		getSpielenBtn().setFont(customFont);
 		getSpielenBtn().setBackground(SystemColor.activeCaption);
 		getSpielenBtn().setBounds(562, 489, 210, 59);
 		getFrame().getContentPane().add(getSpielenBtn());
@@ -170,18 +175,18 @@ public class FahrtErstellenView {
 		getFrame().getContentPane().add(getStreckeLbl());
 		
 		waehleKart = new JLabel("Dein Kart:");
-		waehleKart.setFont(new Font("pixelmix", Font.PLAIN, 30));
+		waehleKart.setFont(customFont);
 		waehleKart.setBounds(153, 16, 210, 50);
 		getFrame().getContentPane().add(waehleKart);
 		
 		setStreckeName(new JLabel("Hockenheim"));
 		getStreckeName().setHorizontalAlignment(SwingConstants.CENTER);
-		getStreckeName().setFont(new Font("pixelmix", Font.PLAIN, 30));
+		getStreckeName().setFont(customFont);
 		getStreckeName().setBounds(415, 238, 287, 60);
 		getFrame().getContentPane().add(getStreckeName());
 		
 		setKartName(new JLabel("FireBird"));
-		getKartName().setFont(new Font("pixelmix", Font.PLAIN, 30));
+		getKartName().setFont(customFont);
 		getKartName().setBounds(373, 11, 330, 60);
 		getFrame().getContentPane().add(getKartName());
 		
@@ -189,7 +194,7 @@ public class FahrtErstellenView {
 		getMultiplayerLbl().setHorizontalAlignment(SwingConstants.CENTER);
 		getMultiplayerLbl().setVisible(false);
 		getMultiplayerLbl().setFont(new Font("pixelmix", Font.PLAIN, 18));
-		getMultiplayerLbl().setBounds(102, 493, 233, 56);
+		getMultiplayerLbl().setBounds(130, 484, 233, 56);
 		getFrame().getContentPane().add(getMultiplayerLbl());
 		
 		setKartBild(new JLabel(""));
@@ -199,14 +204,17 @@ public class FahrtErstellenView {
 		
 		lblWhleDeineStrecke = new JLabel("Deine Strecke:");
 		lblWhleDeineStrecke.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWhleDeineStrecke.setFont(new Font("pixelmix", Font.PLAIN, 30));
+		lblWhleDeineStrecke.setFont(customFont);
 		lblWhleDeineStrecke.setBounds(102, 246, 303, 40);
 		getFrame().getContentPane().add(lblWhleDeineStrecke);
 		
 		setSchwierigkeitLbl(new JLabel("Schwierigkeit"));
+		Font customFont27f = FontHandler.registriereSchriftart(25f);
+		getSchwierigkeitLbl().setFont(customFont27f);
+
 		getSchwierigkeitLbl().setHorizontalAlignment(SwingConstants.CENTER);
-		getSchwierigkeitLbl().setFont(new Font("pixelmix", Font.PLAIN, 25));
-		getSchwierigkeitLbl().setBounds(105, 495, 233, 40);
+		
+		getSchwierigkeitLbl().setBounds(141, 497, 233, 40);
 		getFrame().getContentPane().add(getSchwierigkeitLbl());
 		
 		lblNewLabel = new JLabel("");
@@ -329,6 +337,7 @@ public class FahrtErstellenView {
 
 	public void setSchwierigkeitLbl(JLabel schwierigkeitLbl) {
 		this.schwierigkeitLbl = schwierigkeitLbl;
+		schwierigkeitLbl.setFont(new Font("Tahoma", Font.PLAIN, 30));
 	}
 
 	public JLabel getMultiplayerLbl() {

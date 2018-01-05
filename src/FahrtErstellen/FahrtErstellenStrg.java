@@ -178,6 +178,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	 */
 	public void ladeKarts()
 	{
+		try {
 		if((k=itKart.next())!=null)
 		{
 			System.out.println(k.getKartname());
@@ -185,8 +186,21 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
 		}
+		}
+		catch(Exception e)
+		{
+			JOptionPane.showConfirmDialog(null,
+	                "Du hast noch keine weiteren Karts freigeschaltet. Besuche dein Profil um Karts zu Kaufen.",
+	                "Keine weiteren Karts",
+	                JOptionPane.DEFAULT_OPTION,
+	                JOptionPane.PLAIN_MESSAGE);
+			
+		}
 	}
-	
+	/**
+	 * Lädt alle kostenlosen, sowie gekauften bzw. durch Punkte freigeschaltete Karts für den Benutzer.
+	 * @return @return LinkedList mit den Karts die benutzt werden können
+	 */
 	public LinkedList<Kart> gibZuFahrendeKarts()
 	{
 		LinkedList<Kart> alleKarts = new LinkedList<Kart>();
@@ -245,6 +259,68 @@ public class FahrtErstellenStrg implements ActionListener {
 		return kartliste;
 	}
 	
+
+	/**
+	 * Lädt alle kostenlosen, sowie gekauften bzw. durch Punkte freigeschalteten Strecken für den Benutzer.
+	 * @return LinkedList mit den Strecken die befahren werden können
+	 */
+	public LinkedList<Strecke> gibZuFahrendStrecken()
+	{
+		LinkedList<Strecke> alleStrecken = new LinkedList<Strecke>();
+		
+		Streckenverwaltung strecke1 = new Streckenverwaltung();
+		
+		//Laden aller Karts
+		alleStrecken =strecke1.gibStrecke();
+		Iterator<Strecke> it = alleStrecken.iterator();
+		
+		//Laden der Rechnungsliste
+		LinkedList<Rechnung> streckenrechnungen = Rechnungsverwaltung.gibStreckenRechnungenfuerBenutzer();
+		System.out.println("Länge der Recnungen des Benutzers:" + streckenrechnungen.size());
+		Iterator<Rechnung> itR = streckenrechnungen.iterator();
+		
+		//Leere LinkedList für Karts des Benutzers:
+		streckenliste = new LinkedList<Strecke>();
+		
+		//Laden der kostenlosen Karts
+		Strecke s= null;
+		while(it.hasNext())
+		{
+			
+			s = it.next();
+			if(s.getPremium().equals("false") && s.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=s.getPunktewert())
+			{
+				System.out.println("Wird hinzugefügt: "+ s.getStreckenname());
+				streckenliste.add(s);
+			}
+		}
+		
+		//Laden der gekauften Karts
+		Rechnung r = null;
+		while(itR.hasNext())
+		{
+			r = itR.next();
+			String streckenName;
+			streckenName = r.getStreckenname();
+			System.out.println("Zu suchendes Strecke"+ streckenName);
+			
+			Iterator<Strecke> itN = alleStrecken.iterator();
+		
+			while(it.hasNext())
+			{
+				
+				s = it.next();
+				System.out.println("Vergleiche: "+streckenName + " mit: "+s.getStreckenname() );
+				if(s.getStreckenname().equals(streckenName))
+				{	
+					System.out.println("Wird hinzugefügt über Rechnungen: "+ s.getStreckenname());
+					streckenliste.add(s);
+				}
+			}
+		}
+		return streckenliste;
+	}
+	
 	/**
 	 * Prüft ob eine weitere Strecke n+1 existiert. Wenn ja, dann wird das Streckenbild über die Methode imageResizer(BufferedImage image) verkleinert und die GUI befüllt.
 	 * 
@@ -252,19 +328,31 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public void ladeStrecke()
 	{
-		if((s=itStrecke.next())!=null)
-		{
-			
-			BufferedImage newImage= s.getGrafik();
-			view.getStreckeName().setText(s.getStreckenname());
-			streckenbild = imageResizer(newImage);
-			ImageIcon icon = new ImageIcon(streckenbild);
-			view.getStreckeLbl().setIcon(icon);
-			itString = new MyIteratorString(schwierigkeiten.listIterator());
-			sf.setSchwierigkeit(itString.next());
-			view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
-			
+		try {
+			if((s=itStrecke.next())!=null)
+			{
+				
+				BufferedImage newImage= s.getGrafik();
+				view.getStreckeName().setText(s.getStreckenname());
+				streckenbild = imageResizer(newImage);
+				ImageIcon icon = new ImageIcon(streckenbild);
+				view.getStreckeLbl().setIcon(icon);
+				itString = new MyIteratorString(schwierigkeiten.listIterator());
+				sf.setSchwierigkeit(itString.next());
+				view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
+				
 
+			}
+		}
+		
+		
+		catch(Exception e)
+		{
+			JOptionPane.showConfirmDialog(null,
+	                "Du hast noch keine weiteren Strecken freigeschaltet. Besuche dein Profil um Strecken zu Kaufen.",
+	                "Keine weiteren Strecken",
+	                JOptionPane.DEFAULT_OPTION,
+	                JOptionPane.PLAIN_MESSAGE);
 		}
 	}
 	/** 
@@ -274,13 +362,22 @@ public class FahrtErstellenStrg implements ActionListener {
 	public void kartRückwärts()
 	{
 		
-	
+	try {
 		if((k=itKart.previous())!=null)
 		{
 			System.out.println(k.getKartname());
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
+		}
+	}
+		catch(Exception e)
+		{
+			JOptionPane.showConfirmDialog(null,
+	                "Du hast noch keine weiteren Karts freigeschaltet. Besuche dein Profil um Karts zu Kaufen.",
+	                "Keine weiteren Karts",
+	                JOptionPane.DEFAULT_OPTION,
+	                JOptionPane.PLAIN_MESSAGE);
 		}
 	
 	}
@@ -290,6 +387,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	 */
 	public void streckeRückwärts()
 	{
+		try {
 		if((s=itStrecke.previous())!=null)
 		{
 			
@@ -302,6 +400,15 @@ public class FahrtErstellenStrg implements ActionListener {
 			sf.setSchwierigkeit(itString.next());
 			view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
 			
+		}
+		}
+		catch(Exception e)
+		{
+			JOptionPane.showConfirmDialog(null,
+	                "Du hast noch keine weiteren Strecken freigeschaltet. Besuche dein Profil um Strecken zu Kaufen.",
+	                "Keine weiteren Strecken",
+	                JOptionPane.DEFAULT_OPTION,
+	                JOptionPane.PLAIN_MESSAGE);
 		}
 	}
 	
@@ -344,21 +451,10 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 	}
 	
-	public void pruefeKarts()
-	{
-		
-	}
-	
-	public void pruefeStrecke()
-	{
-		
-	}
-	
 	/** 
 	 * Die Methode prüft ob die Schwierigkeit bereits für den Nutzer freigeschaltet ist. 
 	 * @return boolean
 	 */
-	
 	
 	public boolean pruefeSchwierigkeit(String a)
 	{
@@ -410,7 +506,8 @@ public class FahrtErstellenStrg implements ActionListener {
 			sf.setSchwierigkeit(s);
 			}
 			else
-				{System.out.println("Schwierigkeit noch nicht freigeschaltet");
+				{
+				System.out.println("Schwierigkeit noch nicht freigeschaltet");
 				JOptionPane pane = new JOptionPane();
 				pane.setBounds(view.getFrame().getX()+300,view.getFrame().getY()+250,200,100);
 				pane.showMessageDialog(null, "Schwierigkeit nocht nicht freigeschaltet");
