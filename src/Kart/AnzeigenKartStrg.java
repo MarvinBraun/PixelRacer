@@ -44,7 +44,7 @@ public class AnzeigenKartStrg implements ActionListener {
 	LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
 	LinkedList<Kart> KartListe = new LinkedList<Kart>();
 	LinkedList<Rechnung> rechnungsListe = new LinkedList<Rechnung>();
-	Nutzerverwaltung nw = new Nutzerverwaltung();
+	
 	
 	int counterRang1 = 0;
 	int counterRang2 = 0;
@@ -114,9 +114,9 @@ public class AnzeigenKartStrg implements ActionListener {
 
 				// Label umschreiben auf ges. Sf-Kart & auf angmeldeter Benutzer
 				Fahrtverwaltung v = new Fahrtverwaltung();
+
 				LinkedList<SingleplayerFahrt> fahrten = v
-						.gibSingleplayerFahrtenFürBenutzer(nw.getangKunde()
-								.toString());
+						.gibSingleplayerFahrtenFürBenutzerundKart(Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
 				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten
 						.size()));
 
@@ -214,8 +214,7 @@ public class AnzeigenKartStrg implements ActionListener {
 				// Label umschreiben auf ges. Sf-Kart & auf angmeldeter Benutzer
 				Fahrtverwaltung v = new Fahrtverwaltung();
 				LinkedList<SingleplayerFahrt> fahrten = v
-						.gibSingleplayerFahrtenFürBenutzer(nw.getangKunde()
-								.toString());
+						.gibSingleplayerFahrtenFürBenutzerundKart(Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
 				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten
 						.size()));
 
@@ -276,7 +275,7 @@ public class AnzeigenKartStrg implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+try{
 		if (e.getSource() == viewUebersicht.getBtnZurueck()) {
 
 			viewUebersicht.frmPixelRacer.dispose();
@@ -303,5 +302,8 @@ public class AnzeigenKartStrg implements ActionListener {
 		if (e.getSource() == viewUebersicht.btnDetailView) {
 			viewDetail.frame.setVisible(true);
 		}
+	}catch(NullPointerException o){
+		System.out.println(o.getMessage());
+	}
 	}
 }
