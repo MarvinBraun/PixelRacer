@@ -124,6 +124,7 @@ public class Rechnungsverwaltung {
 			while(rs.next())
 			{
 				r = new Rechnung();
+				r.setBenutzername(rs.getString("Benutzername"));
 				r.setKartname(rs.getString("Kartname"));
 				r.setBezahlmethode(rs.getString("Bezahlmethode"));
 				r.setRechnungsbetrag(rs.getInt("Rechnungsbetrag"));
@@ -153,7 +154,8 @@ public class Rechnungsverwaltung {
 			while(rs.next())
 			{
 				r = new Rechnung();
-				r.setStreckenname(rs.getString("streckenname"));
+				r.setBenutzername(rs.getString("Benutzername"));
+				r.setStreckenname(rs.getString("Streckenname"));
 				r.setBezahlmethode(rs.getString("Bezahlmethode"));
 				r.setRechnungsbetrag(rs.getInt("Rechnungsbetrag"));
 				r.setRechnungsnummer(rs.getInt("Rechnungsnummer"));
@@ -169,7 +171,7 @@ public class Rechnungsverwaltung {
 			e.printStackTrace();
 		}
 		Datenbankschnittstelle.closeConnections();
-		return rechnungenKart;
+		return rechnungenStrecke;
 	}
 	
 	public static void main(String[] args)

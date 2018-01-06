@@ -21,6 +21,7 @@ public class Rechnungsübersicht {
 	JButton btnAnzeigen;
 	JButton btnBezahlen;
 	JButton btnSpeichern;
+	private JButton btnZuruck;
 	JTextPane textPane;
 	JLabel lblHintergrund;
 	
@@ -80,6 +81,14 @@ public class Rechnungsübersicht {
 	public void setTextPane(JTextPane textPane) {
 		this.textPane = textPane;
 	}
+	
+	public void setBtnZuruck(JButton btnZuruck) {
+		this.btnZuruck = btnZuruck;
+	}
+	
+	public JButton getBtnZuruck() {
+		return btnZuruck;
+	}
 
 	/**
 	 * Launch the application.
@@ -134,6 +143,10 @@ public class Rechnungsübersicht {
 		btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(569, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnSpeichern);
+		
+		btnZuruck = new JButton("Zurück");
+		btnZuruck.setBounds(680,50,95,23);
+		frmRechnungsbersicht.getContentPane().add(btnZuruck);
 		
 		textPane = new JTextPane();
 		textPane.setBounds(140, 50, 111, 24);
