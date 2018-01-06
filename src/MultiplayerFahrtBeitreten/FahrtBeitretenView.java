@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 
 import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
+import FahrtErstellen.FahrtErstellenView;
 import FahrtSpielen.FahrtSpielenStrg;
 import FontHandler.FontHandler;
 import Kart.Kart;
@@ -43,6 +44,23 @@ public class FahrtBeitretenView {
 	private JButton multiplayerBeitretenBtn;
 	private JTextField multiplayerID;
 	private Movement m;
+	public JButton getBackBtn() {
+		return backBtn;
+	}
+
+
+
+
+
+	public void setBackBtn(JButton backBtn) {
+		this.backBtn = backBtn;
+	}
+
+
+
+
+
+	private JButton backBtn;
 	
 	
 	
@@ -97,7 +115,13 @@ public class FahrtBeitretenView {
 		frame.getContentPane().add(multiplayerID);
 		multiplayerID.setColumns(10);
 		
-		
+		backBtn = new JButton("");
+		backBtn.setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/backButton2.png")));
+		backBtn.setBounds(27, 16, 89, 50);
+		backBtn.setOpaque(false);
+		backBtn.setBorderPainted(false);
+		backBtn.setContentAreaFilled(false);
+		frame.getContentPane().add(backBtn);
 		
 		kartBackward = new JButton("");
 		kartBackward.setFocusable(false);

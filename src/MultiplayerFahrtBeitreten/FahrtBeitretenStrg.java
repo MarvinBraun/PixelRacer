@@ -23,6 +23,7 @@ import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
 import Kart.Kart;
 import Kart.Kartverwaltung;
+import ModusAuswählen.MultiplayerAuswahlStrg;
 import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
 import MusicHandler.MusicPlayer;
 import Strecke.Strecke;
@@ -249,6 +250,11 @@ public class FahrtBeitretenStrg implements ActionListener {
 		if(e.getSource()==view.getMultiplayerBeitretenBtn())
 		{
 			multiplayerBeitreten();
+		}
+		if(e.getSource()==view.getBackBtn())
+		{
+			view.getFrame().dispose();
+			MultiplayerAuswahlStrg strg = new MultiplayerAuswahlStrg();
 		}
 	
 	}
