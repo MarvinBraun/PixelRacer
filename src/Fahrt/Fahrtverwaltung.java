@@ -104,6 +104,38 @@ public class Fahrtverwaltung {
 		return singleplayerFahrten;
 	}
 	
+	/**
+	 * Liest alle SingleplayerFahrten aus der Datenbank, für einen bestimmten Nutzer und eine bestimmte Strecke, aus und speichert sie in einer LinkedList.
+	 * @param benutzername Der Benutzername des Spielers
+	 * @param kartname Der Name des Karts
+	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer zu einer Strecke.
+	 */
+	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzerUndKart(String benutzername, String kartname)
+	{
+		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and kartname = '"+kartname+"'");
+		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and kartname = '"+kartname+"'");
+		try {
+			while(rs.next())
+			{
+				SingleplayerFahrt fahrt = new SingleplayerFahrt();
+				fahrt.setSitzungsID(rs.getInt("SitzungsID"));
+				fahrt.setRang(rs.getInt("Rang"));
+				fahrt.setZeit(rs.getInt("Zeit"));
+				fahrt.setStreckenName(rs.getString("Streckenname"));
+				fahrt.setKartName(rs.getString("Kartname"));
+				fahrt.setBenutzername(rs.getString("Benutzername"));
+				fahrt.setSchwierigkeit(rs.getString("Schwierigkeit"));
+				singleplayerFahrten.add(fahrt);
+			}
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Datenbankschnittstelle.closeConnections();
+		return singleplayerFahrten;
+	}
 	
 	/**
 	 * * Liest alle SingleplayerFahrten aus der Datenbank, für einen bestimmten Nutzer, aus und speichert sie in einer LinkedList.
@@ -355,6 +387,7 @@ public class Fahrtverwaltung {
 	public static void main(String[] args)
 	{
 		Fahrtverwaltung v = new Fahrtverwaltung();
-		System.out.println(v.gibNeueID(1));
+		LinkedList<SingleplayerFahrt> lsf = v.gibSingleplayerFahrtenFürBenutzerUndKart("Marv", "FireBird");
+		System.out.println(lsf.size());
 	}
 }
