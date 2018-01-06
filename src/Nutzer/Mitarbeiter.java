@@ -1,5 +1,9 @@
 package Nutzer;
-
+/**
+ * Klasse der Entität Mitarbeiter, Subtyp der Klasse Nutzer.
+ * @author Daniel Zeller
+ *
+ */
 public class Mitarbeiter extends Nutzer { // Mitarbeiter ist ein Nutzer des Systems
 	private String mitarbeiterid; //Deklaration der benötigten Variablen
 	private String jobtitel;
