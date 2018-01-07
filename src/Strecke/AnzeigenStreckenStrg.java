@@ -108,9 +108,9 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			//Länge setzten
 			viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
 			
-			// Label umschreiben auf ges. Sf-Strecke & auf angmeldeter Benutzer
+			// Fahrten zu angemeldetem Nutzer und akuteller Strecke sammeln
 			Fahrtverwaltung v = new Fahrtverwaltung();
-			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke(Nutzerverwaltung.getangKunde().getnutzername(),s.getStreckenname());
 			viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 					
 			// Label umschreiben auf ges. m pro Sf-Strecke
@@ -135,7 +135,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
 			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));														
 		}
-		
+				
 		//Prüfung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
 		
 		Rechnungsverwaltung r = new Rechnungsverwaltung();
@@ -153,14 +153,17 @@ public class AnzeigenStreckenStrg implements ActionListener{
 				rechnung = it.next();
 				if(s.getStreckenname().equals(rechnung.getStreckenname()))
 						{
-							
+						viewUebersicht.getBtnStreckeKaufen().setVisible(false);
+						viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
+						viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
+						viewUebersicht.getLblStreckePunkte().setVisible(true);
 						}
 			}
 			
 		}
 		
 		Datenbankschnittstelle.closeConnections();
-			
+					
 		//Punktestandprüfung und Label Aktivierung
 			if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
 				viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
@@ -225,9 +228,34 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
 				
 		}
-		Datenbankschnittstelle.closeConnections();
 		
-
+		//Prüfung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
+		
+				Rechnungsverwaltung r = new Rechnungsverwaltung();
+				LinkedList<Rechnung> rechnungen = r.gibStreckenRechnungenfuerBenutzer();
+						
+				if(s.getPremium().equals("true")){
+					viewUebersicht.getBtnStreckeKaufen().setVisible(true);
+					
+				
+					Rechnung rechnung = null;
+					Iterator<Rechnung> it = rechnungen.iterator();
+					while(it.hasNext())
+					{
+						rechnung = it.next();
+						if(s.getStreckenname().equals(rechnung.getStreckenname()))
+								{
+								viewUebersicht.getBtnStreckeKaufen().setVisible(false);
+								viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
+								viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
+								viewUebersicht.getLblStreckePunkte().setVisible(true);
+								}
+					}
+					
+				}
+				
+				Datenbankschnittstelle.closeConnections();
+		
 			//Punktestandprüfung und Label Aktivierung
 			if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
 				viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
