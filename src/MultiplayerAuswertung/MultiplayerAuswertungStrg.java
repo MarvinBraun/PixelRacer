@@ -1,18 +1,21 @@
 package MultiplayerAuswertung;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
 import Fahrt.Fahrtverwaltung;
 import Fahrt.MultiplayerFahrt;
+import Startansicht.StartansichtStrg;
 
 /**
  * Steuerungsklasse, welche die grafische Benutzeroberfläche MultiplayerAuswertungView verwaltet und mit den Multientitäten kommuniziert.
  * @author Marvin Braun
  *
  */
-public class MultiplayerAuswertungStrg {
+public class MultiplayerAuswertungStrg implements ActionListener {
 	private MultiplayerAuswertungView view;
 	public MultiplayerAuswertungView getView() {
 		return view;
@@ -61,6 +64,7 @@ public class MultiplayerAuswertungStrg {
 		//View initialisieren
 		fahrt = mf;
 		view = new MultiplayerAuswertungView();
+		view.getFrame().setLocationRelativeTo(null);
 		verwaltung = new Fahrtverwaltung();
 		//Fahrten initialisieren
 		System.out.println("Es wird gesucht nach: "+mf.getMultiplayerID());
@@ -68,7 +72,7 @@ public class MultiplayerAuswertungStrg {
 		ListIterator<MultiplayerFahrt> it = fahrten.listIterator();
 		
 		view.getMultiplayerIdLbl().setText("MultiplayerID: "+ fahrt.getMultiplayerID());
-		
+		view.getBtn().addActionListener(this);
 		view.getFrame().setVisible(true);
 		
 		//Ränge einfügen
@@ -96,6 +100,21 @@ public class MultiplayerAuswertungStrg {
 			
 		}
 		
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource()==view.getBtn())
+		{
+		
+			StartansichtStrg strg = new StartansichtStrg();
+			view.getFrame().dispose();
+			
+		}
+
+		// TODO Auto-generated method stub
 		
 	}
 

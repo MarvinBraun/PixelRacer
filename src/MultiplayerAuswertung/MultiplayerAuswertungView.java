@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import FontHandler.FontHandler;
 
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -119,12 +120,15 @@ public class MultiplayerAuswertungView {
 		lblName2.setBounds(302, 347, 226, 42);
 		frame.getContentPane().add(lblName2);
 		
-		btn = new JButton("OK");
-		btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btn = new JButton("Weiter");
+		btn.setFocusPainted(false);
+		btn.setBorderPainted(false);
+		btn.setBorder(null);
+		btn.setOpaque(false);
+
+		btn.setBackground(SystemColor.activeCaption);
 		btn.setBounds(302, 465, 226, 85);
+		btn.setFont(customFont30f);
 		frame.getContentPane().add(btn);
 		
 		lblName3 = new JLabel("---");

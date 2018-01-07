@@ -82,24 +82,24 @@ public class FahrtErstellenStrg implements ActionListener {
 	 * @param singleMultiplayer entscheidet ob es sich um eine SingleplayerFahrt oder eine MultiplayerFahrt handelt.
 	 */
 	public FahrtErstellenStrg(int singleMultiplayer) {
-		view = new FahrtErstellenView();
-	
-		view.getFrame().setLocationRelativeTo(null);
+		
+		//View initialisieren, zentrieren, Fahrtverwaltung initialisieren, Kunde wird geladen
 		singlemultiplayer = singleMultiplayer;
+		view = new FahrtErstellenView();
+		view.getFrame().setLocationRelativeTo(null);
 		fahrten = new Fahrtverwaltung();
 		kunde = Nutzerverwaltung.getangKunde();
-		System.out.println(Nutzerverwaltung.getangKunde().getnutzername());
 		
 		//Initialisieren der Karts 
 		karts = new Kartverwaltung();
 		kartliste = gibZuFahrendeKarts();
-		System.out.println("Zu verfüungstehende Karts:" +kartliste.size());
 		itKart = new MyIteratorKart(kartliste.listIterator());
+		
+		//Lade Karts
 		ladeKarts();
 		
 		//Initialisieren der Strecke
-		strecken= new Streckenverwaltung();
-		streckenliste = strecken.gibStrecke();
+		streckenliste = gibZuFahrendStrecken();
 		itStrecke = new MyIteratorStrecke(streckenliste.listIterator());
 
 		
@@ -112,7 +112,6 @@ public class FahrtErstellenStrg implements ActionListener {
 		view.getStreckeForward().addActionListener(this);
 		view.getSpielenBtn().addActionListener(this);
 		view.getBackBtn().addActionListener(this);
-	
 
 		//Initialisieren des Schwierigkeitsgrades
 		//nur für Singleplayer
@@ -140,8 +139,10 @@ public class FahrtErstellenStrg implements ActionListener {
 			System.out.println("Fahrten:"+schwierigkeitsCheck.size());
 			
 		}
+		
 		//Initialisieren der MultiplayerID
 		// nur für Multiplayer
+		
 		else
 		{
 		
@@ -156,13 +157,12 @@ public class FahrtErstellenStrg implements ActionListener {
 			mf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
 			
 			int multiplayerID = fahrten.gibNeueMultiplayerID();
-			view.getMultiplayerLbl().setText(""+multiplayerID);
+			view.getMultiplayerLbl().setText("MultiplayerID: "+multiplayerID);
 			mf.setMultiplayerID(multiplayerID);
 			ladeStrecke();
 		}
 		
 		SwingUtilities.updateComponentTreeUI(view.getFrame());
-	
 		SwingUtilities.updateComponentTreeUI(view.getFrame());
 		
 		
@@ -339,10 +339,13 @@ public class FahrtErstellenStrg implements ActionListener {
 				streckenbild = imageResizer(newImage);
 				ImageIcon icon = new ImageIcon(streckenbild);
 				view.getStreckeLbl().setIcon(icon);
-				itString = new MyIteratorString(schwierigkeiten.listIterator());
-				sf.setSchwierigkeit(itString.next());
-				view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
 				
+				if(singlemultiplayer==1)
+				{
+					itString = new MyIteratorString(schwierigkeiten.listIterator());
+					sf.setSchwierigkeit(itString.next());
+					view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
+				}
 
 			}
 		}
@@ -398,10 +401,12 @@ public class FahrtErstellenStrg implements ActionListener {
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
 			view.getStreckeLbl().setIcon(icon);
-			itString = new MyIteratorString(schwierigkeiten.listIterator());	
-			sf.setSchwierigkeit(itString.next());
-			view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
-			
+			if(singlemultiplayer==1)
+			{
+				itString = new MyIteratorString(schwierigkeiten.listIterator());	
+				sf.setSchwierigkeit(itString.next());
+				view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
+			}
 		}
 		}
 		catch(Exception e)

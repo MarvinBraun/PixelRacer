@@ -24,7 +24,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	
 	private MultiplayerFahrtSpielenView fahrtSpielenView;
 
-	private int versuche = 5;
+	private int versuche = 10;
 
 	private BufferedImage kartBild;
 	private BufferedImage streckenBild;
@@ -72,6 +72,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		fahrtSpielenView.getFrame().setVisible(true);
 		fahrtSpielenView.getFrame().setFocusable(true);
 		fahrtSpielenView.getFrame().setFocusTraversalKeysEnabled(false);
+		fahrtSpielenView.getFrame().setLocationRelativeTo(null);
 		
 		
 		System.out.println("Registriert");
@@ -104,15 +105,17 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	            		int record = fahrtSpielenView.getZeiger().zeiger.backgroundX1;
 	            	wert = wert + record;
 	            	System.out.println(wert);
-	            	speed = speed+speed;
-	            	fahrtSpielenView.getZeiger().setSpeed(speed);
+	            	if(speed<6)
+	            	{
+	            		speed = speed+speed;
+	            		fahrtSpielenView.getZeiger().setSpeed(speed);
+	            	}
 	            	System.out.println("Hi from KeyListener");
 	            	versuche--;
 	            	String a = ""+versuche;
 	            	fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Runden verbleibend: "+a);
 	               	String b = ""+mf.getZeit();
-	               	fahrtSpielenView.getLblLetzteZeit().setText("Zeit: "+b+"s");
-	               	
+	        
 	               	if(200<record&&record<500)
 	               	{
 	               		fahrtSpielenView.getBewertungLbl().setText("Super");
@@ -153,9 +156,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	        			verwaltung.sendeMultiplayerFahrt(mf);
 	        			fahrtSpielenView.getFrame().dispose();
 	        			MultiplayerAuswertungStrg auswertung = new MultiplayerAuswertungStrg(mf,streckenBild);
-	        			
-	        	
-	        			
+	
 	            	}
 	            }
 	         }

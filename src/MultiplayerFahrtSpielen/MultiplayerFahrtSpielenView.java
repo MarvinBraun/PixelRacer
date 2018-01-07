@@ -31,8 +31,6 @@ public class MultiplayerFahrtSpielenView {
 
 	private 	JFrame frame;
 	private JLabel lblAnzahlVerbleibenderVersuche;
- 
-	private JLabel lblLetzteZeit;
 	private JButton fahrenBtn;
 	private MovementBackward m;
 	private Movement m2;
@@ -128,17 +126,12 @@ public class MultiplayerFahrtSpielenView {
 		balkenLbl.setBounds(152, 252, 500, 60);
 		frame.getContentPane().add(balkenLbl);
 		
-		lblAnzahlVerbleibenderVersuche = new JLabel("Runden verbleibend: 5");
+		lblAnzahlVerbleibenderVersuche = new JLabel("Runden verbleibend: 10");
+		lblAnzahlVerbleibenderVersuche.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAnzahlVerbleibenderVersuche.setForeground(Color.RED);
 		lblAnzahlVerbleibenderVersuche.setFont(customFont30f);
-		lblAnzahlVerbleibenderVersuche.setBounds(22, 21, 381, 33);
+		lblAnzahlVerbleibenderVersuche.setBounds(30, 21, 726, 33);
 		frame.getContentPane().add(lblAnzahlVerbleibenderVersuche);
-		
-		lblLetzteZeit = new JLabel("Zeit: 0s");
-		lblLetzteZeit.setForeground(Color.RED);
-		lblLetzteZeit.setFont(customFont30f);
-		lblLetzteZeit.setBounds(22, 65, 296, 33);
-		frame.getContentPane().add(lblLetzteZeit);
 	
 		m = new MovementBackward(5);
 		m.label.setLocation(0, 0);
@@ -174,14 +167,6 @@ public class MultiplayerFahrtSpielenView {
 
 	public void setLblAnzahlVerbleibenderVersuche(JLabel lblAnzahlVerbleibenderVersuche) {
 		this.lblAnzahlVerbleibenderVersuche = lblAnzahlVerbleibenderVersuche;
-	}
-
-	public JLabel getLblLetzteZeit() {
-		return lblLetzteZeit;
-	}
-
-	public void setLblLetzteZeit(JLabel lblLetzteZeit) {
-		this.lblLetzteZeit = lblLetzteZeit;
 	}
 
 	public JButton getFahrenBtn() {

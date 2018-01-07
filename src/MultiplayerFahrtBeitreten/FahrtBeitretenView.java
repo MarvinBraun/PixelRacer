@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 /**
  * Grafische Benutzeroberfläche um einer MultiplayerFahrt beizutreten.
  * @author Marvin Braun
@@ -100,6 +101,7 @@ public class FahrtBeitretenView {
 	private void initialize() {
 		
 		Font customFont30f = FontHandler.registriereSchriftart(30f);
+		Font customFont20f = FontHandler.registriereSchriftart(20f);
 		
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -110,9 +112,11 @@ public class FahrtBeitretenView {
 		frame.getContentPane().setLayout(null);
 		
 		multiplayerID = new JTextField();
+		multiplayerID.setHorizontalAlignment(SwingConstants.CENTER);
 		multiplayerID.setToolTipText("MultiplayerID eingeben");
 		multiplayerID.setBounds(119, 245, 186, 60);
 		frame.getContentPane().add(multiplayerID);
+		multiplayerID.setFont(customFont20f);
 		multiplayerID.setColumns(10);
 		
 		backBtn = new JButton("");
@@ -125,7 +129,8 @@ public class FahrtBeitretenView {
 		
 		kartBackward = new JButton("");
 		kartBackward.setFocusable(false);
-		kartBackward.setBorderPainted(true);
+		kartBackward.setBorderPainted(false);
+		kartBackward.setFocusPainted(false);
 		kartBackward.setContentAreaFilled(false);
 		kartBackward.setOpaque(false);
 		kartBackward.setIcon(new ImageIcon(FahrtBeitretenView.class.getResource("/Resources/backward.png")));
@@ -134,15 +139,22 @@ public class FahrtBeitretenView {
 		
 		
 		kartForward = new JButton("");
-		kartForward.setFocusable(false);
-		kartForward.setBorderPainted(true);
+		kartForward.setFocusPainted(false);
+		kartForward.setBorderPainted(false);
 		kartForward.setContentAreaFilled(false);
 		kartForward.setIcon(new ImageIcon(FahrtBeitretenView.class.getResource("/Resources/forward.png")));
 		kartForward.setBounds(693, 115, 60, 60);
 		frame.getContentPane().add(kartForward);
 		
 		multiplayerBeitretenBtn = new JButton("Multiplayer Beitreten");
-		multiplayerBeitretenBtn.setBounds(392, 245, 280, 60);
+		
+		multiplayerBeitretenBtn.setBounds(332, 245, 396, 60);
+		multiplayerBeitretenBtn.setOpaque(false);
+		multiplayerBeitretenBtn.setBorderPainted(false);
+		multiplayerBeitretenBtn.setFocusPainted(false);
+		multiplayerBeitretenBtn.setBorder(null);
+		multiplayerBeitretenBtn.setBackground(SystemColor.activeCaption);
+		multiplayerBeitretenBtn.setFont(customFont20f);
 		frame.getContentPane().add(multiplayerBeitretenBtn);
 		
 		kartBild = new JLabel("");

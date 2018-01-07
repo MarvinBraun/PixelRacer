@@ -26,6 +26,9 @@ import Kart.Kartverwaltung;
 import ModusAuswählen.MultiplayerAuswahlStrg;
 import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
 import MusicHandler.MusicPlayer;
+import Nutzer.Nutzerverwaltung;
+import Rechnung.Rechnung;
+import Rechnung.Rechnungsverwaltung;
 import Strecke.Strecke;
 import Strecke.Streckenverwaltung;
 import myIterator.MyIteratorKart;
@@ -64,10 +67,10 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 	public FahrtBeitretenStrg() {
 		view = new FahrtBeitretenView();
-	
+		view.getFrame().setLocationRelativeTo(null);
 		//Initialisieren der Karts, Strecken und der Buttons
 		karts = new Kartverwaltung();
-		kartliste =karts.gibKart();
+		kartliste = gibZuFahrendeKarts();
 		
 		verwaltungStrecke = new Streckenverwaltung();
 		Streckenliste = verwaltungStrecke.gibStrecke();
@@ -162,6 +165,65 @@ public class FahrtBeitretenStrg implements ActionListener {
 		return s;
 		
 	}
+	
+	public LinkedList<Kart> gibZuFahrendeKarts()
+	{
+		LinkedList<Kart> alleKarts = new LinkedList<Kart>();
+		
+		Kartverwaltung karts1 = new Kartverwaltung();
+		
+		//Laden aller Karts
+		alleKarts =karts1.gibKart();
+		System.out.println("Anzahl Karts insgesamt:"+alleKarts.size());
+		Iterator<Kart> it = alleKarts.iterator();
+		
+		//Laden der Rechnungsliste
+		LinkedList<Rechnung> kartrechnungen = Rechnungsverwaltung.gibKartRechnungenfuerBenutzer();
+		System.out.println("Länge der Recnungen des Benutzers:" + kartrechnungen.size());
+		Iterator<Rechnung> itR = kartrechnungen.iterator();
+		
+		//Leere LinkedList für Karts des Benutzers:
+		kartliste = new LinkedList<Kart>();
+		
+		//Laden der kostenlosen Karts
+		Kart k= null;
+		while(it.hasNext())
+		{
+			
+			k = it.next();
+			if(k.getPremium().equals("false") && k.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=k.getPunktewert()&&k.getPunktewert()>0)
+			{
+				System.out.println("Wird hinzugefügt: "+ k.getKartname());
+				kartliste.add(k);
+			}
+		}
+		
+		//Laden der gekauften Karts
+		Rechnung r = null;
+		while(itR.hasNext())
+		{
+			r = itR.next();
+			String kartName;
+			kartName = r.getKartname();
+			System.out.println("Zu suchendes Kart"+ kartName);
+			
+			Iterator<Kart> itN = alleKarts.iterator();
+		
+			while(it.hasNext())
+			{
+				
+				k = it.next();
+				System.out.println("Vergleiche: "+kartName + " mit: "+k.getKartname() );
+				if(k.getKartname().equals(kartName))
+				{	
+					System.out.println("Wird hinzugefügt über Rechnungen: "+ k.getKartname());
+					kartliste.add(k);
+				}
+			}
+		}
+		return kartliste;
+	}
+	
 	
 	/**
 	 * Sucht die MultiplayerID aus der Fahrtenliste mithilfe eines Iterators. Wenn die MultiplayerID existiert, werden dem Objekt "mf" der Klasse MultiplayerFahrt die

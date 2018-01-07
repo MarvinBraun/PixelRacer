@@ -93,6 +93,7 @@ public class FahrtErstellenView {
 		
 		//Lade Schriftart
 		Font customFont = FontHandler.registriereSchriftart(30f);
+		Font customFont22f = FontHandler.registriereSchriftart(22f);
 		
 		setFrame(new JFrame());
 		getFrame().setResizable(false);
@@ -125,7 +126,7 @@ public class FahrtErstellenView {
 		getSchwierigkeitBtn2().setBorderPainted(false);
 		getSchwierigkeitBtn2().setIcon(new ImageIcon(FahrtErstellenView.class.getResource("/Resources/forward.png")));
 		getSchwierigkeitBtn2().setContentAreaFilled(false);
-		getSchwierigkeitBtn2().setBounds(424, 489, 60, 60);
+		getSchwierigkeitBtn2().setBounds(468, 489, 60, 60);
 		getFrame().getContentPane().add(getSchwierigkeitBtn2());
 		
 		setStreckeBackward(new JButton(""));
@@ -193,8 +194,8 @@ public class FahrtErstellenView {
 		setMultiplayerLbl(new JLabel("MultiplayerID: "));
 		getMultiplayerLbl().setHorizontalAlignment(SwingConstants.CENTER);
 		getMultiplayerLbl().setVisible(false);
-		getMultiplayerLbl().setFont(new Font("pixelmix", Font.PLAIN, 18));
-		getMultiplayerLbl().setBounds(130, 484, 233, 56);
+		getMultiplayerLbl().setFont(customFont22f);
+		getMultiplayerLbl().setBounds(97, 489, 361, 56);
 		getFrame().getContentPane().add(getMultiplayerLbl());
 		
 		setKartBild(new JLabel(""));
