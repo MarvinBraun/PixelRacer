@@ -57,6 +57,7 @@ public class MitarbeiterAnsichtView extends JFrame {
 		DefaultMutableTreeNode kartHinzufügen = new DefaultMutableTreeNode("Füge Kart hinzu");
 		DefaultMutableTreeNode streckeHinzufügen = new DefaultMutableTreeNode("Füge Strecke hinzu");
 		DefaultMutableTreeNode bezahlartHinzufügen = new DefaultMutableTreeNode("Füge Bezahlart hinzu");
+		DefaultMutableTreeNode kartBearbeiten = new DefaultMutableTreeNode("Bearbeite Kart");
 		// Zuweisung Wurzel - Kategorie
 		menu.add(startansicht);
 		menu.add(mitarbeiter);
@@ -67,6 +68,7 @@ public class MitarbeiterAnsichtView extends JFrame {
 		startansicht.add(start);
 		mitarbeiter.add(mitarbeiterHinzufügen);
 		kart.add(kartHinzufügen);
+		kart.add(kartBearbeiten);
 		strecke.add(streckeHinzufügen);
 		bezahlart.add(bezahlartHinzufügen);
 		

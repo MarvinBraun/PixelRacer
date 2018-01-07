@@ -12,7 +12,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import KartHinzufügen.KartHinzufügenStrg;
 import StreckeHinzufügen.StreckeHinzufügenStrg;
 import MitarbeiterHinzufügen.MitarbeiterHinzufügenStrg;
-
+import KartBearbeiten.KartBearbeitenStrg;
 import Anmelden.AnmeldenStrg;
 
 public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionListener{
@@ -22,6 +22,7 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 	private FunktionNichtVorhandenView nv;
 	private KartHinzufügenStrg kStrg;
 	private StreckeHinzufügenStrg sStrg;
+	private KartBearbeitenStrg kbStrg;
 	
 	public MitarbeiterAnsichtStrg() {
 		maaView = new MitarbeiterAnsichtView();
@@ -39,6 +40,10 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
    	    kStrg = new KartHinzufügenStrg();
    	    kStrg.getView();
   	    maaView.getPanelContent().add("KartHinzufügen", kStrg.getView());
+  	    
+  	    kbStrg = new KartBearbeitenStrg();
+  	    kbStrg.getView();
+  	    maaView.getPanelContent().add("KartBearbeiten", kbStrg.getView());
   	    
     	StreckeHinzufügenStrg sStrg = new StreckeHinzufügenStrg();
     	sStrg.getView();
@@ -65,6 +70,9 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
         if(selectedNode.getUserObject().toString() == "Füge Kart hinzu") {
      	   maaView.getCL().show(maaView.getPanelContent(), "KartHinzufügen");
          }
+        if(selectedNode.getUserObject().toString() == "Bearbeite Kart") {
+      	   maaView.getCL().show(maaView.getPanelContent(), "KartBearbeiten");
+          }
         if(selectedNode.getUserObject().toString() == "Füge Strecke hinzu") {
       	   maaView.getCL().show(maaView.getPanelContent(), "StreckeHinzufügen");
           }
