@@ -264,11 +264,11 @@ public class AnzeigenKartStrg implements ActionListener {
 
 	public static BufferedImage imageResizer(BufferedImage original) {
 
-		BufferedImage newImage = new BufferedImage(300, 200,
+		BufferedImage newImage = new BufferedImage(545, 122,
 				BufferedImage.TYPE_INT_RGB);
 
 		Graphics g = newImage.createGraphics();
-		g.drawImage(original, 0, 0, 300, 200, null);
+		g.drawImage(original, 130, 0, 300, 150, null);
 		g.dispose();
 		return newImage;
 	}

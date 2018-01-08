@@ -124,6 +124,7 @@ public class Kartuebersicht {
 
 		lblHintergrund = new JLabel("");
 		lblHintergrund.setVisible(false);
+		lblHintergrund.setOpaque(true);
 		lblHintergrund.setBounds(0, 0, 794, 571);
 		frmPixelRacer.getContentPane().add(lblHintergrund);
 

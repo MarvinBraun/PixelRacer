@@ -124,7 +124,6 @@ public class KartDetailView {
 		frame.getContentPane().add(btnZurueck);
 		btnZurueck.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 
 			}
