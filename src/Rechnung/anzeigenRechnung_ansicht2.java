@@ -23,6 +23,8 @@ import java.awt.Color;
 
 public class anzeigenRechnung_ansicht2 {
 
+	// benötigte Variablen deklarieren
+	
 	JFrame frmRechnungsübersicht;
 	JLabel lblRechnungsnummer;
 	JLabel lblRechnungsdatum;
@@ -35,6 +37,8 @@ public class anzeigenRechnung_ansicht2 {
 	JLabel lblPremium;
 	JLabel lblHintergrund;
 	
+	
+	// getter und setter Methoden der Variablen
 
 	public JFrame getFrmRechnungsübersicht() {
 		return frmRechnungsübersicht;
@@ -119,6 +123,8 @@ public class anzeigenRechnung_ansicht2 {
 	/**
 	 * Launch the application.
 	 */
+	// Zugriff auf die View
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -135,6 +141,9 @@ public class anzeigenRechnung_ansicht2 {
 	/**
 	 * Create the application.
 	 */
+	
+	// Konstruktor
+	
 	public anzeigenRechnung_ansicht2() {
 		initialize();
 	}
@@ -142,6 +151,9 @@ public class anzeigenRechnung_ansicht2 {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
+	// Fenster / View initialisieren mit den entsprechenden Elementen
+	
 	private void initialize() {
 		frmRechnungsübersicht = new JFrame();
 		frmRechnungsübersicht.getContentPane().setForeground(Color.BLACK);

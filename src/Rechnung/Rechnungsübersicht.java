@@ -15,17 +15,20 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 
 public class Rechnungsübersicht {
+	
+	// benötigte Variablen deklarieren
 
 	JFrame frmRechnungsbersicht;
 	JLabel lblRechnung;
 	JButton btnAnzeigen;
 	JButton btnBezahlen;
 	JButton btnSpeichern;
-	private JButton btnZuruck;
 	JTextPane textPane;
 	JLabel lblHintergrund;
 	
-
+	
+	// getter und setter Methoden der Variablen
+	
 	public JLabel getLblHintergrund() {
 		return lblHintergrund;
 	}
@@ -81,18 +84,13 @@ public class Rechnungsübersicht {
 	public void setTextPane(JTextPane textPane) {
 		this.textPane = textPane;
 	}
-	
-	public void setBtnZuruck(JButton btnZuruck) {
-		this.btnZuruck = btnZuruck;
-	}
-	
-	public JButton getBtnZuruck() {
-		return btnZuruck;
-	}
 
 	/**
 	 * Launch the application.
 	 */
+	
+	// Zugriff auf die View
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -109,6 +107,9 @@ public class Rechnungsübersicht {
 	/**
 	 * Create the application.
 	 */
+	
+	// Konstruktor 
+	
 	public Rechnungsübersicht() {
 		initialize();
 	}
@@ -116,6 +117,9 @@ public class Rechnungsübersicht {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
+	// Fenster / View initialisieren mit den entsprechenden Elementen
+	
 	private void initialize() {
 		frmRechnungsbersicht = new JFrame();
 		frmRechnungsbersicht.setTitle("Rechnungs\u00FCbersicht");
@@ -143,10 +147,6 @@ public class Rechnungsübersicht {
 		btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(569, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnSpeichern);
-		
-		btnZuruck = new JButton("Zurück");
-		btnZuruck.setBounds(680,50,95,23);
-		frmRechnungsbersicht.getContentPane().add(btnZuruck);
 		
 		textPane = new JTextPane();
 		textPane.setBounds(140, 50, 111, 24);

@@ -12,12 +12,14 @@ import java.awt.Font;
 
 public class speicherRechnung {
 
+		// benötigte Variablen deklarieren
+	
 		JFrame frmSpeicherrechnung;
 		JLabel lblRechnungErfolgreichAuf;
 		JButton btnZurck;
 		JLabel lblHintergrund;
 			
-	
+	// getter und setter Methoden der Variablen
 		
 	public JFrame getFrmSpeicherrechnung() {
 				return frmSpeicherrechnung;
@@ -46,6 +48,9 @@ public class speicherRechnung {
 	/**
 	 * Launch the application.
 	 */
+			
+	//  Zugriff auf die View
+			
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -62,6 +67,9 @@ public class speicherRechnung {
 	/**
 	 * Create the application.
 	 */
+	
+	// Konstruktor
+	
 	public speicherRechnung() {
 		initialize();
 	}
@@ -69,6 +77,9 @@ public class speicherRechnung {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
+	// Fenster / View initialisieren mit den entsprechenden Elementen
+	
 	private void initialize() {
 		frmSpeicherrechnung = new JFrame();
 		frmSpeicherrechnung.setTitle("Rechnung speichern");

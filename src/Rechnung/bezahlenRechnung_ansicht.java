@@ -19,6 +19,8 @@ import javax.swing.ImageIcon;
 
 public class bezahlenRechnung_ansicht {
 
+	// benötigte Variablen deklarieren
+	
 	private JFrame frmBezahlung;
 	private JTextField txtEmail;
 	private JLabel lblE;
@@ -29,6 +31,7 @@ public class bezahlenRechnung_ansicht {
 	private JTextPane textPane;
 	private JLabel lblNewLabel;
 
+	// getter und setter Methoden der Variablen
 	
 	public JFrame getFrmBezahlung() {
 		return frmBezahlung;
@@ -105,6 +108,8 @@ public class bezahlenRechnung_ansicht {
 	/**
 	 * Launch the application.
 	 */
+	// Zugriff auf die View
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -121,6 +126,9 @@ public class bezahlenRechnung_ansicht {
 	/**
 	 * Create the application.
 	 */
+	
+	// Konstruktor
+	
 	public bezahlenRechnung_ansicht() {
 		initialize();
 	}
@@ -128,6 +136,9 @@ public class bezahlenRechnung_ansicht {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
+	// Fenster / View initialisieren mit den entsprechenden Elementen
+	
 	private void initialize() {
 		frmBezahlung = new JFrame();
 		frmBezahlung.setTitle("Bezahlung");
