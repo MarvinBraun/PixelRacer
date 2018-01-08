@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import BackgroundAnimation.Movement;
+import Nutzer.Nutzerverwaltung;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -72,7 +73,7 @@ public class ProfilKundeAnsicht{
 	 */
 	private void initialize() {
 		frmPixelRacer = new JFrame();
-		frmPixelRacer.setTitle("Pixel Racer - ");
+		frmPixelRacer.setTitle("Pixel Racer - Spielerprofil " + Nutzerverwaltung.getangKunde().getnutzername());
 		frmPixelRacer.setBounds(100, 100, 800, 600);
 		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPixelRacer.setResizable(false);
