@@ -116,7 +116,7 @@ public class AnzeigenKartStrg implements ActionListener {
 				Fahrtverwaltung v = new Fahrtverwaltung();
 
 				LinkedList<SingleplayerFahrt> fahrten = v
-						.gibSingleplayerFahrtenFürBenutzerundKart(Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
+						.gibSingleplayerFahrtenFürBenutzerUndKart(Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
 				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten
 						.size()));
 
@@ -214,7 +214,7 @@ public class AnzeigenKartStrg implements ActionListener {
 				// Label umschreiben auf ges. Sf-Kart & auf angmeldeter Benutzer
 				Fahrtverwaltung v = new Fahrtverwaltung();
 				LinkedList<SingleplayerFahrt> fahrten = v
-						.gibSingleplayerFahrtenFürBenutzerundKart(Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
+						.gibSingleplayerFahrtenFürBenutzerUndKart(Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
 				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten
 						.size()));
 
