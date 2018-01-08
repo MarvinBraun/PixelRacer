@@ -6,7 +6,6 @@ import KartHinzufügen.KartHinzufügenView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
-
 import Anmelden.AnmeldenStrg;
 
 
@@ -19,7 +18,6 @@ public class KartBearbeitenStrg implements ActionListener {
 	private KartBearbeitenView kbv;
 	private LinkedList<Kart> kartliste;
 	private KartHinzufügenView khv;
-
 	
 	public KartBearbeitenStrg() {
 		kbv = new KartBearbeitenView();
@@ -33,6 +31,7 @@ public class KartBearbeitenStrg implements ActionListener {
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource() == kbv.getBtnWeiter()) {
 			kbv.getCl().show(kbv, "Formular");
+			ladeKartDaten();
 		}
 	}
 	
@@ -44,6 +43,23 @@ public class KartBearbeitenStrg implements ActionListener {
 			kbv.getCB().addItem(kart.getKartname());
 		}
 		
+	}
+	
+	private void ladeKartDaten(){
+		String auswahl = (String) kbv.getCB().getSelectedItem();
+		for(Kart kart: kartliste){
+			if(auswahl.equals(kart.getKartname())){
+				khv.getTfName().setText(kart.getKartname());
+				khv.getTfBeschleunigung().setText(String.valueOf(kart.getBeschleunigung()));
+				khv.getTfGeschwindigkeit().setText(String.valueOf(kart.getMaxkmh()));
+				khv.getTfPunktzahl().setText(String.valueOf(kart.getPunktewert()));
+				if(kart.getPremium().equals("true")){
+					khv.getRbPremium().setSelected(true);
+				}else if(kart.getPremium().equals("false")){
+					khv.getRbFree().setSelected(true);
+				}
+			}
+		}
 	}
 	
 	public KartBearbeitenView getView() {
