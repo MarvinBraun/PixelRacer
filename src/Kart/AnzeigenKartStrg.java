@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import Datenbankverwaltung.Datenbankschnittstelle;
@@ -45,8 +46,7 @@ public class AnzeigenKartStrg implements ActionListener {
 	LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
 	LinkedList<Kart> KartListe = new LinkedList<Kart>();
 	LinkedList<Rechnung> rechnungsListe = new LinkedList<Rechnung>();
-	
-	
+
 	int counterRang1 = 0;
 	int counterRang2 = 0;
 	int counterRang3 = 0;
@@ -115,10 +115,12 @@ public class AnzeigenKartStrg implements ActionListener {
 						.getBeschleunigung()));
 
 				// Label umschreiben auf ges. Sf-Kart & auf angmeldeter Benutzer
-			
+
 				Fahrtverwaltung v = new Fahrtverwaltung();
 				LinkedList<SingleplayerFahrt> fahrten = v
-						.gibSingleplayerFahrtenFürBenutzerUndKart(Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
+						.gibSingleplayerFahrtenFürBenutzerUndKart(
+								Nutzerverwaltung.getangKunde().getnutzername(),
+								k.getKartname());
 				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten
 						.size()));
 
@@ -147,60 +149,39 @@ public class AnzeigenKartStrg implements ActionListener {
 
 			// Prüfung Kart bereits vom Nutzer gekauft? Falls nicht Kauf-Button
 			// einblenden
-
-			Rechnungsverwaltung r = new Rechnungsverwaltung();
-			LinkedList<Rechnung> rechnungen = r.gibKartRechnungenfuerBenutzer();
+			
+			if (k.getPremium().equals("true")) {
+				Rechnungsverwaltung r = new Rechnungsverwaltung();
+				LinkedList<Rechnung> rechnungen = r.gibKartRechnungenfuerBenutzer();
 				Rechnung rechnung = null;
 				Iterator<Rechnung> it = rechnungen.iterator();
-				boolean check = true;
 				while (it.hasNext()) {
 					rechnung = it.next();
-					if(k.getKartname().equals(rechnung.getKartname())) {
-						viewUebersicht.getBtnkartKaufen().setVisible(false);
-						check = false;
-					}else if(check == true) {
-						viewUebersicht.getBtnkartKaufen().setVisible(true);
+					if (k.getKartname().equals(rechnung.getKartname())) {
+						viewUebersicht.btnKartKaufen.setVisible(false);
+					} else {
+						viewUebersicht.btnKartKaufen.setVisible(true);
 					}
 				}
-						if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
-								viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-								viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
-								viewUebersicht.getlblKartPunkte().setVisible(true);
-						} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) {
-							viewUebersicht.getlblKartPunkte().setVisible(false);
-							viewUebersicht.getlblKartPunkteLimit().setText("Erreiche " + k.getPunktewert()+ " Punkte um diese Kart freizuschalten!");
-							viewUebersicht.getlblKartPunkteLimit().setVisible(true);
-						}
-					
-					
-				Datenbankschnittstelle.closeConnections();
-		}catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Keine weiteren Karts!");
+			}else if (k.getPremium().equals("false")&& k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
+				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
+				viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
+				viewUebersicht.getlblKartPunkte().setVisible(true);
+			} else if (k.getPremium().equals("false")&& k.getPunktewert() >= Nutzerverwaltung.getangKunde().getpunkte()) {
+				viewUebersicht.getlblKartPunkte().setVisible(false);
+				viewUebersicht.getlblKartPunkteLimit().setText("Erreiche " + k.getPunktewert() + " Punkte um diese Kart freizuschalten!");
+				viewUebersicht.getlblKartPunkteLimit().setVisible(true);
+			}
+			Datenbankschnittstelle.closeConnections();
+		} catch (Exception e) {
+			JOptionPane.showConfirmDialog(null,
+	                "Zurzeit stehen keine weiteren Karts zur Verfügung!",
+	                "Bitte klick zurück",
+	                JOptionPane.DEFAULT_OPTION,
+	                JOptionPane.PLAIN_MESSAGE);
 
 		}
 	}
-	/*
-	// Punktestandprüfung und Label Aktivierung
-	if ((k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) && k.getPremium() ) {
-		viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-		viewUebersicht.getlblKartPunkte().setText(
-				"Kart in deinem Besitz!");
-		viewUebersicht.getlblKartPunkte().setVisible(true);
-		
-	} 
-	
-	else if (k.getPunktewert() > Nutzerverwaltung.getangKunde()
-			.getpunkte()) {
-		viewUebersicht.getlblKartPunkte().setVisible(false);
-		viewUebersicht.getlblKartPunkteLimit().setText(
-				"Erreiche " + k.getPunktewert()
-						+ " Punkte um diese Kart freizuschalten!");
-		viewUebersicht.getlblKartPunkteLimit().setVisible(true);
-	}
-	*/
-	
-
 
 	public void KartRückwärts() {
 		try {
@@ -230,7 +211,9 @@ public class AnzeigenKartStrg implements ActionListener {
 				// Label umschreiben auf ges. Sf-Kart & auf angmeldeter Benutzer
 				Fahrtverwaltung v = new Fahrtverwaltung();
 				LinkedList<SingleplayerFahrt> fahrten = v
-						.gibSingleplayerFahrtenFürBenutzerUndKart(Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
+						.gibSingleplayerFahrtenFürBenutzerUndKart(
+								Nutzerverwaltung.getangKunde().getnutzername(),
+								k.getKartname());
 				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten
 						.size()));
 
@@ -260,15 +243,38 @@ public class AnzeigenKartStrg implements ActionListener {
 			Datenbankschnittstelle.closeConnections();
 
 			// Punktestandprüfung und Label Aktivierung
-			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
+			if (k.getPremium().equals("true") && k.getPunktewert() >= Nutzerverwaltung.getangKunde().getpunkte()) {
+				Rechnungsverwaltung r = new Rechnungsverwaltung();
+				LinkedList<Rechnung> rechnungen = r
+						.gibKartRechnungenfuerBenutzer();
+				Rechnung rechnung = null;
+				Iterator<Rechnung> it = rechnungen.iterator();
+				while (it.hasNext()) {
+					rechnung = it.next();
+					if (k.getKartname().equals(rechnung.getKartname())) {
+						viewUebersicht.btnKartKaufen.setVisible(true);
+					} else {
+						viewUebersicht.btnKartKaufen.setVisible(false);
+					}
+				}
+			}else if (k.getPremium().equals("false")
+					&& k.getPunktewert() <= Nutzerverwaltung.getangKunde()
+							.getpunkte()) {
 				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-				viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
+				viewUebersicht.getlblKartPunkte().setText(
+						"Kart in deinem Besitz!");
 				viewUebersicht.getlblKartPunkte().setVisible(true);
-			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) {
+			} else if (k.getPremium().equals("false")
+					&& k.getPunktewert() >= Nutzerverwaltung.getangKunde()
+							.getpunkte()) {
 				viewUebersicht.getlblKartPunkte().setVisible(false);
-				viewUebersicht.getlblKartPunkteLimit().setText("Erreiche " + k.getPunktewert()+ " Punkte um diese Kart freizuschalten!");
+				viewUebersicht.getlblKartPunkteLimit().setText(
+						"Erreiche " + k.getPunktewert()
+								+ " Punkte um diese Kart freizuschalten!");
 				viewUebersicht.getlblKartPunkteLimit().setVisible(true);
+			
 			}
+
 		} catch (NoSuchElementException ns) {
 			System.out.println("Keine weiteren Karts!");
 		}
@@ -287,38 +293,39 @@ public class AnzeigenKartStrg implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-try{
-		if (e.getSource() == viewUebersicht.getBtnZurueck()) {
+		try {
+			if (e.getSource() == viewUebersicht.getBtnZurueck()) {
 
-			viewUebersicht.frmPixelRacer.dispose();
-			viewDetail.frame.dispose();
-			StartansichtStrg strg = new StartansichtStrg();
-		}
+				viewUebersicht.frmPixelRacer.dispose();
+				viewDetail.frame.dispose();
+				StartansichtStrg strg = new StartansichtStrg();
+			}
 
-		if (e.getSource() == viewUebersicht.getBtnkartKaufen()) {
-			kaufePremiumKart strg = new kaufePremiumKart(k);
-		}
-		if (e.getSource() == viewDetail.btnZurueck) {
+			if (e.getSource() == viewUebersicht.getBtnkartKaufen()) {
+				kaufePremiumKart strg = new kaufePremiumKart(k);
+			}
+			if (e.getSource() == viewDetail.btnZurueck) {
 
-			viewDetail.frame.dispose();
-			viewUebersicht.frmPixelRacer.setVisible(true);
-		}
+				viewDetail.frame.dispose();
+				viewUebersicht.frmPixelRacer.setVisible(true);
+			}
 
-		if (e.getSource() == viewUebersicht.kartBackward) {
-			viewDetail.frame.dispose();
-			KartRückwärts();
-		}
+			if (e.getSource() == viewUebersicht.kartBackward) {
+				viewDetail.frame.dispose();
+				KartRückwärts();
+			}
 
-		if (e.getSource() == viewUebersicht.kartForward) {
-			viewDetail.frame.dispose();
-			ladeKart();
-		}
+			if (e.getSource() == viewUebersicht.kartForward) {
+				viewDetail.frame.dispose();
+				ladeKart();
+			}
 
-		if (e.getSource() == viewUebersicht.btnDetailView) {
-			viewDetail.frame.setVisible(true);
+			if (e.getSource() == viewUebersicht.btnDetailView) {
+				viewDetail.frame.setVisible(true);
+			}
+
+		} catch (NullPointerException o) {
+			System.out.println(o.getMessage());
 		}
-	}catch(NullPointerException o){
-		System.out.println(o.getMessage());
-	}
 	}
 }

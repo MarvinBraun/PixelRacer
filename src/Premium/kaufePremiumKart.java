@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import Kart.AnzeigenKartStrg;
 import Kart.Kart;
 import ProfilKunde.AnzeigenProfilKundeStrg;
 import Rechnung.RechnungBezahlenStrg;
@@ -40,6 +41,7 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 		}
 		if (e.getSource() == pkv.abbrechen) {
 			pkv.frame.dispose();
+			
 		}
 	}
 

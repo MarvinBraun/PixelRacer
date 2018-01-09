@@ -1,7 +1,7 @@
 package ModusAuswählen;
 
-/**
- * Die Klasse ModusauswählenStrg steuert die Aktionen, die in der Klasse 
+
+ /** Die Klasse ModusauswählenStrg steuert die Aktionen, die in der Klasse 
  * ModusauswählenView getätigt werden.
  * @author Ferhat Koca
  */

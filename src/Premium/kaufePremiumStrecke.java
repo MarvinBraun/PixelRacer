@@ -10,6 +10,7 @@ import Rechnung.RechnungBezahlenStrg;
 import Rechnung.RechnungsübersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
+import Strecke.AnzeigenStreckenStrg;
 import Strecke.Strecke;
 
 /**
@@ -38,6 +39,7 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 		}
 		if (e.getSource() == psv.abbrechen) {
 			psv.frame.dispose();
+			AnzeigenStreckenStrg strg = new AnzeigenStreckenStrg();
 		}
 	}
 	/**
