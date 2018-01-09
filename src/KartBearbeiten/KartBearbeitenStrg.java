@@ -35,6 +35,7 @@ public class KartBearbeitenStrg implements ActionListener{
 		if(e.getSource() == kbv.getBtnWeiter()) {
 			kbv.getCl().show(kbv.getCardPanel(), "Formular");
 			ladeKartDaten();
+			khv.getTfName().setEditable(false);
 		}
 		if(e.getSource() == khv.getBtnAbbrechen()) {
 			kbv.getCl().show(kbv.getCardPanel(), "Auswahl");
