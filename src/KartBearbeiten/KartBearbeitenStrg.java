@@ -6,6 +6,9 @@ import KartHinzufügen.KartHinzufügenView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+
+import javax.swing.JFileChooser;
+
 import Anmelden.AnmeldenStrg;
 
 
@@ -21,10 +24,11 @@ public class KartBearbeitenStrg implements ActionListener {
 	
 	public KartBearbeitenStrg() {
 		kbv = new KartBearbeitenView();
-		kbv.getPanel().setVisible(true);
+		kbv.add("Start", kbv.getPanel());
 		ladeKarts();
 		kbv.getBtnWeiter().addActionListener(this);
 		khv = new KartHinzufügenView();
+		khv.getBtnAuswaehlen().addActionListener(this);
 		kbv.add("Formular", khv);
 	}
 	
@@ -32,6 +36,16 @@ public class KartBearbeitenStrg implements ActionListener {
 		if(e.getSource() == kbv.getBtnWeiter()) {
 			kbv.getCl().show(kbv, "Formular");
 			ladeKartDaten();
+		}
+		if(e.getSource() == khv.getBtnAuswaehlen()){
+			khv.getFc().setFileFilter(khv.getFilter());
+			int rueckgabeWert = khv.getFc().showOpenDialog(null);
+			if(rueckgabeWert == JFileChooser.APPROVE_OPTION){
+				khv.getTfGrafik().setText(khv.getFc().getSelectedFile().getAbsolutePath());
+			}
+		}
+		if(e.getSource() == khv.getBtnAbbrechen()){
+			kbv.getCl().show(kbv, "Start");
 		}
 	}
 	
