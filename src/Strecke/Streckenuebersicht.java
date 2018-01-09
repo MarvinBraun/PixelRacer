@@ -123,8 +123,20 @@ public class Streckenuebersicht {
 			}
 		});
 		
+		btnStreckeKaufen = new JButton("Strecke kaufen!");
+		btnStreckeKaufen.setVisible(true);
+		btnStreckeKaufen.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnStreckeKaufen.setBounds(568, 428, 181, 33);
+		frmPixelRacer.getContentPane().add(btnStreckeKaufen);
+		btnStreckeKaufen.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+			}
+		});
+		
 		lblHintergrund = new JLabel("");
-		lblHintergrund.setVisible(false);		
 		lblHintergrund.setBounds(0, 0, 794, 571);
 		frmPixelRacer.getContentPane().add(lblHintergrund);
 					
@@ -143,13 +155,7 @@ public class Streckenuebersicht {
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
 		frmPixelRacer.getContentPane().add(m.label);
-		
-		btnStreckeKaufen = new JButton("Strecke kaufen!");
-		btnStreckeKaufen.setVisible(false);
-		btnStreckeKaufen.setFont(new Font("Dialog", Font.PLAIN, 20));
-		btnStreckeKaufen.setBounds(568, 428, 181, 33);
-		frmPixelRacer.getContentPane().add(btnStreckeKaufen);
-		
+				
 	}
 
 	public JFrame getFrmPixelRacer() {
