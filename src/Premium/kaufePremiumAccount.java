@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 import ProfilKunde.AnzeigenProfilKundeStrg;
+import Rechnung.RechnungBezahlenStrg;
 import Rechnung.RechnungsübersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
@@ -34,7 +35,7 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == pav.bestätigen) {
 			pav.frame.dispose();
-			anzr = new RechnungsübersichtStrg();
+			RechnungBezahlenStrg strg = new RechnungBezahlenStrg();
 		}
 		if (e.getSource() == pav.abbrechen) {
 			pav.frame.dispose();

@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import Rechnung.RechnungBezahlenStrg;
 import Rechnung.RechnungsübersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
+import Strecke.Strecke;
 
 /**
  * 
@@ -19,6 +21,7 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 
 	PremiumStreckeView psv;
 	RechnungsübersichtStrg anzr;
+	Strecke s;
 
 	/**
 	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der View
@@ -31,7 +34,7 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == psv.bestätigen) {
-			anzr = new RechnungsübersichtStrg();
+			RechnungBezahlenStrg strg = new RechnungBezahlenStrg(s) ;
 		}
 		if (e.getSource() == psv.abbrechen) {
 			psv.frame.dispose();
@@ -42,15 +45,16 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	 * die Buttons mit der hier definierten Methode actionPerformed.
 	 * 
 	 */
-	public kaufePremiumStrecke() {
+	public kaufePremiumStrecke(Strecke s) {
 		psv = new PremiumStreckeView();
 		psv.frame.setVisible(true);
 		psv.bestätigen.addActionListener(this);
 		psv.abbrechen.addActionListener(this);
+		this.s = s;
 	}
 
 	public static void main(String[] args) {
-		kaufePremiumStrecke kps = new kaufePremiumStrecke();
+		
 	}
 
 }
