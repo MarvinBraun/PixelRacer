@@ -1,51 +1,51 @@
 package KartBearbeiten;
 
-import Kart.Kart;
-import Kart.Kartverwaltung;
-import KartHinzufügen.KartHinzufügenView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
-
 import javax.swing.JFileChooser;
-
-import Anmelden.AnmeldenStrg;
-
+import Kart.Kart;
+import Kart.Kartverwaltung;
+import KartHinzufügen.KartHinzufügenView;
 
 /**
 @author Sean Cartner
 */
 
-public class KartBearbeitenStrg implements ActionListener {
+public class KartBearbeitenStrg implements ActionListener{
 	
 	private KartBearbeitenView kbv;
-	private LinkedList<Kart> kartliste;
 	private KartHinzufügenView khv;
+	private LinkedList<Kart> kartliste;
 	
 	public KartBearbeitenStrg() {
 		kbv = new KartBearbeitenView();
-		kbv.add("Start", kbv.getPanel());
 		ladeKarts();
 		kbv.getBtnWeiter().addActionListener(this);
+		kbv.getCardPanel().add("Auswahl", kbv.getAuswahlPanel());
 		khv = new KartHinzufügenView();
+		khv.getLblKartHinzufgen().setText("Kart Bearbeiten");
+		khv.getBtnAbbrechen().addActionListener(this);;
 		khv.getBtnAuswaehlen().addActionListener(this);
-		kbv.add("Formular", khv);
+		kbv.getCardPanel().add("Formular", khv);
+
 	}
 	
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource() == kbv.getBtnWeiter()) {
-			kbv.getCl().show(kbv, "Formular");
+			kbv.getCl().show(kbv.getCardPanel(), "Formular");
 			ladeKartDaten();
 		}
-		if(e.getSource() == khv.getBtnAuswaehlen()){
+		if(e.getSource() == khv.getBtnAbbrechen()) {
+			kbv.getCl().show(kbv.getCardPanel(), "Auswahl");
+		}
+		if(e.getSource() == khv.getBtnAuswaehlen()) {
+			//FileChooser aufrufen
 			khv.getFc().setFileFilter(khv.getFilter());
 			int rueckgabeWert = khv.getFc().showOpenDialog(null);
 			if(rueckgabeWert == JFileChooser.APPROVE_OPTION){
 				khv.getTfGrafik().setText(khv.getFc().getSelectedFile().getAbsolutePath());
 			}
-		}
-		if(e.getSource() == khv.getBtnAbbrechen()){
-			kbv.getCl().show(kbv, "Start");
 		}
 	}
 	
@@ -54,13 +54,13 @@ public class KartBearbeitenStrg implements ActionListener {
 		kartliste = kw.gibKart();
 		
 		for(Kart kart: kartliste) {
-			kbv.getCB().addItem(kart.getKartname());
+			kbv.getComboBoxKart().addItem(kart.getKartname());
 		}
 		
 	}
 	
 	private void ladeKartDaten(){
-		String auswahl = (String) kbv.getCB().getSelectedItem();
+		String auswahl = (String) kbv.getComboBoxKart().getSelectedItem();
 		for(Kart kart: kartliste){
 			if(auswahl.equals(kart.getKartname())){
 				khv.getTfName().setText(kart.getKartname());
@@ -75,8 +75,9 @@ public class KartBearbeitenStrg implements ActionListener {
 			}
 		}
 	}
-	
+
 	public KartBearbeitenView getView() {
 		return kbv;
 	}
+	
 }

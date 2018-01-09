@@ -1,82 +1,80 @@
 package KartBearbeiten;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
-import javax.swing.JComboBox;
 import java.awt.Font;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.JButton;
-import javax.swing.DefaultComboBoxModel;
 
 /**
 @author Sean Cartner
 */
 
 public class KartBearbeitenView extends JPanel {
-	private JPanel kartBearbeitenPanel;
+
+	private JPanel CardPanel;
+	private CardLayout cl;
+	private JPanel AuswahlPanel;
 	private JComboBox comboBoxKart;
 	private JButton btnWeiter;
-	private CardLayout cl;
 	
-
 	/**
-	 * Ezeugung des Panels, welche lediglich für das CardLayout verantwortlich ist.
+	 * Create the panel.
 	 */
 	public KartBearbeitenView() {
-		
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		
-		cl = new CardLayout();
-		setLayout(cl);
+		setLayout(null);
 		setSize(624, 570);
 		
-		/**
-		 * Erzeugung des Panels, in dem ein Kart ausgewählt werden kann
-		 */
-		kartBearbeitenPanel = new JPanel();
-		add(kartBearbeitenPanel);
-		kartBearbeitenPanel.setSize(624, 570);
-		kartBearbeitenPanel.setLayout(null);
+		CardPanel = new JPanel();
+		CardPanel.setBounds(0, 0, 624, 570);
+		add(CardPanel);
+		cl = new CardLayout();
+		CardPanel.setLayout(cl);
+		CardPanel.setSize(624,570);
+		
+		AuswahlPanel = new JPanel();
+		AuswahlPanel.setSize(624, 570);
+		AuswahlPanel.setLayout(null);
 		
 		comboBoxKart = new JComboBox();
 		comboBoxKart.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboBoxKart.setBounds(225, 214, 175, 30);
-		kartBearbeitenPanel.add(comboBoxKart);
+		AuswahlPanel.add(comboBoxKart);
 		
 		JLabel lblKartBearbeiten = new JLabel("Kart Bearbeiten");
 		lblKartBearbeiten.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblKartBearbeiten.setBounds(78, 30, 175, 30);
-		kartBearbeitenPanel.add(lblKartBearbeiten);
+		AuswahlPanel.add(lblKartBearbeiten);
 		
 		JLabel lblWhleHierEin = new JLabel("W\u00E4hle hier ein Kart aus");
 		lblWhleHierEin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblWhleHierEin.setBounds(225, 189, 175, 14);
-		kartBearbeitenPanel.add(lblWhleHierEin);
+		AuswahlPanel.add(lblWhleHierEin);
 		
 		btnWeiter = new JButton("weiter");
 		btnWeiter.setBounds(440, 344, 112, 30);
-		kartBearbeitenPanel.add(btnWeiter);
+		AuswahlPanel.add(btnWeiter);
+		
+		
+	}
 
+	public JPanel getCardPanel() {
+		return CardPanel;
 	}
-	
-	public JPanel getPanel() {
-		return kartBearbeitenPanel;
-	}
-	
+
 	public CardLayout getCl() {
 		return cl;
 	}
-	
-	public JComboBox getCB() {
+
+	public JPanel getAuswahlPanel() {
+		return AuswahlPanel;
+	}
+
+	public JComboBox getComboBoxKart() {
 		return comboBoxKart;
 	}
-	
+
 	public JButton getBtnWeiter() {
 		return btnWeiter;
 	}
