@@ -110,17 +110,17 @@ public class Kartuebersicht {
 		lblKartPunkteLimit.setBounds(165, 474, 478, 76);
 		frmPixelRacer.getContentPane().add(lblKartPunkteLimit);
 
+		btnKartKaufen = new JButton("Kart kaufen!");
+		btnKartKaufen.setVisible(false);
+		btnKartKaufen.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnKartKaufen.setBounds(568, 428, 181, 33);
+		frmPixelRacer.getContentPane().add(btnKartKaufen);
+		
 		btnZurueck = new JButton("Zur\u00FCck");
 		btnZurueck.setFont(new Font("Dialog", Font.PLAIN, 20));
 		btnZurueck.setBounds(27, 510, 102, 29);
 		frmPixelRacer.getContentPane().add(btnZurueck);
-		btnZurueck.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
+		
 
 		lblHintergrund = new JLabel("");
 		lblHintergrund.setVisible(false);
@@ -143,12 +143,6 @@ public class Kartuebersicht {
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
 		frmPixelRacer.getContentPane().add(m.label);
-
-		btnKartKaufen = new JButton("Kart kaufen!");
-		btnKartKaufen.setVisible(false);
-		btnKartKaufen.setFont(new Font("Dialog", Font.PLAIN, 20));
-		btnKartKaufen.setBounds(568, 428, 181, 33);
-		frmPixelRacer.getContentPane().add(btnKartKaufen);
 
 	}
 

@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import Kart.Kart;
 import ProfilKunde.AnzeigenProfilKundeStrg;
+import Rechnung.RechnungBezahlenStrg;
 import Rechnung.RechnungsübersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
@@ -20,6 +22,7 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 
 	PremiumKartView pkv;
 	RechnungsübersichtStrg anzr;
+	Kart k; 
 
 	/**
 	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der View
@@ -33,7 +36,7 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getSource() == pkv.bestätigen) {
 			pkv.frame.dispose();
-			anzr = new RechnungsübersichtStrg();
+			RechnungBezahlenStrg strg = new RechnungBezahlenStrg(k);
 		}
 		if (e.getSource() == pkv.abbrechen) {
 			pkv.frame.dispose();
@@ -45,14 +48,15 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 	 * die Buttons mit der hier definierten Methode actionPerformed.
 	 * 
 	 */
-	public kaufePremiumKart() {
+	public kaufePremiumKart(Kart k) {
 		pkv = new PremiumKartView();
 		pkv.frame.setVisible(true);
 		pkv.bestätigen.addActionListener(this);
 		pkv.abbrechen.addActionListener(this);
+		this.k = k;
 	}
 
 	public static void main(String[] args) {
-		kaufePremiumKart pkv = new kaufePremiumKart();
+		
 	}
 }
