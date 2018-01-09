@@ -10,7 +10,8 @@ import Anmelden.AnmeldenStrg;
 import Startansicht.StartansichtStrg;
 
 /**
- * 
+ * Die Klasse RechnungAnzeigenStrg steuert das anzeigen der einzelnen Rechnungen.
+ * Sie verwaltet dabei die grafische Benutzeroberflächen Rechnungsübersicht und anzeigenRechnung_ansicht2.
  * @author Daniel Zeller
  *
  */
@@ -42,6 +43,10 @@ public class RechnungAnzeigenStrg implements ActionListener{
 		RechnungAnzeigenStrg strg = new RechnungAnzeigenStrg();
 	}
 	
+	/**
+	 * Vergleicht die eingegebene Rechnungsnummer mit den Rechnungsnummern des Benutzers für die Karts.
+	 * @return Boolean
+	 */
 	public Boolean VergleichRnrKarts() {
 		String rnr = view1.getTextPane().getText();
 		rliste = Rechnungsverwaltung.gibKartRechnungenfuerBenutzer();
@@ -56,7 +61,10 @@ public class RechnungAnzeigenStrg implements ActionListener{
 		
 		return false;
 	}
-	
+	/**
+	 * Vergleicht die eingegebene Rechnungsnummer mit den Rechnungsnummern des Benutzers für die Strecken.
+	 * @return Boolean
+	 */
 	public Boolean VergleichRnrStrecke() {
 		String rnr = view1.getTextPane().getText();
 		rliste = Rechnungsverwaltung.gibStreckenRechnungenfuerBenutzer();

@@ -11,7 +11,8 @@ import Startansicht.StartansichtStrg;
 import Strecke.Strecke;
 
 /**
- * 
+ * Die Klasse RechnungBezahlenStrg steuert das bezahlen einer Rechnung.
+ * Sie verwaltet dabei die grafische Benutzeroberfläche RechnungBezahlenView.
  * @author Daniel Zeller
  *
  */
@@ -22,6 +23,9 @@ public class RechnungBezahlenStrg implements ActionListener {
 	private Kart k;
 	private char auswahl;
 	
+	/**
+	 * Wird aufgerufen wenn ein Premiumaccount gekauft wird.
+	 */
 	public RechnungBezahlenStrg() {
 		auswahl = 'p';
 		
@@ -31,7 +35,10 @@ public class RechnungBezahlenStrg implements ActionListener {
 		view1.getBtnBezahlen().addActionListener(this);
 		view1.getBtnAbbrechen().addActionListener(this);
 	}
-	
+	/**
+	 * Wird aufgerufen wenn ein Kart gekauft wird. Das dabei gekaufte Kart wird übergeben.
+	 * @param k2
+	 */
 	public RechnungBezahlenStrg(Kart k2) {
 		auswahl = 'x';
 		k = k2;
@@ -43,7 +50,10 @@ public class RechnungBezahlenStrg implements ActionListener {
 		view1.getBtnBezahlen().addActionListener(this);
 		view1.getBtnAbbrechen().addActionListener(this);
 	}
-	
+	/**
+	 * Wird aufgerufen wenn eine Strecke gekauft wird. Die dabei gekaufte Strecke wird übergeben.
+	 * @param k2
+	 */
 	public RechnungBezahlenStrg(Strecke s2) {
 		auswahl = 'x';
 		s = s2;
