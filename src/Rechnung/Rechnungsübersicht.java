@@ -25,6 +25,7 @@ public class Rechnungsübersicht {
 	JButton btnSpeichern;
 	JTextPane textPane;
 	JLabel lblHintergrund;
+	private JButton btnZuruck;
 	
 	
 	// getter und setter Methoden der Variablen
@@ -156,6 +157,18 @@ public class Rechnungsübersicht {
 		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmRechnungsbersicht.getContentPane().add(lblHintergrund);
+		
+		btnZuruck = new JButton("Zurück");
+		btnZuruck.setBounds(680, 50, 95, 23);
+		frmRechnungsbersicht.getContentPane().add(btnZuruck);
+	}
+
+	public JButton getBtnZuruck() {
+		return btnZuruck;
+	}
+
+	public void setBtnZuruck(JButton btnZuruck) {
+		this.btnZuruck = btnZuruck;
 	}
 
 }
