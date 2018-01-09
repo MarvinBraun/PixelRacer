@@ -19,6 +19,8 @@ import Fahrt.Fahrt;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
+import Premium.kaufePremiumKart;
+import Premium.kaufePremiumStrecke;
 import Rechnung.Rechnung;
 import Rechnung.Rechnungsverwaltung;
 import Startansicht.StartansichtStrg;
@@ -73,6 +75,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		viewUebersicht.streckeForward.addActionListener(this);
 		viewUebersicht.btnDetailView.addActionListener(this);
 		viewUebersicht.btnZurueck.addActionListener(this);
+		viewUebersicht.btnStreckeKaufen.addActionListener(this);
 		
 		ladeStrecke();
 		
@@ -104,13 +107,13 @@ public class AnzeigenStreckenStrg implements ActionListener{
 						
 			viewDetail= new StreckeDetailView();
 			viewDetail.btnZurueck.addActionListener(this);
-						
-			//Länge setzten
+									
+			//LÃ¤nge setzten
 			viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
 			
 			// Fahrten zu angemeldetem Nutzer und akuteller Strecke sammeln
 			Fahrtverwaltung v = new Fahrtverwaltung();
-			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke(Nutzerverwaltung.getangKunde().getnutzername(),s.getStreckenname());
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFÃ¼rBenutzerUndStrecke(Nutzerverwaltung.getangKunde().getnutzername(),s.getStreckenname());
 			viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 					
 			// Label umschreiben auf ges. m pro Sf-Strecke
@@ -135,14 +138,29 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
 			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));														
 		}
-				
-		//Prüfung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
+		
+		//PunktestandprÃ¼fung und Label Aktivierung
+		if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung Punktestand Spieler grÃ¶ÃŸer gleich Punktelimit Strecke
+			viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
+			viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
+			viewUebersicht.getLblStreckePunkte().setVisible(true);
+		}
+		else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){ // PrÃ¼fung Punktestand Spieler kleiner Punktelimit Strecke
+			viewUebersicht.getLblStreckePunkte().setVisible(false);
+			viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
+			viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
+		}
+		
+		//PrÃ¼fung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
 		
 		Rechnungsverwaltung r = new Rechnungsverwaltung();
 		LinkedList<Rechnung> rechnungen = r.gibStreckenRechnungenfuerBenutzer();
 		
+		viewUebersicht.getBtnStreckeKaufen().setVisible(false);
 		
 		if(s.getPremium().equals("true")){
+			viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
+			viewUebersicht.getLblStreckePunkte().setVisible(false);
 			viewUebersicht.getBtnStreckeKaufen().setVisible(true);
 			
 		
@@ -153,33 +171,24 @@ public class AnzeigenStreckenStrg implements ActionListener{
 				rechnung = it.next();
 				if(s.getStreckenname().equals(rechnung.getStreckenname()))
 						{
+					
 						viewUebersicht.getBtnStreckeKaufen().setVisible(false);
-						viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
 						viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
 						viewUebersicht.getLblStreckePunkte().setVisible(true);
+						viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
+						
 						}
 			}
-			
-		}
+	}
 		
 		Datenbankschnittstelle.closeConnections();
 					
-		//Punktestandprüfung und Label Aktivierung
-			if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
-				viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
-				viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
-				viewUebersicht.getLblStreckePunkte().setVisible(true);
-			}
-			else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){
-				viewUebersicht.getLblStreckePunkte().setVisible(false);
-				viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
-				viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
-			}
+		
 				
 }
 	
 	
-	public void streckeRückwärts()
+	public void streckeRÃ¼ckwÃ¤rts()
 	{
 		if((s=itStrecke.previous())!=null)
 		{			
@@ -197,12 +206,12 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			viewDetail= new StreckeDetailView();
 			viewDetail.btnZurueck.addActionListener(this);
 						
-			//Länge setzten
+			//LÃ¤nge setzten
 			viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
 			
 			// Label umschreiben auf ges. Sf-Strecke & auf angmeldeter Benutzer
 			Fahrtverwaltung v = new Fahrtverwaltung();
-			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFÃ¼rBenutzerUndStrecke("DZeller",s.getStreckenname());
 			viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 					
 			// Label umschreiben auf ges. m pro Sf-Strecke
@@ -229,12 +238,28 @@ public class AnzeigenStreckenStrg implements ActionListener{
 				
 		}
 		
-		//Prüfung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
-		
+		//PunktestandprÃ¼fung und Label Aktivierung
+				if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung Punktestand Spieler grÃ¶ÃŸer gleich Punktelimit Strecke
+					viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
+					viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
+					viewUebersicht.getLblStreckePunkte().setVisible(true);
+				}
+				else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){ // PrÃ¼fung Punktestand Spieler kleiner Punktelimit Strecke
+					viewUebersicht.getLblStreckePunkte().setVisible(false);
+					viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
+					viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
+				}
+				
+				//PrÃ¼fung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
+				
 				Rechnungsverwaltung r = new Rechnungsverwaltung();
 				LinkedList<Rechnung> rechnungen = r.gibStreckenRechnungenfuerBenutzer();
-						
+				
+				viewUebersicht.getBtnStreckeKaufen().setVisible(false);
+				
 				if(s.getPremium().equals("true")){
+					viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
+					viewUebersicht.getLblStreckePunkte().setVisible(false);
 					viewUebersicht.getBtnStreckeKaufen().setVisible(true);
 					
 				
@@ -245,28 +270,18 @@ public class AnzeigenStreckenStrg implements ActionListener{
 						rechnung = it.next();
 						if(s.getStreckenname().equals(rechnung.getStreckenname()))
 								{
+							
 								viewUebersicht.getBtnStreckeKaufen().setVisible(false);
-								viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
 								viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
 								viewUebersicht.getLblStreckePunkte().setVisible(true);
+								viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
+								
 								}
 					}
-					
+									
 				}
 				
 				Datenbankschnittstelle.closeConnections();
-		
-			//Punktestandprüfung und Label Aktivierung
-			if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
-				viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
-				viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
-				viewUebersicht.getLblStreckePunkte().setVisible(true);
-			}
-			else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){
-				viewUebersicht.getLblStreckePunkte().setVisible(false);
-				viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
-				viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
-			}
 }
 	
 		
@@ -283,7 +298,9 @@ public class AnzeigenStreckenStrg implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		if(e.getSource()==viewUebersicht.getBtnStreckeKaufen()) {
+			kaufePremiumStrecke strg = new kaufePremiumStrecke();
+		}
 		if(e.getSource()==viewUebersicht.getBtnZurueck()) {
 			
 			viewUebersicht.frmPixelRacer.dispose();
@@ -300,7 +317,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		if(e.getSource()==viewUebersicht.streckeBackward)
 		{
 			viewDetail.frame.dispose();
-			streckeRückwärts();			
+			streckeRÃ¼ckwÃ¤rts();			
 		}
 		
 		if(e.getSource()==viewUebersicht.streckeForward)
