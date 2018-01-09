@@ -72,27 +72,27 @@ public class StreckeDetailView {
 		frame.getContentPane().setLayout(null);
 				
 		lblLaenge = new JLabel("Streckenl\u00E4nge:");
-		lblLaenge.setBounds(55, 32, 72, 14);
+		lblLaenge.setBounds(76, 32, 105, 14);
 		frame.getContentPane().add(lblLaenge);
 		
 		lblGefahreneRennen = new JLabel("Gefahrene SP-Rennen:");
-		lblGefahreneRennen.setBounds(32, 57, 95, 14);
+		lblGefahreneRennen.setBounds(37, 57, 144, 14);
 		frame.getContentPane().add(lblGefahreneRennen);
 		
 		lblGefahreneKmGesamt = new JLabel("Gefahrene m SP gesamt:");
-		lblGefahreneKmGesamt.setBounds(18, 82, 109, 14);
+		lblGefahreneKmGesamt.setBounds(20, 82, 152, 14);
 		frame.getContentPane().add(lblGefahreneKmGesamt);
 		
 		lblRennenAlsErster = new JLabel("Rennen als Erster abgeschlossen");
-		lblRennenAlsErster.setBounds(224, 136, 158, 14);
+		lblRennenAlsErster.setBounds(224, 136, 210, 14);
 		frame.getContentPane().add(lblRennenAlsErster);
 		
 		lblRennenAlsZweiter = new JLabel("Rennen als Zweiter abgeschlossen");
-		lblRennenAlsZweiter.setBounds(224, 161, 165, 14);
+		lblRennenAlsZweiter.setBounds(224, 161, 210, 14);
 		frame.getContentPane().add(lblRennenAlsZweiter);
 		
 		lblRennenAlsDritter = new JLabel("Rennen als Dritter abgeschlossen");
-		lblRennenAlsDritter.setBounds(224, 186, 165, 14);
+		lblRennenAlsDritter.setBounds(224, 186, 210, 14);
 		frame.getContentPane().add(lblRennenAlsDritter);
 		
 		lblSetLaenge = new JLabel("New label");
