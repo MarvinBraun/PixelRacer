@@ -296,7 +296,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==viewUebersicht.getBtnStreckeKaufen()) {
-			kaufePremiumStrecke strg = new kaufePremiumStrecke(s);
+			//kaufePremiumStrecke strg = new kaufePremiumStrecke(s, viewUebersicht);
 		}
 		if(e.getSource()==viewUebersicht.getBtnZurueck()) {
 			
