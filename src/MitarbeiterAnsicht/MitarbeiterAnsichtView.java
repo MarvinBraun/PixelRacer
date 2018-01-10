@@ -58,18 +58,22 @@ public class MitarbeiterAnsichtView extends JFrame {
 		DefaultMutableTreeNode streckeHinzufügen = new DefaultMutableTreeNode("Füge Strecke hinzu");
 		DefaultMutableTreeNode bezahlartHinzufügen = new DefaultMutableTreeNode("Füge Bezahlart hinzu");
 		DefaultMutableTreeNode kartBearbeiten = new DefaultMutableTreeNode("Bearbeite Kart");
+		DefaultMutableTreeNode streckeBearbeiten = new DefaultMutableTreeNode("Bearbeite Strecke");
+		DefaultMutableTreeNode mitarbeiterBearbeiten = new DefaultMutableTreeNode("Bearbeite Mitarbeiter");
 		// Zuweisung Wurzel - Kategorie
 		menu.add(startansicht);
 		menu.add(mitarbeiter);
 		menu.add(kart);
 		menu.add(strecke);
 		menu.add(bezahlart);
-		//Zuweisung Kategroie - MenuPunkt
+		//Zuweisung Kategorie - MenuPunkt
 		startansicht.add(start);
 		mitarbeiter.add(mitarbeiterHinzufügen);
+		mitarbeiter.add(mitarbeiterBearbeiten);
 		kart.add(kartHinzufügen);
 		kart.add(kartBearbeiten);
 		strecke.add(streckeHinzufügen);
+		strecke.add(streckeBearbeiten);
 		bezahlart.add(bezahlartHinzufügen);
 		
 		tree = new JTree(menu);

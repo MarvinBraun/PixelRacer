@@ -13,6 +13,8 @@ import KartHinzufügen.KartHinzufügenStrg;
 import StreckeHinzufügen.StreckeHinzufügenStrg;
 import MitarbeiterHinzufügen.MitarbeiterHinzufügenStrg;
 import KartBearbeiten.KartBearbeitenStrg;
+import StreckeBearbeiten.StreckeBearbeitenStrg;
+import MitarbeiterBearbeiten.MitarbeiterBearbeitenStrg;
 import Anmelden.AnmeldenStrg;
 
 public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionListener{
@@ -23,6 +25,9 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 	private KartHinzufügenStrg kStrg;
 	private StreckeHinzufügenStrg sStrg;
 	private KartBearbeitenStrg kbStrg;
+	private StreckeBearbeitenStrg sbStrg;
+	private MitarbeiterHinzufügenStrg mStrg;
+	private MitarbeiterBearbeitenStrg mbStrg;
 	
 	public MitarbeiterAnsichtStrg() {
 		maaView = new MitarbeiterAnsichtView();
@@ -33,21 +38,23 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 		maaView.getPanelContent().add("Start", start);
 		start.getbtnAbmelden().addActionListener(this);
 		
-    	MitarbeiterHinzufügenStrg mStrg = new MitarbeiterHinzufügenStrg();
-    	mStrg.getView();
+    	mStrg = new MitarbeiterHinzufügenStrg();
    	    maaView.getPanelContent().add("MitarbeiterHinzufügen", mStrg.getView());
+   	    
+    	mbStrg = new MitarbeiterBearbeitenStrg();
+   	    maaView.getPanelContent().add("MitarbeiterBearbeiten", mbStrg.getView());
 		
    	    kStrg = new KartHinzufügenStrg();
-   	    kStrg.getView();
   	    maaView.getPanelContent().add("KartHinzufügen", kStrg.getView());
   	    
   	    kbStrg = new KartBearbeitenStrg();
-  	    kbStrg.getView();
   	    maaView.getPanelContent().add("KartBearbeiten", kbStrg.getView());
   	    
-    	StreckeHinzufügenStrg sStrg = new StreckeHinzufügenStrg();
-    	sStrg.getView();
+    	sStrg = new StreckeHinzufügenStrg();
    	    maaView.getPanelContent().add("StreckeHinzufügen", sStrg.getView());
+   	    
+   	   	sbStrg = new StreckeBearbeitenStrg();
+   	    maaView.getPanelContent().add("StreckeBearbeiten", sbStrg.getView());
    	    
  	    nv = new FunktionNichtVorhandenView();
  	    maaView.getPanelContent().add("FunktionNichtVorhanden", nv);
@@ -67,6 +74,9 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
         if(selectedNode.getUserObject().toString() == "Füge Mitarbeiter hinzu") {
       	   maaView.getCL().show(maaView.getPanelContent(), "MitarbeiterHinzufügen");
           }
+        if(selectedNode.getUserObject().toString() == "Bearbeite Mitarbeiter") {
+       	   maaView.getCL().show(maaView.getPanelContent(), "MitarbeiterBearbeiten");
+           }
         if(selectedNode.getUserObject().toString() == "Füge Kart hinzu") {
      	   maaView.getCL().show(maaView.getPanelContent(), "KartHinzufügen");
          }
@@ -76,6 +86,9 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
         if(selectedNode.getUserObject().toString() == "Füge Strecke hinzu") {
       	   maaView.getCL().show(maaView.getPanelContent(), "StreckeHinzufügen");
           }
+        if(selectedNode.getUserObject().toString() == "Bearbeite Strecke") {
+       	   maaView.getCL().show(maaView.getPanelContent(), "StreckeBearbeiten");
+           }
         if(selectedNode.getUserObject().toString() == "Füge Bezahlart hinzu") {
      	   maaView.getCL().show(maaView.getPanelContent(), "FunktionNichtVorhanden");
        }
