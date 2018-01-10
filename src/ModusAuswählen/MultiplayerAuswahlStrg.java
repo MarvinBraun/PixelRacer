@@ -9,7 +9,7 @@ import MultiplayerFahrt.FahrtBeitretenStrg;
 
 /**
  * Die Klasse MultiplayerAuswahlStrg steuert die Aktionen, die in der Klasse
- * MultiplayerAuswahlView getätigt werden
+ * MultiplayerAuswahlView getätigt werden.
  * 
  * @author Ferhat Koca
  *

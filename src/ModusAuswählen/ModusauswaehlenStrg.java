@@ -22,6 +22,7 @@ public class ModusauswaehlenStrg implements ActionListener {
 	Kunde kunde;
 
 	/**
+	 * 
 	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der View
 	 * klickt und führt die jeweilige Methode aus.
 	 * 

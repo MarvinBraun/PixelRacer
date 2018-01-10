@@ -28,8 +28,11 @@ import Rechnung.Rechnungsverwaltung;
 import Startansicht.StartansichtStrg;
 import myIterator.MyIteratorKart;
 import myIterator.MyIteratorString;
+
 /**
- * Die Klasse AnzeigenKartStrg ruft  die grafischen Oberflächen Kartuebersicht und KartDetailView auf und verwaltet diese.
+ * Die Klasse AnzeigenKartStrg steuert die kartansicht für den Nutzer. Die Klasse
+ * verwaltet auch die grafischen Oberflächen Kartuebersicht und KartDetailView.
+ * 
  * @author Ferhat Koca
  *
  */
@@ -59,7 +62,14 @@ public class AnzeigenKartStrg implements ActionListener {
 
 	static MyIteratorKart<Kart> itKart;
 	static MyIteratorString<String> itString;
-	
+
+	/**
+	 * Die Methode AnzeigenKartStrg ist der Konstruktor der Klasse und ruft
+	 * diese als neues Objekt auf. Sie deklariert die ihm, aus den Klassen
+	 * KartDetailView und Kartuebersicht, übergebenen Labels und Buttons mit
+	 * Variablen.
+	 * 
+	 */
 	public AnzeigenKartStrg() {
 
 		viewUebersicht = new Kartuebersicht();
@@ -80,7 +90,7 @@ public class AnzeigenKartStrg implements ActionListener {
 		viewUebersicht.btnDetailView.addActionListener(this);
 		viewUebersicht.btnZurueck.addActionListener(this);
 		viewUebersicht.btnKartKaufen.addActionListener(this);
-		
+
 		ladeKart();
 
 		SwingUtilities.updateComponentTreeUI(viewUebersicht.frame);
@@ -93,6 +103,12 @@ public class AnzeigenKartStrg implements ActionListener {
 
 	}
 
+	/**
+	 * Die Methode ladeKart ruft, wenn vorhanden, das nächste kart auf und
+	 * überprüft ob dieses schon im Besitz des Nutzers ist oder ob es noch durch
+	 * Punkte oder durch einen Kauf freigeschaltet werden muss und deklariert
+	 * dementsprechend die Variablen.
+	 */
 	public void ladeKart() {
 		try {
 			if ((k = itKart.next()) != null) {
@@ -103,7 +119,6 @@ public class AnzeigenKartStrg implements ActionListener {
 				ImageIcon icon = new ImageIcon(Kartbild);
 				viewUebersicht.kartLbl.setIcon(icon);
 
-				// KartDetailView initiieren
 				counterRang1 = 0;
 				counterRang2 = 0;
 				counterRang3 = 0;
@@ -111,19 +126,15 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail = new KartDetailView();
 				viewDetail.btnZurueck.addActionListener(this);
 
-				// Länge setzten
 				viewDetail.lblSetmaxkmh.setText(Integer.toString(k.getMaxkmh()) + " Km/h");
 
 				viewDetail.lblSetbesch.setText(Integer.toString(k.getBeschleunigung()));
-
-				// Label umschreiben auf ges. Sf-Kart & auf angmeldeter Benutzer
 
 				Fahrtverwaltung v = new Fahrtverwaltung();
 				LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndKart(
 						Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
 				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 
-				// Anzahl Erster
 				for (int i = 0; i < fahrten.size(); i++) {
 
 					sf = fahrten.get(i);
@@ -142,21 +153,17 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
 				viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
 			}
-			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung Punktestand Spieler
-																					// grÃ¶ÃŸer gleich Punktelimit Kart
+			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
 				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
 				viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
 				viewUebersicht.getlblKartPunkte().setVisible(true);
-			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung Punktestand Spieler
-																							// kleiner Punktelimit Kart
+			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) { 
 				viewUebersicht.getlblKartPunkte().setVisible(false);
 				viewUebersicht.getlblKartPunkteLimit()
 						.setText("Erreiche " + k.getPunktewert() + " Punkte um diese Kart freizuschalten!");
 				viewUebersicht.getlblKartPunkteLimit().setVisible(true);
 			}
-			// Prüfung Kart bereits vom Nutzer gekauft? Falls nicht Kauf-Button
-			// einblenden
-
+			
 			Rechnungsverwaltung r = new Rechnungsverwaltung();
 			LinkedList<Rechnung> rechnungen = r.gibKartRechnungenfuerBenutzer();
 
@@ -189,6 +196,10 @@ public class AnzeigenKartStrg implements ActionListener {
 		}
 	}
 
+	/**
+	 * Die Methode KartRückwärts Funktioniert wie die Methode ladeKart, gibt
+	 * aber das vorherige Kart wieder.
+	 */
 	public void KartRückwärts() {
 		try {
 			if ((k = itKart.previous()) != null) {
@@ -199,7 +210,6 @@ public class AnzeigenKartStrg implements ActionListener {
 				ImageIcon icon = new ImageIcon(Kartbild);
 				viewUebersicht.kartLbl.setIcon(icon);
 
-				// KartDetailView initiieren
 				counterRang1 = 0;
 				counterRang2 = 0;
 				counterRang3 = 0;
@@ -207,18 +217,15 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail = new KartDetailView();
 				viewDetail.btnZurueck.addActionListener(this);
 
-				// Länge setzten
 				viewDetail.lblSetmaxkmh.setText(Integer.toString(k.getMaxkmh()) + " Km/h");
 
 				viewDetail.lblSetbesch.setText(Integer.toString(k.getBeschleunigung()));
 
-				// Label umschreiben auf ges. Sf-Kart & auf angmeldeter Benutzer
 				Fahrtverwaltung v = new Fahrtverwaltung();
 				LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndKart(
 						Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
 				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 
-				// Anzahl Erster
 				for (int i = 0; i < fahrten.size(); i++) {
 
 					sf = fahrten.get(i);
@@ -238,20 +245,27 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
 
 			}
-			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung Punktestand Spieler
-																					// grÃ¶ÃŸer gleich Punktelimit Kart
+			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung
+																					// Punktestand
+																					// Spieler
+																					// grÃ¶ÃŸer
+																					// gleich
+																					// Punktelimit
+																					// Kart
 				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
 				viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
 				viewUebersicht.getlblKartPunkte().setVisible(true);
-			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung Punktestand Spieler
-																							// kleiner Punktelimit Kart
+			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung
+																							// Punktestand
+																							// Spieler
+																							// kleiner
+																							// Punktelimit
+																							// Kart
 				viewUebersicht.getlblKartPunkte().setVisible(false);
 				viewUebersicht.getlblKartPunkteLimit()
 						.setText("Erreiche " + k.getPunktewert() + " Punkte um diese Kart freizuschalten!");
 				viewUebersicht.getlblKartPunkteLimit().setVisible(true);
 			}
-			// Prüfung Kart bereits vom Nutzer gekauft? Falls nicht Kauf-Button
-			// einblenden
 
 			Rechnungsverwaltung r = new Rechnungsverwaltung();
 			LinkedList<Rechnung> rechnungen = r.gibKartRechnungenfuerBenutzer();
@@ -295,7 +309,10 @@ public class AnzeigenKartStrg implements ActionListener {
 		return newImage;
 	}
 
-	@Override
+	/**
+	 * Die Methode actionPerformed ruft je nachdem, welcher Button geklickt
+	 * wird, die dafür vorgesehene Funktion auf.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		try {
 			if (e.getSource() == viewUebersicht.getBtnZurueck()) {
@@ -323,7 +340,6 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail.frame.dispose();
 				ladeKart();
 			}
-			//bsp
 
 			if (e.getSource() == viewUebersicht.btnDetailView) {
 				viewDetail.frame.setVisible(true);

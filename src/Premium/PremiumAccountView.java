@@ -1,4 +1,4 @@
-//@Author Ferhat Koca
+
 package Premium;
 
 import java.awt.EventQueue;
@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import javax.swing.JLabel;
+
+import FontHandler.FontHandler;
+
 import java.awt.Font;
 
 import Rechnung.anzeigenRechnung_ansicht2;
@@ -33,8 +36,7 @@ public class PremiumAccountView extends JFrame {
 	anzeigenRechnung_ansicht2 rechnung = new anzeigenRechnung_ansicht2();
 
 	/**
-	 * Die main-Methode ruft die Klasse, durch den Konstruktor selber, auf und setzt
-	 * das Fenster auf sichtbar.
+	 * Führt die GUI aus.
 	 * 
 	 */
 	public static void main(String[] args) {
@@ -60,13 +62,17 @@ public class PremiumAccountView extends JFrame {
 	}
 
 	/**
-	 * Die Methode initialize füllt den Inhalt des Frames.
+	 * Initialisiert das Objekt.
 	 * 
 	 * @throws IOException wenn ein Fehler beim füllen des 
-	 * Frames mit Werten ein Fehler entstanden ist.
+	 * Frames ein Fehler entstanden ist.
 	 * 
 	 */
 	private void initialize() {
+		
+		Font customFont = FontHandler.registriereSchriftart(30f);
+		Font customFont22f = FontHandler.registriereSchriftart(22f);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 432, 151);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,13 +94,14 @@ public class PremiumAccountView extends JFrame {
 		gbc_Frage.gridx = 0;
 		gbc_Frage.gridy = 1;
 		frame.getContentPane().add(Frage, gbc_Frage);
-		Frage.setFont(new Font("Calibri", Font.PLAIN, 18));
+		Frage.setFont(customFont22f);
 
 		GridBagConstraints gbc_bestätigen = new GridBagConstraints();
 		gbc_bestätigen.anchor = GridBagConstraints.NORTHEAST;
 		gbc_bestätigen.insets = new Insets(0, 0, 5, 5);
 		gbc_bestätigen.gridx = 0;
 		gbc_bestätigen.gridy = 2;
+		bestätigen.setFont(customFont);
 		frame.getContentPane().add(bestätigen, gbc_bestätigen);
 
 		GridBagConstraints gbc_abbrechen = new GridBagConstraints();
@@ -102,6 +109,7 @@ public class PremiumAccountView extends JFrame {
 		gbc_abbrechen.anchor = GridBagConstraints.NORTHWEST;
 		gbc_abbrechen.gridx = 2;
 		gbc_abbrechen.gridy = 2;
+		abbrechen.setFont(customFont);
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
 
 	}

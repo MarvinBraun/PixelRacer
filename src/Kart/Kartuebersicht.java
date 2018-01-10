@@ -12,7 +12,13 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import BackgroundAnimation.Movement;
-
+import FontHandler.FontHandler;
+/**
+ * 
+ * Die Kartübersicht ist die grafische Benutzeroberfläche, die dem Nutzer die Karts anzeigt.
+ * @author Ferhat Koca
+ *
+ */
 public class Kartuebersicht {
 
 	JFrame frame;
@@ -30,7 +36,9 @@ public class Kartuebersicht {
 	JButton btnKartKaufen;
 
 	AnzeigenKartStrg strg;
-	
+	/**
+	 * Führt die GUI aus
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -45,17 +53,21 @@ public class Kartuebersicht {
 	}
 
 	/**
-	 * Create the application.
+	 * Der Konstruktor führt die Methode initialize aus.
 	 */
 	public Kartuebersicht() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialisert das Objekt
 	 */
 	private void initialize() {
 
+		Font customFont = FontHandler.registriereSchriftart(30f);
+		Font customFont22f = FontHandler.registriereSchriftart(22f);
+		Font customFont27f = FontHandler.registriereSchriftart(27f);
+		
 		frame = new JFrame();
 		frame.setTitle("Pixel Racer - Kartübersicht");
 		frame.setBounds(100, 100, 800, 600);
@@ -89,37 +101,37 @@ public class Kartuebersicht {
 		frame.getContentPane().add(kartLbl);
 
 		kartName = new JLabel("FireBird", JLabel.CENTER);
-		kartName.setFont(new Font("pixelmix", Font.PLAIN, 27));
+		kartName.setFont(customFont27f);
 		kartName.setBounds(296, 355, 215, 60);
 		kartName.setVisible(true);
 		frame.getContentPane().add(kartName);
 
 		btnDetailView = new JButton("Zeig mir mehr!");
-		btnDetailView.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnDetailView.setFont(customFont);
 		btnDetailView.setBounds(282, 428, 229, 35);
 		btnDetailView.setVisible(true);
 		frame.getContentPane().add(btnDetailView);
 
 		lblKartPunkte = new JLabel("New label");
 		lblKartPunkte.setVisible(false);
-		lblKartPunkte.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblKartPunkte.setFont(customFont22f);
 		lblKartPunkte.setBounds(282, 474, 229, 65);
 		frame.getContentPane().add(lblKartPunkte);
 
 		lblKartPunkteLimit = new JLabel("New label");
 		lblKartPunkteLimit.setVisible(false);
-		lblKartPunkteLimit.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblKartPunkteLimit.setFont(customFont22f);
 		lblKartPunkteLimit.setBounds(165, 474, 478, 76);
 		frame.getContentPane().add(lblKartPunkteLimit);
 
 		btnKartKaufen = new JButton("Kart kaufen!");
 		btnKartKaufen.setVisible(false);
-		btnKartKaufen.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnKartKaufen.setFont(customFont);
 		btnKartKaufen.setBounds(568, 428, 181, 33);
 		frame.getContentPane().add(btnKartKaufen);
 		
 		btnZurueck = new JButton("Zur\u00FCck");
-		btnZurueck.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnZurueck.setFont(customFont);
 		btnZurueck.setBounds(27, 510, 102, 29);
 		frame.getContentPane().add(btnZurueck);
 		

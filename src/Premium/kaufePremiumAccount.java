@@ -1,4 +1,4 @@
-//@Author Ferhat Koca
+
 package Premium;
 
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 
 /**
- * 
+ * kaufePremiumAccount ist ein Pop-up Fenster, das die grafische Oberfläche PremiumAccountView steuert.
  * @author Ferhat Koca
  *
  */

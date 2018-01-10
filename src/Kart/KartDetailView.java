@@ -1,6 +1,7 @@
 package Kart;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -11,10 +12,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import BackgroundAnimation.Movement;
+import FontHandler.FontHandler;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
+/**
+ * KartDetailView ist die grafische Benutzeroberfläche, die benutzt wird um die
+ * Details der Karts für den jeweiligen angemeldeten Nutzer anzeigt.
+ * 
+ * @author Ferhat Koca
+ *
+ */
 public class KartDetailView {
 
 	JFrame frame;
@@ -37,7 +46,7 @@ public class KartDetailView {
 	JButton btnZurueck;
 
 	/**
-	 * Launch the application.
+	 * Führt die GUI aus.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -53,73 +62,90 @@ public class KartDetailView {
 	}
 
 	/**
-	 * Create the application.
+	 * Initialisiert und befüllt die grafische oberfläsche durch die Methode initialize.
 	 */
 	public KartDetailView() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialisiert das Objekt.
 	 */
 	private void initialize() {
+		
+		Font customFont = FontHandler.registriereSchriftart(30f);
+		Font customFont22f = FontHandler.registriereSchriftart(22f);
 
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(false);
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
 
 		lblmaxkmh = new JLabel("Max. Geschwindigkeit:");
 		lblmaxkmh.setBounds(32, 37, 72, 14);
+		lblmaxkmh.setFont(customFont22f );
 		frame.getContentPane().add(lblmaxkmh);
-		
+
 		lblGefahreneRennen = new JLabel("Gefahrene SP-Rennen:");
+		lblGefahreneRennen.setFont(customFont22f );
 		lblGefahreneRennen.setBounds(32, 77, 95, 14);
 		frame.getContentPane().add(lblGefahreneRennen);
 
 		lblbesch = new JLabel("Beschleunigung:");
 		lblbesch.setBounds(32, 57, 95, 14);
+		lblbesch.setFont(customFont22f);
 		frame.getContentPane().add(lblbesch);
 
 		lblRennenAlsErster = new JLabel("Rennen als Erster abgeschlossen");
 		lblRennenAlsErster.setBounds(224, 136, 158, 14);
+		lblRennenAlsErster.setFont(customFont22f);
 		frame.getContentPane().add(lblRennenAlsErster);
 
 		lblRennenAlsZweiter = new JLabel("Rennen als Zweiter abgeschlossen");
+		lblRennenAlsZweiter.setFont(customFont22f);
 		lblRennenAlsZweiter.setBounds(224, 161, 165, 14);
 		frame.getContentPane().add(lblRennenAlsZweiter);
 
 		lblRennenAlsDritter = new JLabel("Rennen als Dritter abgeschlossen");
+		lblRennenAlsDritter.setFont(customFont22f);
 		lblRennenAlsDritter.setBounds(224, 186, 165, 14);
 		frame.getContentPane().add(lblRennenAlsDritter);
 
 		lblSetmaxkmh = new JLabel("New label");
+		lblSetmaxkmh.setFont(customFont22f);
 		lblSetmaxkmh.setBounds(191, 37, 46, 14);
 		frame.getContentPane().add(lblSetmaxkmh);
-		
+
 		lblSetGesRennen = new JLabel("New label");
+		lblSetGesRennen.setFont(customFont22f);
 		lblSetGesRennen.setBounds(191, 77, 46, 14);
 		frame.getContentPane().add(lblSetGesRennen);
 
 		lblSetbesch = new JLabel("New label");
+		lblSetbesch.setFont(customFont22f);
 		lblSetbesch.setBounds(191, 57, 46, 14);
 		frame.getContentPane().add(lblSetbesch);
 
 		lblSetAnzErster = new JLabel("New label");
+		lblSetAnzErster.setFont(customFont22f);
 		lblSetAnzErster.setBounds(148, 136, 46, 14);
 		frame.getContentPane().add(lblSetAnzErster);
 
 		lblSetAnzZweiter = new JLabel("New label");
+		lblSetAnzZweiter.setFont(customFont22f);
 		lblSetAnzZweiter.setBounds(148, 161, 46, 14);
 		frame.getContentPane().add(lblSetAnzZweiter);
 
 		lblSetAnzDritter = new JLabel("New label");
+		lblSetAnzDritter.setFont(customFont22f);
 		lblSetAnzDritter.setBounds(148, 186, 46, 14);
 		frame.getContentPane().add(lblSetAnzDritter);
 
 		btnZurueck = new JButton("Zur\u00FCck");
+		btnZurueck.setFont(customFont);
 		btnZurueck.setBounds(10, 227, 89, 23);
 		frame.getContentPane().add(btnZurueck);
 		btnZurueck.addActionListener(new ActionListener() {
@@ -165,7 +191,7 @@ public class KartDetailView {
 	public void setlblmaxkmh(JLabel lblmaxkmh) {
 		this.lblmaxkmh = lblmaxkmh;
 	}
-	
+
 	public JLabel getLblGefahreneRennen() {
 		return lblGefahreneRennen;
 	}

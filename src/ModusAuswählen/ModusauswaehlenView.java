@@ -1,6 +1,7 @@
 package ModusAuswählen;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -9,13 +10,15 @@ import javax.swing.JFrame;
 
 import BackgroundAnimation.Movement;
 import BackgroundAnimation.MovementBackward;
+import FontHandler.FontHandler;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
 /**
- * Die Klasse ModusauswaehlenView füllt das Fenster mit allen dazugehörigen
- * Inhalten (Buttons, Textfelder usw.).
+ * ModusauswaehlenView ist die grafische Benutzeroberfläche, die benutzt wird,
+ * um dem Nutzer die Auswahl zwischen SingleplayerFahrt und MultiplayerrFahrt
+ * anzeigt.
  * 
  * @author Ferhat Koca
  *
@@ -29,8 +32,7 @@ public class ModusauswaehlenView {
 	JButton btnzurueck;
 
 	/**
-	 * Die main-Methode ruft die Klasse, durch den Konstruktor selber, auf und setzt
-	 * das Fenster auf sichtbar.
+	 * Führt die GUI aus.
 	 * 
 	 */
 	public static void main(String[] args) {
@@ -47,7 +49,7 @@ public class ModusauswaehlenView {
 	}
 
 	/**
-	 * Der Konstruktor führt die Methode initialize aus.
+	 * Initialisiert das Objekt und befüllt es über die Methode initialize().
 	 * 
 	 */
 	public ModusauswaehlenView() {
@@ -55,11 +57,16 @@ public class ModusauswaehlenView {
 	}
 
 	/**
-	 * Die Methode initialize füllt den Inhalt des Frames.
-	 * @throws IOException wenn ein Fehler beim füllen des 
-	 * Frames mit Werten ein Fehler entstanden ist.
+	 * Initialisiert das Objekt.
+	 * 
+	 * @throws IOException wenn ein Fehler beim füllen des Frames mit Werten ein Fehler
+	 *             		   entstanden ist.
 	 */
 	private void initialize() {
+		
+		Font customFont = FontHandler.registriereSchriftart(30f);
+		Font customFont22f = FontHandler.registriereSchriftart(22f);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setTitle("Modus auswählen");
@@ -70,14 +77,17 @@ public class ModusauswaehlenView {
 
 		btnSingleplayer = new JButton("Singleplayer");
 		btnSingleplayer.setBounds(200, 240, 160, 31);
+		btnSingleplayer.setFont(customFont);
 		frame.getContentPane().add(btnSingleplayer);
 
 		btnMultiplayer = new JButton("Multiplayer");
 		btnMultiplayer.setBounds(440, 240, 160, 31);
+		btnMultiplayer.setFont(customFont);
 		frame.getContentPane().add(btnMultiplayer);
 
 		btnzurueck = new JButton("Zurück");
 		btnzurueck.setBounds(325, 289, 150, 31);
+		btnzurueck.setFont(customFont);
 		frame.getContentPane().add(btnzurueck);
 
 		BufferedImage image = null;

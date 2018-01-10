@@ -1,4 +1,3 @@
-//@Author Ferhat Koca
 package Premium;
 
 import java.awt.event.ActionEvent;
@@ -16,7 +15,7 @@ import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 
 /**
- * 
+ * kaufePremiumKart ist ein Pop-up Fenster, das die grafische Oberfläche PremiumKartView steuert.
  * @author Ferhat Koca
  *
  */
@@ -36,7 +35,6 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 	 * Kaufprozess ab.
 	 */
 		public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if (e.getSource() == pkv.bestätigen) {
 			pkv.frame.dispose();
 			viewUebersicht.getFrame().dispose();
@@ -50,8 +48,7 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Der Konstruktor kaufePremiumKart ruft die PremiumKartView auf und füllt
-	 * die Buttons mit der hier definierten Methode actionPerformed.
+	 * Der Konstruktor erzeugt die Klasse als neues Objekt und deklariert die Variablen.
 	 * 
 	 */
 	public kaufePremiumKart(Kart k, Kartuebersicht viewUebersicht) {

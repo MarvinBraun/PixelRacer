@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import FontHandler.FontHandler;
 import Rechnung.anzeigenRechnung_ansicht2;
 
 /**
@@ -31,8 +32,7 @@ public class PremiumStreckeView extends JFrame {
 	JButton abbrechen;
 
 	/**
-	 * Die main-Methode ruft die Klasse, durch den Konstruktor selber, auf und setzt
-	 * das Fenster auf sichtbar.
+	 * Führt die GUI aus.
 	 * 
 	 */
 	public static void main(String[] args) {
@@ -58,14 +58,18 @@ public class PremiumStreckeView extends JFrame {
 	}
 
 	/**
-	 * Die Methode initialize füllt den Inhalt des Frames.
+	 * Initialisiert das Objekt
 	 * 
 	 * @throws IOException
-	 *             wenn ein Fehler beim füllen des Frames mit Werten ein Fehler
+	 *             wenn ein Fehler beim füllen des Frames ein Fehler
 	 *             entstanden ist.
 	 * 
 	 */
 	private void initialize() {
+		
+		Font customFont = FontHandler.registriereSchriftart(30f);
+		Font customFont22f = FontHandler.registriereSchriftart(22f);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 432, 151);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -81,13 +85,14 @@ public class PremiumStreckeView extends JFrame {
 
 		Frage = new JLabel("  Möchten Sie die Strecke wirklich für 4,99€ erwerben?");
 		GridBagConstraints gbc_Frage = new GridBagConstraints();
+		Frage.setFont(customFont);
 		gbc_Frage.anchor = GridBagConstraints.NORTH;
 		gbc_Frage.insets = new Insets(0, 0, 5, 0);
 		gbc_Frage.gridwidth = 3;
 		gbc_Frage.gridx = 0;
 		gbc_Frage.gridy = 1;
 		frame.getContentPane().add(Frage, gbc_Frage);
-		Frage.setFont(new Font("Calibri", Font.PLAIN, 18));
+		
 
 		bestätigen = new JButton("Bestätigen");
 		GridBagConstraints gbc_bestätigen = new GridBagConstraints();
@@ -95,6 +100,7 @@ public class PremiumStreckeView extends JFrame {
 		gbc_bestätigen.insets = new Insets(0, 0, 5, 5);
 		gbc_bestätigen.gridx = 0;
 		gbc_bestätigen.gridy = 2;
+		bestätigen.setFont(customFont);
 		frame.getContentPane().add(bestätigen, gbc_bestätigen);
 
 		abbrechen = new JButton("Abbrechen");
@@ -103,6 +109,7 @@ public class PremiumStreckeView extends JFrame {
 		gbc_abbrechen.anchor = GridBagConstraints.NORTHWEST;
 		gbc_abbrechen.gridx = 2;
 		gbc_abbrechen.gridy = 2;
+		abbrechen.setFont(customFont);
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
 	}
 

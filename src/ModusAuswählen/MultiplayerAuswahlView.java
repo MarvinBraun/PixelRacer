@@ -1,6 +1,7 @@
 package ModusAuswählen;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import javax.swing.JFrame;
 
 import BackgroundAnimation.Movement;
 import BackgroundAnimation.MovementBackward;
+import FontHandler.FontHandler;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -46,7 +48,7 @@ public class MultiplayerAuswahlView {
 	}
 
 	/**
-	 * Der Konstruktor führt die Methode initialize aus.
+	 * Initialisiert und befüllt die grafische Oberfläche durch die Methode initialize.
 	 * 
 	 */
 	public MultiplayerAuswahlView() throws IOException {
@@ -54,11 +56,14 @@ public class MultiplayerAuswahlView {
 	}
 
 	/**
-	 * Die Methode initialize füllt den Inhalt des Frames.
+	 * Initialisiert das Objekt.
 	 * @throws IOException wenn ein Fehler beim füllen des 
-	 * Frames mit Werten ein Fehler entstanden ist.
+	 * Frames ein Fehler entstanden ist.
 	 */
 	private void initialize() throws IOException {
+		
+		Font customFont = FontHandler.registriereSchriftart(30f);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setTitle("Multiplayerfahrt auswählen");
@@ -68,14 +73,17 @@ public class MultiplayerAuswahlView {
 
 		btnerstellen = new JButton("Multiplayerfahrt erstellen");
 		btnerstellen.setBounds(80, 237, 280, 31);
+		btnerstellen.setFont(customFont);
 		frame.getContentPane().add(btnerstellen);
 
 		btnbeitreten = new JButton("Multiplayerfahrt beitreten");
 		btnbeitreten.setBounds(440, 237, 280, 31);
+		btnbeitreten.setFont(customFont);
 		frame.getContentPane().add(btnbeitreten);
 
 		btnzurück = new JButton("Zurück");
 		btnzurück.setBounds(325, 289, 150, 31);
+		btnzurück.setFont(customFont);
 		frame.getContentPane().add(btnzurück);
 
 		BufferedImage image2 = null;

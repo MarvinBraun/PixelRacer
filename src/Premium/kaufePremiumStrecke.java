@@ -1,4 +1,3 @@
-//@Author Ferhat Koca
 package Premium;
 
 import java.awt.event.ActionEvent;
@@ -8,7 +7,7 @@ import javax.swing.JFrame;
 
 import Kart.AnzeigenKartStrg;
 import Rechnung.RechnungBezahlenStrg;
-import Rechnung.RechnungsÃ¼bersichtStrg;
+import Rechnung.RechnungsübersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 import Strecke.AnzeigenStreckenStrg;
@@ -17,14 +16,14 @@ import Strecke.Streckenuebersicht;
 import Kart.AnzeigenKartStrg;
 
 /**
- * 
+ * kaufePremiumStrecke ist ein Pop-up Fenster, das die grafische Oberfläche PremiumStreckeView steuert.
  * @author Ferhat Koca
  *
  */
 public class kaufePremiumStrecke extends JFrame implements ActionListener {
 
 	PremiumStreckeView psv;
-	RechnungsÃ¼bersichtStrg anzr;
+	RechnungsübersichtStrg anzr;
 	Strecke s;
 	Streckenuebersicht viewUebersicht;
 
@@ -38,7 +37,7 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == psv.bestÃ¤tigen) {
+		if (e.getSource() == psv.bestätigen) {
 			
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg(s) ;
 		}
@@ -56,7 +55,7 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	public kaufePremiumStrecke(Strecke s, Streckenuebersicht viewUebersicht) {
 		psv = new PremiumStreckeView();
 		psv.frame.setVisible(true);
-		psv.bestÃ¤tigen.addActionListener(this);
+		psv.bestätigen.addActionListener(this);
 		psv.abbrechen.addActionListener(this);
 		this.s = s;
 		this.viewUebersicht = viewUebersicht;
