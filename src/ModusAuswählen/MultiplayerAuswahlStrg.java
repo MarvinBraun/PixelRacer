@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import FahrtErstellen.FahrtErstellenStrg;
-import MultiplayerFahrtBeitreten.FahrtBeitretenStrg;
+import SingleplayerFahrt.FahrtErstellenStrg;
+import MultiplayerFahrt.FahrtBeitretenStrg;
 
 /**
  * Die Klasse MultiplayerAuswahlStrg steuert die Aktionen, die in der Klasse

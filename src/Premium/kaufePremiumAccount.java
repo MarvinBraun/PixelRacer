@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import Profil.Profilansicht;
 import ProfilKunde.AnzeigenProfilKundeStrg;
 import ProfilKunde.ProfilKundeAnsicht;
 import Rechnung.RechnungBezahlenStrg;

@@ -39,11 +39,7 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getSource() == pkv.bestätigen) {
 			pkv.frame.dispose();
-			try {
 			viewUebersicht.getFrame().dispose();
-			}catch(NullPointerException a) {
-				a.getMessage();
-			}
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg(k);
 			
 		}
@@ -58,12 +54,13 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 	 * die Buttons mit der hier definierten Methode actionPerformed.
 	 * 
 	 */
-	public kaufePremiumKart(Kart k) {
+	public kaufePremiumKart(Kart k, Kartuebersicht viewUebersicht) {
 		pkv = new PremiumKartView();
 		pkv.frame.setVisible(true);
 		pkv.bestätigen.addActionListener(this);
 		pkv.abbrechen.addActionListener(this);
 		this.k = k;
+		this.viewUebersicht = viewUebersicht;
 	}
 
 	public static void main(String[] args) {

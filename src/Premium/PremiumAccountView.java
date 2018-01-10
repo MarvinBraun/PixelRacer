@@ -72,6 +72,7 @@ public class PremiumAccountView extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Premium erwerben");
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 182, 38, 194, 0 };
 		gridBagLayout.rowHeights = new int[] { 30, 0, 23, 23, 0 };

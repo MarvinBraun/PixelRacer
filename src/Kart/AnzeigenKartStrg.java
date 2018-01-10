@@ -28,7 +28,11 @@ import Rechnung.Rechnungsverwaltung;
 import Startansicht.StartansichtStrg;
 import myIterator.MyIteratorKart;
 import myIterator.MyIteratorString;
-
+/**
+ * Die Klasse AnzeigenKartStrg ruft  die grafischen Oberflächen Kartuebersicht und KartDetailView auf und verwaltet diese.
+ * @author Ferhat Koca
+ *
+ */
 public class AnzeigenKartStrg implements ActionListener {
 
 	KartDetailView viewDetail;
@@ -55,13 +59,11 @@ public class AnzeigenKartStrg implements ActionListener {
 
 	static MyIteratorKart<Kart> itKart;
 	static MyIteratorString<String> itString;
-
-	boolean forward = false;
-	boolean backward = false;
-
+	
 	public AnzeigenKartStrg() {
 
 		viewUebersicht = new Kartuebersicht();
+		viewUebersicht.getFrame().setLocationRelativeTo(null);
 
 		verwFahrt = new Fahrtverwaltung();
 		singleplayerFahrten = verwFahrt.gibSingleplayerFahrten();
@@ -278,7 +280,8 @@ public class AnzeigenKartStrg implements ActionListener {
 			Datenbankschnittstelle.closeConnections();
 
 		} catch (NoSuchElementException ns) {
-			System.out.println("Keine weiteren Karts!");
+			JOptionPane.showConfirmDialog(null, "Zurzeit stehen keine weiteren Karts zur Verfügung!",
+					"Keine weiteren Karts", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 		}
 	}
 
@@ -304,7 +307,7 @@ public class AnzeigenKartStrg implements ActionListener {
 
 			if (e.getSource() == viewUebersicht.getBtnkartKaufen()) {
 
-				kaufePremiumKart strg = new kaufePremiumKart(k);
+				kaufePremiumKart strg = new kaufePremiumKart(k, viewUebersicht);
 			}
 			if (e.getSource() == viewDetail.btnZurueck) {
 				viewDetail.frame.dispose();
@@ -320,6 +323,7 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail.frame.dispose();
 				ladeKart();
 			}
+			//bsp
 
 			if (e.getSource() == viewUebersicht.btnDetailView) {
 				viewDetail.frame.setVisible(true);

@@ -13,6 +13,7 @@ import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 import Strecke.AnzeigenStreckenStrg;
 import Strecke.Strecke;
+import Strecke.Streckenuebersicht;
 import Kart.AnzeigenKartStrg;
 
 /**
@@ -25,6 +26,7 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	PremiumStreckeView psv;
 	RechnungsübersichtStrg anzr;
 	Strecke s;
+	Streckenuebersicht viewUebersicht;
 
 	/**
 	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der View
@@ -50,12 +52,13 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	 * die Buttons mit der hier definierten Methode actionPerformed.
 	 * 
 	 */
-	public kaufePremiumStrecke(Strecke s) {
+	public kaufePremiumStrecke(Strecke s, StreckenUebersicht viewUebersicht) {
 		psv = new PremiumStreckeView();
 		psv.frame.setVisible(true);
 		psv.bestätigen.addActionListener(this);
 		psv.abbrechen.addActionListener(this);
 		this.s = s;
+		this.viewUebersicht = viewUebersicht;
 	}
 
 	public static void main(String[] args) {

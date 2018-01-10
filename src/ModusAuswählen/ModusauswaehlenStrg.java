@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import FahrtErstellen.FahrtErstellenStrg;
+import SingleplayerFahrt.FahrtErstellenStrg;
 import Startansicht.StartansichtStrg;
 import Nutzer.Kunde;
 import Nutzer.Nutzerverwaltung;
