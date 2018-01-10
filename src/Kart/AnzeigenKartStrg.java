@@ -21,6 +21,7 @@ import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Nutzer.Kunde;
 import Nutzer.Nutzerverwaltung;
+import Premium.PremiumKartView;
 import Premium.kaufePremiumKart;
 import Rechnung.Rechnung;
 import Rechnung.Rechnungsverwaltung;
@@ -32,6 +33,7 @@ public class AnzeigenKartStrg implements ActionListener {
 
 	KartDetailView viewDetail;
 	Kartuebersicht viewUebersicht;
+	AnzeigenKartStrg strg;
 
 	SingleplayerFahrt sf;
 	Rechnung r;
@@ -76,10 +78,10 @@ public class AnzeigenKartStrg implements ActionListener {
 		viewUebersicht.btnDetailView.addActionListener(this);
 		viewUebersicht.btnZurueck.addActionListener(this);
 		viewUebersicht.btnKartKaufen.addActionListener(this);
-
+		
 		ladeKart();
 
-		SwingUtilities.updateComponentTreeUI(viewUebersicht.frmPixelRacer);
+		SwingUtilities.updateComponentTreeUI(viewUebersicht.frame);
 
 	}
 
@@ -108,21 +110,16 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail.btnZurueck.addActionListener(this);
 
 				// Länge setzten
-				viewDetail.lblSetmaxkmh.setText(Integer.toString(k.getMaxkmh())
-						+ " Km/h");
+				viewDetail.lblSetmaxkmh.setText(Integer.toString(k.getMaxkmh()) + " Km/h");
 
-				viewDetail.lblSetbesch.setText(Integer.toString(k
-						.getBeschleunigung()));
+				viewDetail.lblSetbesch.setText(Integer.toString(k.getBeschleunigung()));
 
 				// Label umschreiben auf ges. Sf-Kart & auf angmeldeter Benutzer
 
 				Fahrtverwaltung v = new Fahrtverwaltung();
-				LinkedList<SingleplayerFahrt> fahrten = v
-						.gibSingleplayerFahrtenFürBenutzerUndKart(
-								Nutzerverwaltung.getangKunde().getnutzername(),
-								k.getKartname());
-				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten
-						.size()));
+				LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndKart(
+						Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
+				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 
 				// Anzahl Erster
 				for (int i = 0; i < fahrten.size(); i++) {
@@ -139,46 +136,53 @@ public class AnzeigenKartStrg implements ActionListener {
 						counterRang3++;
 					}
 				}
-				viewDetail.lblSetAnzErster.setText(Integer
-						.toString(counterRang1));
-				viewDetail.lblSetAnzZweiter.setText(Integer
-						.toString(counterRang2));
-				viewDetail.lblSetAnzDritter.setText(Integer
-						.toString(counterRang3));
+				viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
+				viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
+				viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
 			}
-
+			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung Punktestand Spieler
+																					// grÃ¶ÃŸer gleich Punktelimit Kart
+				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
+				viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
+				viewUebersicht.getlblKartPunkte().setVisible(true);
+			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung Punktestand Spieler
+																							// kleiner Punktelimit Kart
+				viewUebersicht.getlblKartPunkte().setVisible(false);
+				viewUebersicht.getlblKartPunkteLimit()
+						.setText("Erreiche " + k.getPunktewert() + " Punkte um diese Kart freizuschalten!");
+				viewUebersicht.getlblKartPunkteLimit().setVisible(true);
+			}
 			// Prüfung Kart bereits vom Nutzer gekauft? Falls nicht Kauf-Button
 			// einblenden
-			
+
+			Rechnungsverwaltung r = new Rechnungsverwaltung();
+			LinkedList<Rechnung> rechnungen = r.gibKartRechnungenfuerBenutzer();
+
+			viewUebersicht.getBtnkartKaufen().setVisible(false);
+
 			if (k.getPremium().equals("true")) {
-				Rechnungsverwaltung r = new Rechnungsverwaltung();
-				LinkedList<Rechnung> rechnungen = r.gibKartRechnungenfuerBenutzer();
+				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
+				viewUebersicht.getlblKartPunkte().setVisible(false);
+				viewUebersicht.getBtnkartKaufen().setVisible(true);
+
 				Rechnung rechnung = null;
 				Iterator<Rechnung> it = rechnungen.iterator();
 				while (it.hasNext()) {
 					rechnung = it.next();
 					if (k.getKartname().equals(rechnung.getKartname())) {
-						viewUebersicht.btnKartKaufen.setVisible(false);
-					} else {
-						viewUebersicht.btnKartKaufen.setVisible(true);
+
+						viewUebersicht.getBtnkartKaufen().setVisible(false);
+						viewUebersicht.getlblKartPunkteLimit().setVisible(false);
+						viewUebersicht.getlblKartPunkte().setVisible(true);
+						viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
+
 					}
 				}
-			}else if (k.getPremium().equals("false")&& k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
-				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-				viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
-				viewUebersicht.getlblKartPunkte().setVisible(true);
-			} else if (k.getPremium().equals("false")&& k.getPunktewert() >= Nutzerverwaltung.getangKunde().getpunkte()) {
-				viewUebersicht.getlblKartPunkte().setVisible(false);
-				viewUebersicht.getlblKartPunkteLimit().setText("Erreiche " + k.getPunktewert() + " Punkte um diese Kart freizuschalten!");
-				viewUebersicht.getlblKartPunkteLimit().setVisible(true);
 			}
 			Datenbankschnittstelle.closeConnections();
 		} catch (Exception e) {
-			JOptionPane.showConfirmDialog(null,
-	                "Zurzeit stehen keine weiteren Karts zur Verfügung!",
-	                "Bitte klick zurück",
-	                JOptionPane.DEFAULT_OPTION,
-	                JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showConfirmDialog(null, "Zurzeit stehen keine weiteren Karts zur Verfügung!",
+					"Keine weiteren Karts", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 
 		}
 	}
@@ -202,20 +206,15 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail.btnZurueck.addActionListener(this);
 
 				// Länge setzten
-				viewDetail.lblSetmaxkmh.setText(Integer.toString(k.getMaxkmh())
-						+ " Km/h");
+				viewDetail.lblSetmaxkmh.setText(Integer.toString(k.getMaxkmh()) + " Km/h");
 
-				viewDetail.lblSetbesch.setText(Integer.toString(k
-						.getBeschleunigung()));
+				viewDetail.lblSetbesch.setText(Integer.toString(k.getBeschleunigung()));
 
 				// Label umschreiben auf ges. Sf-Kart & auf angmeldeter Benutzer
 				Fahrtverwaltung v = new Fahrtverwaltung();
-				LinkedList<SingleplayerFahrt> fahrten = v
-						.gibSingleplayerFahrtenFürBenutzerUndKart(
-								Nutzerverwaltung.getangKunde().getnutzername(),
-								k.getKartname());
-				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten
-						.size()));
+				LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndKart(
+						Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
+				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 
 				// Anzahl Erster
 				for (int i = 0; i < fahrten.size(); i++) {
@@ -232,48 +231,51 @@ public class AnzeigenKartStrg implements ActionListener {
 						counterRang3++;
 					}
 				}
-				viewDetail.lblSetAnzErster.setText(Integer
-						.toString(counterRang1));
-				viewDetail.lblSetAnzZweiter.setText(Integer
-						.toString(counterRang2));
-				viewDetail.lblSetAnzDritter.setText(Integer
-						.toString(counterRang3));
+				viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
+				viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
+				viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
 
 			}
-			Datenbankschnittstelle.closeConnections();
+			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung Punktestand Spieler
+																					// grÃ¶ÃŸer gleich Punktelimit Kart
+				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
+				viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
+				viewUebersicht.getlblKartPunkte().setVisible(true);
+			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung Punktestand Spieler
+																							// kleiner Punktelimit Kart
+				viewUebersicht.getlblKartPunkte().setVisible(false);
+				viewUebersicht.getlblKartPunkteLimit()
+						.setText("Erreiche " + k.getPunktewert() + " Punkte um diese Kart freizuschalten!");
+				viewUebersicht.getlblKartPunkteLimit().setVisible(true);
+			}
+			// Prüfung Kart bereits vom Nutzer gekauft? Falls nicht Kauf-Button
+			// einblenden
 
-			// Punktestandprüfung und Label Aktivierung
-			if (k.getPremium().equals("true") && k.getPunktewert() >= Nutzerverwaltung.getangKunde().getpunkte()) {
-				Rechnungsverwaltung r = new Rechnungsverwaltung();
-				LinkedList<Rechnung> rechnungen = r
-						.gibKartRechnungenfuerBenutzer();
+			Rechnungsverwaltung r = new Rechnungsverwaltung();
+			LinkedList<Rechnung> rechnungen = r.gibKartRechnungenfuerBenutzer();
+
+			viewUebersicht.getBtnkartKaufen().setVisible(false);
+
+			if (k.getPremium().equals("true")) {
+				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
+				viewUebersicht.getlblKartPunkte().setVisible(false);
+				viewUebersicht.getBtnkartKaufen().setVisible(true);
+
 				Rechnung rechnung = null;
 				Iterator<Rechnung> it = rechnungen.iterator();
 				while (it.hasNext()) {
 					rechnung = it.next();
 					if (k.getKartname().equals(rechnung.getKartname())) {
-						viewUebersicht.btnKartKaufen.setVisible(true);
-					} else {
-						viewUebersicht.btnKartKaufen.setVisible(false);
+
+						viewUebersicht.getBtnkartKaufen().setVisible(false);
+						viewUebersicht.getlblKartPunkteLimit().setVisible(false);
+						viewUebersicht.getlblKartPunkte().setVisible(true);
+						viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
+
 					}
 				}
-			}else if (k.getPremium().equals("false")
-					&& k.getPunktewert() <= Nutzerverwaltung.getangKunde()
-							.getpunkte()) {
-				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-				viewUebersicht.getlblKartPunkte().setText(
-						"Kart in deinem Besitz!");
-				viewUebersicht.getlblKartPunkte().setVisible(true);
-			} else if (k.getPremium().equals("false")
-					&& k.getPunktewert() >= Nutzerverwaltung.getangKunde()
-							.getpunkte()) {
-				viewUebersicht.getlblKartPunkte().setVisible(false);
-				viewUebersicht.getlblKartPunkteLimit().setText(
-						"Erreiche " + k.getPunktewert()
-								+ " Punkte um diese Kart freizuschalten!");
-				viewUebersicht.getlblKartPunkteLimit().setVisible(true);
-			
 			}
+			Datenbankschnittstelle.closeConnections();
 
 		} catch (NoSuchElementException ns) {
 			System.out.println("Keine weiteren Karts!");
@@ -282,8 +284,7 @@ public class AnzeigenKartStrg implements ActionListener {
 
 	public static BufferedImage imageResizer(BufferedImage original) {
 
-		BufferedImage newImage = new BufferedImage(545, 122,
-				BufferedImage.TYPE_INT_RGB);
+		BufferedImage newImage = new BufferedImage(545, 122, BufferedImage.TYPE_INT_RGB);
 
 		Graphics g = newImage.createGraphics();
 		g.drawImage(original, 130, 0, 300, 150, null);
@@ -296,18 +297,18 @@ public class AnzeigenKartStrg implements ActionListener {
 		try {
 			if (e.getSource() == viewUebersicht.getBtnZurueck()) {
 
-				viewUebersicht.frmPixelRacer.dispose();
+				viewUebersicht.frame.dispose();
 				viewDetail.frame.dispose();
 				StartansichtStrg strg = new StartansichtStrg();
 			}
 
 			if (e.getSource() == viewUebersicht.getBtnkartKaufen()) {
+
 				kaufePremiumKart strg = new kaufePremiumKart(k);
 			}
 			if (e.getSource() == viewDetail.btnZurueck) {
-
 				viewDetail.frame.dispose();
-				viewUebersicht.frmPixelRacer.setVisible(true);
+				viewUebersicht.frame.setVisible(true);
 			}
 
 			if (e.getSource() == viewUebersicht.kartBackward) {

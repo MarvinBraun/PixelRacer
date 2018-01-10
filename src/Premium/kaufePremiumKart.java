@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import Kart.AnzeigenKartStrg;
 import Kart.Kart;
+import Kart.Kartuebersicht;
 import ProfilKunde.AnzeigenProfilKundeStrg;
 import Rechnung.RechnungBezahlenStrg;
 import Rechnung.RechnungsübersichtStrg;
@@ -24,6 +25,7 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 	PremiumKartView pkv;
 	RechnungsübersichtStrg anzr;
 	Kart k; 
+	Kartuebersicht viewUebersicht;
 
 	/**
 	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der View
@@ -33,11 +35,17 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 	 * Rechnungsübersicht geleitet wird. Das Drücken auf Abbrechen bricht den
 	 * Kaufprozess ab.
 	 */
-	public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == pkv.bestätigen) {
 			pkv.frame.dispose();
+			try {
+			viewUebersicht.getFrame().dispose();
+			}catch(NullPointerException a) {
+				a.getMessage();
+			}
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg(k);
+			
 		}
 		if (e.getSource() == pkv.abbrechen) {
 			pkv.frame.dispose();

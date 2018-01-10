@@ -15,7 +15,7 @@ import BackgroundAnimation.Movement;
 
 public class Kartuebersicht {
 
-	JFrame frmPixelRacer;
+	JFrame frame;
 	JButton kartForward;
 	JButton kartBackward;
 
@@ -29,12 +29,14 @@ public class Kartuebersicht {
 	JLabel lblKartPunkteLimit;
 	JButton btnKartKaufen;
 
+	AnzeigenKartStrg strg;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Kartuebersicht window = new Kartuebersicht();
-					window.frmPixelRacer.setVisible(true);
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,13 +56,13 @@ public class Kartuebersicht {
 	 */
 	private void initialize() {
 
-		frmPixelRacer = new JFrame();
-		frmPixelRacer.setTitle("Pixel Racer - Kartübersicht");
-		frmPixelRacer.setBounds(100, 100, 800, 600);
-		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmPixelRacer.setVisible(true);
-		frmPixelRacer.setResizable(false);
-		frmPixelRacer.getContentPane().setLayout(null);
+		frame = new JFrame();
+		frame.setTitle("Pixel Racer - Kartübersicht");
+		frame.setBounds(100, 100, 800, 600);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setResizable(false);
+		frame.getContentPane().setLayout(null);
 
 		kartForward = new JButton("");
 		kartForward.setBorderPainted(false);
@@ -69,7 +71,7 @@ public class Kartuebersicht {
 		kartForward.setContentAreaFilled(false);
 		kartForward.setBounds(712, 238, 60, 60);
 		kartForward.setVisible(true);
-		frmPixelRacer.getContentPane().add(kartForward);
+		frame.getContentPane().add(kartForward);
 
 		kartBackward = new JButton("");
 		kartBackward.setBorderPainted(false);
@@ -79,54 +81,54 @@ public class Kartuebersicht {
 		kartBackward.setContentAreaFilled(false);
 		kartBackward.setBounds(27, 238, 60, 60);
 		kartBackward.setVisible(true);
-		frmPixelRacer.getContentPane().add(kartBackward);
+		frame.getContentPane().add(kartBackward);
 
 		kartLbl = new JLabel("", JLabel.CENTER);
 		kartLbl.setBounds(247, 144, 300, 200);
 		kartLbl.setVisible(true);
-		frmPixelRacer.getContentPane().add(kartLbl);
+		frame.getContentPane().add(kartLbl);
 
 		kartName = new JLabel("FireBird", JLabel.CENTER);
 		kartName.setFont(new Font("pixelmix", Font.PLAIN, 27));
 		kartName.setBounds(296, 355, 215, 60);
 		kartName.setVisible(true);
-		frmPixelRacer.getContentPane().add(kartName);
+		frame.getContentPane().add(kartName);
 
 		btnDetailView = new JButton("Zeig mir mehr!");
 		btnDetailView.setFont(new Font("Dialog", Font.PLAIN, 20));
 		btnDetailView.setBounds(282, 428, 229, 35);
 		btnDetailView.setVisible(true);
-		frmPixelRacer.getContentPane().add(btnDetailView);
+		frame.getContentPane().add(btnDetailView);
 
 		lblKartPunkte = new JLabel("New label");
 		lblKartPunkte.setVisible(false);
 		lblKartPunkte.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblKartPunkte.setBounds(282, 474, 229, 65);
-		frmPixelRacer.getContentPane().add(lblKartPunkte);
+		frame.getContentPane().add(lblKartPunkte);
 
 		lblKartPunkteLimit = new JLabel("New label");
 		lblKartPunkteLimit.setVisible(false);
 		lblKartPunkteLimit.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblKartPunkteLimit.setBounds(165, 474, 478, 76);
-		frmPixelRacer.getContentPane().add(lblKartPunkteLimit);
+		frame.getContentPane().add(lblKartPunkteLimit);
 
 		btnKartKaufen = new JButton("Kart kaufen!");
 		btnKartKaufen.setVisible(false);
 		btnKartKaufen.setFont(new Font("Dialog", Font.PLAIN, 20));
 		btnKartKaufen.setBounds(568, 428, 181, 33);
-		frmPixelRacer.getContentPane().add(btnKartKaufen);
+		frame.getContentPane().add(btnKartKaufen);
 		
 		btnZurueck = new JButton("Zur\u00FCck");
 		btnZurueck.setFont(new Font("Dialog", Font.PLAIN, 20));
 		btnZurueck.setBounds(27, 510, 102, 29);
-		frmPixelRacer.getContentPane().add(btnZurueck);
+		frame.getContentPane().add(btnZurueck);
 		
 
 		lblHintergrund = new JLabel("");
 		lblHintergrund.setVisible(false);
 		lblHintergrund.setOpaque(true);
 		lblHintergrund.setBounds(0, 0, 794, 571);
-		frmPixelRacer.getContentPane().add(lblHintergrund);
+		frame.getContentPane().add(lblHintergrund);
 
 		Movement m = new Movement(10);
 
@@ -142,18 +144,9 @@ public class Kartuebersicht {
 
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
-		frmPixelRacer.getContentPane().add(m.label);
+		frame.getContentPane().add(m.label);
 
 	}
-
-	public JFrame getFrmPixelRacer() {
-		return frmPixelRacer;
-	}
-
-	public void setFrmPixelRacer(JFrame frmPixelRacer) {
-		this.frmPixelRacer = frmPixelRacer;
-	}
-
 	public JLabel getLblHintergrund() {
 		return lblHintergrund;
 	}
@@ -171,11 +164,11 @@ public class Kartuebersicht {
 	}
 
 	public JFrame getFrame() {
-		return frmPixelRacer;
+		return frame;
 	}
 
 	public void setFrame(JFrame frame) {
-		this.frmPixelRacer = frame;
+		this.frame = frame;
 	}
 
 	public JButton getkartForward() {
@@ -249,4 +242,5 @@ public class Kartuebersicht {
 	public void setBtnZurueck(JButton btnZurueck) {
 		this.btnZurueck = btnZurueck;
 	}
+
 }

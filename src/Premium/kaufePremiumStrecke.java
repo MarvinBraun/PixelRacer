@@ -6,12 +6,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import Kart.AnzeigenKartStrg;
 import Rechnung.RechnungBezahlenStrg;
 import Rechnung.RechnungsübersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 import Strecke.AnzeigenStreckenStrg;
 import Strecke.Strecke;
+import Kart.AnzeigenKartStrg;
 
 /**
  * 
@@ -35,6 +37,7 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == psv.bestätigen) {
+			
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg(s) ;
 		}
 		if (e.getSource() == psv.abbrechen) {
