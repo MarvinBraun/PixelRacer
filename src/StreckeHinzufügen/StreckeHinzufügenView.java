@@ -218,4 +218,10 @@ public class StreckeHinzufügenView extends JPanel {
 	public FileFilter getFilter() {
 		return filter;
 	}
+
+	public JLabel getLblStrecke() {
+		return lblStrecke;
+	}
+	
+	
 }
