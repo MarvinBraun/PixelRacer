@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 import Kart.AnzeigenKartStrg;
 import Rechnung.RechnungBezahlenStrg;
-import Rechnung.RechnungsübersichtStrg;
+import Rechnung.RechnungsÃ¼bersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 import Strecke.AnzeigenStreckenStrg;
@@ -24,38 +24,39 @@ import Kart.AnzeigenKartStrg;
 public class kaufePremiumStrecke extends JFrame implements ActionListener {
 
 	PremiumStreckeView psv;
-	RechnungsübersichtStrg anzr;
+	RechnungsÃ¼bersichtStrg anzr;
 	Strecke s;
 	Streckenuebersicht viewUebersicht;
 
 	/**
 	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der View
-	 * klickt, aus und führt den jeweiligen Befehl aus.
+	 * klickt, aus und fÃ¼hrt den jeweiligen Befehl aus.
 	 * 
-	 * Das Drücken auf den bestätigen Button führt dazu das der Nutzer weiter zur
-	 * Rechnungsübersicht geleitet wird. Das Drücken auf Abbrechen bricht den
+	 * Das DrÃ¼cken auf den bestÃ¤tigen Button fÃ¼hrt dazu das der Nutzer weiter zur
+	 * RechnungsÃ¼bersicht geleitet wird. Das DrÃ¼cken auf Abbrechen bricht den
 	 * Kaufprozess ab.
 	 */
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == psv.bestätigen) {
+		if (e.getSource() == psv.bestÃ¤tigen) {
 			
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg(s) ;
 		}
 		if (e.getSource() == psv.abbrechen) {
 			psv.frame.dispose();
+			viewUebersicht.getFrame().dispose();
 			AnzeigenStreckenStrg strg = new AnzeigenStreckenStrg();
 		}
 	}
 	/**
-	 * Der Konstruktor kaufePremiumStrecke ruft die PremiumStreckeView auf und füllt
+	 * Der Konstruktor kaufePremiumStrecke ruft die PremiumStreckeView auf und fÃ¼llt
 	 * die Buttons mit der hier definierten Methode actionPerformed.
 	 * 
 	 */
 	public kaufePremiumStrecke(Strecke s, StreckenUebersicht viewUebersicht) {
 		psv = new PremiumStreckeView();
 		psv.frame.setVisible(true);
-		psv.bestätigen.addActionListener(this);
+		psv.bestÃ¤tigen.addActionListener(this);
 		psv.abbrechen.addActionListener(this);
 		this.s = s;
 		this.viewUebersicht = viewUebersicht;
