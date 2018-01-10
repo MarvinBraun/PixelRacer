@@ -53,7 +53,7 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	 * die Buttons mit der hier definierten Methode actionPerformed.
 	 * 
 	 */
-	public kaufePremiumStrecke(Strecke s, StreckenUebersicht viewUebersicht) {
+	public kaufePremiumStrecke(Strecke s, Streckenuebersicht viewUebersicht) {
 		psv = new PremiumStreckeView();
 		psv.frame.setVisible(true);
 		psv.bestätigen.addActionListener(this);
