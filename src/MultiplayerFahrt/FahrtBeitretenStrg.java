@@ -1,4 +1,4 @@
-package MultiplayerFahrtBeitreten;
+package MultiplayerFahrt;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -24,7 +24,6 @@ import Fahrt.SingleplayerFahrt;
 import Kart.Kart;
 import Kart.Kartverwaltung;
 import ModusAuswählen.MultiplayerAuswahlStrg;
-import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
 import MusicHandler.MusicPlayer;
 import Nutzer.Nutzerverwaltung;
 import Rechnung.Rechnung;

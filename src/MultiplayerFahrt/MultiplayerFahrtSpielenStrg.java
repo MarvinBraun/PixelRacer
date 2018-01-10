@@ -1,4 +1,4 @@
-package MultiplayerFahrtSpielen;
+package MultiplayerFahrt;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +12,6 @@ import Fahrt.Fahrtverwaltung;
 import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
 import Kart.Kart;
-import MultiplayerAuswertung.MultiplayerAuswertungStrg;
 import Strecke.Strecke;
 /**
  * Steuerungsklasse, welche die grafische Benutzeroberfläche MultiplayerFahrtSpielenView verwaltet und mit den Multientitäten (Verwaltungen) kommuniziert.

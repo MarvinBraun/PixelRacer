@@ -1,4 +1,4 @@
-package MultiplayerAuswertung;
+package MultiplayerFahrt;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

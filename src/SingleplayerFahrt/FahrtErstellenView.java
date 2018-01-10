@@ -1,4 +1,4 @@
-package FahrtErstellen;
+package SingleplayerFahrt;
 import java.awt.Component;
 import java.awt.EventQueue;
 
@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 
 import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
-import FahrtSpielen.FahrtSpielenStrg;
 import FontHandler.FontHandler;
 import Kart.Kart;
 import MusicHandler.MusicPlayer;

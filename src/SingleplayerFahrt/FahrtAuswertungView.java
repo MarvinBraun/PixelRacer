@@ -1,4 +1,4 @@
-package FahrtAuswertung;
+package SingleplayerFahrt;
 
 import java.awt.EventQueue;
 

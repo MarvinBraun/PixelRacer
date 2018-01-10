@@ -1,4 +1,4 @@
-package FahrtSpielen;
+package SingleplayerFahrt;
 
 import java.awt.EventQueue;
 
@@ -18,7 +18,6 @@ import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
 import BackgroundAnimation.MovementBackward;
 import BackgroundAnimation.ZeigerMovement;
-import FahrtErstellen.FahrtErstellenView;
 import FontHandler.FontHandler;
 
 import java.awt.Color;

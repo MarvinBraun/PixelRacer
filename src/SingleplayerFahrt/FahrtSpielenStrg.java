@@ -1,4 +1,4 @@
-package FahrtSpielen;
+package SingleplayerFahrt;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +10,6 @@ import java.util.Arrays;
 import Computergegner.Bot;
 import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
-import FahrtAuswertung.FahrtAuswertungStrg;
 import Kart.Kart;
 import Strecke.Strecke;
 

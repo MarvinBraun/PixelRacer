@@ -1,4 +1,4 @@
-package MultiplayerFahrtBeitreten;
+package MultiplayerFahrt;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -7,11 +7,11 @@ import javax.swing.JTextField;
 
 import BackgroundAnimation.LabelBackgroundX;
 import BackgroundAnimation.Movement;
-import FahrtErstellen.FahrtErstellenView;
-import FahrtSpielen.FahrtSpielenStrg;
 import FontHandler.FontHandler;
 import Kart.Kart;
 import MusicHandler.MusicPlayer;
+import SingleplayerFahrt.FahrtErstellenView;
+import SingleplayerFahrt.FahrtSpielenStrg;
 
 import javax.swing.JLabel;
 import javax.imageio.ImageIO;

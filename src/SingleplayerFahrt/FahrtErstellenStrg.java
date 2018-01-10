@@ -1,4 +1,4 @@
-package FahrtErstellen;
+package SingleplayerFahrt;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -21,7 +21,6 @@ import javax.swing.SwingUtilities;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
-import FahrtSpielen.FahrtSpielenStrg;
 import MusicHandler.MusicPlayer;
 import Nutzer.Kunde;
 import Nutzer.Nutzerverwaltung;
