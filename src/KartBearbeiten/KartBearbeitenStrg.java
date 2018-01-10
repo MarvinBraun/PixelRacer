@@ -27,8 +27,8 @@ public class KartBearbeitenStrg implements ActionListener{
 		khv.getLblKartHinzufgen().setText("Kart Bearbeiten");
 		khv.getBtnAbbrechen().addActionListener(this);;
 		khv.getBtnAuswaehlen().addActionListener(this);
+		khv.getBtnAbsenden().addActionListener(this);
 		kbv.getCardPanel().add("Formular", khv);
-
 	}
 	
 	public void actionPerformed(ActionEvent e){
