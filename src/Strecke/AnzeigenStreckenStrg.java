@@ -55,6 +55,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	public AnzeigenStreckenStrg(){
 		
 		viewUebersicht = new Streckenuebersicht();
+		viewUebersicht.getFrmPixelRacer().setLocationRelativeTo(null);
 				
 		verwFahrt = new Fahrtverwaltung();
 		singleplayerFahrten = verwFahrt.gibSingleplayerFahrten();
@@ -101,6 +102,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			counterRang3 = 0;
 						
 			viewDetail= new StreckeDetailView();
+			viewDetail.getFrame().setLocationRelativeTo(null);
 			viewDetail.btnZurueck.addActionListener(this);
 									
 			//Länge setzten
