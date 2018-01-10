@@ -37,7 +37,7 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		
 		Fahrtverwaltung v1 = new Fahrtverwaltung();
 				
-		LinkedList<SingleplayerFahrt> fahrten1 = v1.gibSingleplayerFahrtenFÃ¼rBenutzer(Nutzerverwaltung.getangKunde().getnutzername());
+		LinkedList<SingleplayerFahrt> fahrten1 = v1.gibSingleplayerFahrtenFürBenutzer(Nutzerverwaltung.getangKunde().getnutzername());
 		
 		//SetVorname
 		viewKunde.getLblSetVorname().setText(Nutzerverwaltung.getangKunde().getnn());
@@ -97,7 +97,7 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 			StartansichtStrg strg = new StartansichtStrg();
 		}
 		if(a.getSource()==viewKunde.getBtnGetPremium()) {
-			kaufePremiumAccount account = new kaufePremiumAccount();
+			kaufePremiumAccount account = new kaufePremiumAccount(viewKunde);
 		}
 		
 	}
