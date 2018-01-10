@@ -5,7 +5,6 @@
 package KartHinzufügen;
 
 import java.awt.EventQueue;
-
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -36,8 +35,6 @@ public class KartHinzufügenView extends JPanel{
 	private JFileChooser fc;
 	private FileFilter filter;
 	private JLabel lblKartHinzufgen;
-	private String labelName;
-
 
 
 	/**
@@ -149,7 +146,6 @@ public class KartHinzufügenView extends JPanel{
 		btnAbsenden.setBounds(345, 419, 95, 23);
 		add(btnAbsenden);
 		
-		labelName = null;
 		lblKartHinzufgen = new JLabel("Kart Hinzuf\u00FCgen");
 		lblKartHinzufgen.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblKartHinzufgen.setBounds(78, 30, 175, 30);
@@ -220,7 +216,4 @@ public class KartHinzufügenView extends JPanel{
 	public JLabel getLblKartHinzufgen() {
 		return lblKartHinzufgen;
 	}
-	
-	
-	
 }

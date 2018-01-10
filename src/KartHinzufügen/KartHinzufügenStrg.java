@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.activation.MimetypesFileTypeMap;
