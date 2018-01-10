@@ -27,7 +27,8 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 	
 	public AnzeigenProfilKundeStrg() {
 		
-		viewKunde = new ProfilKundeAnsicht();	
+		viewKunde = new ProfilKundeAnsicht();
+		viewKunde.getFrmPixelRacer().setLocationRelativeTo(null);
 		
 		viewKunde.btnGetPremium.addActionListener(this);
 		viewKunde.btnProfilBearbeiten.addActionListener(this);
