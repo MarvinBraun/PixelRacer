@@ -72,7 +72,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		viewUebersicht.btnZurueck.addActionListener(this);
 		viewUebersicht.btnStreckeKaufen.addActionListener(this);
 		
-		ladeStrecke();
+		streckeVorwaerts();
 		
 		SwingUtilities.updateComponentTreeUI(viewUebersicht.frmPixelRacer);
 			
@@ -84,7 +84,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		
 	}
 	
-	public void ladeStrecke()
+	public void streckeVorwaerts()
 	{
 		if((s=itStrecke.next())!=null)
 		{	
@@ -108,7 +108,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			
 			// Fahrten zu angemeldetem Nutzer und akuteller Strecke sammeln
 			Fahrtverwaltung v = new Fahrtverwaltung();
-			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke(Nutzerverwaltung.getangKunde().getnutzername(),s.getStreckenname());
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenF�rBenutzerUndStrecke(Nutzerverwaltung.getangKunde().getnutzername(),s.getStreckenname());
 			viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 					
 			// Label umschreiben auf ges. m pro Sf-Strecke
@@ -183,7 +183,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 }
 	
 	
-	public void streckeRückwärts()
+	public void streckeZurueck()
 	{
 		if((s=itStrecke.previous())!=null)
 		{			
@@ -206,7 +206,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			
 			// Label umschreiben auf ges. Sf-Strecke & auf angmeldeter Benutzer
 			Fahrtverwaltung v = new Fahrtverwaltung();
-			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenF�rBenutzerUndStrecke("DZeller",s.getStreckenname());
 			viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 					
 			// Label umschreiben auf ges. m pro Sf-Strecke
@@ -294,7 +294,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==viewUebersicht.getBtnStreckeKaufen()) {
-			kaufePremiumStrecke strg = new kaufePremiumStrecke(s, viewUebersicht);
+			kaufePremiumStrecke strg = new kaufePremiumStrecke(s);
 		}
 		if(e.getSource()==viewUebersicht.getBtnZurueck()) {
 			
@@ -312,13 +312,13 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		if(e.getSource()==viewUebersicht.streckeBackward)
 		{
 			viewDetail.frame.dispose();
-			streckeRückwärts();			
+			streckeZurueck();			
 		}
 		
 		if(e.getSource()==viewUebersicht.streckeForward)
 		{
 			viewDetail.frame.dispose();
-			ladeStrecke();							
+			streckeVorwaerts();							
 		}
 		
 		if(e.getSource()==viewUebersicht.btnDetailView)
