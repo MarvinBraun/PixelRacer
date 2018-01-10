@@ -3,7 +3,6 @@ package ProfilKunde;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
-
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
@@ -12,10 +11,18 @@ import ProfilBearbeiten.ProfilBearbeitenStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Startansicht.StartansichtStrg;
 
+/**
+ * Die Klasse AnzeigenProfilKundeStrg steuert den Aufruf des Spielerprofil und 
+ * verwaltet die grafische Benutzeroberfläche ProfilKundeAnsicht.
+ * 
+ * @author Robin Demmler
+ *
+ */
 
 public class AnzeigenProfilKundeStrg implements ActionListener {
-	
-	
+	/**
+	 * Deklarieren benötigter Variablen.
+	 */	
 	SingleplayerFahrt sf;
 	
 	ProfilKundeAnsicht viewKunde;
@@ -23,46 +30,46 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 	int counterRang1 =0;
 	int counterRang2 =0;
 	int counterRang3 =0;
-	
-		
-	
+	/**
+	 * 
+	 * Konstruktor, der die View aufruft und die entsprechenden Komponenten mit Informationen aus der Datenbank versorgt.
+	 * 
+	 */	
 	public AnzeigenProfilKundeStrg() {
 		
 		viewKunde = new ProfilKundeAnsicht();
 		viewKunde.getFrmPixelRacer().setLocationRelativeTo(null);
 		
-		viewKunde.btnGetPremium.addActionListener(this);
-		viewKunde.btnProfilBearbeiten.addActionListener(this);
-		viewKunde.btnRechnungsverw.addActionListener(this);
-		viewKunde.btnZurueck.addActionListener(this);		
-				
-		viewKunde.frmPixelRacer.setVisible(true);
-		
+		// Hinzufügen der Action Listener
+		viewKunde.getBtnGetPremium().addActionListener(this);
+		viewKunde.getBtnProfilBearbeiten().addActionListener(this);
+		viewKunde.getBtnRechnungsverw().addActionListener(this);
+		viewKunde.getBtnZurueck().addActionListener(this);		
+			
 		Fahrtverwaltung v1 = new Fahrtverwaltung();
 				
-		LinkedList<SingleplayerFahrt> fahrten1 = v1.gibSingleplayerFahrtenF�rBenutzer(Nutzerverwaltung.getangKunde().getnutzername());
+		LinkedList<SingleplayerFahrt> fahrten1 = v1.gibSingleplayerFahrtenFürBenutzer(Nutzerverwaltung.getangKunde().getnutzername());
 		
-		//SetVorname
-		viewKunde.getLblSetVorname().setText(Nutzerverwaltung.getangKunde().getnn());
+		//Vorname des aktuell angemeldeten Nutzer setzen
+		viewKunde.getLblSetVorname().setText(Nutzerverwaltung.getangKunde().getvn());
 		
-		//SetNachname
-		viewKunde.getLblSetNachname().setText(Nutzerverwaltung.getangKunde().getvn());
+		//Nachname des aktuell angemeldeten Nutzer setzen
+		viewKunde.getLblSetNachname().setText(Nutzerverwaltung.getangKunde().getnn());
 		
-		//SetStatus
+		//Account-Status des aktuell angemeldeten Nutzer setzen
 		if(Nutzerverwaltung.getangKunde().getpremium().equals("true")) {
 			viewKunde.getLblSetStatus().setText("Premiumkunde");
 		}
 		else if(Nutzerverwaltung.getangKunde().getpremium().equals("false")) {
 			viewKunde.getLblSetStatus().setText("Free to Play");
-		}
-				
-		//SetPunktestand
+		}				
+		//Punktestand des aktuell angemeldeten Nutzer setzen
 		viewKunde.getLblSetPunktestand().setText(Integer.toString((Nutzerverwaltung.getangKunde().getpunkte())));
 		
-		//SetGesFahrten
+		//Gesamte SinglePlayer-Fahrten des aktuell angemeldeten Nutzer setzen
 		viewKunde.getLblSetGesFahrten().setText(Integer.toString(fahrten1.size()));
 				
-		// Anzahl erreichte RÃ¤nge
+		//Anzahl bereits erreichte Platzierungen des aktuell angemeldeten Nutzers berrechnen und setzen
 		for(int i =0; i < fahrten1.size(); i++) {
 			
 			sf = fahrten1.get(i);
@@ -82,33 +89,36 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		viewKunde.getLblSetAlsZweiter().setText(Integer.toString(counterRang2));
 		viewKunde.getLblSetAlsDritter().setText(Integer.toString(counterRang3));
 			
-		// Btn Premium kaufen ausblenden wenn bereits Premiumkunde
-		
+		//Button Premium kaufen ausblenden wenn bereits Premiumkunde
 		if(Nutzerverwaltung.getangKunde().getpremium().equals("true")) {
 			viewKunde.getBtnGetPremium().setVisible(false);
 		}
 	}
-		
+	/**
+	 * Main-Methode erstellt ein neues Objekt der Klasse AnzeigenProfilKundeStrg.
+	 */
 	public static void main(String[] args) {
 	 
 		AnzeigenProfilKundeStrg ansichtKunde = new AnzeigenProfilKundeStrg();
 
 	}
-
+	/**
+	 * ActionPerformed Event Buttons
+	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		if(a.getSource()==viewKunde.getBtnRechnungsverw()) {
+		if(a.getSource()==viewKunde.getBtnRechnungsverw()) { // Aufrufen der Rechnungsverwaltung bei Klick von BtnRechnungsverw
 			anzeigenRechnungStrg rechnung = new anzeigenRechnungStrg();
 		}
-		if(a.getSource()==viewKunde.getBtnProfilBearbeiten()) {
+		if(a.getSource()==viewKunde.getBtnProfilBearbeiten()) { // Aufrufen der ProfilBearbeitenStrg bei Klick von BtnProfilBearbeiten & schließen des Profils
 			ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
 			viewKunde.getFrmPixelRacer().dispose();
 		}
-		if(a.getSource()==viewKunde.getBtnZurueck()) {
+		if(a.getSource()==viewKunde.getBtnZurueck()) {  // Aufrufen der Startansicht bei Klick von BtnZurueck & schließen des Profils
 			StartansichtStrg strg = new StartansichtStrg();
 			viewKunde.getFrmPixelRacer().dispose();
 		}
-		if(a.getSource()==viewKunde.getBtnGetPremium()) {
+		if(a.getSource()==viewKunde.getBtnGetPremium()) { // Aufrufen der kaufePremium-Account-Strg bei Klick von BtnGetPremium 
 			kaufePremiumAccount account = new kaufePremiumAccount(viewKunde);
 		}
 		
