@@ -82,6 +82,11 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		viewKunde.getLblSetAlsZweiter().setText(Integer.toString(counterRang2));
 		viewKunde.getLblSetAlsDritter().setText(Integer.toString(counterRang3));
 			
+		// Btn Premium kaufen ausblenden wenn bereits Premiumkunde
+		
+		if(Nutzerverwaltung.getangKunde().getpremium().equals("true")) {
+			viewKunde.getBtnGetPremium().setVisible(false);
+		}
 	}
 		
 	public static void main(String[] args) {
