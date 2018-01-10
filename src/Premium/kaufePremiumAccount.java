@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import Profil.Profilansicht;
 import ProfilKunde.AnzeigenProfilKundeStrg;
+import ProfilKunde.ProfilKundeAnsicht;
 import Rechnung.RechnungBezahlenStrg;
 import Rechnung.RechnungsübersichtStrg;
 import Rechnung.anzeigenRechnungStrg;
@@ -23,6 +25,7 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 	PremiumAccountView pav;
 	RechnungsübersichtStrg anzr;
 	AnzeigenProfilKundeStrg strg;
+	ProfilKundeAnsicht ansicht;
 
 	/**
 	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der View
@@ -36,6 +39,7 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 		if (e.getSource() == pav.bestätigen) {
 			pav.frame.dispose();
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg();
+			ansicht.getFrmPixelRacer().dispose();
 		}
 		if (e.getSource() == pav.abbrechen) {
 			pav.frame.dispose();
@@ -47,7 +51,8 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
  * und füllt die Buttons mit der hier definierten Methode actionPerformed.
  * 
  */
-	public kaufePremiumAccount() {
+	public kaufePremiumAccount(ProfilKundeAnsicht ansicht) {
+		this.ansicht = ansicht;
 		pav = new PremiumAccountView();
 		pav.frame.setVisible(true);
 		pav.abbrechen.addActionListener(this);
@@ -56,7 +61,7 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		kpa = new kaufePremiumAccount();
+		
 
 	}
 }
