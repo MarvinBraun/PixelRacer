@@ -189,4 +189,8 @@ public class MitarbeiterHinzufügenView extends JPanel{
 	public JPasswordField getPfPasswort() {
 		return passwordField;
 	}
+
+	public JLabel getLblMitarbeiterHinzufgen() {
+		return lblMitarbeiterHinzufgen;
+	}
 }

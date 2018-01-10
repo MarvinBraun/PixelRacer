@@ -5,6 +5,10 @@
 package MitarbeiterHinzufügen;
 
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -13,10 +17,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
 import javax.swing.JOptionPane;
 import Datenbankverwaltung.Datenbankschnittstelle;
-
 import java.awt.event.ActionEvent;
 
 public class MitarbeiterHinzufügenStrg implements ActionListener {
@@ -88,6 +92,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 										}else {
 											deklariereVariablenVTextfeldern();
 											erstelleMitarbeiterInDB();
+											speicherMitarbeiterZwischen();
 											mitarbeiterErfolgreichAngelegtMeldung();
 											leereFormular();
 										}
@@ -307,6 +312,11 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 		}
 		Datenbankschnittstelle.closeConnections();
 		i = i + 1;
+		
+		//Speichert die Mitarbeiter ID des neuen Mitarbeiter in die Zwischenablage des Computers
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(
+	               new StringSelection(String.valueOf(i)), null);
+		
 		return i;
 	}
 	
@@ -330,7 +340,23 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 		Datenbankschnittstelle.executeQuery(abfrage);
 		Datenbankschnittstelle.closeConnections();
 	}
-		
+	
+	private void speicherMitarbeiterZwischen() {
+		File f = new File("src/Resources/tempMA.dat");
+		String zeile = String.valueOf(mitarbeiterID) + ";" + benutzername + ";" + passwort + ";" + vorname + ";" + "nachname"
+		+ ";" + job + ";" + email;
+		try {
+			FileWriter fw = new FileWriter(f, true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(zeile);
+			bw.newLine();
+			bw.close();
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	//Methode, die das Formular leeren soll
 	private void leereFormular() {
 		mhView.getTfVorname().setText("");
