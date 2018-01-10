@@ -34,6 +34,7 @@ public class ProfilKundeAnsicht{
 	JButton btnGetPremium;
 	JButton btnProfilBearbeiten;
 	JButton btnZurueck;
+	JButton btnRechnungsverw;
 	
 	JLabel lblSetVorname;
 	JLabel lblSetNachname;
@@ -153,8 +154,17 @@ public class ProfilKundeAnsicht{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnZurueck.setBounds(658, 517, 116, 33);
+		btnZurueck.setBounds(515, 490, 116, 33);
 		frmPixelRacer.getContentPane().add(btnZurueck);
+		
+		btnRechnungsverw = new JButton("Zur Rechnungsverwaltung");
+		btnRechnungsverw.setFont(new Font("Impact", Font.PLAIN, 20));
+		btnRechnungsverw.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnRechnungsverw.setBounds(66, 494, 313, 33);
+		frmPixelRacer.getContentPane().add(btnRechnungsverw);
 		
 		lblSetVorname = new JLabel("New label");
 		lblSetVorname.setFont(new Font("Impact", Font.PLAIN, 20));
@@ -197,6 +207,7 @@ public class ProfilKundeAnsicht{
 		frmPixelRacer.getContentPane().add(lblSetAlsDritter);
 		
 		lblHintergrund = new JLabel("");
+		lblHintergrund.setFont(new Font("Impact", Font.PLAIN, 20));
 		lblHintergrund.setVisible(false);		
 		lblHintergrund.setBounds(0, 0, 794, 571);
 		frmPixelRacer.getContentPane().add(lblHintergrund);
@@ -217,6 +228,24 @@ public class ProfilKundeAnsicht{
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
 		frmPixelRacer.getContentPane().add(m.label);
+		
+		
+	}
+
+	public JLabel getLblHintergrund() {
+		return lblHintergrund;
+	}
+
+	public void setLblHintergrund(JLabel lblHintergrund) {
+		this.lblHintergrund = lblHintergrund;
+	}
+
+	public JButton getBtnRechnungsverw() {
+		return btnRechnungsverw;
+	}
+
+	public void setBtnRechnungsverw(JButton btnRechnungsverw) {
+		this.btnRechnungsverw = btnRechnungsverw;
 	}
 
 	public JFrame getFrmPixelRacer() {
@@ -379,6 +408,4 @@ public class ProfilKundeAnsicht{
 	public void setLblSetAlsDritter(JLabel lblSetAlsDritter) {
 		this.lblSetAlsDritter = lblSetAlsDritter;
 	}
-
-	
 }
