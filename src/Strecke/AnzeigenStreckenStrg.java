@@ -5,21 +5,16 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
-
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-
 import Datenbankverwaltung.Datenbankschnittstelle;
-import Fahrt.Fahrt;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
-import Premium.kaufePremiumKart;
 import Premium.kaufePremiumStrecke;
 import Rechnung.Rechnung;
 import Rechnung.Rechnungsverwaltung;
@@ -299,7 +294,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==viewUebersicht.getBtnStreckeKaufen()) {
-			kaufePremiumStrecke strg = new kaufePremiumStrecke();
+			kaufePremiumStrecke strg = new kaufePremiumStrecke(s, viewUebersicht);
 		}
 		if(e.getSource()==viewUebersicht.getBtnZurueck()) {
 			
