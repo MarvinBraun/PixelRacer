@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import Anmelden.AnmeldenStrg;
 import Kart.AnzeigenKartStrg;
-import ModusAuswählen.ModusauswaehlenStrg;
+import ModusAuswaehlen.ModusauswaehlenStrg;
 import Nutzer.Nutzerverwaltung;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
 import ProfilKunde.AnzeigenProfilKundeStrg;
