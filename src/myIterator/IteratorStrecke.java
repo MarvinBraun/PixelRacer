@@ -9,14 +9,14 @@ import java.util.ListIterator;
  * @author Marvin Braun
  * 
  */
-public class MyIteratorStrecke<Strecke>{
+public class IteratorStrecke<Strecke>{
 	
 	 private final ListIterator<Strecke> listIterator;
 
      private boolean nextWasCalled = false;
      private boolean previousWasCalled = false;
 
-     public MyIteratorStrecke(ListIterator<Strecke> listIterator) {
+     public IteratorStrecke(ListIterator<Strecke> listIterator) {
          this.listIterator = listIterator;
      }
 
