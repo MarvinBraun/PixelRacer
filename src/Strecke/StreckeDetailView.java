@@ -1,44 +1,51 @@
 package Strecke;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import BackgroundAnimation.Movement;
-
+import FontHandler.FontHandler;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
-public class StreckeDetailView {
+/**
+ * Grafische Benutzeroberflaeche zur Ansicht der Details und nutzerbezogenen Fahrtdaten einer Strecke. 
+ * 
+ * @author Robin Demmler
+ *
+ */
 
-	JFrame frame;
-	
-	JLabel lblHintergrund;
-	JLabel lblLaenge;
-	JLabel lblGefahreneRennen;
-	JLabel lblGefahreneKmGesamt;
-	JLabel lblRennenAlsErster;
-	JLabel lblRennenAlsZweiter;
-	JLabel lblRennenAlsDritter;
-	
-	JLabel lblSetLaenge;
-	JLabel lblSetGesKm;
-	JLabel lblSetGesRennen;
-	JLabel lblSetAnzErster;
-	JLabel lblSetAnzZweiter;
-	JLabel lblSetAnzDritter;
-		
-	JButton btnZurueck; 
-	
+public class StreckeDetailView {
 	/**
-	 * Launch the application.
-	 */
+	 * Deklarieren benoetigter Variablen.
+	 */		
+	private JFrame frame;
+	
+	private JLabel lblHintergrund;
+	private JLabel lblLaenge;
+	private JLabel lblGefahreneRennen;
+	private JLabel lblGefahreneKmGesamt;
+	private JLabel lblRennenAlsErster;
+	private JLabel lblRennenAlsZweiter;
+	private JLabel lblRennenAlsDritter;
+	
+	private JLabel lblSetLaenge;
+	private JLabel lblSetGesKm;
+	private JLabel lblSetGesRennen;
+	private JLabel lblSetAnzErster;
+	private JLabel lblSetAnzZweiter;
+	private JLabel lblSetAnzDritter;
+		
+	private JButton btnZurueck; 
+	/**
+	 * Main-Methode fuehrt GUI aus.
+	 */	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -51,105 +58,128 @@ public class StreckeDetailView {
 			}
 		});
 	}
-
 	/**
-	 * Create the application.
+	 * Konstruktor ruft initialize()-Methode auf.
 	 */
 	public StreckeDetailView() {
 		initialize();
 	}
-
 	/**
-	 * Initialize the contents of the frame.
+	 * initialize() Initialisiert das Fenster und die Inhalte des JFrames.
 	 */
 	private void initialize() {
 		
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setVisible(false);
-		frame.setResizable(false);
-		frame.getContentPane().setLayout(null);
+		Font customFont20f = FontHandler.registriereSchriftart(30f); // Laden der Schriftart durch Klasse FontHandler
 				
-		lblLaenge = new JLabel("Streckenl\u00E4nge:");
-		lblLaenge.setBounds(76, 32, 105, 14);
-		frame.getContentPane().add(lblLaenge);
+		setFrame(new JFrame());
+		getFrame().setBounds(100, 100, 450, 300);
+		getFrame().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		getFrame().setVisible(false);
+		getFrame().setResizable(false);
+		getFrame().getContentPane().setLayout(null);
+				
+		setLblLaenge(new JLabel("Streckenl\u00E4nge:"));
+		getLblLaenge().setBounds(76, 32, 105, 14);
+		getLblLaenge().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblLaenge());
 		
-		lblGefahreneRennen = new JLabel("Gefahrene SP-Rennen:");
-		lblGefahreneRennen.setBounds(37, 57, 144, 14);
-		frame.getContentPane().add(lblGefahreneRennen);
+		setLblGefahreneRennen(new JLabel("Gefahrene SP-Rennen:"));
+		getLblGefahreneRennen().setBounds(37, 57, 144, 14);
+		getLblGefahreneRennen().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblGefahreneRennen());
 		
-		lblGefahreneKmGesamt = new JLabel("Gefahrene m SP gesamt:");
-		lblGefahreneKmGesamt.setBounds(20, 82, 152, 14);
-		frame.getContentPane().add(lblGefahreneKmGesamt);
+		setLblGefahreneKmGesamt(new JLabel("Gefahrene m SP gesamt:"));
+		getLblGefahreneKmGesamt().setBounds(20, 82, 152, 14);
+		getLblGefahreneKmGesamt().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblGefahreneKmGesamt());
 		
-		lblRennenAlsErster = new JLabel("Rennen als Erster abgeschlossen");
-		lblRennenAlsErster.setBounds(224, 136, 210, 14);
-		frame.getContentPane().add(lblRennenAlsErster);
+		setLblRennenAlsErster(new JLabel("Rennen als Erster abgeschlossen"));
+		getLblRennenAlsErster().setBounds(224, 136, 210, 14);
+		getLblRennenAlsErster().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblRennenAlsErster());
 		
-		lblRennenAlsZweiter = new JLabel("Rennen als Zweiter abgeschlossen");
-		lblRennenAlsZweiter.setBounds(224, 161, 210, 14);
-		frame.getContentPane().add(lblRennenAlsZweiter);
+		setLblRennenAlsZweiter(new JLabel("Rennen als Zweiter abgeschlossen"));
+		getLblRennenAlsZweiter().setBounds(224, 161, 210, 14);
+		getLblRennenAlsZweiter().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblRennenAlsZweiter());
 		
-		lblRennenAlsDritter = new JLabel("Rennen als Dritter abgeschlossen");
-		lblRennenAlsDritter.setBounds(224, 186, 210, 14);
-		frame.getContentPane().add(lblRennenAlsDritter);
+		setLblRennenAlsDritter(new JLabel("Rennen als Dritter abgeschlossen"));
+		getLblRennenAlsDritter().setBounds(224, 186, 210, 14);
+		getLblRennenAlsDritter().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblRennenAlsDritter());
 		
-		lblSetLaenge = new JLabel("New label");
-		lblSetLaenge.setBounds(191, 32, 46, 14);
-		frame.getContentPane().add(lblSetLaenge);
+		setLblSetLaenge(new JLabel("New label"));
+		getLblSetLaenge().setBounds(191, 32, 46, 14);
+		getLblSetLaenge().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblSetLaenge());
 		
-		lblSetGesRennen = new JLabel("New label");
-		lblSetGesRennen.setBounds(191, 57, 46, 14);
-		frame.getContentPane().add(lblSetGesRennen);
+		setLblSetGesRennen(new JLabel("New label"));
+		getLblSetGesRennen().setBounds(191, 57, 46, 14);
+		getLblSetGesRennen().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblSetGesRennen());
 		
-		lblSetGesKm = new JLabel("New label");
-		lblSetGesKm.setBounds(191, 82, 46, 14);
-		frame.getContentPane().add(lblSetGesKm);
+		setLblSetGesKm(new JLabel("New label"));
+		getLblSetGesKm().setBounds(191, 82, 46, 14);
+		getLblSetGesKm().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblSetGesKm());
 		
-		lblSetAnzErster = new JLabel("New label");
-		lblSetAnzErster.setBounds(148, 136, 46, 14);
-		frame.getContentPane().add(lblSetAnzErster);
+		setLblSetAnzErster(new JLabel("New label"));
+		getLblSetAnzErster().setBounds(148, 136, 46, 14);
+		getLblSetAnzErster().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblSetAnzErster());
 		
-		lblSetAnzZweiter = new JLabel("New label");
-		lblSetAnzZweiter.setBounds(148, 161, 46, 14);
-		frame.getContentPane().add(lblSetAnzZweiter);
+		setLblSetAnzZweiter(new JLabel("New label"));
+		getLblSetAnzZweiter().setBounds(148, 161, 46, 14);
+		getLblSetAnzZweiter().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblSetAnzZweiter());
 		
-		lblSetAnzDritter = new JLabel("New label");
-		lblSetAnzDritter.setBounds(148, 186, 46, 14);
-		frame.getContentPane().add(lblSetAnzDritter);
+		setLblSetAnzDritter(new JLabel("New label"));
+		getLblSetAnzDritter().setBounds(148, 186, 46, 14);
+		getLblSetAnzDritter().setFont(customFont20f);
+		getFrame().getContentPane().add(getLblSetAnzDritter());
 		
-		btnZurueck = new JButton("Zur\u00FCck");
-		btnZurueck.setBounds(10, 227, 89, 23);
-		frame.getContentPane().add(btnZurueck);
-		btnZurueck.addActionListener(new ActionListener(){
+		setBtnZurueck(new JButton("Zur\u00FCck"));
+		getBtnZurueck().setBounds(10, 227, 89, 23);
+		getBtnZurueck().addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
 			}
 		});
-	
-	lblHintergrund = new JLabel("");
-	lblHintergrund.setVisible(false);		
-	lblHintergrund.setBounds(0, 0, 794, 571);
-	frame.getContentPane().add(lblHintergrund);
+		getBtnZurueck().setFont(customFont20f);
+		getFrame().getContentPane().add(getBtnZurueck());
 			
-	Movement m = new Movement(10);
+		setLblHintergrund(new JLabel(""));
+		getLblHintergrund().setVisible(false);		
+		getLblHintergrund().setBounds(0, 0, 794, 571);
+		getFrame().getContentPane().add(getLblHintergrund());
+			
+		Movement m = new Movement(10); // Hintergrund-Image dem Hintergurnd-Label zuweisen, Bewegung festlegen & dem Frame hinzufuegen
+		
+		BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 	
-	BufferedImage image = null;
-	try {
-		image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		m.label.setBufferedImage(image,0);
+		m.label.setOpaque(false);
+		m.label.setBounds(0, 0, 800, 600);
+		getFrame().getContentPane().add(m.label);
 	}
-	
-	m.label.setBufferedImage(image,0);
-	m.label.setOpaque(false);
-	m.label.setBounds(0, 0, 800, 600);
-	frame.getContentPane().add(m.label);
-}
+	/**
+	 * Getter & Setter fuer die verwendeten Variablen 
+	 */
+	public JLabel getLblHintergrund() {
+		return lblHintergrund;
+	}
+
+	public void setLblHintergrund(JLabel lblHintergrund) {
+		this.lblHintergrund = lblHintergrund;
+	}
 
 	public JFrame getFrame() {
 		return frame;
