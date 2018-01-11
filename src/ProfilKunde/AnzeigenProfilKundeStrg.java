@@ -3,6 +3,9 @@ package ProfilKunde;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+
+import javax.swing.JOptionPane;
+
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
@@ -21,7 +24,7 @@ import Startansicht.StartansichtStrg;
 
 public class AnzeigenProfilKundeStrg implements ActionListener {
 	/**
-	 * Deklarieren benoetigter Variablen.
+	 * Deklarieren benoetigter Variablen und Objekte.
 	 */	
 	SingleplayerFahrt sf;
 	
@@ -32,15 +35,16 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 	int counterRang3 =0;
 	/**
 	 * 
-	 * Konstruktor, der die View aufruft und die entsprechenden Komponenten mit Informationen aus der Datenbank versorgt.
+	 * Konstruktor, der die viewKunde aufruft und die entsprechenden Komponenten mit Daten versorgt.
 	 * 
 	 */	
 	public AnzeigenProfilKundeStrg() {
 		
+		try {			
 		viewKunde = new ProfilKundeAnsicht();
 		viewKunde.getFrmPixelRacer().setLocationRelativeTo(null);
 		
-		// HinzufÃ¼gen der Action Listener
+		// Hinzufuegen der Action Listener
 		viewKunde.getBtnGetPremium().addActionListener(this);
 		viewKunde.getBtnProfilBearbeiten().addActionListener(this);
 		viewKunde.getBtnRechnungsverw().addActionListener(this);
@@ -89,13 +93,15 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		viewKunde.getLblSetAlsZweiter().setText(Integer.toString(counterRang2));
 		viewKunde.getLblSetAlsDritter().setText(Integer.toString(counterRang3));
 			
-		//Button Premium kaufen ausblenden wenn bereits Premiumkunde
+		//Button Premium kaufen ausblenden wenn angemeldeter Nutzer bereits Premiumkunde
 		if(Nutzerverwaltung.getangKunde().getpremium().equals("true")) {
 			viewKunde.getBtnGetPremium().setVisible(false);
-		}
+		}}catch(Exception e) {
+			JOptionPane.showConfirmDialog(null, "Fehler beim laden der Daten des angemeldeten Spielers, Bitte an den Support wenden!", "Fehler bei Datenverarbeitung!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+		} // Exception Handling
 	}
 	/**
-	 * Main-Methode erstellt ein neues Objekt der Klasse AnzeigenProfilKundeStrg.
+	 * Main-Methode.
 	 */
 	public static void main(String[] args) {
 	 
@@ -107,18 +113,18 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		if(a.getSource()==viewKunde.getBtnRechnungsverw()) { // Aufrufen der Rechnungsverwaltung bei Klick von BtnRechnungsverw
+		if(a.getSource()==viewKunde.getBtnRechnungsverw()) { // Aufruf der Rechnungsverwaltung bei Klick von BtnRechnungsverw
 			anzeigenRechnungStrg rechnung = new anzeigenRechnungStrg();
 		}
-		if(a.getSource()==viewKunde.getBtnProfilBearbeiten()) { // Aufrufen der ProfilBearbeitenStrg bei Klick von BtnProfilBearbeiten & schlieÃŸen des Profils
+		if(a.getSource()==viewKunde.getBtnProfilBearbeiten()) { // Aufruf der ProfilBearbeitenStrg bei Klick von BtnProfilBearbeiten & schliessen des Profils
 			ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
 			viewKunde.getFrmPixelRacer().dispose();
 		}
-		if(a.getSource()==viewKunde.getBtnZurueck()) {  // Aufrufen der Startansicht bei Klick von BtnZurueck & schlieÃŸen des Profils
+		if(a.getSource()==viewKunde.getBtnZurueck()) {  // Aufruf der Startansicht bei Klick von BtnZurueck & schliessen des Profils
 			StartansichtStrg strg = new StartansichtStrg();
 			viewKunde.getFrmPixelRacer().dispose();
 		}
-		if(a.getSource()==viewKunde.getBtnGetPremium()) { // Aufrufen der kaufePremium-Account-Strg bei Klick von BtnGetPremium 
+		if(a.getSource()==viewKunde.getBtnGetPremium()) { // Aufruf der kaufePremium-Account-Strg bei Klick von BtnGetPremium 
 			kaufePremiumAccount account = new kaufePremiumAccount(viewKunde);
 		}
 		
