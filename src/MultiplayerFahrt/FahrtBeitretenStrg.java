@@ -79,6 +79,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 		System.out.println(kartliste.size());
 		view.getKartForward().addActionListener(this);
 		view.getKartBackward().addActionListener(this);
+		view.getBackBtn().addActionListener(this);
 		view.getMultiplayerBeitretenBtn().addActionListener(this);
 		mf = new MultiplayerFahrt();
 		ladeKarts();
@@ -107,12 +108,24 @@ public class FahrtBeitretenStrg implements ActionListener {
 	 */
 	public void ladeKarts()
 	{
+		try {
+			
+		
 		if((k=itKart.next())!=null)
 		{
 			System.out.println(k.getKartname());
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
+		}
+		}
+		catch(Exception e)
+		{
+			JOptionPane.showConfirmDialog(null,
+	                "Du hast noch keine weiteren Karts freigeschaltet. Besuche dein Profil um Karts zu Kaufen.",
+	                "Keine weiteren Karts",
+	                JOptionPane.DEFAULT_OPTION,
+	                JOptionPane.PLAIN_MESSAGE);
 		}
 	}
 	
@@ -123,7 +136,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 	public void kartRückwärts()
 	{
-		
+		try {
 	
 		if((k=itKart.previous())!=null)
 		{
@@ -131,6 +144,15 @@ public class FahrtBeitretenStrg implements ActionListener {
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
+		}
+		}
+		catch(Exception e)
+		{
+			JOptionPane.showConfirmDialog(null,
+	                "Du hast noch keine weiteren Karts freigeschaltet. Besuche dein Profil um Karts zu Kaufen.",
+	                "Keine weiteren Karts",
+	                JOptionPane.DEFAULT_OPTION,
+	                JOptionPane.PLAIN_MESSAGE);
 		}
 	
 	}
@@ -314,8 +336,9 @@ public class FahrtBeitretenStrg implements ActionListener {
 		}
 		if(e.getSource()==view.getBackBtn())
 		{
-			view.getFrame().dispose();
 			MultiplayerAuswahlStrg strg = new MultiplayerAuswahlStrg();
+			view.getFrame().dispose();
+			
 		}
 	
 	}

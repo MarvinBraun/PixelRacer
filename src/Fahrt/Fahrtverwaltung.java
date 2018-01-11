@@ -77,7 +77,7 @@ public class Fahrtverwaltung {
 	 * @param streckenname Der Streckenname der Strecke
 	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer zu einer Strecke.
 	 */
-	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzerUndStrecke(String benutzername, String streckenname)
+	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFuerBenutzerUndStrecke(String benutzername, String streckenname)
 	{
 		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and streckenname = '"+streckenname+"'");
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and streckenname = '"+streckenname+"'");
@@ -110,7 +110,7 @@ public class Fahrtverwaltung {
 	 * @param kartname Der Name des Karts
 	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer zu einer Strecke.
 	 */
-	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzerUndKart(String benutzername, String kartname)
+	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFuerBenutzerUndKart(String benutzername, String kartname)
 	{
 		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and kartname = '"+kartname+"'");
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and kartname = '"+kartname+"'");
@@ -142,7 +142,7 @@ public class Fahrtverwaltung {
 	 * @param benutzername Der Benutzername des Spielers
 	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer.
 	 */
-	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFürBenutzer(String benutzername)
+	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFuerBenutzer(String benutzername)
 	{
 		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"'");
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"'");
@@ -387,7 +387,7 @@ public class Fahrtverwaltung {
 	public static void main(String[] args)
 	{
 		Fahrtverwaltung v = new Fahrtverwaltung();
-		LinkedList<SingleplayerFahrt> lsf = v.gibSingleplayerFahrtenFürBenutzerUndKart("Marv", "FireBird");
+		LinkedList<SingleplayerFahrt> lsf = v.gibSingleplayerFahrtenFuerBenutzerUndKart("Marv", "FireBird");
 		System.out.println(lsf.size());
 	}
 }

@@ -33,8 +33,7 @@ import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
 import Kart.*;
 import ModusAuswählen.ModusauswaehlenStrg;
-import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
-import MultiplayerFahrtSpielen.MultiplayerFahrtSpielenStrg;
+import MultiplayerFahrt.*;
 
 /**
  * Die Klasse FahrtErstellenStrg steuert das Erstellen einer Fahrt. Sie verwaltet dabei die grafische Benutzeroberfläche (FahrtErstellenView).

@@ -73,7 +73,7 @@ public class FahrtAuswertungView {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		getBtnNewButton().setBounds(226, 477, 325, 67);
+		getBtnNewButton().setBounds(226, 451, 325, 67);
 		getFrame().getContentPane().add(getBtnNewButton());
 		
 		setLblDeinPlatz(new JLabel("Dein Platz: "));
