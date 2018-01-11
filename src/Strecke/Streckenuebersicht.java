@@ -2,8 +2,11 @@ package Strecke;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,6 +14,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import BackgroundAnimation.Movement;
 import FontHandler.FontHandler;
+import java.awt.Color;
 
 /**
  * Grafische Benutzeroberflaeche zur Uebersicht der Strecken. 
@@ -24,18 +28,21 @@ public class Streckenuebersicht {
 	 * Deklarieren benoetigter Variablen.
 	 */	
 	private JFrame frmPixelRacer;
+	
 	private JButton streckeForward;
 	private JButton streckeBackward;
 	
+	private JButton btnDetailView;
 	private JButton btnZurueck;
+	private JButton btnStreckeKaufen;
+	
 	private JLabel streckeName;
 	private JLabel streckeLbl;
 	private JLabel lblHintergrund;
 	private JLabel lblNewLabel;
 	private JLabel lblStreckePunkte;
-	private JButton btnDetailView;
 	private JLabel lblStreckePunkteLimit;
-	private JButton btnStreckeKaufen;
+	
 	/**
 	 * Main-Methode fuehrt GUI aus.
 	 */	
@@ -63,15 +70,29 @@ public class Streckenuebersicht {
 	 */
 	private void initialize() {
 		
-		Font customFont30f = FontHandler.registriereSchriftart(30f); // Laden der Schriftart durch Klasse FontHandler
+		Font customFont30f = FontHandler.registriereSchriftart(15f); // Laden der Schriftart durch Klasse FontHandler
 				
 		setFrmPixelRacer(new JFrame());
 		getFrmPixelRacer().setTitle("Pixel Racer - Strecken\u00FCbersicht");
 		getFrmPixelRacer().setBounds(100, 100, 800, 600);
-		getFrmPixelRacer().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrmPixelRacer().setDefaultCloseOperation(getFrmPixelRacer().DO_NOTHING_ON_CLOSE);
 		getFrmPixelRacer().setVisible(true);
 		getFrmPixelRacer().setResizable(false);
 		getFrmPixelRacer().getContentPane().setLayout(null);
+		getFrmPixelRacer().addWindowListener(new WindowAdapter() {
+
+			  @Override
+			  public void windowClosing(WindowEvent we)
+			  { 
+				  int result = JOptionPane.showConfirmDialog(null,"Möchten sie Pixcel Racer wirklich schließen?", "Pixcel Racer schließen?", JOptionPane.YES_NO_OPTION);
+				  switch(result) {
+				  case JOptionPane.YES_OPTION:
+					  System.exit(0);
+				  case JOptionPane.NO_OPTION:
+					  
+				  }
+			  }
+			});
 		
 		setStreckeForward(new JButton(""));
 		getStreckeForward().setBorderPainted(false);
@@ -106,12 +127,23 @@ public class Streckenuebersicht {
 		getBtnDetailView().setFont(customFont30f);
 		getBtnDetailView().setBounds(282, 428, 229, 35);
 		getBtnDetailView().setVisible(true);
+		getBtnDetailView().setBorderPainted(false);
+		getBtnDetailView().setOpaque(false);
+		getBtnDetailView().setBackground(SystemColor.activeCaption);
+		getBtnDetailView().setFocusable(false);
+		getBtnDetailView().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+			}
+		});		
 		getFrmPixelRacer().getContentPane().add(getBtnDetailView());
 		
 		setLblStreckePunkte(new JLabel("New label"));
 		getLblStreckePunkte().setVisible(false);
 		getLblStreckePunkte().setFont(customFont30f);
-		getLblStreckePunkte().setBounds(318, 474, 229, 65);
+		getLblStreckePunkte().setBounds(268, 474, 265, 65);
 		getFrmPixelRacer().getContentPane().add(getLblStreckePunkte());
 		
 		setLblStreckePunkteLimit(new JLabel("New label"));
@@ -120,10 +152,13 @@ public class Streckenuebersicht {
 		getLblStreckePunkteLimit().setBounds(165, 474, 478, 76);
 		getFrmPixelRacer().getContentPane().add(getLblStreckePunkteLimit());
 		
-		setBtnZurueck(new JButton("Zur\u00FCck"));
+		setBtnZurueck(new JButton("Zurueck"));
 		getBtnZurueck().setFont(customFont30f);
-		getBtnZurueck().setBounds(27, 510, 102, 29);
-		getFrmPixelRacer().getContentPane().add(getBtnZurueck());
+		getBtnZurueck().setBounds(27, 510, 113, 29);
+		getBtnZurueck().setBorderPainted(false);
+		getBtnZurueck().setOpaque(false);
+		getBtnZurueck().setBackground(SystemColor.activeCaption);
+		getBtnZurueck().setFocusable(false);
 		getBtnZurueck().addActionListener(new ActionListener(){
 
 			@Override
@@ -131,12 +166,16 @@ public class Streckenuebersicht {
 			
 			}
 		});
+		getFrmPixelRacer().getContentPane().add(getBtnZurueck());
 		
 		setBtnStreckeKaufen(new JButton("Strecke kaufen!"));
 		getBtnStreckeKaufen().setVisible(true);
 		getBtnStreckeKaufen().setFont(customFont30f);
-		getBtnStreckeKaufen().setBounds(568, 428, 181, 33);
-		getFrmPixelRacer().getContentPane().add(getBtnStreckeKaufen());
+		getBtnStreckeKaufen().setBounds(543, 428, 229, 33);
+		getBtnStreckeKaufen().setBorderPainted(false);
+		getBtnStreckeKaufen().setOpaque(false);
+		getBtnStreckeKaufen().setBackground(SystemColor.activeCaption);
+		getBtnStreckeKaufen().setFocusable(false);
 		getBtnStreckeKaufen().addActionListener(new ActionListener(){
 
 			@Override
@@ -144,6 +183,7 @@ public class Streckenuebersicht {
 			
 			}
 		});
+		getFrmPixelRacer().getContentPane().add(getBtnStreckeKaufen());
 		
 		setLblHintergrund(new JLabel(""));
 		getLblHintergrund().setBounds(0, 0, 794, 571);
@@ -247,6 +287,7 @@ public class Streckenuebersicht {
 
 	public void setBtnDetailView(JButton btnDetailView) {
 		this.btnDetailView = btnDetailView;
+		btnDetailView.setForeground(Color.RED);
 	}
 	public JLabel getLblStreckePunkte() {
 		return lblStreckePunkte;
@@ -269,5 +310,6 @@ public class Streckenuebersicht {
 
 	public void setBtnZurueck(JButton btnZurueck) {
 		this.btnZurueck = btnZurueck;
+		btnZurueck.setForeground(Color.RED);
 	}
 }
