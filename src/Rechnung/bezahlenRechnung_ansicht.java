@@ -1,14 +1,21 @@
-//author Matthias Westermeyer
-
 package Rechnung;
 
 import java.awt.EventQueue;
+
+/**
+ * Grafische Benutzeroberfläche um den Bezahlprozess auf der externen Website Paypal darszustellen
+ * @author Matthias Westermeyer
+ *
+ */
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import FontHandler.FontHandler;
+
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JTextPane;
@@ -106,6 +113,7 @@ public class bezahlenRechnung_ansicht {
 	}
 
 	/**
+	 * Zugriff auf die View
 	 * Launch the application.
 	 */
 	// Zugriff auf die View
@@ -124,22 +132,25 @@ public class bezahlenRechnung_ansicht {
 	}
 
 	/**
+	 * Konstruktor
 	 * Create the application.
 	 */
 	
-	// Konstruktor
+	//
 	
 	public bezahlenRechnung_ansicht() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Fenster / View initialisieren mit den entsprechenden Elementen
 	 */
-	
-	// Fenster / View initialisieren mit den entsprechenden Elementen
+
 	
 	private void initialize() {
+		
+		Font customFont20f = FontHandler.registriereSchriftart(20f);
+		
 		frmBezahlung = new JFrame();
 		frmBezahlung.setTitle("Bezahlung");
 		frmBezahlung.setBounds(100, 100, 800, 600);
@@ -148,30 +159,30 @@ public class bezahlenRechnung_ansicht {
 		
 		txtEmail = new JTextField();
 		txtEmail.setText("Email-Mail Adresse");
-		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtEmail.setFont(customFont20f);
 		txtEmail.setBounds(221, 123, 220, 39);
 		frmBezahlung.getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		lblE = new JLabel("Probleme beim Einloggen?");
-		lblE.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblE.setFont(customFont20f);
 		lblE.setHorizontalAlignment(SwingConstants.CENTER);
 		lblE.setBounds(221, 322, 220, 27);
 		frmBezahlung.getContentPane().add(lblE);
 		
 		btnNewButton = new JButton("Einloggen");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton.setFont(customFont20f);
 		btnNewButton.setBounds(221, 231, 220, 39);
 		frmBezahlung.getContentPane().add(btnNewButton);
 		
 		lblOder = new JLabel("oder");
 		lblOder.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOder.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblOder.setFont(customFont20f);
 		lblOder.setBounds(221, 341, 220, 27);
 		frmBezahlung.getContentPane().add(lblOder);
 		
 		btnNeuAnmelden = new JButton("Neu anmelden");
-		btnNeuAnmelden.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNeuAnmelden.setFont(customFont20f);
 		btnNeuAnmelden.setBounds(221, 366, 220, 39);
 		frmBezahlung.getContentPane().add(btnNeuAnmelden);
 		
@@ -185,7 +196,7 @@ public class bezahlenRechnung_ansicht {
 		frmBezahlung.getContentPane().add(textPane);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Matze\\Pictures\\paypalIcon.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("src/Resources/paypalIcon.png"));
 		lblNewLabel.setBounds(221, 28, 220, 65);
 		frmBezahlung.getContentPane().add(lblNewLabel);
 	}

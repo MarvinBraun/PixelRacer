@@ -2,6 +2,7 @@ package Rechnung;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
@@ -9,6 +10,12 @@ import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+
+/**
+ * Grafische Benutzeroberfläche um dem Nutzer die Meldung zu geben, dass seine Rechnung auf dem gewünschten Verzeichnis abgelegt wird.
+ * @author Matthias Westermeyer
+ *
+ */
 
 public class speicherRechnung {
 

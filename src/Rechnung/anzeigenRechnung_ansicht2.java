@@ -1,7 +1,5 @@
 package Rechnung;
 
-//author Matthias Westermeyer
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -19,8 +17,17 @@ import javax.swing.JMenuBar;
 import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+
+import FontHandler.FontHandler;
+
 import java.awt.Color;
 
+
+/**
+ * Grafische Benutzeroberfläche um die Rechnung mit den einzelnen Positionen und Daten darzustellen
+ * @author Matthias Westermeyer
+ *
+ */
 public class anzeigenRechnung_ansicht2 {
 
 	// benötigte Variablen deklarieren
@@ -122,9 +129,10 @@ public class anzeigenRechnung_ansicht2 {
 	}
 
 	/**
+	 * Zugriff auf die View
 	 * Launch the application.
 	 */
-	// Zugriff auf die View
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -140,22 +148,26 @@ public class anzeigenRechnung_ansicht2 {
 	}
 
 	/**
+	 * Konstruktor
 	 * Create the application.
 	 */
 	
-	// Konstruktor
 	
 	public anzeigenRechnung_ansicht2() {
 		initialize();
 	}
 
 	/**
+	 * Fenster / View initialisieren mit den entsprechenden Elementen
 	 * Initialize the contents of the frame.
 	 */
 	
-	// Fenster / View initialisieren mit den entsprechenden Elementen
+	
 	
 	private void initialize() {
+	
+		Font customFont20f = FontHandler.registriereSchriftart(20f);
+		
 		frmRechnungsübersicht = new JFrame();
 		frmRechnungsübersicht.getContentPane().setForeground(Color.BLACK);
 		frmRechnungsübersicht.setResizable(false);
@@ -165,49 +177,49 @@ public class anzeigenRechnung_ansicht2 {
 		frmRechnungsübersicht.getContentPane().setLayout(null);
 		
 		lblRechnungsnummer = new JLabel("Rechnungsnummer:");
-		lblRechnungsnummer.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblRechnungsnummer.setFont(customFont20f);
 		lblRechnungsnummer.setBounds(33, 26, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblRechnungsnummer);
 		
 		lblRechnungsdatum = new JLabel("Rechnungsdatum:");
-		lblRechnungsdatum.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblRechnungsdatum.setFont(customFont20f);
 		lblRechnungsdatum.setBounds(435, 26, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblRechnungsdatum);
 		
 		lblKartname = new JLabel("Kartname:");
-		lblKartname.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblKartname.setFont(customFont20f);
 		lblKartname.setBounds(33, 260, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblKartname);
 		
 		lblStreckenname_1 = new JLabel("Streckenname:");
-		lblStreckenname_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblStreckenname_1.setFont(customFont20f);
 		lblStreckenname_1.setBounds(33, 204, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblStreckenname_1);
 		
 		lblBenutzername = new JLabel("Benutzername:");
-		lblBenutzername.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblBenutzername.setFont(customFont20f);
 		lblBenutzername.setBounds(33, 82, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblBenutzername);
 		
 		lblArtikel = new JLabel("Artikel");
-		lblArtikel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblArtikel.setFont(customFont20f);
 		lblArtikel.setForeground(Color.BLACK);
 		lblArtikel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblArtikel.setBounds(33, 161, 74, 32);
 		frmRechnungsübersicht.getContentPane().add(lblArtikel);
 		
 		lblBezahlmethode = new JLabel("Bezahlmethode:");
-		lblBezahlmethode.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblBezahlmethode.setFont(customFont20f);
 		lblBezahlmethode.setBounds(33, 419, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblBezahlmethode);
 		
 		lblRechnungsbetrag = new JLabel("Rechnungsbetrag:");
-		lblRechnungsbetrag.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblRechnungsbetrag.setFont(customFont20f);
 		lblRechnungsbetrag.setBounds(31, 475, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblRechnungsbetrag);
 		
 		lblPremium = new JLabel("Premium:");
-		lblPremium.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblPremium.setFont(customFont20f);
 		lblPremium.setBounds(33, 316, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblPremium);
 		

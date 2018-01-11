@@ -1,8 +1,13 @@
-//author Matthias Westermeyer
-
 package Rechnung;
 
 import java.awt.EventQueue;
+
+/**
+ * Grafische Benutzeroberfläche um eine Rechnungsnummer anzuzeigen. Dort kann der Nutzer außerdem entscheiden, was er mit der Rechnung durchführen möchte.
+ * Button Anzeigen, Bezahlen oder Speicher 
+ * @author Matthias Westermeyer
+ *
+ */
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +18,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
+
+import FontHandler.FontHandler;
 
 public class Rechnungsübersicht {
 	
@@ -87,10 +94,10 @@ public class Rechnungsübersicht {
 	}
 
 	/**
+	 * Zugriff auf die View
 	 * Launch the application.
 	 */
 	
-	// Zugriff auf die View
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -105,23 +112,29 @@ public class Rechnungsübersicht {
 		});
 	}
 
+	
 	/**
+	 * Konstruktor
 	 * Create the application.
 	 */
 	
-	// Konstruktor 
+	 
 	
 	public Rechnungsübersicht() {
 		initialize();
 	}
 
 	/**
+	 * Fenster / View initialisieren mit den entsprechenden Elementen
 	 * Initialize the contents of the frame.
 	 */
 	
-	// Fenster / View initialisieren mit den entsprechenden Elementen
+	
 	
 	private void initialize() {
+		
+		Font customFont20f = FontHandler.registriereSchriftart(20f);
+		
 		frmRechnungsbersicht = new JFrame();
 		frmRechnungsbersicht.setTitle("Rechnungs\u00FCbersicht");
 		frmRechnungsbersicht.setBounds(100, 100, 800, 200);
@@ -129,7 +142,7 @@ public class Rechnungsübersicht {
 		frmRechnungsbersicht.getContentPane().setLayout(null);
 		
 		lblRechnung = new JLabel("Rechnung:");
-		lblRechnung.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblRechnung.setFont(customFont20f);
 		lblRechnung.setBounds(20, 44, 89, 30);
 		frmRechnungsbersicht.getContentPane().add(lblRechnung);
 		
@@ -148,10 +161,7 @@ public class Rechnungsübersicht {
 		btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(569, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnSpeichern);
-		
-		textPane = new JTextPane();
-		textPane.setBounds(140, 50, 111, 24);
-		frmRechnungsbersicht.getContentPane().add(textPane);
+	
 		
 		lblHintergrund = new JLabel();
 		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
