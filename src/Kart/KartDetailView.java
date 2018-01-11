@@ -1,5 +1,6 @@
 package Kart;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -29,22 +30,22 @@ public class KartDetailView {
 
 	JFrame frame;
 
-	JLabel lblHintergrund;
-	JLabel lblmaxkmh;
-	JLabel lblbesch;
-	JLabel lblGefahreneRennen;
-	JLabel lblRennenAlsErster;
-	JLabel lblRennenAlsZweiter;
-	JLabel lblRennenAlsDritter;
+	private JLabel lblHintergrund;
+	private JLabel lblmaxkmh;
+	private JLabel lblbesch;
+	private JLabel lblGefahreneRennen;
+	private JLabel lblRennenAlsErster;
+	private JLabel lblRennenAlsZweiter;
+	private JLabel lblRennenAlsDritter;
 
-	JLabel lblSetmaxkmh;
-	JLabel lblSetbesch;
-	JLabel lblSetGesRennen;
-	JLabel lblSetAnzErster;
-	JLabel lblSetAnzZweiter;
-	JLabel lblSetAnzDritter;
+	private JLabel lblSetmaxkmh;
+	private JLabel lblSetbesch;
+	private JLabel lblSetGesRennen;
+	private JLabel lblSetAnzErster;
+	private JLabel lblSetAnzZweiter;
+	private JLabel lblSetAnzDritter;
 
-	JButton btnZurueck;
+	private JButton btnZurueck;
 
 	/**
 	 * Führt die GUI aus.
@@ -54,7 +55,7 @@ public class KartDetailView {
 			public void run() {
 				try {
 					KartDetailView window = new KartDetailView();
-					window.frame.setVisible(true);
+					window.getFrame().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -75,84 +76,83 @@ public class KartDetailView {
 	private void initialize() {
 		
 		Font customFont = FontHandler.registriereSchriftart(9f);
-		Font customFont22f = FontHandler.registriereSchriftart(8f);
 
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setVisible(false);
-		frame.setResizable(false);
-		frame.setLocationRelativeTo(null);
-		frame.getContentPane().setLayout(null);
+		setFrame (new JFrame());
+		getFrame().setBounds(100, 100, 450, 300);
+		getFrame().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		getFrame().setVisible(false);
+		getFrame().setResizable(false);
+		getFrame().setLocationRelativeTo(null);
+		getFrame().getContentPane().setLayout(null);
+		
+		setlblmaxkmh (new JLabel("Max. Geschwindigkeit:"));
+		getlblmaxkmh().setBounds(32, 37, 140, 14);
+		getlblmaxkmh().setFont(customFont );
+		getFrame().getContentPane().add(lblmaxkmh);
 
-		lblmaxkmh = new JLabel("Max. Geschwindigkeit:");
-		lblmaxkmh.setBounds(32, 37, 140, 14);
-		lblmaxkmh.setFont(customFont22f );
-		frame.getContentPane().add(lblmaxkmh);
+		setLblGefahreneRennen (new JLabel("Gefahrene SP-Rennen:"));
+		getLblGefahreneRennen().setFont(customFont );
+		getLblGefahreneRennen().setBounds(32, 77, 140, 14);
+		getFrame().getContentPane().add(lblGefahreneRennen);
 
-		lblGefahreneRennen = new JLabel("Gefahrene SP-Rennen:");
-		lblGefahreneRennen.setFont(customFont22f );
-		lblGefahreneRennen.setBounds(32, 77, 140, 14);
-		frame.getContentPane().add(lblGefahreneRennen);
+		setLblbesch(new JLabel("Beschleunigung:"));
+		getLblbesch().setBounds(32, 57, 120, 14);
+		getLblbesch().setFont(customFont);
+		getFrame().getContentPane().add(lblbesch);
 
-		lblbesch = new JLabel("Beschleunigung:");
-		lblbesch.setBounds(32, 57, 95, 14);
-		lblbesch.setFont(customFont22f);
-		frame.getContentPane().add(lblbesch);
+		setLblRennenAlsErster( new JLabel("Rennen als Erster abgeschlossen"));
+		getLblRennenAlsErster().setBounds(210, 136, 220, 14);
+		getLblRennenAlsErster().setFont(customFont);
+		getFrame().getContentPane().add(lblRennenAlsErster);
 
-		lblRennenAlsErster = new JLabel("Rennen als Erster abgeschlossen");
-		lblRennenAlsErster.setBounds(224, 136, 200, 14);
-		lblRennenAlsErster.setFont(customFont22f);
-		frame.getContentPane().add(lblRennenAlsErster);
+		setLblRennenAlsZweiter (new JLabel("Rennen als Zweiter abgeschlossen"));
+		getLblRennenAlsZweiter().setFont(customFont);
+		getLblRennenAlsZweiter().setBounds(210, 161, 220, 14);
+		getFrame().getContentPane().add(lblRennenAlsZweiter);
 
-		lblRennenAlsZweiter = new JLabel("Rennen als Zweiter abgeschlossen");
-		lblRennenAlsZweiter.setFont(customFont22f);
-		lblRennenAlsZweiter.setBounds(224, 161, 200, 14);
-		frame.getContentPane().add(lblRennenAlsZweiter);
+		setLblRennenAlsDritter (new JLabel("Rennen als Dritter abgeschlossen"));
+		getLblRennenAlsDritter().setFont(customFont);
+		getLblRennenAlsDritter().setBounds(210, 186, 220, 14);
+		getFrame().getContentPane().add(lblRennenAlsDritter);
 
-		lblRennenAlsDritter = new JLabel("Rennen als Dritter abgeschlossen");
-		lblRennenAlsDritter.setFont(customFont22f);
-		lblRennenAlsDritter.setBounds(224, 186, 200, 14);
-		frame.getContentPane().add(lblRennenAlsDritter);
+		setLblSetmaxkmh (new JLabel("New label"));
+		getLblSetmaxkmh().setFont(customFont);
+		getLblSetmaxkmh().setBounds(191, 37, 46, 14);
+		getFrame().getContentPane().add(lblSetmaxkmh);
 
-		lblSetmaxkmh = new JLabel("New label");
-		lblSetmaxkmh.setFont(customFont22f);
-		lblSetmaxkmh.setBounds(191, 37, 46, 14);
-		frame.getContentPane().add(lblSetmaxkmh);
+		setLblSetGesRennen (new JLabel("New label"));
+		getLblSetGesRennen().setFont(customFont);
+		getLblSetGesRennen().setBounds(191, 77, 46, 14);
+		getFrame().getContentPane().add(lblSetGesRennen);
 
-		lblSetGesRennen = new JLabel("New label");
-		lblSetGesRennen.setFont(customFont22f);
-		lblSetGesRennen.setBounds(191, 77, 46, 14);
-		frame.getContentPane().add(lblSetGesRennen);
+		setLblSetbesch(new JLabel("New label"));
+		getLblSetbesch().setFont(customFont);
+		getLblSetbesch().setBounds(191, 57, 46, 14);
+		getFrame().getContentPane().add(lblSetbesch);
 
-		lblSetbesch = new JLabel("New label");
-		lblSetbesch.setFont(customFont22f);
-		lblSetbesch.setBounds(191, 57, 46, 14);
-		frame.getContentPane().add(lblSetbesch);
+		setLblSetAnzErster( new JLabel("New label"));
+		getLblSetAnzErster().setFont(customFont);
+		getLblSetAnzErster().setBounds(148, 136, 46, 14);
+		getFrame().getContentPane().add(lblSetAnzErster);
 
-		lblSetAnzErster = new JLabel("New label");
-		lblSetAnzErster.setFont(customFont22f);
-		lblSetAnzErster.setBounds(148, 136, 46, 14);
-		frame.getContentPane().add(lblSetAnzErster);
+		setLblSetAnzZweiter( new JLabel("New label"));
+		getLblSetAnzZweiter().setFont(customFont);
+		getLblSetAnzZweiter().setBounds(148, 161, 46, 14);
+		getFrame().getContentPane().add(lblSetAnzZweiter);
 
-		lblSetAnzZweiter = new JLabel("New label");
-		lblSetAnzZweiter.setFont(customFont22f);
-		lblSetAnzZweiter.setBounds(148, 161, 46, 14);
-		frame.getContentPane().add(lblSetAnzZweiter);
+		setLblSetAnzDritter ( new JLabel("New label"));
+		getLblSetAnzDritter().setFont(customFont);
+		getLblSetAnzDritter().setBounds(148, 186, 46, 14);
+		getFrame().getContentPane().add(lblSetAnzDritter);
 
-		lblSetAnzDritter = new JLabel("New label");
-		lblSetAnzDritter.setFont(customFont22f);
-		lblSetAnzDritter.setBounds(148, 186, 46, 14);
-		frame.getContentPane().add(lblSetAnzDritter);
-
-		btnZurueck = new JButton("Zurueck");
-		btnZurueck.setFont(customFont);
-		btnZurueck.setBounds(10, 227, 89, 23);
-		frame.getContentPane().add(btnZurueck);
+		setBtnZurueck( new JButton("Zurueck"));
+		getBtnZurueck().setFont(customFont);
+		getBtnZurueck().setBounds(10, 227, 89, 23);
 		getBtnZurueck().setBorderPainted(false);
 		getBtnZurueck().setOpaque(false);
 		getBtnZurueck().setBackground(SystemColor.activeCaption);
-		btnZurueck.addActionListener(new ActionListener() {
+		getFrame().getContentPane().add(btnZurueck);
+		getBtnZurueck().addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
@@ -162,7 +162,7 @@ public class KartDetailView {
 		lblHintergrund = new JLabel("");
 		lblHintergrund.setVisible(false);
 		lblHintergrund.setBounds(0, 0, 794, 571);
-		frame.getContentPane().add(lblHintergrund);
+		getFrame().getContentPane().add(lblHintergrund);
 
 		Movement m = new Movement(10);
 
@@ -177,7 +177,7 @@ public class KartDetailView {
 		m.label.setBufferedImage(image, 0);
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
-		frame.getContentPane().add(m.label);
+		getFrame().getContentPane().add(m.label);
 	}
 
 	public JFrame getFrame() {
@@ -290,5 +290,7 @@ public class KartDetailView {
 
 	public void setBtnZurueck(JButton btnZurueck) {
 		this.btnZurueck = btnZurueck;
+		btnZurueck.setForeground(Color.RED);
+		
 	}
 }

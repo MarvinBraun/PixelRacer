@@ -38,18 +38,18 @@ public class ModusauswaehlenStrg implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		kunde = Nutzerverwaltung.getangKunde();
-		if (e.getSource() == mav.btnSingleplayer) {
-			mav.frame.dispose();
+		if (e.getSource() == mav.getBtnSingleplayer()) {
+			mav.getFrame().dispose();
 			FahrtErstellenStrg strg = new FahrtErstellenStrg(1);
 		}
 
-		if (e.getSource() == mav.btnzurueck) {
-			mav.frame.dispose();
+		if (e.getSource() == mav.getBtnzurueck()) {
+			mav.getFrame().dispose();
 			StartansichtStrg sa = new StartansichtStrg();
 		}
 
-		if (e.getSource() == mav.btnMultiplayer) {
-			mav.frame.dispose();
+		if (e.getSource() == mav.getBtnMultiplayer()) {
+			mav.getFrame().dispose();
 			try {
 				MultiplayerAuswahlStrg.main(null);
 			} catch (IOException e1) {
@@ -70,14 +70,14 @@ public class ModusauswaehlenStrg implements ActionListener {
 	 */
 	public ModusauswaehlenStrg() {
 		mav = new ModusauswaehlenView();
-		mav.frame.setVisible(true);
-		mav.btnSingleplayer.addActionListener(this);
-		mav.btnzurueck.addActionListener(this);
+		mav.getFrame().setVisible(true);
+		mav.getBtnSingleplayer().addActionListener(this);
+		mav.getBtnzurueck().addActionListener(this);
 		try {
 			if (Nutzerverwaltung.getangKunde().getpremium().equals("false")) {
-				mav.btnMultiplayer.setEnabled(false);
+				mav.getBtnMultiplayer().setEnabled(false);
 			} else {
-				mav.btnMultiplayer.addActionListener(this);
+				mav.getBtnMultiplayer().addActionListener(this);
 			}
 		} catch (NullPointerException np) {
 			np.getMessage();

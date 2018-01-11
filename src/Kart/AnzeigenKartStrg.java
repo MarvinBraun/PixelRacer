@@ -4,34 +4,28 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.Array;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-
 import Datenbankverwaltung.Datenbankschnittstelle;
-import Fahrt.Fahrt;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Iterator.IteratorKart;
 import Iterator.IteratorString;
-import Nutzer.Kunde;
 import Nutzer.Nutzerverwaltung;
-import Premium.PremiumKartView;
 import Premium.kaufePremiumKart;
 import Rechnung.Rechnung;
 import Rechnung.Rechnungsverwaltung;
 import Startansicht.StartansichtStrg;
 
 /**
- * Die Klasse AnzeigenKartStrg steuert die Kartansicht fuer den Nutzer. Die Klasse
- * verwaltet auch die grafischen Oberflaechen Kartuebersicht und KartDetailView.
+ * Die Klasse AnzeigenKartStrg steuert die Kartansicht fuer den Nutzer. Die
+ * Klasse verwaltet auch die grafischen Oberflaechen Kartuebersicht und
+ * KartDetailView.
  * 
  * @author Ferhat Koca
  *
@@ -85,15 +79,15 @@ public class AnzeigenKartStrg implements ActionListener {
 		verwRechnung = new Rechnungsverwaltung();
 		rechnungsListe = verwRechnung.gibKartRechnungenfuerBenutzer();
 
-		viewUebersicht.kartBackward.addActionListener(this);
-		viewUebersicht.kartForward.addActionListener(this);
-		viewUebersicht.btnDetailView.addActionListener(this);
-		viewUebersicht.btnZurueck.addActionListener(this);
-		viewUebersicht.btnKartKaufen.addActionListener(this);
+		viewUebersicht.getKartBackward().addActionListener(this);
+		viewUebersicht.getKartForward().addActionListener(this);
+		viewUebersicht.getBtnDetailView().addActionListener(this);
+		viewUebersicht.getBtnZurueck().addActionListener(this);
+		viewUebersicht.getBtnKartKaufen().addActionListener(this);
 
 		ladeKart();
 
-		SwingUtilities.updateComponentTreeUI(viewUebersicht.frame);
+		SwingUtilities.updateComponentTreeUI(viewUebersicht.getFrame());
 
 	}
 
@@ -105,35 +99,32 @@ public class AnzeigenKartStrg implements ActionListener {
 
 	/**
 	 * Die Methode ladeKart ruft, wenn vorhanden, das naechste kart auf und
-	 * ueberprueft ob dieses schon im Besitz des Nutzers ist oder ob es noch durch
-	 * Punkte oder durch einen Kauf freigeschaltet werden muss und deklariert
-	 * dementsprechend die Variablen.
+	 * ueberprueft ob dieses schon im Besitz des Nutzers ist oder ob es noch
+	 * durch Punkte oder durch einen Kauf freigeschaltet werden muss und
+	 * deklariert dementsprechend die Variablen.
 	 */
 	public void ladeKart() {
-		try {
+		try{
 			if ((k = itKart.next()) != null) {
 
 				BufferedImage newImage = k.getGrafik();
-				viewUebersicht.kartName.setText(k.getKartname());
+				viewUebersicht.getKartName().setText(k.getKartname());
 				Kartbild = imageResizer(newImage);
 				ImageIcon icon = new ImageIcon(Kartbild);
-				viewUebersicht.kartLbl.setIcon(icon);
+				viewUebersicht.getKartLbl().setIcon(icon);
 
 				counterRang1 = 0;
 				counterRang2 = 0;
 				counterRang3 = 0;
 
 				viewDetail = new KartDetailView();
-				viewDetail.btnZurueck.addActionListener(this);
-
-				viewDetail.lblSetmaxkmh.setText(Integer.toString(k.getMaxkmh()) + " Km/h");
-
-				viewDetail.lblSetbesch.setText(Integer.toString(k.getBeschleunigung()));
-
+				viewDetail.getBtnZurueck().addActionListener(this);
+				viewDetail.getLblSetmaxkmh().setText(Integer.toString(k.getMaxkmh()) + " Km/h");
+				viewDetail.getLblSetbesch().setText(Integer.toString(k.getBeschleunigung()));
 				Fahrtverwaltung v = new Fahrtverwaltung();
 				LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFuerBenutzerUndKart(
 						Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
-				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
+				viewDetail.getLblSetGesRennen().setText(Integer.toString(fahrten.size()));
 
 				for (int i = 0; i < fahrten.size(); i++) {
 
@@ -149,30 +140,30 @@ public class AnzeigenKartStrg implements ActionListener {
 						counterRang3++;
 					}
 				}
-				viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
-				viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
-				viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
+				viewDetail.getLblSetAnzErster().setText(Integer.toString(counterRang1));
+				viewDetail.getLblSetAnzZweiter().setText(Integer.toString(counterRang2));
+				viewDetail.getLblSetAnzDritter().setText(Integer.toString(counterRang3));
 			}
 			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
-				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-				viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
-				viewUebersicht.getlblKartPunkte().setVisible(true);
-			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) { 
-				viewUebersicht.getlblKartPunkte().setVisible(false);
-				viewUebersicht.getlblKartPunkteLimit()
+				viewUebersicht.getLblKartPunkteLimit().setVisible(false);
+				viewUebersicht.getLblKartPunkte().setText("Kart in deinem Besitz!");
+				viewUebersicht.getLblKartPunkte().setVisible(true);
+			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) {
+				viewUebersicht.getLblKartPunkte().setVisible(false);
+				viewUebersicht.getLblKartPunkteLimit()
 						.setText("Erreiche " + k.getPunktewert() + " Punkte um diese Kart freizuschalten!");
-				viewUebersicht.getlblKartPunkteLimit().setVisible(true);
+				viewUebersicht.getLblKartPunkteLimit().setVisible(true);
 			}
-			
+
 			Rechnungsverwaltung r = new Rechnungsverwaltung();
 			LinkedList<Rechnung> rechnungen = r.gibKartRechnungenfuerBenutzer();
 
-			viewUebersicht.getBtnkartKaufen().setVisible(false);
+			viewUebersicht.getBtnKartKaufen().setVisible(false);
 
 			if (k.getPremium().equals("true")) {
-				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-				viewUebersicht.getlblKartPunkte().setVisible(false);
-				viewUebersicht.getBtnkartKaufen().setVisible(true);
+				viewUebersicht.getLblKartPunkteLimit().setVisible(false);
+				viewUebersicht.getLblKartPunkte().setVisible(false);
+				viewUebersicht.getBtnKartKaufen().setVisible(true);
 
 				Rechnung rechnung = null;
 				Iterator<Rechnung> it = rechnungen.iterator();
@@ -180,19 +171,18 @@ public class AnzeigenKartStrg implements ActionListener {
 					rechnung = it.next();
 					if (k.getKartname().equals(rechnung.getKartname())) {
 
-						viewUebersicht.getBtnkartKaufen().setVisible(false);
-						viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-						viewUebersicht.getlblKartPunkte().setVisible(true);
-						viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
+						viewUebersicht.getBtnKartKaufen().setVisible(false);
+						viewUebersicht.getLblKartPunkteLimit().setVisible(false);
+						viewUebersicht.getLblKartPunkte().setVisible(true);
+						viewUebersicht.getLblKartPunkte().setText("Kart in deinem Besitz!");
 
 					}
 				}
 			}
 			Datenbankschnittstelle.closeConnections();
-		} catch (Exception e) {
+		}catch(NullPointerException io){
 			JOptionPane.showConfirmDialog(null, "Zurzeit stehen keine weiteren Karts zur Verfuegung!",
 					"Keine weiteren Karts", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-
 		}
 	}
 
@@ -205,26 +195,26 @@ public class AnzeigenKartStrg implements ActionListener {
 			if ((k = itKart.previous()) != null) {
 
 				BufferedImage newImage = k.getGrafik();
-				viewUebersicht.kartName.setText(k.getKartname());
+				viewUebersicht.getKartName().setText(k.getKartname());
 				Kartbild = imageResizer(newImage);
 				ImageIcon icon = new ImageIcon(Kartbild);
-				viewUebersicht.kartLbl.setIcon(icon);
+				viewUebersicht.getKartLbl().setIcon(icon);
 
 				counterRang1 = 0;
 				counterRang2 = 0;
 				counterRang3 = 0;
 
 				viewDetail = new KartDetailView();
-				viewDetail.btnZurueck.addActionListener(this);
+				viewDetail.getBtnZurueck().addActionListener(this);
 
-				viewDetail.lblSetmaxkmh.setText(Integer.toString(k.getMaxkmh()) + " Km/h");
+				viewDetail.getLblSetmaxkmh().setText(Integer.toString(k.getMaxkmh()) + " Km/h");
 
-				viewDetail.lblSetbesch.setText(Integer.toString(k.getBeschleunigung()));
+				viewDetail.getLblSetbesch().setText(Integer.toString(k.getBeschleunigung()));
 
 				Fahrtverwaltung v = new Fahrtverwaltung();
 				LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFuerBenutzerUndKart(
 						Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
-				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
+				viewDetail.getLblSetGesRennen().setText(Integer.toString(fahrten.size()));
 
 				for (int i = 0; i < fahrten.size(); i++) {
 
@@ -240,31 +230,31 @@ public class AnzeigenKartStrg implements ActionListener {
 						counterRang3++;
 					}
 				}
-				viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
-				viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
-				viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
+				viewDetail.getLblSetAnzErster().setText(Integer.toString(counterRang1));
+				viewDetail.getLblSetAnzZweiter().setText(Integer.toString(counterRang2));
+				viewDetail.getLblSetAnzDritter().setText(Integer.toString(counterRang3));
 
 			}
 			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
-				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-				viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
-				viewUebersicht.getlblKartPunkte().setVisible(true);
+				viewUebersicht.getLblKartPunkteLimit().setVisible(false);
+				viewUebersicht.getLblKartPunkte().setText("Kart in deinem Besitz!");
+				viewUebersicht.getLblKartPunkte().setVisible(true);
 			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) {
-				viewUebersicht.getlblKartPunkte().setVisible(false);
-				viewUebersicht.getlblKartPunkteLimit()
+				viewUebersicht.getLblKartPunkte().setVisible(false);
+				viewUebersicht.getLblKartPunkteLimit()
 						.setText("Erreiche " + k.getPunktewert() + " Punkte um diese Kart freizuschalten!");
-				viewUebersicht.getlblKartPunkteLimit().setVisible(true);
+				viewUebersicht.getLblKartPunkteLimit().setVisible(true);
 			}
 
 			Rechnungsverwaltung r = new Rechnungsverwaltung();
 			LinkedList<Rechnung> rechnungen = r.gibKartRechnungenfuerBenutzer();
 
-			viewUebersicht.getBtnkartKaufen().setVisible(false);
+			viewUebersicht.getBtnKartKaufen().setVisible(false);
 
 			if (k.getPremium().equals("true")) {
-				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-				viewUebersicht.getlblKartPunkte().setVisible(false);
-				viewUebersicht.getBtnkartKaufen().setVisible(true);
+				viewUebersicht.getLblKartPunkteLimit().setVisible(false);
+				viewUebersicht.getLblKartPunkte().setVisible(false);
+				viewUebersicht.getBtnKartKaufen().setVisible(true);
 
 				Rechnung rechnung = null;
 				Iterator<Rechnung> it = rechnungen.iterator();
@@ -272,10 +262,10 @@ public class AnzeigenKartStrg implements ActionListener {
 					rechnung = it.next();
 					if (k.getKartname().equals(rechnung.getKartname())) {
 
-						viewUebersicht.getBtnkartKaufen().setVisible(false);
-						viewUebersicht.getlblKartPunkteLimit().setVisible(false);
-						viewUebersicht.getlblKartPunkte().setVisible(true);
-						viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
+						viewUebersicht.getBtnKartKaufen().setVisible(false);
+						viewUebersicht.getLblKartPunkteLimit().setVisible(false);
+						viewUebersicht.getLblKartPunkte().setVisible(true);
+						viewUebersicht.getLblKartPunkte().setText("Kart in deinem Besitz!");
 
 					}
 				}
@@ -294,7 +284,7 @@ public class AnzeigenKartStrg implements ActionListener {
 
 		Graphics g = newImage.createGraphics();
 		g.drawImage(original, 130, -30, 300, 200, null);
-		
+
 		g.dispose();
 		return newImage;
 	}
@@ -307,31 +297,31 @@ public class AnzeigenKartStrg implements ActionListener {
 		try {
 			if (e.getSource() == viewUebersicht.getBtnZurueck()) {
 
-				viewUebersicht.frame.dispose();
+				viewUebersicht.getFrame().dispose();
 				viewDetail.frame.dispose();
 				StartansichtStrg strg = new StartansichtStrg();
 			}
 
-			if (e.getSource() == viewUebersicht.getBtnkartKaufen()) {
+			if (e.getSource() == viewUebersicht.getBtnKartKaufen()) {
 
 				kaufePremiumKart strg = new kaufePremiumKart(k, viewUebersicht);
 			}
-			if (e.getSource() == viewDetail.btnZurueck) {
+			if (e.getSource() == viewDetail.getBtnZurueck()) {
 				viewDetail.frame.dispose();
-				viewUebersicht.frame.setVisible(true);
+				viewUebersicht.getFrame().setVisible(true);
 			}
 
-			if (e.getSource() == viewUebersicht.kartBackward) {
+			if (e.getSource() == viewUebersicht.getKartBackward()) {
 				viewDetail.frame.dispose();
 				KartRueckwaerts();
 			}
 
-			if (e.getSource() == viewUebersicht.kartForward) {
+			if (e.getSource() == viewUebersicht.getKartForward()) {
 				viewDetail.frame.dispose();
 				ladeKart();
 			}
 
-			if (e.getSource() == viewUebersicht.btnDetailView) {
+			if (e.getSource() == viewUebersicht.getBtnDetailView()) {
 				viewDetail.frame.setVisible(true);
 			}
 

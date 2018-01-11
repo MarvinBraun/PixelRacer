@@ -35,13 +35,13 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 	 * Das Drücken auf Abbrechen bricht den Kaufprozess ab.
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == pav.bestaetigen) {
-			pav.frame.dispose();
+		if (e.getSource() == pav.getBestaetigen()) {
+			pav.getFrame().dispose();
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg();
 			ansicht.getFrmPixelRacer().dispose();
 		}
-		if (e.getSource() == pav.abbrechen) {
-			pav.frame.dispose();
+		if (e.getSource() == pav.getAbbrechen()) {
+			pav.getFrame().dispose();
 			strg = new AnzeigenProfilKundeStrg();
 		}
 	}
@@ -53,9 +53,9 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 	public kaufePremiumAccount(ProfilKundeAnsicht ansicht) {
 		this.ansicht = ansicht;
 		pav = new PremiumAccountView();
-		pav.frame.setVisible(true);
-		pav.abbrechen.addActionListener(this);
-		pav.bestaetigen.addActionListener(this);
+		pav.getFrame().setVisible(true);
+		pav.getAbbrechen().addActionListener(this);
+		pav.getBestaetigen().addActionListener(this);
 
 	}
 

@@ -29,11 +29,10 @@ import java.io.IOException;
  */
 public class PremiumAccountView extends JFrame {
 
-	JFrame frame;
-	JButton bestaetigen = new JButton("Bestaetigen");
-	JButton abbrechen = new JButton("Abbrechen");
-	JLabel Frage;
-	anzeigenRechnung_ansicht2 rechnung = new anzeigenRechnung_ansicht2();
+	private JFrame frame;
+	private JButton bestaetigen;
+	private JButton abbrechen;
+	private JLabel Frage;
 
 	/**
 	 * Fuehrt die GUI aus.
@@ -93,22 +92,39 @@ public class PremiumAccountView extends JFrame {
 		gbc_Frage.gridy = 1;
 		frame.getContentPane().add(Frage, gbc_Frage);
 
+		bestaetigen = new JButton("Bestaetigen");
 		GridBagConstraints gbc_bestaetigen = new GridBagConstraints();
 		gbc_bestaetigen.anchor = GridBagConstraints.NORTHEAST;
 		gbc_bestaetigen.insets = new Insets(0, 0, 5, 5);
 		gbc_bestaetigen.gridx = 0;
 		gbc_bestaetigen.gridy = 2;
-
 		frame.getContentPane().add(bestaetigen, gbc_bestaetigen);
 
+		abbrechen = new JButton("Abbrechen");
 		GridBagConstraints gbc_abbrechen = new GridBagConstraints();
 		gbc_abbrechen.insets = new Insets(0, 0, 5, 0);
 		gbc_abbrechen.anchor = GridBagConstraints.NORTHWEST;
 		gbc_abbrechen.gridx = 2;
 		gbc_abbrechen.gridy = 2;
-
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
 
 	}
 
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public JButton getBestaetigen() {
+		return bestaetigen;
+	}
+
+	public JButton getAbbrechen() {
+		return abbrechen;
+	}
+
+	public JLabel getFrage() {
+		return Frage;
+	}
+
+	
 }

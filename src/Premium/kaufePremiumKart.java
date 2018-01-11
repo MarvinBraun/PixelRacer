@@ -33,14 +33,14 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 	 * Kaufprozess ab.
 	 */
 		public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == pkv.bestaetigen) {
-			pkv.frame.dispose();
+		if (e.getSource() == pkv.getBestaetigen()) {
+			pkv.getFrame().dispose();
 			viewUebersicht.getFrame().dispose();
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg(k);
 			
 		}
-		if (e.getSource() == pkv.abbrechen) {
-			pkv.frame.dispose();
+		if (e.getSource() == pkv.getAbbrechen()) {
+			pkv.getFrame().dispose();
 			
 		}
 	}
@@ -51,9 +51,9 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 	 */
 	public kaufePremiumKart(Kart k, Kartuebersicht viewUebersicht) {
 		pkv = new PremiumKartView();
-		pkv.frame.setVisible(true);
-		pkv.bestaetigen.addActionListener(this);
-		pkv.abbrechen.addActionListener(this);
+		pkv.getFrame().setVisible(true);
+		pkv.getBestaetigen().addActionListener(this);
+		pkv.getAbbrechen().addActionListener(this);
 		this.k = k;
 		this.viewUebersicht = viewUebersicht;
 	}

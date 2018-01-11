@@ -35,13 +35,13 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == psv.bestaetigen) {
-			psv.frame.dispose();
+		if (e.getSource() == psv.getBestaetigen()) {
+			psv.getFrame().dispose();
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg(s) ;
 			viewUebersicht.getFrame().dispose();
 		}
-		if (e.getSource() == psv.abbrechen) {
-			psv.frame.dispose();
+		if (e.getSource() == psv.getAbbrechen()) {
+			psv.getFrame().dispose();
 			viewUebersicht.getFrame().dispose();
 			AnzeigenStreckenStrg strg = new AnzeigenStreckenStrg();
 		}
@@ -53,9 +53,9 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	 */
 	public kaufePremiumStrecke(Strecke s, Streckenuebersicht viewUebersicht) {
 		psv = new PremiumStreckeView();
-		psv.frame.setVisible(true);
-		psv.bestaetigen.addActionListener(this);
-		psv.abbrechen.addActionListener(this);
+		psv.getFrame().setVisible(true);
+		psv.getBestaetigen().addActionListener(this);
+		psv.getAbbrechen().addActionListener(this);
 		this.s = s;
 		this.viewUebersicht = viewUebersicht;
 	}

@@ -26,10 +26,10 @@ import Rechnung.anzeigenRechnung_ansicht2;
  */
 public class PremiumStreckeView extends JFrame {
 
-	JFrame frame;
-	JLabel Frage;
-	JButton bestaetigen;
-	JButton abbrechen;
+	private JFrame frame;
+	private JLabel Frage;
+	private JButton bestaetigen;
+	private JButton abbrechen;
 
 	/**
 	 * Fuehrt die GUI aus.
@@ -105,6 +105,22 @@ public class PremiumStreckeView extends JFrame {
 		gbc_abbrechen.gridx = 2;
 		gbc_abbrechen.gridy = 2;
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public JLabel getFrage() {
+		return Frage;
+	}
+
+	public JButton getBestaetigen() {
+		return bestaetigen;
+	}
+
+	public JButton getAbbrechen() {
+		return abbrechen;
 	}
 
 }

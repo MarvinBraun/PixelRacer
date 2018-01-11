@@ -29,10 +29,10 @@ import java.io.IOException;
  */
 public class PremiumKartView extends JFrame {
 
-	JFrame frame;
-	JLabel Frage;
-	JButton bestaetigen;
-	JButton abbrechen;
+	private JFrame frame;
+	private JLabel Frage;
+	private JButton bestaetigen;
+	private JButton abbrechen;
 
 	/**
 	 * Fuehrt die GUI aus.
@@ -108,4 +108,21 @@ public class PremiumKartView extends JFrame {
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
 	}
 
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public JLabel getFrage() {
+		return Frage;
+	}
+
+	public JButton getBestaetigen() {
+		return bestaetigen;
+	}
+
+	public JButton getAbbrechen() {
+		return abbrechen;
+	}
+
+	
 }
