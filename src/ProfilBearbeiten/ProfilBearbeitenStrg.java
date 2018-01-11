@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import Datenbankverwaltung.Datenbankschnittstelle;
 import Nutzer.Kunde;
 import Nutzer.Nutzerverwaltung;
-import Profil.AnzeigenProfilStrg;
+import ProfilKunde.AnzeigenProfilKundeStrg;
 
 /**
  * Die Klasse ProfilBearbeitenStrg steuert das Bearbeiten eines Profils.
@@ -135,7 +135,7 @@ public class ProfilBearbeitenStrg implements ActionListener {
 		
 		if(e.getSource()== view1.getBtnFertig()) { //Aufrufen des Profils des Kunden
 			view1.getFrmProfilBearbeiten().dispose();
-			AnzeigenProfilStrg strg = new AnzeigenProfilStrg();
+			AnzeigenProfilKundeStrg strg = new AnzeigenProfilKundeStrg();
 		}
 		
 		if(e.getSource()== view2.getBtnAbbrechen()) { //Der Vorgang des Änderns wird abgebrochen und die ProfilBearbeitenView wird aufgerufen
