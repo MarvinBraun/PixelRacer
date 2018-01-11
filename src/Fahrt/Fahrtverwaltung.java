@@ -9,8 +9,8 @@ import java.util.LinkedList;
 import Datenbankverwaltung.Datenbankschnittstelle;
 import Nutzer.Nutzerverwaltung;
 /**
- * Die Klasse Fahrtverwaltung verarbeitet Objekte der Klassen SingleplayerFahrt und MultiplayerFahrt.
- * Gespeichert werden die Fahrten in einer LinkedList.
+ * Die Klasse Fahrtverwaltung verarbeitet Objekte der Klassen SingleplayerFahrt und MultiplayerFahrt
+ * Gespeichert werden die Fahrten in einer LinkedList
  * @author Marvin Braun
  */
 
@@ -21,29 +21,11 @@ public class Fahrtverwaltung {
 	private LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
 	private LinkedList<MultiplayerFahrt> multiplayerFahrten = new LinkedList<MultiplayerFahrt>();
 	
-
-	
-	public LinkedList<SingleplayerFahrt> getSingleplayerFahrten() {
-		return singleplayerFahrten;
-	}
-
-	public void setSingleplayerFahrten(LinkedList<SingleplayerFahrt> singleplayerFahrten) {
-		this.singleplayerFahrten = singleplayerFahrten;
-	}
-
-	public LinkedList<MultiplayerFahrt> getMultiplayerFahrten() {
-		return multiplayerFahrten;
-	}
-
-	public void setMultiplayerFahrten(LinkedList<MultiplayerFahrt> multiplayerFahrten) {
-		this.multiplayerFahrten = multiplayerFahrten;
-	}
-
 	
 	
 	/**
-	 * Liest alle SingleplayerFahrten aus der Datenbank aus und speichert sie in einer LinkedList.
-	 * @return LinkedList mit allen SingleplayerFahrten.
+	 * Liest alle SingleplayerFahrten aus der Datenbank aus und speichert sie in einer LinkedList
+	 * @return LinkedList mit allen SingleplayerFahrten
 	 */
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrten()
 	{
@@ -72,10 +54,11 @@ public class Fahrtverwaltung {
 	}
 
 	/**
-	 * Liest alle SingleplayerFahrten aus der Datenbank, für einen bestimmten Nutzer und eine bestimmte Strecke, aus und speichert sie in einer LinkedList.
+	 * Liest alle SingleplayerFahrten aus der Datenbank, für einen bestimmten 
+	 * Nutzer und eine bestimmte Strecke, aus und speichert sie in einer LinkedList
 	 * @param benutzername Der Benutzername des Spielers
 	 * @param streckenname Der Streckenname der Strecke
-	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer zu einer Strecke.
+	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer zu einer Strecke
 	 */
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFuerBenutzerUndStrecke(String benutzername, String streckenname)
 	{
@@ -105,7 +88,8 @@ public class Fahrtverwaltung {
 	}
 	
 	/**
-	 * Liest alle SingleplayerFahrten aus der Datenbank, für einen bestimmten Nutzer und eine bestimmte Strecke, aus und speichert sie in einer LinkedList.
+	 * Liest alle SingleplayerFahrten aus der Datenbank, für einen bestimmten Nutzer 
+	 * und eine bestimmte Strecke, aus und speichert sie in einer LinkedList.
 	 * @param benutzername Der Benutzername des Spielers
 	 * @param kartname Der Name des Karts
 	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer zu einer Strecke.
@@ -138,9 +122,10 @@ public class Fahrtverwaltung {
 	}
 	
 	/**
-	 * * Liest alle SingleplayerFahrten aus der Datenbank, für einen bestimmten Nutzer, aus und speichert sie in einer LinkedList.
+	 * Liest alle SingleplayerFahrten aus der Datenbank, 
+	 * für einen bestimmten Nutzer, aus und speichert sie in einer LinkedList
 	 * @param benutzername Der Benutzername des Spielers
-	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer.
+	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer
 	 */
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFuerBenutzer(String benutzername)
 	{
@@ -170,9 +155,9 @@ public class Fahrtverwaltung {
 	}
 	
 	/**
-	 * Gibt eine zu verwendende SitzungsID aus, mit der eine Fahrt erstellt werden kann.
+	 * Gibt eine zu verwendende SitzungsID aus, mit der eine Fahrt erstellt werden kann
 	 *@param singleMulti Über den Parameter wird entschieden ob die Relation "Multiplayer_Fahrt" oder die Relation "Singleplayer_Fahrt" angesprochen wird.
-	 *@return Eine ID, welche genutzt werden kann um eine Single- oder MultiplayerFahrt zu erstellen.
+	 *@return Eine ID, welche genutzt werden kann um eine Single- oder MultiplayerFahrt zu erstellen
 	 */
 	public int gibNeueID(int singleMulti)
 	{

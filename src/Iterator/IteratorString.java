@@ -1,5 +1,5 @@
 
-package myIterator;
+package Iterator;
 import java.util.ListIterator;
 
 

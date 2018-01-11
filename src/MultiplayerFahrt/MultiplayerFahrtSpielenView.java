@@ -27,6 +27,11 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
+/**
+ * Grafische Benutzeroberfläche zum Darstellen einer Multiplayerfahrt.
+ * @author Marvin Braun
+ *
+ */
 public class MultiplayerFahrtSpielenView {
 
 	private 	JFrame frame;

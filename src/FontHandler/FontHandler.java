@@ -7,13 +7,13 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Registriert die zu benutzende Schriftart "pixelmix".
+ * Registriert die zu benutzende Schriftart "pixelmix"
  * @author Marvin Braun
  */
 public class FontHandler {
 	
 	/**
-	 * Gibt eine Schriftart des Typs Font zurück.
+	 * Gibt eine Schriftart des Typs Font zurück
 	 * @param f bestimmt die Größe der Schrift
 	 * @return customFont Schriftart des Typs Font
 	 */

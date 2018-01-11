@@ -30,26 +30,11 @@ public class Datenbankschnittstelle {
 	private static Statement stmt;
 	private static PreparedStatement prepStmt;
 
-	public static void main(String[] args) {
-		/*
-		 * 
-		 * String sql =
-		 * "insert into kart values('Blue Thunder','140','320','false',20,null)";
-		 * executeQuery(sql); closeConnections();
-		 */
-
-		File file = new File("src/Resources/car3.png");
-		String updateBild = "update kart set grafik =? where kartname ='Blue Thunder'";
-		uploadBlob(updateBild, file);
-
-	}
-
 	/**
 	 * 
-	 * Die Methode "getConnection" baut eine Verbindung mit der Datenbank auf
+	 * baut eine Verbindung zur Datenbank auf
 	 * 
-	 * @return Gibt con zurück, wenn die Verbindung steht, ansonsten wird der Fehler "Verbindung
-	 *         zur Datenbak fehlgeschlagen" angezeigt mit derdazu gehörigen Fehlermeldung.
+	 * @return liefert ein Objekt des Typs Connection zurück
 	 * 
 	 */
 	public static Connection getConnection() {
@@ -65,6 +50,12 @@ public class Datenbankschnittstelle {
 		return con;
 	}
 
+	/**
+	 * führt eine Datenbankabfrage aus
+	 * @param abfrage SQL-Abfrage
+	 * @return Ein Objekt des Typs ResultSet
+	 */
+	
 	public static ResultSet executeQuery(String abfrage) {
 		ResultSet rs = null;
 		try {
@@ -80,6 +71,10 @@ public class Datenbankschnittstelle {
 		return rs;
 	}
 
+	/**
+	 * führt ein Update der Datenbank aus.
+	 * @param abfrage SQL Abfrage
+	 */
 	public static void executeUpdate(String abfrage) {
 		int updateInfo = -1;
 		try {
@@ -97,6 +92,11 @@ public class Datenbankschnittstelle {
 		}
 	}
 
+	/**
+	 * führt ein SQL-Batch aus
+	 * @param queries String-Array mit SQL-Anweisungen
+	 */
+	
 	public static void executeBatch(String queries[]) {
 		try {
 			con = getConnection();
@@ -112,7 +112,11 @@ public class Datenbankschnittstelle {
 		}
 
 	}
-
+/**
+ * lädt ein Bild zu einer Strecke oder Kart hoch.
+ * @param sql SQL-Anweisung
+ * @param file Hochzuladendes Bild
+ */
 	public static void uploadBlob(String sql, File file) {
 		try {
 			Connection con = getConnection();
@@ -130,7 +134,12 @@ public class Datenbankschnittstelle {
 		}
 
 	}
-
+/**
+ * lädt ein Bild zu einer Strecke oder einem Kart
+ * @param sql SQL-Anweisung
+ * @param filepath Pfad, an der das Bild gespeichert werden soll
+ * @return ein Objekt des Typs BufferedImage
+ */
 	public static BufferedImage downloadBlob(String sql, String filepath) {
 		BufferedImage image = null;
 		try {
@@ -158,7 +167,9 @@ public class Datenbankschnittstelle {
 		}
 		return image;
 	}
-
+/**
+ * Schließt die Datenbankverbindung
+ */
 	public static void closeConnections() {
 		try {
 			stmt.close();

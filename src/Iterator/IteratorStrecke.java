@@ -1,11 +1,10 @@
 
-package myIterator;
+package Iterator;
 import java.util.ListIterator;
 
 /**
  * modifizierter ListIterator um die Zeiger-Positionierung des ListIterators zu korrigieren, da sich ein ListIterator sich zwischen den Elementen platziert und
- *  sonst doppelte Elemente bei entsprechenden User-Interaktionen (Vor und zurück im Wechsel) zurückgegeben werden.
- * @param <Strecke>
+ * sonst doppelte Elemente bei entsprechenden User-Interaktionen (Vor und zurück im Wechsel) zurückgegeben werden.
  * @author Marvin Braun
  * 
  */

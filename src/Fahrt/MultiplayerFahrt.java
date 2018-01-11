@@ -1,6 +1,6 @@
 package Fahrt;
 /**
- * Klasse der Entität MultiplayerFahrt. Subtyp der Klasse Fahrt.
+ * Klasse der Entität MultiplayerFahrt. Subtyp der Klasse Fahrt
  * @author Marvin Braun
  *
  */

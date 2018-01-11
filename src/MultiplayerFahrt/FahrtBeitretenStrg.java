@@ -21,6 +21,9 @@ import Datenbankverwaltung.Datenbankschnittstelle;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.MultiplayerFahrt;
 import Fahrt.SingleplayerFahrt;
+import Iterator.IteratorKart;
+import Iterator.IteratorStrecke;
+import Iterator.IteratorString;
 import Kart.Kart;
 import Kart.Kartverwaltung;
 import ModusAuswählen.MultiplayerAuswahlStrg;
@@ -30,9 +33,6 @@ import Rechnung.Rechnung;
 import Rechnung.Rechnungsverwaltung;
 import Strecke.Strecke;
 import Strecke.Streckenverwaltung;
-import myIterator.MyIteratorKart;
-import myIterator.MyIteratorStrecke;
-import myIterator.MyIteratorString;
 
 /**
  * Steuerungsklasse, welche die grafische Benutzeroberfläche FahrtBeitretenView verwaltet und mit den Multientitäten (Verwaltungen).
@@ -47,8 +47,8 @@ public class FahrtBeitretenStrg implements ActionListener {
 	private boolean backward = false;
 	private Kart k;
 	private Kartverwaltung karts;
-	private static MyIteratorKart<Kart> itKart;
-	private static MyIteratorString<String> itString;
+	private static IteratorKart<Kart> itKart;
+	private static IteratorString<String> itString;
 	private int multi =2;
 	
 	private LinkedList<String> schwierigkeiten;
@@ -75,7 +75,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 		Streckenliste = verwaltungStrecke.gibStrecke();
 	
 		k = kartliste.get(0);
-		itKart = new MyIteratorKart(kartliste.listIterator());
+		itKart = new IteratorKart(kartliste.listIterator());
 		System.out.println(kartliste.size());
 		view.getKartForward().addActionListener(this);
 		view.getKartBackward().addActionListener(this);
