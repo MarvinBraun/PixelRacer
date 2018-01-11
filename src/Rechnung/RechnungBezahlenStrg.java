@@ -83,6 +83,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 				String update = "Update kunde set premium = 'true' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
 				Datenbankschnittstelle.executeUpdate(update);
 				Datenbankschnittstelle.closeConnections();
+				Nutzerverwaltung.getangKunde().aktualisereangKunde();
 				view1.getFrmRechnungBezahlen().dispose();
 				StartansichtStrg strg = new StartansichtStrg();
 			}
