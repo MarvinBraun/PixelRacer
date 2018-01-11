@@ -19,6 +19,8 @@ import Datenbankverwaltung.Datenbankschnittstelle;
 import Fahrt.Fahrt;
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
+import Iterator.IteratorKart;
+import Iterator.IteratorString;
 import Nutzer.Kunde;
 import Nutzer.Nutzerverwaltung;
 import Premium.PremiumKartView;
@@ -26,12 +28,10 @@ import Premium.kaufePremiumKart;
 import Rechnung.Rechnung;
 import Rechnung.Rechnungsverwaltung;
 import Startansicht.StartansichtStrg;
-import myIterator.MyIteratorKart;
-import myIterator.MyIteratorString;
 
 /**
- * Die Klasse AnzeigenKartStrg steuert die kartansicht für den Nutzer. Die Klasse
- * verwaltet auch die grafischen Oberflächen Kartuebersicht und KartDetailView.
+ * Die Klasse AnzeigenKartStrg steuert die Kartansicht fuer den Nutzer. Die Klasse
+ * verwaltet auch die grafischen Oberflaechen Kartuebersicht und KartDetailView.
  * 
  * @author Ferhat Koca
  *
@@ -60,13 +60,13 @@ public class AnzeigenKartStrg implements ActionListener {
 	int counterRang2 = 0;
 	int counterRang3 = 0;
 
-	static MyIteratorKart<Kart> itKart;
-	static MyIteratorString<String> itString;
+	static IteratorKart<Kart> itKart;
+	static IteratorString<String> itString;
 
 	/**
 	 * Die Methode AnzeigenKartStrg ist der Konstruktor der Klasse und ruft
 	 * diese als neues Objekt auf. Sie deklariert die ihm, aus den Klassen
-	 * KartDetailView und Kartuebersicht, übergebenen Labels und Buttons mit
+	 * KartDetailView und Kartuebersicht, uebergebenen Labels und Buttons mit
 	 * Variablen.
 	 * 
 	 */
@@ -80,7 +80,7 @@ public class AnzeigenKartStrg implements ActionListener {
 
 		verwKart = new Kartverwaltung();
 		KartListe = verwKart.gibKart();
-		itKart = new MyIteratorKart(KartListe.listIterator());
+		itKart = new IteratorKart(KartListe.listIterator());
 
 		verwRechnung = new Rechnungsverwaltung();
 		rechnungsListe = verwRechnung.gibKartRechnungenfuerBenutzer();
@@ -104,8 +104,8 @@ public class AnzeigenKartStrg implements ActionListener {
 	}
 
 	/**
-	 * Die Methode ladeKart ruft, wenn vorhanden, das nächste kart auf und
-	 * überprüft ob dieses schon im Besitz des Nutzers ist oder ob es noch durch
+	 * Die Methode ladeKart ruft, wenn vorhanden, das naechste kart auf und
+	 * ueberprueft ob dieses schon im Besitz des Nutzers ist oder ob es noch durch
 	 * Punkte oder durch einen Kauf freigeschaltet werden muss und deklariert
 	 * dementsprechend die Variablen.
 	 */
@@ -131,7 +131,7 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail.lblSetbesch.setText(Integer.toString(k.getBeschleunigung()));
 
 				Fahrtverwaltung v = new Fahrtverwaltung();
-				LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndKart(
+				LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFuerBenutzerUndKart(
 						Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
 				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 
@@ -190,17 +190,17 @@ public class AnzeigenKartStrg implements ActionListener {
 			}
 			Datenbankschnittstelle.closeConnections();
 		} catch (Exception e) {
-			JOptionPane.showConfirmDialog(null, "Zurzeit stehen keine weiteren Karts zur Verfügung!",
+			JOptionPane.showConfirmDialog(null, "Zurzeit stehen keine weiteren Karts zur Verfuegung!",
 					"Keine weiteren Karts", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 
 		}
 	}
 
 	/**
-	 * Die Methode KartRückwärts Funktioniert wie die Methode ladeKart, gibt
+	 * Die Methode KartRueckwaerts Funktioniert wie die Methode ladeKart, gibt
 	 * aber das vorherige Kart wieder.
 	 */
-	public void KartRückwärts() {
+	public void KartRueckwaerts() {
 		try {
 			if ((k = itKart.previous()) != null) {
 
@@ -222,7 +222,7 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail.lblSetbesch.setText(Integer.toString(k.getBeschleunigung()));
 
 				Fahrtverwaltung v = new Fahrtverwaltung();
-				LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndKart(
+				LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFuerBenutzerUndKart(
 						Nutzerverwaltung.getangKunde().getnutzername(), k.getKartname());
 				viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
 
@@ -245,22 +245,11 @@ public class AnzeigenKartStrg implements ActionListener {
 				viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
 
 			}
-			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung
-																					// Punktestand
-																					// Spieler
-																					// grÃ¶ÃŸer
-																					// gleich
-																					// Punktelimit
-																					// Kart
+			if (k.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) {
 				viewUebersicht.getlblKartPunkteLimit().setVisible(false);
 				viewUebersicht.getlblKartPunkte().setText("Kart in deinem Besitz!");
 				viewUebersicht.getlblKartPunkte().setVisible(true);
-			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) { // PrÃ¼fung
-																							// Punktestand
-																							// Spieler
-																							// kleiner
-																							// Punktelimit
-																							// Kart
+			} else if (k.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()) {
 				viewUebersicht.getlblKartPunkte().setVisible(false);
 				viewUebersicht.getlblKartPunkteLimit()
 						.setText("Erreiche " + k.getPunktewert() + " Punkte um diese Kart freizuschalten!");
@@ -294,24 +283,25 @@ public class AnzeigenKartStrg implements ActionListener {
 			Datenbankschnittstelle.closeConnections();
 
 		} catch (NoSuchElementException ns) {
-			JOptionPane.showConfirmDialog(null, "Zurzeit stehen keine weiteren Karts zur Verfügung!",
+			JOptionPane.showConfirmDialog(null, "Zurzeit stehen keine weiteren Karts zur Verfuegung!",
 					"Keine weiteren Karts", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 		}
 	}
 
 	public static BufferedImage imageResizer(BufferedImage original) {
 
-		BufferedImage newImage = new BufferedImage(545, 122, BufferedImage.TYPE_INT_RGB);
+		BufferedImage newImage = new BufferedImage(545, 122, BufferedImage.TYPE_INT_ARGB);
 
 		Graphics g = newImage.createGraphics();
-		g.drawImage(original, 130, 0, 300, 150, null);
+		g.drawImage(original, 130, -30, 300, 200, null);
+		
 		g.dispose();
 		return newImage;
 	}
 
 	/**
 	 * Die Methode actionPerformed ruft je nachdem, welcher Button geklickt
-	 * wird, die dafür vorgesehene Funktion auf.
+	 * wird, die dafuer vorgesehene Funktion auf.
 	 */
 	public void actionPerformed(ActionEvent e) {
 		try {
@@ -333,7 +323,7 @@ public class AnzeigenKartStrg implements ActionListener {
 
 			if (e.getSource() == viewUebersicht.kartBackward) {
 				viewDetail.frame.dispose();
-				KartRückwärts();
+				KartRueckwaerts();
 			}
 
 			if (e.getSource() == viewUebersicht.kartForward) {

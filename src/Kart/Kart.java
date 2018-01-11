@@ -7,7 +7,7 @@ package Kart;
 import java.awt.image.BufferedImage;
 
 /**
- * Die benötigten Daten werden hier generiert und Getter/Setter werden gesetzt.
+ * Die benoetigten Daten werden hier generiert und Getter/Setter werden gesetzt.
  */
 public class Kart {
 	private String kartname;

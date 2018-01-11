@@ -2,6 +2,7 @@ package Kart;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -15,7 +16,7 @@ import BackgroundAnimation.Movement;
 import FontHandler.FontHandler;
 /**
  * 
- * Die Kartübersicht ist die grafische Benutzeroberfläche, die dem Nutzer die Karts anzeigt.
+ * Die Kartuebersicht ist die grafische Benutzeroberflaeche, die dem Nutzer die Karts anzeigt.
  * @author Ferhat Koca
  *
  */
@@ -37,7 +38,7 @@ public class Kartuebersicht {
 
 	AnzeigenKartStrg strg;
 	/**
-	 * Führt die GUI aus
+	 * Fuehrt die GUI aus
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -53,7 +54,7 @@ public class Kartuebersicht {
 	}
 
 	/**
-	 * Der Konstruktor führt die Methode initialize aus.
+	 * Der Konstruktor fuehrt die Methode initialize aus.
 	 */
 	public Kartuebersicht() {
 		initialize();
@@ -64,12 +65,12 @@ public class Kartuebersicht {
 	 */
 	private void initialize() {
 
-		Font customFont = FontHandler.registriereSchriftart(30f);
-		Font customFont22f = FontHandler.registriereSchriftart(22f);
-		Font customFont27f = FontHandler.registriereSchriftart(27f);
+		Font customFont = FontHandler.registriereSchriftart(16f);
+		Font customFont14f = FontHandler.registriereSchriftart(12f);
+		Font customFont20f = FontHandler.registriereSchriftart(20f);
 		
 		frame = new JFrame();
-		frame.setTitle("Pixel Racer - Kartübersicht");
+		frame.setTitle("Pixel Racer - Kartuebersicht");
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -101,38 +102,47 @@ public class Kartuebersicht {
 		frame.getContentPane().add(kartLbl);
 
 		kartName = new JLabel("FireBird", JLabel.CENTER);
-		kartName.setFont(customFont27f);
+		kartName.setFont(customFont20f);
 		kartName.setBounds(296, 355, 215, 60);
 		kartName.setVisible(true);
 		frame.getContentPane().add(kartName);
 
 		btnDetailView = new JButton("Zeig mir mehr!");
 		btnDetailView.setFont(customFont);
-		btnDetailView.setBounds(282, 428, 229, 35);
+		btnDetailView.setBounds(290, 428, 229, 35);
 		btnDetailView.setVisible(true);
+		getBtnDetailView().setBorderPainted(false);
+		getBtnDetailView().setOpaque(false);
+		getBtnDetailView().setBackground(SystemColor.activeCaption);
 		frame.getContentPane().add(btnDetailView);
 
 		lblKartPunkte = new JLabel("New label");
 		lblKartPunkte.setVisible(false);
-		lblKartPunkte.setFont(customFont22f);
-		lblKartPunkte.setBounds(282, 474, 229, 65);
+		lblKartPunkte.setFont(customFont14f);
+		lblKartPunkte.setBounds(315, 474, 229, 65);
 		frame.getContentPane().add(lblKartPunkte);
 
 		lblKartPunkteLimit = new JLabel("New label");
 		lblKartPunkteLimit.setVisible(false);
-		lblKartPunkteLimit.setFont(customFont22f);
-		lblKartPunkteLimit.setBounds(165, 474, 478, 76);
+		lblKartPunkteLimit.setFont(customFont14f);
+		lblKartPunkteLimit.setBounds(200, 474, 478, 76);
 		frame.getContentPane().add(lblKartPunkteLimit);
 
 		btnKartKaufen = new JButton("Kart kaufen!");
 		btnKartKaufen.setVisible(false);
 		btnKartKaufen.setFont(customFont);
 		btnKartKaufen.setBounds(568, 428, 181, 33);
+		getBtnkartKaufen().setBorderPainted(false);
+		getBtnkartKaufen().setOpaque(false);
+		getBtnkartKaufen().setBackground(SystemColor.activeCaption);
 		frame.getContentPane().add(btnKartKaufen);
 		
-		btnZurueck = new JButton("Zur\u00FCck");
-		btnZurueck.setFont(customFont);
+		btnZurueck = new JButton("Zurueck");
+		btnZurueck.setFont(customFont14f);
 		btnZurueck.setBounds(27, 510, 102, 29);
+		getBtnZurueck().setBorderPainted(false);
+		getBtnZurueck().setOpaque(false);
+		getBtnZurueck().setBackground(SystemColor.activeCaption);
 		frame.getContentPane().add(btnZurueck);
 		
 
@@ -148,7 +158,6 @@ public class Kartuebersicht {
 		try {
 			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

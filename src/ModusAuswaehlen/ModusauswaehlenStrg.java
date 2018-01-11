@@ -1,10 +1,9 @@
-package ModusAuswählen;
+package ModusAuswaehlen;
 
-
- /** Die Klasse ModusauswählenStrg steuert die Aktionen, die in der Klasse 
- * ModusauswählenView getätigt werden.
- * @author Ferhat Koca
- */
+/** Die Klasse ModusauswaehlenStrg steuert die Aktionen, die in der Klasse 
+* ModusauswaehlenView getaetigt werden.
+* @author Ferhat Koca
+*/
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,20 +22,21 @@ public class ModusauswaehlenStrg implements ActionListener {
 
 	/**
 	 * 
-	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der View
-	 * klickt und führt die jeweilige Methode aus.
+	 * Die Methode actionPerformed liest den Button, auf den der Nutzer in der
+	 * View klickt und fuehrt die jeweilige Methode aus.
 	 * 
-	 * Der Button "Singleplayer" führt dazu, das der Nutzer eine Singleplayerfahrt
-	 * spielen wird und zu dessen View weitergeleitet wird.
+	 * Der Button "Singleplayer" fuehrt dazu, das der Nutzer eine
+	 * Singleplayerfahrt spielen wird und zu dessen View weitergeleitet wird.
 	 * 
-	 * Der Button "Multiplayer" kann nur betätigt werden, wenn der Nutzer ein
-	 * Premiumaccount erworben hat. Wenn ein Premiumaccount vorliegt führt ein Klick
-	 * auf den Button dazu, dass der Nutzer zur MultiplayerView weitergeleitet wird.
+	 * Der Button "Multiplayer" kann nur betaetigt werden, wenn der Nutzer ein
+	 * Premiumaccount erworben hat. Wenn ein Premiumaccount vorliegt fuehrt ein
+	 * Klick auf den Button dazu, dass der Nutzer zur MultiplayerView
+	 * weitergeleitet wird.
 	 * 
-	 * Der "Zurück"-Button bringt den Nutzer zurück zur Startansicht.
+	 * Der "Zurueck"-Button bringt den Nutzer zurueck zur Startansicht.
 	 */
 	public void actionPerformed(ActionEvent e) {
-	
+
 		kunde = Nutzerverwaltung.getangKunde();
 		if (e.getSource() == mav.btnSingleplayer) {
 			mav.frame.dispose();
@@ -53,7 +53,7 @@ public class ModusauswaehlenStrg implements ActionListener {
 			try {
 				MultiplayerAuswahlStrg.main(null);
 			} catch (IOException e1) {
-			
+
 				e1.getMessage();
 				System.out.println("Fehler beim Klicken von MultiplayerButton!");
 			}
@@ -61,21 +61,26 @@ public class ModusauswaehlenStrg implements ActionListener {
 	}
 
 	/**
-	 * Der Konstruktor ModusauswaehlenStrg ruft die ModusauswaehlenView auf und gibt
-	 * jedem Button den dazugehörigen Befehl aus der Methode actionPerformed.
+	 * Der Konstruktor ModusauswaehlenStrg ruft die ModusauswaehlenView auf und
+	 * gibt jedem Button den dazugehoerigen Befehl aus der Methode
+	 * actionPerformed.
 	 * 
-	 * Im if-Teil wird nachgeschaut, ob der Kunde einen Premiumaccount hat. Je nach
-	 * dem kann der Button betätigt werden oder nicht.
+	 * Im if-Teil wird nachgeschaut, ob der Kunde einen Premiumaccount hat. Je
+	 * nach dem kann der Button betaetigt werden oder nicht.
 	 */
 	public ModusauswaehlenStrg() {
 		mav = new ModusauswaehlenView();
 		mav.frame.setVisible(true);
 		mav.btnSingleplayer.addActionListener(this);
 		mav.btnzurueck.addActionListener(this);
-		if (Nutzerverwaltung.getangKunde().getpremium().equals("false")) {
-			mav.btnMultiplayer.setEnabled(false);
-		} else {
-			mav.btnMultiplayer.addActionListener(this);
+		try {
+			if (Nutzerverwaltung.getangKunde().getpremium().equals("false")) {
+				mav.btnMultiplayer.setEnabled(false);
+			} else {
+				mav.btnMultiplayer.addActionListener(this);
+			}
+		} catch (NullPointerException np) {
+			np.getMessage();
 		}
 	}
 

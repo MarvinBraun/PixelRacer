@@ -35,7 +35,7 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 	 * Das Drücken auf Abbrechen bricht den Kaufprozess ab.
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == pav.bestätigen) {
+		if (e.getSource() == pav.bestaetigen) {
 			pav.frame.dispose();
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg();
 			ansicht.getFrmPixelRacer().dispose();
@@ -55,7 +55,7 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 		pav = new PremiumAccountView();
 		pav.frame.setVisible(true);
 		pav.abbrechen.addActionListener(this);
-		pav.bestätigen.addActionListener(this);
+		pav.bestaetigen.addActionListener(this);
 
 	}
 

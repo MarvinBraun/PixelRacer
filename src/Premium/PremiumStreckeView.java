@@ -18,7 +18,7 @@ import FontHandler.FontHandler;
 import Rechnung.anzeigenRechnung_ansicht2;
 
 /**
- * Die Klasse PremiumKartView füllt das Fenster mit allen dazugehörigen Inhalten
+ * Die Klasse PremiumKartView fuellt das Fenster mit allen dazugehoerigen Inhalten
  * (Buttons, Textfelder usw.).
  * 
  * @author Ferhat Koca
@@ -28,11 +28,11 @@ public class PremiumStreckeView extends JFrame {
 
 	JFrame frame;
 	JLabel Frage;
-	JButton bestätigen;
+	JButton bestaetigen;
 	JButton abbrechen;
 
 	/**
-	 * Führt die GUI aus.
+	 * Fuehrt die GUI aus.
 	 * 
 	 */
 	public static void main(String[] args) {
@@ -49,7 +49,7 @@ public class PremiumStreckeView extends JFrame {
 	}
 
 	/**
-	 * Der Konstruktor führt die Methode initialize aus.
+	 * Der Konstruktor fuehrt die Methode initialize aus.
 	 * 
 	 */
 	public PremiumStreckeView() {
@@ -61,15 +61,12 @@ public class PremiumStreckeView extends JFrame {
 	 * Initialisiert das Objekt
 	 * 
 	 * @throws IOException
-	 *             wenn ein Fehler beim füllen des Frames ein Fehler
+	 *             wenn ein Fehler beim fuellen des Frames ein Fehler
 	 *             entstanden ist.
 	 * 
 	 */
 	private void initialize() {
-		
-		Font customFont = FontHandler.registriereSchriftart(30f);
-		Font customFont22f = FontHandler.registriereSchriftart(22f);
-		
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 432, 151);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -83,9 +80,8 @@ public class PremiumStreckeView extends JFrame {
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
 
-		Frage = new JLabel("  Möchten Sie die Strecke wirklich für 4,99€ erwerben?");
+		Frage = new JLabel("  Moechten Sie die Strecke wirklich fuer 4,99€ erwerben?");
 		GridBagConstraints gbc_Frage = new GridBagConstraints();
-		Frage.setFont(customFont);
 		gbc_Frage.anchor = GridBagConstraints.NORTH;
 		gbc_Frage.insets = new Insets(0, 0, 5, 0);
 		gbc_Frage.gridwidth = 3;
@@ -94,14 +90,13 @@ public class PremiumStreckeView extends JFrame {
 		frame.getContentPane().add(Frage, gbc_Frage);
 		
 
-		bestätigen = new JButton("Bestätigen");
-		GridBagConstraints gbc_bestätigen = new GridBagConstraints();
-		gbc_bestätigen.anchor = GridBagConstraints.NORTHEAST;
-		gbc_bestätigen.insets = new Insets(0, 0, 5, 5);
-		gbc_bestätigen.gridx = 0;
-		gbc_bestätigen.gridy = 2;
-		bestätigen.setFont(customFont);
-		frame.getContentPane().add(bestätigen, gbc_bestätigen);
+		bestaetigen = new JButton("Bestaetigen");
+		GridBagConstraints gbc_bestaetigen = new GridBagConstraints();
+		gbc_bestaetigen.anchor = GridBagConstraints.NORTHEAST;
+		gbc_bestaetigen.insets = new Insets(0, 0, 5, 5);
+		gbc_bestaetigen.gridx = 0;
+		gbc_bestaetigen.gridy = 2;
+		frame.getContentPane().add(bestaetigen, gbc_bestaetigen);
 
 		abbrechen = new JButton("Abbrechen");
 		GridBagConstraints gbc_abbrechen = new GridBagConstraints();
@@ -109,7 +104,6 @@ public class PremiumStreckeView extends JFrame {
 		gbc_abbrechen.anchor = GridBagConstraints.NORTHWEST;
 		gbc_abbrechen.gridx = 2;
 		gbc_abbrechen.gridy = 2;
-		abbrechen.setFont(customFont);
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
 	}
 

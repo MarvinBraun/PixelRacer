@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 /**
- * Die Klasse PremiumAccountView füllt das Fenster mit allen dazugehörigen
+ * Die Klasse PremiumAccountView fuellt das Fenster mit allen dazugehoerigen
  * Inhalten (Buttons, Textfelder usw.).
  * 
  * @author Ferhat Koca
@@ -30,13 +30,13 @@ import java.io.IOException;
 public class PremiumAccountView extends JFrame {
 
 	JFrame frame;
-	JButton bestätigen = new JButton("Bestätigen");
+	JButton bestaetigen = new JButton("Bestaetigen");
 	JButton abbrechen = new JButton("Abbrechen");
 	JLabel Frage;
 	anzeigenRechnung_ansicht2 rechnung = new anzeigenRechnung_ansicht2();
 
 	/**
-	 * Führt die GUI aus.
+	 * Fuehrt die GUI aus.
 	 * 
 	 */
 	public static void main(String[] args) {
@@ -53,7 +53,7 @@ public class PremiumAccountView extends JFrame {
 	}
 
 	/**
-	 * Der Konstruktor führt die Methode initialize aus.
+	 * Der Konstruktor fuehrt die Methode initialize aus.
 	 * 
 	 */
 	public PremiumAccountView() {
@@ -64,15 +64,13 @@ public class PremiumAccountView extends JFrame {
 	/**
 	 * Initialisiert das Objekt.
 	 * 
-	 * @throws IOException wenn ein Fehler beim füllen des 
-	 * Frames ein Fehler entstanden ist.
+	 * @throws IOException
+	 *             wenn ein Fehler beim fuellen des Frames ein Fehler entstanden
+	 *             ist.
 	 * 
 	 */
 	private void initialize() {
-		
-		Font customFont = FontHandler.registriereSchriftart(30f);
-		Font customFont22f = FontHandler.registriereSchriftart(22f);
-		
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 432, 151);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,7 +84,7 @@ public class PremiumAccountView extends JFrame {
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
 
-		Frage = new JLabel("Möchten Sie wirklich für 4,99€ auf Premium upgraden?");
+		Frage = new JLabel("Moechten Sie wirklich fuer 4,99€ auf Premium upgraden?");
 		GridBagConstraints gbc_Frage = new GridBagConstraints();
 		gbc_Frage.anchor = GridBagConstraints.NORTH;
 		gbc_Frage.insets = new Insets(0, 0, 5, 0);
@@ -94,22 +92,21 @@ public class PremiumAccountView extends JFrame {
 		gbc_Frage.gridx = 0;
 		gbc_Frage.gridy = 1;
 		frame.getContentPane().add(Frage, gbc_Frage);
-		Frage.setFont(customFont22f);
 
-		GridBagConstraints gbc_bestätigen = new GridBagConstraints();
-		gbc_bestätigen.anchor = GridBagConstraints.NORTHEAST;
-		gbc_bestätigen.insets = new Insets(0, 0, 5, 5);
-		gbc_bestätigen.gridx = 0;
-		gbc_bestätigen.gridy = 2;
-		bestätigen.setFont(customFont);
-		frame.getContentPane().add(bestätigen, gbc_bestätigen);
+		GridBagConstraints gbc_bestaetigen = new GridBagConstraints();
+		gbc_bestaetigen.anchor = GridBagConstraints.NORTHEAST;
+		gbc_bestaetigen.insets = new Insets(0, 0, 5, 5);
+		gbc_bestaetigen.gridx = 0;
+		gbc_bestaetigen.gridy = 2;
+
+		frame.getContentPane().add(bestaetigen, gbc_bestaetigen);
 
 		GridBagConstraints gbc_abbrechen = new GridBagConstraints();
 		gbc_abbrechen.insets = new Insets(0, 0, 5, 0);
 		gbc_abbrechen.anchor = GridBagConstraints.NORTHWEST;
 		gbc_abbrechen.gridx = 2;
 		gbc_abbrechen.gridy = 2;
-		abbrechen.setFont(customFont);
+
 		frame.getContentPane().add(abbrechen, gbc_abbrechen);
 
 	}
