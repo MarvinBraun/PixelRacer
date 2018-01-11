@@ -1,6 +1,8 @@
 package Anmelden;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -16,6 +18,7 @@ import java.awt.Button;
 import javax.swing.SwingConstants;
 
 import BackgroundAnimation.Movement;
+import FontHandler.FontHandler;
 
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
@@ -34,7 +37,7 @@ public class AnmeldenView {
 	private JButton btnAnmelden;
 	private JButton btnAccountAnlegen;
 	private JLabel lblNutzername;
-	private JLabel lblPassowrt;
+	private JLabel lblPasswort;
 	private JButton btnMitarbeiter;
 
 	/**
@@ -64,6 +67,9 @@ public class AnmeldenView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() { //Initialisierung des Fensters und den dazugehörigen Komponenten
+		Font customFont14f = FontHandler.registriereSchriftart(14f);
+		Font customFont10f = FontHandler.registriereSchriftart(10f);
+		
 		frmPixelRacer = new JFrame();
 		frmPixelRacer.setTitle("Pixel Racer - Anmelden");
 		frmPixelRacer.setResizable(false);
@@ -79,6 +85,10 @@ public class AnmeldenView {
 		
 		btnAnmelden = new JButton("Anmelden");
 		btnAnmelden.setBounds(205, 264, 127, 45);
+		btnAnmelden.setFont(customFont14f);
+		btnAnmelden.setBorderPainted(false);
+		btnAnmelden.setOpaque(false);
+		btnAnmelden.setBackground(SystemColor.activeCaption);
 		btnAnmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -87,7 +97,11 @@ public class AnmeldenView {
 	
 		
 		btnAccountAnlegen = new JButton("Account anlegen");
-		btnAccountAnlegen.setBounds(365, 264, 170, 45);
+		btnAccountAnlegen.setBounds(365, 264, 210, 45);
+		btnAccountAnlegen.setFont(customFont14f);
+		btnAccountAnlegen.setBorderPainted(false);
+		btnAccountAnlegen.setOpaque(false);
+		btnAccountAnlegen.setBackground(SystemColor.activeCaption);
 		btnAccountAnlegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmPixelRacer.dispose();
@@ -100,15 +114,18 @@ public class AnmeldenView {
 		frmPixelRacer.getContentPane().add(passwordField);
 		
 		lblNutzername = new JLabel("Nutzername");
-		lblNutzername.setBounds(252, 111, 80, 14);
+		lblNutzername.setBounds(252, 111, 150, 14);
+		lblNutzername.setFont(customFont14f);
 		frmPixelRacer.getContentPane().add(lblNutzername);
 		
-		lblPassowrt = new JLabel("Passwort");
-		lblPassowrt.setBounds(254, 167, 78, 14);
-		frmPixelRacer.getContentPane().add(lblPassowrt);
+		lblPasswort = new JLabel("Passwort");
+		lblPasswort.setBounds(254, 167, 150, 14);
+		lblPasswort.setFont(customFont14f);
+		frmPixelRacer.getContentPane().add(lblPasswort);
 		
 		btnMitarbeiter = new JButton("Mitarbeiter");
-		btnMitarbeiter.setBounds(642, 519, 108, 23);
+		btnMitarbeiter.setBounds(642, 519, 120, 23);
+		btnMitarbeiter.setFont(customFont10f);
 		btnMitarbeiter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmPixelRacer.dispose();
@@ -183,11 +200,11 @@ Movement m = new Movement(10);
 	}
 
 	public JLabel getLblPassowrt() {
-		return lblPassowrt;
+		return lblPasswort;
 	}
 
 	public void setLblPassowrt(JLabel lblPassowrt) {
-		this.lblPassowrt = lblPassowrt;
+		this.lblPasswort = lblPassowrt;
 	}
 
 	public JButton getBtnMitarbeiter() {

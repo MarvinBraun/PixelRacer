@@ -11,6 +11,7 @@ import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
 import Premium.kaufePremiumAccount;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
+import Rechnung.RechnungAnzeigenStrg;
 import Rechnung.anzeigenRechnungStrg;
 import Startansicht.StartansichtStrg;
 
@@ -52,7 +53,7 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 			
 		Fahrtverwaltung v1 = new Fahrtverwaltung();
 				
-		LinkedList<SingleplayerFahrt> fahrten1 = v1.gibSingleplayerFahrtenFürBenutzer(Nutzerverwaltung.getangKunde().getnutzername());
+		LinkedList<SingleplayerFahrt> fahrten1 = v1.gibSingleplayerFahrtenFuerBenutzer(Nutzerverwaltung.getangKunde().getnutzername());
 		
 		//Vorname des aktuell angemeldeten Nutzer setzen
 		viewKunde.getLblSetVorname().setText(Nutzerverwaltung.getangKunde().getvn());

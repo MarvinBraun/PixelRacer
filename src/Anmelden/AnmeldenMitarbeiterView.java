@@ -59,6 +59,7 @@ public class AnmeldenMitarbeiterView {
 		frmPixelRacer.setBounds(100, 100, 800, 600);
 		frmPixelRacer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPixelRacer.getContentPane().setLayout(null);
+		frmPixelRacer.setLocationRelativeTo(null);
 		
 		lblMitarbeiterid = new JLabel("MitarbeiterID");
 		lblMitarbeiterid.setBounds(252, 111, 217, 14);

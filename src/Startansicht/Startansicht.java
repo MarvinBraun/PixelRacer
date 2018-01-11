@@ -8,8 +8,10 @@ import javax.swing.UIManager;
 
 import Anmelden.AnmeldenStrg;
 import BackgroundAnimation.Movement;
+import FontHandler.FontHandler;
 
 import java.awt.Font;
+import java.awt.SystemColor;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -67,6 +69,9 @@ public class Startansicht {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() { //Initialisierung des Fensters und den dazugehörigen Komponenten
+		Font customFont14f = FontHandler.registriereSchriftart(14f);
+		Font customFont10f = FontHandler.registriereSchriftart(10f);
+		
 		frmPixelRacer = new JFrame();
 		frmPixelRacer.setResizable(false);
 		frmPixelRacer.setTitle("Pixel Racer");
@@ -82,6 +87,10 @@ public class Startansicht {
 		
 		btnSpielen = new JButton("Spielen");
 		btnSpielen.setBounds(30, 404, 127, 45);
+		btnSpielen.setFont(customFont14f);
+		btnSpielen.setBorderPainted(false);
+		btnSpielen.setOpaque(false);
+		btnSpielen.setBackground(SystemColor.activeCaption);
 		btnSpielen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frmPixelRacer.dispose();
@@ -90,7 +99,11 @@ public class Startansicht {
 		frmPixelRacer.getContentPane().add(btnSpielen);
 		
 		btnGarage = new JButton("Garage");
-		btnGarage.setBounds(245, 404, 127, 45);
+		btnGarage.setBounds(180, 404, 127, 45);
+		btnGarage.setFont(customFont14f);
+		btnGarage.setBorderPainted(false);
+		btnGarage.setOpaque(false);
+		btnGarage.setBackground(SystemColor.activeCaption);
 		btnGarage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frmPixelRacer.dispose();
@@ -98,8 +111,12 @@ public class Startansicht {
 		});
 		frmPixelRacer.getContentPane().add(btnGarage);
 		
-		btnStreckenbersicht = new JButton("Strecken\u00FCbersicht");
-		btnStreckenbersicht.setBounds(425, 404, 152, 45);
+		btnStreckenbersicht = new JButton("Streckenuebersicht");
+		btnStreckenbersicht.setBounds(330, 404, 250, 45);
+		btnStreckenbersicht.setFont(customFont14f);
+		btnStreckenbersicht.setBorderPainted(false);
+		btnStreckenbersicht.setOpaque(false);
+		btnStreckenbersicht.setBackground(SystemColor.activeCaption);
 		btnStreckenbersicht.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frmPixelRacer.dispose();
@@ -108,16 +125,24 @@ public class Startansicht {
 		frmPixelRacer.getContentPane().add(btnStreckenbersicht);
 		
 		btnProfil = new JButton("Profil");
+		btnProfil.setFont(customFont14f);
+		btnProfil.setBorderPainted(false);
+		btnProfil.setOpaque(false);
+		btnProfil.setBackground(SystemColor.activeCaption);
 		btnProfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frmPixelRacer.dispose();
 			}
 		});
-		btnProfil.setBounds(634, 404, 127, 45);
+		btnProfil.setBounds(580, 404, 127, 45);
 		frmPixelRacer.getContentPane().add(btnProfil);
 		
 		btnAbmelden = new JButton("Abmelden");
 		btnAbmelden.setBounds(649, 524, 112, 23);
+		btnAbmelden.setFont(customFont10f);
+		btnAbmelden.setBorderPainted(false);
+		btnAbmelden.setOpaque(false);
+		btnAbmelden.setBackground(SystemColor.activeCaption);
 		frmPixelRacer.getContentPane().add(btnAbmelden);
 		btnAbmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -126,6 +151,7 @@ public class Startansicht {
 		});
 		
 		lblAnzeige = new JLabel("Fehler");
+		lblAnzeige.setFont(customFont10f);
 		lblAnzeige.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblAnzeige.setBounds(544, 0, 240, 14);
 		frmPixelRacer.getContentPane().add(lblAnzeige);

@@ -1,11 +1,14 @@
 package AccountAnlegen;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 import BackgroundAnimation.Movement;
+import FontHandler.FontHandler;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -69,6 +72,8 @@ public class AccountAnlegenView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() { //Initialisierung des Fenster und den dazugehörigen Komponenten
+		Font customFont14f = FontHandler.registriereSchriftart(14f);
+		
 		frmPixelRacer = new JFrame();
 		frmPixelRacer.setResizable(false);
 		frmPixelRacer.setTitle("Pixel Racer - Account Anlegen");
@@ -109,10 +114,18 @@ public class AccountAnlegenView {
 		
 		btnAnlegen = new JButton("Anlegen");
 		btnAnlegen.setBounds(223, 390, 127, 45);
+		btnAnlegen.setFont(customFont14f);
+		btnAnlegen.setBorderPainted(false);
+		btnAnlegen.setOpaque(false);
+		btnAnlegen.setBackground(SystemColor.activeCaption);
 		frmPixelRacer.getContentPane().add(btnAnlegen);
 		
 		btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setBounds(362, 390, 127, 45);
+		btnAbbrechen.setBounds(362, 390, 150, 45);
+		btnAbbrechen.setFont(customFont14f);
+		btnAbbrechen.setBorderPainted(false);
+		btnAbbrechen.setOpaque(false);
+		btnAbbrechen.setBackground(SystemColor.activeCaption);
 		frmPixelRacer.getContentPane().add(btnAbbrechen);
 		
 		passwordField = new JPasswordField();
@@ -122,26 +135,32 @@ public class AccountAnlegenView {
 		
 		lblVorname = new JLabel("Vorname");
 		lblVorname.setBounds(300, 28, 189, 14);
+		lblVorname.setFont(customFont14f);
 		frmPixelRacer.getContentPane().add(lblVorname);
 		
 		lblNachname = new JLabel("Nachname");
-		lblNachname.setBounds(300, 82, 86, 14);
+		lblNachname.setBounds(300, 82, 120, 14);
+		lblNachname.setFont(customFont14f);
 		frmPixelRacer.getContentPane().add(lblNachname);
 		
 		lblGeburtsdatum = new JLabel("Geburtsdatum");
-		lblGeburtsdatum.setBounds(300, 137, 127, 14);
+		lblGeburtsdatum.setBounds(300, 137, 170, 14);
+		lblGeburtsdatum.setFont(customFont14f);
 		frmPixelRacer.getContentPane().add(lblGeburtsdatum);
 		
 		lblEmail = new JLabel("Email");
-		lblEmail.setBounds(300, 193, 46, 14);
+		lblEmail.setBounds(300, 193, 90, 14);
+		lblEmail.setFont(customFont14f);
 		frmPixelRacer.getContentPane().add(lblEmail);
 		
 		lblBenutzername = new JLabel("Benutzername");
 		lblBenutzername.setBounds(300, 249, 149, 14);
+		lblBenutzername.setFont(customFont14f);
 		frmPixelRacer.getContentPane().add(lblBenutzername);
 		
 		lblPasswort = new JLabel("Passwort");
 		lblPasswort.setBounds(300, 305, 109, 14);
+		lblPasswort.setFont(customFont14f);
 		frmPixelRacer.getContentPane().add(lblPasswort);
 		
 		Movement m = new Movement(10);

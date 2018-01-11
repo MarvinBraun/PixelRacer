@@ -1,6 +1,8 @@
 package ProfilBearbeiten;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -12,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import BackgroundAnimation.Movement;
+import FontHandler.FontHandler;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -60,32 +63,42 @@ public class ProfilBearbeitenAttributView { //Deklaration der benötigten Variabl
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() { //Initialisierung des Fensters und den dazugehörigen Komponenten
+		Font customFont14f = FontHandler.registriereSchriftart(14f);
+		
 		frmProfilBearbeiten = new JFrame();
 		frmProfilBearbeiten.setResizable(false);
 		frmProfilBearbeiten.setTitle("Profil Bearbeiten - Attribut");
 		frmProfilBearbeiten.setBounds(100, 100, 600, 400);
 		frmProfilBearbeiten.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmProfilBearbeiten.getContentPane().setLayout(null);
+		frmProfilBearbeiten.setLocationRelativeTo(null);
 		
 		lblAktAnzeige = new JLabel("Fehler");
-		lblAktAnzeige.setBounds(333, 66, 198, 14);
+		lblAktAnzeige.setBounds(225, 66, 350, 14);
+		lblAktAnzeige.setFont(customFont14f);
 		frmProfilBearbeiten.getContentPane().add(lblAktAnzeige);
 		
 		textFieldNeu = new JTextField();
-		textFieldNeu.setBounds(333, 91, 198, 20);
+		textFieldNeu.setBounds(225, 91, 350, 20);
 		frmProfilBearbeiten.getContentPane().add(textFieldNeu);
 		textFieldNeu.setColumns(10);
 		
 		lblAktuell = new JLabel("Aktuell");
-		lblAktuell.setBounds(98, 66, 46, 14);
+		lblAktuell.setBounds(70, 66, 100, 14);
+		lblAktuell.setFont(customFont14f);
 		frmProfilBearbeiten.getContentPane().add(lblAktuell);
 		
 		lblNeu = new JLabel("Neu");
-		lblNeu.setBounds(98, 94, 46, 14);
+		lblNeu.setBounds(70, 94, 50, 14);
+		lblNeu.setFont(customFont14f);
 		frmProfilBearbeiten.getContentPane().add(lblNeu);
 		
 		btnFertig = new JButton("Fertig");
-		btnFertig.setBounds(170, 252, 89, 23);
+		btnFertig.setBounds(170, 252, 110, 23);
+		btnFertig.setFont(customFont14f);
+		btnFertig.setBorderPainted(false);
+		btnFertig.setOpaque(false);
+		btnFertig.setBackground(SystemColor.activeCaption);
 		btnFertig.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmProfilBearbeiten.dispose();
@@ -94,7 +107,11 @@ public class ProfilBearbeitenAttributView { //Deklaration der benötigten Variabl
 		frmProfilBearbeiten.getContentPane().add(btnFertig);
 		
 		btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setBounds(333, 252, 120, 23);
+		btnAbbrechen.setBounds(333, 252, 170, 23);
+		btnAbbrechen.setFont(customFont14f);
+		btnAbbrechen.setBorderPainted(false);
+		btnAbbrechen.setOpaque(false);
+		btnAbbrechen.setBackground(SystemColor.activeCaption);
 		btnAbbrechen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmProfilBearbeiten.dispose();
