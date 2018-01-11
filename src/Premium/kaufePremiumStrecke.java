@@ -38,8 +38,9 @@ public class kaufePremiumStrecke extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == psv.bestätigen) {
-			
+			psv.frame.dispose();
 			RechnungBezahlenStrg strg = new RechnungBezahlenStrg(s) ;
+			viewUebersicht.getFrame().dispose();
 		}
 		if (e.getSource() == psv.abbrechen) {
 			psv.frame.dispose();
