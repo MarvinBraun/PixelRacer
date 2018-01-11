@@ -2,12 +2,6 @@ package Rechnung;
 
 import java.awt.EventQueue;
 
-/**
- * Grafische Benutzeroberfläche um den Bezahlprozess auf der externen Website Paypal darszustellen
- * @author Matthias Westermeyer
- *
- */
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -23,6 +17,12 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JToggleButton;
 import javax.swing.ImageIcon;
+
+/**
+ * Grafische Benutzeroberfläche um den Bezahlprozess auf der externen Website Paypal darszustellen
+ * @author Matthias Westermeyer
+ *
+ */
 
 public class bezahlenRechnung_ansicht {
 
@@ -173,7 +173,7 @@ public class bezahlenRechnung_ansicht {
 		btnNewButton = new JButton("Einloggen");
 		btnNewButton.setFont(customFont20f);
 		btnNewButton.setBounds(221, 231, 220, 39);
-		frmBezahlung.getContentPane().add(btnNewButton);
+		frmBezahlung.getContentPane().add(btnNewButton);	
 		
 		lblOder = new JLabel("oder");
 		lblOder.setHorizontalAlignment(SwingConstants.CENTER);
@@ -196,7 +196,7 @@ public class bezahlenRechnung_ansicht {
 		frmBezahlung.getContentPane().add(textPane);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("src/Resources/paypalIcon.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Matze\\Pictures\\paypal_Icon.jpg"));
 		lblNewLabel.setBounds(221, 28, 220, 65);
 		frmBezahlung.getContentPane().add(lblNewLabel);
 	}
