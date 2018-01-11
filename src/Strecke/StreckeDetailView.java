@@ -78,7 +78,7 @@ public class StreckeDetailView {
 				
 		setFrame(new JFrame());
 		getFrame().setBounds(100, 100, 450, 300);
-		getFrame().setDefaultCloseOperation(getFrame().DO_NOTHING_ON_CLOSE);
+		getFrame().setDefaultCloseOperation(getFrame().DISPOSE_ON_CLOSE);
 		getFrame().setVisible(false);
 		getFrame().setResizable(false);
 		getFrame().getContentPane().setLayout(null);
