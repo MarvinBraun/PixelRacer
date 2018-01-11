@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 
 /**
- * Grafische Benutzeroberfläche für das Profil eines Kunden/Spielers. 
+ * Grafische Benutzeroberflaeche fuer das Profil eines Kunden/Spielers. 
  * 
  * @author Robin Demmler
  *
@@ -27,7 +27,7 @@ import java.awt.Font;
 
 public class ProfilKundeAnsicht{
 	/**
-	 * Deklarieren benötigter Variablen.
+	 * Deklarieren benoetigter Variablen.
 	 */
 	private JFrame frmPixelRacer;
 
@@ -55,7 +55,7 @@ public class ProfilKundeAnsicht{
 	private JLabel lblSetAlsZweiter;
 	private JLabel lblSetAlsDritter;		
 	/**
-	 * Main-Methode führt GUI aus.
+	 * Main-Methode fuehrt GUI aus.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -71,7 +71,7 @@ public class ProfilKundeAnsicht{
 	}
 
 	/**
-	 * Konstruktor initialisiert das Objekt und befüllt es über die initialize()-Methode.
+	 * Konstruktor ruft initialize()-Methode auf.
 	 */
 	public ProfilKundeAnsicht() {
 		initialize();
@@ -215,7 +215,7 @@ public class ProfilKundeAnsicht{
 		getFrmPixelRacer().getContentPane().add(lblHintergrund);
 		
 				
-		Movement m = new Movement(10); // Hintergrund-Image dem Hintergurnd-Label zuweisen, Bewegung festlegen & dem Frame hinzufügen
+		Movement m = new Movement(10); // Hintergrund-Image dem Hintergurnd-Label zuweisen, Bewegung festlegen & dem Frame hinzufuegen
 		
 		BufferedImage image = null;
 		try {
@@ -232,7 +232,7 @@ public class ProfilKundeAnsicht{
 		getFrmPixelRacer().getContentPane().add(m.label);		
 	}
 	/**
-	 * Getter & Setter für die verwendeten Variablen 
+	 * Getter & Setter fuer die verwendeten Variablen 
 	 */
 	public JLabel getLblHintergrund() {
 		return lblHintergrund;
