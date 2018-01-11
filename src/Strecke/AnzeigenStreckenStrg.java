@@ -18,8 +18,8 @@ import Premium.kaufePremiumStrecke;
 import Rechnung.Rechnung;
 import Rechnung.Rechnungsverwaltung;
 import Startansicht.StartansichtStrg;
-import myIterator.MyIteratorStrecke;
-import myIterator.MyIteratorString;
+import Iterator.IteratorStrecke;
+import Iterator.IteratorString;
 /**
  * Die Klasse AnzeigenStreckenStrg steuert den Aufruf der Streckendaten und 
  * verwaltet die grafischen Benutzeroberflaechen Streckenuebersicht und StreckeDetailView.
@@ -44,7 +44,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	Streckenverwaltung verwStrecke;
 	Fahrtverwaltung verwFahrt;
 	
-	//LinkedLists fÃ¼r benÃ¶tigte Daten instanziieren (Fahrtdaten, Streckendaten & Rechnungsdaten)
+	//LinkedLists fÃƒÂ¼r benÃƒÂ¶tigte Daten instanziieren (Fahrtdaten, Streckendaten & Rechnungsdaten)
 	LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
 	LinkedList<Strecke> streckenListe = new LinkedList<Strecke>();
 	LinkedList<Rechnung> rechnungsListe = new LinkedList<Rechnung>();
@@ -53,8 +53,8 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	int counterRang2 =0;
 	int counterRang3 =0;
 		
-	static MyIteratorStrecke<Strecke> itStrecke;
-	static MyIteratorString<String> itString;
+	static IteratorStrecke<Strecke> itStrecke;
+	static IteratorString<String> itString;
 	
 	boolean forward = false;
 	boolean backward = false;
@@ -73,7 +73,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		
 		verwStrecke = new Streckenverwaltung();
 		streckenListe = verwStrecke.gibStrecke();
-		itStrecke = new MyIteratorStrecke(streckenListe.listIterator());
+		itStrecke = new IteratorStrecke(streckenListe.listIterator());
 		
 		verwRechnung = new Rechnungsverwaltung();
 		rechnungsListe = verwRechnung.gibStreckenRechnungenfuerBenutzer();
@@ -98,7 +98,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		
 	}
 	/**
-	 * streckeVorwaerts() prÃ¼ft ob eine weitere Strecke existiert und aktualisiert dementsprechend die Felder der GUI
+	 * streckeVorwaerts() prÃƒÂ¼ft ob eine weitere Strecke existiert und aktualisiert dementsprechend die Felder der GUI
 	 */	
 	public void streckeVorwaerts()
 	{
@@ -126,10 +126,10 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			
 			// Fahrtenliste zu angemeldetem Nutzer und akuteller Strecke erstellen
 			Fahrtverwaltung v = new Fahrtverwaltung();
-			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke(Nutzerverwaltung.getangKunde().getnutzername(),s.getStreckenname());
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFuerBenutzerUndStrecke(Nutzerverwaltung.getangKunde().getnutzername(),s.getStreckenname());
 			viewDetail.getLblSetGesRennen().setText(Integer.toString(fahrten.size()));
 					
-			// Gesamt gefahrene Strecke fÃ¼r Singleplayerfahrten anzeigen
+			// Gesamt gefahrene Strecke fÃƒÂ¼r Singleplayerfahrten anzeigen
 			viewDetail.getLblSetGesKm().setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
 					
 			// Anzahl der erreichten Platzierungen berrechen und anzeigen
@@ -201,7 +201,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 }	
 	
 	/**
-	 * streckeZurueck() prÃ¼ft ob eine vorherige Strecke existiert und aktualisiert dementsprechend die Felder der GUI
+	 * streckeZurueck() prÃƒÂ¼ft ob eine vorherige Strecke existiert und aktualisiert dementsprechend die Felder der GUI
 	 */	
 	public void streckeZurueck()
 	{	try {
@@ -227,10 +227,10 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			
 			// Fahrtenliste zu angemeldetem Nutzer und akuteller Strecke erstellen
 			Fahrtverwaltung v = new Fahrtverwaltung();
-			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFuerBenutzerUndStrecke("DZeller",s.getStreckenname());
 			viewDetail.getLblSetGesRennen().setText(Integer.toString(fahrten.size()));
 					
-			// Gesamt gefahrene Strecke fÃ¼r Singleplayerfahrten anzeigen
+			// Gesamt gefahrene Strecke fÃƒÂ¼r Singleplayerfahrten anzeigen
 			viewDetail.getLblSetGesKm().setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
 					
 			// Anzahl der erreichten Platzierungen berrechen und anzeigen
@@ -303,8 +303,8 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	} // Exception Handling: Keine weiteren Karts anzuzeigen
 }	
 	/** 
-	 * imageResizer verkleinert ein Objekt des Typs BufferedImage von 800x600 auf 300x200. Die Grafiken werden dabei Ã¼ber die Klasse Graphics neu gezeichnet.
-	 * @return BufferedImage in der GrÃ¶ÃŸe 300x200.
+	 * imageResizer verkleinert ein Objekt des Typs BufferedImage von 800x600 auf 300x200. Die Grafiken werden dabei ÃƒÂ¼ber die Klasse Graphics neu gezeichnet.
+	 * @return BufferedImage in der GrÃƒÂ¶ÃƒÅ¸e 300x200.
 	 */	
 	public static BufferedImage imageResizer(BufferedImage original)
 	{
