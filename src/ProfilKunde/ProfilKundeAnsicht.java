@@ -1,22 +1,25 @@
 package ProfilKunde;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import BackgroundAnimation.Movement;
 import FontHandler.FontHandler;
 import Nutzer.Nutzerverwaltung;
-
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 /**
  * Grafische Benutzeroberflaeche fuer das Profil eines Kunden/Spielers. 
@@ -81,7 +84,7 @@ public class ProfilKundeAnsicht{
 	 */
 	private void initialize() {
 		
-		Font customFont30f = FontHandler.registriereSchriftart(30f); // Laden der Schriftart durch Klasse FontHandler
+		Font customFont20f = FontHandler.registriereSchriftart(15f); // Laden der Schriftart durch Klasse FontHandler
 		
 		setFrmPixelRacer(new JFrame());
 		getFrmPixelRacer().setTitle("Pixel Racer - Spielerprofil " + Nutzerverwaltung.getangKunde().getnutzername());
@@ -90,128 +93,158 @@ public class ProfilKundeAnsicht{
 		getFrmPixelRacer().setResizable(false);
 		getFrmPixelRacer().getContentPane().setLayout(null);
 		getFrmPixelRacer().setVisible(true);
+		getFrmPixelRacer().addWindowListener(new WindowAdapter() {
+
+			  @Override
+			  public void windowClosing(WindowEvent we)
+			  { 
+				  int result = JOptionPane.showConfirmDialog(null,"Wollen sie das Programm wirklich beenden", "Programm beenden", JOptionPane.YES_NO_OPTION);
+				  switch(result) {
+				  case JOptionPane.YES_OPTION:
+					  System.exit(0);
+				  case JOptionPane.NO_OPTION:
+					  getFrmPixelRacer().setVisible(true);
+				  }
+			  }
+			});
 		
 		setLblNewLabel(new JLabel("Vorname:"));
-		getLblNewLabel().setFont(customFont30f);
-		getLblNewLabel().setBounds(286, 73, 64, 23);
+		getLblNewLabel().setFont(customFont20f);
+		getLblNewLabel().setBounds(346, 107, 93, 23);
 		getFrmPixelRacer().getContentPane().add(getLblNewLabel());
 		
 		setLblNachname(new JLabel("Nachname:"));
-		getLblNachname().setFont(customFont30f);
-		getLblNachname().setBounds(278, 98, 72, 23);
+		getLblNachname().setFont(customFont20f);
+		getLblNachname().setBounds(338, 132, 101, 23);
 		getFrmPixelRacer().getContentPane().add(getLblNachname());
 		
 		setLblStatus(new JLabel("Status:"));
-		getLblStatus().setFont(customFont30f);
-		getLblStatus().setBounds(297, 123, 53, 23);
+		getLblStatus().setFont(customFont20f);
+		getLblStatus().setBounds(357, 157, 82, 23);
 		getFrmPixelRacer().getContentPane().add(getLblStatus());
 		
 		setLblPunktestand(new JLabel("Punktestand:"));
-		getLblPunktestand().setFont(customFont30f);
-		getLblPunktestand().setBounds(268, 148, 82, 23);
+		getLblPunktestand().setFont(customFont20f);
+		getLblPunktestand().setBounds(305, 180, 216, 23);
 		getFrmPixelRacer().getContentPane().add(getLblPunktestand());
 		
 		setLblFahrtenAbsolviert(new JLabel("Fahrten absolviert:"));
-		getLblFahrtenAbsolviert().setFont(customFont30f);
-		getLblFahrtenAbsolviert().setBounds(240, 213, 110, 23);
+		getLblFahrtenAbsolviert().setFont(customFont20f);
+		getLblFahrtenAbsolviert().setBounds(236, 253, 241, 23);
 		getFrmPixelRacer().getContentPane().add(getLblFahrtenAbsolviert());
 		
 		setLblRennenAlsErster(new JLabel("Rennen als Erster abgeschlossen:"));
-		getLblRennenAlsErster().setFont(customFont30f);
-		getLblRennenAlsErster().setBounds(170, 296, 209, 23);
+		getLblRennenAlsErster().setFont(customFont20f);
+		getLblRennenAlsErster().setBounds(98, 277, 368, 23);
 		getFrmPixelRacer().getContentPane().add(getLblRennenAlsErster());
 		
 		setLblRennenAlsZweiter(new JLabel("Rennen als Zweiter abgeschlossen:"));
-		getLblRennenAlsZweiter().setFont(customFont30f);
-		getLblRennenAlsZweiter().setBounds(163, 321, 227, 23);
+		getLblRennenAlsZweiter().setFont(customFont20f);
+		getLblRennenAlsZweiter().setBounds(91, 302, 375, 23);
 		getFrmPixelRacer().getContentPane().add(getLblRennenAlsZweiter());
 		
 		setLblRennenAlsDritter(new JLabel("Rennen als Dritter abgeschlossen:"));
-		getLblRennenAlsDritter().setFont(customFont30f);
-		getLblRennenAlsDritter().setBounds(170, 346, 220, 23);
+		getLblRennenAlsDritter().setFont(customFont20f);
+		getLblRennenAlsDritter().setBounds(91, 327, 368, 23);
 		getFrmPixelRacer().getContentPane().add(getLblRennenAlsDritter());
 		
 		setBtnGetPremium(new JButton("Werde jetzt Premium-Kunde!"));
-		getBtnGetPremium().setFont(customFont30f);
+		getBtnGetPremium().setFont(customFont20f);
 		getBtnGetPremium().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		getBtnGetPremium().setBounds(66, 415, 313, 33);
+		getBtnGetPremium().setBounds(10, 459, 288, 33);
+		getBtnGetPremium().setBorderPainted(false);
+		getBtnGetPremium().setOpaque(false);
+		getBtnGetPremium().setBackground(SystemColor.activeCaption);
+		getBtnGetPremium().setFocusable(false);
 		getFrmPixelRacer().getContentPane().add(getBtnGetPremium());
 		
 		setBtnProfilBearbeiten(new JButton("Profil bearbeiten"));
-		getBtnProfilBearbeiten().setFont(customFont30f);
+		getBtnProfilBearbeiten().setFont(customFont20f);
 		getBtnProfilBearbeiten().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		getBtnProfilBearbeiten().setBounds(481, 415, 179, 33);
+		getBtnProfilBearbeiten().setBounds(568, 459, 216, 33);
+		getBtnProfilBearbeiten().setBorderPainted(false);
+		getBtnProfilBearbeiten().setOpaque(false);
+		getBtnProfilBearbeiten().setBackground(SystemColor.activeCaption);
+		getBtnProfilBearbeiten().setFocusable(false);
 		getFrmPixelRacer().getContentPane().add(getBtnProfilBearbeiten());
 		
-		setBtnZurueck(new JButton("Zur\u00FCck"));
-		getBtnZurueck().setFont(customFont30f);
+		setBtnZurueck(new JButton("Zurueck"));
+		getBtnZurueck().setFont(customFont20f);
 		getBtnZurueck().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		getBtnZurueck().setBounds(515, 490, 116, 33);
+		getBtnZurueck().setBounds(668, 527, 116, 33);
+		getBtnZurueck().setBorderPainted(false);
+		getBtnZurueck().setOpaque(false);
+		getBtnZurueck().setBackground(SystemColor.activeCaption);
+		getBtnZurueck().setFocusable(false);
 		getFrmPixelRacer().getContentPane().add(getBtnZurueck());
 		
 		setBtnRechnungsverw(new JButton("Zur Rechnungsverwaltung"));
-		getBtnRechnungsverw().setFont(customFont30f);
+		getBtnRechnungsverw().setFont(customFont20f);
 		getBtnRechnungsverw().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		getBtnRechnungsverw().setBounds(66, 494, 313, 33);
+		getBtnRechnungsverw().setBounds(10, 527, 288, 33);
+		getBtnRechnungsverw().setBorderPainted(false);
+		getBtnRechnungsverw().setOpaque(false);
+		getBtnRechnungsverw().setBackground(SystemColor.activeCaption);
+		getBtnRechnungsverw().setFocusable(false);
 		getFrmPixelRacer().getContentPane().add(getBtnRechnungsverw());
 		
 		setLblSetVorname(new JLabel("New label"));
-		getLblSetVorname().setFont(customFont30f);
-		getLblSetVorname().setBounds(481, 75, 212, 19);
+		getLblSetVorname().setFont(customFont20f);
+		getLblSetVorname().setBounds(490, 107, 212, 19);
 		getFrmPixelRacer().getContentPane().add(getLblSetVorname());
 		
 		setLblSetNachname(new JLabel("New label"));
-		getLblSetNachname().setFont(customFont30f);
-		getLblSetNachname().setBounds(481, 100, 212, 19);
+		getLblSetNachname().setFont(customFont20f);
+		getLblSetNachname().setBounds(492, 132, 212, 19);
 		getFrmPixelRacer().getContentPane().add(getLblSetNachname());
 		
 		setLblSetStatus(new JLabel("New label"));
-		getLblSetStatus().setFont(customFont30f);
-		getLblSetStatus().setBounds(481, 125, 212, 19);
+		getLblSetStatus().setFont(customFont20f);
+		getLblSetStatus().setBounds(492, 157, 212, 19);
 		getFrmPixelRacer().getContentPane().add(getLblSetStatus());
 		
 		setLblSetPunktestand(new JLabel("New label"));
-		getLblSetPunktestand().setFont(customFont30f);
-		getLblSetPunktestand().setBounds(481, 150, 212, 19);
+		getLblSetPunktestand().setFont(customFont20f);
+		getLblSetPunktestand().setBounds(492, 182, 212, 19);
 		getFrmPixelRacer().getContentPane().add(getLblSetPunktestand());
 		
 		setLblSetGesFahrten(new JLabel("New label"));
-		getLblSetGesFahrten().setFont(customFont30f);
-		getLblSetGesFahrten().setBounds(481, 215, 212, 19);
+		getLblSetGesFahrten().setFont(customFont20f);
+		getLblSetGesFahrten().setBounds(487, 255, 212, 19);
 		getFrmPixelRacer().getContentPane().add(getLblSetGesFahrten());
 		
 		setLblSetAlsErster(new JLabel("New label"));
-		getLblSetAlsErster().setFont(customFont30f);
-		getLblSetAlsErster().setBounds(481, 296, 212, 23);
+		getLblSetAlsErster().setFont(customFont20f);
+		getLblSetAlsErster().setBounds(489, 277, 212, 23);
 		getFrmPixelRacer().getContentPane().add(getLblSetAlsErster());
 		
 		setLblSetAlsZweiter(new JLabel("New label"));
-		getLblSetAlsZweiter().setFont(customFont30f);
-		getLblSetAlsZweiter().setBounds(481, 323, 212, 19);
+		getLblSetAlsZweiter().setFont(customFont20f);
+		getLblSetAlsZweiter().setBounds(489, 304, 212, 19);
 		getFrmPixelRacer().getContentPane().add(getLblSetAlsZweiter());
 		
 		setLblSetAlsDritter(new JLabel("New label"));
-		getLblSetAlsDritter().setFont(customFont30f);
-		getLblSetAlsDritter().setBounds(481, 348, 212, 19);
+		getLblSetAlsDritter().setFont(customFont20f);
+		getLblSetAlsDritter().setBounds(489, 329, 212, 19);
 		getFrmPixelRacer().getContentPane().add(getLblSetAlsDritter());
 		
 		setLblHintergrund(new JLabel(""));
-		getLblHintergrund().setFont(customFont30f);
+		getLblHintergrund().setFont(customFont20f);
 		getLblHintergrund().setVisible(false);		
-		getLblHintergrund().setBounds(0, 0, 794, 571);
+		getLblHintergrund().setBounds(-61, 11, 794, 571);
 		getFrmPixelRacer().getContentPane().add(lblHintergrund);
 		
 				
@@ -248,6 +281,7 @@ public class ProfilKundeAnsicht{
 
 	public void setBtnRechnungsverw(JButton btnRechnungsverw) {
 		this.btnRechnungsverw = btnRechnungsverw;
+		btnRechnungsverw.setForeground(Color.RED);
 	}
 
 	public JFrame getFrmPixelRacer() {
@@ -329,6 +363,7 @@ public class ProfilKundeAnsicht{
 
 	public void setBtnGetPremium(JButton btnGetPremium) {
 		this.btnGetPremium = btnGetPremium;
+		btnGetPremium.setForeground(Color.RED);
 	}
 
 	public JButton getBtnProfilBearbeiten() {
@@ -337,6 +372,7 @@ public class ProfilKundeAnsicht{
 
 	public void setBtnProfilBearbeiten(JButton btnProfilBearbeiten) {
 		this.btnProfilBearbeiten = btnProfilBearbeiten;
+		btnProfilBearbeiten.setForeground(Color.RED);
 	}
 
 	public JButton getBtnZurueck() {
@@ -345,6 +381,7 @@ public class ProfilKundeAnsicht{
 
 	public void setBtnZurueck(JButton btnZurueck) {
 		this.btnZurueck = btnZurueck;
+		btnZurueck.setForeground(Color.RED);
 	}
 
 	public JLabel getLblSetVorname() {
