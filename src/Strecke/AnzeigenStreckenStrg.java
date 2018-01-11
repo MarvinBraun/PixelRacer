@@ -44,7 +44,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	Streckenverwaltung verwStrecke;
 	Fahrtverwaltung verwFahrt;
 	
-	//LinkedLists für benötigte Daten instanziieren (Fahrtdaten, Streckendaten & Rechnungsdaten)
+	//LinkedLists fÃ¼r benÃ¶tigte Daten instanziieren (Fahrtdaten, Streckendaten & Rechnungsdaten)
 	LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
 	LinkedList<Strecke> streckenListe = new LinkedList<Strecke>();
 	LinkedList<Rechnung> rechnungsListe = new LinkedList<Rechnung>();
@@ -98,7 +98,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		
 	}
 	/**
-	 * streckeVorwaerts() prüft ob eine weitere Strecke existiert und aktualisiert dementsprechend die Felder der GUI
+	 * streckeVorwaerts() prÃ¼ft ob eine weitere Strecke existiert und aktualisiert dementsprechend die Felder der GUI
 	 */	
 	public void streckeVorwaerts()
 	{
@@ -129,7 +129,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke(Nutzerverwaltung.getangKunde().getnutzername(),s.getStreckenname());
 			viewDetail.getLblSetGesRennen().setText(Integer.toString(fahrten.size()));
 					
-			// Gesamt gefahrene Strecke für Singleplayerfahrten anzeigen
+			// Gesamt gefahrene Strecke fÃ¼r Singleplayerfahrten anzeigen
 			viewDetail.getLblSetGesKm().setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
 					
 			// Anzahl der erreichten Platzierungen berrechen und anzeigen
@@ -196,12 +196,12 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		Datenbankschnittstelle.closeConnections();
 					
 	}catch(Exception e){
-		JOptionPane.showConfirmDialog(null, "Du hast noch keine weiteren Karts freigeschaltet!", "Keine weiteren Karts!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showConfirmDialog(null, "Du hast noch keine weiteren Strecken freigeschaltet!", "Keine weiteren Strecken!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 	} // Exception Handling: Keine weiteren Karts anzuzeigen			
 }	
 	
 	/**
-	 * streckeZurueck() prüft ob eine vorherige Strecke existiert und aktualisiert dementsprechend die Felder der GUI
+	 * streckeZurueck() prÃ¼ft ob eine vorherige Strecke existiert und aktualisiert dementsprechend die Felder der GUI
 	 */	
 	public void streckeZurueck()
 	{	try {
@@ -218,6 +218,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			counterRang3 = 0;
 			//StreckeDetailView initiieren			
 			viewDetail= new StreckeDetailView();
+			viewDetail.getFrame().setLocationRelativeTo(null);
 			//ActionListener hinzufuegen
 			viewDetail.getBtnZurueck().addActionListener(this);
 						
@@ -229,7 +230,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
 			viewDetail.getLblSetGesRennen().setText(Integer.toString(fahrten.size()));
 					
-			// Gesamt gefahrene Strecke für Singleplayerfahrten anzeigen
+			// Gesamt gefahrene Strecke fÃ¼r Singleplayerfahrten anzeigen
 			viewDetail.getLblSetGesKm().setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
 					
 			// Anzahl der erreichten Platzierungen berrechen und anzeigen
@@ -298,12 +299,12 @@ public class AnzeigenStreckenStrg implements ActionListener{
 				Datenbankschnittstelle.closeConnections();
 	
 	}catch(Exception e){
-		JOptionPane.showConfirmDialog(null, "Du hast noch keine weiteren Karts freigeschaltet!", "Keine weiteren Karts!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showConfirmDialog(null, "Du hast noch keine weiteren Strecken freigeschaltet!", "Keine weiteren Strecken!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 	} // Exception Handling: Keine weiteren Karts anzuzeigen
 }	
 	/** 
-	 * imageResizer verkleinert ein Objekt des Typs BufferedImage von 800x600 auf 300x200. Die Grafiken werden dabei über die Klasse Graphics neu gezeichnet.
-	 * @return BufferedImage in der Größe 300x200.
+	 * imageResizer verkleinert ein Objekt des Typs BufferedImage von 800x600 auf 300x200. Die Grafiken werden dabei Ã¼ber die Klasse Graphics neu gezeichnet.
+	 * @return BufferedImage in der GrÃ¶ÃŸe 300x200.
 	 */	
 	public static BufferedImage imageResizer(BufferedImage original)
 	{
