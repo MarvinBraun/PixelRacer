@@ -50,20 +50,26 @@ public class AnmeldenStrg implements ActionListener {
 	 * @return Boolean
 	 */
 	public Boolean pruefeDatenKunden() { 
-		Kunde k1 = new Kunde();
-		k1.setnutzername(view1.getTxtNutzername().getText());
-		String pw = new String (view1.getPasswordField().getPassword());
-		k1.setpasswort(pw);
-		
-		kliste = Nutzerverwaltung.gibKundenliste(); //Jeder Kunde aus der Datenbank
-		
-		for(Kunde temp: kliste) { //Überprüfung auf Gleichheit
-			if(k1.getnutzername().equals(temp.getnutzername())) {
-				if(k1.getpasswort().equals(temp.getpasswort())) {
-					angKunde = temp;
-					return true;
+		try {
+			Kunde k1 = new Kunde();
+			k1.setnutzername(view1.getTxtNutzername().getText());
+			String pw = new String (view1.getPasswordField().getPassword());
+			k1.setpasswort(pw);
+			
+			kliste = Nutzerverwaltung.gibKundenliste(); //Jeder Kunde aus der Datenbank
+			
+			for(Kunde temp: kliste) { //Überprüfung auf Gleichheit
+				if(k1.getnutzername().equals(temp.getnutzername())) {
+					if(k1.getpasswort().equals(temp.getpasswort())) {
+						angKunde = temp;
+						return true;
+					}
 				}
 			}
+		}
+		
+		catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Die Daten konnten nicht überprüft werden!",null, JOptionPane.ERROR_MESSAGE);
 		}
 		
 		return false;
@@ -75,19 +81,25 @@ public class AnmeldenStrg implements ActionListener {
 	 * @return Boolean
 	 */
 	public Boolean pruefeDatenMitarbeiter() { //Prüfung auf Übereinstimmung der eingegebenen Daten mit den in der Datenbank hinterlegten Anmeldedaten
-		Mitarbeiter m1 = new Mitarbeiter();
-		m1.setmitarbeiterid(view2.getTxtId().getText());
-		String pw = new String (view2.getPwdPasswort().getPassword());
-		m1.setpasswort(pw);
-		
-		mliste = Nutzerverwaltung.gibMitarbeiterliste(); //Jeder Mitarbeiter aus der Datenbank
-		
-		for(Mitarbeiter temp: mliste) { //Überprüfung auf Gleichheit
-			if(m1.getmitarbeiterid().equals(temp.getmitarbeiterid())) {
-				if(m1.getpasswort().equals(temp.getpasswort())) {
-					return true;
+		try {
+			Mitarbeiter m1 = new Mitarbeiter();
+			m1.setmitarbeiterid(view2.getTxtId().getText());
+			String pw = new String (view2.getPwdPasswort().getPassword());
+			m1.setpasswort(pw);
+			
+			mliste = Nutzerverwaltung.gibMitarbeiterliste(); //Jeder Mitarbeiter aus der Datenbank
+			
+			for(Mitarbeiter temp: mliste) { //Überprüfung auf Gleichheit
+				if(m1.getmitarbeiterid().equals(temp.getmitarbeiterid())) {
+					if(m1.getpasswort().equals(temp.getpasswort())) {
+						return true;
+					}
 				}
 			}
+		}
+		
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Die Daten konnten nicht überprüft werden!",null, JOptionPane.ERROR_MESSAGE);
 		}
 		
 		return false;

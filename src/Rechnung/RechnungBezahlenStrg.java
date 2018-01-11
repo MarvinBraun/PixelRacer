@@ -3,6 +3,8 @@ package Rechnung;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import Anmelden.AnmeldenStrg;
 import Datenbankverwaltung.Datenbankschnittstelle;
 import Kart.Kart;
@@ -80,24 +82,43 @@ public class RechnungBezahlenStrg implements ActionListener {
 		
 		if(e.getSource() == view1.getBtnBezahlen()) {
 			if(auswahl == 'p') {
-				String update = "Update kunde set premium = 'true' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
-				Datenbankschnittstelle.executeUpdate(update);
-				Datenbankschnittstelle.closeConnections();
-				Nutzerverwaltung.getangKunde().aktualisereangKunde();
-				view1.getFrmRechnungBezahlen().dispose();
-				StartansichtStrg strg = new StartansichtStrg();
+				try {
+					String update = "Update kunde set premium = 'true' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
+					Datenbankschnittstelle.executeUpdate(update);
+					Datenbankschnittstelle.closeConnections();
+					Nutzerverwaltung.getangKunde().aktualisereangKunde();
+					view1.getFrmRechnungBezahlen().dispose();
+					StartansichtStrg strg = new StartansichtStrg();
+				}
+				
+				catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "Die Daten konnten nicht aktualisiert werden!",null, JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			
 			if(s == null && k != null) {
-				Rechnungsverwaltung.sendeKartRechnung(k);
-				view1.getFrmRechnungBezahlen().dispose();
-				StartansichtStrg strg = new StartansichtStrg();
+				try {
+					Rechnungsverwaltung.sendeKartRechnung(k);
+					view1.getFrmRechnungBezahlen().dispose();
+					StartansichtStrg strg = new StartansichtStrg();
+				}
+				
+				catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "Es konnte nicht auf die Datenbank zugegriffen werden!",null, JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			
 			if(k == null && s != null) {
-				Rechnungsverwaltung.sendeStreckenRechnung(s);
-				view1.getFrmRechnungBezahlen().dispose();
-				StartansichtStrg strg = new StartansichtStrg();
+				try {
+					Rechnungsverwaltung.sendeStreckenRechnung(s);
+					view1.getFrmRechnungBezahlen().dispose();
+					StartansichtStrg strg = new StartansichtStrg();
+				}
+				
+				catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "Es konnte nicht auf die Datenbank zugegriffen werden!",null, JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		}
 	}

@@ -10,6 +10,7 @@ import ModusAuswählen.ModusauswaehlenStrg;
 import Nutzer.Nutzerverwaltung;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
 import ProfilKunde.AnzeigenProfilKundeStrg;
+import Rechnung.RechnungAnzeigenStrg;
 import Strecke.AnzeigenStreckenStrg;
 
 /**

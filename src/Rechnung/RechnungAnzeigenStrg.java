@@ -48,15 +48,21 @@ public class RechnungAnzeigenStrg implements ActionListener{
 	 * @return Boolean
 	 */
 	public Boolean VergleichRnrKarts() {
-		String rnr = view1.getTextPane().getText();
-		rliste = Rechnungsverwaltung.gibKartRechnungenfuerBenutzer();
-		
-		for(Rechnung temp: rliste) {
-			String rnrListe = String.valueOf(temp.getRechnungsnummer());
-			if(rnr.equals(rnrListe)) {
-				r = temp;
-				return true;
+		try {
+			String rnr = view1.getTextPane().getText();
+			rliste = Rechnungsverwaltung.gibKartRechnungenfuerBenutzer();
+			
+			for(Rechnung temp: rliste) {
+				String rnrListe = String.valueOf(temp.getRechnungsnummer());
+				if(rnr.equals(rnrListe)) {
+					r = temp;
+					return true;
+				}
 			}
+		}
+		
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Die Daten konnten nicht überprüft werden!",null, JOptionPane.ERROR_MESSAGE);
 		}
 		
 		return false;
@@ -66,15 +72,21 @@ public class RechnungAnzeigenStrg implements ActionListener{
 	 * @return Boolean
 	 */
 	public Boolean VergleichRnrStrecke() {
-		String rnr = view1.getTextPane().getText();
-		rliste = Rechnungsverwaltung.gibStreckenRechnungenfuerBenutzer();
-		
-		for(Rechnung temp: rliste) {
-			String rnrListe = String.valueOf(temp.getRechnungsnummer());
-			if(rnr.equals(rnrListe)) {
-				r = temp;
-				return true;
+		try {
+			String rnr = view1.getTextPane().getText();
+			rliste = Rechnungsverwaltung.gibStreckenRechnungenfuerBenutzer();
+			
+			for(Rechnung temp: rliste) {
+				String rnrListe = String.valueOf(temp.getRechnungsnummer());
+				if(rnr.equals(rnrListe)) {
+					r = temp;
+					return true;
+				}
 			}
+		}
+		
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Die Daten konnten nicht überprüft werden!",null, JOptionPane.ERROR_MESSAGE);
 		}
 		
 		return false;

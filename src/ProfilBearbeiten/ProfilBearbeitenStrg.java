@@ -106,9 +106,16 @@ public class ProfilBearbeitenStrg implements ActionListener {
 	 * Speichert die eingegebenen Daten in die Datenbank.
 	 */
 	public void DatenAktualisieren() { 
-		String update = "Update kunde set " + auswahl + " = '" + neu + "' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
-		Datenbankschnittstelle.executeUpdate(update);
-		Datenbankschnittstelle.closeConnections();
+		try {
+			String update = "Update kunde set " + auswahl + " = '" + neu + "' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
+			Datenbankschnittstelle.executeUpdate(update);
+			Datenbankschnittstelle.closeConnections();
+		}
+		
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Die Daten konnten nicht aktualisiert werden!",null, JOptionPane.ERROR_MESSAGE);
+		}
+		
 	}
 
 	@Override

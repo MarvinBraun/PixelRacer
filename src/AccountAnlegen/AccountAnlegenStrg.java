@@ -46,12 +46,18 @@ public class AccountAnlegenStrg implements ActionListener {
 	 */
 	public void eingegebeneDatenSpeichern() { // Speichern der eingegebenen Werte in den Textfeldern der View in
 												// Variablen
-		benutzername = view1.getTxtNutzername().getText();
-		pw = new String(view1.getPasswordField().getPassword());
-		vn = view1.getTxtVorname().getText();
-		nn = view1.getTxtNachname().getText();
-		email = view1.getTxtEmail().getText();
-		gebdat = view1.getTxtGeburtsdatum().getText();
+		try {
+			benutzername = view1.getTxtNutzername().getText();
+			pw = new String(view1.getPasswordField().getPassword());
+			vn = view1.getTxtVorname().getText();
+			nn = view1.getTxtNachname().getText();
+			email = view1.getTxtEmail().getText();
+			gebdat = view1.getTxtGeburtsdatum().getText();
+		}
+		
+		catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Fehler! Die eingegebenen Daten konnten nicht entgegen genommen werden!",null, JOptionPane.ERROR_MESSAGE);
+		}
 	}
 	/**
 	 * Die eingegebenen Daten werden auf Fehler und unerwünschte Inhalte überprüft.
@@ -132,11 +138,19 @@ public class AccountAnlegenStrg implements ActionListener {
 	 * Die Daten werden mit Hilfe der Datenbankschnittstelle in die Datenbank geschrieben.
 	 */
 	public void InsertIntoKunde() { // Speichern des Kundens in der Datenbank
-		String update = ("insert into kunde values('" + benutzername + "','" + pw + "','" + vn + "','" + nn
-				+ "','false',0,'" + gebdat + "','" + email + "')");
+		try {
+			String update = ("insert into kunde values('" + benutzername + "','" + pw + "','" + vn + "','" + nn
+					+ "','false',0,'" + gebdat + "','" + email + "')");
 
-		Datenbankschnittstelle.executeUpdate(update);
-		Datenbankschnittstelle.closeConnections();
+			Datenbankschnittstelle.executeUpdate(update);
+			Datenbankschnittstelle.closeConnections();
+		}
+		
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(null,
+					"Die Daten konnten nicht in die Datenbank geschrieben werden!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	@Override

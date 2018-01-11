@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
 import Anmelden.AnmeldenStrg;
 import Datenbankverwaltung.Datenbankschnittstelle;
 import Fahrt.SingleplayerFahrt;
@@ -125,8 +127,14 @@ public class Nutzerverwaltung { //Deklaration der benötigten Variablen
 	 * @param punkte
 	 */
 	public static void addpunkte(int punkte) {
-		String update = "Update kunde set punktzahl = punktzahl + '" + punkte + "' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
-		Datenbankschnittstelle.executeUpdate(update);
-		Datenbankschnittstelle.closeConnections();
+		try {
+			String update = "Update kunde set punktzahl = punktzahl + '" + punkte + "' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
+			Datenbankschnittstelle.executeUpdate(update);
+			Datenbankschnittstelle.closeConnections();
+		}
+		
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Die Punkte konnten nicht aktualisiert werden!",null, JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }
