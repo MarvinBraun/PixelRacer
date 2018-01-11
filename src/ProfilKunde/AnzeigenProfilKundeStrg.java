@@ -3,16 +3,13 @@ package ProfilKunde;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
-
 import javax.swing.JOptionPane;
-
 import Fahrt.Fahrtverwaltung;
 import Fahrt.SingleplayerFahrt;
 import Nutzer.Nutzerverwaltung;
 import Premium.kaufePremiumAccount;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
 import Rechnung.RechnungAnzeigenStrg;
-import Rechnung.anzeigenRechnungStrg;
 import Startansicht.StartansichtStrg;
 
 /**
