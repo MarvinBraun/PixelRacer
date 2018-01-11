@@ -1,19 +1,25 @@
 package Strecke;
 
 import java.awt.image.BufferedImage;
-
+/**
+ * Die Klasse Strecke speichert die relevanten Daten der Strecke ab und stellt
+ * die benoetigten Getter & Setter zur Verfügung.
+ * @author Robin Demmler
+ *
+ */
 public class Strecke {
-
-	String streckenname;
+	/**
+	 * Deklarieren benoetigter Variablen.
+	 */	
+	private String streckenname;
 	private int laenge;
 	private int schwierigkeit;
 	private String premium = "false";
 	private int punktewert;
 	private BufferedImage grafik;
-	
-	
-	
-	
+	/**
+	 * Getter & Setter fuer die verwendeten Variablen 
+	 */	
 	public String getStreckenname() {
 		return streckenname;
 	}
