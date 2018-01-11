@@ -1,15 +1,14 @@
 package Strecke;
 
-
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import Datenbankverwaltung.Datenbankschnittstelle;
 import Fahrt.Fahrtverwaltung;
@@ -21,10 +20,17 @@ import Rechnung.Rechnungsverwaltung;
 import Startansicht.StartansichtStrg;
 import myIterator.MyIteratorStrecke;
 import myIterator.MyIteratorString;
-
-
+/**
+ * Die Klasse AnzeigenStreckenStrg steuert den Aufruf der Streckendaten und 
+ * verwaltet die grafischen Benutzeroberflaechen Streckenuebersicht und StreckeDetailView.
+ * 
+ * @author Robin Demmler
+ *
+ */
 public class AnzeigenStreckenStrg implements ActionListener{
-
+	/**
+	 * Deklarieren benoetigter Variablen & Objekte.
+	 */	
 	StreckeDetailView viewDetail;
 	Streckenuebersicht viewUebersicht;
 	
@@ -38,6 +44,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	Streckenverwaltung verwStrecke;
 	Fahrtverwaltung verwFahrt;
 	
+	//LinkedLists für benötigte Daten instanziieren (Fahrtdaten, Streckendaten & Rechnungsdaten)
 	LinkedList<SingleplayerFahrt> singleplayerFahrten = new LinkedList<SingleplayerFahrt>();
 	LinkedList<Strecke> streckenListe = new LinkedList<Strecke>();
 	LinkedList<Rechnung> rechnungsListe = new LinkedList<Rechnung>();
@@ -51,7 +58,11 @@ public class AnzeigenStreckenStrg implements ActionListener{
 	
 	boolean forward = false;
 	boolean backward = false;
-	
+	/**
+	 * 
+	 * Konstruktor, der die viewUebersicht aufruft.
+	 * 
+	 */	
 	public AnzeigenStreckenStrg(){
 		
 		viewUebersicht = new Streckenuebersicht();
@@ -67,56 +78,61 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		verwRechnung = new Rechnungsverwaltung();
 		rechnungsListe = verwRechnung.gibStreckenRechnungenfuerBenutzer();
 		
-		viewUebersicht.streckeBackward.addActionListener(this);
-		viewUebersicht.streckeForward.addActionListener(this);
-		viewUebersicht.btnDetailView.addActionListener(this);
-		viewUebersicht.btnZurueck.addActionListener(this);
-		viewUebersicht.btnStreckeKaufen.addActionListener(this);
+		// Hinzufuegen der Action Listener
+		viewUebersicht.getStreckeBackward().addActionListener(this);
+		viewUebersicht.getStreckeForward().addActionListener(this);
+		viewUebersicht.getBtnDetailView().addActionListener(this);
+		viewUebersicht.getBtnZurueck().addActionListener(this);
+		viewUebersicht.getBtnStreckeKaufen().addActionListener(this);
 		
 		streckeVorwaerts();
 		
-		SwingUtilities.updateComponentTreeUI(viewUebersicht.frmPixelRacer);
-			
+		SwingUtilities.updateComponentTreeUI(viewUebersicht.getFrmPixelRacer());
 	}
-		
+	/**
+	 * Main-Methode.
+	 */	
 	public static void main(String[] args) {
 		
 		AnzeigenStreckenStrg steuerung = new AnzeigenStreckenStrg();
 		
 	}
-	
+	/**
+	 * streckeVorwaerts() prüft ob eine weitere Strecke existiert und aktualisiert dementsprechend die Felder der GUI
+	 */	
 	public void streckeVorwaerts()
 	{
+		try {
 		if((s=itStrecke.next())!=null)
 		{	
 									
 			BufferedImage newImage= s.getGrafik();
-			viewUebersicht.streckeName.setText(s.getStreckenname());
+			viewUebersicht.getStreckeName().setText(s.getStreckenname());
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
-			viewUebersicht.streckeLbl.setIcon(icon);
-			
-			//StreckeDetailView initiieren
+			viewUebersicht.getStreckeLbl().setIcon(icon);
+						
 			counterRang1 = 0;
 			counterRang2 = 0;
 			counterRang3 = 0;
-						
+			//StreckeDetailView initiieren			
 			viewDetail= new StreckeDetailView();
 			viewDetail.getFrame().setLocationRelativeTo(null);
-			viewDetail.btnZurueck.addActionListener(this);
+			//ActionListener hinzufuegen
+			viewDetail.getBtnZurueck().addActionListener(this);
 									
-			//Länge setzten
-			viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
+			//Streckenlaenge anzeigen lassen
+			viewDetail.getLblSetLaenge().setText(Integer.toString(s.getLaenge())+ "m");
 			
-			// Fahrten zu angemeldetem Nutzer und akuteller Strecke sammeln
+			// Fahrtenliste zu angemeldetem Nutzer und akuteller Strecke erstellen
 			Fahrtverwaltung v = new Fahrtverwaltung();
-			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenF�rBenutzerUndStrecke(Nutzerverwaltung.getangKunde().getnutzername(),s.getStreckenname());
-			viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke(Nutzerverwaltung.getangKunde().getnutzername(),s.getStreckenname());
+			viewDetail.getLblSetGesRennen().setText(Integer.toString(fahrten.size()));
 					
-			// Label umschreiben auf ges. m pro Sf-Strecke
-			viewDetail.lblSetGesKm.setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
+			// Gesamt gefahrene Strecke für Singleplayerfahrten anzeigen
+			viewDetail.getLblSetGesKm().setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
 					
-			// Anzahl Erster
+			// Anzahl der erreichten Platzierungen berrechen und anzeigen
 			for(int i =0; i < fahrten.size(); i++) {
 				
 				sf = fahrten.get(i);
@@ -131,25 +147,24 @@ public class AnzeigenStreckenStrg implements ActionListener{
 					counterRang3 ++; 
 				}
 			}			
-			viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
-			viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
-			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));														
+			viewDetail.getLblSetAnzErster().setText(Integer.toString(counterRang1));
+			viewDetail.getLblSetAnzZweiter().setText(Integer.toString(counterRang2));
+			viewDetail.getLblSetAnzDritter().setText(Integer.toString(counterRang3));														
 		}
 		
-		//Punktestandprüfung und Label Aktivierung
-		if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // Prüfung Punktestand Spieler größer gleich Punktelimit Strecke
+		//Punktestandpruefung und Label Aktivierung
+		if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // Pruefung ist Punktestand Spieler groesser gleich Punktelimit Strecke
 			viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
 			viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
 			viewUebersicht.getLblStreckePunkte().setVisible(true);
 		}
-		else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){ // Prüfung Punktestand Spieler kleiner Punktelimit Strecke
+		else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){ // Pruefung ist Punktestand Spieler kleiner Punktelimit Strecke
 			viewUebersicht.getLblStreckePunkte().setVisible(false);
 			viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
 			viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
 		}
 		
-		//Prüfung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
-		
+		//Pruefung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
 		Rechnungsverwaltung r = new Rechnungsverwaltung();
 		LinkedList<Rechnung> rechnungen = r.gibStreckenRechnungenfuerBenutzer();
 		
@@ -166,7 +181,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			while(it.hasNext())
 			{
 				rechnung = it.next();
-				if(s.getStreckenname().equals(rechnung.getStreckenname()))
+				if(s.getStreckenname().equals(rechnung.getStreckenname())) // Streckenname in Rechnungen enthalten? (Wurde bereits erworben?)
 						{
 					
 						viewUebersicht.getBtnStreckeKaufen().setVisible(false);
@@ -180,41 +195,44 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		
 		Datenbankschnittstelle.closeConnections();
 					
-		
-				
-}
+	}catch(Exception e){
+		JOptionPane.showConfirmDialog(null, "Du hast noch keine weiteren Karts freigeschaltet!", "Keine weiteren Karts!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+	} // Exception Handling: Keine weiteren Karts anzuzeigen			
+}	
 	
-	
+	/**
+	 * streckeZurueck() prüft ob eine vorherige Strecke existiert und aktualisiert dementsprechend die Felder der GUI
+	 */	
 	public void streckeZurueck()
-	{
+	{	try {
 		if((s=itStrecke.previous())!=null)
 		{			
 			BufferedImage newImage= s.getGrafik();
-			viewUebersicht.streckeName.setText(s.getStreckenname());
+			viewUebersicht.getStreckeName().setText(s.getStreckenname());
 			streckenbild = imageResizer(newImage);
 			ImageIcon icon = new ImageIcon(streckenbild);
-			viewUebersicht.streckeLbl.setIcon(icon);
+			viewUebersicht.getStreckeLbl().setIcon(icon);
 			
-			//StreckeDetailView initiieren
 			counterRang1 = 0;
 			counterRang2 = 0;
 			counterRang3 = 0;
-						
+			//StreckeDetailView initiieren			
 			viewDetail= new StreckeDetailView();
-			viewDetail.btnZurueck.addActionListener(this);
+			//ActionListener hinzufuegen
+			viewDetail.getBtnZurueck().addActionListener(this);
 						
-			//Länge setzten
-			viewDetail.lblSetLaenge.setText(Integer.toString(s.getLaenge())+ "m");
+			//Streckenlaenge anzeigen lassen
+			viewDetail.getLblSetLaenge().setText(Integer.toString(s.getLaenge())+ "m");
 			
-			// Label umschreiben auf ges. Sf-Strecke & auf angmeldeter Benutzer
+			// Fahrtenliste zu angemeldetem Nutzer und akuteller Strecke erstellen
 			Fahrtverwaltung v = new Fahrtverwaltung();
-			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenF�rBenutzerUndStrecke("DZeller",s.getStreckenname());
-			viewDetail.lblSetGesRennen.setText(Integer.toString(fahrten.size()));
+			LinkedList<SingleplayerFahrt> fahrten = v.gibSingleplayerFahrtenFürBenutzerUndStrecke("DZeller",s.getStreckenname());
+			viewDetail.getLblSetGesRennen().setText(Integer.toString(fahrten.size()));
 					
-			// Label umschreiben auf ges. m pro Sf-Strecke
-			viewDetail.lblSetGesKm.setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
+			// Gesamt gefahrene Strecke für Singleplayerfahrten anzeigen
+			viewDetail.getLblSetGesKm().setText(Integer.toString(fahrten.size()*s.getLaenge())+"m");
 					
-			// Anzahl Erster
+			// Anzahl der erreichten Platzierungen berrechen und anzeigen
 			for(int i =0; i < fahrten.size(); i++) {
 				
 				sf = fahrten.get(i);
@@ -229,26 +247,25 @@ public class AnzeigenStreckenStrg implements ActionListener{
 					counterRang3 ++; 
 				}
 			}			
-			viewDetail.lblSetAnzErster.setText(Integer.toString(counterRang1));
-			viewDetail.lblSetAnzZweiter.setText(Integer.toString(counterRang2));
-			viewDetail.lblSetAnzDritter.setText(Integer.toString(counterRang3));
+			viewDetail.getLblSetAnzErster().setText(Integer.toString(counterRang1));
+			viewDetail.getLblSetAnzZweiter().setText(Integer.toString(counterRang2));
+			viewDetail.getLblSetAnzDritter().setText(Integer.toString(counterRang3));	
 				
 		}
 		
-		//Punktestandprüfung und Label Aktivierung
-				if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // Prüfung Punktestand Spieler größer gleich Punktelimit Strecke
+		//Punktestandpruefung und Label Aktivierung
+				if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // // Pruefung ist Punktestand Spieler groesser gleich Punktelimit Strecke
 					viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
 					viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
 					viewUebersicht.getLblStreckePunkte().setVisible(true);
 				}
-				else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){ // Prüfung Punktestand Spieler kleiner Punktelimit Strecke
+				else if(s.getPunktewert() > Nutzerverwaltung.getangKunde().getpunkte()){ // Pruefung ist Punktestand Spieler kleiner Punktelimit Strecke
 					viewUebersicht.getLblStreckePunkte().setVisible(false);
 					viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
 					viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
 				}
 				
-				//Prüfung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
-				
+				//Pruefung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
 				Rechnungsverwaltung r = new Rechnungsverwaltung();
 				LinkedList<Rechnung> rechnungen = r.gibStreckenRechnungenfuerBenutzer();
 				
@@ -279,9 +296,15 @@ public class AnzeigenStreckenStrg implements ActionListener{
 				}
 				
 				Datenbankschnittstelle.closeConnections();
-}
 	
-		
+	}catch(Exception e){
+		JOptionPane.showConfirmDialog(null, "Du hast noch keine weiteren Karts freigeschaltet!", "Keine weiteren Karts!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+	} // Exception Handling: Keine weiteren Karts anzuzeigen
+}	
+	/** 
+	 * imageResizer verkleinert ein Objekt des Typs BufferedImage von 800x600 auf 300x200. Die Grafiken werden dabei über die Klasse Graphics neu gezeichnet.
+	 * @return BufferedImage in der Größe 300x200.
+	 */	
 	public static BufferedImage imageResizer(BufferedImage original)
 	{
 		
@@ -292,40 +315,41 @@ public class AnzeigenStreckenStrg implements ActionListener{
 				g.dispose();
 				return newImage;
 	}
-
+	/**
+	 * ActionPerformed Event Buttons
+	 */
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { // Aufruf kaufePremiumStrecke-Strg bei Klick von BtnStreckeKaufen
 		if(e.getSource()==viewUebersicht.getBtnStreckeKaufen()) {
 			kaufePremiumStrecke strg = new kaufePremiumStrecke(s, viewUebersicht);
 		}
-		if(e.getSource()==viewUebersicht.getBtnZurueck()) {
+		if(e.getSource()==viewUebersicht.getBtnZurueck()) { // Aufruf der Startansicht bei Klick von BtnZurueck & schliessen der Views
 			
-			viewUebersicht.frmPixelRacer.dispose();
-			viewDetail.frame.dispose();
+			viewUebersicht.getFrmPixelRacer().dispose();
+			viewDetail.getFrame().dispose();
 			StartansichtStrg strg = new StartansichtStrg();
 		}
 		
-		if(e.getSource()==viewDetail.btnZurueck) {
+		if(e.getSource()==viewDetail.getBtnZurueck()) { // Schliessen der DetailView bei Klick von BtnZurueck
 			
-			viewDetail.frame.dispose();
-			viewUebersicht.frmPixelRacer.setVisible(true);
+			viewDetail.getFrame().dispose();			
 		}
 		
-		if(e.getSource()==viewUebersicht.streckeBackward)
+		if(e.getSource()==viewUebersicht.getStreckeBackward()) // Schliessen der DetailView & Aufruf streckeZurueck() bei Klick von StreckeBackward 
 		{
-			viewDetail.frame.dispose();
+			viewDetail.getFrame().dispose();
 			streckeZurueck();			
 		}
 		
-		if(e.getSource()==viewUebersicht.streckeForward)
+		if(e.getSource()==viewUebersicht.getStreckeForward()) // Schliessen der DetailView & Aufruf sstreckeVorwaerts() bei Klick von StreckeForward 
 		{
-			viewDetail.frame.dispose();
+			viewDetail.getFrame().dispose();
 			streckeVorwaerts();							
 		}
 		
-		if(e.getSource()==viewUebersicht.btnDetailView)
+		if(e.getSource()==viewUebersicht.getBtnDetailView()) // Aufruf der DetailView bei Klick von BtnDetailView
 		{		
-			viewDetail.frame.setVisible(true);		
+			viewDetail.getFrame().setVisible(true);		
 		}
 	}
 }
