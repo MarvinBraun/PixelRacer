@@ -69,7 +69,8 @@ public class Startansicht {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() { //Initialisierung des Fensters und den dazugehörigen Komponenten
-		Font customFont14f = FontHandler.registriereSchriftart(14f);
+		Font customFont30f = FontHandler.registriereSchriftart(30f);
+		Font customFont18f = FontHandler.registriereSchriftart(18f);
 		Font customFont10f = FontHandler.registriereSchriftart(10f);
 		
 		frmPixelRacer = new JFrame();
@@ -81,13 +82,13 @@ public class Startansicht {
 		frmPixelRacer.setLocationRelativeTo(null);
 		
 		lblPixelRacer = new JLabel("Pixel Racer");
-		lblPixelRacer.setFont(new Font("Kartika", Font.BOLD | Font.ITALIC, 26));
-		lblPixelRacer.setBounds(300, 88, 161, 38);
+		lblPixelRacer.setFont(customFont30f);
+		lblPixelRacer.setBounds(300, 88, 300, 38);
 		frmPixelRacer.getContentPane().add(lblPixelRacer);
 		
 		btnSpielen = new JButton("Spielen");
 		btnSpielen.setBounds(30, 404, 127, 45);
-		btnSpielen.setFont(customFont14f);
+		btnSpielen.setFont(customFont18f);
 		btnSpielen.setBorderPainted(false);
 		btnSpielen.setOpaque(false);
 		btnSpielen.setBackground(SystemColor.activeCaption);
@@ -100,7 +101,7 @@ public class Startansicht {
 		
 		btnGarage = new JButton("Garage");
 		btnGarage.setBounds(180, 404, 127, 45);
-		btnGarage.setFont(customFont14f);
+		btnGarage.setFont(customFont18f);
 		btnGarage.setBorderPainted(false);
 		btnGarage.setOpaque(false);
 		btnGarage.setBackground(SystemColor.activeCaption);
@@ -112,8 +113,8 @@ public class Startansicht {
 		frmPixelRacer.getContentPane().add(btnGarage);
 		
 		btnStreckenbersicht = new JButton("Streckenuebersicht");
-		btnStreckenbersicht.setBounds(330, 404, 250, 45);
-		btnStreckenbersicht.setFont(customFont14f);
+		btnStreckenbersicht.setBounds(330, 404, 300, 45);
+		btnStreckenbersicht.setFont(customFont18f);
 		btnStreckenbersicht.setBorderPainted(false);
 		btnStreckenbersicht.setOpaque(false);
 		btnStreckenbersicht.setBackground(SystemColor.activeCaption);
@@ -125,7 +126,7 @@ public class Startansicht {
 		frmPixelRacer.getContentPane().add(btnStreckenbersicht);
 		
 		btnProfil = new JButton("Profil");
-		btnProfil.setFont(customFont14f);
+		btnProfil.setFont(customFont18f);
 		btnProfil.setBorderPainted(false);
 		btnProfil.setOpaque(false);
 		btnProfil.setBackground(SystemColor.activeCaption);
@@ -134,7 +135,7 @@ public class Startansicht {
 				frmPixelRacer.dispose();
 			}
 		});
-		btnProfil.setBounds(580, 404, 127, 45);
+		btnProfil.setBounds(650, 404, 127, 45);
 		frmPixelRacer.getContentPane().add(btnProfil);
 		
 		btnAbmelden = new JButton("Abmelden");
