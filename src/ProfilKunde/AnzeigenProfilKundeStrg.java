@@ -13,7 +13,7 @@ import Startansicht.StartansichtStrg;
 
 /**
  * Die Klasse AnzeigenProfilKundeStrg steuert den Aufruf des Spielerprofil und 
- * verwaltet die grafische Benutzeroberfläche ProfilKundeAnsicht.
+ * verwaltet die grafische Benutzeroberflaeche ProfilKundeAnsicht.
  * 
  * @author Robin Demmler
  *
@@ -21,7 +21,7 @@ import Startansicht.StartansichtStrg;
 
 public class AnzeigenProfilKundeStrg implements ActionListener {
 	/**
-	 * Deklarieren benötigter Variablen.
+	 * Deklarieren benoetigter Variablen.
 	 */	
 	SingleplayerFahrt sf;
 	
@@ -40,7 +40,7 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		viewKunde = new ProfilKundeAnsicht();
 		viewKunde.getFrmPixelRacer().setLocationRelativeTo(null);
 		
-		// Hinzufügen der Action Listener
+		// HinzufÃ¼gen der Action Listener
 		viewKunde.getBtnGetPremium().addActionListener(this);
 		viewKunde.getBtnProfilBearbeiten().addActionListener(this);
 		viewKunde.getBtnRechnungsverw().addActionListener(this);
@@ -110,11 +110,11 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		if(a.getSource()==viewKunde.getBtnRechnungsverw()) { // Aufrufen der Rechnungsverwaltung bei Klick von BtnRechnungsverw
 			anzeigenRechnungStrg rechnung = new anzeigenRechnungStrg();
 		}
-		if(a.getSource()==viewKunde.getBtnProfilBearbeiten()) { // Aufrufen der ProfilBearbeitenStrg bei Klick von BtnProfilBearbeiten & schließen des Profils
+		if(a.getSource()==viewKunde.getBtnProfilBearbeiten()) { // Aufrufen der ProfilBearbeitenStrg bei Klick von BtnProfilBearbeiten & schlieÃŸen des Profils
 			ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
 			viewKunde.getFrmPixelRacer().dispose();
 		}
-		if(a.getSource()==viewKunde.getBtnZurueck()) {  // Aufrufen der Startansicht bei Klick von BtnZurueck & schließen des Profils
+		if(a.getSource()==viewKunde.getBtnZurueck()) {  // Aufrufen der Startansicht bei Klick von BtnZurueck & schlieÃŸen des Profils
 			StartansichtStrg strg = new StartansichtStrg();
 			viewKunde.getFrmPixelRacer().dispose();
 		}
