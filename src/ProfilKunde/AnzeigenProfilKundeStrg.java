@@ -114,7 +114,7 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent a) {
 		if(a.getSource()==viewKunde.getBtnRechnungsverw()) { // Aufruf der Rechnungsverwaltung bei Klick von BtnRechnungsverw
-			anzeigenRechnungStrg rechnung = new anzeigenRechnungStrg();
+			RechnungAnzeigenStrg rechnung = new RechnungAnzeigenStrg();
 		}
 		if(a.getSource()==viewKunde.getBtnProfilBearbeiten()) { // Aufruf der ProfilBearbeitenStrg bei Klick von BtnProfilBearbeiten & schliessen des Profils
 			ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
