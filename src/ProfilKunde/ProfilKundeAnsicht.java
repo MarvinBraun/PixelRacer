@@ -89,7 +89,7 @@ public class ProfilKundeAnsicht{
 		setFrmPixelRacer(new JFrame());
 		getFrmPixelRacer().setTitle("Pixel Racer - Spielerprofil " + Nutzerverwaltung.getangKunde().getnutzername());
 		getFrmPixelRacer().setBounds(100, 100, 800, 600);
-		getFrmPixelRacer().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrmPixelRacer().setDefaultCloseOperation(getFrmPixelRacer().DO_NOTHING_ON_CLOSE);
 		getFrmPixelRacer().setResizable(false);
 		getFrmPixelRacer().getContentPane().setLayout(null);
 		getFrmPixelRacer().setVisible(true);
@@ -103,7 +103,7 @@ public class ProfilKundeAnsicht{
 				  case JOptionPane.YES_OPTION:
 					  System.exit(0);
 				  case JOptionPane.NO_OPTION:
-					  getFrmPixelRacer().setVisible(true);
+					  
 				  }
 			  }
 			});
