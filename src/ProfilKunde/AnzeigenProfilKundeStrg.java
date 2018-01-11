@@ -94,7 +94,8 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 		//Button Premium kaufen ausblenden wenn angemeldeter Nutzer bereits Premiumkunde
 		if(Nutzerverwaltung.getangKunde().getpremium().equals("true")) {
 			viewKunde.getBtnGetPremium().setVisible(false);
-		}}catch(Exception e) {
+		}		
+		}catch(Exception e) {
 			JOptionPane.showConfirmDialog(null, "Fehler beim laden der Daten des angemeldeten Spielers, Bitte an den Support wenden!", "Fehler bei Datenverarbeitung!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 		} // Exception Handling
 	}
