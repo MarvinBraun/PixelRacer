@@ -82,6 +82,7 @@ public class AnmeldenView {
 		txtNutzername.setBounds(254, 136, 190, 20);
 		frmPixelRacer.getContentPane().add(txtNutzername);
 		txtNutzername.setColumns(10);
+		txtNutzername.setFont(customFont14f);
 		
 		btnAnmelden = new JButton("Anmelden");
 		btnAnmelden.setBounds(205, 264, 127, 45);
