@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 
 /**
  * Steuerungsklasse, welche die KartHinzufügenView verwaltet, sowie den Vorgang
- * des Hinzufügen eines neuen Karts koodiniert
+ * des Hinzufügen eines neuen Karts koodiniert.
  * 
  * @author Sean Cartner
  */
