@@ -221,7 +221,7 @@ public class KartHinzufügenStrg implements ActionListener {
 
 	/**
 	 * Meldung, die erscheint, wenn ein Kart zum Zwecke der Zwischenspeicherung
-	 * nicht in eine Datei geschreiben werden konnte.
+	 * nicht in eine Datei geschrieben werden konnte.
 	 */
 	private void kartKonnteNichtZwischengespeichertWerdenMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Kart konnte nicht zwischengespeichert werden",
