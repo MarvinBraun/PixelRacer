@@ -180,7 +180,7 @@ public class AnzeigenKartStrg implements ActionListener {
 				}
 			}
 			Datenbankschnittstelle.closeConnections();
-		}catch(NullPointerException io){
+		}catch(NoSuchElementException io){
 			JOptionPane.showConfirmDialog(null, "Zurzeit stehen keine weiteren Karts zur Verfuegung!",
 					"Keine weiteren Karts", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
 		}
