@@ -1,7 +1,3 @@
-/**
- @author Sean Cartner
-*/
-
 package KartHinzufügen;
 
 import java.awt.EventQueue;
@@ -17,7 +13,10 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.UIManager;
 
-
+/**
+ * Grafische Beutzeroberfläche in Form eines Formulars für den Vorgang HinzufügenKart.
+ * @author Sean Cartner
+ */
 public class KartHinzufügenView extends JPanel{
 
 	private JPanel frmPixelRacer;
@@ -156,63 +155,122 @@ public class KartHinzufügenView extends JPanel{
 		btnAbbrechen.setBounds(225, 419, 101, 23);
 		add(btnAbbrechen);
 	}
-	
+	/**
+	 * Getter für das JPanel.
+	 * @return JPanel
+	 */
 	public JPanel getPanel(){
 		return frmPixelRacer;
 	}
 	
+	/**
+	 * Getter für das Textfeld textFieldName.
+	 * @return JTextField
+	 */
 	public JTextField getTfName(){
 		return textFieldName;
 	}
 	
+	/**
+	 * Getter für das Textfeld textFieldeschleunigung.
+	 * @return JTextField
+	 */
 	public JTextField getTfBeschleunigung(){
 		return textFieldBeschleunigung;
 	}
 	
+	/**
+	 * Getter für das Textfeld textFieldMaxGeschwindigkeit.
+	 * @return JTextField
+	 */
 	public JTextField getTfGeschwindigkeit(){
 		return textFieldMaxGeschwindigkeit;
 	}
 	
+	/**
+	 * Getter für das Textfeld textFieldPunktzahl.
+	 * @return JTextField
+	 */
 	public JTextField getTfPunktzahl(){
 		return textFieldPunktzahl;
 	}
 	
+	/**
+	 * Getter für das Textfeld textFieldGrafik.
+	 * @return JTextField
+	 */
 	public JTextField getTfGrafik(){
 		return textFieldGrafik;
 	}
 	
+	/**
+	 * Getter für den JButton btnAuswhlen.
+	 * @return JButton
+	 */
 	public JButton getBtnAuswaehlen(){
 		return btnAuswhlen;
 	}
 	
+	/**
+	 * Getter für den JButton btnAbsenden.
+	 * @return JButton
+	 */
 	public JButton getBtnAbsenden(){
 		return btnAbsenden;
 	}
 	
+	/**
+	 * Getter für den JButton btnAbbrechenn.
+	 * @return JButton
+	 */
 	public JButton getBtnAbbrechen(){
 		return btnAbbrechen;
 	}
 	
+	/**
+	 * Getter für den JRadioButton rdbtnFree.
+	 * @return JRadioButton
+	 */
 	public JRadioButton getRbFree(){
 		return rdbtnFree;
 	}
 	
+	/**
+	 * Getter für den JRadioButton rdbtnPremium.
+	 * @return JRadioButton
+	 */
 	public JRadioButton getRbPremium(){
 		return rdbtnPremium;
 	}
 	
+	/**
+	 * Getter für die ButtonGroup BgStatus.
+	 * @return ButtonGroup
+	 */
 	public ButtonGroup getBgStatus(){
 		return bgStatus;
 	}
 	
+	/**
+	 * Getter für den FileChooser. 
+	 * @return JFileChooser
+	 */
 	public JFileChooser getFc(){
 		return fc;
 	}
 	
+	/**
+	 * GEtter für den FileFilter.
+	 * @return FileFilter
+	 */
 	public FileFilter getFilter(){
 		return filter;
 	}
 
+	/**
+	 * Getter für das JLabel lblKartHinzufgen. 
+	 * @return JLabel
+	 */
 	public JLabel getLblKartHinzufgen() {
 		return lblKartHinzufgen;
 	}
