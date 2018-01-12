@@ -245,7 +245,7 @@ public class KartBearbeitenStrg implements ActionListener, MouseListener, MouseM
 
 	/**
 	 * Lädt die Daten eines spezifischen Karts und fügt diese in die
-	 * KartHinzufügenView.
+	 * KartHinzufügenView ein.
 	 */
 	private void ladeKartDaten() {
 		String auswahl = (String) kbv.getComboBoxKart().getSelectedItem();
