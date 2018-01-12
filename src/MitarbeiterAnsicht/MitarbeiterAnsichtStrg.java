@@ -67,10 +67,12 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 
 		maaView.getTree().getSelectionModel().addTreeSelectionListener(this);
 	}
-
+	
+	/*
 	public static void main(String[] args) {
 		MitarbeiterAnsichtStrg maaStrg = new MitarbeiterAnsichtStrg();
 	}
+	*/
 
 	/**
 	 * Methode, die agiert wenn man man ein Punkt im Menü (JTree) anklickt. Sie
