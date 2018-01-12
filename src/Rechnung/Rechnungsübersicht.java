@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 
 import FontHandler.FontHandler;
+import javax.swing.JTextField;
 
 
 /**
@@ -32,9 +33,10 @@ public class Rechnungsübersicht {
 	JButton btnAnzeigen;
 	JButton btnBezahlen;
 	JButton btnSpeichern;
-	JTextPane textPane;
 	JLabel lblHintergrund;
+	JTextField textField;
 	private JButton btnZuruck;
+
 	
 	
 	// getter und setter Methoden der Variablen
@@ -87,12 +89,12 @@ public class Rechnungsübersicht {
 		this.btnSpeichern = btnSpeichern;
 	}
 
-	public JTextPane getTextPane() {
-		return textPane;
+	public JTextField getTextField() {
+		return textField;
 	}
 
-	public void setTextPane(JTextPane textPane) {
-		this.textPane = textPane;
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
 	}
 
 	/**
@@ -165,12 +167,8 @@ public class Rechnungsübersicht {
 		btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(569, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnSpeichern);
-		
-		textPane = new JTextPane();
 		lblRechnung.setFont(customFont12f);
-		textPane.setBounds(140, 50, 111, 24);
-		frmRechnungsbersicht.getContentPane().add(textPane);
-	
+		
 		lblHintergrund = new JLabel();
 		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
 		lblHintergrund.setBounds(0, 0, 800, 600);
@@ -180,6 +178,11 @@ public class Rechnungsübersicht {
 		lblRechnung.setFont(customFont12f);
 		btnZuruck.setBounds(680, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnZuruck);
+		
+		textField = new JTextField();
+		textField.setBounds(129, 48, 107, 23);
+		frmRechnungsbersicht.getContentPane().add(textField);
+		textField.setColumns(10);
 	}
 
 	public JButton getBtnZuruck() {
