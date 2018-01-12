@@ -70,7 +70,7 @@ public class ModusauswaehlenView {
 		
 		setFrame( new JFrame());
 		getFrame().setBounds(100, 100, 800, 600);
-		getFrame().setTitle("Modus auswaehlen");
+		getFrame().setTitle("Modusauswahl");
 		getFrame().setResizable(false);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFrame().getContentPane().setLayout(null);
