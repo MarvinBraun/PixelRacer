@@ -212,7 +212,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 * Meldung, die erscheint, wenn der ausgewählte bereits vergeben ist.
+	 * Meldung, die erscheint, wenn der ausgewählte Name bereits vergeben ist.
 	 */
 	private void kartNameBereitsVergebenMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Der eingegebene Kartname wird bereits genutzt",
