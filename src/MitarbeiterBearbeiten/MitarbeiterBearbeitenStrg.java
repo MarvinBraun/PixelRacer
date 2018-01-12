@@ -387,7 +387,7 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 				check = Integer.parseInt(ma.getmitarbeiterid());
 			}
 		}
-		if(check != mitarbeiterID) {
+		if(check != mitarbeiterID && check != 0) {
 			return true;
 		}else {
 			return false;
