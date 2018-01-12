@@ -22,7 +22,7 @@ import KartHinzufügen.KartHinzufügenView;
 
 /**
  * Steuerungklasse, welche die KartBearbeitenView verwaltet, sowie den Vorgang
- * des Beabeiten eines Karts koordiniert
+ * des Beabeiten eines Karts koordiniert.
  * 
  * @author Sean Cartner
  */
