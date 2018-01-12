@@ -163,7 +163,7 @@ public class KartBearbeitenStrg implements ActionListener, MouseListener, MouseM
 
 	/**
 	 * Methode, die agiert wenn die Maus das JPanel KartHinzufügenView überquert.
-	 * Sie soll ein Kartei aus einer Datei auslesen und es in die LinkedList
+	 * Sie soll ein Kart aus einer Datei auslesen und es in die LinkedList
 	 * hinzufügen.
 	 */
 	public void mouseEntered(MouseEvent arg0) {
