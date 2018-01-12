@@ -336,7 +336,7 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 			konnteMitarbeiterIdNichtKontrollierenMeldung();
 		}
 		Datenbankschnittstelle.closeConnections();
-		if(check != mitarbeiterID) {
+		if(check != 0) {
 			return true;
 		}else {
 			return false;
