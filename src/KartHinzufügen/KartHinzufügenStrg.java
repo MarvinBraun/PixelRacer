@@ -17,8 +17,9 @@ import Datenbankverwaltung.Datenbankschnittstelle;
 import java.awt.event.ActionEvent;
 
 /**
- * Steuerungsklasse, welche die KartHinzufügenView verwaltet, sowie den Vorgang des
- * Hinzufügen eines neuen Karts koodiniert 
+ * Steuerungsklasse, welche die KartHinzufügenView verwaltet, sowie den Vorgang
+ * des Hinzufügen eines neuen Karts koodiniert
+ * 
  * @author Sean Cartner
  */
 public class KartHinzufügenStrg implements ActionListener {
@@ -48,10 +49,9 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 * Methode, die agiert, wenn ein Button gedrückt wurde.
-	 * Diese soll, wenn:
-	 * - BtnAuswaehlen gedrückt wurde den FileChooser aufrufen.
-	 * - BtnAbsenden gedrückt wurden ein neues Kart in der Datenbank erstellen.
+	 * Methode, die agiert, wenn ein Button gedrückt wurde. Diese soll, wenn: 
+	 * - BtnAuswaehlen gedrückt wurde den FileChooser aufrufen. 
+	 * - BtnAbsenden gedrückt wurden ein neues Kart in der Datenbank erstellen. 
 	 * - BtnAbbrechen gedrückt wurde das Formular leeren.
 	 */
 	public void actionPerformed(ActionEvent e) {
@@ -126,7 +126,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Meldung, die erscheint, wenn Formular nicht vollstaendig ausgefuellt ist.
+	 * Meldung, die erscheint, wenn Formular nicht vollstaendig ausgefuellt ist.
 	 */
 	private void formularUnvollständigMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Alle Felder müssen ausgefüllt sein!",
@@ -134,16 +134,16 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Meldung, die erscheint, wenn die Eingabe zu einem oder mehreren Feldern zu
-	 *  lang ist.
+	 * Meldung, die erscheint, wenn die Eingabe zu einem oder mehreren Feldern zu
+	 * lang ist.
 	 */
 	private void inhaltZuLangMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), fehlermeldung, "Inhalt zu lang", JOptionPane.WARNING_MESSAGE);
 	}
 
 	/**
-	 *  Meldung, die erscheint, wenn ein Zahlen-Feld mit sonstigen Zeichen befuellt.
-	 *  wird.
+	 * Meldung, die erscheint, wenn ein Zahlen-Feld mit sonstigen Zeichen befuellt.
+	 * wird.
 	 */
 	public void istKeineZahlMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(),
@@ -152,7 +152,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Meldung, die erscheint, wenn Grafik nicht existiert.
+	 * Meldung, die erscheint, wenn Grafik nicht existiert.
 	 */
 	public void keineDateiGefundenMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Es wurde keine Datei unter dem angegebenen Pfad gefunden",
@@ -160,7 +160,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Meldung, die erscheint, wenn Grafik nicht im png Formart vorliegt.
+	 * Meldung, die erscheint, wenn Grafik nicht im png Formart vorliegt.
 	 */
 	public void nichtPngMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Die Grafik muss im Format .png vorliegen",
@@ -168,7 +168,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Meldung, die erscheint, wenn Grafik zu Gross (in Speicher) ist.
+	 * Meldung, die erscheint, wenn Grafik zu Gross (in Speicher) ist.
 	 */
 	private void grafikZuGrossMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Die Grafik darf maximal 20kb groß sein", "Grafik zu Groß",
@@ -176,7 +176,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Meldung, die erscheint, wenn ungueltige Zeichen im Vornamen eingegeben wurde.
+	 * Meldung, die erscheint, wenn ungueltige Zeichen im Vornamen eingegeben wurde.
 	 */
 	private void nameFormatNichtOkMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(),
@@ -185,8 +185,8 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Meldung, die erscheint, wenn zu hoher Wert für MaxGeschwindigkeit eingegeben
-	 *  wurde.
+	 * Meldung, die erscheint, wenn zu hoher Wert für MaxGeschwindigkeit eingegeben
+	 * wurde.
 	 */
 	private void maxGeschwindigkeitZuHochMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Die maximalGeschwindigkeit darf höchstens 450 betragen",
@@ -194,21 +194,23 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Meldung, die erscheint, wenn zu hoher Wert für Beschleunigung eingegeben
-	 *  wurde.
-	 */ 
+	 * Meldung, die erscheint, wenn zu hoher Wert für Beschleunigung eingegeben
+	 * wurde.
+	 */
 	private void beschleunigungZuHochMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Die Beschleunigung darf höchstens 99 betragen",
 				"Beschleunigung zu hoch", JOptionPane.WARNING_MESSAGE);
 	}
+
 	/**
-	 * Meldung, die erscheint, wenn der Name aufgrund eines Datenbank-Problems
-	 * nicht kontrolliert werden konnte.
+	 * Meldung, die erscheint, wenn der Name aufgrund eines Datenbank-Problems nicht
+	 * kontrolliert werden konnte.
 	 */
 	private void konnteKartNamenNichtKontrollierenMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Konnte Kartnamen nicht prüfen", "Datenbankproblem",
 				JOptionPane.WARNING_MESSAGE);
 	}
+
 	/**
 	 * Meldung, die erscheint, wenn der ausgewählte bereits vergeben ist.
 	 */
@@ -216,14 +218,16 @@ public class KartHinzufügenStrg implements ActionListener {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Der eingegebene Kartname wird bereits genutzt",
 				"Kartname vergeben", JOptionPane.WARNING_MESSAGE);
 	}
+
 	/**
-	 * Meldung, die erscheint, wenn ein Kart zum Zwecke der Zwischenspeicherung nicht
-	 * in eine Datei geschreiben werden konnte.
+	 * Meldung, die erscheint, wenn ein Kart zum Zwecke der Zwischenspeicherung
+	 * nicht in eine Datei geschreiben werden konnte.
 	 */
 	private void kartKonnteNichtZwischengespeichertWerdenMeldung() {
 		JOptionPane.showMessageDialog(khView.getPanel(), "Kart konnte nicht zwischengespeichert werden",
 				"Zwischenspeichern nicht möglich", JOptionPane.WARNING_MESSAGE);
 	}
+
 	/**
 	 * Meldung, die erscheint, wenn das Kart erfolgreich angelegt wurde.
 	 */
@@ -233,7 +237,9 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Methode, welche pruefen soll, ob das Formular auch vollstaendig ausgefuellt ist.
+	 * Methode, welche pruefen soll, ob das Formular auch vollstaendig ausgefuellt
+	 * ist.
+	 * 
 	 * @return Boolean
 	 */
 	private boolean pruefeFormarAufVollständigkeit() {
@@ -246,7 +252,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Methode, welche die Laenge des Namen-Feldes kontrollieren soll.
+	 * Methode, welche die Laenge des Namen-Feldes kontrollieren soll.
 	 */
 	private void istNameZuLang() {
 		if (khView.getTfName().getText().length() > 20) {
@@ -256,7 +262,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Methode, welche die Laenge des Punktzahl-Feldes kontrollieren soll.
+	 * Methode, welche die Laenge des Punktzahl-Feldes kontrollieren soll.
 	 */
 	private void istPunktzahlZuLang() {
 		if (khView.getTfPunktzahl().getText().length() > 2) {
@@ -266,7 +272,8 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Methode, die kontrolliert, ob die Grafik im png Format vorliegt.
+	 * Methode, die kontrolliert, ob die Grafik im png Format vorliegt.
+	 * 
 	 * @return Boolean
 	 */
 	private boolean IstGrafikPng() {
@@ -278,7 +285,8 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Methode, die kontrolliert, ob der Name im richtigen Format eingegeben wurde.
+	 * Methode, die kontrolliert, ob der Name im richtigen Format eingegeben wurde.
+	 * 
 	 * @return Boolean
 	 */
 	private boolean istNameFormatOk() {
@@ -286,8 +294,10 @@ public class KartHinzufügenStrg implements ActionListener {
 		Matcher match = patt.matcher(khView.getTfName().getText());
 		return match.matches();
 	}
+
 	/**
 	 * Methode, die kontrolliert, ob der ausgewählte Kartname bereits vergebn ist.
+	 * 
 	 * @return Boolean
 	 */
 	private boolean istKartnameVergeben() {
@@ -311,9 +321,9 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Methode, in der die Datenbank relevanten Variablen aufgrundlage des Formulars
-	 *  deklariert werden.
-	 */ 
+	 * Methode, in der die Datenbank relevanten Variablen aufgrundlage des Formulars
+	 * deklariert werden.
+	 */
 	private void deklariereVariablenVTextfeldern() {
 		try {
 			name = khView.getTfName().getText();
@@ -328,7 +338,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Methode, welche ein Kart in der Datenbank erstellt.
+	 * Methode, welche ein Kart in der Datenbank erstellt.
 	 */
 	private void erstelleKartInDB() {
 		if (status == 'p') {
@@ -343,7 +353,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Methode, welche das in der Datenbank erstellte Kart um eine Grafik ergaenzt.
+	 * Methode, welche das in der Datenbank erstellte Kart um eine Grafik ergaenzt.
 	 */
 	private void updateKartGrafik() {
 		String updateBild = "update kart set grafik =? where kartname ='" + name + "'";
@@ -376,7 +386,7 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Methode, die das Formular leeren soll.
+	 * Methode, die das Formular leeren soll.
 	 */
 	private void leereFormular() {
 		khView.getTfName().setText("");
@@ -388,7 +398,8 @@ public class KartHinzufügenStrg implements ActionListener {
 	}
 
 	/**
-	 *  Getter für die View
+	 * Getter für die View
+	 * 
 	 * @return KartHinzufügenView
 	 */
 	public KartHinzufügenView getView() {
