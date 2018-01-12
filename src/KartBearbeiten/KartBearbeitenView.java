@@ -9,7 +9,7 @@ import java.awt.Font;
 
 /**
  * Grafische Benutzeroberfläche, die dazu dient, dass der Nutzer mittels einer
- * ComboBox ein Kart auswählen kann. Die Oberfläche verfügt über das CardLayout,
+ * ComboBox ein Kart zum Bearbeiten auswählen kann. Die Oberfläche verfügt über das CardLayout,
  * über das die KartHinzufügenView angezeigt werden kann.
  * 
  * @author Sean Cartner
