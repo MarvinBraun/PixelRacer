@@ -3,7 +3,13 @@ package MitarbeiterBearbeiten;
 import java.util.Comparator;
 import Nutzer.Mitarbeiter;
 
-public class MitarbeiterKomperator implements Comparator<Mitarbeiter>  {
+/**
+ * Komperatorklasse, die dazu dient zwei Mitarbeiter nach ID zu sortieren.
+ * 
+ * @author Sean Cartner
+ *
+ */
+public class MitarbeiterKomperator implements Comparator<Mitarbeiter> {
 
 	@Override
 	public int compare(Mitarbeiter m1, Mitarbeiter m2) {

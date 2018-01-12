@@ -25,6 +25,9 @@ import Nutzer.Nutzerverwaltung;
 import MitarbeiterHinzufügen.MitarbeiterHinzufügenView;
 
 /**
+ * Steuerungklasse, welche die MitarbeiterBearbeitenView verwaltet, sowie den
+ * Vorgang des Beabeiten eines Mitarbeiterss koordiniert
+ * 
  * @author Sean Cartner
  */
 
@@ -45,6 +48,9 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 	private String email;
 	private String passwort;
 
+	/**
+	 * Konstruktor
+	 */
 	public MitarbeiterBearbeitenStrg() {
 		mbv = new MitarbeiterBearbeitenView();
 		ladeMitarbeiter();
@@ -60,6 +66,13 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 
 	}
 
+	/**
+	 * Methode, die agiert, wenn ein Button gedrückt wurde. Bei Druck auf BtnWeiter,
+	 * soll sie MitarbeiterHinzufügenView anzeigen. Bei Druck auf BtnAbbrechen die
+	 * MitarbeiterBearbeitenView anzeigen. Bei Druck auf BtnAuswaehlen den
+	 * FileChooser aufrufen. Bei Druck auf BtnAbsenden die gänderten Daten in die
+	 * Datenbank schreiben.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == mbv.getBtnWeiter()) {
 			mbv.getCl().show(mbv.getCardPanel(), "Formular");
@@ -110,14 +123,14 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 												datumFormatNichtOkMeldung();
 											} else {
 												deklariereVariablenVTextfeldern();
-													if(istBenutzernameVergeben() == true) {
-														benutzernameBereitsVergebenMeldung();
-													}else {
-														updateMitarbeiterInDB();
-														mitarbeiterErfolgreichUpgedatetMeldung();
-														updateMitarbeiterInListe();
-														mbv.getCl().show(mbv.getCardPanel(), "Auswahl");
-													}
+												if (istBenutzernameVergeben() == true) {
+													benutzernameBereitsVergebenMeldung();
+												} else {
+													updateMitarbeiterInDB();
+													mitarbeiterErfolgreichUpgedatetMeldung();
+													updateMitarbeiterInListe();
+													mbv.getCl().show(mbv.getCardPanel(), "Auswahl");
+												}
 											}
 										}
 									}
@@ -130,18 +143,32 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
+	/**
+	 * Nicht genutzt, aber notwendig aufgrund des MouseListener.
+	 */
 	public void mouseDragged(MouseEvent e) {
 
 	}
 
+	/**
+	 * Nicht genutzt, aber notwendig aufgrund des MouseListener.
+	 */
 	public void mouseMoved(MouseEvent e) {
 
 	}
 
+	/**
+	 * Nicht genutzt, aber notwendig aufgrund des MouseListener.
+	 */
 	public void mouseClicked(MouseEvent e) {
 
 	}
 
+	/**
+	 * Methode, die agiert wenn die Maus das JPanel MitarbeiterHinzufügenView
+	 * überquert. Sie soll einen Mitarbeiter aus einer Datei auslesen und ihn in die
+	 * LinkedList hinzufügen.
+	 */
 	public void mouseEntered(MouseEvent e) {
 		File f = new File("src/Resources/tempMA.dat");
 		if (f.exists()) {
@@ -186,18 +213,31 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
+	/**
+	 * Nicht genutzt, aber notwendig aufgrund des MouseListener.
+	 */
 	public void mouseExited(MouseEvent e) {
 
 	}
 
+	/**
+	 * Nicht genutzt, aber notwendig aufgrund des MouseListener.
+	 */
 	public void mousePressed(MouseEvent e) {
 
 	}
 
+	/**
+	 * Nicht genutzt, aber notwendig aufgrund des MouseListener.
+	 */
 	public void mouseReleased(MouseEvent e) {
 
 	}
 
+	/**
+	 * Erstellt die mitarbeiterliste, füllt diese und füllt anschließend die
+	 * ComboBox mit der mitarbeiterliste.
+	 */
 	private void ladeMitarbeiter() {
 		Nutzerverwaltung nv = new Nutzerverwaltung();
 		mitarbeiterliste = nv.gibMitarbeiterliste();
@@ -207,6 +247,10 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
+	/**
+	 * Lädt die Daten eines spezifischen Mitarbeiters und fügt diese in die
+	 * MitarbeiterHinzufügenView ein.
+	 */
 	private void ladeMitarbeiterDaten() {
 		String auswahl = (String) mbv.getComboBoxMitarbeiter().getSelectedItem();
 		String[] split = auswahl.split(";");
@@ -225,8 +269,10 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
-	// Methode, in die Datenbank relevanten Variablen aufgrundlage des Formulars
-	// deklariert werden
+	/**
+	 * Methode, in die Datenbank relevanten Variablen aufgrundlage des Formulars
+	 * deklariert werden.
+	 */
 	private void deklariereVariablenVTextfeldern() {
 		vorname = mhv.getTfVorname().getText();
 		nachname = mhv.getTfNachname().getText();
@@ -237,7 +283,9 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		passwort = new String(mhv.getPfPasswort().getPassword());
 	}
 
-	// Methode, welche ein Mitarbeiter in der Datenbank updatet
+	/**
+	 * Methode, welche ein Mitarbeiter in der Datenbank updatet.
+	 */
 	private void updateMitarbeiterInDB() {
 		String update = "Update mitarbeiter set benutzername = '" + benutzername + "', passwort = '" + passwort
 				+ "', vorname = '" + vorname + "', nachname = '" + nachname + "', jobtitel = '" + job + "', email = '"
@@ -246,6 +294,9 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		Datenbankschnittstelle.closeConnections();
 	}
 
+	/**
+	 * aktualisiert die Attribute des geänderten Mitarbeiters in der Liste.
+	 */
 	private void updateMitarbeiterInListe() {
 		mbv.getComboBoxMitarbeiter().removeAllItems();
 		for (Mitarbeiter ma : mitarbeiterliste) {
@@ -262,8 +313,12 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
-	// Methode, welche pruefen soll, ob das Formular auch vollstaendig ausgefuellt
-	// ist
+	/**
+	 * Methode, welche pruefen soll, ob das Formular auch vollstaendig ausgefuellt
+	 * ist.
+	 * 
+	 * @return Boolean
+	 */
 	private boolean pruefeFormarAufVollständigkeit() {
 		if (mhv.getTfVorname().getText().isEmpty() || mhv.getTfNachname().getText().isEmpty()
 				|| mhv.getTfGeburtsdatum().getText().isEmpty() || mhv.getTfJob().getText().isEmpty()
@@ -274,7 +329,9 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		return true;
 	}
 
-	// Methode, welche die Laenge des Vorname-Feldes kontrollieren soll
+	/**
+	 * Methode, welche die Laenge des Vorname-Feldes kontrollieren soll.
+	 */
 	private void istVornameZuLang() {
 		if (mhv.getTfVorname().getText().length() > 20) {
 			laengeOk = "false";
@@ -282,7 +339,9 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
-	// Methode, welche die Laenge des Nachname-Feldes kontrollieren soll
+	/**
+	 * Methode, welche die Laenge des Nachname-Feldes kontrollieren soll.
+	 */
 	private void istNachnameZuLang() {
 		if (mhv.getTfNachname().getText().length() > 20) {
 			laengeOk = "false";
@@ -290,7 +349,9 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
-	// Methode, welche die Laenge des Job-Feldes kontrollieren soll
+	/**
+	 * Methode, welche die Laenge des Job-Feldes kontrollieren soll.
+	 */
 	private void istJobZuLang() {
 		if (mhv.getTfJob().getText().length() > 20) {
 			laengeOk = "false";
@@ -298,7 +359,9 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
-	// Methode, welche die Laenge des Benutzername-Feldes kontrollieren soll
+	/**
+	 * Methode, welche die Laenge des Benutzername-Feldes kontrollieren soll.
+	 */
 	private void istBenutzernameZuLang() {
 		if (mhv.getTfBenutzername().getText().length() > 20) {
 			laengeOk = "false";
@@ -306,7 +369,9 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
-	// Methode, welche die Laenge des Email-Feldes kontrollieren soll
+	/**
+	 * Methode, welche die Laenge des Email-Feldes kontrollieren soll.
+	 */
 	private void istEmailZuLang() {
 		if (mhv.getTfEmail().getText().length() > 50) {
 			laengeOk = "false";
@@ -314,7 +379,9 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
-	// Methode, welche die Laenge des Passwort-Feldes kontrollieren soll
+	/**
+	 * Methode, welche die Laenge des Passwort-Feldes kontrollieren soll.
+	 */
 	private void istPasswortZuLang() {
 		if (mhv.getPfPasswort().getPassword().length > 20) {
 			laengeOk = "false";
@@ -322,7 +389,9 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
-	// Methode, die kontrolliert, ob das Datum im richtigen Format eingegeben wurde
+	/**
+	 * Methode, die kontrolliert, ob das eingegebene Datum gültig ist.
+	 */
 	private void istDatumGueltig() {
 		Date date = null;
 		try {
@@ -334,38 +403,58 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		}
 	}
 
-	// Methode, die kontrolliert, ob der Vorname im richtigen Format eingegeben
-	// wurde
+	/**
+	 * Methode, die kontrolliert, ob der Vorname im richtigen Format eingegeben
+	 * wurde.
+	 * 
+	 * @return Boolean
+	 */
 	private boolean istVornameFormatOk() {
 		Pattern patt = Pattern.compile("[A-ZÄÖÜ][a-zäöüß]+([ -][A-ZÄÖÜ][a-zäöüß]+)?");
 		Matcher match = patt.matcher(mhv.getTfVorname().getText());
 		return match.matches();
 	}
 
-	// Methode, die kontrolliert, ob der Nachname im richtigen Format eingegeben
-	// wurde
+	/**
+	 * Methode, die kontrolliert, ob der Nachname im richtigen Format eingegeben
+	 * wurde.
+	 * 
+	 * @return Boolean
+	 */
 	private boolean istNachnameFormatOk() {
 		Pattern patt = Pattern.compile("([a-z]{2,3})?[ ]?([a-z]{2,3}[ ])?[A-ZÄÖÜ][a-zäöüß]+([ -][A-ZÄÖÜ][a-zäöüß]+)?");
 		Matcher match = patt.matcher(mhv.getTfNachname().getText());
 		return match.matches();
 	}
 
-	// Methode, die kontrolliert, ob der Job im richtigen Format eingegeben wurde
+	/**
+	 * Methode, die kontrolliert, ob der Job im richtigen Format eingegeben wurde.
+	 * 
+	 * @return Boolean
+	 */
 	private boolean istJobFormatOk() {
 		Pattern patt = Pattern.compile("[A-ZÄÖÜ][a-zäöüß]+");
 		Matcher match = patt.matcher(mhv.getTfJob().getText());
 		return match.matches();
 	}
 
-	// Methode, die kontrolliert, ob der Benutzername im richtigen Format eingegeben
-	// wurde
+	/**
+	 * Methode, die kontrolliert, ob der Benutzername im richtigen Format eingegeben
+	 * wurde.
+	 * 
+	 * @return Boolean
+	 */
 	private boolean istBenutzernameFormatOk() {
 		Pattern patt = Pattern.compile("[A-ZÄÖÜa-zäöüß]{3}.*");
 		Matcher match = patt.matcher(mhv.getTfBenutzername().getText());
 		return match.matches();
 	}
 
-	// Methode, die kontrolliert, ob die Email im richtigen Format eingegeben wurde
+	/**
+	 * Methode, die kontrolliert, ob die Email im richtigen Format eingegeben wurde.
+	 * 
+	 * @return Boolean
+	 */
 	private boolean istEmailFormatOk() {
 		Pattern patt = Pattern
 				.compile("[A-ZÄÖÜa-zäöüß0-9.!#$%&'*+-/=?^_`{|}~]+[@][a-zäöüß0-9-]+[.][a-z]{2,3}([.][a-z]{2})?");
@@ -373,13 +462,22 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 		return match.matches();
 	}
 
-	// Methode, die kontrolliert, ob das Datum im richtigen Format eingegeben wurde
+	/**
+	 * Methode, die kontrolliert, ob das Datum im richtigen Format eingegeben wurde.
+	 * 
+	 * @return Boolean
+	 */
 	private boolean istDatumFormatOk() {
 		Pattern patt = Pattern.compile("[0-9]{2}[.][0-9]{2}[.][0-9]{2}");
 		Matcher match = patt.matcher(mhv.getTfGeburtsdatum().getText());
 		return match.matches();
 	}
 
+	/**
+	 * Methode, die kontrollieren soll, ob der Benutzername bereits vergeben ist.
+	 * 
+	 * @return Boolean
+	 */
 	private boolean istBenutzernameVergeben() {
 		int check = 0;
 		for (Mitarbeiter ma : mitarbeiterliste) {
@@ -387,92 +485,128 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 				check = Integer.parseInt(ma.getmitarbeiterid());
 			}
 		}
-		if(check != mitarbeiterID && check != 0) {
+		if (check != mitarbeiterID && check != 0) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
 
-	// Meldung, die erscheint, wenn Formular nicht vollstaendig ausgefuellt ist
+	/**
+	 * Meldung, die erscheint, wenn Formular nicht vollstaendig ausgefuellt ist.
+	 */
 	private void formularUnvollständigMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(), "Alle Felder müssen ausgefüllt sein!", "Formular unvollständig",
 				JOptionPane.WARNING_MESSAGE);
 	}
 
-	// Meldung, die erscheint, wenn die Eingabe zu einem oder mehreren Feldern zu
-	// lang ist
+	/**
+	 * Meldung, die erscheint, wenn die Eingabe zu einem oder mehreren Feldern zu
+	 * lang ist.
+	 */
 	private void inhaltZuLangMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(), fehlermeldung, "Inhalt zu lang", JOptionPane.WARNING_MESSAGE);
 	}
 
-	// Meldung, die erscheint, wenn ein ungueltiges Datum eingegeben wurde
+	/**
+	 * Meldung, die erscheint, wenn ein ungueltiges Datum eingegeben wurde.
+	 */
 	private void datumUngueltigMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(), "Das eingegebene Datum existiert nicht", "Datum ungültig",
 				JOptionPane.WARNING_MESSAGE);
 	}
 
-	// Meldung, die erscheint, wenn ungueltige Zeichen im Vornamen eingegeben wurde
+	/**
+	 * Meldung, die erscheint, wenn ungueltige Zeichen im Vornamen eingegeben wurde.
+	 */
 	private void vornameFormatNichtOkMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(),
 				"Beachte die Groß- und Kleinschreibung beim Vornamen, sowie die nicht erlaubten Sonderzeichen",
 				"Vorname ungültig", JOptionPane.WARNING_MESSAGE);
 	}
 
-	// Meldung, die erscheint, wenn ungueltige Zeichen im Nachnamen eingegeben wurde
+	/**
+	 * Meldung, die erscheint, wenn ungueltige Zeichen im Nachnamen eingegeben
+	 * wurde.
+	 */
 	private void nachnameFormatNichtOkMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(),
 				"Beachte die Groß- und Kleinschreibung beim Nachnamen, sowie die nicht erlaubten Sonderzeichen",
 				"Nachname ungültig", JOptionPane.WARNING_MESSAGE);
 	}
 
-	// Meldung, die erscheint, wenn ungueltige Zeichen im Job eingegeben wurde
+	/**
+	 * Meldung, die erscheint, wenn ungueltige Zeichen im Job eingegeben wurde.
+	 */
 	private void jobFormatNichtOkMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(),
 				"Beachte die Groß- und Kleinschreibung beim Job, sowie, dass keine Sonderzeichen erlaubt sind",
 				"Job ungültig", JOptionPane.WARNING_MESSAGE);
 	}
 
-	// Meldung, die erscheint, wenn Benutzername nicht mindestens 3 Buchstaben hat
+	/**
+	 * Meldung, die erscheint, wenn Benutzername nicht mindestens 3 Buchstaben hat.
+	 */
 	private void benutzernameFormatNichtOkMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(), "Benutzername muss mindestens 3 Buchstaben am Anfang haben",
 				"Benutzername ungültig", JOptionPane.WARNING_MESSAGE);
 	}
 
-	// Meldung, die erscheint, wenn Email keinen gueltigen Muster entspricht
+	/**
+	 * Meldung, die erscheint, wenn Email keinen gueltigen Muster entspricht.
+	 */
 	private void emailFormatNichtOkMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(), "Die eingegene Email entspricht keiner gültigen Email-Adresse",
 				"Email ungültig", JOptionPane.WARNING_MESSAGE);
 	}
 
-	// Meldung, die erscheint, wenn ein ungueltiges Datum eingegeben wurde
+	/**
+	 * Meldung, die erscheint, wenn ein ungueltiges Datum eingegeben wurde.
+	 */
 	private void datumFormatNichtOkMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(), "Das Datum muss im Format DD.MM.YY vorliegen", "Datum ungültig",
 				JOptionPane.WARNING_MESSAGE);
 	}
 
-	// Meldung, die erscheint, wenn ein Mitarbeiter erfolgreich angelegt wurde
+	/**
+	 * Meldung, die erscheint, wenn ein Mitarbeiter erfolgreich angelegt wurde.
+	 */
 	private void mitarbeiterErfolgreichUpgedatetMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(),
 				"Mitarbeiter mit der ID " + mitarbeiterID + " erfolgreich upgedatet", "Erfolgreich",
 				JOptionPane.WARNING_MESSAGE);
 	}
 
+	/**
+	 * Meldung, die erscheint, wenn der eingegebene Benutzername bereits vergebn
+	 * ist.
+	 */
 	private void benutzernameBereitsVergebenMeldung() {
 		JOptionPane.showMessageDialog(mhv.getPanel(), "Der eingegebene Benutzername wird bereits genutzt",
 				"Benutzername vergeben", JOptionPane.WARNING_MESSAGE);
 	}
-	
+
+	/**
+	 * Meldung, die erscheint, wenn die Datei nicht gefunden wurde.
+	 */
 	private void dateiNichtgefundenMeldung() {
-		JOptionPane.showMessageDialog(mhv.getPanel(), "Zwischenspeicher Datei nicht gefunden",
-				"Datei nicht gefunden", JOptionPane.WARNING_MESSAGE);
-	}
-	
-	private void eingabeAusgabeFehlerMeldung() {
-		JOptionPane.showMessageDialog(mhv.getPanel(), "Fehler bei der Eingabe/-Ausgabe",
-				"IOExceptiion", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(mhv.getPanel(), "Zwischenspeicher Datei nicht gefunden", "Datei nicht gefunden",
+				JOptionPane.WARNING_MESSAGE);
 	}
 
+	/**
+	 * Meldung, die anstelle eine IOExcepton erscheint
+	 */
+	private void eingabeAusgabeFehlerMeldung() {
+		JOptionPane.showMessageDialog(mhv.getPanel(), "Fehler bei der Eingabe/-Ausgabe", "IOExceptiion",
+				JOptionPane.WARNING_MESSAGE);
+	}
+
+	/**
+	 * Getter für MitarbeiterBearbeitenView
+	 * 
+	 * @return MitarbeiterBearbeitenView
+	 */
 	public MitarbeiterBearbeitenView getView() {
 		return mbv;
 	}
