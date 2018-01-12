@@ -2,12 +2,6 @@ package Rechnung;
 
 import java.awt.EventQueue;
 
-/**
- * Grafische Benutzeroberfläche um eine Rechnungsnummer anzuzeigen. Dort kann der Nutzer außerdem entscheiden, was er mit der Rechnung durchführen möchte.
- * Button Anzeigen, Bezahlen oder Speicher 
- * @author Matthias Westermeyer
- *
- */
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,6 +14,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 
 import FontHandler.FontHandler;
+
+
+/**
+ * Grafische Benutzeroberfläche um eine Rechnungsnummer anzuzeigen. Dort kann der Nutzer außerdem entscheiden, was er mit der Rechnung durchführen möchte.
+ * Button Anzeigen, Bezahlen oder Speichern 
+ * @author Matthias Westermeyer
+ *
+ */
 
 public class Rechnungsübersicht {
 	
@@ -133,7 +135,7 @@ public class Rechnungsübersicht {
 	
 	private void initialize() {
 		
-		Font customFont20f = FontHandler.registriereSchriftart(20f);
+		Font customFont12f = FontHandler.registriereSchriftart(12f);
 		
 		frmRechnungsbersicht = new JFrame();
 		frmRechnungsbersicht.setTitle("Rechnungs\u00FCbersicht");
@@ -142,15 +144,17 @@ public class Rechnungsübersicht {
 		frmRechnungsbersicht.getContentPane().setLayout(null);
 		
 		lblRechnung = new JLabel("Rechnung:");
-		lblRechnung.setFont(customFont20f);
+		lblRechnung.setFont(customFont12f);
 		lblRechnung.setBounds(20, 44, 89, 30);
 		frmRechnungsbersicht.getContentPane().add(lblRechnung);
 		
 		btnAnzeigen = new JButton("anzeigen");
+		lblRechnung.setFont(customFont12f);
 		btnAnzeigen.setBounds(341, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnAnzeigen);
 		
 		btnBezahlen = new JButton("bezahlen");
+		lblRechnung.setFont(customFont12f);
 		btnBezahlen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -161,14 +165,19 @@ public class Rechnungsübersicht {
 		btnSpeichern = new JButton("speichern");
 		btnSpeichern.setBounds(569, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnSpeichern);
-	
 		
+		textPane = new JTextPane();
+		lblRechnung.setFont(customFont12f);
+		textPane.setBounds(140, 50, 111, 24);
+		frmRechnungsbersicht.getContentPane().add(textPane);
+	
 		lblHintergrund = new JLabel();
 		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmRechnungsbersicht.getContentPane().add(lblHintergrund);
 		
 		btnZuruck = new JButton("Zurück");
+		lblRechnung.setFont(customFont12f);
 		btnZuruck.setBounds(680, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnZuruck);
 	}
