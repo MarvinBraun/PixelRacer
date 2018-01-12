@@ -20,8 +20,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
 /**
- * KartDetailView ist die grafische Benutzeroberfläche, die benutzt wird um die
- * Details der Karts für den jeweiligen angemeldeten Nutzer anzeigt.
+ * KartDetailView ist die grafische BenutzeroberflÃ¤che, die benutzt wird um die
+ * Details der Karts fÃ¼r den jeweiligen angemeldeten Nutzer anzeigt.
  * 
  * @author Ferhat Koca
  *
@@ -48,7 +48,7 @@ public class KartDetailView {
 	private JButton btnZurueck;
 
 	/**
-	 * Führt die GUI aus.
+	 * FÃ¼hrt die GUI aus.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -64,7 +64,7 @@ public class KartDetailView {
 	}
 
 	/**
-	 * Initialisiert und befüllt die grafische oberfläsche durch die Methode initialize.
+	 * Initialisiert und befÃ¼llt die grafische oberflÃ¤sche durch die Methode initialize.
 	 */
 	public KartDetailView() {
 		initialize();
@@ -117,32 +117,32 @@ public class KartDetailView {
 
 		setLblSetmaxkmh (new JLabel("New label"));
 		getLblSetmaxkmh().setFont(customFont);
-		getLblSetmaxkmh().setBounds(191, 37, 46, 14);
+		getLblSetmaxkmh().setBounds(191, 37, 60, 14);
 		getFrame().getContentPane().add(lblSetmaxkmh);
 
 		setLblSetGesRennen (new JLabel("New label"));
 		getLblSetGesRennen().setFont(customFont);
-		getLblSetGesRennen().setBounds(191, 77, 46, 14);
+		getLblSetGesRennen().setBounds(191, 77, 60, 14);
 		getFrame().getContentPane().add(lblSetGesRennen);
 
 		setLblSetbesch(new JLabel("New label"));
 		getLblSetbesch().setFont(customFont);
-		getLblSetbesch().setBounds(191, 57, 46, 14);
+		getLblSetbesch().setBounds(191, 57, 60, 14);
 		getFrame().getContentPane().add(lblSetbesch);
 
 		setLblSetAnzErster( new JLabel("New label"));
 		getLblSetAnzErster().setFont(customFont);
-		getLblSetAnzErster().setBounds(148, 136, 46, 14);
+		getLblSetAnzErster().setBounds(148, 136, 60, 14);
 		getFrame().getContentPane().add(lblSetAnzErster);
 
 		setLblSetAnzZweiter( new JLabel("New label"));
 		getLblSetAnzZweiter().setFont(customFont);
-		getLblSetAnzZweiter().setBounds(148, 161, 46, 14);
+		getLblSetAnzZweiter().setBounds(148, 161, 60, 14);
 		getFrame().getContentPane().add(lblSetAnzZweiter);
 
 		setLblSetAnzDritter ( new JLabel("New label"));
 		getLblSetAnzDritter().setFont(customFont);
-		getLblSetAnzDritter().setBounds(148, 186, 46, 14);
+		getLblSetAnzDritter().setBounds(148, 186, 60, 14);
 		getFrame().getContentPane().add(lblSetAnzDritter);
 
 		setBtnZurueck( new JButton("Zurueck"));
