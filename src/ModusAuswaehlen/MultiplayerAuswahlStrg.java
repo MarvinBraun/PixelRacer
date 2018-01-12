@@ -33,14 +33,17 @@ public class MultiplayerAuswahlStrg implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == mv.getBtnbeitreten()) {
+			MusicHandler.MusicPlayer.forwardBtn();
 			mv.getFrame().dispose();
 			FahrtBeitretenStrg fb = new FahrtBeitretenStrg();
 		}
 		if (e.getSource() == mv.getBtnerstellen()) {
+			MusicHandler.MusicPlayer.startGame();
 			mv.getFrame().dispose();
 			FahrtErstellenStrg strg = new FahrtErstellenStrg(2);
 		}
 		if (e.getSource() == mv.getBtnzurueck()) {
+			MusicHandler.MusicPlayer.backwardBtn();
 			mv.getFrame().dispose();
 			ModusauswaehlenStrg ma = new ModusauswaehlenStrg();
 		}

@@ -326,19 +326,23 @@ public class FahrtBeitretenStrg implements ActionListener {
 		
 		if(e.getSource()==view.getKartForward())
 		{
+			MusicHandler.MusicPlayer.forwardBtn();
 			ladeKarts();
 		}
 		if(e.getSource()==view.getKartBackward())
 		{
+			MusicHandler.MusicPlayer.backwardBtn();
 			kartRückwärts();
 			
 		}
 		if(e.getSource()==view.getMultiplayerBeitretenBtn())
 		{
+			MusicHandler.MusicPlayer.forwardBtn();
 			multiplayerBeitreten();
 		}
 		if(e.getSource()==view.getBackBtn())
 		{
+			MusicHandler.MusicPlayer.backwardBtn();
 			MultiplayerAuswahlStrg strg = new MultiplayerAuswahlStrg();
 			view.getFrame().dispose();
 			

@@ -27,7 +27,7 @@ public class AnmeldenStrg implements ActionListener {
 	AnmeldenMitarbeiterView view2;
 	
 	public AnmeldenStrg() { //Konstruktor
-		MusicHandler.MusicPlayer.audioBackground();
+		
 		view1 = new AnmeldenView();
 		view1.getFrmPixelRacer().setVisible(true);
 		
@@ -122,6 +122,7 @@ public class AnmeldenStrg implements ActionListener {
 		}
 		
 		if(e.getSource()== view1.getBtnAccountAnlegen()) { //AccountAnlegenStrg wird aufgerufen
+			MusicHandler.MusicPlayer.forwardBtn();
 			AccountAnlegenStrg anlegenstrg = new AccountAnlegenStrg();
 		}
 		
@@ -131,6 +132,7 @@ public class AnmeldenStrg implements ActionListener {
 		
 		if(e.getSource()== view2.getBtnAnmelden()) { //Überprüfung der Anmeldedaten und eventuelles Aufrufen der Mitarbeiteransicht
 			if(pruefeDatenMitarbeiter()) {
+				MusicHandler.MusicPlayer.forwardBtn();
 				JOptionPane.showMessageDialog(null, "Anmelden erfolgreich!","Super!", JOptionPane.PLAIN_MESSAGE);
 				MitarbeiterAnsichtStrg strg = new MitarbeiterAnsichtStrg();
 				view2.getFrmPixelRacer().dispose();
@@ -142,6 +144,7 @@ public class AnmeldenStrg implements ActionListener {
 		}
 		
 		if(e.getSource()== view2.getBtnAbbrechen()) { //Abbruch des Mitarbeiterlogins, erneutes Aufrufen des Kundenanmeldenfenster
+			MusicHandler.MusicPlayer.forwardBtn();
 			view2.getFrmPixelRacer().dispose();
 			AnmeldenStrg strg = new AnmeldenStrg();
 		}

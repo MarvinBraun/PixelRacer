@@ -108,7 +108,7 @@ public class MultiplayerAuswertungStrg implements ActionListener {
 		
 		if(e.getSource()==view.getBtn())
 		{
-		
+			MusicHandler.MusicPlayer.startGame();
 			StartansichtStrg strg = new StartansichtStrg();
 			view.getFrame().dispose();
 			

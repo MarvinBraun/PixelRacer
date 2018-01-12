@@ -113,17 +113,21 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent a) {
 		if(a.getSource()==viewKunde.getBtnRechnungsverw()) { // Aufruf der Rechnungsverwaltung bei Klick von BtnRechnungsverw
+			MusicHandler.MusicPlayer.forwardBtn();
 			RechnungAnzeigenStrg rechnung = new RechnungAnzeigenStrg();
 		}
 		if(a.getSource()==viewKunde.getBtnProfilBearbeiten()) { // Aufruf der ProfilBearbeitenStrg bei Klick von BtnProfilBearbeiten & schliessen des Profils
+			MusicHandler.MusicPlayer.forwardBtn();
 			ProfilBearbeitenStrg strg = new ProfilBearbeitenStrg();
 			viewKunde.getFrmPixelRacer().dispose();
 		}
 		if(a.getSource()==viewKunde.getBtnZurueck()) {  // Aufruf der Startansicht bei Klick von BtnZurueck & schliessen des Profils
+			MusicHandler.MusicPlayer.backwardBtn();
 			StartansichtStrg strg = new StartansichtStrg();
 			viewKunde.getFrmPixelRacer().dispose();
 		}
 		if(a.getSource()==viewKunde.getBtnGetPremium()) { // Aufruf der kaufePremium-Account-Strg bei Klick von BtnGetPremium 
+			MusicHandler.MusicPlayer.startGame();
 			kaufePremiumAccount account = new kaufePremiumAccount(viewKunde);
 		}
 		

@@ -297,31 +297,39 @@ public class AnzeigenKartStrg implements ActionListener {
 		try {
 			if (e.getSource() == viewUebersicht.getBtnZurueck()) {
 
+				MusicHandler.MusicPlayer.backwardBtn();
+				
 				viewUebersicht.getFrame().dispose();
 				viewDetail.frame.dispose();
 				StartansichtStrg strg = new StartansichtStrg();
 			}
 
 			if (e.getSource() == viewUebersicht.getBtnKartKaufen()) {
+				
+				MusicHandler.MusicPlayer.forwardBtn();
 
 				kaufePremiumKart strg = new kaufePremiumKart(k, viewUebersicht);
 			}
 			if (e.getSource() == viewDetail.getBtnZurueck()) {
+				MusicHandler.MusicPlayer.backwardBtn();
 				viewDetail.frame.dispose();
 				viewUebersicht.getFrame().setVisible(true);
 			}
 
 			if (e.getSource() == viewUebersicht.getKartBackward()) {
+				MusicHandler.MusicPlayer.backwardBtn();
 				viewDetail.frame.dispose();
 				KartRueckwaerts();
 			}
 
 			if (e.getSource() == viewUebersicht.getKartForward()) {
+				MusicHandler.MusicPlayer.forwardBtn();
 				viewDetail.frame.dispose();
 				ladeKart();
 			}
 
 			if (e.getSource() == viewUebersicht.getBtnDetailView()) {
+				MusicHandler.MusicPlayer.startGame();
 				viewDetail.frame.setVisible(true);
 			}
 

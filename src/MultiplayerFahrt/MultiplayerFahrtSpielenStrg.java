@@ -46,6 +46,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	 */
 	public MultiplayerFahrtSpielenStrg(MultiplayerFahrt fahrt, Kart kart1, Strecke strecke1)
 	{
+		MusicHandler.MusicPlayer.startGame();
 		kart = kart1;
 		strecke = strecke1;
 		this.mf = fahrt;
@@ -109,12 +110,14 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	            		speed = speed+speed;
 	            		fahrtSpielenView.getZeiger().setSpeed(speed);
 	            	}
-	            	System.out.println("Hi from KeyListener");
+	            
 	            	versuche--;
 	            	String a = ""+versuche;
 	            	fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Runden verbleibend: "+a);
 	               	String b = ""+mf.getZeit();
 	        
+	               	MusicHandler.MusicPlayer.spaceBtn();
+	               	
 	               	if(200<record&&record<500)
 	               	{
 	               		fahrtSpielenView.getBewertungLbl().setText("Super");

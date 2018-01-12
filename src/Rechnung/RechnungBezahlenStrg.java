@@ -76,13 +76,16 @@ public class RechnungBezahlenStrg implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == view1.getBtnAbbrechen()) {
+			MusicHandler.MusicPlayer.backwardBtn();
 			view1.getFrmRechnungBezahlen().dispose();
 			StartansichtStrg strg = new StartansichtStrg();
 		}
 		
 		if(e.getSource() == view1.getBtnBezahlen()) {
+			MusicHandler.MusicPlayer.startGame();
 			if(auswahl == 'p') {
 				try {
+					
 					String update = "Update kunde set premium = 'true' where benutzername = '" + Nutzerverwaltung.getangKunde().getnutzername() + "'";
 					Datenbankschnittstelle.executeUpdate(update);
 					Datenbankschnittstelle.closeConnections();

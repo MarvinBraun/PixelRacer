@@ -325,31 +325,34 @@ public class AnzeigenStreckenStrg implements ActionListener{
 			kaufePremiumStrecke strg = new kaufePremiumStrecke(s, viewUebersicht);
 		}
 		if(e.getSource()==viewUebersicht.getBtnZurueck()) { // Aufruf der Startansicht bei Klick von BtnZurueck & schliessen der Views
-			
+			MusicHandler.MusicPlayer.backwardBtn();
 			viewUebersicht.getFrmPixelRacer().dispose();
 			viewDetail.getFrame().dispose();
 			StartansichtStrg strg = new StartansichtStrg();
 		}
 		
 		if(e.getSource()==viewDetail.getBtnZurueck()) { // Schliessen der DetailView bei Klick von BtnZurueck
-			
+			MusicHandler.MusicPlayer.backwardBtn();
 			viewDetail.getFrame().dispose();			
 		}
 		
 		if(e.getSource()==viewUebersicht.getStreckeBackward()) // Schliessen der DetailView & Aufruf streckeZurueck() bei Klick von StreckeBackward 
 		{
+			MusicHandler.MusicPlayer.backwardBtn();
 			viewDetail.getFrame().dispose();
 			streckeZurueck();			
 		}
 		
 		if(e.getSource()==viewUebersicht.getStreckeForward()) // Schliessen der DetailView & Aufruf sstreckeVorwaerts() bei Klick von StreckeForward 
 		{
+			MusicHandler.MusicPlayer.forwardBtn();
 			viewDetail.getFrame().dispose();
 			streckeVorwaerts();							
 		}
 		
 		if(e.getSource()==viewUebersicht.getBtnDetailView()) // Aufruf der DetailView bei Klick von BtnDetailView
 		{		
+			MusicHandler.MusicPlayer.startGame();
 			viewDetail.getFrame().setVisible(true);		
 		}
 	}

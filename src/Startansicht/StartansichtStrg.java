@@ -46,26 +46,31 @@ public class StartansichtStrg implements ActionListener {
 	public void actionPerformed(ActionEvent e) { //ActionPerformed der Buttons
 		// TODO Auto-generated method stub
 		if(e.getSource()== view1.getBtnAbmelden()) { //Abmeldung des Nutzers
+			MusicHandler.MusicPlayer.forwardBtn();
 			AnmeldenStrg strg = new AnmeldenStrg();
 			view1.getFrmPixelRacer().dispose();
 		}
 		
 		if(e.getSource()== view1.getBtnGarage()) { //Anzeigen der verschiedenen Karts
+			MusicHandler.MusicPlayer.forwardBtn();
 			AnzeigenKartStrg strg = new AnzeigenKartStrg();
 			view1.getFrmPixelRacer().dispose();
 		}
 		
 		if(e.getSource()== view1.getBtnProfil()) { //Anzeigen des Profils des Kunden
+			MusicHandler.MusicPlayer.forwardBtn();
 			AnzeigenProfilKundeStrg strg = new AnzeigenProfilKundeStrg(); 
 			view1.getFrmPixelRacer().dispose();
 		}
 		
 		if(e.getSource()== view1.getBtnSpielen()) { //Button um zur Erstellung einer Fahrt zu gelangen
+			MusicHandler.MusicPlayer.forwardBtn();
 			ModusauswaehlenStrg strg = new ModusauswaehlenStrg();
 			view1.getFrmPixelRacer().dispose();
 		}
 		
 		if(e.getSource()== view1.getBtnStreckenbersicht()) {//Anzeige der verschiedenen Strecken
+			MusicHandler.MusicPlayer.forwardBtn();
 			AnzeigenStreckenStrg strg = new AnzeigenStreckenStrg();
 			view1.getFrmPixelRacer().dispose();
 		}

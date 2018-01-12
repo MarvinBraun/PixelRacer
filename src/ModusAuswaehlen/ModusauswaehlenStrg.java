@@ -39,16 +39,19 @@ public class ModusauswaehlenStrg implements ActionListener {
 
 		kunde = Nutzerverwaltung.getangKunde();
 		if (e.getSource() == mav.getBtnSingleplayer()) {
+			MusicHandler.MusicPlayer.forwardBtn();
 			mav.getFrame().dispose();
 			FahrtErstellenStrg strg = new FahrtErstellenStrg(1);
 		}
 
 		if (e.getSource() == mav.getBtnzurueck()) {
+			MusicHandler.MusicPlayer.backwardBtn();
 			mav.getFrame().dispose();
 			StartansichtStrg sa = new StartansichtStrg();
 		}
 
 		if (e.getSource() == mav.getBtnMultiplayer()) {
+			MusicHandler.MusicPlayer.forwardBtn();
 			mav.getFrame().dispose();
 			try {
 				MultiplayerAuswahlStrg.main(null);

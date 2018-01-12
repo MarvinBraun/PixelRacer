@@ -74,6 +74,7 @@ public class FahrtAuswertungStrg implements ActionListener {
 		
 		if(e.getSource()==view.getBtnNewButton())
 		{
+			MusicHandler.MusicPlayer.startGame();
 			view.getFrame().dispose();
 			StartansichtStrg strg = new StartansichtStrg();
 		}

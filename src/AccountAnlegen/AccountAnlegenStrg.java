@@ -161,6 +161,7 @@ public class AccountAnlegenStrg implements ActionListener {
 
 			eingegebeneDatenSpeichern();
 			if (DatenPruefen()) {
+				MusicHandler.MusicPlayer.startGame();
 				InsertIntoKunde();
 				JOptionPane.showMessageDialog(null, "Der Account wurde erfolgreich angelegt!", "Viel Spaﬂ!",
 						JOptionPane.PLAIN_MESSAGE);
@@ -171,6 +172,7 @@ public class AccountAnlegenStrg implements ActionListener {
 
 		if (e.getSource() == view1.getBtnAbbrechen()) { // Der Vorgang wird abgebrochen und das Anmeldenfenster wird
 														// erneut angezeigt
+			MusicHandler.MusicPlayer.forwardBtn();
 			view1.getFrmPixelRacer().dispose();
 			AnmeldenStrg strg = new AnmeldenStrg();
 		}
