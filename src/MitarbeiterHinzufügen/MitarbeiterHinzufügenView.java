@@ -15,7 +15,7 @@ import javax.swing.JPasswordField;
  * Grafische Beutzeroberfläche in Form eines Formulars für den Vorgang
  * HinzufügenMitarbeiter.
  * 
- * @author Sean
+ * @author Sean Cartner
  *
  */
 public class MitarbeiterHinzufügenView extends JPanel {
