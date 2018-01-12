@@ -128,14 +128,11 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 			sf = new SingleplayerFahrt();
 			sf.setSchwierigkeit("Bronze");
-			sf.setBenutzername(kunde.getnutzername());
 			sf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
 			view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
 			ladeStrecke();
 			
 			schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFuerBenutzerUndStrecke(kunde.getnutzername(),s.getStreckenname());
-			System.out.println("Fahrten:"+schwierigkeitsCheck.size());
-			
 		}
 		
 		//Initialisieren der MultiplayerID
@@ -150,7 +147,6 @@ public class FahrtErstellenStrg implements ActionListener {
 			view.getMultiplayerLbl().setVisible(true);
 			mf = new MultiplayerFahrt();
 			int sitzungsID = fahrten.gibNeueID(1);
-			view.getMultiplayerLbl().setText(""+sitzungsID);
 			mf.setSitzungsID(sitzungsID);
 			mf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
 			
@@ -161,8 +157,6 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		
 		SwingUtilities.updateComponentTreeUI(view.getFrame());
-		SwingUtilities.updateComponentTreeUI(view.getFrame());
-		
 		
 	}
 	
@@ -185,6 +179,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
+			MusicPlayer.forwardBtn();
 		}
 		}
 		catch(Exception e)
@@ -372,6 +367,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
+			MusicPlayer.forwardBtn();
 		}
 	}
 		catch(Exception e)
@@ -405,6 +401,7 @@ public class FahrtErstellenStrg implements ActionListener {
 				sf.setSchwierigkeit(itString.next());
 				view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
 			}
+			MusicPlayer.forwardBtn();
 		}
 		}
 		catch(Exception e)
@@ -602,7 +599,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		}
 		if(e.getSource()==view.getBackBtn())
 		{
-			ModusauswaehlenStrg strg = new ModusauswaehlenStrg();
+			ModusAuswaehlen.ModusauswaehlenStrg strg = new ModusAuswaehlen.ModusauswaehlenStrg();
 			view.getFrame().dispose();
 		}
 		

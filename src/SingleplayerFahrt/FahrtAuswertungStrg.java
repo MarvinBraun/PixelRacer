@@ -64,6 +64,7 @@ public class FahrtAuswertungStrg implements ActionListener {
 		
 		verwaltung.sendeSingleplayerFahrt(sf);		
 		Nutzerverwaltung.addpunkte(a);
+		Nutzerverwaltung.aktualisereangKunde();
 		view.getBtnNewButton().addActionListener(this);	
 	}
 	
