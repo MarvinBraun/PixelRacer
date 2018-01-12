@@ -26,7 +26,7 @@ import Iterator.IteratorStrecke;
 import Iterator.IteratorString;
 import Kart.Kart;
 import Kart.Kartverwaltung;
-import ModusAuswählen.MultiplayerAuswahlStrg;
+import ModusAuswaehlen.MultiplayerAuswahlStrg;
 import MusicHandler.MusicPlayer;
 import Nutzer.Nutzerverwaltung;
 import Rechnung.Rechnung;
@@ -226,14 +226,17 @@ public class FahrtBeitretenStrg implements ActionListener {
 			r = itR.next();
 			String kartName;
 			kartName = r.getKartname();
-			System.out.println("Zu suchendes Kart"+ kartName);
 			
-			Iterator<Kart> itN = alleKarts.iterator();
+			System.out.println("Zu suchendes Kart"+ kartName);
 		
-			while(it.hasNext())
+			Iterator<Kart> itN = alleKarts.iterator();
+			
+			System.out.println(alleKarts.size());
+			
+			while(itN.hasNext())
 			{
 				
-				k = it.next();
+				k = itN.next();
 				System.out.println("Vergleiche: "+kartName + " mit: "+k.getKartname() );
 				if(k.getKartname().equals(kartName))
 				{	

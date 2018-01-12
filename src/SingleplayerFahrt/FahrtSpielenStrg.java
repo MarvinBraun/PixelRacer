@@ -48,6 +48,8 @@ public class FahrtSpielenStrg implements ActionListener{
 	
 	public FahrtSpielenStrg(SingleplayerFahrt sfahrt, Kart k, Strecke s, int schwierigkeit)
 	{
+		MusicHandler.MusicPlayer.startGame();
+
 		kart = k;
 		strecke = s;
 		this.sf = sfahrt;
@@ -109,7 +111,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	            	fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Runden verbleibend: "+a);
 	               
 	            	String b = ""+sf.getZeit();
-	               	
+	            	MusicHandler.MusicPlayer.spaceBtn();
 	               	if(300<record&&record<450)
 	               	{
 	               		spielstand = spielstand+1;

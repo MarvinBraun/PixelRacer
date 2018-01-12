@@ -10,6 +10,7 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 public class MusicPlayer {
 
@@ -24,6 +25,9 @@ public class MusicPlayer {
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.loop(Clip.LOOP_CONTINUOUSLY);  
+	        FloatControl gainControl = 
+	        	    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+	        	gainControl.setValue(-20.0f); // Reduce volume by 20 decibels.
 	        
 	    } catch(Exception ex) {
 	    	
@@ -40,7 +44,9 @@ public class MusicPlayer {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/Resources/music1.wav").getAbsoluteFile());
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
-
+	        FloatControl gainControl = 
+	        	    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+	        	gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 	        
 	    } catch(Exception ex) {
 	    	
@@ -57,7 +63,9 @@ public class MusicPlayer {
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
-	        
+	        FloatControl gainControl = 
+	        	    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+	        	gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 	    } catch(Exception ex) {
 	    	
 	        System.out.println("Error with playing sound.");     
@@ -73,7 +81,9 @@ public class MusicPlayer {
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
-	        
+	        FloatControl gainControl = 
+	        	    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+	        	gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 	    } catch(Exception ex) {
 	    	
 	        System.out.println("Error with playing sound.");     
@@ -83,12 +93,13 @@ public class MusicPlayer {
 	public static void forwardBtn()
 	{
 		try {
-
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/Resources/forwardBtn.wav").getAbsoluteFile());
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start(); 
-	        
+	        FloatControl gainControl = 
+	        	    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+	        	gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 	    } catch(Exception ex) {
 	    	
 	        System.out.println("Error with playing sound.");     
@@ -103,7 +114,9 @@ public class MusicPlayer {
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
-	        
+	        FloatControl gainControl = 
+	        	    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+	        	gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 	    } catch(Exception ex) {
 	    	
 	        System.out.println("Error with playing sound.");     

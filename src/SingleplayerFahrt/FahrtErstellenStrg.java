@@ -32,7 +32,7 @@ import Rechnung.Rechnungsverwaltung;
 import Strecke.Strecke;
 import Strecke.Streckenverwaltung;
 import Kart.*;
-import ModusAuswählen.ModusauswaehlenStrg;
+
 import MultiplayerFahrt.*;
 
 /**
@@ -179,7 +179,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
-			MusicPlayer.forwardBtn();
+		
 		}
 		}
 		catch(Exception e)
@@ -239,10 +239,10 @@ public class FahrtErstellenStrg implements ActionListener {
 			
 			Iterator<Kart> itN = alleKarts.iterator();
 		
-			while(it.hasNext())
+			while(itN.hasNext())
 			{
 				
-				k = it.next();
+				k = itN.next();
 				System.out.println("Vergleiche: "+kartName + " mit: "+k.getKartname() );
 				if(k.getKartname().equals(kartName))
 				{	
@@ -332,7 +332,7 @@ public class FahrtErstellenStrg implements ActionListener {
 				streckenbild = imageResizer(newImage);
 				ImageIcon icon = new ImageIcon(streckenbild);
 				view.getStreckeLbl().setIcon(icon);
-				
+			
 				if(singlemultiplayer==1)
 				{
 					itString = new IteratorString(schwierigkeiten.listIterator());
@@ -367,7 +367,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
-			MusicPlayer.forwardBtn();
+		
 		}
 	}
 		catch(Exception e)
@@ -401,7 +401,7 @@ public class FahrtErstellenStrg implements ActionListener {
 				sf.setSchwierigkeit(itString.next());
 				view.getSchwierigkeitLbl().setText(sf.getSchwierigkeit());
 			}
-			MusicPlayer.forwardBtn();
+			
 		}
 		}
 		catch(Exception e)
@@ -443,12 +443,19 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public void schwierigkeitBack()
 	{
+		try {
 		String s;
 		if((s=itString.previous())!=null)
 		{
 			view.getSchwierigkeitLbl().setText(s);
 			sf.setSchwierigkeit(s);
 		}
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
 		
 		
 	}
@@ -496,6 +503,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	 */
 	public void schwierigkeitVorwärts()
 	{
+		try {
 		String s;
 		String prüfung = sf.getSchwierigkeit();
 		
@@ -514,9 +522,14 @@ public class FahrtErstellenStrg implements ActionListener {
 				JOptionPane pane = new JOptionPane();
 				pane.setBounds(view.getFrame().getX()+300,view.getFrame().getY()+250,200,100);
 				pane.showMessageDialog(null, "Schwierigkeit nocht nicht freigeschaltet");
-					
+			
 				itString.previous();
 				}
+		}
+		}
+		catch(Exception e)
+		{
+			
 		}
 		
 	}
@@ -579,36 +592,44 @@ public class FahrtErstellenStrg implements ActionListener {
 		if(e.getSource()==view.getKartForward())
 		{
 			ladeKarts();
+			MusicHandler.MusicPlayer.forwardBtn();
 		}
 		if(e.getSource()==view.getKartBackward())
 		{
+			MusicHandler.MusicPlayer.backwardBtn();
 			kartRückwärts();
 			
 		}
 		if(e.getSource()==view.getSchwierigkeitBtn1())
 		{
+			MusicHandler.MusicPlayer.backwardBtn();
 			schwierigkeitBack();
 		}
 		if(e.getSource()==view.getSchwierigkeitBtn2())
 		{
+			MusicHandler.MusicPlayer.forwardBtn();
 			schwierigkeitVorwärts();
 		}
 		if(e.getSource()==view.getSpielenBtn())
 		{
+			MusicHandler.MusicPlayer.forwardBtn();
 		starteSpiel();
 		}
 		if(e.getSource()==view.getBackBtn())
 		{
+			MusicHandler.MusicPlayer.backwardBtn();
 			ModusAuswaehlen.ModusauswaehlenStrg strg = new ModusAuswaehlen.ModusauswaehlenStrg();
 			view.getFrame().dispose();
 		}
 		
 		if(e.getSource()==view.getStreckeBackward())
 		{
+			MusicHandler.MusicPlayer.backwardBtn();
 			streckeRückwärts();
 		}
 		if(e.getSource()==view.getStreckeForward())
 		{
+			MusicHandler.MusicPlayer.forwardBtn();
 			ladeStrecke();
 		}
 		

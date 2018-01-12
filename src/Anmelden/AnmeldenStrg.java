@@ -27,6 +27,7 @@ public class AnmeldenStrg implements ActionListener {
 	AnmeldenMitarbeiterView view2;
 	
 	public AnmeldenStrg() { //Konstruktor
+		MusicHandler.MusicPlayer.audioBackground();
 		view1 = new AnmeldenView();
 		view1.getFrmPixelRacer().setVisible(true);
 		
