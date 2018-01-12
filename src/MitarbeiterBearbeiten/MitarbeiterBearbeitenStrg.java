@@ -44,7 +44,6 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 	private String benutzername;
 	private String email;
 	private String passwort;
-	private int check;
 
 	public MitarbeiterBearbeitenStrg() {
 		mbv = new MitarbeiterBearbeitenView();
@@ -382,7 +381,7 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 	}
 
 	private boolean istBenutzernameVergeben() {
-		check = 0;
+		int check = 0;
 		for (Mitarbeiter ma : mitarbeiterliste) {
 			if (benutzername.equals(ma.getnutzername())) {
 				check = Integer.parseInt(ma.getmitarbeiterid());
