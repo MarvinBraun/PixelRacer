@@ -9,7 +9,7 @@ import java.awt.Font;
 
 /**
  * Grafische Benutzeroberfläche, die dazu dient, dass der Nutzer mittels einer
- * ComboBox einen Mitarbeiter auswählen kann. Die Oberfläche verfügt über das
+ * ComboBox einen Mitarbeiter zum Auswählen auswählen kann. Die Oberfläche verfügt über das
  * CardLayout, über das die MitarbeiterHinzufügenView angezeigt werden kann.
  * 
  * @author Sean Cartner
