@@ -72,6 +72,7 @@ public class MultiplayerAuswahlView {
 		getFrame().setResizable(false);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFrame().getContentPane().setLayout(null);
+		getFrame().setLocationRelativeTo(null);
 
 		setBtnerstellen( new JButton("Multiplayerfahrt erstellen"));
 		getBtnerstellen().setBounds(80, 237, 280, 31);
