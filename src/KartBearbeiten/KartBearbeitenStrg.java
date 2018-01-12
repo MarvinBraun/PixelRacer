@@ -63,7 +63,7 @@ public class KartBearbeitenStrg implements ActionListener, MouseListener, MouseM
 
 	/**
 	 * Methode, die agiert, wenn ein Button gedrückt wurde. Bei Druck auf BtnWeiter,
-	 * soll sie KartHinzufügenView anzeigen. Bei Druck auf BtnAbbrechen das die
+	 * soll sie KartHinzufügenView anzeigen. Bei Druck auf BtnAbbrechen die
 	 * KartBearbeitenView anzeigen. Bei Druck auf BtnAuswaehlen den FileChooser
 	 * aufrufen. Bei Druck auf BtnAbsenden die gänderten Daten in die Datenbank
 	 * schreiben.
