@@ -1,10 +1,13 @@
 
 package MitarbeiterHinzufügen;
 
+import java.awt.EventQueue;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 
@@ -41,6 +44,13 @@ public class MitarbeiterHinzufügenView extends JPanel {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 		frmPixelRacer = new JPanel();
 		setSize(624, 570);
 		setLayout(null);

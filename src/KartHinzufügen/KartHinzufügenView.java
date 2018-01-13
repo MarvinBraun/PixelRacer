@@ -1,5 +1,6 @@
 package KartHinzufügen;
 
+import java.awt.EventQueue;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -10,6 +11,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.UIManager;
 
 /**
  * Grafische Beutzeroberfläche in Form eines Formulars für den Vorgang
@@ -46,6 +48,12 @@ public class KartHinzufügenView extends JPanel {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 		frmPixelRacer = new JPanel();
 		setSize(624, 570);
 		setLayout(null);
