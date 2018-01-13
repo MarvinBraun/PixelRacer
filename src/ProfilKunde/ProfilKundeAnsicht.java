@@ -98,7 +98,7 @@ public class ProfilKundeAnsicht{
 			  @Override
 			  public void windowClosing(WindowEvent we)
 			  { 
-				  int result = JOptionPane.showConfirmDialog(null,"Möchten sie Pixcel Racer wirklich schließen?", "Pixcel Racer schließen?", JOptionPane.YES_NO_OPTION);
+				  int result = JOptionPane.showConfirmDialog(null,"Moechten sie Pixcel Racer wirklich schliessen?", "Pixcel Racer schliessen?", JOptionPane.YES_NO_OPTION);
 				  switch(result) {
 				  case JOptionPane.YES_OPTION:
 					  System.exit(0);
