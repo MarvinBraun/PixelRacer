@@ -70,8 +70,9 @@ public class Streckenuebersicht {
 	 */
 	private void initialize() {
 		
-		Font customFont30f = FontHandler.registriereSchriftart(15f); // Laden der Schriftart durch Klasse FontHandler
-				
+		Font customFont15f = FontHandler.registriereSchriftart(15f); // Laden der Schriftart durch Klasse FontHandler
+		Font customFont30f = FontHandler.registriereSchriftart(30f); 
+		
 		setFrmPixelRacer(new JFrame());
 		getFrmPixelRacer().setTitle("Pixel Racer - Strecken\u00FCbersicht");
 		getFrmPixelRacer().setBounds(100, 100, 800, 600);
@@ -84,7 +85,7 @@ public class Streckenuebersicht {
 			  @Override
 			  public void windowClosing(WindowEvent we)
 			  { 
-				  int result = JOptionPane.showConfirmDialog(null,"Möchten sie Pixcel Racer wirklich schließen?", "Pixcel Racer schließen?", JOptionPane.YES_NO_OPTION);
+				  int result = JOptionPane.showConfirmDialog(null,"Moechten sie Pixcel Racer wirklich schliessen?", "Pixcel Racer schliessen?", JOptionPane.YES_NO_OPTION);
 				  switch(result) {
 				  case JOptionPane.YES_OPTION:
 					  System.exit(0);
@@ -119,12 +120,12 @@ public class Streckenuebersicht {
 		
 		setStreckeName(new JLabel("Hockenheim", JLabel.CENTER));
 		getStreckeName().setFont(customFont30f);
-		getStreckeName().setBounds(282, 355, 215, 60);
+		getStreckeName().setBounds(239, 355, 308, 60);
 		getStreckeName().setVisible(true);
 		getFrmPixelRacer().getContentPane().add(getStreckeName());
 		
 		setBtnDetailView(new JButton("Zeig mir mehr!"));
-		getBtnDetailView().setFont(customFont30f);
+		getBtnDetailView().setFont(customFont15f);
 		getBtnDetailView().setBounds(282, 428, 229, 35);
 		getBtnDetailView().setVisible(true);
 		getBtnDetailView().setBorderPainted(false);
@@ -142,18 +143,18 @@ public class Streckenuebersicht {
 		
 		setLblStreckePunkte(new JLabel("New label"));
 		getLblStreckePunkte().setVisible(false);
-		getLblStreckePunkte().setFont(customFont30f);
+		getLblStreckePunkte().setFont(customFont15f);
 		getLblStreckePunkte().setBounds(268, 474, 265, 65);
 		getFrmPixelRacer().getContentPane().add(getLblStreckePunkte());
 		
 		setLblStreckePunkteLimit(new JLabel("New label"));
 		getLblStreckePunkteLimit().setVisible(false);
-		getLblStreckePunkteLimit().setFont(customFont30f);
-		getLblStreckePunkteLimit().setBounds(165, 474, 478, 76);
+		getLblStreckePunkteLimit().setFont(customFont15f);
+		getLblStreckePunkteLimit().setBounds(150, 456, 549, 76);
 		getFrmPixelRacer().getContentPane().add(getLblStreckePunkteLimit());
 		
 		setBtnZurueck(new JButton("Zurueck"));
-		getBtnZurueck().setFont(customFont30f);
+		getBtnZurueck().setFont(customFont15f);
 		getBtnZurueck().setBounds(27, 510, 113, 29);
 		getBtnZurueck().setBorderPainted(false);
 		getBtnZurueck().setOpaque(false);
@@ -170,7 +171,7 @@ public class Streckenuebersicht {
 		
 		setBtnStreckeKaufen(new JButton("Strecke kaufen!"));
 		getBtnStreckeKaufen().setVisible(true);
-		getBtnStreckeKaufen().setFont(customFont30f);
+		getBtnStreckeKaufen().setFont(customFont15f);
 		getBtnStreckeKaufen().setBounds(543, 428, 229, 33);
 		getBtnStreckeKaufen().setBorderPainted(false);
 		getBtnStreckeKaufen().setOpaque(false);
