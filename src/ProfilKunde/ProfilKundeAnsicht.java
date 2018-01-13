@@ -154,7 +154,7 @@ public class ProfilKundeAnsicht{
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		getBtnGetPremium().setBounds(10, 459, 288, 33);
+		getBtnGetPremium().setBounds(10, 459, 316, 33);
 		getBtnGetPremium().setBorderPainted(false);
 		getBtnGetPremium().setOpaque(false);
 		getBtnGetPremium().setBackground(SystemColor.activeCaption);
