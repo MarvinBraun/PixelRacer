@@ -10,7 +10,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.UIManager;
 
 /**
  * Grafische Beutzeroberfläche in Form eines Formulars für den Vorgang
@@ -48,13 +47,6 @@ public class StreckeHinzufügenView extends JPanel {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-
 		frmPixelRacer = new JPanel();
 		setSize(624, 570);
 		setLayout(null);
@@ -109,7 +101,6 @@ public class StreckeHinzufügenView extends JPanel {
 		textFieldPunktzahl.setColumns(10);
 
 		rdbtnFree = new JRadioButton("Free");
-		;
 		rdbtnFree.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		rdbtnFree.setBounds(265, 305, 61, 23);
 		add(rdbtnFree);
