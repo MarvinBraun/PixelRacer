@@ -58,6 +58,7 @@ public class MitarbeiterBearbeitenView extends JPanel {
 
 		btnWeiter = new JButton("weiter");
 		btnWeiter.setBounds(440, 344, 112, 30);
+		btnWeiter.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		AuswahlPanel.add(btnWeiter);
 
 	}
