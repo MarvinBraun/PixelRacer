@@ -1,7 +1,6 @@
 package MitarbeiterAnsicht;
 
 import java.awt.Font;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -30,6 +29,7 @@ public class StartView extends JPanel {
 
 		btnAbmelden = new JButton("abmelden");
 		btnAbmelden.setBounds(438, 509, 105, 23);
+		btnAbmelden.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(btnAbmelden);
 
 	}
