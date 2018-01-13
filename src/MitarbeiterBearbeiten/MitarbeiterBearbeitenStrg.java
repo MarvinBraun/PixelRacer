@@ -239,8 +239,8 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 	 * ComboBox mit der mitarbeiterliste.
 	 */
 	private void ladeMitarbeiter() {
-		Nutzerverwaltung nv = new Nutzerverwaltung();
-		mitarbeiterliste = nv.gibMitarbeiterliste();
+		Nutzerverwaltung.gibMitarbeiterliste().clear();
+		mitarbeiterliste = Nutzerverwaltung.gibMitarbeiterliste();
 		Collections.sort(mitarbeiterliste, new MitarbeiterKomperator());
 		for (Mitarbeiter ma : mitarbeiterliste) {
 			mbv.getComboBoxMitarbeiter().addItem(ma.getmitarbeiterid() + ";" + ma.getnutzername());
