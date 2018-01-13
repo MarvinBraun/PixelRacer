@@ -2,6 +2,7 @@ package MitarbeiterAnsicht;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.UIManager;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -39,6 +40,12 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 		maaView = new MitarbeiterAnsichtView();
 		maaView.setVisible(true);
 
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 		start = new StartView();
 
 		maaView.getPanelContent().add("Start", start);
@@ -114,6 +121,11 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == start.getbtnAbmelden()) {
 			maaView.dispose();
+			try {
+				UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			} catch (Exception e1) {
+				System.out.println(e1);
+			}
 			AnmeldenStrg anmelden = new AnmeldenStrg();
 		}
 	}
