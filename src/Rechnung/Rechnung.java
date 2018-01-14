@@ -1,11 +1,13 @@
 
-//author Matthias Westermeyer
-
 package Rechnung;
 
+/**
+ *  Rechnung - Java Datei mit den benötigten Variablen + Getter Setters
+ * @author Matthias Westermeyer
+ *
+ */
 
 import java.util.Date;
-
 public class Rechnung {
 	
 	public String benutzername;
