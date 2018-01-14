@@ -14,13 +14,13 @@ import Strecke.Strecke;
 
 /**
  * Die Klasse RechnungBezahlenStrg steuert das bezahlen einer Rechnung.
- * Sie verwaltet dabei die grafische Benutzeroberfläche RechnungBezahlenView.
+ * Sie verwaltet dabei die grafische Benutzeroberfläche bezahlenRechnung_ansicht.
  * @author Daniel Zeller
  *
  */
 
 public class RechnungBezahlenStrg implements ActionListener {
-	RechnungBezahlenView view1;
+	bezahlenRechnung_ansicht view1;
 	private Strecke s;
 	private Kart k;
 	private char auswahl;
@@ -31,11 +31,11 @@ public class RechnungBezahlenStrg implements ActionListener {
 	public RechnungBezahlenStrg() {
 		auswahl = 'p';
 		
-		view1 = new RechnungBezahlenView();
-		view1.getFrmRechnungBezahlen().setVisible(true);
+		view1 = new bezahlenRechnung_ansicht();
+		view1.getFrmBezahlung().setVisible(true);
 		
-		view1.getBtnBezahlen().addActionListener(this);
-		view1.getBtnAbbrechen().addActionListener(this);
+		view1.getBtnNewButton().addActionListener(this);
+		view1.getBtnNeuAnmelden().addActionListener(this);
 	}
 	/**
 	 * Wird aufgerufen wenn ein Kart gekauft wird. Das dabei gekaufte Kart wird übergeben.
@@ -46,11 +46,11 @@ public class RechnungBezahlenStrg implements ActionListener {
 		k = k2;
 		s = null;
 		
-		view1 = new RechnungBezahlenView();
-		view1.getFrmRechnungBezahlen().setVisible(true);
+		view1 = new bezahlenRechnung_ansicht();
+		view1.getFrmBezahlung().setVisible(true);
 		
-		view1.getBtnBezahlen().addActionListener(this);
-		view1.getBtnAbbrechen().addActionListener(this);
+		view1.getBtnNewButton().addActionListener(this);
+		view1.getBtnNeuAnmelden().addActionListener(this);
 	}
 	/**
 	 * Wird aufgerufen wenn eine Strecke gekauft wird. Die dabei gekaufte Strecke wird übergeben.
@@ -61,11 +61,11 @@ public class RechnungBezahlenStrg implements ActionListener {
 		s = s2;
 		k = null;
 		
-		view1 = new RechnungBezahlenView();
-		view1.getFrmRechnungBezahlen().setVisible(true);
+		view1 = new bezahlenRechnung_ansicht();
+		view1.getFrmBezahlung().setVisible(true);
 		
-		view1.getBtnBezahlen().addActionListener(this);
-		view1.getBtnAbbrechen().addActionListener(this);
+		view1.getBtnNewButton().addActionListener(this);
+		view1.getBtnNeuAnmelden().addActionListener(this);
 	}
 	
 	public static void main(String[] args) {
@@ -75,13 +75,13 @@ public class RechnungBezahlenStrg implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource() == view1.getBtnAbbrechen()) {
+		if(e.getSource() == view1.getBtnNeuAnmelden()) {
 			MusicHandler.MusicPlayer.backwardBtn();
-			view1.getFrmRechnungBezahlen().dispose();
+			view1.getFrmBezahlung().dispose();
 			StartansichtStrg strg = new StartansichtStrg();
 		}
 		
-		if(e.getSource() == view1.getBtnBezahlen()) {
+		if(e.getSource() == view1.getBtnNewButton()) {
 			MusicHandler.MusicPlayer.startGame();
 			if(auswahl == 'p') {
 				try {
@@ -90,7 +90,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 					Datenbankschnittstelle.executeUpdate(update);
 					Datenbankschnittstelle.closeConnections();
 					Nutzerverwaltung.getangKunde().aktualisereangKunde();
-					view1.getFrmRechnungBezahlen().dispose();
+					view1.getFrmBezahlung().dispose();
 					StartansichtStrg strg = new StartansichtStrg();
 				}
 				
@@ -102,7 +102,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 			if(s == null && k != null) {
 				try {
 					Rechnungsverwaltung.sendeKartRechnung(k);
-					view1.getFrmRechnungBezahlen().dispose();
+					view1.getFrmBezahlung().dispose();
 					StartansichtStrg strg = new StartansichtStrg();
 				}
 				
@@ -114,7 +114,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 			if(k == null && s != null) {
 				try {
 					Rechnungsverwaltung.sendeStreckenRechnung(s);
-					view1.getFrmRechnungBezahlen().dispose();
+					view1.getFrmBezahlung().dispose();
 					StartansichtStrg strg = new StartansichtStrg();
 				}
 				

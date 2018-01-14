@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 import Datenbankverwaltung.Datenbankschnittstelle;
 
-
+//weg
 
 public class RechnungsübersichtStrg implements ActionListener {
 	

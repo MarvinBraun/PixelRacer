@@ -23,6 +23,8 @@ import javax.swing.JButton;
  *
  */
 
+//weg
+
 public class RechnungBezahlenView {
 
 	private JFrame frmRechnungBezahlen;

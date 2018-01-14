@@ -29,7 +29,6 @@ public class RechnungAnzeigenStrg implements ActionListener{
 		
 		view1.getBtnAnzeigen().addActionListener(this);
 		view1.getBtnBezahlen().addActionListener(this);
-		view1.getBtnSpeichern().addActionListener(this);
 		view1.getBtnZuruck().addActionListener(this);
 		
 		view2 = new anzeigenRechnung_ansicht2();
@@ -120,7 +119,7 @@ public class RechnungAnzeigenStrg implements ActionListener{
 				view3.getFrmRechnungsübersicht().setVisible(true);
 			}
 			
-			else {
+			if(VergleichRnrStrecke() == false && VergleichRnrKarts() == false) {
 				JOptionPane.showMessageDialog(null, "Rechnungsnummer exisitiert nicht!", "Ohoh!", JOptionPane.ERROR_MESSAGE);
 			}
 		}
@@ -129,15 +128,10 @@ public class RechnungAnzeigenStrg implements ActionListener{
 			
 		}
 		
-		if(e.getSource() == view1.getBtnSpeichern()) {
-			
-		}
-		
 		if(e.getSource() == view1.getBtnZuruck()) {
 			view1.getFrmRechnungsbersicht().dispose();
 			view2.getFrmRechnungsübersicht().dispose();
 			view3.getFrmRechnungsübersicht().dispose();
-			StartansichtStrg strg = new StartansichtStrg();
 		}
 		
 		if(e.getSource() == view2.getBtnZuruck()) {
