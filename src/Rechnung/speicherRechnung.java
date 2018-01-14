@@ -117,8 +117,9 @@ public class speicherRechnung {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		ImageIcon ic1 = new ImageIcon(ic);
 		
-		lblHintergrund.setIcon((Icon) ic);
+		lblHintergrund.setIcon((Icon) ic1);
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmSpeicherrechnung.getContentPane().add(lblHintergrund);
 	
