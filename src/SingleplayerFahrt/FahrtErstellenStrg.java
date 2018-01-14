@@ -270,7 +270,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		{
 			
 			s = it.next();
-			if(s.getPremium().equals("false") && s.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=s.getPunktewert())
+			if(s.getPremium().equals("false") && s.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=s.getPunktewert() && s.getPremium().equals("false"))
 			{
 				streckenliste.add(s);
 			}

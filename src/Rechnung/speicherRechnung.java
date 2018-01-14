@@ -7,9 +7,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * Grafische Benutzeroberfläche um dem Nutzer die Meldung zu geben, dass seine Rechnung auf dem gewünschten Verzeichnis abgelegt wird.
@@ -104,7 +109,16 @@ public class speicherRechnung {
 		frmSpeicherrechnung.getContentPane().add(btnZurck);
 		
 		lblHintergrund = new JLabel();
-		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
+		BufferedImage ic = null;
+		URL url = getClass().getResource("/Resources/Hintergrund.png");
+		try {
+			 ic = ImageIO.read(url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		lblHintergrund.setIcon((Icon) ic);
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmSpeicherrechnung.getContentPane().add(lblHintergrund);
 	

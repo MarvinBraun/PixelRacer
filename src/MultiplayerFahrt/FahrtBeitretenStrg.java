@@ -265,7 +265,6 @@ public class FahrtBeitretenStrg implements ActionListener {
 				mf.setBenutzername("HMuller");
 				
 				//Hole Strecke aus DB
-				System.out.println(mf.getStreckenName());
 				Strecke s = gibStrecke(Streckenliste, mf.getStreckenName());
 				
 				
@@ -279,6 +278,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 					
 				
 				MultiplayerFahrtSpielenStrg strg = new MultiplayerFahrtSpielenStrg(mf,k,s);
+				view.getFrame().dispose();
 				
 			}
 			
@@ -326,8 +326,9 @@ public class FahrtBeitretenStrg implements ActionListener {
 		if(e.getSource()==view.getBackBtn())
 		{
 			MusicHandler.MusicPlayer.backwardBtn();
-			MultiplayerAuswahlStrg strg = new MultiplayerAuswahlStrg();
 			view.getFrame().dispose();
+			MultiplayerAuswahlStrg strg = new MultiplayerAuswahlStrg();
+	
 			
 		}
 	
