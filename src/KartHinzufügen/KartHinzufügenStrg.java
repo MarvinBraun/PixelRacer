@@ -94,7 +94,7 @@ public class KartHinzufügenStrg implements ActionListener {
 									if (istNameFormatOk() == false) {
 										nameFormatNichtOkMeldung();
 									} else {
-										if (maxGeschwindigkeit > 999) {
+										if (maxGeschwindigkeit > 450) {
 											maxGeschwindigkeitZuHochMeldung();
 										} else {
 											if (beschleunigung > 99) {
