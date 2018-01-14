@@ -1,4 +1,7 @@
-// @Author Marvin Braun
+/**
+ * Stellt alle Klassen zum Animieren eines Bildes zur Verfügung.
+ */
+
 package BackgroundAnimation;
 
 import java.awt.Graphics;

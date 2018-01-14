@@ -1,4 +1,6 @@
-//@MarvinBraun
+/**
+ * enthält verschiedene Iteratoren, die das navigieren zwischen Elementen ermöglichen.
+ */
 package Iterator;
 import java.util.ListIterator;
 

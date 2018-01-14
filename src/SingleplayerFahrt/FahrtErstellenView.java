@@ -52,41 +52,16 @@ public class FahrtErstellenView {
 	private JLabel streckeLbl;
 	private JLabel multiplayerLbl;
 	private 	JButton backBtn;
-	
-	
-	
-	
-	/**
-	 * Führt die GUI aus.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FahrtErstellenView window = new FahrtErstellenView();
-					window.getFrame().setVisible(true);
-					
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	
-	
-	
 
 	/**
-	 * Initialisiert das Objekt und befüllt es über die Methode initialize().
+	 * Erzeugt ein Objekt der Klasse.
 	 */
 	public FahrtErstellenView() {
 		initialize();
 	}
 
 	/**
-	 * Initialisiert das Objekt.
+	 * Initialisiert das JFrame.
 	 */
 	private void initialize() {
 		

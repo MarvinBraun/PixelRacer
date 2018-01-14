@@ -20,6 +20,12 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
 
+/**
+ * Grafische Benutzeroberfläche, welche für die Fahrtauswertung genutzt wird.
+ * @author Marvin
+ *
+ */
+
 public class FahrtAuswertungView {
 
 	private JFrame frame;
@@ -34,30 +40,14 @@ public class FahrtAuswertungView {
 	
 	
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FahrtAuswertungView window = new FahrtAuswertungView();
-					window.getFrame().setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
+	 * Erzeugt ein Objekt der Klasse.
 	 */
 	public FahrtAuswertungView() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialisiert das JFrame.
 	 */
 	private void initialize() {
 		setFrame(new JFrame());

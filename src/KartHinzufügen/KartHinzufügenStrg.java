@@ -1,3 +1,6 @@
+/**
+ * Stellt alle Klassen zum Hinzufügen eines Karts zur Verfügung.
+ */
 package KartHinzufügen;
 
 import java.awt.event.ActionListener;

@@ -33,22 +33,7 @@ public class MultiplayerAuswertungView {
 	private JLabel lblZeit3;
 	private JButton btn;
 	
-	
-	/**
-	 * Main-Methode.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MultiplayerAuswertungView window = new MultiplayerAuswertungView();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Initialisiert und befüllt das Objekt.

@@ -1,3 +1,6 @@
+/**
+ * Stellt alle Klassen zum Anmelden zur Verfügung.
+ */
 package Anmelden;
 
 import java.awt.event.ActionEvent;

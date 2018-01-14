@@ -43,15 +43,8 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 	//Objekte der Klasse
 	private FahrtBeitretenView view;
-	private boolean forward = false;
-	private boolean backward = false;
 	private Kart k;
-	private Kartverwaltung karts;
 	private static IteratorKart<Kart> itKart;
-	private static IteratorString<String> itString;
-	private int multi =2;
-	
-	private LinkedList<String> schwierigkeiten;
 	private LinkedList<Kart> kartliste = new LinkedList<Kart>();
 
 	private Streckenverwaltung verwaltungStrecke;
@@ -67,8 +60,8 @@ public class FahrtBeitretenStrg implements ActionListener {
 	public FahrtBeitretenStrg() {
 		view = new FahrtBeitretenView();
 		view.getFrame().setLocationRelativeTo(null);
-		//Initialisieren der Karts, Strecken und der Buttons
-		karts = new Kartverwaltung();
+		
+		new Kartverwaltung();
 		kartliste = gibZuFahrendeKarts();
 		
 		verwaltungStrecke = new Streckenverwaltung();
@@ -76,7 +69,6 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 		k = kartliste.get(0);
 		itKart = new IteratorKart(kartliste.listIterator());
-		System.out.println(kartliste.size());
 		view.getKartForward().addActionListener(this);
 		view.getKartBackward().addActionListener(this);
 		view.getBackBtn().addActionListener(this);
@@ -92,15 +84,6 @@ public class FahrtBeitretenStrg implements ActionListener {
 
 		
 	}
-	
-	
-	public static void main(String[] args)
-	{
-		FahrtBeitretenStrg strg = new FahrtBeitretenStrg();
-		MusicPlayer.audioBackground();
-
-	}
-	
 
 	/**
 	 * Die Methode prüft ob der ListIterator itKart ein weiteres Element hat. 

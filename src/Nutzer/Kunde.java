@@ -1,3 +1,6 @@
+/**
+ * Stellt alle Klassen zum verwalten von Nutzern / Mitarbeitern zur Verfügung.
+ */
 package Nutzer;
 /**
  * Klasse der Entität Kunde, Subtyp der Klasse Nutzer.

@@ -44,28 +44,9 @@ public class FahrtSpielenView {
 	private static BufferedImage streckenbild;
 	private JLabel bewertungLbl;
 	
-	
-	
-	
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FahrtSpielenView window = new FahrtSpielenView(kartbild, streckenbild);
-					window.getFrame().setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
-	 * Initialisiert und befüllt die grafische Benutzeroberfläche über die Methode initialize().
+	 * Erzeugt ein Objekt der Klasse.
 	 */
 	public FahrtSpielenView(BufferedImage kart, BufferedImage strecke) {
 		kartbild = kart;

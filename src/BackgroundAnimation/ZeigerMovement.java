@@ -1,4 +1,4 @@
-// @Author Marvin Braun
+
 package BackgroundAnimation;
 
 import java.awt.event.KeyEvent;

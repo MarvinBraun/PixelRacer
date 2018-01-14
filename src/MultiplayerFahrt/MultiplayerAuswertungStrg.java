@@ -1,3 +1,7 @@
+/**
+ * Stellt alle Klassen zum Beitreten, Spielen und Auswerten einer Multiplayerfahrt zur Verfügung.
+ */
+
 package MultiplayerFahrt;
 
 import java.awt.event.ActionEvent;
@@ -67,7 +71,7 @@ public class MultiplayerAuswertungStrg implements ActionListener {
 		view.getFrame().setLocationRelativeTo(null);
 		verwaltung = new Fahrtverwaltung();
 		//Fahrten initialisieren
-		System.out.println("Es wird gesucht nach: "+mf.getMultiplayerID());
+	
 		fahrten = verwaltung.gibMultiplayerFahrtenNachMultiplayerID(mf.getMultiplayerID());	
 		ListIterator<MultiplayerFahrt> it = fahrten.listIterator();
 		

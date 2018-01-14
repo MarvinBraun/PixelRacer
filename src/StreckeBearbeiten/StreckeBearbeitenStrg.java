@@ -1,3 +1,6 @@
+/**
+ * Stellt alle Klassen zum Bearbeiten einer Strecke zur Verfügung.
+ */
 package StreckeBearbeiten;
 
 import java.awt.event.ActionEvent;

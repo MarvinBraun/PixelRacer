@@ -10,7 +10,7 @@ import Datenbankverwaltung.Datenbankschnittstelle;
 import Nutzer.Nutzerverwaltung;
 /**
  * Die Klasse Fahrtverwaltung verarbeitet Objekte der Klassen SingleplayerFahrt und MultiplayerFahrt
- * Gespeichert werden die Fahrten in einer LinkedList
+ * Gespeichert werden die Fahrten in einer LinkedList.
  * @author Marvin Braun
  */
 
@@ -25,7 +25,7 @@ public class Fahrtverwaltung {
 	
 	/**
 	 * Liest alle SingleplayerFahrten aus der Datenbank aus und speichert sie in einer LinkedList
-	 * @return LinkedList mit allen SingleplayerFahrten
+	 * @return LinkedList mit allen SingleplayerFahrten.
 	 */
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrten()
 	{
@@ -55,14 +55,13 @@ public class Fahrtverwaltung {
 
 	/**
 	 * Liest alle SingleplayerFahrten aus der Datenbank, für einen bestimmten 
-	 * Nutzer und eine bestimmte Strecke, aus und speichert sie in einer LinkedList
+	 * Nutzer und eine bestimmte Strecke, aus und speichert sie in einer LinkedList.
 	 * @param benutzername Der Benutzername des Spielers
 	 * @param streckenname Der Streckenname der Strecke
 	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer zu einer Strecke
 	 */
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFuerBenutzerUndStrecke(String benutzername, String streckenname)
 	{
-		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and streckenname = '"+streckenname+"'");
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and streckenname = '"+streckenname+"'");
 		try {
 			while(rs.next())
@@ -96,7 +95,6 @@ public class Fahrtverwaltung {
 	 */
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFuerBenutzerUndKart(String benutzername, String kartname)
 	{
-		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and kartname = '"+kartname+"'");
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"' and kartname = '"+kartname+"'");
 		try {
 			while(rs.next())
@@ -123,13 +121,12 @@ public class Fahrtverwaltung {
 	
 	/**
 	 * Liest alle SingleplayerFahrten aus der Datenbank, 
-	 * für einen bestimmten Nutzer, aus und speichert sie in einer LinkedList
+	 * für einen bestimmten Nutzer, aus und speichert sie in einer LinkedList.
 	 * @param benutzername Der Benutzername des Spielers
 	 * @return LinkedList mit den SingleplayerFahrten für einen Benutzer
 	 */
 	public LinkedList<SingleplayerFahrt> gibSingleplayerFahrtenFuerBenutzer(String benutzername)
 	{
-		System.out.println("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"'");
 		ResultSet rs = Datenbankschnittstelle.executeQuery("select * from Singleplayer_Fahrt"+" where benutzername='"+benutzername+"'");
 		try {
 			while(rs.next())
@@ -155,7 +152,7 @@ public class Fahrtverwaltung {
 	}
 	
 	/**
-	 * Gibt eine zu verwendende SitzungsID aus, mit der eine Fahrt erstellt werden kann
+	 * Gibt eine zu verwendende SitzungsID aus, mit der eine Fahrt erstellt werden kann.
 	 *@param singleMulti Über den Parameter wird entschieden ob die Relation "Multiplayer_Fahrt" oder die Relation "Singleplayer_Fahrt" angesprochen wird.
 	 *@return Eine ID, welche genutzt werden kann um eine Single- oder MultiplayerFahrt zu erstellen
 	 */
@@ -174,7 +171,6 @@ public class Fahrtverwaltung {
 
 				id = rs.getInt("max(sitzungsid)");
 				id++;
-				System.out.println("SItzunhsID:"+id);
 			}
 			rs.close();
 			
@@ -202,7 +198,6 @@ public class Fahrtverwaltung {
 
 				id = rs.getInt("max(MultiplayerID)");
 				id++;
-				System.out.println("MultiplayerID:"+id);
 			}
 			rs.close();
 			
@@ -222,7 +217,7 @@ public class Fahrtverwaltung {
 	public void sendeMultiplayerFahrt(MultiplayerFahrt mf)
 	{
 			mf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
-			System.out.println(mf.getSitzungsID()+","+mf.getZeit()+","+mf.getMultiplayerID()+","+mf.getRang()+",'"+mf.getBenutzername()+"','"+mf.getStreckenName()+"','"+mf.getKartName());
+			
 		
 			Datenbankschnittstelle.executeUpdate("insert into multiplayer_fahrt values("+mf.getSitzungsID()+","+mf.getZeit()+","+mf.getMultiplayerID()+","+mf.getRang()+",'"+mf.getBenutzername()+"','"+mf.getStreckenName()+"','"+mf.getKartName()+"')");
 			Datenbankschnittstelle.closeConnections();
@@ -236,7 +231,6 @@ public class Fahrtverwaltung {
 	public void sendeSingleplayerFahrt(SingleplayerFahrt sf)
 	{
 		sf.setBenutzername(Nutzerverwaltung.getangKunde().getnutzername());
-		System.out.println(sf.getSitzungsID()+","+sf.getZeit()+","+sf.getRang()+",'"+sf.getBenutzername()+"','"+sf.getStreckenName()+"','"+sf.getKartName()+"','"+sf.getSchwierigkeit()+"')");
 		
 			Datenbankschnittstelle.executeUpdate("insert into singleplayer_fahrt values("+sf.getSitzungsID()+","+sf.getZeit()+","+sf.getRang()+",'"+sf.getBenutzername()+"','"+sf.getStreckenName()+"','"+sf.getKartName()+"','"+sf.getSchwierigkeit()+"')");
 			Datenbankschnittstelle.closeConnections();
@@ -259,7 +253,6 @@ public class Fahrtverwaltung {
 					
 					MultiplayerFahrt fahrt = new MultiplayerFahrt();
 					fahrt.setSitzungsID(rs.getInt("SitzungsID"));
-					System.out.println(fahrt.getSitzungsID());
 					fahrt.setRang(rs.getInt("Rang"));
 					fahrt.setMultiplayerID(rs.getInt("MultiplayerID"));
 					fahrt.setZeit(rs.getInt("Zeit"));
@@ -299,12 +292,9 @@ public class Fahrtverwaltung {
 						
 						MultiplayerFahrt fahrt = new MultiplayerFahrt();
 						fahrt.setSitzungsID(rs.getInt("SitzungsID"));
-						
-						System.out.println(fahrt.getSitzungsID());
 						fahrt.setRang(rs.getInt("Rang"));
 						fahrt.setMultiplayerID(rs.getInt("MultiplayerID"));
 						fahrt.setZeit(rs.getInt("Zeit"));
-						System.out.println(fahrt.getZeit());
 						fahrt.setStreckenName(rs.getString("Streckenname"));
 						fahrt.setKartName(rs.getString("Kartname"));
 						fahrt.setBenutzername(rs.getString("Benutzername"));
@@ -342,17 +332,15 @@ public class Fahrtverwaltung {
 							
 							MultiplayerFahrt fahrt = new MultiplayerFahrt();
 							fahrt.setSitzungsID(rs.getInt("SitzungsID"));
-							System.out.println(fahrt.getSitzungsID());
+						
 							fahrt.setRang(rs.getInt("Rang"));
 							fahrt.setMultiplayerID(rs.getInt("MultiplayerID"));
 							fahrt.setZeit(rs.getInt("Zeit"));
-							System.out.println(fahrt.getZeit());
 							fahrt.setStreckenName(rs.getString("Streckenname"));
 							fahrt.setKartName(rs.getString("Kartname"));
 							fahrt.setBenutzername(rs.getString("Benutzername"));
 							multiplayerFahrten.add(fahrt);
-							
-							System.out.println("Fahrtzeit: "+fahrt.getZeit());
+
 						}
 						rs.close();
 						Datenbankschnittstelle.closeConnections();
@@ -368,11 +356,5 @@ public class Fahrtverwaltung {
 		}
 			
 	}
-	
-	public static void main(String[] args)
-	{
-		Fahrtverwaltung v = new Fahrtverwaltung();
-		LinkedList<SingleplayerFahrt> lsf = v.gibSingleplayerFahrtenFuerBenutzerUndKart("Marv", "FireBird");
-		System.out.println(lsf.size());
-	}
+
 }

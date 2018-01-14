@@ -1,3 +1,6 @@
+/**
+ * Liefert die benötigte Schriftart im Pixel-Look
+ */
 package FontHandler;
 
 import java.awt.Font;

@@ -50,17 +50,6 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		kart = kart1;
 		strecke = strecke1;
 		this.mf = fahrt;
-		System.out.println(mf.getBenutzername());
-	
-		
-		this.schwierigkeit = schwierigkeit;
-		
-		for(int i = 0; i<zeiten.length;i++)
-		{
-			Bot b = new Bot(strecke1.getLaenge(),kart.getBeschleunigung(),kart.getMaxkmh(),schwierigkeit);
-			zeiten[i] = b.getZeit();
-		}
-		Arrays.sort(zeiten);
 		
 		 kartBild = kart1.getGrafik();
 		streckenBild = strecke.getGrafik(); 
@@ -78,20 +67,14 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		System.out.println("Registriert");
 	
 	}
-
-	//Singleplayerfahrt Konstruktor
-	/*
-	public MultiplayerFahrtSpielenStrg()
-	{
-		fahrtSpielenView = new MultiplayerFahrtSpielenView(kartBild,streckenBild);
-		fahrtSpielenView.getFahrenBtn().addActionListener(this);
-		System.out.println("Registriert");
-	}
 	
-	*/
+	/** 
+	 * Methode um das Fahren des Karts zu simulieren. Über einen KeyListener wird ein Event für die Leertaste festgelegt.
+	 * Beim Drücken wird der X-Wert ausgelesen und mit den Grenzen des grünen Bereichs verglichen.
+	 */
 	public void fahren()
 	{
-		
+		//Starte Spiel
 		fahrtSpielenView.getFahrenBtn().setVisible(false);
 		fahrtSpielenView.getZeiger().zeiger.setVisible(true);
 		fahrtSpielenView.getBalkenLbl().setVisible(true);
@@ -103,18 +86,18 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	            	if( versuche>=0)
 	            	{ 
 	            		int record = fahrtSpielenView.getZeiger().zeiger.backgroundX1;
-	            	wert = wert + record;
-	            	System.out.println(wert);
+	            		wert = wert + record;
+	            	
 	            	if(speed<6)
 	            	{
 	            		speed = speed+speed;
 	            		fahrtSpielenView.getZeiger().setSpeed(speed);
 	            	}
 	            
-	            	versuche--;
-	            	String a = ""+versuche;
-	            	fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Runden verbleibend: "+a);
-	               	String b = ""+mf.getZeit();
+		            	versuche--;
+		            	String a = ""+versuche;
+		            	fahrtSpielenView.getLblAnzahlVerbleibenderVersuche().setText("Runden verbleibend: "+a);
+		               	String b = ""+mf.getZeit();
 	        
 	               	MusicHandler.MusicPlayer.spaceBtn();
 	               	
@@ -132,6 +115,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	            	{
 	            		float berechneLeistung = (float) wert / 1750;
 	            		System.out.println("Alter Wert: "+berechneLeistung);
+	            		
 	            		if(berechneLeistung<1)
 	            		{
 	            			berechneLeistung = (float) 1/berechneLeistung;
@@ -144,7 +128,6 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	            		float schwierigkeit2 = (float) (0.8 +(Math.random() * 1.5)); 
 	        			
 	        			int zeit = (int) ((int) ((strecke.getLaenge()/kart.getMaxkmh())+(kart.getMaxkmh()/kart.getBeschleunigung())*schwierigkeit2)*berechneLeistung);
-	        			System.out.println("Zeit"+zeit);
 	        			mf.setZeit(zeit);
 	        			versuche--;
 	        			
@@ -167,7 +150,10 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		
 	}
 
-
+/**
+ * Anweisungen, was bei der Betätigung der Button passieren soll.
+ */
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

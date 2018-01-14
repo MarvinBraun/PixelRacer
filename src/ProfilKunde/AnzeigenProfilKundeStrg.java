@@ -1,3 +1,6 @@
+/**
+ * Stellt alle Klassen zum Anzeigen eines Profils zur Verfügung.
+ */
 package ProfilKunde;
 
 import java.awt.event.ActionEvent;

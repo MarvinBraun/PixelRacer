@@ -1,3 +1,6 @@
+/**
+ * Stellt alle Klassen zum Hinzufügen eines Mitarbeiters zur Verfügung.
+ */
 package MitarbeiterHinzufügen;
 
 import java.awt.event.ActionListener;

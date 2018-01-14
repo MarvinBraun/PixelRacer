@@ -1,3 +1,6 @@
+/**
+ * Stellt eine Klasse als Schnittstelle zur Datenbank zur Verfügung.
+ */
 package Datenbankverwaltung;
 
 import java.awt.image.BufferedImage;
@@ -20,7 +23,7 @@ import javax.imageio.ImageIO;
 import javax.sql.rowset.serial.SerialException;
 
 /**
- * 
+ * Datenbankschnittstelle um Daten abzurufen und zu speichern.
  * @author Ferhat Koca, Marvin Braun
  *
  */
@@ -32,7 +35,7 @@ public class Datenbankschnittstelle {
 
 	/**
 	 * 
-	 * baut eine Verbindung zur Datenbank auf
+	 * baut eine Verbindung zur Datenbank auf.
 	 * 
 	 * @return liefert ein Objekt des Typs Connection zurück
 	 * 
@@ -51,7 +54,7 @@ public class Datenbankschnittstelle {
 	}
 
 	/**
-	 * führt eine Datenbankabfrage aus
+	 * führt eine Datenbankabfrage aus.
 	 * @param abfrage SQL-Abfrage
 	 * @return Ein Objekt des Typs ResultSet
 	 */
@@ -93,7 +96,7 @@ public class Datenbankschnittstelle {
 	}
 
 	/**
-	 * führt ein SQL-Batch aus
+	 * führt ein SQL-Batch aus.
 	 * @param queries String-Array mit SQL-Anweisungen
 	 */
 	
@@ -135,7 +138,7 @@ public class Datenbankschnittstelle {
 
 	}
 /**
- * lädt ein Bild zu einer Strecke oder einem Kart
+ * lädt ein Bild zu einer Strecke oder einem Kart.
  * @param sql SQL-Anweisung
  * @param filepath Pfad, an der das Bild gespeichert werden soll
  * @return ein Objekt des Typs BufferedImage

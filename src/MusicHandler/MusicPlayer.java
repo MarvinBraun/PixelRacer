@@ -1,8 +1,6 @@
 /**
- * Stellt Methoden zur Verfügung um Musik abzuspielen.
- * @author Marvin Braun
+ * Stellt eine Klasse zum Abspielen von Musik zur Verfügung.
  */
-
 package MusicHandler;
 
 import java.io.File;
@@ -11,7 +9,11 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
-
+/**
+ * Stellt Methoden zur Verfügung um Musik abzuspielen.
+ * @author Marvin Braun
+ *
+ */
 public class MusicPlayer {
 
 	/**
@@ -36,25 +38,9 @@ public class MusicPlayer {
 	        
 	    }
 	}
-	
-	public static void audioBtn()
-	{
-		try {
-
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/Resources/music1.wav").getAbsoluteFile());
-	        Clip clip = AudioSystem.getClip();
-	        clip.open(audioInputStream);
-	        FloatControl gainControl = 
-	        	    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-	        	gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
-	        
-	    } catch(Exception ex) {
-	    	
-	        System.out.println("Error with playing sound.");     
-	        ex.printStackTrace();
-		}
-	}
-	
+	/**
+	 * Spielt einen Sound ab.
+	 */
 	public static void startGame()
 	{
 		try {
@@ -73,6 +59,9 @@ public class MusicPlayer {
 		}
 	}
 	
+	/**
+	 * Spielt einen Sound ab
+	 */
 	public static void spaceBtn()
 	{
 		try {
@@ -90,6 +79,10 @@ public class MusicPlayer {
 	        ex.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Spielt einen Sound ab
+	 */
 	public static void forwardBtn()
 	{
 		try {
@@ -106,6 +99,10 @@ public class MusicPlayer {
 	        ex.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Spielt einen Sound ab
+	 */
 	public static void backwardBtn()
 	{
 		try {
@@ -123,9 +120,5 @@ public class MusicPlayer {
 	        ex.printStackTrace();
 		}
 	}
-	
-	public static void main(String[] args)
-	{
-		audioBackground();
-	}
+
 }

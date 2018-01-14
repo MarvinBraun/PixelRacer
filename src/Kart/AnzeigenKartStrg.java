@@ -1,3 +1,6 @@
+/**
+ * Stellt alle Klassen zum Erstellen und Verwalten von Karts zur Verfügung.
+ */
 package Kart;
 
 import java.awt.Graphics;

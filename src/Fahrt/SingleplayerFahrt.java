@@ -1,6 +1,8 @@
+/**
+ * Bildet die Entitäten der Fahrten ab und stellt eine Fahrtverwaltung (Multi-Entität) zur Verfügung um Fahrten zu speichern und abzurufen.
+ */
 package Fahrt;
 
-import Computergegner.Bot;
 
 /**
  * Klasse der Entität SingleplayerFahrt. Subtyp der Klasse Fahrt.
@@ -8,14 +10,6 @@ import Computergegner.Bot;
  *
  */
 public class SingleplayerFahrt extends Fahrt {
-private Bot bot;
-public Bot getBot() {
-	return bot;
-}
-
-public void setBot(Bot bot) {
-	this.bot = bot;
-}
 
 private String schwierigkeit;
 

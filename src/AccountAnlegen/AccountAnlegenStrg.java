@@ -1,3 +1,6 @@
+/**
+ * Stellt alle Klassen zum Erstellen eines Accounts zur Verfügung.
+ */
 package AccountAnlegen;
 
 import java.awt.event.ActionEvent;

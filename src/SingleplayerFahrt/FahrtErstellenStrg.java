@@ -44,11 +44,6 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	//Objekte der Klasse
 	private FahrtErstellenView view;
-	private boolean forward = false;
-	private boolean backward = false;
-	
-	private Kartverwaltung karts;
-	private Streckenverwaltung strecken;
 	private Fahrtverwaltung fahrten;
 	
 	private static IteratorKart<Kart> itKart;
@@ -88,8 +83,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		fahrten = new Fahrtverwaltung();
 		kunde = Nutzerverwaltung.getangKunde();
 		
-		//Initialisieren der Karts 
-		karts = new Kartverwaltung();
+		new Kartverwaltung();
 		kartliste = gibZuFahrendeKarts();
 		itKart = new IteratorKart(kartliste.listIterator());
 		
@@ -175,7 +169,6 @@ public class FahrtErstellenStrg implements ActionListener {
 		try {
 		if((k=itKart.next())!=null)
 		{
-			System.out.println(k.getKartname());
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
@@ -204,12 +197,10 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 		//Laden aller Karts
 		alleKarts =karts1.gibKart();
-		System.out.println("Anzahl Karts insgesamt:"+alleKarts.size());
 		Iterator<Kart> it = alleKarts.iterator();
 		
 		//Laden der Rechnungsliste
 		LinkedList<Rechnung> kartrechnungen = Rechnungsverwaltung.gibKartRechnungenfuerBenutzer();
-		System.out.println("Länge der Recnungen des Benutzers:" + kartrechnungen.size());
 		Iterator<Rechnung> itR = kartrechnungen.iterator();
 		
 		//Leere LinkedList für Karts des Benutzers:
@@ -223,7 +214,6 @@ public class FahrtErstellenStrg implements ActionListener {
 			k = it.next();
 			if(k.getPremium().equals("false") && k.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=k.getPunktewert()&&k.getPunktewert()>0)
 			{
-				System.out.println("Wird hinzugefügt: "+ k.getKartname());
 				kartliste.add(k);
 			}
 		}
@@ -235,7 +225,6 @@ public class FahrtErstellenStrg implements ActionListener {
 			r = itR.next();
 			String kartName;
 			kartName = r.getKartname();
-			System.out.println("Zu suchendes Kart"+ kartName);
 			
 			Iterator<Kart> itN = alleKarts.iterator();
 		
@@ -243,10 +232,9 @@ public class FahrtErstellenStrg implements ActionListener {
 			{
 				
 				k = itN.next();
-				System.out.println("Vergleiche: "+kartName + " mit: "+k.getKartname() );
+			
 				if(k.getKartname().equals(kartName))
 				{	
-					System.out.println("Wird hinzugefügt über Rechnungen: "+ k.getKartname());
 					kartliste.add(k);
 				}
 			}
@@ -271,7 +259,6 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 		//Laden der Rechnungsliste
 		LinkedList<Rechnung> streckenrechnungen = Rechnungsverwaltung.gibStreckenRechnungenfuerBenutzer();
-		System.out.println("Länge der Recnungen des Benutzers:" + streckenrechnungen.size());
 		Iterator<Rechnung> itR = streckenrechnungen.iterator();
 		
 		//Leere LinkedList für Karts des Benutzers:
@@ -285,7 +272,6 @@ public class FahrtErstellenStrg implements ActionListener {
 			s = it.next();
 			if(s.getPremium().equals("false") && s.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=s.getPunktewert())
 			{
-				System.out.println("Wird hinzugefügt: "+ s.getStreckenname());
 				streckenliste.add(s);
 			}
 		}
@@ -297,18 +283,14 @@ public class FahrtErstellenStrg implements ActionListener {
 			r = itR.next();
 			String streckenName;
 			streckenName = r.getStreckenname();
-			System.out.println("Zu suchendes Strecke"+ streckenName);
 			
-			Iterator<Strecke> itN = alleStrecken.iterator();
-		
 			while(it.hasNext())
 			{
 				
 				s = it.next();
-				System.out.println("Vergleiche: "+streckenName + " mit: "+s.getStreckenname() );
+
 				if(s.getStreckenname().equals(streckenName))
 				{	
-					System.out.println("Wird hinzugefügt über Rechnungen: "+ s.getStreckenname());
 					streckenliste.add(s);
 				}
 			}
@@ -363,7 +345,6 @@ public class FahrtErstellenStrg implements ActionListener {
 	try {
 		if((k=itKart.previous())!=null)
 		{
-			System.out.println(k.getKartname());
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
@@ -467,23 +448,18 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public boolean pruefeSchwierigkeit(String a)
 	{
-	System.out.println("Starte Methode PruefeSchwierigkeit");
 	
 		it = schwierigkeitsCheck.iterator();
 		boolean pruefung = false;
 		while(it.hasNext())
 		{
-			System.out.println("Starte Schleife");
 			SingleplayerFahrt sf;
-			
-			System.out.println("Vergleiche:"+a);
 			
 			String check;
 			
 			sf = it.next();
 			check = sf.getSchwierigkeit();
-			System.out.println("Vergleich zu:"+check);
-			System.out.println(s.getStreckenname() + " Vergleiche zu: "+sf.getStreckenName());
+		
 			if(a.equals(check) && sf.getRang()==1 && s.getStreckenname().equals(sf.getStreckenName()))
 			{	
 			pruefung = true;
@@ -509,8 +485,6 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 		if((s=itString.next())!=null)
 		{
-			System.out.println("Bis hierhin kommt die Mtehode");
-			System.out.println(prüfung);
 			if(pruefeSchwierigkeit(prüfung)==true)
 			{
 			view.getSchwierigkeitLbl().setText(s);
@@ -518,7 +492,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			}
 			else
 				{
-				System.out.println("Schwierigkeit noch nicht freigeschaltet");
+		
 				JOptionPane pane = new JOptionPane();
 				pane.setBounds(view.getFrame().getX()+300,view.getFrame().getY()+250,200,100);
 				pane.showMessageDialog(null, "Schwierigkeit nocht nicht freigeschaltet");
@@ -561,7 +535,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		
 		}
 			sf.setZeit(0);
-		System.out.println("Schwierigkeit:" + schwierigkeit);
+		
 		int id = fahrten.gibNeueID(2);
 		sf.setSitzungsID(id);
 		

@@ -4,7 +4,7 @@ package Fahrt;
 /**
  *
  * Abstrakte Klasse Fahrt, speichert die relevanten Daten einer 
- * Single- bzw. MultiplayerFahrt
+ * Single- bzw. MultiplayerFahrt.
  *  @author Marvin Braun
  */
 public abstract class Fahrt {

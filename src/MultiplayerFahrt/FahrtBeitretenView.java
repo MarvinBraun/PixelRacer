@@ -34,7 +34,6 @@ import javax.swing.SwingConstants;
 public class FahrtBeitretenView {
 
 	private JFrame frame;
-
 	private JLabel background;
 	private JButton kartForward;
 	private JButton kartBackward;
@@ -45,6 +44,8 @@ public class FahrtBeitretenView {
 	private JButton multiplayerBeitretenBtn;
 	private JTextField multiplayerID;
 	private Movement m;
+	private JButton backBtn;
+	
 	public JButton getBackBtn() {
 		return backBtn;
 	}
@@ -57,34 +58,6 @@ public class FahrtBeitretenView {
 		this.backBtn = backBtn;
 	}
 
-
-
-
-
-	private JButton backBtn;
-	
-	
-	
-	
-	/**
-	 * Main-Methode.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FahrtBeitretenView window = new FahrtBeitretenView();
-					window.frame.setVisible(true);
-					
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	
 	
 	
 

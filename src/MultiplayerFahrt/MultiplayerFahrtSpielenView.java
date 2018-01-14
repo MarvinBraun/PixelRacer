@@ -45,29 +45,9 @@ public class MultiplayerFahrtSpielenView {
 	private static BufferedImage kartbild;
 	private static BufferedImage streckenbild;
 	private JLabel bewertungLbl;
-	
-	
-	
-	
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MultiplayerFahrtSpielenView window = new MultiplayerFahrtSpielenView(kartbild, streckenbild);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
-	 * Create the application.
+	 * Erzeugt ein Objekt der Klasse.
 	 */
 	public MultiplayerFahrtSpielenView(BufferedImage kart, BufferedImage strecke) {
 		kartbild = kart;
@@ -76,7 +56,7 @@ public class MultiplayerFahrtSpielenView {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialisiert die Inhalte des JFrames.
 	 */
 	private void initialize() {
 		

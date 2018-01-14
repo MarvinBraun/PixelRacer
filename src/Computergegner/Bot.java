@@ -1,4 +1,6 @@
-
+/**
+ * Stellt eine Klasse zum simulieren von Zeiten zur Verfügung.
+ */
 package Computergegner;
 
 import Strecke.Strecke;
@@ -28,6 +30,14 @@ public class Bot {
 	int beschleunigung;
 	int schwierigkeit;
 
+	/**
+	 * Erzeugt ein Objekt der Klasse und simuliert eine Zeit anhand der übergebenen Werte.
+	 * @param streckenlänge Länge der Strecke
+	 * @param geschwindigkeit Geschwindigkeit des Karts
+	 * @param beschleunigung Beschleunigung des Karts
+	 * @param schwierigkeit Schwierigkeit der Fahrt
+	 */
+	
 	public Bot(int streckenlänge, int geschwindigkeit, int beschleunigung, int schwierigkeit) {
 
 		this.länge = streckenlänge;

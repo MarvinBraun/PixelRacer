@@ -1,3 +1,6 @@
+/**
+ * Stellt alle Klassen zum Verwalten von Strecken zur Verfügung.
+ */
 package Strecke;
 
 import java.awt.Graphics;

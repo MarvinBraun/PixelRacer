@@ -1,3 +1,6 @@
+/**
+ * Stellt alle Klassen zum Verwalten von Rechnungen zur Verfügung.
+ */
 package Rechnung;
 
 import java.awt.EventQueue;
