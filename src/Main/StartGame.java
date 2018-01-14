@@ -3,6 +3,8 @@
  */
 package Main;
 
+import javax.swing.SwingUtilities;
+
 import Anmelden.AnmeldenStrg;
 /**
  * Startet die Anwendung
@@ -13,8 +15,15 @@ public class StartGame {
 	
 	public static void main(String[] args)
 	{
-		MusicHandler.MusicPlayer.audioBackground();
-		AnmeldenStrg strg = new AnmeldenStrg();
+		SwingUtilities.invokeLater(new Runnable()
+				{
+			public void run()
+			{
+				MusicHandler.MusicPlayer.audioBackground();
+				AnmeldenStrg strg = new AnmeldenStrg();
+			}
+				});
+	
 	}
 
 }

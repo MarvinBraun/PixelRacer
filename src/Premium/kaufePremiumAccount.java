@@ -11,8 +11,7 @@ import javax.swing.JFrame;
 import ProfilKunde.AnzeigenProfilKundeStrg;
 import ProfilKunde.ProfilKundeAnsicht;
 import Rechnung.RechnungBezahlenStrg;
-import Rechnung.RechnungsübersichtStrg;
-import Rechnung.anzeigenRechnungStrg;
+
 import Rechnung.anzeigenRechnung_ansicht2;
 
 /**
@@ -24,7 +23,7 @@ public class kaufePremiumAccount extends JFrame implements ActionListener {
 
 	static kaufePremiumAccount kpa;
 	PremiumAccountView pav;
-	RechnungsübersichtStrg anzr;
+
 	AnzeigenProfilKundeStrg strg;
 	ProfilKundeAnsicht ansicht;
 

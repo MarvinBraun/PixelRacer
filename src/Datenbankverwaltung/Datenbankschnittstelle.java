@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -143,7 +144,7 @@ public class Datenbankschnittstelle {
  * @param filepath Pfad, an der das Bild gespeichert werden soll
  * @return ein Objekt des Typs BufferedImage
  */
-	public static BufferedImage downloadBlob(String sql, String filepath) {
+	public static BufferedImage downloadBlob(String sql) {
 		BufferedImage image = null;
 		try {
 			Connection con = getConnection();
@@ -151,8 +152,8 @@ public class Datenbankschnittstelle {
 			ResultSet rs = prepstmt.executeQuery(sql);
 
 			while (rs.next()) {
-				File file = new File(filepath);
-				FileOutputStream fos = new FileOutputStream(file);
+			    File f = File.createTempFile("tempfile", ".png");
+				FileOutputStream fos = new FileOutputStream(f);
 
 				byte[] buffer = new byte[1];
 				InputStream is = rs.getBinaryStream("grafik");
@@ -161,7 +162,7 @@ public class Datenbankschnittstelle {
 					fos.write(buffer);
 				}
 				fos.close();
-				image = ImageIO.read(file);
+				image = ImageIO.read(f);
 
 			}
 			con.close();

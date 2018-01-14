@@ -37,8 +37,9 @@ public class Streckenverwaltung {
 				s.setPunktewert(rs.getInt("punktewert"));
 				
 				String sql = "SELECT grafik FROM strecke WHERE streckenname = '" + s.getStreckenname() + "'";
+				
 				String filepath = "src/Resources/" + s.getStreckenname() + ".png";
-				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
+				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql);
 				s.setGrafik(image);
 				streckenliste.add(s);
 								
@@ -75,8 +76,7 @@ public class Streckenverwaltung {
 				s.setPunktewert(rs.getInt("punktewert"));
 				
 				String sql = "SELECT grafik FROM strecke WHERE streckenname = '" + s.getStreckenname() + "'";
-				String filepath = "src/Resources/" + s.getStreckenname() + ".png";
-				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
+				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql);
 				s.setGrafik(image);
 				streckenlistePunkte.add(s);
 			}

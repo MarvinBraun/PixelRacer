@@ -8,6 +8,8 @@ import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 /**
  * Registriert die zu benutzende Schriftart "pixelmix"
@@ -24,7 +26,8 @@ public class FontHandler {
 	{
 		Font customFont = null;
 		try {
-				customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Resources/pixelmix.ttf")).deriveFont(f);
+			URL url = FontHandler.class.getResource("/Resources/pixelmix.ttf");
+				customFont = Font.createFont(Font.TRUETYPE_FONT, url.openStream()).deriveFont(f);
 				GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 				ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,new File("src/Resources/pixelmix.ttf")));
 				

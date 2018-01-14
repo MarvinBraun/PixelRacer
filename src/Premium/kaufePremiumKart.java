@@ -10,7 +10,6 @@ import Kart.Kart;
 import Kart.Kartuebersicht;
 import ProfilKunde.AnzeigenProfilKundeStrg;
 import Rechnung.RechnungBezahlenStrg;
-import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 
 /**

@@ -1,6 +1,7 @@
 package Kart;
 
 import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
@@ -38,8 +39,7 @@ public class Kartverwaltung {
 				k.setPunktewert(rs.getInt("Punktewert"));
 
 				String sql = "select grafik from kart where kartname = '" + k.getKartname() + "'";
-				String filepath = "src/Resources/" + k.getKartname() + ".png";
-				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql, filepath);
+				BufferedImage image = Datenbankschnittstelle.downloadBlob(sql);
 				k.setGrafik(image);
 				Kartliste.add(k);
 				

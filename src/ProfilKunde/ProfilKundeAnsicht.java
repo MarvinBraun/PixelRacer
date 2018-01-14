@@ -16,6 +16,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -252,7 +253,8 @@ public class ProfilKundeAnsicht{
 		
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+			URL url = getClass().getResource("/Resources/Hintergrund.png");
+			image = ImageIO.read(url);
 		} catch (IOException e) {
 			
 			e.printStackTrace();

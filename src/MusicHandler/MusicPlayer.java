@@ -4,6 +4,7 @@
 package MusicHandler;
 
 import java.io.File;
+import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -23,7 +24,8 @@ public class MusicPlayer {
 		
 		try {
 
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/Resources/backgroundMusic.wav").getAbsoluteFile());
+			URL url = MusicPlayer.class.getResource("/Resources/backgroundMusic.wav");
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.loop(Clip.LOOP_CONTINUOUSLY);  
@@ -44,8 +46,8 @@ public class MusicPlayer {
 	public static void startGame()
 	{
 		try {
-
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/Resources/startGame.wav").getAbsoluteFile());
+			URL url = MusicPlayer.class.getResource("/Resources/startGame.wav");
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
@@ -65,8 +67,8 @@ public class MusicPlayer {
 	public static void spaceBtn()
 	{
 		try {
-
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/Resources/spaceBtn.wav").getAbsoluteFile());
+			URL url = MusicPlayer.class.getResource("/Resources/spaceBtn.wav");
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();
@@ -86,7 +88,8 @@ public class MusicPlayer {
 	public static void forwardBtn()
 	{
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/Resources/forwardBtn.wav").getAbsoluteFile());
+			URL url = MusicPlayer.class.getResource("/Resources/forwardBtn.wav");
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start(); 
@@ -106,8 +109,8 @@ public class MusicPlayer {
 	public static void backwardBtn()
 	{
 		try {
-
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/Resources/backwardBtn.wav").getAbsoluteFile());
+			URL url = MusicPlayer.class.getResource("/Resources/backwardBtn.wav");
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
 	        Clip clip = AudioSystem.getClip();
 	        clip.open(audioInputStream);
 	        clip.start();

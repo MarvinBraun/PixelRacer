@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 
 import Kart.AnzeigenKartStrg;
 import Rechnung.RechnungBezahlenStrg;
-import Rechnung.anzeigenRechnungStrg;
 import Rechnung.anzeigenRechnung_ansicht2;
 import Strecke.AnzeigenStreckenStrg;
 import Strecke.Strecke;

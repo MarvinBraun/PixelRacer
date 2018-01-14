@@ -49,7 +49,7 @@ public class RechnungAnzeigenStrg implements ActionListener{
 	 */
 	public Boolean VergleichRnrKarts() {
 		try {
-			String rnr = view1.getTextPane().getText();
+			String rnr = view1.getTextField().getText();
 			rliste = Rechnungsverwaltung.gibKartRechnungenfuerBenutzer();
 			
 			for(Rechnung temp: rliste) {
@@ -73,7 +73,7 @@ public class RechnungAnzeigenStrg implements ActionListener{
 	 */
 	public Boolean VergleichRnrStrecke() {
 		try {
-			String rnr = view1.getTextPane().getText();
+			String rnr = view1.getTextField().getText();
 			rliste = Rechnungsverwaltung.gibStreckenRechnungenfuerBenutzer();
 			
 			for(Rechnung temp: rliste) {

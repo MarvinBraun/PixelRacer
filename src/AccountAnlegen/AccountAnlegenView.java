@@ -167,7 +167,7 @@ public class AccountAnlegenView {
 		
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+			image = ImageIO.read(new File("Resources/Hintergrund.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

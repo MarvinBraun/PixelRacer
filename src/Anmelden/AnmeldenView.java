@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -133,23 +134,28 @@ public class AnmeldenView {
 			}
 		});
 		frmPixelRacer.getContentPane().add(btnMitarbeiter);
-		
-Movement m = new Movement(10);
+
+		Movement m = new Movement(10);
 		
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+			URL url = getClass().getResource("/Resources/Hintergrund.png");
+			image = ImageIO.read(url);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		m.label.setBufferedImage(image,0);
 		
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
+		
 		frmPixelRacer.getContentPane().add(m.label);
+
 		frmPixelRacer.setVisible(true);
+		
 	}
 
 	public JFrame getFrmPixelRacer() { //Getter und Setter der Variablen

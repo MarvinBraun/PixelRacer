@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -203,7 +204,8 @@ public class ProfilBearbeitenView {
 		
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+			URL url = getClass().getResource("/Resources/Hintergrund.png");
+			image = ImageIO.read(url);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

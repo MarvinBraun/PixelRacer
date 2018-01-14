@@ -10,6 +10,8 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import BackgroundAnimation.Movement;
@@ -194,7 +196,8 @@ public class Streckenuebersicht {
 		
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("src/Resources/Hintergrund.png"));
+			URL url = getClass().getResource("/Resources/Hintergrund.png");
+			image = ImageIO.read(url);
 		} catch (IOException e) {
 			
 			e.printStackTrace();

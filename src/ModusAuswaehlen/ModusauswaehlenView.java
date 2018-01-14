@@ -7,6 +7,7 @@ import java.awt.SystemColor;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.JFrame;
 
@@ -100,9 +101,12 @@ public class ModusauswaehlenView {
 		getBtnzurueck().setBackground(SystemColor.activeCaption);
 		getFrame().getContentPane().add(btnzurueck);
 
+		
+		
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("src/Resources/car2.png"));
+			URL url = getClass().getResource("/Resources/car2.png");
+			image = ImageIO.read(url);
 		} catch (IOException e) {
 			e.getMessage();
 			System.out.println("Fehler beim einbeziehen des Bildes!");
@@ -118,7 +122,8 @@ public class ModusauswaehlenView {
 
 		BufferedImage image2 = null;
 		try {
-			image2 = ImageIO.read(new File("src/Resources/car2.png"));
+			URL url1 = getClass().getResource("/Resources/car2.png");
+			image2 = ImageIO.read(url1);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -132,7 +137,8 @@ public class ModusauswaehlenView {
 
 		BufferedImage image1 = null;
 		try {
-			image1 = ImageIO.read(new File("src/Resources/hockenheim.png"));
+			URL url2 = getClass().getResource("/Resources/hockenheim.png");
+			image1 = ImageIO.read(url2);
 		} catch (IOException io) {
 			io.getMessage();
 		}
@@ -143,6 +149,7 @@ public class ModusauswaehlenView {
 
 		m2.label.setOpaque(false);
 		frame.getContentPane().add(m2.label);
+		
 		frame.setVisible(true);
 	}
 
