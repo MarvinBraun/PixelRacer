@@ -9,6 +9,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import FontHandler.FontHandler;
+import SingleplayerFahrt.FahrtErstellenView;
 
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
@@ -37,6 +38,7 @@ public class bezahlenRechnung_ansicht {
 	private JPasswordField passwordField;
 	private JTextPane textPane;
 	private JLabel lblNewLabel;
+	private JLabel lblHintergrund;
 
 	// getter und setter Methoden der Variablen
 	
@@ -111,6 +113,15 @@ public class bezahlenRechnung_ansicht {
 	public void setLblNewLabel(JLabel lblNewLabel) {
 		this.lblNewLabel = lblNewLabel;
 	}
+	
+
+	public JLabel getLblHintergrund() {
+		return lblHintergrund;
+	}
+
+	public void setLblHintergrund(JLabel lblHintergrund) {
+		this.lblHintergrund = lblHintergrund;
+	}
 
 	/**
 	 * Zugriff auf die View
@@ -149,7 +160,7 @@ public class bezahlenRechnung_ansicht {
 	
 	private void initialize() {
 		
-		Font customFont20f = FontHandler.registriereSchriftart(20f);
+		Font customFont12f = FontHandler.registriereSchriftart(12f);
 		
 		frmBezahlung = new JFrame();
 		frmBezahlung.setTitle("Bezahlung");
@@ -159,30 +170,30 @@ public class bezahlenRechnung_ansicht {
 		
 		txtEmail = new JTextField();
 		txtEmail.setText("Email-Mail Adresse");
-		txtEmail.setFont(customFont20f);
+		txtEmail.setFont(customFont12f);
 		txtEmail.setBounds(221, 123, 220, 39);
 		frmBezahlung.getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		lblE = new JLabel("Probleme beim Einloggen?");
-		lblE.setFont(customFont20f);
+		lblE.setFont(customFont12f);
 		lblE.setHorizontalAlignment(SwingConstants.CENTER);
 		lblE.setBounds(221, 322, 220, 27);
 		frmBezahlung.getContentPane().add(lblE);
 		
 		btnNewButton = new JButton("Einloggen");
-		btnNewButton.setFont(customFont20f);
+		btnNewButton.setFont(customFont12f);
 		btnNewButton.setBounds(221, 231, 220, 39);
 		frmBezahlung.getContentPane().add(btnNewButton);	
 		
 		lblOder = new JLabel("oder");
 		lblOder.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOder.setFont(customFont20f);
+		lblOder.setFont(customFont12f);
 		lblOder.setBounds(221, 341, 220, 27);
 		frmBezahlung.getContentPane().add(lblOder);
 		
 		btnNeuAnmelden = new JButton("Neu anmelden");
-		btnNeuAnmelden.setFont(customFont20f);
+		btnNeuAnmelden.setFont(customFont12f);
 		btnNeuAnmelden.setBounds(221, 366, 220, 39);
 		frmBezahlung.getContentPane().add(btnNeuAnmelden);
 		
@@ -196,8 +207,13 @@ public class bezahlenRechnung_ansicht {
 		frmBezahlung.getContentPane().add(textPane);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Matze\\Pictures\\paypal_Icon.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(bezahlenRechnung_ansicht.class.getResource("/Resources/paypal_Icon.jpg")));
 		lblNewLabel.setBounds(221, 28, 220, 65);
 		frmBezahlung.getContentPane().add(lblNewLabel);
+		
+		lblHintergrund = new JLabel();
+		lblHintergrund.setIcon(new ImageIcon(bezahlenRechnung_ansicht.class.getResource("/Resources/Hintergrund.png")));
+		lblHintergrund.setBounds(0, 0, 800, 600);
+		frmBezahlung.getContentPane().add(lblHintergrund);
 	}
 }

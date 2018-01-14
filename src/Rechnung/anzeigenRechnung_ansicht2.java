@@ -169,7 +169,7 @@ public class anzeigenRechnung_ansicht2 {
 	
 	private void initialize() {
 	
-		Font customFont20f = FontHandler.registriereSchriftart(20f);
+		Font customFont12f = FontHandler.registriereSchriftart(12f);
 		
 		frmRechnungsübersicht = new JFrame();
 		frmRechnungsübersicht.getContentPane().setForeground(Color.BLACK);
@@ -180,54 +180,54 @@ public class anzeigenRechnung_ansicht2 {
 		frmRechnungsübersicht.getContentPane().setLayout(null);
 		
 		lblRechnungsnummer = new JLabel("Rechnungsnummer:");
-		lblRechnungsnummer.setFont(customFont20f);
+		lblRechnungsnummer.setFont(customFont12f);
 		lblRechnungsnummer.setBounds(33, 26, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblRechnungsnummer);
 		
 		lblRechnungsdatum = new JLabel("Rechnungsdatum:");
-		lblRechnungsdatum.setFont(customFont20f);
+		lblRechnungsdatum.setFont(customFont12f);
 		lblRechnungsdatum.setBounds(435, 26, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblRechnungsdatum);
 		
 		lblKartname = new JLabel("Kartname:");
-		lblKartname.setFont(customFont20f);
+		lblKartname.setFont(customFont12f);
 		lblKartname.setBounds(33, 260, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblKartname);
 		
 		lblStreckenname_1 = new JLabel("Streckenname:");
-		lblStreckenname_1.setFont(customFont20f);
+		lblStreckenname_1.setFont(customFont12f);
 		lblStreckenname_1.setBounds(33, 204, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblStreckenname_1);
 		
 		lblBenutzername = new JLabel("Benutzername:");
-		lblBenutzername.setFont(customFont20f);
+		lblBenutzername.setFont(customFont12f);
 		lblBenutzername.setBounds(33, 82, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblBenutzername);
 		
 		lblArtikel = new JLabel("Artikel");
-		lblArtikel.setFont(customFont20f);
+		lblArtikel.setFont(customFont12f);
 		lblArtikel.setForeground(Color.BLACK);
 		lblArtikel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblArtikel.setBounds(33, 161, 74, 32);
 		frmRechnungsübersicht.getContentPane().add(lblArtikel);
 		
 		lblBezahlmethode = new JLabel("Bezahlmethode:");
-		lblBezahlmethode.setFont(customFont20f);
+		lblBezahlmethode.setFont(customFont12f);
 		lblBezahlmethode.setBounds(33, 419, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblBezahlmethode);
 		
 		lblRechnungsbetrag = new JLabel("Rechnungsbetrag:");
-		lblRechnungsbetrag.setFont(customFont20f);
+		lblRechnungsbetrag.setFont(customFont12f);
 		lblRechnungsbetrag.setBounds(31, 475, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblRechnungsbetrag);
 		
 		lblPremium = new JLabel("Premium:");
-		lblPremium.setFont(customFont20f);
+		lblPremium.setFont(customFont12f);
 		lblPremium.setBounds(33, 316, 250, 45);
 		frmRechnungsübersicht.getContentPane().add(lblPremium);
 		
 		lblHintergrund = new JLabel();
-		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
+		lblHintergrund.setIcon(new ImageIcon(anzeigenRechnung_ansicht2.class.getResource("/Resources/Hintergrund.png")));
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmRechnungsübersicht.getContentPane().add(lblHintergrund);
 		

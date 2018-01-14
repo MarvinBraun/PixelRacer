@@ -32,7 +32,6 @@ public class Rechnungsübersicht {
 	JLabel lblRechnung;
 	JButton btnAnzeigen;
 	JButton btnBezahlen;
-	JButton btnSpeichern;
 	JLabel lblHintergrund;
 	JTextField textField;
 	private JButton btnZuruck;
@@ -81,13 +80,6 @@ public class Rechnungsübersicht {
 		this.btnBezahlen = btnBezahlen;
 	}
 
-	public JButton getBtnSpeichern() {
-		return btnSpeichern;
-	}
-
-	public void setBtnSpeichern(JButton btnSpeichern) {
-		this.btnSpeichern = btnSpeichern;
-	}
 
 	public JTextField getTextField() {
 		return textField;
@@ -163,20 +155,15 @@ public class Rechnungsübersicht {
 		});
 		btnBezahlen.setBounds(457, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnBezahlen);
-		
-		btnSpeichern = new JButton("speichern");
-		btnSpeichern.setBounds(569, 50, 95, 23);
-		frmRechnungsbersicht.getContentPane().add(btnSpeichern);
-		lblRechnung.setFont(customFont12f);
-		
+	
 		lblHintergrund = new JLabel();
-		lblHintergrund.setIcon(new ImageIcon("src/Resources/Hintergrund.png"));
+		lblHintergrund.setIcon(new ImageIcon(Rechnungsübersicht.class.getResource("/Resources/Hintergrund.png")));
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmRechnungsbersicht.getContentPane().add(lblHintergrund);
 		
 		btnZuruck = new JButton("Zurück");
 		lblRechnung.setFont(customFont12f);
-		btnZuruck.setBounds(680, 50, 95, 23);
+		btnZuruck.setBounds(575, 50, 95, 23);
 		frmRechnungsbersicht.getContentPane().add(btnZuruck);
 		
 		textField = new JTextField();
