@@ -102,7 +102,7 @@ public class KartBearbeitenStrg implements ActionListener, MouseListener, MouseM
 						// reset
 						istKeineZahl = false;
 					} else {
-						if (maxGeschwindigkeit > 999) {
+						if (maxGeschwindigkeit > 450) {
 							maxGeschwindigkeitZuHochMeldung();
 						} else {
 							if (beschleunigung > 99) {
