@@ -2,17 +2,10 @@
 package Premium;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-
 import javax.swing.JLabel;
-
 import FontHandler.FontHandler;
-
 import java.awt.Font;
-
-import Rechnung.anzeigenRechnung_ansicht2;
-
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;

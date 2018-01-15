@@ -8,10 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-
 import FontHandler.FontHandler;
-import Rechnung.anzeigenRechnung_ansicht2;
-
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;

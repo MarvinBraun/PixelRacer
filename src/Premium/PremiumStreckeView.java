@@ -1,4 +1,4 @@
-//@Author Ferhat Koca
+
 package Premium;
 
 import java.awt.EventQueue;
@@ -9,13 +9,10 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import FontHandler.FontHandler;
-import Rechnung.anzeigenRechnung_ansicht2;
 
 /**
  * Die Klasse PremiumKartView fuellt das Fenster mit allen dazugehoerigen Inhalten

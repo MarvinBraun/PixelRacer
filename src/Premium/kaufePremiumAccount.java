@@ -12,7 +12,6 @@ import ProfilKunde.AnzeigenProfilKundeStrg;
 import ProfilKunde.ProfilKundeAnsicht;
 import Rechnung.RechnungBezahlenStrg;
 
-import Rechnung.anzeigenRechnung_ansicht2;
 
 /**
  * kaufePremiumAccount ist ein Pop-up Fenster, das die grafische Oberfläche PremiumAccountView steuert.

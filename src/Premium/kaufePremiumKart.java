@@ -10,7 +10,7 @@ import Kart.Kart;
 import Kart.Kartuebersicht;
 import ProfilKunde.AnzeigenProfilKundeStrg;
 import Rechnung.RechnungBezahlenStrg;
-import Rechnung.anzeigenRechnung_ansicht2;
+
 
 /**
  * kaufePremiumKart ist ein Pop-up Fenster, das die grafische Oberflaeche PremiumKartView steuert.
