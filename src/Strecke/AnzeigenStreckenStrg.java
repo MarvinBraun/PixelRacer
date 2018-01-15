@@ -258,7 +258,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 		}
 		
 		//Punktestandpruefung und Label Aktivierung
-				if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte()) { // // Pruefung ist Punktestand Spieler groesser gleich Punktelimit Strecke
+				if(s.getPunktewert() <= Nutzerverwaltung.getangKunde().getpunkte() && s.getPremium().equals("false")) { // // Pruefung ist Punktestand Spieler groesser gleich Punktelimit Strecke
 					viewUebersicht.getLblStreckePunkteLimit().setVisible(false);
 					viewUebersicht.getLblStreckePunkte().setText("Strecke in deinem Besitz!");
 					viewUebersicht.getLblStreckePunkte().setVisible(true);
@@ -268,6 +268,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 					viewUebersicht.getLblStreckePunkteLimit().setText("Erreiche " + s.getPunktewert() + " Punkte um diese Strecke freizuschalten!");
 					viewUebersicht.getLblStreckePunkteLimit().setVisible(true);
 				}
+		
 				
 				//Pruefung Strecke bereits vom Nutzer gekauft? Falls nicht Kauf-Button einblenden
 				Rechnungsverwaltung r = new Rechnungsverwaltung();
