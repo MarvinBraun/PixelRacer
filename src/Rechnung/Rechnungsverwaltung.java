@@ -106,7 +106,7 @@ public class Rechnungsverwaltung {
 	        System.out.println("Today in dd/MM/yy pattern : " + date);
 	        r.setRechnungsdatum(date);
 			
-			String sql = "insert into rechnungkart values("+r.getRechnungsnummer()+",'"+r.getBenutzername()+"',"+r.getRechnungsbetrag()+",'"+r.getRechnungsdatum()+"','"+r.getBezahlmethode()+"','"+r.getKartname()+"')";
+			String sql = "insert into rechnungstrecke values("+r.getRechnungsnummer()+",'"+r.getBenutzername()+"',"+r.getRechnungsbetrag()+",'"+r.getRechnungsdatum()+"','"+r.getBezahlmethode()+"','"+r.getKartname()+"')";
 			Datenbankschnittstelle.executeUpdate(sql);
 			Datenbankschnittstelle.closeConnections();
 			
