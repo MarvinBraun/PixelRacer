@@ -266,9 +266,7 @@ public class ProfilKundeAnsicht{
 		m.label.setBounds(0, 0, 800, 600);
 		getFrmPixelRacer().getContentPane().add(m.label);		
 	}
-	/**
-	 * Getter & Setter fuer die verwendeten Variablen 
-	 */
+
 	public JLabel getLblHintergrund() {
 		return lblHintergrund;
 	}

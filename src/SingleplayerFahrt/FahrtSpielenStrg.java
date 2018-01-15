@@ -160,8 +160,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	}
 	
 	/** 
-	 * Die Methode ermittelt den Rang des Spielers.
-	 * Beim Erfüllen der Bedingung if(sf.getZeit()<=zeiten[i]) wird der Rang entsprechend gesetzt.
+	 * Die Methode ermittelt den Rang des Spielers. Beim Erfüllen der Bedingung if(sf.getZeit()<=zeiten[i]) wird der Rang entsprechend gesetzt.
 	 * "sf.setRang(i+1);" der Rang ist immer +1 höher als der Index, da dieser bei 0 beginnt.
 	 */
 	
