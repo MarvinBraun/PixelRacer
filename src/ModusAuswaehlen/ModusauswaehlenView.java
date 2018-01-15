@@ -67,7 +67,7 @@ public class ModusauswaehlenView {
 	 */
 	private void initialize() {
 		
-		Font customFont = FontHandler.registriereSchriftart(14f);
+		Font customFont = FontHandler.registriereSchriftart(30f);
 		
 		setFrame( new JFrame());
 		getFrame().setBounds(100, 100, 800, 600);
@@ -78,24 +78,27 @@ public class ModusauswaehlenView {
 		getFrame().setLocationRelativeTo(null);
 
 		setBtnSingleplayer (new JButton("Singleplayer"));
-		getBtnSingleplayer().setBounds(200, 240, 160, 31);
+		getBtnSingleplayer().setBounds(70, 240, 295, 31);
 		getBtnSingleplayer().setFont(customFont);
+		getBtnSingleplayer().setFocusable(false);
 		getBtnSingleplayer().setBorderPainted(false);
 		getBtnSingleplayer().setOpaque(false);
 		getBtnSingleplayer().setBackground(SystemColor.activeCaption);
 		getFrame().getContentPane().add(btnSingleplayer);
 
 		setBtnMultiplayer(new JButton("Multiplayer"));
-		getBtnMultiplayer().setBounds(440, 240, 160, 31);
+		getBtnMultiplayer().setBounds(435, 240, 295, 31);
 		getBtnMultiplayer().setFont(customFont);
+		getBtnMultiplayer().setFocusable(false);
 		getBtnMultiplayer().setBorderPainted(false);
 		getBtnMultiplayer().setOpaque(false);
 		getBtnMultiplayer().setBackground(SystemColor.activeCaption);
 		getFrame().getContentPane().add(btnMultiplayer);
 
 		setBtnzurueck( new JButton("Zurueck"));
-		getBtnzurueck().setBounds(325, 289, 150, 31);
+		getBtnzurueck().setBounds(300, 289, 200, 31);
 		getBtnzurueck().setFont(customFont);
+		getBtnzurueck().setFocusable(false);
 		getBtnzurueck().setBorderPainted(false);
 		getBtnzurueck().setOpaque(false);
 		getBtnzurueck().setBackground(SystemColor.activeCaption);

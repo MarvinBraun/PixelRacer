@@ -112,6 +112,7 @@ public class Kartuebersicht {
 		getBtnDetailView().setFont(customFont);
 		getBtnDetailView().setBounds(290, 428, 229, 35);
 		getBtnDetailView().setVisible(true);
+		getBtnDetailView().setFocusable(false);
 		getBtnDetailView().setBorderPainted(false);
 		getBtnDetailView().setOpaque(false);
 		getBtnDetailView().setBackground(SystemColor.activeCaption);
@@ -132,6 +133,7 @@ public class Kartuebersicht {
 		setBtnKartKaufen(new JButton("Kart kaufen!"));
 		getBtnKartKaufen().setVisible(false);
 		getBtnKartKaufen().setFont(customFont);
+		getBtnKartKaufen().setFocusable(false);
 		getBtnKartKaufen().setBounds(568, 428, 181, 33);
 		getBtnKartKaufen().setBorderPainted(false);
 		getBtnKartKaufen().setOpaque(false);
@@ -140,6 +142,7 @@ public class Kartuebersicht {
 
 		setBtnZurueck(new JButton("Zurueck"));
 		getBtnZurueck().setFont(customFont);
+		getBtnZurueck().setFocusable(false);
 		getBtnZurueck().setBounds(27, 510, 150, 29);
 		getBtnZurueck().setBorderPainted(false);
 		getBtnZurueck().setOpaque(false);

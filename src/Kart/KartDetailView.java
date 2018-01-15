@@ -148,6 +148,7 @@ public class KartDetailView {
 
 		setBtnZurueck( new JButton("Zurueck"));
 		getBtnZurueck().setFont(customFont);
+		getBtnZurueck().setFocusable(false);
 		getBtnZurueck().setBounds(10, 227, 89, 23);
 		getBtnZurueck().setBorderPainted(false);
 		getBtnZurueck().setOpaque(false);

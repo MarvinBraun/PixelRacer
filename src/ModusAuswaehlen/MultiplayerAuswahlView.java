@@ -65,7 +65,7 @@ public class MultiplayerAuswahlView {
 	 */
 	private void initialize() throws IOException {
 		
-		Font customFont = FontHandler.registriereSchriftart(12f);
+		Font customFont = FontHandler.registriereSchriftart(30f);
 	
 		setFrame( new JFrame());
 		getFrame().setBounds(100, 100, 800, 600);
@@ -76,24 +76,27 @@ public class MultiplayerAuswahlView {
 		getFrame().setLocationRelativeTo(null);
 
 		setBtnerstellen( new JButton("Multiplayerfahrt erstellen"));
-		getBtnerstellen().setBounds(80, 237, 280, 31);
+		getBtnerstellen().setBounds(100, 215, 600, 31);
 		getBtnerstellen().setFont(customFont);
+		getBtnerstellen().setFocusable(false);
 		getBtnerstellen().setBorderPainted(false);
 		getBtnerstellen().setOpaque(false);
 		getBtnerstellen().setBackground(SystemColor.activeCaption);
 		getFrame().getContentPane().add(btnerstellen);
 
 		setBtnbeitreten( new JButton("Multiplayerfahrt beitreten"));
-		getBtnbeitreten().setBounds(440, 237, 280, 31);
+		getBtnbeitreten().setBounds(100, 270, 600, 31);
 		getBtnbeitreten().setFont(customFont);
+		getBtnbeitreten().setFocusable(false);
 		getBtnbeitreten().setBorderPainted(false);
 		getBtnbeitreten().setOpaque(false);
 		getBtnbeitreten().setBackground(SystemColor.activeCaption);
 		getFrame().getContentPane().add(btnbeitreten);
 
 		setBtnzurueck( new JButton("Zurueck"));
-		getBtnzurueck().setBounds(325, 289, 150, 31);
+		getBtnzurueck().setBounds(300, 315, 200, 31);
 		getBtnzurueck().setFont(customFont);
+		getBtnzurueck().setFocusable(false);
 		getBtnzurueck().setBorderPainted(false);
 		getBtnzurueck().setOpaque(false);
 		getBtnzurueck().setBackground(SystemColor.activeCaption);
