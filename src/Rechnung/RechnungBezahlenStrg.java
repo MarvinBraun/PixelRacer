@@ -54,7 +54,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 	}
 	/**
 	 * Wird aufgerufen wenn eine Strecke gekauft wird. Die dabei gekaufte Strecke wird übergeben.
-	 * @param k2
+	 * @param s2 übergebenes Objekt der Klasse Strecke
 	 */
 	public RechnungBezahlenStrg(Strecke s2) {
 		auswahl = 'x';

@@ -1,5 +1,5 @@
 /**
- * Stellt alle Klassen zum Bearbeiten eines Karts zur Verfügung.
+ 
  */
 package KartBearbeiten;
 

@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen zum Kaufen von premium Inhalten zur Verfügung.
- */
+
 package Premium;
 
 import java.awt.event.ActionEvent;

@@ -210,9 +210,7 @@ public class Streckenuebersicht {
 		getFrmPixelRacer().getContentPane().add(m.label);
 				
 	}
-	/**
-	 * Getter & Setter fuer die verwendeten Variablen 
-	 */
+
 	public JFrame getFrmPixelRacer() {
 		return frmPixelRacer;
 	}

@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen für die Mitarbeiteransicht zur Verfügung.
- */
+
 package MitarbeiterAnsicht;
 
 import javax.swing.JPanel;

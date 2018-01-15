@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen zum Erstellen, Spielen und Auswerten von Singleplayerfahrten zur Verfügung.
- */
+
 
 package SingleplayerFahrt;
 

@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen zum Auswählen eines Modus zur Verfügung.
- */
+
 package ModusAuswaehlen;
 
 /** Die Klasse ModusauswaehlenStrg steuert die Aktionen, die in der Klasse 

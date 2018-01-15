@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen zum Bearbeiten von Mitarbeitern zur Verfügung.
- */
+
 package MitarbeiterBearbeiten;
 
 import java.awt.event.ActionEvent;

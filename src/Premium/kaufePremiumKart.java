@@ -46,7 +46,8 @@ public class kaufePremiumKart extends JFrame implements ActionListener {
 
 	/**
 	 * Der Konstruktor erzeugt die Klasse als neues Objekt und deklariert die Variablen.
-	 * 
+	 * @param k Objekt der Klasse Kart
+	 * @param viewUebersicht Objekt der Klasse Kartuebersicht
 	 */
 	public kaufePremiumKart(Kart k, Kartuebersicht viewUebersicht) {
 		pkv = new PremiumKartView();

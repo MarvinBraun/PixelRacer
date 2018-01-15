@@ -291,16 +291,6 @@ public class FahrtBeitretenStrg implements ActionListener {
 
 }
 	
-		
-			
-			
-		
-		
-	
-			
-	
-	
-	
 
 
 	@Override

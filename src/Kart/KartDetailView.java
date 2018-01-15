@@ -21,8 +21,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
 /**
- * KartDetailView ist die grafische Benutzeroberfläche, die benutzt wird um die
- * Details der Karts für den jeweiligen angemeldeten Nutzer anzeigt.
+ * KartDetailView ist die grafische Benutzeroberflaeche, die benutzt wird um die
+ * Details der Karts fuer den jeweiligen angemeldeten Nutzer anzeigt.
  * 
  * @author Ferhat Koca
  *

@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen zum Verwalten von Strecken zur Verf�gung.
- */
+
 package Strecke;
 
 import java.awt.Graphics;
@@ -308,7 +306,7 @@ public class AnzeigenStreckenStrg implements ActionListener{
 }	
 	/** 
 	 * imageResizer verkleinert ein Objekt des Typs BufferedImage von 800x600 auf 300x200. Die Grafiken werden dabei ÃƒÂ¼ber die Klasse Graphics neu gezeichnet.
-	 * @return BufferedImage in der GrÃƒÂ¶ÃƒÅ¸e 300x200.
+	 * @return BufferedImage in der Grafik 300x200.
 	 */	
 	public static BufferedImage imageResizer(BufferedImage original)
 	{

@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen zum Bearbeiten eines Profils zur Verfügung.
- */
+
 package ProfilBearbeiten;
 
 import java.awt.EventQueue;

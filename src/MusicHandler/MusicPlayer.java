@@ -1,6 +1,4 @@
-/**
- * Stellt eine Klasse zum Abspielen von Musik zur Verfügung.
- */
+
 package MusicHandler;
 
 import java.io.File;

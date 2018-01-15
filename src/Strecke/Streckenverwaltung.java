@@ -15,8 +15,8 @@ public class Streckenverwaltung {
 	
 	LinkedList<Strecke> streckenliste = new LinkedList<Strecke>();
 	/**
-	 * LinkedList<Strecke> gibStrecke(): Es wird eine LinkedList vom Typ Strecke erstellt und mit 
-	 * einer Datenbankabfrage über ein ResultSet wird aus der Relation Strecke für 
+	 * Es wird eine LinkedList vom Typ Strecke erstellt und mit 
+	 * einer Datenbankabfrage über ein ResultSet wird aus der Relation Strecke fuer 
 	 * jeden Datensatz ein Streckenobjekt erzeugt.
 	 * @return LinkedList<Strecke> streckenliste mit den Streckenobjekten aus der DB
 	 */
@@ -55,11 +55,10 @@ public class Streckenverwaltung {
 	
 	LinkedList<Strecke> streckenlistePunkte = new LinkedList<Strecke>();
 	/**
-	 * LinkedList<Strecke> gibStreckeBenutzerNachPunktestand(String benutzername, int punktestand): 
 	 * Es wird eine LinkedList vom Typ Strecke erstellt und mit 
-	 * einer Datenbankabfrage über ein ResultSet wird aus der Relation Strecke für 
+	 * einer Datenbankabfrage über ein ResultSet wird aus der Relation Strecke fuer 
 	 * jeden Datensatz ein Streckenobjekt erzeugt. Durch den uebergebenen Parameter Punktestand
-	 * wird geprüft, das nur Strecken ausgegeben werden, die auch mit dem Punktestand des Spielers, spielbar sind.
+	 * wird geprueft, das nur Strecken ausgegeben werden, die auch mit dem Punktestand des Spielers, spielbar sind.
 	 * @return LinkedList<Strecke> streckenliste mit den Streckenobjekten aus der DB passend zum Punktestand des Nutzers.
 	 */
 	public LinkedList<Strecke> gibStreckeBenutzerNachPunktestand(String benutzername, int punktestand){

@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen zum Anzeigen der Startansicht zur Verfügung.
- */
+
 package Startansicht;
 
 import java.awt.EventQueue;

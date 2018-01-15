@@ -1,6 +1,4 @@
-/**
- * Stellt eine Klasse zum simulieren von Zeiten zur Verfügung.
- */
+
 package Computergegner;
 
 import Strecke.Strecke;

@@ -1,6 +1,4 @@
-/**
- * Über dieses Paket wird die Anwendung gestartet.
- */
+
 package Main;
 
 import javax.swing.SwingUtilities;

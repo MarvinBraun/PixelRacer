@@ -124,7 +124,7 @@ public class Nutzerverwaltung { //Deklaration der benötigten Variablen
 	
 	/**
 	 * Eine bestimmte Anzahl an Punkten wird dem angemeldeten Kunden auf seinem Punktestand gutgeschrieben.
-	 * @param punkte
+	 * @param punkte Anzahl der zu addierenden Punkte
 	 */
 	public static void addpunkte(int punkte) {
 		try {

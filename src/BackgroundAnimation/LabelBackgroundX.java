@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen zum Animieren eines Bildes zur Verfügung.
- */
+
 
 package BackgroundAnimation;
 

@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen um eine Strecke Hinzuzufügen zur Verfügung.
- */
+
 package StreckeHinzufügen;
 
 import java.awt.event.ActionListener;

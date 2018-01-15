@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen zum Beitreten, Spielen und Auswerten einer Multiplayerfahrt zur Verfügung.
- */
+
 
 package MultiplayerFahrt;
 

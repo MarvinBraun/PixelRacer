@@ -1,6 +1,4 @@
-/**
- * Stellt alle Klassen zum Erstellen eines Accounts zur Verfügung.
- */
+
 package AccountAnlegen;
 
 import java.awt.event.ActionEvent;
@@ -32,6 +30,10 @@ public class AccountAnlegenStrg implements ActionListener {
 
 	AccountAnlegenView view1;
 
+	/**
+	 * Erzeugt ein Objekt der Klasse
+	 */
+	
 	public AccountAnlegenStrg() { // Konstruktor
 		view1 = new AccountAnlegenView();
 		view1.getFrmPixelRacer().setVisible(true);
