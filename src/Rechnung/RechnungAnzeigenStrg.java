@@ -11,7 +11,7 @@ import Startansicht.StartansichtStrg;
 
 /**
  * Die Klasse RechnungAnzeigenStrg steuert das anzeigen der einzelnen Rechnungen.
- * Sie verwaltet dabei die grafische Benutzeroberflächen Rechnungsübersicht und anzeigenRechnung_ansicht2.
+ * Sie verwaltet dabei die grafische Benutzeroberflächen Rechnungsübersicht und RechnungAnzeigenView.
  * @author Daniel Zeller
  *
  */

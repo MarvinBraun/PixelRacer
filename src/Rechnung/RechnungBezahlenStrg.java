@@ -14,7 +14,7 @@ import Strecke.Strecke;
 
 /**
  * Die Klasse RechnungBezahlenStrg steuert das bezahlen einer Rechnung.
- * Sie verwaltet dabei die grafische Benutzeroberfläche bezahlenRechnung_ansicht.
+ * Sie verwaltet dabei die grafische Benutzeroberfläche RechnungBezahlenView.
  * @author Daniel Zeller
  *
  */
