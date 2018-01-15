@@ -31,7 +31,7 @@ import java.awt.Color;
  * @author Matthias Westermeyer
  *
  */
-public class anzeigenRechnung_ansicht2 {
+public class RechnungAnzeigenView {
 
 	// benötigte Variablen deklarieren
 	
@@ -141,7 +141,7 @@ public class anzeigenRechnung_ansicht2 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					anzeigenRechnung_ansicht2 window = new anzeigenRechnung_ansicht2();
+					RechnungAnzeigenView window = new RechnungAnzeigenView();
 					window.frmRechnungsübersicht.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -156,7 +156,7 @@ public class anzeigenRechnung_ansicht2 {
 	 */
 	
 	
-	public anzeigenRechnung_ansicht2() {
+	public RechnungAnzeigenView() {
 		initialize();
 	}
 
@@ -227,7 +227,7 @@ public class anzeigenRechnung_ansicht2 {
 		frmRechnungsübersicht.getContentPane().add(lblPremium);
 		
 		lblHintergrund = new JLabel();
-		lblHintergrund.setIcon(new ImageIcon(anzeigenRechnung_ansicht2.class.getResource("/Resources/Hintergrund.png")));
+		lblHintergrund.setIcon(new ImageIcon(RechnungAnzeigenView.class.getResource("/Resources/Hintergrund.png")));
 		lblHintergrund.setBounds(0, 0, 800, 600);
 		frmRechnungsübersicht.getContentPane().add(lblHintergrund);
 		

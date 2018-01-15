@@ -17,8 +17,8 @@ import Startansicht.StartansichtStrg;
  */
 public class RechnungAnzeigenStrg implements ActionListener{
 	Rechnungsübersicht view1;
-	anzeigenRechnung_ansicht2 view2;
-	anzeigenRechnung_ansicht2 view3;
+	RechnungAnzeigenView view2;
+	RechnungAnzeigenView view3;
 	
 	private Rechnung r;
 	private LinkedList<Rechnung> rliste;
@@ -31,10 +31,10 @@ public class RechnungAnzeigenStrg implements ActionListener{
 		view1.getBtnBezahlen().addActionListener(this);
 		view1.getBtnZuruck().addActionListener(this);
 		
-		view2 = new anzeigenRechnung_ansicht2();
+		view2 = new RechnungAnzeigenView();
 		view2.getBtnZuruck().addActionListener(this);
 		
-		view3 = new anzeigenRechnung_ansicht2();
+		view3 = new RechnungAnzeigenView();
 		view3.getBtnZuruck().addActionListener(this);
 	}
 	

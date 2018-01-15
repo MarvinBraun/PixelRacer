@@ -73,9 +73,11 @@ public class Startansicht {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() { //Initialisierung des Fensters und den dazugehörigen Komponenten
-		Font customFont30f = FontHandler.registriereSchriftart(30f);
+		Font customFont40f = FontHandler.registriereSchriftart(40f);
 		Font customFont18f = FontHandler.registriereSchriftart(18f);
-		Font customFont10f = FontHandler.registriereSchriftart(10f);
+		Font customFont14f = FontHandler.registriereSchriftart(14f);
+		Font customFont12f = FontHandler.registriereSchriftart(12f);
+
 		
 		frmPixelRacer = new JFrame();
 		frmPixelRacer.setResizable(false);
@@ -86,8 +88,8 @@ public class Startansicht {
 		frmPixelRacer.setLocationRelativeTo(null);
 		
 		lblPixelRacer = new JLabel("Pixel Racer");
-		lblPixelRacer.setFont(customFont30f);
-		lblPixelRacer.setBounds(300, 88, 300, 38);
+		lblPixelRacer.setFont(customFont40f);
+		lblPixelRacer.setBounds(250, 88, 500, 40);
 		frmPixelRacer.getContentPane().add(lblPixelRacer);
 		
 		btnSpielen = new JButton("Spielen");
@@ -144,7 +146,7 @@ public class Startansicht {
 		
 		btnAbmelden = new JButton("Abmelden");
 		btnAbmelden.setBounds(649, 524, 112, 23);
-		btnAbmelden.setFont(customFont10f);
+		btnAbmelden.setFont(customFont12f);
 		btnAbmelden.setBorderPainted(false);
 		btnAbmelden.setOpaque(false);
 		btnAbmelden.setBackground(SystemColor.activeCaption);
@@ -156,9 +158,9 @@ public class Startansicht {
 		});
 		
 		lblAnzeige = new JLabel("Fehler");
-		lblAnzeige.setFont(customFont10f);
+		lblAnzeige.setFont(customFont14f);
 		lblAnzeige.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblAnzeige.setBounds(544, 0, 240, 14);
+		lblAnzeige.setBounds(470, 0, 300, 14);
 		frmPixelRacer.getContentPane().add(lblAnzeige);
 		
 		lblHintergrund = new JLabel("");
