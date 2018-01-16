@@ -49,7 +49,7 @@ public class Datenbankschnittstelle {
 		}
 
 		catch (SQLException e) {
-			System.out.println("Verbindung zur Datenbank fehlgeschlagen" + "Fehler: " + e.getMessage());
+			 ;
 		}
 		return con;
 	}
@@ -69,7 +69,7 @@ public class Datenbankschnittstelle {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Abfrage konnte nicht durchgeführt werden. " + "Fehler: " + e.getMessage());
+			 ;
 		}
 
 		return rs;
@@ -90,7 +90,7 @@ public class Datenbankschnittstelle {
 		}
 
 		catch (SQLException e) {
-			System.out.println();
+			 ;
 
 			e.printStackTrace();
 		}
@@ -112,7 +112,7 @@ public class Datenbankschnittstelle {
 			// stmt.close();
 			// con.close();
 		} catch (SQLException e) {
-			System.out.println("Batch konnte nicht ausgeführt werden. " + "Fehler: " + e.getMessage());
+			 ;
 		}
 
 	}
@@ -126,7 +126,7 @@ public class Datenbankschnittstelle {
 			Connection con = getConnection();
 			PreparedStatement prepstmt = con.prepareStatement(sql);
 
-			System.out.println("Bild laden..");
+			 ;
 			FileInputStream fis = new FileInputStream(file);
 			prepstmt.setBinaryStream(1, fis, (int) file.length());
 			prepstmt.execute();
@@ -194,7 +194,7 @@ public class Datenbankschnittstelle {
 	 * myStmt = con.prepareStatement(sql); File f =new
 	 * File("src/Resources/Car1.png"); FileInputStream input = new
 	 * FileInputStream(f); myStmt.setBinaryStream(1, input); myStmt.executeUpdate();
-	 * System.out.println("Successfull");
+	 *  ;
 	 * 
 	 * 
 	 * }
@@ -205,7 +205,7 @@ public class Datenbankschnittstelle {
 	 * }
 	 * 
 	 * 
-	 * catch (IOException f) { System.out.println("Bildfehler"); }
+	 * catch (IOException f) {  ; }
 	 * 
 	 * 
 	 * }
@@ -219,7 +219,7 @@ public class Datenbankschnittstelle {
 	 * 
 	 * try { while(is.read(buffer)>0) { fos.write(buffer);
 	 * 
-	 * } if(image.exists()) System.out.println("exists"); } catch (IOException e) {
+	 * } if(image.exists())   {
 	 * // TODO Auto-generated catch block e.printStackTrace(); } try { fos.close();
 	 * 
 	 * con.close();
@@ -228,7 +228,7 @@ public class Datenbankschnittstelle {
 	 * e.printStackTrace(); }
 	 * 
 	 * } catch (FileNotFoundException e) { // TODO Auto-generated catch block
-	 * System.out.println("File not found"); e.printStackTrace(); }
+	 *  ; }
 	 * 
 	 * 
 	 * catch (SQLException e) { // TODO Auto-generated catch block

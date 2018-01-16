@@ -112,7 +112,7 @@ public class ModusauswaehlenView {
 			image = ImageIO.read(url);
 		} catch (IOException e) {
 			e.getMessage();
-			System.out.println("Fehler beim einbeziehen des Bildes!");
+			 ;
 		}
 
 		MovementBackward m = new MovementBackward(5);

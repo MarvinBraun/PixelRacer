@@ -96,7 +96,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 		
 		if((k=itKart.next())!=null)
 		{
-			System.out.println(k.getKartname());
+			 ;
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
@@ -123,7 +123,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 	
 		if((k=itKart.previous())!=null)
 		{
-			System.out.println(k.getKartname());
+			 ;
 			ImageIcon icon = new ImageIcon(k.getGrafik());
 			view.getKartBild().setIcon(icon);
 			view.getKartName().setText(k.getKartname());
@@ -157,13 +157,13 @@ public class FahrtBeitretenStrg implements ActionListener {
 		{ 
 			
 			s = it.next();
-			System.out.println(s.getStreckenname() + " vergleich zu: "+ strecke);
+			 ;
 			if(strecke.equals(s.getStreckenname()))
 			{
 				break;
 			}
 			else
-				System.out.println("Strecke nicht gefunden");
+				 ;
 		}
 		
 		return s;
@@ -178,12 +178,12 @@ public class FahrtBeitretenStrg implements ActionListener {
 		
 		//Laden aller Karts
 		alleKarts =karts1.gibKart();
-		System.out.println("Anzahl Karts insgesamt:"+alleKarts.size());
+		 ;
 		Iterator<Kart> it = alleKarts.iterator();
 		
 		//Laden der Rechnungsliste
 		LinkedList<Rechnung> kartrechnungen = Rechnungsverwaltung.gibKartRechnungenfuerBenutzer();
-		System.out.println("Länge der Recnungen des Benutzers:" + kartrechnungen.size());
+		 ;
 		Iterator<Rechnung> itR = kartrechnungen.iterator();
 		
 		//Leere LinkedList für Karts des Benutzers:
@@ -197,7 +197,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 			k = it.next();
 			if(k.getPremium().equals("false") && k.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=k.getPunktewert()&&k.getPunktewert()>0)
 			{
-				System.out.println("Wird hinzugefügt: "+ k.getKartname());
+				 ;
 				kartliste.add(k);
 			}
 		}
@@ -210,20 +210,20 @@ public class FahrtBeitretenStrg implements ActionListener {
 			String kartName;
 			kartName = r.getKartname();
 			
-			System.out.println("Zu suchendes Kart"+ kartName);
+			 ;
 		
 			Iterator<Kart> itN = alleKarts.iterator();
 			
-			System.out.println(alleKarts.size());
+			 ;
 			
 			while(itN.hasNext())
 			{
 				
 				k = itN.next();
-				System.out.println("Vergleiche: "+kartName + " mit: "+k.getKartname() );
+				 ;
 				if(k.getKartname().equals(kartName))
 				{	
-					System.out.println("Wird hinzugefügt über Rechnungen: "+ k.getKartname());
+					 ;
 					kartliste.add(k);
 				}
 			}
@@ -246,7 +246,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 		LinkedList<MultiplayerFahrt> fahrten = verwaltung.gibMultiplayerFahrten();
 		String a = view.getMultiplayerID().getText();
 		int multiplayerID = Integer.parseInt(a);
-		System.out.println(multiplayerID);
+		 ;
 		
 		Iterator<MultiplayerFahrt> it = fahrten.iterator();
 		
@@ -258,7 +258,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 			if(multiplayerID==fahrt.getMultiplayerID() && gefunden==false)
 			{
 				gefunden=true;
-				System.out.println("Hallo");
+				 ;
 				mf = new MultiplayerFahrt();
 				mf.setMultiplayerID(multiplayerID);
 				mf.setStreckenName(fahrt.getStreckenName());
@@ -274,7 +274,7 @@ public class FahrtBeitretenStrg implements ActionListener {
 				mf.setKartName(k.getKartname());
 				int id = verwaltung.gibNeueID(1);
 				mf.setSitzungsID(id);
-				System.out.println("erfolg!");	
+				 ;	
 					
 				
 				MultiplayerFahrtSpielenStrg strg = new MultiplayerFahrtSpielenStrg(mf,k,s);

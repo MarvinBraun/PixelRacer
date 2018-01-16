@@ -43,7 +43,7 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
-			System.out.println(e);
+			 ;
 		}
 		
 		start = new StartView();
@@ -124,7 +124,7 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 			try {
 				UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
 			} catch (Exception e1) {
-				System.out.println(e1);
+				 ;
 			}
 			AnmeldenStrg anmelden = new AnmeldenStrg();
 		}

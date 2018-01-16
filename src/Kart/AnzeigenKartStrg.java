@@ -335,7 +335,7 @@ public class AnzeigenKartStrg implements ActionListener {
 			}
 
 		} catch (NullPointerException o) {
-			System.out.println(o.getMessage());
+			 ;
 		}
 	}
 }

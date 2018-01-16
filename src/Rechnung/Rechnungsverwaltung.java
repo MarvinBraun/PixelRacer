@@ -32,14 +32,14 @@ public class Rechnungsverwaltung {
 		r.setRechnungsnummer(gibNeueRechnungsNummerKart());
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yy");
 		String date = DATE_FORMAT.format(today);
-        System.out.println("Today in dd/MM/yy pattern : " + date);
+
         r.setRechnungsdatum(date);
 		
 		String sql = "insert into rechnungkart values("+r.getRechnungsnummer()+",'"+r.getBenutzername()+"',"+r.getRechnungsbetrag()+",'"+r.getRechnungsdatum()+"','"+r.getBezahlmethode()+"','"+r.getKartname()+"')";
 		Datenbankschnittstelle.executeUpdate(sql);
 		Datenbankschnittstelle.closeConnections();
 		
-		System.out.println("Erfolg");
+		 ;
 	}
 	
 	public static int gibNeueRechnungsNummerKart()
@@ -54,7 +54,7 @@ public class Rechnungsverwaltung {
 
 				id = rs.getInt("max(Rechnungsnummer)");
 				id++;
-				System.out.println("rechnungsnummer:"+id);
+				 ;
 			}
 			rs.close();
 			
@@ -80,7 +80,7 @@ public class Rechnungsverwaltung {
 
 				id = rs.getInt("max(Rechnungsnummer)");
 				id++;
-				System.out.println("rechnungsnummer:"+id);
+				 ;
 			}
 			rs.close();
 			
@@ -103,14 +103,14 @@ public class Rechnungsverwaltung {
 			r.setRechnungsnummer(gibNeueRechnungsNummerStrecke());
 			SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yy");
 			String date = DATE_FORMAT.format(today);
-	        System.out.println("Today in dd/MM/yy pattern : " + date);
+	         ;
 	        r.setRechnungsdatum(date);
 			
 			String sql = "insert into rechnungstrecke values("+r.getRechnungsnummer()+",'"+r.getBenutzername()+"',"+r.getRechnungsbetrag()+",'"+r.getRechnungsdatum()+"','"+r.getBezahlmethode()+"','"+r.getKartname()+"')";
 			Datenbankschnittstelle.executeUpdate(sql);
 			Datenbankschnittstelle.closeConnections();
 			
-			System.out.println("Erfolg");
+			 ;
 	}
 	
 	public static LinkedList<Rechnung> gibKartRechnungenfuerBenutzer()
@@ -180,14 +180,14 @@ public class Rechnungsverwaltung {
 		
 		for(int i = 0; i<rechnungenKart.size();i++)
 		{
-			System.out.println("Nr: "+rechnungenKart.get(i).getRechnungsnummer());
+			 ;
 		}
 		
 		gibStreckenRechnungenfuerBenutzer();
 		
 		for(int i = 0; i<rechnungenStrecke.size();i++)
 		{
-			System.out.println("2. Nr: "+rechnungenStrecke.get(i).getRechnungsnummer());
+			 ;
 		}
 	
 	}

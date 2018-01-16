@@ -53,7 +53,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		kart = k;
 		strecke = s;
 		this.sf = sfahrt;
-		System.out.println(sf.getBenutzername());
+		 ;
 	
 		
 		this.schwierigkeit = schwierigkeit;
@@ -102,7 +102,7 @@ public class FahrtSpielenStrg implements ActionListener{
 	            	{ 
 	            		
 	            	int record = fahrtSpielenView.getZeiger().zeiger.backgroundX1;
-	            	System.out.println(spielstand);
+	            	 ;
 	            	if(speed<6)
 	            	speed = speed+speed;
 	            	fahrtSpielenView.getZeiger().setSpeed(speed);
@@ -129,20 +129,20 @@ public class FahrtSpielenStrg implements ActionListener{
 	            	if(versuche == 0)
 	            	{
 	            		float berechneLeistung = (float) spielstand / 10;
-	            		System.out.println("Alter Wert: "+berechneLeistung);
+	            		 ;
 	            		if(berechneLeistung<1)
 	            		{
 	            			berechneLeistung = (float) 1/berechneLeistung;
 	            		}
 	            	
 	            		
-	            		System.out.println(berechneLeistung);
+	            		 ;
 	            		
 	            		
 	            		float schwierigkeit2 = (float) (0.8 +(Math.random() * 1.3)); 
 	        			
 	        			int zeit = (int) ((int) ((strecke.getLaenge()/kart.getMaxkmh())+(kart.getMaxkmh()/kart.getBeschleunigung())*schwierigkeit2)*berechneLeistung);
-	        			System.out.println("Zeit"+zeit);
+	        			 ;
 	        			sf.setZeit(zeit);
 	        			versuche--;
 	        			
@@ -171,7 +171,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		{
 			if(sf.getZeit()<=zeiten[i])
 			{
-				System.out.println("Zeiten der Bots:"+zeiten[i]);
+				 ;
 			sf.setRang(i+1);
 			break;
 			}
@@ -189,7 +189,7 @@ public class FahrtSpielenStrg implements ActionListener{
 		
 		if(e.getSource()==fahrtSpielenView.getFahrenBtn())
 		{
-			System.out.println("Hallo");
+			 ;
 			fahren();
 		}
 		

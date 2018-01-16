@@ -64,7 +64,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		fahrtSpielenView.getFrame().setLocationRelativeTo(null);
 		
 		
-		System.out.println("Registriert");
+		 ;
 	
 	}
 	
@@ -114,7 +114,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	            	if(versuche == 0)
 	            	{
 	            		float berechneLeistung = (float) wert / 1750;
-	            		System.out.println("Alter Wert: "+berechneLeistung);
+	            		 ;
 	            		
 	            		if(berechneLeistung<1)
 	            		{
@@ -122,7 +122,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 	            		}
 	            	
 	            		
-	            		System.out.println(berechneLeistung);
+	            		 ;
 	            		
 	            		
 	            		float schwierigkeit2 = (float) (0.8 +(Math.random() * 1.5)); 
@@ -159,7 +159,7 @@ public class MultiplayerFahrtSpielenStrg implements ActionListener{
 		
 		if(e.getSource()==fahrtSpielenView.getFahrenBtn())
 		{
-			System.out.println("Hallo");
+			 ;
 			fahren();
 		}
 

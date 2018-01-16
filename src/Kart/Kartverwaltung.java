@@ -48,7 +48,7 @@ public class Kartverwaltung {
 			Datenbankschnittstelle.closeConnections();
 
 		} catch (SQLException sql) {
-			System.out.println("Fehler beim auslesen der Karts " + sql.getMessage());
+			 ;
 		}
 
 		return Kartliste;

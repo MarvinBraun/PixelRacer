@@ -284,7 +284,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			String streckenName;
 			streckenName = r.getStreckenname();
 			
-			System.out.println("Vergleiche Strecke aus Rechnung: "+ streckenName );
+			 ;
 			
 			it = alleStrecken.iterator();
 			
@@ -292,7 +292,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			{
 				
 				s = it.next();
-				System.out.println(s.getStreckenname());
+				 ;
 
 				if(s.getStreckenname().equals(streckenName))
 				{	

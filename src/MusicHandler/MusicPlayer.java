@@ -33,7 +33,7 @@ public class MusicPlayer {
 	        
 	    } catch(Exception ex) {
 	    	
-	        System.out.println("Error with playing sound.");     
+	         ;     
 	        ex.printStackTrace();
 	        
 	    }
@@ -54,7 +54,7 @@ public class MusicPlayer {
 	        	gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 	    } catch(Exception ex) {
 	    	
-	        System.out.println("Error with playing sound.");     
+	         ;     
 	        ex.printStackTrace();
 		}
 	}
@@ -75,7 +75,7 @@ public class MusicPlayer {
 	        	gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 	    } catch(Exception ex) {
 	    	
-	        System.out.println("Error with playing sound.");     
+	         ;     
 	        ex.printStackTrace();
 		}
 	}
@@ -96,7 +96,7 @@ public class MusicPlayer {
 	        	gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 	    } catch(Exception ex) {
 	    	
-	        System.out.println("Error with playing sound.");     
+	         ;     
 	        ex.printStackTrace();
 		}
 	}
@@ -117,7 +117,7 @@ public class MusicPlayer {
 	        	gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
 	    } catch(Exception ex) {
 	    	
-	        System.out.println("Error with playing sound.");     
+	         ;     
 	        ex.printStackTrace();
 		}
 	}

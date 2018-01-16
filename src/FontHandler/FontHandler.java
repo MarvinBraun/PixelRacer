@@ -33,7 +33,7 @@ public class FontHandler {
 		
 		catch(IOException|FontFormatException e)
 		{
-			System.out.println("Schrift konnte nicht geladen werden");
+			 ;
 		}
 		
 		return customFont;

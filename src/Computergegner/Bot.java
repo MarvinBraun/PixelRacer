@@ -51,7 +51,7 @@ public class Bot {
 			schwierigkeit2 = (float) (0.5 + (Math.random() * 1.2));
 
 		zeit = (int) ((int) (((länge / geschwindigkeit) + (geschwindigkeit / beschleunigung)) * schwierigkeit2) * 0.4);
-		System.out.println("Gefahrene Zeit des Bots:" + zeit);
+
 	}
 
 	public static void main(String[] args) {

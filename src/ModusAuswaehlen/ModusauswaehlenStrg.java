@@ -59,7 +59,7 @@ public class ModusauswaehlenStrg implements ActionListener {
 			} catch (IOException e1) {
 
 				e1.getMessage();
-				System.out.println("Fehler beim Klicken von MultiplayerButton!");
+				 ;
 			}
 		}
 	}
