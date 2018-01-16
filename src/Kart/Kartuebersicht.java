@@ -98,7 +98,7 @@ public class Kartuebersicht {
 		getFrame().getContentPane().add(getKartBackward());
 
 		setKartLbl(new JLabel("", JLabel.CENTER));
-		getKartLbl().setBounds(247, 144, 300, 200);
+		getKartLbl().setBounds(97, 144, 605, 200);
 		getKartLbl().setVisible(true);
 		getFrame().getContentPane().add(getKartLbl());
 

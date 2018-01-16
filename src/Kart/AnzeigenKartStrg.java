@@ -110,7 +110,7 @@ public class AnzeigenKartStrg implements ActionListener {
 
 				BufferedImage newImage = k.getGrafik();
 				viewUebersicht.getKartName().setText(k.getKartname());
-				Kartbild = imageResizer(newImage);
+				Kartbild = newImage;
 				ImageIcon icon = new ImageIcon(Kartbild);
 				viewUebersicht.getKartLbl().setIcon(icon);
 
@@ -281,10 +281,10 @@ public class AnzeigenKartStrg implements ActionListener {
 
 	public static BufferedImage imageResizer(BufferedImage original) {
 
-		BufferedImage newImage = new BufferedImage(545, 122, BufferedImage.TYPE_INT_ARGB);
+		BufferedImage newImage = new BufferedImage(300, 200, BufferedImage.TYPE_INT_ARGB);
 
 		Graphics g = newImage.createGraphics();
-		g.drawImage(original, 130, -30, 300, 200, null);
+		g.drawImage(original, 0, 0, 300, 200, null);
 
 		g.dispose();
 		return newImage;
