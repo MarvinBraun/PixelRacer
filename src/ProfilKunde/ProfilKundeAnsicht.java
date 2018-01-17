@@ -182,7 +182,7 @@ public class ProfilKundeAnsicht{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		getBtnZurueck().setBounds(668, 527, 116, 33);
+		getBtnZurueck().setBounds(668, 505, 116, 33);
 		getBtnZurueck().setBorderPainted(false);
 		getBtnZurueck().setOpaque(false);
 		getBtnZurueck().setBackground(SystemColor.activeCaption);
@@ -195,7 +195,7 @@ public class ProfilKundeAnsicht{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		getBtnRechnungsverw().setBounds(10, 527, 288, 33);
+		getBtnRechnungsverw().setBounds(10, 505, 316, 33);
 		getBtnRechnungsverw().setBorderPainted(false);
 		getBtnRechnungsverw().setOpaque(false);
 		getBtnRechnungsverw().setBackground(SystemColor.activeCaption);
