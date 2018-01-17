@@ -74,7 +74,7 @@ public class FahrtErstellenView {
 		getFrame().setResizable(false);
 		getFrame().setBounds(100, 100, 800, 600);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		getFrame().setLocationRelativeTo(null);
 		getFrame().setVisible(true);
 		getFrame().getContentPane().setLayout(null);
 		
@@ -220,6 +220,7 @@ public class FahrtErstellenView {
 		
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
+		
 		getFrame().getContentPane().add(m.label);
 		getFrame().setVisible(true);
 	

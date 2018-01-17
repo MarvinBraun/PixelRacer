@@ -52,9 +52,11 @@ public class FahrtAuswertungView {
 	 */
 	private void initialize() {
 		setFrame(new JFrame());
+		
 		getFrame().setBounds(100, 100, 800, 600);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFrame().getContentPane().setLayout(null);
+		
 		
 		setBtnNewButton(new JButton("Weiter"));
 		getBtnNewButton().setBackground(new Color(60, 179, 113));
@@ -115,7 +117,7 @@ public class FahrtAuswertungView {
 		getLblBackground().setBounds(0, 0, 784, 561);
 		getFrame().getContentPane().add(getLblBackground());
 		
-		
+		getFrame().setLocationRelativeTo(null);
 		getFrame().setVisible(true);
 		
 	

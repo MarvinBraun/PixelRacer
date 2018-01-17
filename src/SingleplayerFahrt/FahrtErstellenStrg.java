@@ -79,7 +79,7 @@ public class FahrtErstellenStrg implements ActionListener {
 		//View initialisieren, zentrieren, Fahrtverwaltung initialisieren, Kunde wird geladen
 		singlemultiplayer = singleMultiplayer;
 		view = new FahrtErstellenView();
-		view.getFrame().setLocationRelativeTo(null);
+	
 		fahrten = new Fahrtverwaltung();
 		kunde = Nutzerverwaltung.getangKunde();
 		
