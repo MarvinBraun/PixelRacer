@@ -272,6 +272,7 @@ public class FahrtErstellenStrg implements ActionListener {
 			s = it.next();
 			if(s.getPremium().equals("false") && s.getPunktewert()==0 || Nutzerverwaltung.getangKunde().getpunkte()>=s.getPunktewert() && s.getPremium().equals("false"))
 			{
+				
 				streckenliste.add(s);
 			}
 		}
@@ -284,15 +285,17 @@ public class FahrtErstellenStrg implements ActionListener {
 			String streckenName;
 			streckenName = r.getStreckenname();
 			
-			 ;
+			 
 			
 			it = alleStrecken.iterator();
+			
+		
 			
 			while(it.hasNext())
 			{
 				
 				s = it.next();
-				 ;
+				 
 
 				if(s.getStreckenname().equals(streckenName))
 				{	
@@ -319,6 +322,7 @@ public class FahrtErstellenStrg implements ActionListener {
 				streckenbild = imageResizer(newImage);
 				ImageIcon icon = new ImageIcon(streckenbild);
 				view.getStreckeLbl().setIcon(icon);
+				
 			
 				if(singlemultiplayer==1)
 				{
@@ -453,7 +457,7 @@ public class FahrtErstellenStrg implements ActionListener {
 	
 	public boolean pruefeSchwierigkeit(String a)
 	{
-	
+		schwierigkeitsCheck = fahrten.gibSingleplayerFahrtenFuerBenutzerUndStrecke(kunde.getnutzername(),s.getStreckenname());
 		it = schwierigkeitsCheck.iterator();
 		boolean pruefung = false;
 		while(it.hasNext())
