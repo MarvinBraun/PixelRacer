@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 
 import BackgroundAnimation.Movement;
 import BackgroundAnimation.MovementY;
+import FontHandler.FontHandler;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -53,6 +54,9 @@ public class FahrtAuswertungView {
 	private void initialize() {
 		setFrame(new JFrame());
 		
+		Font customFont = FontHandler.registriereSchriftart(34f);
+		Font customFont30f = FontHandler.registriereSchriftart(30f);
+		
 		getFrame().setBounds(100, 100, 800, 600);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFrame().getContentPane().setLayout(null);
@@ -61,7 +65,7 @@ public class FahrtAuswertungView {
 		setBtnNewButton(new JButton("Weiter"));
 		getBtnNewButton().setBackground(new Color(60, 179, 113));
 		getBtnNewButton().setBorder(null);
-		getBtnNewButton().setFont(new Font("pixelmix", Font.BOLD, 34));
+		getBtnNewButton().setFont(customFont);
 		getBtnNewButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -71,19 +75,19 @@ public class FahrtAuswertungView {
 		
 		setLblDeinPlatz(new JLabel("Dein Platz: "));
 		getLblDeinPlatz().setForeground(Color.RED);
-		getLblDeinPlatz().setFont(new Font("pixelmix", Font.BOLD, 30));
+		getLblDeinPlatz().setFont(customFont30f);
 		getLblDeinPlatz().setBounds(10, 0, 541, 112);
 		getFrame().getContentPane().add(getLblDeinPlatz());
 		
 		setLblDeineZeit(new JLabel("Deine Zeit: "));
 		getLblDeineZeit().setForeground(Color.RED);
-		getLblDeineZeit().setFont(new Font("pixelmix", Font.BOLD, 30));
+		getLblDeineZeit().setFont(customFont30f);
 		getLblDeineZeit().setBounds(10, 87, 541, 112);
 		getFrame().getContentPane().add(getLblDeineZeit());
 		
 		setLblGewonnenPunkte(new JLabel("Gewonnene Punkte: "));
 		getLblGewonnenPunkte().setForeground(Color.RED);
-		getLblGewonnenPunkte().setFont(new Font("pixelmix", Font.BOLD, 30));
+		getLblGewonnenPunkte().setFont(customFont30f);
 		getLblGewonnenPunkte().setBounds(10, 171, 541, 124);
 		getFrame().getContentPane().add(getLblGewonnenPunkte());
 		
