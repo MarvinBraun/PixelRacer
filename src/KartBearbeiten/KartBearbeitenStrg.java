@@ -170,45 +170,43 @@ public class KartBearbeitenStrg implements ActionListener, MouseListener, MouseM
 	 * hinzufügen.
 	 */
 	public void mouseEntered(MouseEvent arg0) {
-		File f = new File("src/Resources/tempKa.dat");
-		if (f.exists()) {
-			try {
-				FileReader fr = new FileReader(f);
-				BufferedReader br = new BufferedReader(fr);
-
-				String zeile;
-				String[] split;
-
+		File f = new File(System.getProperty("java.io.tmpdir"));
+		File[] files = f.listFiles();
+		for (File file: files) {
+			if(file.getName().contains("tempKa")) {
 				try {
-					while ((zeile = br.readLine()) != null) {
-						split = zeile.split(";");
-						Kart ka = new Kart();
-						ka.setKartname(split[0]);
-						ka.setBeschleunigung(Integer.parseInt(split[1]));
-						ka.setMaxkmh(Integer.parseInt(split[2]));
-						ka.setPremium(split[3]);
-						ka.setPunktewert(Integer.parseInt(split[4]));
-						kartliste.add(ka);
+					FileReader fr = new FileReader(file);
+					BufferedReader br = new BufferedReader(fr);
+					String zeile;
+					String[] split;
+					try {
+						while ((zeile = br.readLine()) != null) {
+							split = zeile.split(";");
+							Kart ka = new Kart();
+							ka.setKartname(split[0]);
+							ka.setBeschleunigung(Integer.parseInt(split[1]));
+							ka.setMaxkmh(Integer.parseInt(split[2]));
+							ka.setPremium(split[3]);
+							ka.setPunktewert(Integer.parseInt(split[4]));
+							kartliste.add(ka);
+						}
+						fr.close();
+						br.close();
+						Collections.sort(kartliste, new KartKomperator());
+					} catch (IOException y) {
+						eingabeAusgabeFehlerMeldung();
 					}
-
-					fr.close();
-					br.close();
-					Collections.sort(kartliste, new KartKomperator());
-				} catch (IOException y) {
-					eingabeAusgabeFehlerMeldung();
+				} catch (FileNotFoundException x) {
+					dateiNichtgefundenMeldung();
 				}
-			} catch (FileNotFoundException x) {
-				dateiNichtgefundenMeldung();
-			}
-			kbv.getComboBoxKart().removeAllItems();
-			for (Kart kart : kartliste) {
-				kbv.getComboBoxKart().addItem(kart.getKartname());
-			}
+				kbv.getComboBoxKart().removeAllItems();
+				for (Kart kart : kartliste) {
+					kbv.getComboBoxKart().addItem(kart.getKartname());
+				}
 
-			f.delete();
-
+				file.delete();
+			}
 		}
-
 	}
 
 	/**
