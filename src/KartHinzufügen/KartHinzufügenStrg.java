@@ -369,7 +369,8 @@ public class KartHinzufügenStrg implements ActionListener {
 	 * Datei schreibt.
 	 */
 	private void speicherKartZwischen() {
-		File f = new File("src/Resources/tempKa.dat");
+		File f;
+		
 		if (status == 'p') {
 			typ = "true";
 		} else {
@@ -377,17 +378,20 @@ public class KartHinzufügenStrg implements ActionListener {
 		}
 		String zeile = name + ";" + beschleunigung + ";" + maxGeschwindigkeit + ";" + typ + ";" + punktzahl;
 		try {
+			f = File.createTempFile("tempKa", ".dat");
 			FileWriter fw = new FileWriter(f, true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(zeile);
 			bw.newLine();
 			bw.close();
-			fw.close();
+			fw.close();		
+			f.deleteOnExit();
 		} catch (IOException e) {
 			kartKonnteNichtZwischengespeichertWerdenMeldung();
 		}
 	}
 
+	
 	/**
 	 * Methode, die das Formular leeren soll.
 	 */
