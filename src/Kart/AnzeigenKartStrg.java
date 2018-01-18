@@ -197,8 +197,8 @@ public class AnzeigenKartStrg implements ActionListener {
 
 				BufferedImage newImage = k.getGrafik();
 				viewUebersicht.getKartName().setText(k.getKartname());
-				Kartbild = imageResizer(newImage);
-				ImageIcon icon = new ImageIcon(Kartbild);
+			
+				ImageIcon icon = new ImageIcon(newImage);
 				viewUebersicht.getKartLbl().setIcon(icon);
 
 				counterRang1 = 0;
