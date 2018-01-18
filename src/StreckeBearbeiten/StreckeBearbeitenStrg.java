@@ -163,41 +163,44 @@ public class StreckeBearbeitenStrg implements ActionListener, MouseListener, Mou
 	 * hinzufügen.
 	 */
 	public void mouseEntered(MouseEvent arg0) {
-		File f = new File("src/Resources/tempStr.dat");
-		if (f.exists()) {
-			try {
-				FileReader fr = new FileReader(f);
-				BufferedReader br = new BufferedReader(fr);
-
-				String zeile;
-				String[] split;
-
+		File f = new File(System.getProperty("java.io.tmpdir"));
+		File[] files = f.listFiles();
+		for (File file: files) {
+			if(file.getName().contains("tempStr")) {
 				try {
-					while ((zeile = br.readLine()) != null) {
-						split = zeile.split(";");
-						Strecke str = new Strecke();
-						str.setStreckenname(split[0]);
-						str.setLaenge(Integer.parseInt(split[1]));
-						str.setSchwierigkeit(Integer.parseInt(split[2]));
-						str.setPremium(split[3]);
-						str.setPunktewert(Integer.parseInt(split[4]));
-						streckenliste.add(str);
-					}
+					FileReader fr = new FileReader(file);
+					BufferedReader br = new BufferedReader(fr);
 
-					fr.close();
-					br.close();
-					Collections.sort(streckenliste, new StreckenKomperator());
-				} catch (IOException y) {
-					eingabeAusgabeFehlerMeldung();
+					String zeile;
+					String[] split;
+
+					try {
+						while ((zeile = br.readLine()) != null) {
+							split = zeile.split(";");
+							Strecke str = new Strecke();
+							str.setStreckenname(split[0]);
+							str.setLaenge(Integer.parseInt(split[1]));
+							str.setSchwierigkeit(Integer.parseInt(split[2]));
+							str.setPremium(split[3]);
+							str.setPunktewert(Integer.parseInt(split[4]));
+							streckenliste.add(str);
+						}
+
+						fr.close();
+						br.close();
+						Collections.sort(streckenliste, new StreckenKomperator());
+					} catch (IOException y) {
+						eingabeAusgabeFehlerMeldung();
+					}
+				} catch (FileNotFoundException x) {
+					dateiNichtgefundenMeldung();
 				}
-			} catch (FileNotFoundException x) {
-				dateiNichtgefundenMeldung();
+				sbv.getComboBoxStrecke().removeAllItems();
+				for (Strecke strecke : streckenliste) {
+					sbv.getComboBoxStrecke().addItem(strecke.getStreckenname());
+				}
+				file.delete();
 			}
-			sbv.getComboBoxStrecke().removeAllItems();
-			for (Strecke strecke : streckenliste) {
-				sbv.getComboBoxStrecke().addItem(strecke.getStreckenname());
-			}
-			f.delete();
 		}
 	}
 
