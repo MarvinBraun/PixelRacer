@@ -365,7 +365,7 @@ public class StreckeHinzufügenStrg implements ActionListener {
 	 * Datei schreibt.
 	 */
 	private void speicherStreckeZwischen() {
-		File f = new File("src/Resources/tempStr.dat");
+		File f;
 		if (status == 'p') {
 			typ = "true";
 		} else {
@@ -373,12 +373,14 @@ public class StreckeHinzufügenStrg implements ActionListener {
 		}
 		String zeile = name + ";" + laenge + ";" + schwierigkeit + ";" + typ + ";" + punktzahl;
 		try {
+			f = File.createTempFile("tempStr", ".dat");
 			FileWriter fw = new FileWriter(f, true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(zeile);
 			bw.newLine();
 			bw.close();
 			fw.close();
+			f.deleteOnExit();
 		} catch (IOException e) {
 			streckeKonnteNichtZwischengespeichertWerdenMeldung();
 		}
