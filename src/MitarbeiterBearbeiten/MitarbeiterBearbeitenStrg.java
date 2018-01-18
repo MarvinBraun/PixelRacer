@@ -171,46 +171,47 @@ public class MitarbeiterBearbeitenStrg implements ActionListener, MouseListener,
 	 * LinkedList hinzufügen.
 	 */
 	public void mouseEntered(MouseEvent e) {
-		File f = new File("src/Resources/tempMA.dat");
-		if (f.exists()) {
-			try {
-				FileReader fr = new FileReader(f);
-				BufferedReader br = new BufferedReader(fr);
-
-				String zeile;
-				String[] split;
-
+		File f = new File(System.getProperty("java.io.tmpdir"));
+		File[] files = f.listFiles();
+		for (File file: files) {
+			if(file.getName().contains("tempMa")) {
 				try {
-					while ((zeile = br.readLine()) != null) {
-						split = zeile.split(";");
-						Mitarbeiter ma = new Mitarbeiter();
-						ma.setvn(split[3]);
-						ma.setnn(split[4]);
-						ma.setnutzername(split[1]);
-						ma.setpasswort(split[2]);
-						ma.setmitarbeiterid(split[0]);
-						ma.setjobtitel(split[5]);
-						ma.setemail(split[6]);
-						ma.setgebdat(split[7]);
-						mitarbeiterliste.add(ma);
+					FileReader fr = new FileReader(file);
+					BufferedReader br = new BufferedReader(fr);
+					String zeile;
+					String[] split;
+					try {
+						while ((zeile = br.readLine()) != null) {
+							split = zeile.split(";");
+							Mitarbeiter ma = new Mitarbeiter();
+							ma.setvn(split[3]);
+							ma.setnn(split[4]);
+							ma.setnutzername(split[1]);
+							ma.setpasswort(split[2]);
+							ma.setmitarbeiterid(split[0]);
+							ma.setjobtitel(split[5]);
+							ma.setemail(split[6]);
+							ma.setgebdat(split[7]);
+							mitarbeiterliste.add(ma);
+						}
+
+						fr.close();
+						br.close();
+
+					} catch (IOException y) {
+						eingabeAusgabeFehlerMeldung();
 					}
-
-					fr.close();
-					br.close();
-
-				} catch (IOException y) {
-					eingabeAusgabeFehlerMeldung();
+				} catch (FileNotFoundException x) {
+					dateiNichtgefundenMeldung();
 				}
-			} catch (FileNotFoundException x) {
-				dateiNichtgefundenMeldung();
-			}
 
-			mbv.getComboBoxMitarbeiter().removeAllItems();
-			for (Mitarbeiter ma : mitarbeiterliste) {
-				mbv.getComboBoxMitarbeiter().addItem(ma.getmitarbeiterid() + ";" + ma.getnutzername());
-			}
+				mbv.getComboBoxMitarbeiter().removeAllItems();
+				for (Mitarbeiter ma : mitarbeiterliste) {
+					mbv.getComboBoxMitarbeiter().addItem(ma.getmitarbeiterid() + ";" + ma.getnutzername());
+				}
 
-			f.delete();
+				file.delete();
+			}
 		}
 	}
 
