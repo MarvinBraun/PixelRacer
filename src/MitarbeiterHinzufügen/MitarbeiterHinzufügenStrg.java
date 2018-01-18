@@ -491,16 +491,18 @@ public class MitarbeiterHinzufügenStrg implements ActionListener {
 	 * Datei schreibt.
 	 */
 	private void speicherMitarbeiterZwischen() {
-		File f = new File("src/Resources/tempMA.dat");
+		File f;
 		String zeile = String.valueOf(mitarbeiterID) + ";" + benutzername + ";" + passwort + ";" + vorname + ";"
 				+ nachname + ";" + job + ";" + email + ";" + geburtsdatum;
 		try {
+			f = File.createTempFile("tempMa", ".dat");
 			FileWriter fw = new FileWriter(f, true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(zeile);
 			bw.newLine();
 			bw.close();
 			fw.close();
+			f.deleteOnExit();
 		} catch (IOException e) {
 			mitarbeiterKonnteNichtZwischengespeichertWerdenMeldung();
 		}
