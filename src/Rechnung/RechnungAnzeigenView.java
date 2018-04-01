@@ -176,6 +176,7 @@ public class RechnungAnzeigenView {
 		frmRechnungsübersicht.setBounds(100, 100, 800, 600);
 		frmRechnungsübersicht.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmRechnungsübersicht.getContentPane().setLayout(null);
+		frmRechnungsübersicht.setLocationRelativeTo(null);
 		
 		lblRechnungsnummer = new JLabel("Rechnungsnummer:");
 		lblRechnungsnummer.setFont(customFont12f);
