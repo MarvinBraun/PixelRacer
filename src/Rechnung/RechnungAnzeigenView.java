@@ -6,10 +6,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -19,6 +23,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
+import BackgroundAnimation.Movement;
 import FontHandler.FontHandler;
 
 import java.awt.Color;
@@ -33,28 +38,157 @@ public class RechnungAnzeigenView {
 
 	// benötigte Variablen deklarieren
 	
-	JFrame frmRechnungsübersicht;
-	JLabel lblRechnungsnummer;
-	JLabel lblRechnungsdatum;
-	JLabel lblKartname;
-	JLabel lblStreckenname_1;
-	JLabel lblBenutzername;
-	JLabel lblArtikel;
-	JLabel lblBezahlmethode;
-	JLabel lblRechnungsbetrag;
-	JLabel lblPremium;
-	JLabel lblHintergrund;
+	private JFrame frame;
+	private JLabel lblRechnungsnummer;
+	private JLabel lblRechnungsdatum;
+	private JLabel lblKartname;
+	private JLabel lblStreckenname;
+	private JLabel lblBenutzername;
+	private JLabel lblArtikel;
+	private JLabel lblBezahlmethode;
+	private JLabel lblRechnungsbetrag;
+	private JLabel lblPremium;
+	private JLabel lblHintergrund;
 	private JButton btnZuruck;
 	
 	
-	// getter und setter Methoden der Variablen
 
-	public JFrame getFrmRechnungsübersicht() {
-		return frmRechnungsübersicht;
+	/**
+	 * Zugriff auf die View
+	 * Launch the application.
+	 */
+	
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					RechnungAnzeigenView window = new RechnungAnzeigenView();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
-	public void setFrmRechnungsübersicht(JFrame frmRechnungsübersicht) {
-		this.frmRechnungsübersicht = frmRechnungsübersicht;
+	/**
+	 * Konstruktor
+	 * Create the application.
+	 */
+	
+	
+	public RechnungAnzeigenView() {
+		initialize();
+	}
+
+	/**
+	 * Fenster / View initialisieren mit den entsprechenden Elementen
+	 * Initialize the contents of the frame.
+	 */
+	
+	
+	
+	private void initialize() {
+	
+		Font customFont12f = FontHandler.registriereSchriftart(12f);
+		
+		frame = new JFrame();
+		frame.getContentPane().setForeground(Color.BLACK);
+		frame.setResizable(false);
+		frame.setTitle("Rechnung");
+		frame.setBounds(100, 100, 800, 600);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
+		
+		lblRechnungsnummer = new JLabel("Rechnungsnummer:");
+		lblRechnungsnummer.setFont(customFont12f);
+		lblRechnungsnummer.setBounds(33, 26, 250, 45);
+		frame.getContentPane().add(lblRechnungsnummer);
+		
+		lblRechnungsdatum = new JLabel("Rechnungsdatum:");
+		lblRechnungsdatum.setFont(customFont12f);
+		lblRechnungsdatum.setBounds(435, 26, 250, 45);
+		frame.getContentPane().add(lblRechnungsdatum);
+		
+		lblKartname = new JLabel("Kartname:");
+		lblKartname.setFont(customFont12f);
+		lblKartname.setBounds(33, 260, 250, 45);
+		frame.getContentPane().add(lblKartname);
+		
+		lblStreckenname = new JLabel("Streckenname:");
+		lblStreckenname.setFont(customFont12f);
+		lblStreckenname.setBounds(33, 204, 250, 45);
+		frame.getContentPane().add(lblStreckenname);
+		
+		lblBenutzername = new JLabel("Benutzername:");
+		lblBenutzername.setFont(customFont12f);
+		lblBenutzername.setBounds(33, 82, 250, 45);
+		frame.getContentPane().add(lblBenutzername);
+		
+		lblArtikel = new JLabel("Artikel");
+		lblArtikel.setFont(customFont12f);
+		lblArtikel.setForeground(Color.BLACK);
+		lblArtikel.setHorizontalAlignment(SwingConstants.LEFT);
+		lblArtikel.setBounds(33, 161, 74, 32);
+		frame.getContentPane().add(lblArtikel);
+		
+		lblBezahlmethode = new JLabel("Bezahlmethode:");
+		lblBezahlmethode.setFont(customFont12f);
+		lblBezahlmethode.setBounds(33, 419, 250, 45);
+		frame.getContentPane().add(lblBezahlmethode);
+		
+		lblRechnungsbetrag = new JLabel("Rechnungsbetrag:");
+		lblRechnungsbetrag.setFont(customFont12f);
+		lblRechnungsbetrag.setBounds(31, 475, 250, 45);
+		frame.getContentPane().add(lblRechnungsbetrag);
+		
+		lblPremium = new JLabel("Premium:");
+		lblPremium.setFont(customFont12f);
+		lblPremium.setBounds(33, 316, 250, 45);
+		frame.getContentPane().add(lblPremium);
+		
+		btnZuruck = new JButton("Zurück");
+		btnZuruck.setBounds(700, 500, 80, 40);
+		frame.getContentPane().add(btnZuruck);
+		
+		lblHintergrund = new JLabel("");
+		lblHintergrund.setVisible(false);
+		lblHintergrund.setOpaque(true);
+		lblHintergrund.setBounds(0, 0, 794, 571);
+		getFrame().getContentPane().add(lblHintergrund);
+
+		Movement m = new Movement(10);
+
+		BufferedImage image = null;
+		try {
+			URL url = getClass().getResource("/Resources/Hintergrund.png");
+			image = ImageIO.read(url);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		m.label.setBufferedImage(image, 0);
+
+		m.label.setOpaque(false);
+		m.label.setBounds(0, 0, 800, 600);
+		getFrame().getContentPane().add(m.label);
+	}
+
+	public JButton getBtnZuruck() {
+		return btnZuruck;
+	}
+
+	public void setBtnZuruck(JButton btnZuruck) {
+		this.btnZuruck = btnZuruck;
+	}
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
 	}
 
 	public JLabel getLblRechnungsnummer() {
@@ -81,12 +215,12 @@ public class RechnungAnzeigenView {
 		this.lblKartname = lblKartname;
 	}
 
-	public JLabel getLblStreckenname_1() {
-		return lblStreckenname_1;
+	public JLabel getLblStreckenname() {
+		return lblStreckenname;
 	}
 
-	public void setLblStreckenname_1(JLabel lblStreckenname_1) {
-		this.lblStreckenname_1 = lblStreckenname_1;
+	public void setLblStreckenname(JLabel lblStreckenname) {
+		this.lblStreckenname = lblStreckenname;
 	}
 
 	public JLabel getLblBenutzername() {
@@ -127,119 +261,5 @@ public class RechnungAnzeigenView {
 
 	public void setLblPremium(JLabel lblPremium) {
 		this.lblPremium = lblPremium;
-	}
-
-	/**
-	 * Zugriff auf die View
-	 * Launch the application.
-	 */
-	
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RechnungAnzeigenView window = new RechnungAnzeigenView();
-					window.frmRechnungsübersicht.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Konstruktor
-	 * Create the application.
-	 */
-	
-	
-	public RechnungAnzeigenView() {
-		initialize();
-	}
-
-	/**
-	 * Fenster / View initialisieren mit den entsprechenden Elementen
-	 * Initialize the contents of the frame.
-	 */
-	
-	
-	
-	private void initialize() {
-	
-		Font customFont12f = FontHandler.registriereSchriftart(12f);
-		
-		frmRechnungsübersicht = new JFrame();
-		frmRechnungsübersicht.getContentPane().setForeground(Color.BLACK);
-		frmRechnungsübersicht.setResizable(false);
-		frmRechnungsübersicht.setTitle("Rechnung");
-		frmRechnungsübersicht.setBounds(100, 100, 800, 600);
-		frmRechnungsübersicht.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmRechnungsübersicht.getContentPane().setLayout(null);
-		frmRechnungsübersicht.setLocationRelativeTo(null);
-		
-		lblRechnungsnummer = new JLabel("Rechnungsnummer:");
-		lblRechnungsnummer.setFont(customFont12f);
-		lblRechnungsnummer.setBounds(33, 26, 250, 45);
-		frmRechnungsübersicht.getContentPane().add(lblRechnungsnummer);
-		
-		lblRechnungsdatum = new JLabel("Rechnungsdatum:");
-		lblRechnungsdatum.setFont(customFont12f);
-		lblRechnungsdatum.setBounds(435, 26, 250, 45);
-		frmRechnungsübersicht.getContentPane().add(lblRechnungsdatum);
-		
-		lblKartname = new JLabel("Kartname:");
-		lblKartname.setFont(customFont12f);
-		lblKartname.setBounds(33, 260, 250, 45);
-		frmRechnungsübersicht.getContentPane().add(lblKartname);
-		
-		lblStreckenname_1 = new JLabel("Streckenname:");
-		lblStreckenname_1.setFont(customFont12f);
-		lblStreckenname_1.setBounds(33, 204, 250, 45);
-		frmRechnungsübersicht.getContentPane().add(lblStreckenname_1);
-		
-		lblBenutzername = new JLabel("Benutzername:");
-		lblBenutzername.setFont(customFont12f);
-		lblBenutzername.setBounds(33, 82, 250, 45);
-		frmRechnungsübersicht.getContentPane().add(lblBenutzername);
-		
-		lblArtikel = new JLabel("Artikel");
-		lblArtikel.setFont(customFont12f);
-		lblArtikel.setForeground(Color.BLACK);
-		lblArtikel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblArtikel.setBounds(33, 161, 74, 32);
-		frmRechnungsübersicht.getContentPane().add(lblArtikel);
-		
-		lblBezahlmethode = new JLabel("Bezahlmethode:");
-		lblBezahlmethode.setFont(customFont12f);
-		lblBezahlmethode.setBounds(33, 419, 250, 45);
-		frmRechnungsübersicht.getContentPane().add(lblBezahlmethode);
-		
-		lblRechnungsbetrag = new JLabel("Rechnungsbetrag:");
-		lblRechnungsbetrag.setFont(customFont12f);
-		lblRechnungsbetrag.setBounds(31, 475, 250, 45);
-		frmRechnungsübersicht.getContentPane().add(lblRechnungsbetrag);
-		
-		lblPremium = new JLabel("Premium:");
-		lblPremium.setFont(customFont12f);
-		lblPremium.setBounds(33, 316, 250, 45);
-		frmRechnungsübersicht.getContentPane().add(lblPremium);
-		
-		lblHintergrund = new JLabel();
-		lblHintergrund.setIcon(new ImageIcon(RechnungAnzeigenView.class.getResource("/Resources/Hintergrund.png")));
-		lblHintergrund.setBounds(0, 0, 800, 600);
-		frmRechnungsübersicht.getContentPane().add(lblHintergrund);
-		
-		btnZuruck = new JButton("Zurück");
-		btnZuruck.setBounds(700, 500, 80, 40);
-		frmRechnungsübersicht.getContentPane().add(btnZuruck);
-	}
-
-	public JButton getBtnZuruck() {
-		return btnZuruck;
-	}
-
-	public void setBtnZuruck(JButton btnZuruck) {
-		this.btnZuruck = btnZuruck;
 	}
 }
