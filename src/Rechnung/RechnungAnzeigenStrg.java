@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 import Anmelden.AnmeldenStrg;
+import Kart.Kart;
 import Startansicht.StartansichtStrg;
+import Strecke.Strecke;
 
 /**
  * Die Klasse RechnungAnzeigenStrg steuert das anzeigen der einzelnen Rechnungen.
@@ -18,17 +20,35 @@ import Startansicht.StartansichtStrg;
 public class RechnungAnzeigenStrg implements ActionListener{
 
 	RechnungAnzeigenView view;
-	Rechnung r;
+	static Rechnung r;
+	Kart k;
+	Strecke s;
+	
 	
 	public RechnungAnzeigenStrg(Rechnung r) {
-
+		
+		view = new RechnungAnzeigenView();
+		view.getFrame().setLocationRelativeTo(null);
+		
+		ladeDaten();
+		
 	}
 	
 	public static void main(String[] args) {
-
+		
+		RechnungAnzeigenStrg steuerung = new RechnungAnzeigenStrg(r);
+	}
+	
+	private void ladeDaten(){
+		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 	
+		if(e.getSource() == view.getBtnZuruck()){
+			MusicHandler.MusicPlayer.forwardBtn();
+			RechnungsuebersichtStrg strg = new RechnungsuebersichtStrg();
+			view.getFrame().dispose();
+		}
 }
 }
