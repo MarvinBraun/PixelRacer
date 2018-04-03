@@ -20,12 +20,12 @@ public class RechnungAnzeigenStrg implements ActionListener{
 	RechnungAnzeigenView view;
 	Rechnung r;
 	
-	public RechnungAnzeigenStrg() {
+	public RechnungAnzeigenStrg(Rechnung r) {
 
 	}
 	
 	public static void main(String[] args) {
-		RechnungAnzeigenStrg strg = new RechnungAnzeigenStrg();
+
 	}
 	
 	public void actionPerformed(ActionEvent e) {

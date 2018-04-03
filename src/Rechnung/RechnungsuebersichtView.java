@@ -17,7 +17,7 @@ public class RechnungsuebersichtView {
 	private JFrame frame;
 	private JButton btnanz;
 	private JButton btnzurück;
-	private JComboBox drop;
+	private JComboBox<Integer> drop;
 	private JLabel lblHintergrund;
 	private JLabel lblrechnung;
 
@@ -43,6 +43,7 @@ public class RechnungsuebersichtView {
 		Font customFont = FontHandler.registriereSchriftart(12f);
 
 		setFrame(new JFrame());
+		
 		getFrame().setBounds(100, 100, 800, 600);
 		getFrame().setTitle("Rechnungsübersicht");
 		getFrame().setResizable(false);
@@ -55,7 +56,7 @@ public class RechnungsuebersichtView {
 		getLblrechnung().setFont(customFont);
 		getFrame().getContentPane().add(lblrechnung);
 
-		setDrop(new JComboBox());
+		setDrop(new JComboBox<Rechnung>());
 		getDrop().setBounds(400, 190, 250, 20);
 		getFrame().getContentPane().add(drop);
 
@@ -93,6 +94,7 @@ public class RechnungsuebersichtView {
 		m.label.setOpaque(false);
 		m.label.setBounds(0, 0, 800, 600);
 		getFrame().getContentPane().add(m.label);
+		getFrame().setVisible(true);
 	}
 
 	public JFrame getFrame() {

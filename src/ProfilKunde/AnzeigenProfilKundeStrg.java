@@ -11,6 +11,7 @@ import Nutzer.Nutzerverwaltung;
 import Premium.kaufePremiumAccount;
 import ProfilBearbeiten.ProfilBearbeitenStrg;
 import Rechnung.RechnungAnzeigenStrg;
+import Rechnung.RechnungsuebersichtStrg;
 import Startansicht.StartansichtStrg;
 
 /**
@@ -115,7 +116,8 @@ public class AnzeigenProfilKundeStrg implements ActionListener {
 	public void actionPerformed(ActionEvent a) {
 		if(a.getSource()==viewKunde.getBtnRechnungsverw()) { // Aufruf der Rechnungsverwaltung bei Klick von BtnRechnungsverw
 			MusicHandler.MusicPlayer.forwardBtn();
-			RechnungAnzeigenStrg rechnung = new RechnungAnzeigenStrg();
+			RechnungsuebersichtStrg rechnung = new RechnungsuebersichtStrg();
+			viewKunde.getFrmPixelRacer().dispose();
 		}
 		if(a.getSource()==viewKunde.getBtnProfilBearbeiten()) { // Aufruf der ProfilBearbeitenStrg bei Klick von BtnProfilBearbeiten & schliessen des Profils
 			MusicHandler.MusicPlayer.forwardBtn();
