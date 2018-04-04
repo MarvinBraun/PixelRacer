@@ -42,12 +42,13 @@ public class RechnungBezahlenView {
 	private JTextField txtEmail;
 	private JLabel lblE;
 	private JButton btnEinloggen;
-	private JLabel lblOder;
 	private JButton btnAbbrechen;
 	private JPasswordField passwordField;
-	private JTextPane textPane;
 	private JLabel lblNewLabel;
 	private JLabel lblHintergrund;
+
+	private JLabel email;
+	private JLabel pw;
 
 	// getter und setter Methoden der Variablen
 
@@ -87,50 +88,54 @@ public class RechnungBezahlenView {
 
 		Font customFont12f = FontHandler.registriereSchriftart(12f);
 
-		setFrame( new JFrame());
+		setFrame(new JFrame());
 		getFrame().setTitle("Bezahluebersicht - Paypal");
-		getFrame().setBounds(100, 100, 800, 600);
+		getFrame().setBounds(0, 0, 800, 600);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFrame().getContentPane().setLayout(null);
 		getFrame().setLocationRelativeTo(null);
 
-		setTxtEmail ( new JTextField());
-		getTxtEmail().setText("Email-Mail Adresse");
+		setEmail(new JLabel("E-Mail-Adresse: "));
+		getEmail().setFont(customFont12f);
+		getEmail().setBounds(150, 252, 220, 30);
+		getFrame().getContentPane().add(email);
+		
+		setPw(new JLabel("Passwort: "));
+		getPw().setFont(customFont12f);
+		getPw().setBounds(150, 302, 220, 30);
+		getFrame().getContentPane().add(pw);
+		
+		setTxtEmail(new JTextField());
 		getTxtEmail().setFont(customFont12f);
-		getTxtEmail().setBounds(221, 123, 220, 39);
+		getTxtEmail().setBounds(290, 250, 220, 39);
 		getFrame().getContentPane().add(txtEmail);
 		getTxtEmail().setColumns(10);
 
-		setBtnEinloggen ( new JButton("Einloggen"));
+		setBtnEinloggen(new JButton("Einloggen"));
 		getBtnEinloggen().setFont(customFont12f);
-		getBtnEinloggen().setBounds(221, 231, 220, 39);
+		getBtnEinloggen().setBounds(290, 360, 220, 39);
 		getBtnEinloggen().setFocusable(false);
 		getBtnEinloggen().setBorderPainted(false);
 		getBtnEinloggen().setBackground(SystemColor.activeCaption);
 		getBtnEinloggen().setOpaque(false);
 		getFrame().getContentPane().add(btnEinloggen);
 
-		setBtnAbbrechen ( new JButton("Abbrechen"));
+		setBtnAbbrechen(new JButton("Abbrechen"));
 		getBtnAbbrechen().setFont(customFont12f);
 		getBtnAbbrechen().setFocusable(false);
 		getBtnAbbrechen().setBorderPainted(false);
 		getBtnAbbrechen().setBackground(SystemColor.activeCaption);
 		getBtnAbbrechen().setOpaque(false);
-		getBtnAbbrechen().setBounds(221, 366, 220, 39);
+		getBtnAbbrechen().setBounds(290, 400, 220, 39);
 		getFrame().getContentPane().add(btnAbbrechen);
 
-		setPasswordField ( new JPasswordField());
-		getPasswordField().setText("123456789");
-		getPasswordField().setBounds(221, 173, 220, 39);
+		setPasswordField(new JPasswordField());
+		getPasswordField().setBounds(290, 300, 220, 39);
 		getFrame().getContentPane().add(passwordField);
 
-		textPane = new JTextPane();
-		textPane.setBounds(266, 126, 6, 20);
-		getFrame().getContentPane().add(textPane);
-
-		setLblNewLabel ( new JLabel(""));
+		setLblNewLabel(new JLabel(""));
 		getLblNewLabel().setIcon(new ImageIcon(RechnungBezahlenView.class.getResource("/Resources/PayPal.svg.png")));
-		getLblNewLabel().setBounds(221, 28, 220, 65);
+		getLblNewLabel().setBounds(280, 120, 250, 100);
 		getFrame().getContentPane().add(lblNewLabel);
 
 		Movement m = new Movement(10);
@@ -184,14 +189,6 @@ public class RechnungBezahlenView {
 		this.btnEinloggen = btnEinloggen;
 	}
 
-	public JLabel getLblOder() {
-		return lblOder;
-	}
-
-	public void setLblOder(JLabel lblOder) {
-		this.lblOder = lblOder;
-	}
-
 	public JButton getBtnAbbrechen() {
 		return btnAbbrechen;
 	}
@@ -208,14 +205,6 @@ public class RechnungBezahlenView {
 		this.passwordField = passwordField;
 	}
 
-	public JTextPane getTextPane() {
-		return textPane;
-	}
-
-	public void setTextPane(JTextPane textPane) {
-		this.textPane = textPane;
-	}
-
 	public JLabel getLblNewLabel() {
 		return lblNewLabel;
 	}
@@ -230,5 +219,21 @@ public class RechnungBezahlenView {
 
 	public void setLblHintergrund(JLabel lblHintergrund) {
 		this.lblHintergrund = lblHintergrund;
+	}
+
+	public JLabel getEmail() {
+		return email;
+	}
+
+	public void setEmail(JLabel email) {
+		this.email = email;
+	}
+
+	public JLabel getPw() {
+		return pw;
+	}
+
+	public void setPw(JLabel pw) {
+		this.pw = pw;
 	}
 }
