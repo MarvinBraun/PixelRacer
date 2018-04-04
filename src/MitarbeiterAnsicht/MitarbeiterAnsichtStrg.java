@@ -12,6 +12,7 @@ import MitarbeiterHinzufügen.MitarbeiterHinzufügenStrg;
 import KartBearbeiten.KartBearbeitenStrg;
 import StreckeBearbeiten.StreckeBearbeitenStrg;
 import MitarbeiterBearbeiten.MitarbeiterBearbeitenStrg;
+import Statistik.StatistikStrg;
 import Anmelden.AnmeldenStrg;
 
 /**
@@ -32,6 +33,7 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 	private StreckeBearbeitenStrg sbStrg;
 	private MitarbeiterHinzufügenStrg mStrg;
 	private MitarbeiterBearbeitenStrg mbStrg;
+	private StatistikStrg stStrg;
 
 	/**
 	 * Konstruktor
@@ -71,6 +73,9 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 
 		nv = new FunktionNichtVorhandenView();
 		maaView.getPanelContent().add("FunktionNichtVorhanden", nv);
+		
+		stStrg = new StatistikStrg();
+		maaView.getPanelContent().add("Statistik", stStrg.getView());
 
 		maaView.getTree().getSelectionModel().addTreeSelectionListener(this);
 	}
@@ -111,6 +116,9 @@ public class MitarbeiterAnsichtStrg implements ActionListener, TreeSelectionList
 		}
 		if (selectedNode.getUserObject().toString() == "Füge Bezahlart hinzu") {
 			maaView.getCL().show(maaView.getPanelContent(), "FunktionNichtVorhanden");
+		}
+		if (selectedNode.getUserObject().toString() == "Allgemein") {
+			maaView.getCL().show(maaView.getPanelContent(), "Statistik");
 		}
 	}
 

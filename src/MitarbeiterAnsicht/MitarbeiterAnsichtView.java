@@ -54,6 +54,7 @@ public class MitarbeiterAnsichtView extends JFrame {
 		DefaultMutableTreeNode kart = new DefaultMutableTreeNode("Kart");
 		DefaultMutableTreeNode strecke = new DefaultMutableTreeNode("Strecke");
 		DefaultMutableTreeNode bezahlart = new DefaultMutableTreeNode("Bezahlart");
+		DefaultMutableTreeNode statistik = new DefaultMutableTreeNode("Statistik");
 		// MenuPunkte
 		DefaultMutableTreeNode start = new DefaultMutableTreeNode("Start");
 		DefaultMutableTreeNode mitarbeiterHinzufügen = new DefaultMutableTreeNode("Füge Mitarbeiter hinzu");
@@ -63,12 +64,14 @@ public class MitarbeiterAnsichtView extends JFrame {
 		DefaultMutableTreeNode kartBearbeiten = new DefaultMutableTreeNode("Bearbeite Kart");
 		DefaultMutableTreeNode streckeBearbeiten = new DefaultMutableTreeNode("Bearbeite Strecke");
 		DefaultMutableTreeNode mitarbeiterBearbeiten = new DefaultMutableTreeNode("Bearbeite Mitarbeiter");
+		DefaultMutableTreeNode allgemein = new DefaultMutableTreeNode("Allgemein");
 		// Zuweisung Wurzel - Kategorie
 		menu.add(startansicht);
 		menu.add(mitarbeiter);
 		menu.add(kart);
 		menu.add(strecke);
 		menu.add(bezahlart);
+		menu.add(statistik);
 		// Zuweisung Kategorie - MenuPunkt
 		startansicht.add(start);
 		mitarbeiter.add(mitarbeiterHinzufügen);
@@ -78,6 +81,7 @@ public class MitarbeiterAnsichtView extends JFrame {
 		strecke.add(streckeHinzufügen);
 		strecke.add(streckeBearbeiten);
 		bezahlart.add(bezahlartHinzufügen);
+		statistik.add(allgemein);
 
 		tree = new JTree(menu);
 		tree.setBackground(Color.WHITE);
