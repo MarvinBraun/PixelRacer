@@ -32,7 +32,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 		auswahl = 'p';
 		
 		view1 = new RechnungBezahlenView();
-		view1.getFrmBezahlung().setVisible(true);
+		view1.getFrame().setVisible(true);
 		
 		view1.getBtnEinloggen().addActionListener(this);
 		view1.getBtnAbbrechen().addActionListener(this);
@@ -47,7 +47,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 		s = null;
 		
 		view1 = new RechnungBezahlenView();
-		view1.getFrmBezahlung().setVisible(true);
+		view1.getFrame().setVisible(true);
 		
 		view1.getBtnEinloggen().addActionListener(this);
 		view1.getBtnAbbrechen().addActionListener(this);
@@ -62,7 +62,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 		k = null;
 		
 		view1 = new RechnungBezahlenView();
-		view1.getFrmBezahlung().setVisible(true);
+		view1.getFrame().setVisible(true);
 		
 		view1.getBtnEinloggen().addActionListener(this);
 		view1.getBtnAbbrechen().addActionListener(this);
@@ -77,7 +77,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 		// TODO Auto-generated method stub
 		if(e.getSource() == view1.getBtnAbbrechen()) {
 			MusicHandler.MusicPlayer.backwardBtn();
-			view1.getFrmBezahlung().dispose();
+			view1.getFrame().dispose();
 			StartansichtStrg strg = new StartansichtStrg();
 		}
 		
@@ -90,7 +90,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 					Datenbankschnittstelle.executeUpdate(update);
 					Datenbankschnittstelle.closeConnections();
 					Nutzerverwaltung.getangKunde().aktualisereangKunde();
-					view1.getFrmBezahlung().dispose();
+					view1.getFrame().dispose();
 					StartansichtStrg strg = new StartansichtStrg();
 				}
 				
@@ -102,7 +102,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 			if(s == null && k != null) {
 				try {
 					Rechnungsverwaltung.sendeKartRechnung(k);
-					view1.getFrmBezahlung().dispose();
+					view1.getFrame().dispose();
 					StartansichtStrg strg = new StartansichtStrg();
 				}
 				
@@ -114,7 +114,7 @@ public class RechnungBezahlenStrg implements ActionListener {
 			if(k == null && s != null) {
 				try {
 					Rechnungsverwaltung.sendeStreckenRechnung(s);
-					view1.getFrmBezahlung().dispose();
+					view1.getFrame().dispose();
 					StartansichtStrg strg = new StartansichtStrg();
 				}
 				

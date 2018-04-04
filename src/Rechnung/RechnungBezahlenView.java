@@ -6,8 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+
 import javax.swing.SwingConstants;
 
+import BackgroundAnimation.Movement;
 import FontHandler.FontHandler;
 import SingleplayerFahrt.FahrtErstellenView;
 
@@ -17,10 +23,13 @@ import javax.swing.JTextPane;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JToggleButton;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
- * Grafische Benutzeroberfläche um den Bezahlprozess auf der externen Website Paypal darszustellen
+ * Grafische Benutzeroberfläche um den Bezahlprozess auf der externen Website
+ * Paypal darszustellen
+ * 
  * @author Matthias Westermeyer
  *
  */
@@ -28,8 +37,8 @@ import javax.swing.ImageIcon;
 public class RechnungBezahlenView {
 
 	// benötigte Variablen deklarieren
-	
-	private JFrame frmBezahlung;
+
+	private JFrame frame;
 	private JTextField txtEmail;
 	private JLabel lblE;
 	private JButton btnEinloggen;
@@ -41,13 +50,114 @@ public class RechnungBezahlenView {
 	private JLabel lblHintergrund;
 
 	// getter und setter Methoden der Variablen
-	
-	public JFrame getFrmBezahlung() {
-		return frmBezahlung;
+
+	/**
+	 * Zugriff auf die View Launch the application.
+	 */
+	// Zugriff auf die View
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					RechnungBezahlenView window = new RechnungBezahlenView();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
-	public void setFrmBezahlung(JFrame frmBezahlung) {
-		this.frmBezahlung = frmBezahlung;
+	/**
+	 * Konstruktor Create the application.
+	 */
+
+	//
+
+	public RechnungBezahlenView() {
+		initialize();
+	}
+
+	/**
+	 * Fenster / View initialisieren mit den entsprechenden Elementen
+	 */
+
+	private void initialize() {
+
+		Font customFont12f = FontHandler.registriereSchriftart(12f);
+
+		setFrame( new JFrame());
+		getFrame().setTitle("Bezahluebersicht - Paypal");
+		getFrame().setBounds(100, 100, 800, 600);
+		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrame().getContentPane().setLayout(null);
+		getFrame().setLocationRelativeTo(null);
+
+		setTxtEmail ( new JTextField());
+		getTxtEmail().setText("Email-Mail Adresse");
+		getTxtEmail().setFont(customFont12f);
+		getTxtEmail().setBounds(221, 123, 220, 39);
+		getFrame().getContentPane().add(txtEmail);
+		getTxtEmail().setColumns(10);
+
+		setBtnEinloggen ( new JButton("Einloggen"));
+		getBtnEinloggen().setFont(customFont12f);
+		getBtnEinloggen().setBounds(221, 231, 220, 39);
+		getBtnEinloggen().setFocusable(false);
+		getBtnEinloggen().setBorderPainted(false);
+		getBtnEinloggen().setBackground(SystemColor.activeCaption);
+		getBtnEinloggen().setOpaque(false);
+		getFrame().getContentPane().add(btnEinloggen);
+
+		setBtnAbbrechen ( new JButton("Abbrechen"));
+		getBtnAbbrechen().setFont(customFont12f);
+		getBtnAbbrechen().setFocusable(false);
+		getBtnAbbrechen().setBorderPainted(false);
+		getBtnAbbrechen().setBackground(SystemColor.activeCaption);
+		getBtnAbbrechen().setOpaque(false);
+		getBtnAbbrechen().setBounds(221, 366, 220, 39);
+		getFrame().getContentPane().add(btnAbbrechen);
+
+		setPasswordField ( new JPasswordField());
+		getPasswordField().setText("123456789");
+		getPasswordField().setBounds(221, 173, 220, 39);
+		getFrame().getContentPane().add(passwordField);
+
+		textPane = new JTextPane();
+		textPane.setBounds(266, 126, 6, 20);
+		getFrame().getContentPane().add(textPane);
+
+		setLblNewLabel ( new JLabel(""));
+		getLblNewLabel().setIcon(new ImageIcon(RechnungBezahlenView.class.getResource("/Resources/PayPal.svg.png")));
+		getLblNewLabel().setBounds(221, 28, 220, 65);
+		getFrame().getContentPane().add(lblNewLabel);
+
+		Movement m = new Movement(10);
+
+		BufferedImage image = null;
+		try {
+			URL url = getClass().getResource("/Resources/Hintergrund.png");
+			image = ImageIO.read(url);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		m.label.setBufferedImage(image, 0);
+
+		m.label.setOpaque(false);
+		m.label.setBounds(0, 0, 800, 600);
+		getFrame().getContentPane().add(m.label);
+		getFrame().setVisible(true);
+
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
 	}
 
 	public JTextField getTxtEmail() {
@@ -113,7 +223,6 @@ public class RechnungBezahlenView {
 	public void setLblNewLabel(JLabel lblNewLabel) {
 		this.lblNewLabel = lblNewLabel;
 	}
-	
 
 	public JLabel getLblHintergrund() {
 		return lblHintergrund;
@@ -121,100 +230,5 @@ public class RechnungBezahlenView {
 
 	public void setLblHintergrund(JLabel lblHintergrund) {
 		this.lblHintergrund = lblHintergrund;
-	}
-
-	/**
-	 * Zugriff auf die View
-	 * Launch the application.
-	 */
-	// Zugriff auf die View
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RechnungBezahlenView window = new RechnungBezahlenView();
-					window.frmBezahlung.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Konstruktor
-	 * Create the application.
-	 */
-	
-	//
-	
-	public RechnungBezahlenView() {
-		initialize();
-	}
-
-	/**
-	 * Fenster / View initialisieren mit den entsprechenden Elementen
-	 */
-
-	
-	private void initialize() {
-		
-		Font customFont12f = FontHandler.registriereSchriftart(12f);
-		
-		frmBezahlung = new JFrame();
-		frmBezahlung.setTitle("Bezahlung");
-		frmBezahlung.setBounds(100, 100, 800, 600);
-		frmBezahlung.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmBezahlung.getContentPane().setLayout(null);
-		frmBezahlung.setLocationRelativeTo(null);
-		
-		txtEmail = new JTextField();
-		txtEmail.setText("Email-Mail Adresse");
-		txtEmail.setFont(customFont12f);
-		txtEmail.setBounds(221, 123, 220, 39);
-		frmBezahlung.getContentPane().add(txtEmail);
-		txtEmail.setColumns(10);
-		
-		lblE = new JLabel("anders ueberlegt?");
-		lblE.setFont(customFont12f);
-		lblE.setHorizontalAlignment(SwingConstants.CENTER);
-		lblE.setBounds(221, 322, 220, 27);
-		frmBezahlung.getContentPane().add(lblE);
-		
-		btnEinloggen = new JButton("Einloggen");
-		btnEinloggen.setFont(customFont12f);
-		btnEinloggen.setBounds(221, 231, 220, 39);
-		frmBezahlung.getContentPane().add(btnEinloggen);	
-		
-		lblOder = new JLabel("dann");
-		lblOder.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOder.setFont(customFont12f);
-		lblOder.setBounds(221, 341, 220, 27);
-		frmBezahlung.getContentPane().add(lblOder);
-		
-		btnAbbrechen = new JButton("Abbrechen");
-		btnAbbrechen.setFont(customFont12f);
-		btnAbbrechen.setBounds(221, 366, 220, 39);
-		frmBezahlung.getContentPane().add(btnAbbrechen);
-		
-		passwordField = new JPasswordField();
-		passwordField.setText("123456789");
-		passwordField.setBounds(221, 173, 220, 39);
-		frmBezahlung.getContentPane().add(passwordField);
-		
-		textPane = new JTextPane();
-		textPane.setBounds(266, 126, 6, 20);
-		frmBezahlung.getContentPane().add(textPane);
-		
-		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(RechnungBezahlenView.class.getResource("/Resources/paypal_Icon.jpg")));
-		lblNewLabel.setBounds(221, 28, 220, 65);
-		frmBezahlung.getContentPane().add(lblNewLabel);
-		
-		lblHintergrund = new JLabel();
-		lblHintergrund.setIcon(new ImageIcon(RechnungBezahlenView.class.getResource("/Resources/Hintergrund.png")));
-		lblHintergrund.setBounds(0, 0, 800, 600);
-		frmBezahlung.getContentPane().add(lblHintergrund);
 	}
 }

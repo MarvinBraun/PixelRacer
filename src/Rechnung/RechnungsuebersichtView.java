@@ -79,12 +79,6 @@ public class RechnungsuebersichtView {
 		getBtnzurück().setOpaque(false);
 		getBtnzurück().setBackground(SystemColor.activeCaption);
 		getFrame().getContentPane().add(btnzurück);
-		
-		lblHintergrund = new JLabel("");
-		lblHintergrund.setVisible(false);
-		lblHintergrund.setOpaque(true);
-		lblHintergrund.setBounds(0, 0, 794, 571);
-		getFrame().getContentPane().add(lblHintergrund);
 
 		Movement m = new Movement(10);
 
