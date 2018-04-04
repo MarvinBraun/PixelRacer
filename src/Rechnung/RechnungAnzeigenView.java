@@ -46,7 +46,6 @@ public class RechnungAnzeigenView {
 	private JLabel lblKartname;
 	private JLabel lblStreckenname;
 	private JLabel lblBenutzername;
-	private JLabel lblArtikel;
 	private JLabel lblBezahlmethode;
 	private JLabel lblRechnungsbetrag;
 	private JButton btnZuruck;
@@ -56,7 +55,6 @@ public class RechnungAnzeigenView {
 	private JLabel lblKartnamefeld;
 	private JLabel lblStreckennamefeld;
 	private JLabel lblBenutzernamefeld;
-	private JLabel lblArtikelfeld;
 	private JLabel lblBezahlmethodefeld;
 	private JLabel lblRechnungsbetragfeld;
 
@@ -106,12 +104,12 @@ public class RechnungAnzeigenView {
 
 		setLblRechnungsnummer(new JLabel("Rechnungsnummer:"));
 		getLblRechnungsnummer().setFont(customFont12f);
-		getLblRechnungsnummer().setBounds(33, 26, 250, 45);
+		getLblRechnungsnummer().setBounds(33, 45, 250, 45);
 		getFrame().getContentPane().add(lblRechnungsnummer);
 
 		setLblRechnungsdatum(new JLabel("Rechnungsdatum:"));
 		getLblRechnungsdatum().setFont(customFont12f);
-		getLblRechnungsdatum().setBounds(435, 26, 250, 45);
+		getLblRechnungsdatum().setBounds(435, 45, 250, 45);
 		getFrame().getContentPane().add(lblRechnungsdatum);
 
 		setLblKartname(new JLabel("Kartname:"));
@@ -121,39 +119,32 @@ public class RechnungAnzeigenView {
 
 		setLblStreckenname(new JLabel("Streckenname:"));
 		getLblStreckenname().setFont(customFont12f);
-		getLblStreckenname().setBounds(33, 204, 250, 45);
+		getLblStreckenname().setBounds(33, 215, 250, 45);
 		getFrame().getContentPane().add(lblStreckenname);
 
 		setLblBenutzername(new JLabel("Benutzername:"));
 		getLblBenutzername().setFont(customFont12f);
-		getLblBenutzername().setBounds(33, 82, 250, 45);
+		getLblBenutzername().setBounds(33, 90, 250, 45);
 		getFrame().getContentPane().add(lblBenutzername);
-
-		setLblArtikel(new JLabel("Artikel:"));
-		getLblArtikel().setFont(customFont12f);
-		getLblArtikel().setForeground(Color.BLACK);
-		getLblArtikel().setHorizontalAlignment(SwingConstants.LEFT);
-		getLblArtikel().setBounds(33, 161, 74, 32);
-		getFrame().getContentPane().add(lblArtikel);
 
 		setLblBezahlmethode(new JLabel("Bezahlmethode:"));
 		getLblBezahlmethode().setFont(customFont12f);
-		getLblBezahlmethode().setBounds(33, 419, 250, 45);
+		getLblBezahlmethode().setBounds(33, 380, 250, 45);
 		getFrame().getContentPane().add(lblBezahlmethode);
 
 		setLblRechnungsbetrag(new JLabel("Rechnungsbetrag:"));
 		getLblRechnungsbetrag().setFont(customFont12f);
-		getLblRechnungsbetrag().setBounds(31, 475, 250, 45);
+		getLblRechnungsbetrag().setBounds(31, 425, 250, 45);
 		getFrame().getContentPane().add(lblRechnungsbetrag);
 
 		setLblRechnungsnummerfeld(new JLabel());
 		getLblRechnungsnummerfeld().setFont(customFont12f);
-		getLblRechnungsnummerfeld().setBounds(200, 26, 250, 45);
+		getLblRechnungsnummerfeld().setBounds(200, 45, 250, 45);
 		getFrame().getContentPane().add(lblRechnungsnummerfeld);
 
 		setLblRechnungsdatumfeld(new JLabel());
 		getLblRechnungsdatumfeld().setFont(customFont12f);
-		getLblRechnungsdatumfeld().setBounds(590, 26, 250, 45);
+		getLblRechnungsdatumfeld().setBounds(590, 45, 250, 45);
 		getFrame().getContentPane().add(lblRechnungsdatumfeld);
 
 		setLblKartnamefeld(new JLabel());
@@ -163,27 +154,22 @@ public class RechnungAnzeigenView {
 
 		setLblStreckennamefeld(new JLabel());
 		getLblStreckennamefeld().setFont(customFont12f);
-		getLblStreckennamefeld().setBounds(200, 204, 250, 45);
+		getLblStreckennamefeld().setBounds(200, 215, 250, 45);
 		getFrame().getContentPane().add(lblStreckennamefeld);
 
 		setLblBenutzernamefeld(new JLabel());
 		getLblBenutzernamefeld().setFont(customFont12f);
-		getLblBenutzernamefeld().setBounds(200, 82, 250, 45);
+		getLblBenutzernamefeld().setBounds(200, 90, 250, 45);
 		getFrame().getContentPane().add(lblBenutzernamefeld);
-
-		setLblArtikelfeld(new JLabel());
-		getLblArtikelfeld().setFont(customFont12f);
-		getLblArtikelfeld().setBounds(200, 161, 250, 45);
-		getFrame().getContentPane().add(lblArtikelfeld);
 
 		setLblBezahlmethodefeld(new JLabel());
 		getLblBezahlmethodefeld().setFont(customFont12f);
-		getLblBezahlmethodefeld().setBounds(200, 419, 250, 45);
+		getLblBezahlmethodefeld().setBounds(200, 380, 250, 45);
 		getFrame().getContentPane().add(lblBezahlmethodefeld);
 
 		setLblRechnungsbetragfeld(new JLabel());
 		getLblRechnungsbetragfeld().setFont(customFont12f);
-		getLblRechnungsbetragfeld().setBounds(200, 475, 250, 45);
+		getLblRechnungsbetragfeld().setBounds(200, 425, 250, 45);
 		getFrame().getContentPane().add(lblRechnungsbetragfeld);
 		
 		setBtnZuruck(new JButton("Zurueck"));
@@ -268,14 +254,6 @@ public class RechnungAnzeigenView {
 		this.lblBenutzername = lblBenutzername;
 	}
 
-	public JLabel getLblArtikel() {
-		return lblArtikel;
-	}
-
-	public void setLblArtikel(JLabel lblArtikel) {
-		this.lblArtikel = lblArtikel;
-	}
-
 	public JLabel getLblBezahlmethode() {
 		return lblBezahlmethode;
 	}
@@ -312,10 +290,6 @@ public class RechnungAnzeigenView {
 		return lblBenutzernamefeld;
 	}
 
-	public JLabel getLblArtikelfeld() {
-		return lblArtikelfeld;
-	}
-
 	public JLabel getLblBezahlmethodefeld() {
 		return lblBezahlmethodefeld;
 	}
@@ -342,10 +316,6 @@ public class RechnungAnzeigenView {
 
 	public void setLblBenutzernamefeld(JLabel lblBenutzernamefeld) {
 		this.lblBenutzernamefeld = lblBenutzernamefeld;
-	}
-
-	public void setLblArtikelfeld(JLabel lblArtikelfeld) {
-		this.lblArtikelfeld = lblArtikelfeld;
 	}
 
 	public void setLblBezahlmethodefeld(JLabel lblBezahlmethodefeld) {
