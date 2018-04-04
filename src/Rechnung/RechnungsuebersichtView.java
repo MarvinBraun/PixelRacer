@@ -5,6 +5,7 @@ import BackgroundAnimation.MovementBackward;
 import FontHandler.FontHandler;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -64,13 +65,19 @@ public class RechnungsuebersichtView {
 		getBtnanz().setBounds(225, 240, 150, 35);
 		getBtnanz().setFont(customFont);
 		getBtnanz().setOpaque(false);
+		getBtnanz().setFocusable(false);
+		getBtnanz().setBorderPainted(false);
+		getBtnanz().setBackground(SystemColor.activeCaption);
 		getFrame().getContentPane().add(btnanz);
 
 		
 		setBtnzurück(new JButton("Zurueck"));
 		getBtnzurück().setBounds(425, 240, 150, 35);
 		getBtnzurück().setFont(customFont);
+		getBtnzurück().setFocusable(false);
+		getBtnzurück().setBorderPainted(false);
 		getBtnzurück().setOpaque(false);
+		getBtnzurück().setBackground(SystemColor.activeCaption);
 		getFrame().getContentPane().add(btnzurück);
 		
 		lblHintergrund = new JLabel("");
