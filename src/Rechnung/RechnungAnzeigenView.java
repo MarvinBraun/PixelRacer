@@ -248,8 +248,8 @@ public class RechnungAnzeigenView {
 		return lblKartname;
 	}
 
-	public void setLblKartname(JLabel lblKartname) {
-		this.lblKartname = lblKartname;
+	public void setLblKartname(JLabel jLabel) {
+		this.lblKartname = jLabel;
 	}
 
 	public JLabel getLblStreckenname() {

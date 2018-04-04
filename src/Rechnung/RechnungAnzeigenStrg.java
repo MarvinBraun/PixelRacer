@@ -10,6 +10,7 @@ import Anmelden.AnmeldenStrg;
 import Kart.Kart;
 import Startansicht.StartansichtStrg;
 import Strecke.Strecke;
+import oracle.sql.DATE;
 
 /**
  * Die Klasse RechnungAnzeigenStrg steuert das anzeigen der einzelnen Rechnungen.
@@ -20,7 +21,7 @@ import Strecke.Strecke;
 public class RechnungAnzeigenStrg implements ActionListener{
 
 	RechnungAnzeigenView view;
-	static Rechnung r;
+	Rechnung r;
 	Kart k;
 	Strecke s;
 	
@@ -29,17 +30,27 @@ public class RechnungAnzeigenStrg implements ActionListener{
 		
 		view = new RechnungAnzeigenView();
 		view.getFrame().setLocationRelativeTo(null);
-		
-		ladeDaten();
+		view.getBtnZuruck().addActionListener(this);
+		ladeDaten(r);
 		
 	}
 	
 	public static void main(String[] args) {
 		
-		RechnungAnzeigenStrg steuerung = new RechnungAnzeigenStrg(r);
+	
 	}
 	
-	private void ladeDaten(){
+	private void ladeDaten(Rechnung r){
+		
+		view.getLblBenutzernamefeld().setText(r.benutzername);
+		view.getLblRechnungsnummerfeld().setText(Integer.toString(r.getRechnungsnummer()));
+		view.getLblKartnamefeld().setText(r.getKartname());
+		view.getLblRechnungsdatumfeld().setText(r.getRechnungsdatum());
+		view.getLblBezahlmethodefeld().setText(r.getBezahlmethode());
+		view.getLblRechnungsbetragfeld().setText(Integer.toString(r.rechnungsbetrag));
+		
+	
+		
 		
 	}
 	

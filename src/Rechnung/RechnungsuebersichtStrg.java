@@ -20,13 +20,11 @@ public class RechnungsuebersichtStrg implements ActionListener {
 	RechnungsuebersichtView viewUebersicht;
 	Rechnung r;
 	Kart k;
-	Strecke s;
-
+	
 	Rechnungsverwaltung rw;
 
 
 	LinkedList<Rechnung> KartRechnungsListe = new LinkedList<Rechnung>();
-	LinkedList<Rechnung> StreckenRechnungsListe = new LinkedList<Rechnung>();
 	
 	public static void main(String[] args) {
 
@@ -55,7 +53,6 @@ public class RechnungsuebersichtStrg implements ActionListener {
 	private void ladeDrop() {
 		
 	KartRechnungsListe =  Rechnungsverwaltung.gibKartRechnungenfuerBenutzer();
-	StreckenRechnungsListe = Rechnungsverwaltung.gibStreckenRechnungenfuerBenutzer();
 	
 	JComboBox<Integer> box = viewUebersicht.getDrop();
 	
@@ -63,12 +60,7 @@ public class RechnungsuebersichtStrg implements ActionListener {
 	{
 		box.addItem(r.getRechnungsnummer());
 	}
-	
-	for(Rechnung r : StreckenRechnungsListe)
-	{
-		box.addItem(r.getRechnungsnummer());
-	}
-	
+
 	
 	}
 
@@ -86,19 +78,13 @@ public class RechnungsuebersichtStrg implements ActionListener {
 			if(rechnr == r.rechnungsnummer)
 			{
 				RechnungAnzeigenStrg strg = new RechnungAnzeigenStrg(r);
+			
 				viewUebersicht.getFrame().dispose();
+				break;
 			}
 				
 		}
-		for(Rechnung r : StreckenRechnungsListe)
-		{
-			if(rechnr == r.rechnungsnummer)
-			{
-				RechnungAnzeigenStrg strg = new RechnungAnzeigenStrg(r);
-				viewUebersicht.getFrame().dispose();
-			}
-				
-		}
+		
 		
 		}
 		if(e.getSource()==viewUebersicht.getBtnzurück())
